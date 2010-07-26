@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context>
-    <Loader delegate="true"/>
+<Context path="/prime-showcase">
+  <Loader delegate="true"/>
 </Context>
