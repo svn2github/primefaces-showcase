@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Watermark</h1>
+		
+		<div class="entry">
+			<p>Watermark displays a hint describing what the input fields are used for.</p>
+	
+			<h:form prependId="false">
+			
+				<p:messages id="messages" showDetail="true"/>
+	
+				<h:panelGrid columns="3">
+	
+					<h:outputLabel value="Search: "/>
+					<h:inputText id="keyword" value="#{watermarkBean.keyword}" required="true" />
+					<p:watermark for="keyword" value="Search with a keyword" />
+				
+				</h:panelGrid>
+				
+				<br />
+				
+				<p:commandButton actionListener="#{watermarkBean.search}" value="Regular" ajax="false" /> 
+				<p:commandButton actionListener="#{watermarkBean.search}" value="Ajax"
+						onclick="PrimeFaces.cleanWatermarks();" oncomplete="PrimeFaces.showWatermarks();" update="messages" /> 
+	
+			</h:form>
+
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+&lt;h:form prependId="false"&gt;
+			
+	&lt;p:messages showDetail="true"/&gt;
+	
+	&lt;h:panelGrid columns="3"&gt;
+	
+		&lt;h:outputLabel value="Search: "/&gt;
+		&lt;h:inputText id="keyword" value="\#{watermarkBean.keyword}" required="true" /&gt;
+		&lt;p:watermark for="keyword" value="Search with a keyword" /&gt;
+			
+	&lt;/h:panelGrid&gt;
+	
+	&lt;p:commandButton actionListener="\#{watermarkBean.search}" value="Regular" ajax="false" /&gt; 
+	&lt;p:commandButton actionListener="\#{watermarkBean.search}" value="Ajax"
+			onclick="PrimeFaces.cleanWatermarks();" oncomplete="PrimeFaces.showWatermarks();"  /&gt; 
+	
+&lt;/h:form&gt;
+				
+			</pre>
+			
+			<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.event.ActionEvent;
+
+public class WatermarkBean {
+
+	private String keyword;
+	
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
+	public void search(ActionEvent actionEvent) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"No results found with ", "'" + keyword + "'"));
+	}
+}
+
+
+			</pre>
+		</div>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,127 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		
+	<style type="text/css">
+		.pf-panel, .pf-panel-hd, .pf-panel-bd, .pf-panel-ft {
+			border-color:#000000;
+		}
+		
+		.pf-panel-hd {
+			 background: url(../images/dialoghd.gif);
+			 color: #FFFFFF;
+		}
+		
+		.pf-panel-bd {
+			background: #333333;
+			color:#CCCCCC;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		function handleComplete(xhr, status, args) {
+			if(args.validationFailed) {
+				alert("Validation Failed");
+			} else {
+				alert("Save:" + args.saved);
+				alert("FirstName: " + args.user.firstname + ", Lastname: " + args.user.lastname); 
+			}
+		}
+	</script>
+	</ui:define>
+
+	<ui:define name="content">
+
+
+		<h1 class="title ui-widget-header ui-corner-all">Callback Parameters</h1>
+			<div class="entry">
+			<p>RequestContext provides a useful API to pass parameters from JSF backing beans in json format to ajax callbacks like oncomplete.
+			As it is a common case validationFailed parameter is passed by default.</p>
+			
+				<h:form>
+
+					<p:panel id="panel" header="New User" style="margin-bottom:10px;">
+						<p:messages />
+						<h:panelGrid columns="2">
+							<h:outputLabel for="firstname" value="Firstname: *" />
+							<h:inputText id="firstname" value="#{userController.user.firstname}" required="true"/>
+							
+							<h:outputLabel for="surname" value="Lastname: *" />
+							<h:inputText id="surname" value="#{userController.user.lastname}" required="true"/>
+						</h:panelGrid>
+					</p:panel>
+
+					<p:commandButton value="Save" actionListener="#{userController.saveUser}" oncomplete="handleComplete(xhr, status, args)" />
+					
+					<p:ajaxStatus style="height:24px;display:block;">
+						<f:facet name="start">
+							<h:graphicImage value="../design/ajaxloading.gif" />
+						</f:facet>
+						
+						<f:facet name="complete">
+							<h:outputText />
+						</f:facet>
+					</p:ajaxStatus>
+				
+				</h:form>
+						
+				<h3>Source</h3>
+<pre name="code" class="xml">
+&lt;h:form&gt;
+	&lt;p:panel id="panel" header="New User"&gt;
+		&lt;p:messages /&gt;
+		&lt;h:panelGrid columns="2"&gt;
+			&lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
+			&lt;h:inputText id="firstname" value="\#{userController.user.firstname}" required="true"/&gt;
+			
+			&lt;h:outputLabel for="surname" value="Lastname: *"  /&gt;
+			&lt;h:inputText id="surname" value="\#{userController.user.lastname}" required="true"/&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:panel&gt;
+
+	&lt;p:commandButton value="Save" actionListener="\#{userController.saveUser}" oncomplete="handleComplete(xhr, status, args)" /&gt;
+&lt;/h:form&gt;
+</pre>
+
+<pre name="code" class="java">
+public class UserController {
+
+	private User user = new User();
+
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public void saveUser(ActionEvent actionEvent) {
+		//save user
+		RequestContext context = RequestContext.getCurrentInstance();
+		context.addCallbackParam("saved", true);
+		context.addCallbackParam("user", user);
+	}
+}
+</pre>
+
+<pre name="code" class="javascript">
+&lt;script type="text/javascript"&gt;
+function handleComplete(xhr, status, args) {
+	if(args.validationFailed) {
+		alert("Validation Failed");
+	} else {
+		alert("Save:" + args.saved);
+		alert("FirstName: " + args.user.firstname + ", Lastname: " + args.user.lastname); 
+	}
+}
+&lt;/script&gt;
+</pre>						
+					</div>
+				
+	</ui:define>
+</ui:composition>

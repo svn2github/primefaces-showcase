@@ -1,0 +1,159 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">AJAX - DataTable</h1>
+		<div class="entry">
+           	<p>In this example, datatable is updated with ajax.</p>
+         
+       		<h:form prependId="false">
+       			<p:panel header="New Book">
+					<h:panelGrid columns="2">		
+						<h:outputLabel value="Title :" for="txt_title"></h:outputLabel>
+						<h:inputText id="txt_title" value="#{createBookBean.book.title}" required="true"/>
+						
+						<h:outputLabel value="Author :" for="txt_author"></h:outputLabel>
+						<h:inputText id="txt_author" value="#{createBookBean.book.author}" required="true"/>
+	
+					
+						<p:commandButton value="Add" action="#{createBookBean.createNew}" update="books" />
+						<p:ajaxStatus style="width:16px;height:16px;">
+							<f:facet name="start">
+								<h:graphicImage value="../design/ajaxloading.gif" />
+							</f:facet>
+							
+							<f:facet name="complete">
+								<h:outputText value="" />
+							</f:facet>
+						</p:ajaxStatus>
+					</h:panelGrid>
+				</p:panel>
+	
+				<br />
+	
+				<p:dataTable id="books" value="#{createBookBean.books}" var="book">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Title" />
+						</f:facet>
+						<h:outputText value="#{book.title}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Author" />
+						</f:facet>
+						<h:outputText value="#{book.author}" />
+					</p:column>
+					
+				</p:dataTable>
+			</h:form>
+				
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="pprDataTable.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form prependId="false"&gt;
+    &lt;p:panel header="New Book"&gt;
+		&lt;h:panelGrid columns="2"&gt;		
+			&lt;h:outputLabel value="Title :" for="txt_title"&gt;&lt;/h:outputLabel&gt;
+			&lt;h:inputText id="txt_title" 
+						value="\#{createBookBean.book.title}" required="true"/&gt;
+			
+			&lt;h:outputLabel value="Author :" for="txt_author"&gt;&lt;/h:outputLabel&gt;
+			&lt;h:inputText id="txt_author" 
+						value="\#{createBookBean.book.author}" required="true"/&gt;
+
+		
+			&lt;p:commandButton value="Add" 
+						action="\#{createBookBean.createNew}" update="books" /&gt;
+			&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+				&lt;f:facet name="start"&gt;
+					&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+				&lt;/f:facet&gt;
+				
+				&lt;f:facet name="complete"&gt;
+					&lt;h:outputText value="" /&gt;
+				&lt;/f:facet&gt;
+			&lt;/p:ajaxStatus&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:panel&gt;
+
+	&lt;p:dataTable id="books" value="\#{createBookBean.books}" var="book"&gt;
+
+		&lt;p:column&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Title" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="\#{book.title}" /&gt;
+		&lt;/p:column&gt;
+
+		&lt;p:column&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Author" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="\#{book.author}" /&gt;
+		&lt;/p:column&gt;
+		
+	&lt;/p:dataTable&gt;
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="CreateBookBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.primefaces.examples.domain.Book;
+import org.primefaces.examples.service.BookService;
+import org.primefaces.examples.service.BookServiceImpl;
+
+public class CreateBookBean {
+
+	private Book book = new Book();
+	
+	private List&lt;Book&gt; books = new ArrayList&lt;Book&gt;();
+	
+	private BookService bookService = new BookServiceImpl();	
+	
+	public String createNew() {
+		books.add(book);
+		bookService.saveBook(book);
+		book = new Book();	//reset form
+		
+		return null;
+	}
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+	public List&lt;Book&gt; getBooks() {
+		return books;
+	}
+
+	public void setBooks(List&lt;Book&gt; books) {
+		this.books = books;
+	}
+}
+
+					</pre>
+				</p:tab>
+			</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

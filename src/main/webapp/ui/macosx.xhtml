@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+<f:view contentType="text/html">
+<h:head>
+	<title>
+		<ui:insert name="title">PrimeFaces ShowCase</ui:insert>
+	</title>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/sam/skin.css" />
+	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css"></link>
+	<style type="text/css">
+		body {
+			background: url(../images/macosx/macback.png);
+			margin: 0;
+			padding: 0;
+			font-family: geneva, arial, helvetica, sans-serif;
+			font-size:80%;
+		}
+
+		.appleIcon {
+			background: url(../images/macosx/apple.png) no-repeat 20%;
+			padding-left:22px !important;
+		}
+	</style>
+</h:head>
+
+<h:body>
+
+	<h:outputText value="#{macosxBean.text}" />
+
+	<p:growl showDetail="true" sticky="true"/>
+
+	<p:menubar>
+		<p:submenu labelStyleClass="appleIcon" label="&nbsp;">
+			<p:menuitem value="About This Mac" url="#" onclick="info.show();"></p:menuitem>
+		</p:submenu>
+				
+		<p:submenu label="Finder">
+			<p:menuitem value="About Finder" url="#" styleClass="open"></p:menuitem>
+		</p:submenu>
+		
+		<p:submenu label="Edit">
+			<p:menuitem value="Undo" url="#" styleClass="undo" helpText="⌘Z"></p:menuitem>
+			<p:menuitem value="Redo" url="#" styleClass="redo" helpText="⌘Y"></p:menuitem>
+		</p:submenu>
+		
+		<p:submenu label="View">
+			<p:menuitem value="Source" url="#" onclick="source.show();"></p:menuitem>
+		</p:submenu>
+	</p:menubar>
+		
+	<p:dialog header="About This Mac" draggable="true" widgetVar="info">
+		<h:form>
+			<h:panelGrid columns="1" style="width:100%;text-align:center;">
+				<p:graphicImage value="/images/macosx/apple_logo.png" />
+				<h:outputText value="MOCK OS X" style="font-size:16px"/>
+				<h:outputText value="Version 10.5.7" />
+				<p:commandButton value="Software Update" async="true" onclick="return false;"/>
+			</h:panelGrid>
+			
+			<h:panelGrid columns="2">
+				<h:outputText value="Processor" style="font-weight:bold"/>
+				<h:outputText value="2.4 GHz Intel Core 2 Duo" />
+				
+				<h:outputText value="Memory" style="font-weight:bold"/>
+				<h:outputText value="4 GB 667 MHz DDR2 SDRAM" />
+				
+				<h:outputText value="Startup Disk" style="font-weight:bold"/>
+				<h:outputText value="Macintosh HD" />
+			</h:panelGrid>
+			
+		</h:form>
+	</p:dialog>
+	
+	<p:dialog header="PrimeFaces Mock OS X" draggable="true" visible="true" modal="true">
+		<h:outputText value="Welcome! Everything here is a PrimeFaces JSF component." />
+	</p:dialog>
+	
+	<p:dialog widgetVar="terminal" styleClass="terminal" width="600" height="400" header="Terminal">
+		<h:form>
+		<p:terminal commandHandler="#{terminalController.handleCommand}" width="100%" height="100%" 
+					welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>
+		</h:form>
+	</p:dialog>
+	
+	<p:dialog header="Source" widgetVar="source" height="400" width="600">
+
+			<pre name="code" class="xml">
+			
+&lt;p:growl showDetail="true" sticky="true"/&gt;
+
+&lt;p:menubar&gt;
+	&lt;p:submenu labelStyleClass="appleIcon" label="&nbsp;"&gt;
+		&lt;p:menuitem value="About This Mac" url="\#" onclick="info.show();"&gt;&lt;/p:menuitem&gt;
+	&lt;/p:submenu&gt;
+			
+	&lt;p:submenu label="Finder"&gt;
+		&lt;p:menuitem value="About Finder" url="\#" styleClass="open"&gt;&lt;/p:menuitem&gt;
+	&lt;/p:submenu&gt;
+	
+	&lt;p:submenu label="Edit"&gt;
+		&lt;p:menuitem value="Undo" url="\#" styleClass="undo" helpText="⌘Z"&gt;&lt;/p:menuitem&gt;
+		&lt;p:menuitem value="Redo" url="\#" styleClass="redo" helpText="⌘Y"&gt;&lt;/p:menuitem&gt;
+	&lt;/p:submenu&gt;
+	
+	&lt;p:submenu label="View"&gt;
+		&lt;p:menuitem value="Source" url="\#" onclick="source.show();"&gt;&lt;/p:menuitem&gt;
+	&lt;/p:submenu&gt;
+&lt;/p:menubar&gt;
+	
+&lt;p:dialog header="About This Mac" draggable="true" widgetVar="info"&gt;
+	&lt;h:form&gt;
+		&lt;h:panelGrid columns="1" style="width:100%;text-align:center;"&gt;
+			&lt;p:graphicImage value="/images/macosx/apple_logo.png" /&gt;
+			&lt;h:outputText value="MOCK OS X" style="font-size:16px"/&gt;
+			&lt;h:outputText value="Version 10.5.7" /&gt;
+			&lt;p:commandButton value="Software Update" async="true" onclick="return false;"/&gt;
+		&lt;/h:panelGrid&gt;
+		
+		&lt;h:panelGrid columns="2"&gt;
+			&lt;h:outputText value="Processor" style="font-weight:bold"/&gt;
+			&lt;h:outputText value="2.4 GHz Intel Core 2 Duo" /&gt;
+			
+			&lt;h:outputText value="Memory" style="font-weight:bold"/&gt;
+			&lt;h:outputText value="4 GB 667 MHz DDR2 SDRAM" /&gt;
+			
+			&lt;h:outputText value="Startup Disk" style="font-weight:bold"/&gt;
+			&lt;h:outputText value="Macintosh HD" /&gt;
+		&lt;/h:panelGrid&gt;
+		
+	&lt;/h:form&gt;
+&lt;/p:dialog&gt;
+
+&lt;p:dialog header="PrimeFaces Mock OS X" draggable="true" visible="true" modal="true"&gt;
+	&lt;h:outputText value="Welcome! Everything here is a PrimeFaces JSF component." /&gt;
+&lt;/p:dialog&gt;
+
+&lt;p:dialog widgetVar="terminal" styleClass="terminal" width="600" height="400" header="Terminal"&gt;
+	&lt;h:form&gt;
+	&lt;p:terminal commandHandler="\#{terminalController.handleCommand}" width="100%" height="100%" 
+				welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/&gt;
+	&lt;/h:form&gt;
+&lt;/p:dialog&gt;
+
+&lt;p:dock&gt;
+	&lt;p:menuitem label="Finder" icon="/images/macosx/finder.png" url="\#" /&gt;
+	&lt;p:menuitem label="Terminal" icon="/images/macosx/terminal.png" url="\#" onclick="terminal.show()"/&gt;
+	&lt;p:menuitem label="Safari" icon="/images/macosx/safari.png" url="\#" /&gt;
+	&lt;p:menuitem label="iTunes" icon="/images/macosx/itunes.png" url="\#"/&gt;
+	&lt;p:menuitem label="iChat" icon="/images/macosx/ichat.png" url="\#"/&gt;
+	&lt;p:menuitem label="Trash" icon="/images/macosx/trash.png" url="\#"/&gt;
+&lt;/p:dock&gt;
+				
+			</pre>
+
+	</p:dialog>
+	
+	<p:dock>
+		<p:menuitem label="Finder" icon="/images/macosx/finder.png" url="#" />
+		<p:menuitem label="Terminal" icon="/images/macosx/terminal.png" url="#" onclick="terminal.show()"/>
+		<p:menuitem label="Safari" icon="/images/macosx/safari.png" url="#" />
+		<p:menuitem label="iTunes" icon="/images/macosx/itunes.png" url="#"/>
+		<p:menuitem label="iChat" icon="/images/macosx/ichat.png" url="#"/>
+		<p:menuitem label="Trash" icon="/images/macosx/trash.png" url="#"/>
+	</p:dock>
+	
+</h:body>
+
+
+</f:view>
+
+<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
+<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script language="javascript">
+	dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
+	dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+</html>
+
+	

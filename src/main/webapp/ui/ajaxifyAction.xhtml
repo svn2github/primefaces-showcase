@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+
+		<h1 class="title ui-widget-header ui-corner-all">AJAX - Actions</h1>
+		<div class="entry">
+			<p>p:ajax component can also execute an action on a JSF bean. This examples counts the number of keyups.</p>
+
+			<h:form>
+			
+				<p:ajaxStatus style="width:16px;height:16px;">
+					<f:facet name="start">
+						<h:graphicImage value="../design/ajaxloading.gif" />
+					</f:facet>
+					
+					<f:facet name="complete">
+						<h:outputText value="" />
+					</f:facet>
+				</p:ajaxStatus>
+			
+				<h:panelGrid columns="3">
+					<h:outputText value="Keyup: " />
+					
+					<h:inputText id="counter">
+						<p:ajax event="keyup" update="out" actionListener="#{counterBean.increment}"/>
+					</h:inputText>
+					
+					<h:outputText id="out" value="#{counterBean.count}" />
+				</h:panelGrid>
+				
+			</h:form>
+					
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="ajaxifyAction.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+			
+	&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+		&lt;f:facet name="start"&gt;
+			&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+		&lt;/f:facet&gt;
+		
+		&lt;f:facet name="complete"&gt;
+			&lt;h:outputText value="" /&gt;
+		&lt;/f:facet&gt;
+	&lt;/p:ajaxStatus&gt;
+
+	&lt;h:panelGrid columns="3"&gt;
+		&lt;h:outputText value="Keyup: " /&gt;
+		
+		&lt;h:inputText id="counter"&gt;
+			&lt;p:ajax event="keyup" update="out" 
+					actionListener="\#{counterBean.increment}"/&gt;
+		&lt;/h:inputText&gt;
+		
+		&lt;h:outputText id="out" value="\#{counterBean.count}" /&gt;
+	&lt;/h:panelGrid&gt;
+	
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="CounterBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+public class CounterBean implements Serializable{
+
+	private int count;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	public void increment(ActionEvent actionEvent) {
+		count++;
+	}
+}
+</pre>
+				</p:tab>
+			</p:tabView>
+						
+		</div>
+
+	</ui:define>
+</ui:composition>

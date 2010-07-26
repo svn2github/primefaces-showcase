@@ -1,0 +1,143 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Color Picker</h1>
+		<div class="entry">
+			<p>ColorPicker is a highly customizable component that also gives a live feedback when selecting a color. By default,
+			value is passed as a java.awt.Color, using custom converters formats like RGB can also be supported.</p>
+		
+			<h:form>
+			
+				<p:panel header="Colors">
+					<h:panelGrid columns="3">
+						<h:outputText value="AWT Color: " />
+						<p:colorPicker value="#{colorBean.color}" />
+						<h:outputText id="awtDisplay" value="#{colorBean.color}" escape="false"/>
+						
+						<h:outputText value="RGB Color: " />
+						<p:colorPicker value="#{colorBean.rgbColor}">
+							<f:converter converterId="colorPickerConverter"/>
+						</p:colorPicker>
+						<h:outputText id="rgbDisplay" value="#{colorBean.rgbColor}" style="background-color:rgb(#{colorBean.rgbColor})"/>
+						
+						<p:commandButton value="Submit" update="awtDisplay rgbDisplay"/>
+						<p:ajaxStatus style="width:16px;height:16px;">
+							<f:facet name="start">
+								<h:graphicImage value="../design/ajaxloading.gif" />
+							</f:facet>
+							
+							<f:facet name="complete">
+								<h:outputText value="" />
+							</f:facet>
+						</p:ajaxStatus>
+						<h:outputText />
+					</h:panelGrid>
+				</p:panel>
+				
+			</h:form>
+		<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="colorPicker.xhtml">
+			<pre name="code" class="xml">
+&lt;h:form&gt;
+			
+	&lt;p:panel header="Colors"&gt;
+		&lt;h:panelGrid columns="3"&gt;
+			&lt;h:outputText value="AWT Color: " /&gt;
+			&lt;p:colorPicker value="\#{colorBean.color}" /&gt;
+			&lt;h:outputText id="awtDisplay" 
+					value="\#{colorBean.color}" escape="false"/&gt;
+			
+			&lt;h:outputText value="RGB Color: " /&gt;
+			&lt;p:colorPicker value="\#{colorBean.rgbColor}"&gt;
+				&lt;f:converter converterId="colorPickerConverter"/&gt;
+			&lt;/p:colorPicker&gt;
+			&lt;h:outputText id="rgbDisplay" 
+					value="\\#{colorBean.rgbColor}" 
+					style="background-color:rgb(\#{colorBean.rgbColor})"/&gt;
+			
+			&lt;p:commandButton value="Submit" update="awtDisplay rgbDisplay" /&gt;
+			&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+				&lt;f:facet name="start"&gt;
+					&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+				&lt;/f:facet&gt;
+				
+				&lt;f:facet name="complete"&gt;
+					&lt;h:outputText value="" /&gt;
+				&lt;/f:facet&gt;
+			&lt;/p:ajaxStatus&gt;
+			&lt;h:outputText /&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:panel&gt;
+	
+&lt;/h:form&gt;
+		</pre>
+			</p:tab>
+			
+			<p:tab title="ColorBean.java">		
+				<pre name="code" class="java">
+		package org.primefaces.examples.view;
+		
+		import java.awt.Color;
+		
+		public class ColorBean {
+		
+			private Color color;
+			
+			private String rgbColor;
+		
+			public String getRgbColor() {
+				return rgbColor;
+			}
+		
+			public void setRgbColor(String rgbColor) {
+				this.rgbColor = rgbColor;
+			}
+		
+			public Color getColor() {
+				return color;
+			}
+		
+			public void setColor(Color color) {
+				this.color = color;
+			}
+		}
+				</pre>
+			</p:tab>
+			
+			<p:tab title="ColorPickerConverter.java">		
+				<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+
+public class ColorPickerConverter implements Converter {
+
+	public Object getAsObject(FacesContext facesContext, UIComponent component, String submittedValue) {
+		return submittedValue; //just return the rgb value as string
+	}
+
+	public String getAsString(FacesContext facesContext, UIComponent component, Object value) {
+		if (value == null)
+			return null;
+		else{
+			return value.toString();
+		}
+	}
+}
+				</pre>
+			</p:tab>
+		</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

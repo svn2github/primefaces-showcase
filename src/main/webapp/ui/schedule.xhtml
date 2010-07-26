@@ -1,0 +1,194 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/roller/ui-lightness/theme.css" />
+	</ui:define>
+	
+	<ui:define name="content">
+		
+		<h1 class="title ui-widget-header ui-corner-all">Schedule</h1>
+		<div class="entry">
+		
+			<h:form>
+
+				<p:ajaxStatus style="height:24px;display:block;">
+					<f:facet name="start">
+						<h:graphicImage value="../design/ajaxloading.gif" />
+					</f:facet>
+				
+					<f:facet name="complete">
+						<h:outputText value="" />
+					</f:facet>
+				</p:ajaxStatus>
+				
+				<p:growl id="messages" showDetail="true" />
+			
+				<p:schedule value="#{scheduleController.eventModel}" editable="true" widgetVar="myschedule"
+					eventSelectListener="#{scheduleController.onEventSelect}"
+					dateSelectListener="#{scheduleController.onDateSelect}"
+					eventMoveListener="#{scheduleController.onEventMove}"
+					eventResizeListener="#{scheduleController.onEventResize}"
+					onEventMoveUpdate="messages" onEventResizeUpdate="messages">
+				
+					<p:scheduleEventDialog header="Event Details">
+						<h:panelGrid columns="2">
+							<h:outputLabel for="title" value="Title:" />
+							<h:inputText id="title" value="#{scheduleController.event.title}" required="true"/>
+							
+							<h:outputLabel for="from" value="From:" />
+							<p:inputMask id="from" value="#{scheduleController.event.startDate}" mask="99/99/9999">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:inputMask>
+							
+							<h:outputLabel for="to" value="To:" />
+							<p:inputMask id="to" value="#{scheduleController.event.endDate}" mask="99/99/9999">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:inputMask>
+							
+							<h:outputLabel for="allDay" value="All Day:" />
+							<h:selectBooleanCheckbox id="allDay" value="#{scheduleController.event.allDay}" />
+							
+							<p:commandButton type="reset" value="Reset" />
+							<p:commandButton value="Save" actionListener="#{scheduleController.addEvent}" oncomplete="myschedule.update();"/>
+						</h:panelGrid>
+					</p:scheduleEventDialog>
+				</p:schedule>
+				
+			</h:form>
+			
+			<h3>Source</h3>
+			
+			<p:tabView>
+				<p:tab title="schedule.xhtml">
+<pre name="code" class="xml">
+&lt;h:form&gt;
+
+	&lt;p:ajaxStatus style="height:24px;display:block;"&gt;
+		&lt;f:facet name="start"&gt;
+			&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+		&lt;/f:facet&gt;
+	
+		&lt;f:facet name="complete"&gt;
+			&lt;h:outputText value="" /&gt;
+		&lt;/f:facet&gt;
+	&lt;/p:ajaxStatus&gt;
+	
+	&lt;p:growl id="messages" showDetail="true" /&gt;
+
+	&lt;p:schedule value="\#{scheduleController.eventModel}" editable="true" widgetVar="myschedule"
+		eventSelectListener="\#{scheduleController.onEventSelect}"
+		dateSelectListener="\#{scheduleController.onDateSelect}"
+		eventMoveListener="\#{scheduleController.onEventMove}"
+		eventResizeListener="\#{scheduleController.onEventResize}"
+		onEventMoveUpdate="messages" onEventResizeUpdate="messages"&gt;
+	
+		&lt;p:scheduleEventDialog header="Event Details"&gt;
+			&lt;h:panelGrid columns="2"&gt;
+				&lt;h:outputLabel for="title" value="Title:" /&gt;
+				&lt;h:inputText id="title" value="\#{scheduleController.event.title}" required="true"/&gt;
+				
+				&lt;h:outputLabel for="from" value="From:" /&gt;
+				&lt;p:inputMask id="from" value="\#{scheduleController.event.startDate}" mask="99/99/9999"&gt;
+					&lt;f:convertDateTime pattern="dd/MM/yyyy" /&gt;
+				&lt;/p:inputMask&gt;
+				
+				&lt;h:outputLabel for="to" value="To:" /&gt;
+				&lt;p:inputMask id="to" value="\#{scheduleController.event.endDate}" mask="99/99/9999"&gt;
+					&lt;f:convertDateTime pattern="dd/MM/yyyy" /&gt;
+				&lt;/p:inputMask&gt;
+				
+				&lt;h:outputLabel for="allDay" value="All Day:" /&gt;
+				&lt;h:selectBooleanCheckbox id="allDay" value="\#{scheduleController.event.allDay}" /&gt;
+				
+				&lt;p:commandButton type="reset" value="Reset" /&gt;
+				&lt;p:commandButton value="Save" actionListener="\#{scheduleController.addEvent}" oncomplete="myschedule.update();"/&gt;
+			&lt;/h:panelGrid&gt;
+		&lt;/p:scheduleEventDialog&gt;
+	&lt;/p:schedule&gt;
+	
+&lt;/h:form&gt;
+</pre>
+				</p:tab>
+				
+				<p:tab title="ScheduleController.java">
+<pre name="code" class="java">
+public class ScheduleController {
+
+	private ScheduleModel eventModel;
+	
+	private ScheduleModel lazyEventModel;
+
+	private ScheduleEvent event = new DefaultScheduleEvent();
+	
+	private String theme;
+
+	public ScheduleController() {
+		eventModel = new DefaultScheduleModel();
+		eventModel.addEvent(new DefaultScheduleEvent("Champions League Match", previousDay8Pm(), previousDay11Pm()));
+		eventModel.addEvent(new DefaultScheduleEvent("Birthday Party", today1Pm(), today6Pm()));
+		eventModel.addEvent(new DefaultScheduleEvent("Breakfast at Tiffanys", nextDay9Am(), nextDay11Am()));
+		eventModel.addEvent(new DefaultScheduleEvent("Plant the new garden stuff", theDayAfter3Pm(), fourDaysLater3pm()));
+		
+		lazyEventModel = new LazyScheduleModel() {
+			
+			@Override
+			public void fetchEvents(Date start, Date end) {
+				clear();
+				
+				Date random = getRandomDate(start);
+				addEvent(new DefaultScheduleEvent("Lazy Event 1", random, random));
+				
+				random = getRandomDate(start);
+				addEvent(new DefaultScheduleEvent("Lazy Event 2", random, random));
+			}	
+		};
+	}
+	
+	public void addEvent(ActionEvent actionEvent) {
+		if(event.getId() == null)
+			eventModel.addEvent(event);
+		else
+			eventModel.updateEvent(event);
+		
+		event = new DefaultScheduleEvent();
+	}
+	
+	public void onEventSelect(ScheduleEntrySelectEvent selectEvent) {
+		event = selectEvent.getScheduleEvent();
+	}
+	
+	public void onDateSelect(DateSelectEvent selectEvent) {
+		event = new DefaultScheduleEvent(Math.random() + "", selectEvent.getDate(), selectEvent.getDate());
+	}
+	
+	public void onEventMove(ScheduleEntryMoveEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+		
+		addMessage(message);
+	}
+	
+	public void onEventResize(ScheduleEntryResizeEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+		
+		addMessage(message);
+	}
+	
+	private void addMessage(FacesMessage message) {
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+	
+	//Getters and Setters
+}
+</pre>
+				</p:tab>
+			</p:tabView>
+
+		</div>
+		
+	</ui:define>
+</ui:composition>

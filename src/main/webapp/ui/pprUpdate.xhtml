@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">PPR - Simple</h1>
+		<div class="entry">
+			<p>This examples demonstrates the basic ajax update feature.</p>
+
+			<h:form>
+				
+				<h:panelGrid columns="4" cellpadding="5">
+					<h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+					
+					<h:inputText id="name" value="#{pprBean.firstname}" />
+					
+					<p:commandButton value="Submit" update="display"/>
+					
+					<p:ajaxStatus style="width:16px;height:16px;">
+						<f:facet name="start">
+							<h:graphicImage value="../design/ajaxloading.gif" />
+						</f:facet>
+						
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+					</p:ajaxStatus>
+				</h:panelGrid>
+				
+				<h:outputText value="#{pprBean.firstname}" id="display" />
+				
+			</h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="pprUpdate.xhtml">
+<pre name="code" class="xml">
+&lt;h:form&gt;
+							
+	&lt;h:panelGrid columns="4" cellpadding="5"&gt;
+		&lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
+		
+		&lt;h:inputText id="name" value="\#{pprBean.firstname}" /&gt;
+		
+		&lt;p:commandButton value="Submit" update="display"/&gt;
+		
+		&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+			&lt;f:facet name="start"&gt;
+				&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+			&lt;/f:facet&gt;
+			
+			&lt;f:facet name="complete"&gt;
+				&lt;h:outputText value="" /&gt;
+			&lt;/f:facet&gt;
+		&lt;/p:ajaxStatus&gt;
+	&lt;/h:panelGrid&gt;
+	
+	&lt;h:outputText value="\#{pprBean.firstname}" id="display" /&gt;
+	
+&lt;/h:form&gt;
+						</pre>
+				</p:tab>
+				
+				<p:tab title="PPRBean.java">
+<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+public class PPRBean implements Serializable {
+
+	private String firstname;
+	
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+}
+</pre>
+				</p:tab>
+			</p:tabView>
+			
+		</div>
+				
+	</ui:define>
+</ui:composition>

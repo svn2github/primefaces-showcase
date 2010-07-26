@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Breadcrumb</h1>
+		<div class="entry">
+			<p>Breadcrumb is a very handy navigation component that provides contextual information about page hierarchy. Following are two
+			breadcrumb menus with different configurations.</p>
+			
+			<p:breadCrumb>
+				<p:menuitem value="Categories" url="#" />
+				<p:menuitem value="Sports" url="#" />
+				<p:menuitem value="Football" url="#" />
+				<p:menuitem value="Countries" url="#" />
+				<p:menuitem value="Spain" url="#" />
+				<p:menuitem value="F.C. Barcelona" url="#" />
+				<p:menuitem value="Squad" url="#" />
+				<p:menuitem value="Lionel Messi" url="#" />
+			</p:breadCrumb>
+			
+			<br /><br /><br />
+			
+			<p:breadCrumb preview="true" expandEffectDuration="200" previewWidth="12">
+				<p:menuitem value="Categories" url="#" />
+				<p:menuitem value="Sports" url="#" />
+				<p:menuitem value="Football" url="#" />
+				<p:menuitem value="Countries" url="#" />
+				<p:menuitem value="Spain" url="#" />
+				<p:menuitem value="F.C. Barcelona" url="#" />
+				<p:menuitem value="Squad" url="#" />
+				<p:menuitem value="Lionel Messi" url="#" />
+			</p:breadCrumb>
+			
+			<br /><br />
+
+		<h3>Source</h3>
+		<pre name="code" class="xml">
+&lt;p:breadCrumb&gt;
+	&lt;p:menuitem value="Categories" url="#" /&gt;
+	&lt;p:menuitem value="Sports" url="#" /&gt;
+	&lt;p:menuitem value="Football" url="#" /&gt;
+	&lt;p:menuitem value="Countries" url="#" /&gt;
+	&lt;p:menuitem value="Spain" url="#" /&gt;
+	&lt;p:menuitem value="F.C. Barcelona" url="#" /&gt;
+	&lt;p:menuitem value="Squad" url="#" /&gt;
+	&lt;p:menuitem value="Lionel Messi" url="#" /&gt;
+&lt;/p:breadCrumb&gt;
+
+&lt;p:breadCrumb preview="true" expandEffectDuration="200" previewWidth="12"&gt;
+	&lt;p:menuitem value="Categories" url="#" /&gt;
+	&lt;p:menuitem value="Sports" url="#" /&gt;
+	&lt;p:menuitem value="Football" url="#" /&gt;
+	&lt;p:menuitem value="Countries" url="#" /&gt;
+	&lt;p:menuitem value="Spain" url="#" /&gt;
+	&lt;p:menuitem value="F.C. Barcelona" url="#" /&gt;
+	&lt;p:menuitem value="Squad" url="#" /&gt;
+	&lt;p:menuitem value="Lionel Messi" url="#" /&gt;
+&lt;/p:breadCrumb&gt;
+		</pre>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

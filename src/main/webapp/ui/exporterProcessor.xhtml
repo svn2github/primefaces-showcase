@@ -1,0 +1,129 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataExporter- Customized Documents</h1>
+		<div class="entry">
+            	<p>DataExporter provides easy customization options for the exported document using pre and post processors.</p>
+            	
+        		<h:form>
+					<p:dataTable id="tbl" var="car" value="#{tableBean.cars}" 
+									paginator="true" rows="10">
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Model" />
+							</f:facet>
+							<h:outputText value="#{car.model}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Year" />
+							</f:facet>
+							<h:outputText value="#{car.year}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Manufacturer" />
+							</f:facet>
+							<h:outputText value="#{car.manufacturer}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Color" />
+							</f:facet>
+							<h:outputText value="#{car.color}" />
+						</p:column>
+					</p:dataTable>
+	
+					<h:commandLink>
+						<p:graphicImage value="/images/excel.png" />
+						<p:dataExporter type="xls" target="tbl" fileName="cars" postProcessor="#{tableBean.postProcessXLS}"/>
+					</h:commandLink>
+	
+					<h:commandLink>
+						<p:graphicImage value="/images/pdf.png" />
+						<p:dataExporter type="pdf" target="tbl" fileName="cars" preProcessor="#{tableBean.preProcessPDF}"/>
+					</h:commandLink>
+				</h:form>
+				
+				<h3>Source</h3>
+<pre name="code" class="xml">
+&lt;p:dataTable id="tbl" var="car" value="\#{tableBean.cars}" paginator="true" rows="10"&gt;
+	&lt;p:column&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Model" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.model}" /&gt;
+	&lt;/p:column&gt;
+
+	&lt;p:column&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Year" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.year}" /&gt;
+	&lt;/p:column&gt;
+
+	&lt;p:column&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Manufacturer" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.manufacturer}" /&gt;
+	&lt;/p:column&gt;
+
+	&lt;p:column&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Color" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.color}" /&gt;
+	&lt;/p:column&gt;
+&lt;/p:dataTable&gt;
+	
+&lt;h:commandLink&gt;
+	&lt;p:graphicImage value="/images/excel.png" /&gt;
+	&lt;p:dataExporter type="xls" target="tbl" fileName="cars" postProcessor="\#{tableBean.postProcessXLS}"/&gt;
+&lt;/h:commandLink&gt;
+
+&lt;h:commandLink&gt;
+	&lt;p:graphicImage value="/images/pdf.png" /&gt;
+	&lt;p:dataExporter type="pdf" target="tbl" fileName="cars" preProcessor="\#{tableBean.preProcessPDF}"/&gt;
+&lt;/h:commandLink&gt;
+</pre>
+
+<pre name="code" class="java">
+public void postProcessXLS(Object document) {
+	HSSFWorkbook wb = (HSSFWorkbook) document;
+	HSSFSheet sheet = wb.getSheetAt(0);
+	HSSFRow header = sheet.getRow(0);
+	
+	HSSFCellStyle cellStyle = wb.createCellStyle();  
+	cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);
+	cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+	
+	for(int i=0; i &lt; header.getPhysicalNumberOfCells();i++) {
+		HSSFCell cell = header.getCell(i);
+		
+		cell.setCellStyle(cellStyle);
+	}
+}
+
+public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+	Document pdf = (Document) document;
+	ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+	String logo = servletContext.getRealPath("") + File.separator + "images" + File.separator + "prime_logo.png";
+	
+	pdf.add(Image.getInstance(logo));
+}
+</pre>
+            </div>
+                    
+     
+</ui:define>
+</ui:composition>
+				

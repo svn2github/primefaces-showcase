@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">ImageSwitcher - Dialog Integration</h1>
+		<div class="entry">
+			<p>This example displays images in a dialog.</p>
+
+			<h:outputLink value="#" onclick="dialog.show();">
+				<h:outputText value="Show Images" />
+			</h:outputLink>
+			
+			<p:dialog header="Images" widgetVar="dialog" modal="true" draggable="false" resizable="false"
+				width="425" height="300">
+				<p:imageSwitch effect="FadeIn">
+					<p:graphicImage value="/images/nature1.jpg" />
+					<p:graphicImage value="/images/nature2.jpg" />
+					<p:graphicImage value="/images/nature3.jpg" />
+					<p:graphicImage value="/images/nature4.jpg" />
+				</p:imageSwitch>
+			</p:dialog>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="imageSwitchDialog.xhtml">
+					<pre name="code" class="xml">
+&lt;h:outputLink value="#" onclick="dialog.show();"&gt;
+	&lt;h:outputText value="Show Images" /&gt;
+&lt;/h:outputLink&gt;
+
+&lt;p:dialog header="Images" widgetVar="dialog" modal="true" draggable="false" resizable="false"
+				width="425" height="300"&gt;
+	&lt;p:imageSwitch effect="FadeIn"&gt;
+		&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+		&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+		&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+		&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+	&lt;/p:imageSwitch&gt;
+&lt;/p:dialog&gt;
+			</pre>
+				</p:tab>
+			</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

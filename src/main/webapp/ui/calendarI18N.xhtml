@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Calendar - I18N</h1>
+		<div class="entry">
+			<p>Calendar has built-in support for <strong>52</strong> languages.</p>
+			
+			<h:panelGrid columns="3" cellpadding="5">
+				<h:outputText value="Turkish" />
+				<h:outputText value="Catalan" />
+				<h:outputText value="Brazilian Portuguese" />
+				
+				<p:calendar mode="inline" locale="tr" showButtonPanel="true" navigator="true"/>
+				<p:calendar mode="inline" locale="ca" showButtonPanel="true" navigator="true"/>
+				<p:calendar mode="inline" locale="pt_BR" showButtonPanel="true" navigator="true"/>
+				
+				<h:outputText value="French" />
+				<h:outputText value="Italian" />
+				<h:outputText value="German" />
+				
+				<p:calendar mode="inline" locale="fr" showButtonPanel="true" navigator="true"/>
+				<p:calendar mode="inline" locale="it" showButtonPanel="true" navigator="true"/>
+				<p:calendar mode="inline" locale="de" showButtonPanel="true" navigator="true"/>
+				
+				<h:outputText value="Chinese Hong-Kong" />
+				<h:outputText value="Chinese Simplified" />
+				<h:outputText value="Chinese Traditional" />
+				
+				<p:calendar mode="inline" locale="zh_HK" showButtonPanel="true" navigator="true"/>
+				<p:calendar mode="inline" locale="zh_CN" showButtonPanel="true" navigator="true"/>
+				<p:calendar mode="inline" locale="zh_TW" showButtonPanel="true" navigator="true"/>
+				
+				<h:outputText value="Azerbaijani" />
+				<h:outputText value="Arabic" />
+				<h:outputText value="Russian" />
+				
+				<p:calendar mode="inline" locale="az" showButtonPanel="true" navigator="true"/>
+				<p:calendar mode="inline" locale="ar" showButtonPanel="true" navigator="true"/>
+				<p:calendar mode="inline" locale="ru" showButtonPanel="true" navigator="true"/>
+			</h:panelGrid>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="calendarI18N.xhtml">
+					<pre name="code" class="xml">
+&lt;h:panelGrid columns="3" cellpadding="5"&gt;
+	&lt;h:outputText value="Turkish" /&gt;
+	&lt;h:outputText value="Catalan" /&gt;
+	&lt;h:outputText value="Brazilian Portuguese" /&gt;
+	
+	&lt;p:calendar mode="inline" locale="tr" showButtonPanel="true" navigator="true"/&gt;
+	&lt;p:calendar mode="inline" locale="ca" showButtonPanel="true" navigator="true"/&gt;
+	&lt;p:calendar mode="inline" locale="pt_BR" showButtonPanel="true" navigator="true"/&gt;
+	
+	&lt;h:outputText value="French" /&gt;
+	&lt;h:outputText value="Italian" /&gt;
+	&lt;h:outputText value="German" /&gt;
+	
+	&lt;p:calendar mode="inline" locale="fr" showButtonPanel="true" navigator="true"/&gt;
+	&lt;p:calendar mode="inline" locale="it" showButtonPanel="true" navigator="true"/&gt;
+	&lt;p:calendar mode="inline" locale="de" showButtonPanel="true" navigator="true"/&gt;
+	
+	&lt;h:outputText value="Chinese Hong-Kong" /&gt;
+	&lt;h:outputText value="Chinese Simplified" /&gt;
+	&lt;h:outputText value="Chinese Traditional" /&gt;
+	
+	&lt;p:calendar mode="inline" locale="zh_HK" showButtonPanel="true" navigator="true"/&gt;
+	&lt;p:calendar mode="inline" locale="zh_CN" showButtonPanel="true" navigator="true"/&gt;
+	&lt;p:calendar mode="inline" locale="zh_TW" showButtonPanel="true" navigator="true"/&gt;
+	
+	&lt;h:outputText value="Azerbaijani" /&gt;
+	&lt;h:outputText value="Arabic" /&gt;
+	&lt;h:outputText value="Russian" /&gt;
+	
+	&lt;p:calendar mode="inline" locale="az" showButtonPanel="true" navigator="true"/&gt;
+	&lt;p:calendar mode="inline" locale="ar" showButtonPanel="true" navigator="true"/&gt;
+	&lt;p:calendar mode="inline" locale="ru" showButtonPanel="true" navigator="true"/&gt;
+&lt;/h:panelGrid&gt;
+					</pre>
+				</p:tab>
+			</p:tabView>
+			
+         </div>
+        
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Calendar - Effects</h1>
+		<div class="entry">
+			<p>Calendar supports various effects out of the box. Effect speed can be customized with effectDuration
+			option.</p>
+			
+			<h:panelGrid columns="3" cellpadding="5" style="width:100%">
+				<h:outputText value="Fade" />
+				<h:outputText value="Slide Horizontal" />
+				<h:outputText value="Slide Vertical" />
+				
+				<p:calendar effect="fadeIn"/>	
+				<p:calendar effect="slide" />
+				<p:calendar effect="slideDown" />	
+				
+				<h:outputText value="Explode" />
+				<h:outputText value="Fold" />
+				<h:outputText value="Drop" />
+				
+				<p:calendar effect="explode"/>	
+				<p:calendar effect="fold" />
+				<p:calendar effect="drop" />	
+			</h:panelGrid>
+					
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="calendarEffects.xhtml">
+					<pre name="code" class="xml">
+&lt;h:panelGrid columns="3" cellpadding="5" style="width:100%"&gt;
+	&lt;h:outputText value="Fade" /&gt;
+	&lt;h:outputText value="Slide Horizontal" /&gt;
+	&lt;h:outputText value="Slide Vertical" /&gt;
+	
+	&lt;p:calendar effect="fadeIn"/&gt;	
+	&lt;p:calendar effect="slide" /&gt;
+	&lt;p:calendar effect="slideDown" /&gt;	
+	
+	&lt;h:outputText value="Explode" /&gt;
+	&lt;h:outputText value="Fold" /&gt;
+	&lt;h:outputText value="Drop" /&gt;
+	
+	&lt;p:calendar effect="explode"/&gt;	
+	&lt;p:calendar effect="fold" /&gt;
+	&lt;p:calendar effect="drop" /&gt;	
+&lt;/h:panelGrid&gt;
+					</pre>
+				</p:tab>
+
+			</p:tabView>
+			
+         </div>
+        
+	</ui:define>
+</ui:composition>

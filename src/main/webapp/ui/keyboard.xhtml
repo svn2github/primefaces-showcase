@@ -1,0 +1,108 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Keyboard</h1>
+		<div class="entry">
+			<h:form prependId="false">
+				<p:panel header="Keyboard Demo">
+					<h:panelGrid columns="2">
+						<h:outputText value="Default Layout" />
+						<p:keyboard value="#{keyboardBean.value1}"/>
+						
+						<h:outputText value="Basic QWERTY" />
+						<p:keyboard value="#{keyboardBean.value2}" layout="qwertyBasic"/>
+						
+						<h:outputText value="Alphabetic Layout" />
+						<p:keyboard value="#{keyboardBean.value3}" layout="alphabetic"/>
+						
+						<h:outputText value="Custom Layout 1" />
+						<p:keyboard value="#{keyboardBean.value4}" layout="custom" layoutTemplate="prime-back,faces-clear,rocks-close"/>
+						
+						<h:outputText value="Custom Layout 2" />
+						<p:keyboard value="#{keyboardBean.value5}" layout="custom" layoutTemplate="create-space-your-close,owntemplate-shift,easily-space-spacebar"/>
+						
+						<p:commandButton value="Reset" />
+						<p:commandButton value="Submit" update="display"/>
+					</h:panelGrid>
+				</p:panel>
+				
+				<p:panel header="Values" style="margin-top:5px;">
+					<h:panelGrid columns="2" id="display">
+						<h:outputText value="Value1: " />
+						<h:outputText value="#{keyboardBean.value1}" />
+						
+						<h:outputText value="Value2:" />
+						<h:outputText value="#{keyboardBean.value2}" />
+	
+						<h:outputText value="Value3:" />
+						<h:outputText value="#{keyboardBean.value3}" />
+						
+						<h:outputText value="Value4:" />
+						<h:outputText value="#{keyboardBean.value4}" />
+						
+						<h:outputText value="Value5:" />
+						<h:outputText value="#{keyboardBean.value5}" />
+					</h:panelGrid>
+				</p:panel>
+				
+			</h:form>
+			
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+&lt;h:form prependId="false"&gt;
+	&lt;p:panel header="Keyboard Demo"&gt;
+		&lt;h:panelGrid columns="2"&gt;
+			&lt;h:outputText value="Default Layout" /&gt;
+			&lt;p:keyboard value="\#{keyboardBean.value1}"/&gt;
+			
+			&lt;h:outputText value="Basic QWERTY" /&gt;
+			&lt;p:keyboard value="\#{keyboardBean.value2}" layout="qwertyBasic"/&gt;
+			
+			&lt;h:outputText value="Alphabetic Layout" /&gt;
+			&lt;p:keyboard value="\#{keyboardBean.value3}" layout="alphabetic"/&gt;
+			
+			&lt;h:outputText value="Custom Layout 1" /&gt;
+			&lt;p:keyboard value="\#{keyboardBean.value4}" layout="custom" 
+				layoutTemplate="prime-back,faces-clear,rocks-close"/&gt;
+			
+			&lt;h:outputText value="Custom Layout 2" /&gt;
+			&lt;p:keyboard value="\#{keyboardBean.value5}" layout="custom" 
+				layoutTemplate="create-space-your-close,owntemplate-shift,easily-space-spacebar"/&gt;
+			
+			&lt;p:commandButton value="Reset" /&gt;
+			&lt;p:commandButton value="Submit" update="display"/&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:panel&gt;
+	
+	&lt;p:panel header="Values" style="margin-top:5px;"&gt;
+		&lt;h:panelGrid columns="2" id="display"&gt;
+			&lt;h:outputText value="Value1: " /&gt;
+			&lt;h:outputText value="\#{keyboardBean.value1}" /&gt;
+			
+			&lt;h:outputText value="Value2:" /&gt;
+			&lt;h:outputText value="\#{keyboardBean.value2}" /&gt;
+
+			&lt;h:outputText value="Value3:" /&gt;
+			&lt;h:outputText value="\#{keyboardBean.value3}" /&gt;
+			
+			&lt;h:outputText value="Value4:" /&gt;
+			&lt;h:outputText value="\#{keyboardBean.value4}" /&gt;
+			
+			&lt;h:outputText value="Value5:" /&gt;
+			&lt;h:outputText value="\#{keyboardBean.value5}" /&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:panel&gt;
+	
+&lt;/h:form&gt;
+				</pre>
+			
+		</div>
+
+	</ui:define>
+</ui:composition>

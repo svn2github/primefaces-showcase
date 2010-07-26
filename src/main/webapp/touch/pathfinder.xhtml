@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:i="http://primefaces.prime.com.tr/touch"
+	contentType="text/html">
+	
+	<i:application icon="/images/touch/mapicon.png">
+		<f:facet name="meta">
+			<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAAfC5eyG3CuuRKtsMbGj42fhS4fIuZHqv2gj8Wvu-ec5LA3FyUkRR6mZLkVlsU7sRFnB9gZo8_VDDhMQ" type="text/javascript"></script>
+			<script type="text/javascript">
+				
+				PathFinder = {
+
+						init : function() {
+							map = new GMap2(document.getElementById("map"));
+							map.setUIToDefault();
+				        
+				        	navigator.geolocation.getCurrentPosition(
+						        function(position) {
+							        lat = position.coords.latitude;
+							        lng = position.coords.longitude;
+							        var center = new GLatLng(position.coords.latitude, position.coords.longitude);
+							        map.setCenter(center, 15);
+							        map.addOverlay(new GMarker(center));
+							        geocoder = new GClientGeocoder();
+							        directions = new GDirections(map, document.getElementById('route'));
+						        });
+						},
+
+						findAndGo : function() {
+							var address = document.getElementById('address').value;
+							geocoder.getLatLng(address,function(point) {
+								 if (!point) {
+						              alert(address + " not found");
+						          } else {
+						              directions.load("from " + lat + " " + lng + " to " + point.lat() + " " + point.lng());
+						           }
+							});
+						}
+					};
+
+				if(!navigator.geolocation) {
+					alert('Error: PathFinder requires a GPS capable device.');
+				} else {
+					window.onload = PathFinder.init;
+				}
+			
+			</script>
+			<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="cube"/>
+		</f:facet>
+	
+		<i:view id="home" title="PathFinder">
+			<f:facet name="rightNavBar">
+				<i:navBarControl label="Settings" view="settings" type="button" effect="cube"/>
+			</f:facet>
+			
+			<h:form prependId="false">
+				<i:tableView>
+					<i:rowGroup display="edgetoedge">
+						<div id="map" style="width:100%;height:285px;"></div>
+					</i:rowGroup>
+					
+					<i:rowGroup>
+						<i:rowItem>
+							<h:inputText id="address"/>
+						</i:rowItem>
+					</i:rowGroup>
+					
+					<p:commandLink style="margin:10px 10px;" styleClass="whiteButton" onclick="PathFinder.findAndGo();return false;">Find and Go!</p:commandLink>
+				
+					<i:rowGroup>
+							<i:rowItem>
+								<div id="route"></div>
+							</i:rowItem>
+					</i:rowGroup>
+				</i:tableView>
+			</h:form>
+			
+			
+		</i:view>
+		
+		<i:view id="settings" title="Settings">
+			<f:facet name="leftNavBar">
+				<i:navBarControl label="Home" view="home" />
+			</f:facet>
+			
+			<h:form prependId="false">
+				<i:tableView>
+					
+					<i:rowGroup>
+						<i:rowItem>
+							<h:outputText value="Transport" />
+							<h:selectOneMenu>
+								<f:selectItem itemLabel="Driving" itemValue="d" />
+								<f:selectItem itemLabel="Walking" itemValue="w" />
+							</h:selectOneMenu>
+						</i:rowItem>
+						
+						<i:rowItem>
+							<h:outputText value="Traffic" />
+							<i:switch id="traffic"/>
+						</i:rowItem>
+					</i:rowGroup>
+					
+				</i:tableView>
+			
+				<p:commandLink style="margin:0 10px;" styleClass="whiteButton" value="#" onclick="TouchFaces.goBack();">Save</p:commandLink>
+			
+			</h:form>
+			
+		</i:view>
+	
+	</i:application>
+	
+</f:view>

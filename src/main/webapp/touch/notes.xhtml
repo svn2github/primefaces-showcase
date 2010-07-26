@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:i="http://primefaces.prime.com.tr/touch"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	contentType="text/html">
+	
+	<i:application icon="/images/touch/notesicon.png" theme="dark">
+	
+		<i:view id="home" title="Notes">
+			<f:facet name="rightNavBar">
+				<i:navBarControl label="Add" view="newnote" type="button" effect="flip"/>
+			</f:facet>
+			
+			<h:form prependId="false">
+				<i:tableView id="notes">
+					<i:rowGroup display="edgetoedge">
+					
+						<ui:repeat value="#{notesController.notes}" var="note">
+							<i:rowItem>
+								<h:outputText value="#{note.text}" />
+								<small>
+									<p:commandLink actionListener="#{notesController.removeNote}" update="notes">
+										<p:graphicImage value="/images/clear.png" />
+										<f:param name="noteId" value="#{note.id}" />
+									</p:commandLink>
+								</small>
+							</i:rowItem>
+						</ui:repeat>
+						
+						<i:rowItem value="You have no notes" rendered="#{empty notesController.notes}"/>
+						
+					</i:rowGroup>
+
+				</i:tableView>
+			</h:form>
+
+		</i:view>
+		
+		<i:view id="newnote" title="Add Note">
+			<f:facet name="leftNavBar">
+				<i:navBarControl label="Back" view="home" />
+			</f:facet>
+			
+			<h:form prependId="false">
+				<i:tableView>
+					
+					<i:rowGroup title="New Note">
+						<i:rowItem>
+							<h:inputText id="note" value="#{notesController.note.text}" />
+						</i:rowItem>
+					</i:rowGroup>
+					
+				</i:tableView>
+				
+				<p:commandLink actionListener="#{notesController.addNote}" update="notes, note" style="margin:0 10px;" styleClass="whiteButton goback">Save</p:commandLink>
+			</h:form>
+		</i:view>
+	
+	</i:application>
+	
+</f:view>

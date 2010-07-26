@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Layout - Element</h1>
+		<div class="entry">
+           	<p>Layouts can also be created at element level. Example below is a simple split panel implementation.</p>    	
+           	
+       		<p:layout style="width:400px;height:200px;">
+       			<p:layoutUnit position="left" width="100" resizable="true" minWidth="50" maxWidth="200">
+       				Left Pane
+       			</p:layoutUnit>
+       			
+       			<p:layoutUnit position="center">
+       				<h:form>
+       					Center Pane
+       				</h:form>
+       			</p:layoutUnit>
+       		</p:layout>
+				
+			<h3>Source</h3>
+<pre name="code" class="xml">
+&lt;p:layout style="width:400px;height:200px;"&gt;
+	&lt;p:layoutUnit position="left" width="100" resizable="true" minWidth="50" maxWidth="200"&gt;
+		Left Pane
+	&lt;/p:layoutUnit&gt;
+    			
+	&lt;p:layoutUnit position="center"&gt;
+		Center Pane
+	&lt;/p:layoutUnit&gt;
+&lt;/p:layout&gt;
+</pre>
+      </div>
+ 
+</ui:define>
+</ui:composition>
+				

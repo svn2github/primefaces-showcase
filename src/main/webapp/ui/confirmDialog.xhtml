@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">Confirm Dialog</h1>
+		<div class="entry">
+                <p>ConfirmationDialog is a replacement for the javascript confirm function.
+                Skinning, customization, avoiding popup blockers are the notable features.</p>
+
+				<h:form>
+					
+					<p:growl id="messages" showDetail="true" />
+				
+					<p:commandButton value="Destroy the World" onclick="confirmation.show()" />
+					
+					<p:confirmDialog message="Are you sure about destroying the world?"
+								showEffect="bounce" hideEffect="explode"
+								header="Initiating destroy process" severity="alert" widgetVar="confirmation">
+								
+						<p:commandButton value="Yes Sure" actionListener="#{buttonBean.destroyWorld}" update="messages" oncomplete="confirmation.hide()"/>
+						<p:commandButton value="Not Yet" onclick="confirmation.hide()" type="button" /> 
+								
+					</p:confirmDialog>
+
+				</h:form>
+				
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="confirmDialog.xhtml">
+<pre name="code" class="xml">
+&lt;h:form&gt;
+					
+	&lt;p:growl id="messages" /&gt;
+
+	&lt;h:panelGrid columns="1" cellpadding="5"&gt;
+		&lt;h:outputText id="msg" value="\#{buttonBean.text}"/&gt;
+		
+		&lt;p:commandButton value="Destroy the World" onclick="confirmation.show()" /&gt;
+	&lt;/h:panelGrid&gt;
+	
+	&lt;p:confirmDialog message="Are you sure about destroying the world?"
+				showEffect="bounce" hideEffect="explode"
+				header="Initiating destroy process" severity="alert" widgetVar="confirmation"&gt;
+				
+		&lt;p:commandButton value="Yes Sure" update="messages" oncomplete="confirmation.hide()"
+					actionListener="\#{buttonBean.destroyWorld}" /&gt;
+		&lt;p:commandButton value="Not Yet" onclick="confirmation.hide()" type="button" /&gt; 
+				
+	&lt;/p:confirmDialog&gt;
+
+&lt;/h:form&gt;	
+</pre>
+				</p:tab>
+				
+				<p:tab title="ConfirmBean.java">
+				<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+public class ButtonBean {
+
+	public void destroyWorld(ActionEvent actionEvent){
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "System Error",  "Please try again later.");
+		
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+				</pre>
+				</p:tab>
+			</p:tabView>
+			
+		
+	
+           </div>
+    
+	</ui:define>
+</ui:composition>

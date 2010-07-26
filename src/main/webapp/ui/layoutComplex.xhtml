@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+<f:view contentType="text/html">
+<h:head>
+	<title>
+		<ui:insert name="title">PrimeFaces ShowCase</ui:insert>
+	</title>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/#{guestPreferences.theme}/skin.css" />
+	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/roller/ui-darkness/theme.css" />
+	<style type="text/css">
+		.ui-widget {
+			font-size: 75%;
+		}
+		
+		.themeMenu {
+			overflow: auto;
+			height:300px;
+			width:200px;
+		}
+	</style>
+</h:head>
+
+<h:body class="yui-skin-sam">
+
+	<p:growl id="msg" showDetail="true"/>
+		
+	<p:layout fullPage="true" 
+			toggleListener="#{layoutBean.handleToggle}" onToggleUpdate="msg"
+			closeListener="#{layoutBean.handleClose}" onCloseUpdate="msg"
+			resizeListener="#{layoutBean.handleResize}" onResizeUpdate="msg">
+	
+		<p:layoutUnit id="top" position="top" resizable="true" height="150" minHeight="100" maxHeight="175">
+			<h:outputText value="PRIMEFACES - Next Generation Component Suite" style="font-size:36px;position:absolute;top:50px;left:100px;"/>
+		</p:layoutUnit>
+		
+		<p:layoutUnit id="bottom" position="bottom" height="50" zindex="0" scrollable="null">
+			<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/prime-showcase/src/main/webapp/ui/layoutComplex.xhtml">
+				View Page Source (layoutComplex.xhtml)
+			</h:outputLink>
+			
+			<br />
+			
+			<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/prime-showcase/src/main/java/org/primefaces/examples/view/LayoutBean.java">
+				View Backing Bean Source (LayoutBean.java)
+			</h:outputLink>
+		</p:layoutUnit>
+		
+		<p:layoutUnit id="left" position="left" width="300" resizable="true" closable="true" collapsible="true" header="Options" minWidth="200">
+			<p:accordionPanel activeIndex="0">
+				<p:tab title="Menu 1">
+					<p:calendar mode="inline" close="false" navigator="none"/>
+				</p:tab>
+				
+				<p:tab title="Menu 2">
+					<h:outputText value="Menu 2 Content" />
+				</p:tab>
+				
+				<p:tab title="Menu 3">
+					<h:outputText value="Menu 3 Content" />
+				</p:tab>
+			</p:accordionPanel>
+		</p:layoutUnit>
+		
+		<p:layoutUnit id="right" position="right" width="200" header="Gallery" resizable="true" closable="true" collapsible="true">
+		
+			<h:form>
+				<p:commandButton id="themeButton" value="Change Theme: #{guestPreferences.theme}" onclick="themeMenu.show()" type="button"/>
+				<p:menu widgetVar="themeMenu" position="dynamic" context="'themeForm:themeButton','tl','bl'" styleClass="themeMenu">
+					<p:submenu label="Themes">
+						<p:menuitem value="Sam (Default)" ajax="false"><f:setPropertyActionListener value="sam" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Base" ajax="false"><f:setPropertyActionListener value="base" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Black-Tie" ajax="false"><f:setPropertyActionListener value="black-tie" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Blitzer" ajax="false"><f:setPropertyActionListener value="blitzer" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="BlueSky" ajax="false"><f:setPropertyActionListener value="bluesky" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Casablanca" ajax="false"><f:setPropertyActionListener value="casablanca" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Cupertino" ajax="false"><f:setPropertyActionListener value="cupertino" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Dark-Hive" ajax="false"><f:setPropertyActionListener value="dark-hive" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Dot-Luv" ajax="false"><f:setPropertyActionListener value="dot-luv" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Eggplant" ajax="false"><f:setPropertyActionListener value="eggplant" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Excite-Bike" ajax="false"><f:setPropertyActionListener value="excite-bike" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Flick" ajax="false"><f:setPropertyActionListener value="flick" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Hot-Sneaks" ajax="false"><f:setPropertyActionListener value="hot-sneaks" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Humanity" ajax="false"><f:setPropertyActionListener value="humanity" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Le-Frog" ajax="false"><f:setPropertyActionListener value="le-frog" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Mint-Choc" ajax="false"><f:setPropertyActionListener value="mint-choc" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Overcast" ajax="false"><f:setPropertyActionListener value="overcast" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Pepper-Grinder" ajax="false"><f:setPropertyActionListener value="pepper-grinder" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Redmond" ajax="false"><f:setPropertyActionListener value="redmond" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Smoothness" ajax="false"><f:setPropertyActionListener value="smoothness" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="South-Street" ajax="false"><f:setPropertyActionListener value="south-street" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Start" ajax="false"><f:setPropertyActionListener value="start" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Sunny" ajax="false"><f:setPropertyActionListener value="sunny" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Swanky-Purse" ajax="false"><f:setPropertyActionListener value="swanky-purse" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Trontastic" ajax="false"><f:setPropertyActionListener value="trontastic" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="UI-Lightness" ajax="false"><f:setPropertyActionListener value="ui-lightness" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="UI-Darkness" ajax="false"><f:setPropertyActionListener value="ui-darkness" target="#{guestPreferences.theme}" /></p:menuitem>
+						<p:menuitem value="Vader" ajax="false"><f:setPropertyActionListener value="vader" target="#{guestPreferences.theme}" /></p:menuitem>
+					</p:submenu>
+				</p:menu>
+			</h:form>
+		
+			<p:lightBox transition="fade" style="text-align:center;margin-top:20px;">
+   				<h:outputLink value="#{request.contextPath}/images/nature1.jpg" title="Nature 1" style="margin-bottom:5px;">
+   					<h:graphicImage value="/images/nature1_small.jpg"/>
+   				</h:outputLink>
+   				
+   				<h:outputLink value="#{request.contextPath}/images/nature2.jpg" title="Nature 2" style="margin-bottom:2px;">
+   					<h:graphicImage value="/images/nature2_small.jpg"/>
+   				</h:outputLink>
+   				
+   				<h:outputLink value="#{request.contextPath}/images/nature3.jpg" title="Nature 3" style="margin-bottom:2px;">
+   					<h:graphicImage value="/images/nature3_small.jpg"/>
+   				</h:outputLink>
+   				
+   				<h:outputLink value="#{request.contextPath}/images/nature4.jpg" title="Nature 4" style="margin-bottom:2px;">
+   					<h:graphicImage value="/images/nature4_small.jpg"/>
+   				</h:outputLink>
+   			</p:lightBox>
+       	
+		</p:layoutUnit>
+		
+		<p:layoutUnit id="center" position="center" style="text-align:center;" scrollable="true">
+			<h:form>
+				<p:tabView>
+					<p:tab title="Organize">
+						<p:schedule value="#{scheduleController.eventModel}" editable="false" />
+					</p:tab>
+					
+					<p:tab title="Videos">
+						<p:media value="http://vimeo.com/moogaloop.swf?clip_id=12440890" width="500" height="400" player="flash"/>
+					</p:tab>
+				</p:tabView>
+			</h:form>
+				
+			
+		</p:layoutUnit>
+		
+	</p:layout>
+	
+</h:body>
+
+</f:view>
+</html>
+
+	

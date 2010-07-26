@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">HotKey</h1>
+		<div class="entry">
+			<p>Hotkey is used to bind a key or a key combination to an client side or server side event via ajax. In first example
+			use "left" and "right" keys to switch images and in second example you can do an ajax request with the (ctrl+shift+s) combination.</p>
+			
+			<h3>ImageSwitch Integration</h3>
+			<p:imageSwitch effect="FadeIn" widgetVar="switcher" slideshowAuto="false">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+			
+			<p:hotkey bind="left" handler="switcher.previous();" />
+			<p:hotkey bind="right" handler="switcher.next();" />
+			
+			<h3>Ajax Hotkey</h3>
+			<h:form>
+					
+				<p:hotkey bind="ctrl+shift+s" update="display" actionListener="#{hotkeyController.action}"/>
+				
+				<h:panelGrid columns="2" style="margin-bottom:10px">
+					<h:outputLabel for="firstname" value="Firstname:" />
+					<h:inputText id="firstname" value="#{pprBean.firstname}" />
+				</h:panelGrid>
+				
+				<p:outputPanel id="display">
+					<h:outputText value="Hello: #{pprBean.firstname}" rendered="#{not empty pprBean.firstname}"/>
+				</p:outputPanel>
+				
+			</h:form>
+				
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+				&lt;p:imageSwitch effect="FadeIn" widgetVar="switcher" slideshowAuto="false"&gt;
+					&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+					&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+					&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+					&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+					
+				&lt;/p:imageSwitch&gt;
+				
+				&lt;p:hotkey bind="left" onEvent="switcher.previous();" /&gt;
+				&lt;p:hotkey bind="right" onEvent="switcher.next();" /&gt;
+			</pre>
+			
+			<pre name="code" class="xml">
+&lt;h:form&gt;
+							
+	&lt;p:hotkey bind="ctrl+shift+s" update="display" actionListener="\#{hotkeyController.action}"/&gt;
+	
+	&lt;h:panelGrid columns="2" style="margin-bottom:10px"&gt;
+		&lt;h:outputLabel for="firstname" value="Firstname:" /&gt;
+		&lt;h:inputText id="firstname" value="\#{pprBean.firstname}" /&gt;
+	&lt;/h:panelGrid&gt;
+	
+	&lt;p:outputPanel id="display"&gt;
+		&lt;h:outputText value="Hello: \#{pprBean.firstname}" rendered="\#{not empty pprBean.firstname}"/&gt;
+	&lt;/p:outputPanel&gt;
+	
+&lt;/h:form&gt;
+				</pre>
+			
+		</div>
+
+	</ui:define>
+</ui:composition>

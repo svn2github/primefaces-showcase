@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">DataList</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/dataListUnordered.jsf" value="Unordered DataList" />
+					<p:menuitem url="/ui/dataListOrdered.jsf" value="Ordered DataList" />
+					<p:menuitem url="/ui/dataListDefinition.jsf" value="Definition DataList" />
+					<p:menuitem url="/ui/dataListAjax.jsf" value="Ajax Pagination" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">DataList presents a collection of data in list layout with several display types. 
+			Ajax Pagination is a built-in feature and paginator UI is fully customizable via various options like paginatorTemplate, rowsPerPageOptions, 
+		pageLinks and more.</span>
+			
+		</div>
+		
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,163 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.carItem {
+				width:200px;
+				height:130px;
+				text-align:center;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Carousel - Effects</h1>
+		<div class="entry">
+		<p>Carousel supports various slide effects out of the box.</p>
+
+			<h3>elasticIn</h3>
+			<p:carousel value="#{tableBean.carsSmall}" var="car" itemStyleClass="carItem"
+						effect="elasticIn">
+				<h:panelGrid columns="1" style="width:100%" cellpadding="5">
+					<p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/> 
+					
+					<h:outputText value="Model: #{car.model}" />
+					
+					<h:outputText value="Year: #{car.year}" />
+					
+					<h:outputText value="Color: #{car.color}" />
+				</h:panelGrid>
+			</p:carousel>
+			
+			<h3>easeInStrong</h3>
+			<p:carousel value="#{tableBean.carsSmall}" var="car" itemStyleClass="carItem"
+						effect="easeInStrong">
+				<h:panelGrid columns="1" style="width:100%" cellpadding="5">
+					<p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/> 
+					
+					<h:outputText value="Model: #{car.model}" />
+					
+					<h:outputText value="Year: #{car.year}" />
+					
+					<h:outputText value="Color: #{car.color}" />
+				</h:panelGrid>
+			</p:carousel>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="carouselEffects.xhtml">
+				<pre name="code" class="xml">
+&lt;h3&gt;elasticIn&lt;/h3&gt;
+&lt;p:carousel value="\#{tableBean.carsSmall}" var="car" itemStyleClass="carItem"
+			effect="elasticIn"&gt;
+	&lt;h:panelGrid columns="1" style="width:100%" cellpadding="5"&gt;
+		&lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt; 
+		
+		&lt;h:outputText value="Model: \#{car.model}" /&gt;
+		
+		&lt;h:outputText value="Year: \#{car.year}" /&gt;
+		
+		&lt;h:outputText value="Color: \#{car.color}" /&gt;
+	&lt;/h:panelGrid&gt;
+&lt;/p:carousel&gt;
+
+&lt;h3&gt;easeInStrong&lt;/h3&gt;
+&lt;p:carousel value="\#{tableBean.carsSmall}" var="car" itemStyleClass="carItem"
+			effect="easeInStrong"&gt;
+	&lt;h:panelGrid columns="1" style="width:100%" cellpadding="5"&gt;
+		&lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt; 
+		
+		&lt;h:outputText value="Model: \#{car.model}" /&gt;
+		
+		&lt;h:outputText value="Year: \#{car.year}" /&gt;
+		
+		&lt;h:outputText value="Color: \#{car.color}" /&gt;
+	&lt;/h:panelGrid&gt;
+&lt;/p:carousel&gt;
+				</pre>
+				</p:tab>
+				
+				<p:tab title="TableBean.java">
+				<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+	
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+		
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+	
+	private List&lt;Car&gt; carsSmall;
+	
+	public TableBean() {
+		carsSmall = new ArrayList&lt;Car&gt;();
+		
+		populateRandomCars(carsSmall, 9);
+	}
+	
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+	
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+	
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+}
+				</pre>
+				</p:tab>
+			</p:tabView>
+		</div>
+		
+	</ui:define>
+</ui:composition>

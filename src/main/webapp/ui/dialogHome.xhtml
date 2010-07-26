@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Dialog</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu"> 
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/dialog.jsf" value="Simple Dialog" />
+					<p:menuitem url="/ui/dialogForm.jsf" value="Ajax Integration" />
+					<p:menuitem url="/ui/dialogClose.jsf" value="Close Listener" />
+					<p:menuitem url="/ui/dialogLogin.jsf" value="Login Demo"/>
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">Dialog is a container component that can overlay other elements on page. Dialog has several customization options
+			such as modal, resize, width, height, position.</span>
+		
+		</div>
+			
+
+	</ui:define>
+</ui:composition>

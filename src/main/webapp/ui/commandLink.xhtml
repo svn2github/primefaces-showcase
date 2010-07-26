@@ -1,0 +1,138 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		
+	<style type="text/css">
+		.pf-panel, .pf-panel-hd, .pf-panel-bd, .pf-panel-ft {
+			border-color:#000000;
+		}
+		
+		.pf-panel-hd {
+			 background: url(../images/dialoghd.gif);
+			 color: #FFFFFF;
+		}
+		
+		.pf-panel-bd {
+			background: #333333;
+			color:#CCCCCC;
+		}
+		
+		.pf-panel-toggler-expanded, .pf-panel-toggler-collapsed{
+			top:3px;
+			width:16px;
+			height:16px;
+		}
+		
+		.pf-panel-toggler-expanded {
+			background: url(../images/toggle_green_expanded.png) no-repeat;
+		}
+		
+		.pf-panel-toggler-collapsed {
+			background: url(../images/toggle_green_collapsed.png) no-repeat;
+		}
+	</style>
+	</ui:define>
+
+	<ui:define name="content">
+
+
+		<h1 class="title ui-widget-header ui-corner-all">CommandLink</h1>
+			<div class="entry">
+			<p>CommandLink extends the standard h:commandLink with ajax, partial processing and confirmation features.</p>
+			
+						<p:ajaxStatus style="width:16px;height:16px;">
+							<f:facet name="start">
+								<h:graphicImage value="../design/ajaxloading.gif" />
+							</f:facet>
+							
+							<f:facet name="complete">
+								<h:outputText value="" />
+							</f:facet>
+						</p:ajaxStatus>
+						
+						<h:form>
+
+							<p:panel id="panel" header="New Person" style="margin-bottom:10px;">
+								<p:messages />
+								<h:panelGrid columns="3">
+									<h:outputLabel for="firstname" value="Firstname: *" />
+									<h:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
+										<f:validateLength minimum="2" />
+									</h:inputText>
+									<p:message for="firstname" />
+									
+									<h:outputLabel for="surname" value="Surname: *" />
+									<h:inputText id="surname" value="#{pprBean.surname}" required="true" label="Surname"/>
+									<p:message for="surname" />
+								</h:panelGrid>
+							</p:panel>
+
+							<p:commandLink update="panel,display" actionListener="#{pprBean.savePerson}" style="margin-right:20px;">
+								<h:outputText value="Ajax Submit" />
+							</p:commandLink>
+					
+							<p:commandLink actionListener="#{pprBean.savePerson}" style="margin-right:20px;" ajax="false">
+								<h:outputText value="Non-Ajax Submit" />
+							</p:commandLink>
+							
+							<p:panel id="display" header="Information" style="margin-top:10px;">
+								<h:panelGrid columns="2">
+									<h:outputText value="Firstname: " />
+									<h:outputText value="#{pprBean.firstname}" />
+									
+									<h:outputText value="Surname: " />
+									<h:outputText value="#{pprBean.surname}" />
+								</h:panelGrid>
+							</p:panel>
+							
+						</h:form>
+						
+						<h3>Source</h3>
+<pre name="code" class="xml">
+&lt;h:form&gt;
+
+	&lt;p:panel id="panel" header="New Person" style="margin-bottom:10px;"&gt;
+		&lt;p:messages /&gt;
+		&lt;h:panelGrid columns="3"&gt;
+			&lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
+			&lt;h:inputText id="firstname" value="\#{pprBean.firstname}" required="true" label="Firstname"&gt;
+				&lt;f:validateLength minimum="2" /&gt;
+			&lt;/h:inputText&gt;
+			&lt;p:message for="firstname" /&gt;
+			
+			&lt;h:outputLabel for="surname" value="Surname: *" /&gt;
+			&lt;h:inputText id="surname" value="\#{pprBean.surname}" required="true" label="Surname"/&gt;
+			&lt;p:message for="surname" /&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:panel&gt;
+
+	&lt;p:commandLink update="panel,display" actionListener="\#{pprBean.savePerson}" style="margin-right:20px;"&gt;
+		&lt;h:outputText value="Ajax Submit" /&gt;
+	&lt;/p:commandLink&gt;
+
+	&lt;p:commandLink actionListener="\#{pprBean.savePerson}" style="margin-right:20px;" ajax="false"&gt;
+		&lt;h:outputText value="Non-Ajax Submit" /&gt;
+	&lt;/p:commandLink&gt;
+	
+	&lt;p:panel id="display" header="Information" style="margin-top:10px;"&gt;
+		&lt;h:panelGrid columns="2"&gt;
+			&lt;h:outputText value="Firstname: " /&gt;
+			&lt;h:outputText value="\#{pprBean.firstname}" /&gt;
+			
+			&lt;h:outputText value="Surname: " /&gt;
+			&lt;h:outputText value="\#{pprBean.surname}" /&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:panel&gt;
+	
+&lt;/h:form&gt;
+</pre>
+						
+					</div>
+				
+	</ui:define>
+</ui:composition>

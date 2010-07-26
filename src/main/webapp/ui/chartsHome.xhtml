@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Charts</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu">  
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/pieChart.jsf" value="Pie Chart" />
+					<p:menuitem url="/ui/liveChart.jsf" value="Live Chart" />
+					<p:menuitem url="/ui/interactiveCharts.jsf" value="Interactive Charts" />
+					<p:menuitem url="/ui/dynamicImage.jsf" value="JFreeChart Integration" />
+					<p:menuitem url="/ui/lineChart.jsf" value="Line Chart" />
+					<p:menuitem url="/ui/columnChart.jsf" value="Column Chart" />
+					<p:menuitem url="/ui/stackedColumnChart.jsf" value="Stacked Column Chart" />
+					<p:menuitem url="/ui/barChart.jsf" value="Bar Chart" />
+					<p:menuitem url="/ui/stackedBarChart.jsf" value="Stacked Bar Chart" />
+					<p:menuitem url="/ui/chartSkinning.jsf" value="Skinning" />
+				</p:submenu>
+			</p:menu>
+
+			<span class="homeText">Charts are flash based graph components featuring various chart types, user interaction and data polling. Additionally
+			static charts are supported with JFreechart-GraphicImage integration.</span>
+			
+		</div>
+			
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,135 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+		
+		.ui-picklist-source, .ui-picklist-target {
+			width: 100px;
+			height: 100px;
+		}
+		
+		.ui-picklist-control {
+			cursor: pointer;
+		}
+		
+		.col1, .col2 {
+			vertical-align: top; 
+		}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+	
+   		<h1 class="title ui-widget-header ui-corner-all">PickList - Complex</h1>
+		<div class="entry">
+              	<p>PickList provides a dual list to switch items between each other. Since picklist is a composite component
+             	it uses a facet based design to make customization of controls easier.</p>
+               
+               <p:ajaxStatus style="height:24px;display:block;">
+						<f:facet name="start">
+							<h:graphicImage value="../design/ajaxloadingbar.gif" />
+						</f:facet>
+						
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+				</p:ajaxStatus>
+
+				<h:form id="form">
+					<p:pickList value="#{pickListBean.players}" var="player" 
+								itemLabel="#{player.name}" itemValue="#{player}" converter="player">
+						<f:facet name="add"><p:graphicImage value="/images/picklist/add.png" styleClass="pickListControl"/></f:facet>
+						<f:facet name="addAll"><p:graphicImage value="/images/picklist/addall.png" styleClass="pickListControl"/></f:facet>
+						<f:facet name="remove"><p:graphicImage value="/images/picklist/remove.png" styleClass="pickListControl"/></f:facet>
+						<f:facet name="removeAll"><p:graphicImage value="/images/picklist/removeall.png" styleClass="pickListControl"/></f:facet>
+					</p:pickList>
+					
+					<br />
+				
+					<p:commandButton value="Submit" update="form:display"/>
+					
+					<br />	<br />
+					
+					<p:outputPanel id="display">
+						<table>
+							<tr>
+								<td><strong>Source</strong></td>
+								<td><strong>Target</strong></td>
+							</tr>
+							
+							<tr>
+								<td valign="top">
+									<ui:repeat value="#{pickListBean.players.source}" var="item">
+										<h:outputText value="#{item.name}" />
+										<br />
+									</ui:repeat>
+								</td>
+								<td valign="top">
+									<ui:repeat value="#{pickListBean.players.target}" var="item">
+										<h:outputText value="#{item.name}" />
+										<br />
+									</ui:repeat>
+								</td>
+							</tr>
+						</table>
+					</p:outputPanel>
+					
+				</h:form>
+				
+				<h3>Source</h3>
+				<pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+	&lt;p:pickList value="\#{pickListBean.players}" var="player" 
+				itemLabel="\#{player.name}" itemValue="\#{player}" converter="player"&gt;
+		&lt;f:facet name="add"&gt;
+			&lt;p:graphicImage value="/images/picklist/add.png" /&gt;
+		&lt;/f:facet&gt;
+		&lt;f:facet name="addAll"&gt;
+			&lt;p:graphicImage value="/images/picklist/addall.png" /&gt;
+		&lt;/f:facet&gt;
+		&lt;f:facet name="remove"&gt;
+			&lt;p:graphicImage value="/images/picklist/remove.png" /&gt;
+		&lt;/f:facet&gt;
+		&lt;f:facet name="removeAll"&gt;
+			&lt;p:graphicImage value="/images/picklist/removeall.png" /&gt;
+		&lt;/f:facet&gt;
+	&lt;/p:pickList&gt;
+
+	&lt;p:commandButton value="Submit" update="form:display"/&gt;
+	
+	&lt;p:outputPanel id="display"&gt;
+		&lt;table&gt;
+			&lt;tr&gt;
+				&lt;td&gt;&lt;strong&gt;Source&lt;/strong&gt;&lt;/td&gt;
+				&lt;td&gt;&lt;strong&gt;Target&lt;/strong&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			
+			&lt;tr&gt;
+				&lt;td valign="top"&gt;
+					&lt;ui:repeat value="\#{pickListBean.players.source}" var="item"&gt;
+						&lt;h:outputText value="\#{item.name}" /&gt;
+						&lt;br /&gt;
+					&lt;/ui:repeat&gt;
+				&lt;/td&gt;
+				&lt;td valign="top"&gt;
+					&lt;ui:repeat value="\#{pickListBean.players.target}" var="item"&gt;
+						&lt;h:outputText value="\#{item.name}" /&gt;
+						&lt;br /&gt;
+					&lt;/ui:repeat&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+	&lt;/p:outputPanel&gt;
+	
+&lt;/h:form&gt;
+			</pre>
+           
+	</div>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">RemoteCommand</h1>
+		<div class="entry">
+			<p>RemoteCommand enables executing backing bean methods and do partial update triggered by custom client side script.
+               This example demonstrates a use case where a certain part of a page can be lazily loaded on demand.</p>
+                
+                <h:form>
+                	
+                	<p:commandButton value="Load" type="button" onclick="lazyload()" />
+                	                	
+                	<p:outputPanel id="lazypanel" layout="block">
+                		<h:outputText value="This part of page is lazily loaded on demand using a RemoteCommand" 
+                				rendered="#{requestScope.shouldRender}"/>
+                	</p:outputPanel>
+                	
+                	<p:remoteCommand name="lazyload" update="lazypanel">
+                		<f:setPropertyActionListener value="#{true}" 
+                				target="#{requestScope.shouldRender}" />
+                	</p:remoteCommand>
+                
+				</h:form>
+				
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="remoteCommand.xhtml">
+<pre name="code" class="xml">
+ &lt;h:form&gt;
+                	
+	&lt;p:commandButton value="Load" type="button" onclick="lazyload()" /&gt;
+        	                	
+    &lt;p:outputPanel id="lazypanel" layout="block"&gt;
+    	&lt;h:outputText value="This part of page is lazily loaded on demand using a RemoteCommand" 
+    			rendered="\#{requestScope.shouldRender}"/&gt;
+    &lt;/p:outputPanel&gt;
+        	
+	&lt;p:remoteCommand name="lazyload" update="lazypanel"&gt;
+		&lt;f:setPropertyActionListener value="\#{true}" 
+    		target="\#{requestScope.shouldRender}" /&gt;
+	&lt;/p:remoteCommand&gt;
+            
+&lt;/h:form&gt;
+						</pre>
+					</p:tab>
+				</p:tabView>
+				
+	</div>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,113 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+		
+			.pf-panel, .pf-panel-hd, .pf-panel-bd, .pf-panel-ft {
+				border-color:#000000;
+			}
+			
+			.pf-panel-hd {
+				 background: url(../images/dialoghd.gif);
+				 color: #FFFFFF;
+			}
+			
+			.pf-panel-bd {
+				background: #333333;
+				color:#CCCCCC;
+			}
+			
+			.pf-panel-toggler-expanded, .pf-panel-toggler-collapsed{
+				top:3px;
+				width:16px;
+				height:16px;
+			}
+			
+			.pf-panel-toggler-expanded {
+				background: url(../images/toggle_green_expanded.png) no-repeat;
+			}
+			
+			.pf-panel-toggler-collapsed {
+				background: url(../images/toggle_green_collapsed.png) no-repeat;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Effects on Load</h1>
+			<div class="entry">
+				<p>Effects can also be applied to any JSF component when page is loaded for the first time or after an ajax request is completed.</p>
+				
+				<h:form>
+						
+					<p:messages id="messages">
+						<p:effect type="pulsate" event="load">
+							<f:param name="mode" value="'show'" />
+						</p:effect>
+					</p:messages>
+							
+					<p:panel header="Message Effects" toggleable="true">
+						<h:panelGrid columns="2">
+							<h:outputText value="Type: *" /> 
+							<h:inputText value="#{buttonBean.text}" required="true" label="Text"/>
+							
+							<h:outputText />
+							<p:commandButton value="Echo" actionListener="#{buttonBean.displayMessage}" update="messages"/>
+						</h:panelGrid>
+					</p:panel>
+							
+				</h:form>
+							<h3>Source</h3>
+							<pre name="code" class="xml">
+&lt;h:form&gt;
+						
+	&lt;p:messages id="messages"&gt;
+		&lt;p:effect type="pulsate" event="load"&gt;
+			&lt;f:param name="mode" value="'show'" /&gt;
+		&lt;/p:effect&gt;
+	&lt;/p:messages&gt;
+			
+	&lt;p:panel header="Message Effects" toggleable="true"&gt;
+		&lt;h:panelGrid columns="2"&gt;
+			&lt;h:outputText value="Type: *" /&gt; 
+			&lt;h:inputText value="\#{buttonBean.text}" required="true" label="Text"/&gt;
+			
+			&lt;h:outputText /&gt;
+			&lt;p:commandButton value="Save" update="messages"
+					actionListener="\#{buttonBean.displayMessage}" /&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:panel&gt;
+			
+&lt;/h:form&gt;
+							</pre>
+							
+							<pre name="code" class="java">
+public class ButtonBean {
+
+	private String text;
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+	
+	public void displayMessage(ActionEvent actionEvent) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "You said:'" + text + "'", null);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+							</pre>
+						
+		</div>
+
+	</ui:define>
+</ui:composition>

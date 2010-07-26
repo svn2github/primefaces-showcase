@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:i="http://primefaces.prime.com.tr/touch"
+	contentType="text/html">
+	
+	<i:application icon="/images/touch/weathericon.png">
+	
+		<i:view id="home" title="Weather">
+			<f:facet name="rightNavBar">
+				<i:navBarControl label="Settings" view="settings" type="button" effect="slideup"/>
+			</f:facet>
+			
+			<h:form prependId="false">
+		
+				<i:tableView>
+				
+					<i:rowGroup>
+						<i:rowItem>
+							<h:selectOneMenu value="#{weatherController.city}">
+	   							<f:selectItem itemLabel="Istanbul" itemValue="TUXX0014" />
+	   							<f:selectItem itemLabel="Barcelona" itemValue="SPXX0015" />
+	   							<f:selectItem itemLabel="London" itemValue="UKXX0085" />
+	   							<f:selectItem itemLabel="New York" itemValue="USNY0996" />
+	   							<f:selectItem itemLabel="Paris" itemValue="FRXX2071" />
+	   							<f:selectItem itemLabel="Rome" itemValue="ITXX0067" />
+	      					</h:selectOneMenu>
+						</i:rowItem>
+					</i:rowGroup>
+					
+					<p:commandLink actionListener="#{weatherController.retrieveConditions}" style="margin:0 10px;" styleClass="whiteButton" update="display">Get Forecast</p:commandLink>
+					
+					<i:rowGroup>
+						<i:rowItem>
+							<center>
+							<h:outputText id="display" value="#{weatherController.conditions}" />
+							</center>
+						</i:rowItem>
+					</i:rowGroup>
+				
+				</i:tableView>
+			
+			
+			</h:form>
+		</i:view>
+		
+		<i:view id="settings" title="Settings">
+			<f:facet name="leftNavBar">
+				<i:navBarControl label="Home" view="home" />
+			</f:facet>
+			
+			<h:form prependId="false">
+				<i:tableView>
+					
+					<i:rowGroup title="Unit">
+						<i:rowItem>
+							<h:selectOneMenu value="#{weatherController.unit}">
+								<f:selectItem itemLabel="Celcius" itemValue="c" />
+								<f:selectItem itemLabel="Fahrenheit" itemValue="f" />
+							</h:selectOneMenu>
+						</i:rowItem>
+					</i:rowGroup>
+					
+				</i:tableView>
+				
+				<p:commandLink style="margin:0 10px;" styleClass="whiteButton goback" value="#">Save</p:commandLink>
+			</h:form>
+		</i:view>
+	
+	</i:application>
+	
+</f:view>

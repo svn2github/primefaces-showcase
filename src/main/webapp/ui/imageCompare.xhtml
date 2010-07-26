@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">ImageCompare</h1>
+		<div class="entry">
+			<p>ImageCompare provides a graphical interface to compare to similar images. As seen blow
+			PS3 is way better than XBOX 360.</p>
+	
+			<p:imageCompare leftImage="/images/xbox.png" rightImage="/images/ps3.png"
+			width="438" height="246"/>
+			
+			<br /><br/>
+			
+			<p:imageCompare leftImage="/images/xbox.jpg" rightImage="/images/ps3.jpg"
+			width="551" height="312"/>
+			
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+&lt;p:imageCompare leftImage="/images/xbox.png" rightImage="/images/ps3.png"
+		width="438" height="246"/&gt;
+			
+&lt;p:imageCompare leftImage="/images/xbox.jpg" rightImage="/images/ps3.jpg"
+		width="551" height="312"/&gt;
+			</pre>
+			
+		</div>
+
+	</ui:define>
+</ui:composition>

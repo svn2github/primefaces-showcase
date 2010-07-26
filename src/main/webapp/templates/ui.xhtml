@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<f:view contentType="text/html">
+
+	<h:head>
+		<title>PrimeFaces - ShowCase</title>
+		<meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/default.css" />
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/#{guestPreferences.theme}/skin.css" />
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css"></link>
+		<style type="text/css">
+			.new {
+				background: url(../images/new-ico.gif) no-repeat 1%;
+			}
+			
+			.ui-widget {
+				font-size: 98% !important;
+			}
+			
+			.ui-menu .ui-menu-item .ui-menu-item-label {
+				padding: .2em 1.7em;
+			}
+			
+			.ui-growl {
+				top:115px;
+			}
+			
+			.themeMenu {
+				overflow: auto;
+				height:300px;
+				width:200px;
+			}
+		</style>
+		<ui:insert name="head"></ui:insert>
+	</h:head>
+	
+	<h:body>
+
+		<div class="ui-widget ui-widget-header">
+			<div id="logo">
+				<h1>PRIMEFACES</h1>
+			</div>
+		</div>
+		
+		<div id="menu" class="ui-widget ui-widget-content ui-corner-all">
+			<ul id="main">
+				<li class="current_page_item"><a href="#{request.contextPath}/ui/home.jsf" style="background:url('../design/ui.png') no-repeat center left;">UI Components</a></li>
+				<li><a href="#{request.contextPath}/touch/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;">TouchFaces</a></li>
+				<li><a href="#{request.contextPath}/facestrace/createBook.jsf" style="background:url('../design/facestrace.png') no-repeat center left;">FacesTrace</a></li>
+			</ul>
+		</div>
+		
+		<div id="wrapper">
+		
+			<div id="page">
+				<div id="sidebar1" class="ui-widget-content ui-corner-all ui-helper-clearfix sidebar">
+					<ul>
+						<li>
+							<table>
+								<tr>
+									<td colspan="2" align="left" style="padding:8px;">
+										<h:form id="themeForm">
+											
+											<p:commandButton id="themeButton" value="Change Theme: #{guestPreferences.theme}" onclick="themeMenu.show()" type="button" style="width:100%"/>
+											<p:menu widgetVar="themeMenu" position="dynamic" context="'themeForm:themeButton','tl','bl'" styleClass="themeMenu">
+												<p:submenu label="Themes">
+													<p:menuitem value="Sam (Default)" ajax="false"><f:setPropertyActionListener value="sam" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Base" ajax="false"><f:setPropertyActionListener value="base" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Black-Tie" ajax="false"><f:setPropertyActionListener value="black-tie" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Blitzer" ajax="false"><f:setPropertyActionListener value="blitzer" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="BlueSky" ajax="false"><f:setPropertyActionListener value="bluesky" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Casablanca" ajax="false"><f:setPropertyActionListener value="casablanca" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Cupertino" ajax="false"><f:setPropertyActionListener value="cupertino" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Dark-Hive" ajax="false"><f:setPropertyActionListener value="dark-hive" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Dot-Luv" ajax="false"><f:setPropertyActionListener value="dot-luv" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Eggplant" ajax="false"><f:setPropertyActionListener value="eggplant" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Excite-Bike" ajax="false"><f:setPropertyActionListener value="excite-bike" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Flick" ajax="false"><f:setPropertyActionListener value="flick" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Hot-Sneaks" ajax="false"><f:setPropertyActionListener value="hot-sneaks" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Humanity" ajax="false"><f:setPropertyActionListener value="humanity" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Le-Frog" ajax="false"><f:setPropertyActionListener value="le-frog" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Mint-Choc" ajax="false"><f:setPropertyActionListener value="mint-choc" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Overcast" ajax="false"><f:setPropertyActionListener value="overcast" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Pepper-Grinder" ajax="false"><f:setPropertyActionListener value="pepper-grinder" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Redmond" ajax="false"><f:setPropertyActionListener value="redmond" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Smoothness" ajax="false"><f:setPropertyActionListener value="smoothness" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="South-Street" ajax="false"><f:setPropertyActionListener value="south-street" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Start" ajax="false"><f:setPropertyActionListener value="start" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Sunny" ajax="false"><f:setPropertyActionListener value="sunny" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Swanky-Purse" ajax="false"><f:setPropertyActionListener value="swanky-purse" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Trontastic" ajax="false"><f:setPropertyActionListener value="trontastic" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="UI-Lightness" ajax="false"><f:setPropertyActionListener value="ui-lightness" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="UI-Darkness" ajax="false"><f:setPropertyActionListener value="ui-darkness" target="#{guestPreferences.theme}" /></p:menuitem>
+													<p:menuitem value="Vader" ajax="false"><f:setPropertyActionListener value="vader" target="#{guestPreferences.theme}" /></p:menuitem>
+												</p:submenu>
+											</p:menu>
+								
+											
+										</h:form>									
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ul>
+											<li><a href="#{request.contextPath}/ui/macosx.jsf">MOCK OS X</a></li>
+											<li><a href="#{request.contextPath}/ui/ajaxHome.jsf">Ajax Engine</a></li>
+											<li><a href="#{request.contextPath}/ui/chat.jsf">Ajax Push</a></li>
+											<li><a href="#{request.contextPath}/ui/ajaxPollHome.jsf">Ajax Poll</a></li>
+											<li><a href="#{request.contextPath}/ui/accordionPanel.jsf">Accordion</a></li>
+											<li><a href="#{request.contextPath}/ui/autocompleteHome.jsf">AutoComplete</a></li>
+											<li><a href="#{request.contextPath}/ui/breadCrumb.jsf">BreadCrumb</a></li>
+											<li><a href="#{request.contextPath}/ui/calendarHome.jsf">Calendar</a></li>
+											<li><a href="#{request.contextPath}/ui/captchaHome.jsf">Captcha</a></li>
+											<li><a href="#{request.contextPath}/ui/carouselHome.jsf">Carousel</a></li>
+											<li><a href="#{request.contextPath}/ui/chartsHome.jsf">Charts</a></li>
+											<li><a href="#{request.contextPath}/ui/commandButton.jsf">CommandButton</a></li>
+											<li><a href="#{request.contextPath}/ui/commandLink.jsf">CommandLink</a></li>
+											<li><a href="#{request.contextPath}/ui/contextMenuHome.jsf">ContextMenu</a></li>
+											<li><a href="#{request.contextPath}/ui/collector.jsf">Collector</a></li>
+											<li><a href="#{request.contextPath}/ui/colorPicker.jsf">Color Picker</a></li>
+											<li><a href="#{request.contextPath}/ui/confirmDialog.jsf">ConfirmDialog</a></li>
+											<li><a href="#{request.contextPath}/ui/dashboard.jsf">Dashboard</a></li>
+											<li><a href="#{request.contextPath}/ui/exporterHome.jsf">Data Exporter</a></li>
+											<li><a href="#{request.contextPath}/ui/datagrid.jsf">DataGrid</a></li>
+											<li><a href="#{request.contextPath}/ui/dataListHome.jsf">DataList</a></li>
+											<li><a href="#{request.contextPath}/ui/datatableHome.jsf">DataTable</a></li>
+											<li><a href="#{request.contextPath}/ui/dialogHome.jsf">Dialog</a></li>
+											<li><a href="#{request.contextPath}/ui/dock.jsf">Dock</a></li>
+											<li><a href="#{request.contextPath}/ui/dragdropHome.jsf">Drag Drop</a></li>
+											<li><a href="#{request.contextPath}/ui/dynamicImage.jsf">Dyna Image</a></li>
+											<li><a href="#{request.contextPath}/ui/editorHome.jsf">Editor</a></li>
+											<li><a href="#{request.contextPath}/ui/effectsHome.jsf">Effects</a></li>
+											<li><a href="#{request.contextPath}/ui/fileUploadHome.jsf">FileUpload</a></li>
+											<li><a href="#{request.contextPath}/ui/fileDownload.jsf">FileDownload</a></li>
+											<li><a href="#{request.contextPath}/ui/focus.jsf">Focus</a></li>
+											<li><a href="#{request.contextPath}/ui/gmapHome.jsf">Google Maps</a></li>
+											<li><a href="#{request.contextPath}/ui/graphicText.jsf">Graphic Text</a></li>
+											<li><a href="#{request.contextPath}/ui/growl.jsf">Growl</a></li>
+											<li><a href="#{request.contextPath}/ui/hotkey.jsf">HotKey</a></li>
+											<li><a href="#{request.contextPath}/ui/idlemonitorHome.jsf">IdleMonitor</a></li>
+											<li><a href="#{request.contextPath}/ui/imageCompare.jsf">ImageCompare</a></li>
+										</ul>
+									</td>
+									<td>
+										<ul>
+											<li><a href="#{request.contextPath}/ui/imageCropperAjax.jsf">ImageCropper</a></li>
+											<li><a href="#{request.contextPath}/ui/imageSwitchHome.jsf">ImageSwitch</a></li>
+											<li><a href="#{request.contextPath}/ui/inplace.jsf">Inplace</a></li>
+											<li><a href="#{request.contextPath}/ui/keyboardHome.jsf">Keyboard</a></li>
+											<li><a href="#{request.contextPath}/ui/layoutHome.jsf">Layout</a></li>
+											<li><a href="#{request.contextPath}/ui/lightboxHome.jsf">LightBox</a></li>
+											<li><a href="#{request.contextPath}/ui/linkButton.jsf">LinkButton</a></li>
+											<li><a href="#{request.contextPath}/ui/inputMask.jsf">Masked Input</a></li>
+											<li><a href="#{request.contextPath}/ui/media.jsf">Media</a></li>
+											<li><a href="#{request.contextPath}/ui/menu.jsf">Menu</a></li>
+											<li><a href="#{request.contextPath}/ui/menubar.jsf">Menubar</a></li>
+											<li><a href="#{request.contextPath}/ui/menubutton.jsf">MenuButton</a></li>
+											<li><a href="#{request.contextPath}/ui/messages.jsf">Messages</a></li>
+											<li><a href="#{request.contextPath}/ui/notificationBar.jsf">NotificationBar</a></li>
+											<li><a href="#{request.contextPath}/ui/outputPanel.jsf">OutputPanel</a></li>
+											<li><a href="#{request.contextPath}/ui/panel.jsf">Panel</a></li>
+											<li><a href="#{request.contextPath}/ui/password.jsf">PasswordStrength</a></li>
+											<li><a href="#{request.contextPath}/ui/picklistHome.jsf">PickList</a></li>
+											<li><a href="#{request.contextPath}/ui/printer.jsf">Printer</a></li>
+											<li><a href="#{request.contextPath}/ui/progressBar.jsf">ProgressBar</a></li>
+											<li><a href="#{request.contextPath}/ui/callbackParams.jsf">RequestContext</a></li>
+											<li><a href="#{request.contextPath}/ui/resizable.jsf">Resizable</a></li>
+											<li><a href="#{request.contextPath}/ui/remoteCommand.jsf">RemoteCommand</a></li>
+											<li><a href="#{request.contextPath}/ui/scheduleHome.jsf">Schedule</a></li>	
+											<li><a href="#{request.contextPath}/ui/spreadsheetHome.jsf">Spreadsheet</a></li>										
+											<li><a href="#{request.contextPath}/ui/slider.jsf">Slider</a></li>
+											<li><a href="#{request.contextPath}/ui/spinner.jsf">Spinner</a></li>
+											<li><a href="#{request.contextPath}/ui/stack.jsf">Stack</a></li>
+											<li><a href="#{request.contextPath}/ui/rating.jsf">Star Rating</a></li>
+											<li><a href="#{request.contextPath}/ui/tabviewHome.jsf">TabView</a></li>
+											<li><a href="#{request.contextPath}/ui/terminalHome.jsf">Terminal</a></li>
+											<li><a href="#{request.contextPath}/ui/themeswitcher.jsf">Themeswitcher</a></li>
+											<li><a href="#{request.contextPath}/ui/tooltipHome.jsf">Tooltip</a></li>
+											<li><a href="#{request.contextPath}/ui/treeHome.jsf">Tree</a></li>
+											<li><a href="#{request.contextPath}/ui/treeTableHome.jsf">TreeTable</a></li>
+											<li><a href="#{request.contextPath}/ui/watermark.jsf">Watermark</a></li>
+											<li><a href="#{request.contextPath}/ui/wizard.jsf">Wizard</a></li>
+										</ul>
+									</td>
+								</tr>
+							</table>
+							
+						</li>
+					</ul>
+				</div>
+		
+				<div id="content" class="ui-widget">
+					<div class="post">
+						<ui:insert name="content">...</ui:insert>
+					</div>
+				</div>
+				
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+		
+		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+			<p class="copyright">&copy;&nbsp;&nbsp;2009-2010 &nbsp;&bull;&nbsp; <a href="http://www.prime.com.tr">Prime Technology</a>.</p>
+			<p style="float:right">Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
+		</div>
+		
+	</h:body>
+	
+	<ui:insert name="highlight">
+		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
+		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
+		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJava.js"></script>
+		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushCss.js"></script>
+		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+		<script language="javascript">
+			dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code');
+		</script>
+	</ui:insert>
+
+</f:view>
+</html>

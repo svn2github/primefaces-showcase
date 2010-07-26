@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/roller/ui-lightness/theme.css" />
+	</ui:define>
+	
+	<ui:define name="content">
+		
+		<h1 class="title ui-widget-header ui-corner-all">Schedule - Lazy</h1>
+		<div class="entry">
+		<p>Schedule supports lazy loading with a lazy ScheduleModel.</p>
+		
+			<h:form prependId="false">
+				
+				<p:ajaxStatus style="height:24px;display:block;">
+					<f:facet name="start">
+						<h:graphicImage value="../design/ajaxloading.gif" />
+					</f:facet>
+				
+					<f:facet name="complete">
+						<h:outputText value="" />
+					</f:facet>
+				</p:ajaxStatus>
+			
+				<p:schedule value="#{scheduleController.lazyEventModel}" />
+				
+			</h:form>
+			
+			<h3>Source</h3>
+<pre name="code" class="xml">
+	&lt;p:schedule value="\#{scheduleController.lazyEventModel}" /&gt;
+</pre>
+
+<pre name="code" class="java">
+public class ScheduleController {
+	
+	private ScheduleModel&lt;ScheduleEvent&gt; lazyEventModel;
+
+	public ScheduleController() {
+		lazyEventModel = new ScheduleModel&lt;ScheduleEvent&gt;() {
+			
+			@Override
+			public boolean isLazy() {
+				return true;
+			}
+			
+			@Override
+			public void fetchEvents(Date start, Date end) {
+				setEvents(new ArrayList&lt;ScheduleEvent&gt;());	//clean other periods
+				
+				Date random = getRandomDate(start);
+				addEvent(new ScheduleEventImpl("Lazy Event 1", random, random));
+				
+				random = getRandomDate(start);
+				addEvent(new ScheduleEventImpl("Lazy Event 2", random, random));
+			}	
+		};
+	}
+	
+	public Date getRandomDate(Date base) {
+		Calendar date = Calendar.getInstance();
+		date.setTime(base);
+		date.add(Calendar.DATE, ((int) (Math.random()*30)) + 1);	//set random day of month
+		
+		return date.getTime();
+	}
+	
+	public ScheduleModel&lt;ScheduleEvent&gt; getLazyEventModel() {
+		return lazyEventModel;
+	}
+}
+</pre>
+		</div>
+		
+	</ui:define>
+</ui:composition>

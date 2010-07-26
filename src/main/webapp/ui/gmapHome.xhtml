@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Google Maps</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/gmapBasic.jsf" value="Simple GMap" />
+					<p:menuitem url="/ui/gmapEvents.jsf" value="Map Events" />
+					<p:menuitem url="/ui/gmapMarkers.jsf" value="Markers" />
+					<p:menuitem url="/ui/gmapMarkerSelect.jsf" value="Marker Selection" />
+					<p:menuitem url="/ui/gmapAddMarkers.jsf" value="Adding Markers" />
+					<p:menuitem url="/ui/gmapDraggableMarkers.jsf" value="Draggable Markers" />
+					<p:menuitem url="/ui/gmapInfoWindow.jsf" value="Info Window" />
+					<p:menuitem url="/ui/gmapPolyline.jsf" value="Polylines" />
+					<p:menuitem url="/ui/gmapPolygon.jsf" value="Polygons" />
+					<p:menuitem url="/ui/gmapStreetView.jsf" value="Street View" />
+					<p:menuitem url="/ui/gmapControls.jsf" value="Controls" />
+					<p:menuitem url="/ui/gmapDialog.jsf" value="Map in a Dialog" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">GMap component is built on Google Maps API Version 3. Component is highly
+			integrated with JSF programming model and enhanced with Ajax capabilities.</span>
+			
+		</div>
+		
+	</ui:define>
+</ui:composition>

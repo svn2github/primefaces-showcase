@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Schedule</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="Schedule">
+					<p:menuitem url="/ui/schedule.jsf" value="Editable Schedule" />
+					<p:menuitem url="/ui/scheduleLazy.jsf" value="Lazy Loading" />
+					<p:menuitem url="/ui/scheduleLocale.jsf" value="Locale Support" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">Schedule provides an Outlook, iCal like JSF component to manage events. Schedule is highly customizable featuring
+		various views (month, day, week), built-in I18N, drag-drop, resize, customizable event dialog, ajax listeners for every user interaction 
+		and more.</span>
+		
+		</div>
+			
+
+	</ui:define>
+</ui:composition>

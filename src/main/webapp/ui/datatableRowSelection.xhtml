@@ -1,0 +1,176 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Row Selection</h1>
+		<div class="entry">
+                <p>Datatable makes it very easy to select rows using the selection property. The selection value expression will be updated with the selected data in update
+                model phase. Note that this example uses an ajax commandButton to set the selected values.</p>
+                
+                <h:form prependId="false">
+                     
+					<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
+						selection="#{tableBean.selectedCar}" selectionMode="single">
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Model" />
+							</f:facet>
+							<h:outputText value="#{car.model}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Year" />
+							</f:facet>
+							<h:outputText value="#{car.year}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Manufacturer" />
+							</f:facet>
+							<h:outputText value="#{car.manufacturer}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Color" />
+							</f:facet>
+							<h:outputText value="#{car.color}" />
+						</p:column>
+					</p:dataTable>
+					
+					<p:commandButton value="Submit" update="display" oncomplete="carDialog.show()"/>	
+			
+					<p:dialog header="Car Detail" widgetVar="carDialog" 
+							modal="true" width="250">
+						
+						<h:panelGrid id="display" columns="2">
+							<h:outputText value="Model:" />
+							<h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
+							
+							<h:outputText value="Year:" />
+							<h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
+							
+							<h:outputText value="Manufacturer:" />
+							<h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
+							
+							<h:outputText value="Color:" />
+							<h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
+						</h:panelGrid>
+					</p:dialog>
+					
+				</h:form>
+			
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="datatableRowSelection.xhtml">
+<pre name="code" class="xml">
+&lt;h:form prependId="false"&gt;
+                          
+	&lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+		selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
+		
+		&lt;p:column&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Model" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="\#{car.model}" /&gt;
+		&lt;/p:column&gt;
+
+		&lt;p:column&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Year" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="\#{car.year}" /&gt;
+		&lt;/p:column&gt;
+
+		&lt;p:column&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Manufacturer" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="\#{car.manufacturer}" /&gt;
+		&lt;/p:column&gt;
+
+		&lt;p:column&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Color" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="\#{car.color}" /&gt;
+		&lt;/p:column&gt;
+	&lt;/p:dataTable&gt;
+	
+	&lt;p:commandButton value="Submit" update="display" oncomplete="carDialog.show()"/&gt;	
+	
+	&lt;p:dialog header="Car Detail" widgetVar="carDialog" 
+		modal="true" width="250"&gt;
+		
+		&lt;h:panelGrid id="display" columns="2"&gt;
+			&lt;h:outputText value="Model:" /&gt;
+			&lt;h:outputText value="\#{tableBean.selectedCar.model}" style="font-weight:bold"/&gt;
+			
+			&lt;h:outputText value="Year:" /&gt;
+			&lt;h:outputText value="\#{tableBean.selectedCar.year}" style="font-weight:bold"/&gt;
+			
+			&lt;h:outputText value="Manufacturer:" /&gt;
+			&lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/&gt;
+			
+			&lt;h:outputText value="Color:" /&gt;
+			&lt;h:outputText value="\#{tableBean.selectedCar.color}" style="font-weight:bold"/&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:dialog&gt;
+	
+&lt;/h:form&gt;
+				</pre>
+					</p:tab>
+					
+					<p:tab title="TableBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean {
+
+	private List&lt;Car&gt; cars;
+	
+	private Car selectedCar;
+
+	public TableBean() {
+		cars = new ArrayList&lt;Car&gt;();
+		
+		for(int i = 0 ; i &lt; 50 ; i++)
+			list.add(new Car("Model_" + i, getRandomYear(), "Brand_" + i, "Color_" + i));
+	}
+
+	public Car getSelectedCar() {
+		return selectedCar;
+	}
+	public void setSelectedCar(Car selectedCar) {
+		this.selectedCar = selectedCar;
+	}
+
+	public List&lt;Car&gt; getCars() {
+		return cars;
+	}
+}
+				</pre>
+					</p:tab>
+				</p:tabView>
+			   
+</div>
+
+	</ui:define>
+</ui:composition>

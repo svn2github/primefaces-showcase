@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Autocomplete</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu"> 
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/autoCompleteBasic.jsf" value="Simple" />
+					<p:menuitem url="/ui/autoCompletePojo.jsf" value="Pojo Support" />
+					<p:menuitem url="/ui/autoCompleteSelect.jsf" value="Select Listener" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">AutoComplete is used for making suggestions while the user is typing on an input field. 
+			Suggested items are retrieved from a JSF backing bean's method and transferred as JSON.</span>
+		
+		</div>
+			
+	</ui:define>
+</ui:composition>

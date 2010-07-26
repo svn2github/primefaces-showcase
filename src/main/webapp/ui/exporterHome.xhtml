@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">DataExporter</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/exporter.jsf" value="Excel, PDF, CSV, XML" />
+					<p:menuitem url="/ui/exporterExclude.jsf" value="Exclude Columns" />
+					<p:menuitem url="/ui/exporterProcessor.jsf" value="Customized Documents" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">DataExporter is a powerful utility to export datatable to various formats such as excel, pdf, csv and xml. Ability to export
+				only current page data, excluding particular columns, manipulating the exported data with pre and post processors are other notable features.
+			</span>
+			
+		
+		</div>
+			
+
+	</ui:define>
+</ui:composition>

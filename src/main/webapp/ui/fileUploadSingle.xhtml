@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">File Upload - Single</h1>
+		<div class="entry">
+						
+			<h:form>
+			
+				<p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" 
+						allowTypes="*.jpg;*.png;*.gif;" description="Images"/>
+				
+			</h:form>
+						
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+	&lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}" 
+		allowTypes="*.jpg;*.png;*.gif;" description="Images"/>
+			</pre>
+						
+			<pre name="code" class="java">
+public class FileUploadController {
+	
+	private Logger logger = LoggerFactory.getLogger(FileUploadController.class);
+
+	public void handleFileUpload(FileUploadEvent event) {
+		logger.info("Uploaded: {}", event.getFile().getFileName());
+
+		FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+}
+			</pre>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

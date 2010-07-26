@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">AutoComplete - Instant Selection</h1>
+		<div class="entry">
+			<p>AutoComplete supports instant ajax selection out of the box, selection can be listened using a selectListener
+			and other components can be updated with onSelectUpdate feature.</p>
+		
+			<h:form>
+				<p:growl id="messages"/>
+				
+				<p:panel header="Selection">
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel value="Simple: " for="acSimple" />
+						<p:autoComplete id="acSimple" value="#{autoCompleteBean.txt1}" completeMethod="#{autoCompleteBean.complete}"
+										selectListener="#{autoCompleteBean.handleSelect}" onSelectUpdate="messages"/>
+						
+						<h:outputLabel value="Pojo: " for="acPojo" />
+						<p:autoComplete id="acPojo" value="#{autoCompleteBean.selectedPlayer}" completeMethod="#{autoCompleteBean.completePlayer}"
+										var="player" itemLabel="#{player.name}" itemValue="#{player}" converter="player"
+										selectListener="#{autoCompleteBean.handleSelect}" onSelectUpdate="messages"/>
+					
+					</h:panelGrid>
+					
+					<p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
+				</p:panel>
+
+				<p:dialog header="Values" widgetVar="dialog"
+						showEffect="bounce" hideEffect="fold" width="200">
+						
+               		<h:panelGrid id="display" columns="2" cellpadding="5">
+						<h:outputText value="Simple: " />
+						<h:outputText value="#{autoCompleteBean.txt1}" /> 
+						
+						<h:outputText value="Pojo: " />
+						<h:outputText value="#{autoCompleteBean.selectedPlayer}" /> 
+					</h:panelGrid>
+					
+                </p:dialog>
+				
+			</h:form>
+
+			<br />
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+&lt;h:form&gt;
+	&lt;p:growl id="messages"/&gt;
+	
+	&lt;h:panelGrid columns="3" cellpadding="5"&gt;
+		&lt;h:outputLabel value="Simple" for="acSimple" /&gt;
+		&lt;p:autoComplete id="acSimple" value="\#{autoCompleteBean.text}" 
+			completeMethod="\#{autoCompleteBean.complete}"
+			selectListener="\#{autoCompleteBean.handleSelect}" 
+			onSelectUpdate="messages"/&gt;
+		&lt;h:outputText id="acSimpleOut" value="\#{autoCompleteBean.text}" /&gt;
+		
+		&lt;h:outputLabel value="Pojo" for="acPojo" /&gt;
+		&lt;p:autoComplete id="acPojo" value="\#{autoCompleteBean.selectedPlayer}" 
+			completeMethod="\#{autoCompleteBean.completePlayer}"
+			var="player" itemLabel="\#{player.name}" 
+			itemValue="\#{player}" converter="player"
+			selectListener="\#{autoCompleteBean.handleSelect}" onSelectUpdate="messages"/&gt;
+		&lt;h:outputText id="acPojoOut" value="\#{autoCompleteBean.selectedPlayer.name}" /&gt;
+		
+	&lt;/h:panelGrid&gt;
+	
+	&lt;p:commandButton value="Submit" update="acSimpleOut acPojoOut" /&gt;
+	
+&lt;/h:form&gt;
+			</pre>
+						
+			<pre name="code" class="java">
+public void handleSelect(SelectEvent event) {
+	FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected:" + event.getObject().toString(), null);
+		
+	FacesContext.getCurrentInstance().addMessage(null, message);
+}
+			</pre>
+					
+		</div>
+
+	</ui:define>
+</ui:composition>

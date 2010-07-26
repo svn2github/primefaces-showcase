@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Keyboard</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="KeyBoard">
+					<p:menuitem url="/ui/keyboard.jsf" value="Keyboard Layouts" />
+					<p:menuitem url="/ui/keypad.jsf" value="Keypad" />
+					<p:menuitem url="/ui/keyboardSkinning.jsf" value="Skinning" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">Keyboard provides a virtual keyboard featuring built-in/customizable layouts, keypad support, display modes and skinning features.</span>
+			
+		
+		</div>
+			
+
+	</ui:define>
+</ui:composition>

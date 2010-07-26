@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">LightBox - Inline</h1>
+		<div class="entry">
+            	<p>LightBox can act like a modal dialog as well using the inline mode. Click the links below to see more information about the best player in the world.</p>    	
+            	
+            	<p:lightBox>
+       				<h:outputLink value="#" title="PrimeFaces 1.0.0/2.0.0" >
+       					<h:outputText value="Video Content"/>
+       				</h:outputLink>
+       				
+       				<f:facet name="inline">
+       					<p:media value="http://vimeo.com/moogaloop.swf?clip_id=8894784"  width="400" height="225" player="flash"/>
+       				</f:facet>
+       			</p:lightBox>
+       			
+       			<br />
+            	
+       			<p:lightBox width="50%" height="50%">
+       				<h:outputLink value="#" title="Leo Messi" >
+       					<h:outputText value="The Messiah"/>
+       				</h:outputLink>
+       				
+       				<f:facet name="inline">
+       					<h:panelGrid columns="2">
+       						<h:graphicImage value="barca/messi.jpg"></h:graphicImage>
+							<h:outputText style="color:#FFFFFF"
+								value="Messi is an unusual player. He is highly creative, and has the skills to take on defenders with ease. He is a versatile left-footed player who can play either in the middle or on either wing, or even as a centre forward.
+										Although he is quite short, he is so fast and physically strong that he can cope with larger opponents. He is incredibly powerful, and a specialist in such dead ball situations as corners, free kicks and penalties.
+										Leo Messi is cool-headed and able to assume several responsibilities in times of need. He is a player who is destined to have a very successful career in football."></h:outputText>
+       					</h:panelGrid>
+       				</f:facet>
+       			</p:lightBox>
+       			
+				<h3>Source</h3>
+<pre name="code" class="xml">
+&lt;p:lightBox&gt;
+	&lt;h:outputLink value="#" title="PrimeFaces 1.0.0/2.0.0"&gt;
+		&lt;h:outputText value="Video Content" /&gt;
+	&lt;/h:outputLink&gt;
+	
+	&lt;f:facet name="inline"&gt;
+		&lt;p:media value="http://vimeo.com/moogaloop.swf?clip_id=8894784"
+		width="400" height="225" player="flash" /&gt;
+	&lt;/f:facet&gt;
+&lt;/p:lightBox&gt;
+			
+&lt;p:lightBox width="50%" height="50%"&gt;
+	&lt;h:outputLink value="#" title="Leo Messi" &gt;
+		&lt;h:outputText value="The Messiah"/&gt;
+	&lt;/h:outputLink&gt;
+				
+	&lt;f:facet name="inline"&gt;
+		&lt;h:panelGrid columns="2"&gt;
+			&lt;h:graphicImage value="barca/messi.jpg"&gt;&lt;/h:graphicImage&gt;
+		&lt;h:outputText style="color:#FFFFFF"
+			value="Messi is an unusual player. He is highly creative, and has the skills to take on defenders with ease. He is a versatile left-footed player who can play either in the middle or on either wing, or even as a centre forward.
+			Although he is quite short, he is so fast and physically strong that he can cope with larger opponents. He is incredibly powerful, and a specialist in such dead ball situations as corners, free kicks and penalties.
+			Leo Messi is cool-headed and able to assume several responsibilities in times of need. He is a player who is destined to have a very successful career in football."&gt;&lt;/h:outputText&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/f:facet&gt;
+&lt;/p:lightBox&gt;
+</pre>
+            </div>
+    
+</ui:define>
+</ui:composition>
+				

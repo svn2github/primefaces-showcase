@@ -1,0 +1,134 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.ui-panel {
+				margin: 15px;
+				width: 300px;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Draggable</h1>
+		<div class="entry">
+			<p>Draggable can make any JSF component draggable.</p>
+
+				<p:panel id="pnl" header="Draggable Panel">
+					<h:outputText value="I am actually a regular p:panel." />
+				</p:panel>
+				<p:draggable for="pnl" />
+				
+				<p:panel id="handlepnl" header="Handle">
+					<h:outputText value="I can only be dragged with my header." />
+				</p:panel>
+				<p:draggable for="handlepnl" handle="div.pf-panel-hd" />
+			
+				<p:panel id="hpnl" header="Horizontal Only">
+					<h:outputText value="I can only be dragged horizontally." />
+				</p:panel>
+				<p:draggable for="hpnl" axis="x" />
+			
+				<p:panel id="vpnl" header="Vertical Only">
+					<h:outputText value="I can only be dragged vertically" />
+				</p:panel>
+				<p:draggable for="vpnl" axis="y" />
+			
+				<p:panel id="cpnl" header="Clone">
+					<h:outputText value="I am cloned in dragging" />
+				</p:panel>
+				<p:draggable for="cpnl" helper="clone" />
+				
+				<p:panel id="rpnl" header="Revert">
+					<h:outputText value="I will be reverted back to my original position" />
+				</p:panel>
+				<p:draggable for="rpnl" revert="true" />
+				
+				<p:panel id="opnl" header="Opacity">
+					<h:outputText value="My opacity is lower when I'm being dragged" />
+				</p:panel>
+				<p:draggable for="opnl" opacity="0.3" />
+				
+				<p:panel id="gpnl" header="Grid">
+					<h:outputText value="I am dragged in grid mode" />
+				</p:panel>
+				<p:draggable for="gpnl" grid="20,40" />
+				
+				<p:outputPanel layout="block" style="width:400px;height:200px;border:1px solid #666666;">
+					<p:panel id="conpnl" header="Restricted">
+						<h:outputText value="I am restricted to my parent's boundaries" />
+					</p:panel>
+				</p:outputPanel>
+				<p:draggable for="conpnl" containment="parent" />
+				
+				<br />
+				
+				<h:graphicImage id="pic" value="/images/nature1.jpg" />
+				<p:draggable for="pic" />
+					
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="draggableBasic.xhtml">
+					<pre name="code" class="xml">
+&lt;p:panel id="pnl" header="Draggable Panel"&gt;
+	&lt;h:outputText value="I am actually a regular p:panel." /&gt;
+&lt;/p:panel&gt;
+&lt;p:draggable for="pnl" /&gt;
+
+&lt;p:panel id="handlepnl" header="Handle"&gt;
+	&lt;h:outputText value="I can only be dragged with my header." /&gt;
+&lt;/p:panel&gt;
+&lt;p:draggable for="handlepnl" handle="div.pf-panel-hd" /&gt;
+
+&lt;p:panel id="hpnl" header="Horizontal Only"&gt;
+	&lt;h:outputText value="I can only be dragged horizontally." /&gt;
+&lt;/p:panel&gt;
+&lt;p:draggable for="hpnl" axis="x" /&gt;
+
+&lt;p:panel id="vpnl" header="Vertical Only"&gt;
+	&lt;h:outputText value="I can only be dragged vertically" /&gt;
+&lt;/p:panel&gt;
+&lt;p:draggable for="vpnl" axis="y" /&gt;
+
+&lt;p:panel id="cpnl" header="Clone"&gt;
+	&lt;h:outputText value="I am cloned in dragging" /&gt;
+&lt;/p:panel&gt;
+&lt;p:draggable for="cpnl" helper="clone" /&gt;
+
+&lt;p:panel id="rpnl" header="Revert"&gt;
+	&lt;h:outputText value="I will be reverted back to my original position" /&gt;
+&lt;/p:panel&gt;
+&lt;p:draggable for="rpnl" revert="true" /&gt;
+
+&lt;p:panel id="opnl" header="Opacity"&gt;
+	&lt;h:outputText value="My opacity is lower when I'm being dragged" /&gt;
+&lt;/p:panel&gt;
+&lt;p:draggable for="opnl" opacity="0.3" /&gt;
+
+&lt;p:panel id="gpnl" header="Grid"&gt;
+	&lt;h:outputText value="I am dragged in grid mode" /&gt;
+&lt;/p:panel&gt;
+&lt;p:draggable for="gpnl" grid="20,40" /&gt;
+
+&lt;p:outputPanel layout="block" style="width:400px;height:200px;border:1px solid #666666;"&gt;
+	&lt;p:panel id="conpnl" header="Restricted"&gt;
+		&lt;h:outputText value="I am restricted to my parent's boundaries" /&gt;
+	&lt;/p:panel&gt;
+&lt;/p:outputPanel&gt;
+&lt;p:draggable for="conpnl" containment="parent" /&gt;
+
+&lt;h:graphicImage id="pic" value="/images/nature1.jpg" /&gt;
+&lt;p:draggable for="pic" /&gt;
+				</pre>
+					</p:tab>
+				</p:tabView>
+		
+		</div>		
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:i="http://primefaces.prime.com.tr/touch"
+	contentType="text/html">
+	
+	<i:application icon="/images/touch/translator.png">
+	
+		<f:facet name="meta">
+			<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+			<script type="text/javascript">
+			  google.load("language", "1");
+
+			  function translate() {
+				  var fromText = jQuery('#fromText').val(),
+				  fromLang = jQuery('#fromLang').val(),
+				  toLang = jQuery('#toLang').val();
+
+				  google.language.translate(fromText, fromLang, toLang, function(result) {
+					  if (!result.error) {
+						
+					   	jQuery('#toText').text(result.translation);
+					  }
+					});
+				  
+			  }
+			</script>
+		</f:facet>
+	
+		<i:view id="home" title="Translator">
+		
+			<i:tableView>
+			
+				<i:rowGroup title="From">
+					<i:rowItem>
+						<h:selectOneMenu id="fromLang">
+   							<f:selectItem itemLabel="English" itemValue="en" />
+   							<f:selectItem itemLabel="Turkish" itemValue="tr" />
+   							<f:selectItem itemLabel="Italian" itemValue="it" />
+   							<f:selectItem itemLabel="Spanish" itemValue="es" />
+   							<f:selectItem itemLabel="German" itemValue="de" />
+   							<f:selectItem itemLabel="French" itemValue="fr" />
+   							<f:selectItem itemLabel="Portuguese" itemValue="pt" />
+      					</h:selectOneMenu>
+					</i:rowItem>
+					<i:rowItem>
+						<h:inputTextarea id="fromText" style="height:50px;"/>
+					</i:rowItem>
+				</i:rowGroup>
+				
+				<h:outputLink style="margin:0 10px;" styleClass="whiteButton" value="#" onclick="translate();">Translate</h:outputLink>
+							
+				<i:rowGroup title="To">
+					<i:rowItem>
+						<h:selectOneMenu id="toLang">
+   							<f:selectItem itemLabel="English" itemValue="en" />
+   							<f:selectItem itemLabel="Turkish" itemValue="tr" />
+   							<f:selectItem itemLabel="Italian" itemValue="it" />
+   							<f:selectItem itemLabel="Spanish" itemValue="es" />
+   							<f:selectItem itemLabel="German" itemValue="de" />
+   							<f:selectItem itemLabel="French" itemValue="fr" />
+   							<f:selectItem itemLabel="Portuguese" itemValue="pt" />
+      					</h:selectOneMenu>
+					</i:rowItem>
+					<i:rowItem>
+						<h:inputTextarea id="toText" style="height:50px;"/>
+					</i:rowItem>
+				</i:rowGroup>
+				
+			</i:tableView>
+			
+			
+			
+		</i:view>
+	
+	</i:application>
+	
+</f:view>

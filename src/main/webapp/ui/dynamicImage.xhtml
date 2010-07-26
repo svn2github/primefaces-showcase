@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Dynamic Image Streaming</h1>
+		<div class="entry">
+						<p>DynamicImage is used to present images that are created programatically at runtime or images stored in database.</p>
+						
+							<h3>Database Image Simulation</h3>
+							<p:graphicImage value="#{dynamicImageController.image}" />
+							
+							<h3>JFreeChart on-the-fly</h3>
+							<p:graphicImage value="#{dynamicImageController.chart}" />
+							
+							<h3>Barcode on-the-fly</h3>
+							<p:graphicImage value="#{dynamicImageController.barcode}" />
+						
+						<h3>Source</h3>
+						<pre name="code" class="xml">
+&lt;h3&gt;Database Image Simulation&lt;/h3&gt;
+&lt;p:graphicImage value="\#{dynamicImageController.image}" /&gt;
+
+&lt;h3&gt;Barcode on-the-fly&lt;/h3&gt;
+&lt;p:graphicImage value="\#{dynamicImageController.barcode}" /&gt;
+						</pre>
+						
+<pre name="code" class="java">					
+package org.primefaces.examples.view;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.logging.Logger;
+
+import net.sourceforge.barbecue.BarcodeFactory;
+import net.sourceforge.barbecue.BarcodeImageHandler;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+import org.primefaces.ui.model.io.DefaultStreamedContent;
+import org.primefaces.ui.model.io.StreamedContent;
+
+public class DynamicImageController {
+
+	private StreamedContent image;
+	
+	private StreamedContent barcode;
+	
+	private StreamedContent chart;
+
+	private static final Logger logger = Logger.getLogger(DynamicImageController.class.getName());
+
+	public DynamicImageController() {
+		//Database image simulation
+		InputStream stream = this.getClass().getResourceAsStream("optimusprime.jpg");
+		image = new DefaultStreamedContent(stream, "image/jpeg");
+		
+		//Chart
+		try {
+			JFreeChart jfreechart = ChartFactory.createPieChart("Turkish Cities", createDataset(), true, true, false);
+			File chartFile = new File("dynamichart");
+			ChartUtilities.saveChartAsPNG(chartFile, jfreechart, 375, 300);
+			chart = new DefaultStreamedContent(new FileInputStream(chartFile), "image/png");
+		} catch (Exception e) {
+			logger.severe(e.getMessage());
+		}
+	
+		//Barcode
+		try {
+			File barcodeFile = new File("dynamicbarcode");
+			BarcodeImageHandler.saveJPEG(BarcodeFactory.createCode128("PRIMEFACES"), barcodeFile);
+			barcode = new DefaultStreamedContent(new FileInputStream(barcodeFile), "image/jpeg");
+		} catch (Exception e) {
+			logger.severe(e.getMessage());
+		}
+	}
+	
+	public StreamedContent getBarcode() {
+		return barcode;
+	}
+	public void setBarcode(StreamedContent barcode) {
+		this.barcode = barcode;
+	}
+	
+	public StreamedContent getImage() {
+		return image;
+	}
+	public void setImage(StreamedContent image) {
+		this.image = image;
+	}
+	
+	public StreamedContent getChart() {
+		return chart;
+	}
+	public void setChart(StreamedContent chart) {
+		this.chart = chart;
+	}
+	
+	private PieDataset createDataset() {
+		DefaultPieDataset dataset = new DefaultPieDataset();
+		dataset.setValue("Istanbul", new Double(45.0));
+		dataset.setValue("Ankara", new Double(15.0));
+		dataset.setValue("Izmir", new Double(25.2));
+		dataset.setValue("Antalya", new Double(14.8));
+
+		return dataset;
+	}
+}
+</pre>						
+				
+		</div>
+
+	</ui:define>
+</ui:composition>

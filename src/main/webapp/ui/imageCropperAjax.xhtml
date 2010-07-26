@@ -1,0 +1,116 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">ImageCropper</h1>
+		<div class="entry">
+			<p>ImageCropper is used to extract a certain part of an image and assign it to a new image value. ImageCropper is capable
+				of both cropping local or external images.</p>
+				
+				<h:form>
+					<h:panelGrid columns="2">
+						<p:imageCropper value="#{imageCropperBean.croppedImage}" image="/ui/barca/campnou.jpg" />
+						
+						<p:graphicImage id="localCroppedImage" value="barca/#{imageCropperBean.newImageName}.jpg" />
+					</h:panelGrid>
+					
+					<h:panelGrid columns="2">
+						<p:commandButton value="Crop" action="#{imageCropperBean.crop}" update="localCroppedImage"/>
+						
+						<p:ajaxStatus style="height:24px;display:block;">
+							<f:facet name="start">
+								<h:graphicImage value="../design/ajaxloading.gif" />
+							</f:facet>
+						
+							<f:facet name="complete">
+								<h:outputText value="" />
+							</f:facet>
+						</p:ajaxStatus>
+					</h:panelGrid>
+				</h:form>
+				
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="imageCropper.xhtml">
+						<pre name="code" class="xml">
+&lt;h:form&gt;
+	&lt;h:panelGrid columns="2"&gt;
+		&lt;p:imageCropper value="\#{imageCropperBean.croppedImage}" image="/ui/barca/campnou.jpg" /&gt;
+		
+		&lt;p:graphicImage id="localCroppedImage" value="barca/\#{imageCropperBean.newImageName}.jpg" /&gt;
+	&lt;/h:panelGrid&gt;
+	
+	&lt;h:panelGrid columns="2"&gt;
+		&lt;p:commandButton value="Crop" action="\#{imageCropperBean.crop}" update="localCroppedImage"/&gt;
+		
+		&lt;p:ajaxStatus style="height:24px;display:block;"&gt;
+			&lt;f:facet name="start"&gt;
+				&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+			&lt;/f:facet&gt;
+		
+			&lt;f:facet name="complete"&gt;
+				&lt;h:outputText value="" /&gt;
+			&lt;/f:facet&gt;
+		&lt;/p:ajaxStatus&gt;
+	&lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+						</pre>
+					</p:tab>
+					
+					<p:tab title="ImageCropperBean">
+						<pre name="code" class="java">
+package org.primefaces.examples.view;
+						
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import javax.faces.context.FacesContext;
+import javax.imageio.stream.FileImageOutputStream;
+import javax.servlet.ServletContext;
+
+import org.primefaces.ui.model.imagecropper.CroppedImage;
+
+public class ImageCropperBean {
+	
+	private CroppedImage croppedImage;
+	
+	public CroppedImage getCroppedImage() {
+		return croppedImage;
+	}
+
+	public void setCroppedImage(CroppedImage croppedImage) {
+		this.croppedImage = croppedImage;
+	}
+
+	public String crop() {
+		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+		String newFileName = servletContext.getRealPath("") + File.separator + "ui" + File.separator + "barca" + File.separator+ "croppedImage.jpg";
+		
+		FileImageOutputStream imageOutput;
+		try {
+			imageOutput = new FileImageOutputStream(new File(newFileName));
+			imageOutput.write(croppedImage.getBytes(), 0, croppedImage.getBytes().length);
+			imageOutput.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+}
+			</pre>
+
+					</p:tab>
+				</p:tabView>
+		</div>
+
+	</ui:define>
+</ui:composition>

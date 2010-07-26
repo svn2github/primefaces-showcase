@@ -1,0 +1,220 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.barca {
+				background: url(../images/barca_logo.png) no-repeat 2%;
+			 	padding-left:20px !important;
+			}
+		</style>
+		<!--[if IE 7]>
+			<style type="text/css">
+				.ui-menu .ui-menu-item {
+					width:120px;
+				}
+				
+				.ui-menu-item-label .helptext {
+					margin:-1.5em 0 0 5em;
+				}
+			</style>
+		<![endif]-->
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Menubar</h1>
+		<div class="entry">
+			<p>Menubar brings the desktop application menubars to JSF. Using menuitems, it is very easy to execute both ajax and non-ajax actions
+			as well as directly navigating to other resources.</p>
+			
+			<h:form id="form">
+				
+				<p:growl id="messages"/>
+				
+				<p:menubar>
+					<p:submenu label="Barca" labelStyleClass="barca">
+						<p:menuitem value="Home" url="http://www.fcbarcelona.com"></p:menuitem>
+					</p:submenu>
+					
+					<p:submenu label="File">
+						<p:submenu>
+							<f:facet name="label">
+								<p:menuitem value="New" icon="/images/new.png"/>
+							</f:facet>
+							<p:menuitem value="Project" url="#" helpText="CTRL+N"/>
+							<p:menuitem value="Other" url="#" helpText="CTRL+O"/>
+						</p:submenu>
+						<p:menuitem value="Open" url="#" icon="/images/open.png" />
+						<p:menuitem value="Quit" url="#"></p:menuitem>
+					</p:submenu>
+					
+					<p:submenu label="Edit">
+						<p:menuitem value="Undo" url="#" styleClass="undo" helpText="CTRL+Z" icon="/images/undo.png"></p:menuitem>
+						<p:menuitem value="Redo" url="#" styleClass="redo" helpText="CTRL+Y" icon="/images/redo.png"></p:menuitem>
+					</p:submenu>
+					
+					<p:submenu label="Help">
+						<p:menuitem value="Contents" url="#"></p:menuitem>
+						<p:submenu>
+							<f:facet name="label">
+								<p:menuitem value="Search" icon="/images/search.png" />
+							</f:facet>
+							
+							<p:submenu label="Text">
+								<p:menuitem value="Workspace" url="#" />
+							</p:submenu>
+							<p:menuitem value="File" url="#" />
+						</p:submenu>
+					</p:submenu>
+					
+					<p:submenu label="Actions">
+						<p:submenu label="Ajax">
+							<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages"/>
+							<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages"/>
+						</p:submenu>
+						<p:submenu label="Non-Ajax">
+							<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false"/>
+						</p:submenu>
+					</p:submenu>
+					
+					<p:submenu>
+						<f:facet name="label">
+							<p:menuitem value="Quit" url="http://www.primefaces.org" />
+						</f:facet>
+					</p:submenu>
+				</p:menubar>
+				
+				<p:ajaxStatus style="width:16px;height:16px;">
+					<f:facet name="start">
+						<h:graphicImage value="../design/ajaxloading.gif" />
+					</f:facet>
+					
+					<f:facet name="complete">
+						<h:outputText value="" />
+					</f:facet>
+				</p:ajaxStatus>
+			
+			</h:form>
+		
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="menubar.xhtml">
+<pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+
+	&lt;p:growl id="messages"/&gt;
+
+	&lt;p:menubar&gt;
+		&lt;p:submenu label="Barca" labelStyleClass="barca"&gt;
+			&lt;p:menuitem value="Home" url="http://www.fcbarcelona.com"&gt;&lt;/p:menuitem&gt;
+		&lt;/p:submenu&gt;
+		
+		&lt;p:submenu label="File"&gt;
+			&lt;p:submenu&gt;
+				&lt;f:facet name="label"&gt;
+					&lt;p:menuitem value="New" icon="/images/new.png"/&gt;
+				&lt;/f:facet&gt;
+				&lt;p:menuitem value="Project" url="\#" helpText="CTRL+N"/&gt;
+				&lt;p:menuitem value="Other" url="\#" helpText="CTRL+O"/&gt;
+			&lt;/p:submenu&gt;
+			&lt;p:menuitem value="Open" url="\#" icon="/images/open.png" /&gt;
+			&lt;p:menuitem value="Quit" url="\#"&gt;&lt;/p:menuitem&gt;
+		&lt;/p:submenu&gt;
+		
+		&lt;p:submenu label="Edit"&gt;
+			&lt;p:menuitem value="Undo" url="\#" styleClass="undo" 
+						helpText="CTRL+Z" icon="/images/undo.png"&gt;&lt;/p:menuitem&gt;
+			&lt;p:menuitem value="Redo" url="\#" styleClass="redo" 
+						helpText="CTRL+Y" icon="/images/redo.png"&gt;&lt;/p:menuitem&gt;
+		&lt;/p:submenu&gt;
+		
+		&lt;p:submenu label="Help"&gt;
+			&lt;p:menuitem value="Contents" url="\#"&gt;&lt;/p:menuitem&gt;
+			&lt;p:submenu&gt;
+				&lt;f:facet name="label"&gt;
+					&lt;p:menuitem value="Search" icon="/images/search.png" /&gt;
+				&lt;/f:facet&gt;
+				
+				&lt;p:submenu label="Text"&gt;
+					&lt;p:menuitem value="Workspace" url="\#" /&gt;
+				&lt;/p:submenu&gt;
+				&lt;p:menuitem value="File" url="\#" /&gt;
+			&lt;/p:submenu&gt;
+		&lt;/p:submenu&gt;
+		
+		&lt;p:submenu label="Actions"&gt;
+			&lt;p:submenu label="Ajax"&gt;
+				&lt;p:menuitem value="Save" update="messages" 
+						actionListener="\#{menuBean.save}" /&gt;
+				&lt;p:menuitem value="Update" update="messages" 
+						actionListener="\#{menuBean.update}" /&gt;
+			&lt;/p:submenu&gt;
+			&lt;p:submenu label="Non-Ajax"&gt;
+				&lt;p:menuitem value="Delete" update="messages" ajax="false" 
+						actionListener="\#{menuBean.delete}" /&gt;
+			&lt;/p:submenu&gt;
+		&lt;/p:submenu&gt;
+		
+		&lt;p:submenu&gt;
+			&lt;f:facet name="label"&gt;
+				&lt;p:menuitem value="Quit" url="http://www.primefaces.org" /&gt;
+			&lt;/f:facet&gt;
+		&lt;/p:submenu&gt;
+	&lt;/p:menubar&gt;
+	
+	&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+		&lt;f:facet name="start"&gt;
+			&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+		&lt;/f:facet&gt;
+		
+		&lt;f:facet name="complete"&gt;
+			&lt;h:outputText value="" /&gt;
+		&lt;/f:facet&gt;
+	&lt;/p:ajaxStatus&gt;
+
+&lt;/h:form&gt;
+			</pre>
+				</p:tab>
+				
+				<p:tab title="MenuBean.java">
+<pre name="code" class="xml">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+public class MenuBean {
+	
+	public void save(ActionEvent actionEvent) {
+		addMessage("Data saved");
+	}
+	
+	public void update(ActionEvent actionEvent) {
+		addMessage("Data updated");
+	}
+	
+	public void delete(ActionEvent actionEvent) {
+		addMessage("Data deleted");
+	}
+	
+	public void addMessage(String summary) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+
+			</pre>
+				</p:tab>
+			</p:tabView>
+			
+		
+		</div>
+
+	</ui:define>
+</ui:composition>

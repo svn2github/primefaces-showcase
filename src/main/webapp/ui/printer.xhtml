@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Printer</h1>
+		<div class="entry">
+                <p>Printer is used to print only a certain JSF component, not the whole page. A printer is very
+                flexible and can be attached to any command trigger like buttons and links.</p>
+                
+                <h:outputLink id="lnk" value="#">
+                	<p:printer target="image" />
+                	<p:graphicImage value="/images/print.png" />
+                </h:outputLink>
+                
+                <br /><br />
+	                
+	         	<p:graphicImage id="image" value="/images/nature1.jpg" />
+				
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="printer.xhtml">
+					<pre name="code" class="xml">
+&lt;h:outputLink id="lnk" value="\#"&gt;
+	&lt;p:printer target="image" /&gt;
+	&lt;p:graphicImage value="/images/print.png" /&gt;
+&lt;/h:outputLink&gt;
+  
+&lt;p:graphicImage id="image" value="/images/nature1.jpg" /&gt;
+					</pre>
+					</p:tab>
+				</p:tabView>
+
+     </div>
+      
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.hidden {
+				display:none;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Effect Target</h1>
+			<div class="entry">
+							<p>By default, effects apply to their parents, this can be tuned with the for attribute so that effects are applied to another component.</p>
+							
+							<h:outputLink id="lnk" value="#">
+								<h:outputText value="Show the Barca Temple" />
+								<p:effect type="puff" event="click" for="img">
+									<f:param name="mode" value="'show'" />
+								</p:effect>
+							</h:outputLink>
+							
+							<br />
+					
+							<h:graphicImage id="img" value="/ui/barca/campnou.jpg" style="display:none"/>							
+							
+							<h3>Source</h3>
+							<pre name="code" class="xml">
+&lt;h:outputLink id="lnk" value="#"&gt;
+	&lt;h:outputText value="Show the Barca Temple" /&gt;
+	&lt;p:effect type="puff" event="click" for="img"&gt;
+		&lt;f:param name="mode" value="'show'" /&gt;
+	&lt;/p:effect&gt;
+&lt;/h:outputLink&gt;
+
+&lt;h:graphicImage id="img" value="/ui/barca/campnou.jpg" style="display:none"/&gt;
+							</pre>
+						
+		</div>
+
+	</ui:define>
+</ui:composition>

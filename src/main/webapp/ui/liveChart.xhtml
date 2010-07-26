@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="head">
+		<script type="text/javascript">
+			var chartStyle = {
+				padding:20,
+				legend: {
+					display:"right",
+					spacing:10
+				}
+			};
+		</script>
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Charts - Live Data</h1>
+		<div class="entry">
+					<h:form>
+		                <p>This example displays an ongoing election between two candidates. Votes are updated live and displayed on a pie chart.</p>
+		                
+						<p:pieChart id="votes" value="#{chartBean.votes}" var="vote" 
+										live="true" refreshInterval="3000" categoryField="#{vote.candidate}" dataField="#{vote.count}" 
+										style="chartStyle"/>
+																
+					</h:form>
+					
+						<h3>Source</h3>
+				<pre name="code" class="xml">
+&lt;p:pieChart id="votes" value="\#{chartBean.votes}" var="vote" 
+			live="true" refreshInterval="3000" 
+			categoryField="\#{vote.candidate}" dataField="\#{vote.count}" 
+			style="chartStyle"/&gt;
+				</pre>
+				
+				<pre name="code" class="java">
+public List&lt;Vote&gt; getVotes() {
+	int random1 = (int)(Math.random() * 1000);
+	int random2 = (int)(Math.random() * 1000);
+	
+	//add more votes
+	votes.get(0).add(random1);
+	votes.get(1).add(random2);
+		
+	return votes;
+}
+				</pre>
+		          </div>
+		    
+	</ui:define>
+</ui:composition>

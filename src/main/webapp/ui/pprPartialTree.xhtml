@@ -1,0 +1,184 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">PPR - Partial Tree Process</h1>
+		<div class="entry">
+			<p>You can choose which components to process in JSF lifecycle using the process attribute. This is very useful to do partial validations, model update, invoke application and more.
+			This simply makes immediate, subforms and regions obselete. Keywords like @this, @form, @all, @none, @parent makes it even easier to choose what to process. Another important feature is that this process is also available for regular page submits not
+			just for ajax. Following example demonstrates several combinations.</p>
+
+			<p:ajaxStatus style="width:16px;height:16px;">
+				<f:facet name="start">
+					<h:graphicImage value="../design/ajaxloading.gif" />
+				</f:facet>
+				
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+
+			<h:form>
+				
+				<p:panel header="Partial Process">
+					
+					<h:panelGrid id="grid" columns="2" style="margin-bottom:10px">
+						<f:facet name="header">
+							<p:messages />
+						</f:facet>
+					
+						<h:outputLabel for="firstname" value="Firstname:" />
+						<h:inputText id="firstname" value="#{personBean.firstname}" />
+								
+						<h:outputLabel for="surname" value="Surname: *" />
+						<h:inputText id="surname" value="#{personBean.surname}" required="true"/>
+					</h:panelGrid>
+					
+				</p:panel>
+				
+				<h:panelGrid columns="6" cellpadding="5">
+					<f:facet name="header">
+						Ajax
+					</f:facet>
+					<p:commandButton value="All" process="@all" update="grid" actionListener="#{personBean.savePerson}"/>
+					<p:commandButton value="Form" process="@form" update="grid" actionListener="#{personBean.savePerson}"/>
+					<p:commandButton value="This" process="@this" update="grid" actionListener="#{personBean.savePerson}"/>
+					<p:commandButton value="None" process="@none" update="grid" actionListener="#{personBean.savePerson}"/>
+					<p:commandButton value="Parent" process="@parent" update="grid" actionListener="#{personBean.savePerson}"/>
+					<p:commandButton value="This Surname" process="@this,surname" update="grid" actionListener="#{personBean.savePerson}"/>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="6" cellpadding="5">
+					<f:facet name="header">
+						Non-Ajax
+					</f:facet>
+					<p:commandButton value="All" process="@all" actionListener="#{personBean.savePerson}" ajax="false"/>
+					<p:commandButton value="Form" process="@form" actionListener="#{personBean.savePerson}" ajax="false"/>
+					<p:commandButton value="This" process="@this" actionListener="#{personBean.savePerson}" ajax="false"/>
+					<p:commandButton value="None" process="@none" actionListener="#{personBean.savePerson}" ajax="false"/>
+					<p:commandButton value="Parent" process="@parent" actionListener="#{personBean.savePerson}" ajax="false"/>
+					<p:commandButton value="This Surname" process="@this,surname" actionListener="#{personBean.savePerson}" ajax="false"/>
+				</h:panelGrid>
+				
+			</h:form>
+		
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="pprPartialTree.xhtml">
+					<pre name="code" class="xml">
+&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+	&lt;f:facet name="start"&gt;
+		&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+	&lt;/f:facet&gt;
+	
+	&lt;f:facet name="complete"&gt;
+		&lt;h:outputText value="" /&gt;
+	&lt;/f:facet&gt;
+&lt;/p:ajaxStatus&gt;
+
+&lt;h:form&gt;
+	
+	&lt;p:panel header="Partial Process"&gt;
+		
+		&lt;h:panelGrid id="grid" columns="2" style="margin-bottom:10px"&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;p:messages /&gt;
+			&lt;/f:facet&gt;
+		
+			&lt;h:outputLabel for="firstname" value="Firstname:" /&gt;
+			&lt;h:inputText id="firstname" 
+						value="\#{personBean.firstname}" /&gt;
+					
+			&lt;h:outputLabel for="surname" value="Surname: *" /&gt;
+			&lt;h:inputText id="surname" 
+						value="\#{personBean.surname}" required="true"/&gt;
+		&lt;/h:panelGrid&gt;
+		
+	&lt;/p:panel&gt;
+	
+	&lt;h:panelGrid columns="6" cellpadding="5"&gt;
+		&lt;f:facet name="header"&gt;
+			Ajax
+		&lt;/f:facet&gt;
+		&lt;p:commandButton value="All" process="@all" update="grid" 
+					actionListener="\#{personBean.savePerson}"/&gt;
+		&lt;p:commandButton value="Form" process="@form" update="grid" 
+					actionListener="\#{personBean.savePerson}"/&gt;
+		&lt;p:commandButton value="This" process="@this" update="grid" 
+					actionListener="\#{personBean.savePerson}"/&gt;
+		&lt;p:commandButton value="None" process="@none" update="grid" 
+					actionListener="\#{personBean.savePerson}"/&gt;
+		&lt;p:commandButton value="Parent" process="@parent" update="grid" 
+					actionListener="\#{personBean.savePerson}"/&gt;
+		&lt;p:commandButton value="This Surname" process="@this,surname" update="grid" 
+					actionListener="\#{personBean.savePerson}"/&gt;
+	&lt;/h:panelGrid&gt;
+	
+	&lt;h:panelGrid columns="6" cellpadding="5"&gt;
+		&lt;f:facet name="header"&gt;
+			Non-Ajax
+		&lt;/f:facet&gt;
+		&lt;p:commandButton value="All" process="@all" 
+				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
+		&lt;p:commandButton value="Form" process="@form" 
+				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
+		&lt;p:commandButton value="This" process="@this" 
+				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
+		&lt;p:commandButton value="None" process="@none" 
+				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
+		&lt;p:commandButton value="Parent" process="@parent" 
+				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
+		&lt;p:commandButton value="This Surname" process="@this,surname" 
+				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
+	&lt;/h:panelGrid&gt;
+	
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="PersonBean.java">
+							
+			<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+public class PersonBean {
+
+	private String firstname;
+	
+	private String surname;
+
+	public String getFirstname() {
+		return firstname;
+	}
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+	
+	public void savePerson(ActionEvent actionEvent) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome " + firstname + " " + surname + "!"));
+	}
+}
+			</pre>
+				</p:tab>
+			</p:tabView>
+
+		</div>
+				
+	</ui:define>
+</ui:composition>

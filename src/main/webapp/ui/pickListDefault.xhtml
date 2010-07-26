@@ -1,0 +1,115 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.ui-picklist-source, .ui-picklist-target {
+				width: 100px;
+				height: 100px;
+			}
+			
+			.col1, .col2 {
+				vertical-align: top; 
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">PickList</h1>
+		<div class="entry">
+                 
+			<p:ajaxStatus style="height:24px;display:block;">
+					<f:facet name="start">
+						<h:graphicImage value="../design/ajaxloadingbar.gif" />
+					</f:facet>
+					
+					<f:facet name="complete">
+						<h:outputText value="" />
+					</f:facet>
+			</p:ajaxStatus>
+
+				<h:form id="form">
+					<p:pickList value="#{pickListBean.cities}" var="city" 
+								itemLabel="#{city}" itemValue="#{city}" />
+					
+					<br />
+				
+					<p:commandButton value="Submit" update="form:display"/>
+					
+					<br />	<br />
+					
+					<p:outputPanel id="display">
+						<table>
+							<tr>
+								<td><strong>Source</strong></td>
+								<td><strong>Target</strong></td>
+							</tr>
+							
+							<tr>
+								<td valign="top">
+									<ui:repeat value="#{pickListBean.cities.source}" var="item">
+										<h:outputText value="#{item}" />
+										<br />
+									</ui:repeat>
+								</td>
+								<td valign="top">
+									<ui:repeat value="#{pickListBean.cities.target}" var="item">
+										<h:outputText value="#{item}" />
+										<br />
+									</ui:repeat>
+								</td>
+							</tr>
+						</table>
+					</p:outputPanel>
+					
+				</h:form>
+				
+				<h3>Source</h3>
+				<pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+	&lt;p:pickList value="\#{pickListBean.cities}" var="city" 
+				itemLabel="\#{city}" itemValue="\#{city}"&gt;
+	&lt;/p:pickList&gt;
+	
+	&lt;br /&gt;
+
+	&lt;p:commandButton value="Submit" update="form:display"/&gt;
+	
+	&lt;br /&gt;	&lt;br /&gt;
+	
+	&lt;p:outputPanel id="display"&gt;
+		&lt;table&gt;
+			&lt;tr&gt;
+				&lt;td&gt;&lt;strong&gt;Source&lt;/strong&gt;&lt;/td&gt;
+				&lt;td&gt;&lt;strong&gt;Target&lt;/strong&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			
+			&lt;tr&gt;
+				&lt;td valign="top"&gt;
+					&lt;ui:repeat value="\#{pickListBean.cities.source}" var="item"&gt;
+						&lt;h:outputText value="\#{item}" /&gt;
+						&lt;br /&gt;
+					&lt;/ui:repeat&gt;
+				&lt;/td&gt;
+				&lt;td valign="top"&gt;
+					&lt;ui:repeat value="\#{pickListBean.cities.target}" var="item"&gt;
+						&lt;h:outputText value="\#{item}" /&gt;
+						&lt;br /&gt;
+					&lt;/ui:repeat&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+	&lt;/p:outputPanel&gt;
+	
+&lt;/h:form&gt;
+				
+		</pre>
+            
+	</div>
+
+	</ui:define>
+</ui:composition>

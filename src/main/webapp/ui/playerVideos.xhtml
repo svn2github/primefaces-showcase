@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/mainTemplate.xhtml">
+
+	<ui:define name="content">
+	
+		<div id="cols">
+		    <div class="main box">
+		    
+		        <div id="content">
+		     
+		            <div id="content-in" class="box">
+		        	<h2>Media</h2>
+		        	<p>Media component is a cross browser generic player that makes it very easy to embed
+		        	multimedia content to JSF pages. Depending on the user-agent media either renders an object or an embed tag.</p>
+		        	<p>Suitable player is discovered using the source type or a player can be specified explicitly.</p>
+
+					<h3>QuickTime</h3>
+					<p:media value="/media/ria_with_primefaces.mov" width="250" height="225"/>
+					
+					<h3>Flash</h3>
+					<p:media value="http://www.youtube.com/v/KZnUr8lcqjo" width="425" height="344" player="flash"/>
+					
+					<h3>Windows Media</h3>
+					
+					<h3>Real Media</h3>
+					<p:media value="http://service.real.com/learnnav/testrams/realvideo10_56.ram"/>
+					
+					<h3>Source</h3>
+				<pre name="code" class="xml">
+&lt;h3&gt;QuickTime&lt;/h3&gt;
+&lt;p:media value="/media/ria_with_primefaces.mov" width="250" height="225"/&gt;
+
+&lt;h3&gt;Flash&lt;/h3&gt;
+&lt;p:media value="http://www.youtube.com/v/KZnUr8lcqjo" width="425" height="344" player="flash"/&gt;
+
+&lt;h3&gt;Windows Media&lt;/h3&gt;
+
+&lt;h3&gt;Real Media&lt;/h3&gt;
+&lt;p:media value="http://service.real.com/learnnav/testrams/realvideo10_56.ram"/&gt;
+
+				</pre>
+		            </div>
+		                    
+		        </div>
+				
+		        <hr class="noscreen" />
+		
+		        <div id="aside">
+		            
+		            <ui:include src="../templates/components.xhtml" />
+		            
+		        </div>
+		    
+		    </div>
+		</div>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">TabView</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/tabView.jsf" value="Simple TabView" />
+					<p:menuitem url="/ui/tabViewAjax.jsf" value="Dynamic Content" />
+					<!--  <p:menuitem url="/ui/tabViewAddRemove.jsf" value="Add/Remove Tabs" /> -->
+					<p:menuitem url="/ui/tabviewCollapsible.jsf" value="Collapsible" />
+					<p:menuitem url="/ui/tabviewHover.jsf" value="Hover Display" />
+					<p:menuitem url="/ui/tabviewEffects.jsf" value="Effects" />
+				</p:submenu>
+			</p:menu>
+			<span class="homeText">TabView is a powerful tabbed panel component featuring client side tabs, dynamic content loading with ajax, different orientations, creating/removing tabs programmatically
+				and easy skinning.</span>	
+
+		</div>
+			
+
+	</ui:define>
+</ui:composition>

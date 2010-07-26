@@ -1,0 +1,114 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">GMap - Draggable Markers</h1>
+		<div class="entry">
+			<p>When a draggable marker is dragged and dropped, a server side markerDragListener can be invoked passing a MarkerDragEvent that
+			contains a reference to the dragged marker whose positon is updated already.</p>
+			
+			<p:ajaxStatus style="width:16px;height:16px;">
+				<f:facet name="start">
+					<h:graphicImage value="../design/ajaxloading.gif" />
+				</f:facet>
+				
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+	
+			<h:form>
+			
+				<p:growl id="growl" showDetail="true"/>
+				
+				<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px"
+					model="#{mapBean.draggableModel}" markerDragListener="#{mapBean.onMarkerDrag}" onMarkerDragUpdate="growl" />
+
+			</h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="gmapDraggableMarkers.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+			
+	&lt;p:growl id="growl" showDetail="true"/&gt;
+	
+	&lt;p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" 
+			style="width:600px;height:400px"
+			model="\#{mapBean.draggableModel}"
+			markerDragListener="\#{mapBean.onMarkerDrag}" 
+			onMarkerDragUpdate="growl" /&gt;
+
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="MapBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.map.MarkerDragEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+
+public class MapBean implements Serializable {
+
+	private MapModel draggableModel;
+
+	public MapBean() {
+		draggableModel = new DefaultMapModel();
+		
+		//Shared coordinates
+		LatLng coord1 = new LatLng(36.879466, 30.667648);
+		LatLng coord2 = new LatLng(36.883707, 30.689216);
+		LatLng coord3 = new LatLng(36.879703, 30.706707);
+		LatLng coord4 = new LatLng(36.885233, 30.702323);
+		
+		//Draggable
+		draggableModel.addOverlay(new Marker(coord1, "Konyaalti"));
+		draggableModel.addOverlay(new Marker(coord2, "Ataturk Parki"));
+		draggableModel.addOverlay(new Marker(coord3, "Karaalioglu Parki"));
+		draggableModel.addOverlay(new Marker(coord4, "Kaleici"));
+		
+		for(Marker marker : draggableModel.getMarkers()) {
+			marker.setDraggable(true);
+		}
+	}
+	
+	public MapModel getDraggableModel() {
+		return draggableModel;
+	}
+	
+	public void onMarkerDrag(MarkerDragEvent event) {
+		marker = event.getMarker();
+		
+		addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Dragged", "Lat:" + marker.getLatlng().getLat() + ", Lng:" + marker.getLatlng().getLng()));
+	}
+	
+	public void addMessage(FacesMessage message) {
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+					</pre>
+				</p:tab>
+			</p:tabView>									
+		</div>
+	</ui:define>
+</ui:composition>

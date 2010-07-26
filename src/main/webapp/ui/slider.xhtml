@@ -1,0 +1,195 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Slider</h1>
+		<div class="entry">
+			<p>Slider is used to provide input in various ways.</p>
+			
+			<h:form>
+				<h3>Input Text Slider</h3>
+				<h:panelGrid columns="1" style="margin-bottom:10px">
+					<h:inputText id="txt1" value="#{sliderBean.number1}" />
+					<p:slider for="txt1" value="#{sliderBean.number1}"/>
+				</h:panelGrid>
+				
+				<h3>Hidden Input Slider with Display Value</h3>
+				<h:panelGrid columns="1" style="margin-bottom:10px">
+					<h:panelGroup>
+						<h:outputText value="Set ratio to %"/>
+						<h:outputText id="output" value="#{sliderBean.number2}"/>
+					</h:panelGroup> 
+					
+					<h:inputHidden id="txt2" value="#{sliderBean.number2}" />
+					<p:slider for="txt2" display="output" value="#{sliderBean.number2}" style="width:200px" />
+				</h:panelGrid>
+				
+				<h3>Slider with Step Factor</h3>
+				<h:panelGrid columns="1" style="margin-bottom:10px">
+					<h:inputText id="txt3" value="#{sliderBean.number3}"/>
+					<p:slider for="txt3" value="#{sliderBean.number3}" step="10"/>
+				</h:panelGrid>
+				
+				<h3>Vertical Slider</h3>
+				<h:panelGrid columns="1" style="margin-bottom:10px">
+					<h:inputText id="txt4" value="#{sliderBean.number4}"/>
+					<p:slider for="txt4" value="#{sliderBean.number4}" type="vertical" />
+				</h:panelGrid>
+				
+				<h:panelGrid columns="2">
+					<p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
+					
+					<p:ajaxStatus style="width:16px;height:16px;">
+						<f:facet name="start">
+							<h:graphicImage value="../design/ajaxloading.gif" />
+						</f:facet>
+						
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+					</p:ajaxStatus>
+				</h:panelGrid>
+				
+				
+				<p:dialog header="Slider Values" widgetVar="dialog" 
+					showEffect="bounce" width="200">
+					
+					<h:panelGrid id="display" columns="1" cellpadding="5">
+						<h:outputText value="Number 1: #{sliderBean.number1}" />
+						
+						<h:outputText value="Number 2: #{sliderBean.number2}" />
+						
+						<h:outputText value="Number 3: #{sliderBean.number3}" />
+						
+						<h:outputText value="Number 3: #{sliderBean.number4}" />
+					</h:panelGrid>
+					
+				</p:dialog>	
+				
+			</h:form>
+		
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="slider.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+	&lt;h3&gt;Input Text Slider&lt;/h3&gt;
+	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
+		&lt;h:inputText id="txt1" value="\#{sliderBean.number1}" /&gt;
+		&lt;p:slider for="txt1" value="\#{sliderBean.number1}"/&gt;
+	&lt;/h:panelGrid&gt;
+	
+	&lt;h3&gt;Hidden Input Slider with Display Value&lt;/h3&gt;
+	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
+		&lt;h:panelGroup&gt;
+			&lt;h:outputText value="Set ratio to %"/&gt;
+			&lt;h:outputText id="output" value="\#{sliderBean.number2}"/&gt;
+		&lt;/h:panelGroup&gt; 
+		
+		&lt;h:inputHidden id="txt2" value="\#{sliderBean.number2}" /&gt;
+		&lt;p:slider for="txt2" display="output" 
+			value="\#{sliderBean.number2}" style="width:200px" /&gt;
+	&lt;/h:panelGrid&gt;
+	
+	&lt;h3&gt;Slider with Step Factor&lt;/h3&gt;
+	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
+		&lt;h:inputText id="txt3" value="\#{sliderBean.number3}"/&gt;
+		&lt;p:slider for="txt3" value="\#{sliderBean.number3}" step="10"/&gt;
+	&lt;/h:panelGrid&gt;
+	
+	&lt;h3&gt;Vertical Slider&lt;/h3&gt;
+	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
+		&lt;h:inputText id="txt4" value="\#{sliderBean.number4}"/&gt;
+		&lt;p:slider for="txt4" value="\#{sliderBean.number4}" type="vertical" /&gt;
+	&lt;/h:panelGrid&gt;
+	
+	&lt;h:panelGrid columns="2"&gt;
+		&lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
+		
+		&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+			&lt;f:facet name="start"&gt;
+				&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+			&lt;/f:facet&gt;
+			
+			&lt;f:facet name="complete"&gt;
+				&lt;h:outputText value="" /&gt;
+			&lt;/f:facet&gt;
+		&lt;/p:ajaxStatus&gt;
+	&lt;/h:panelGrid&gt;
+	
+	
+	&lt;p:dialog header="Slider Values" widgetVar="dialog" 
+		showEffect="bounce" hideEffect="fold" width="200"&gt;
+		
+		&lt;h:panelGrid id="display" columns="1" cellpadding="5"&gt;
+			&lt;h:outputText value="Number 1: \#{sliderBean.number1}" /&gt;
+			
+			&lt;h:outputText value="Number 2: \#{sliderBean.number2}" /&gt;
+			
+			&lt;h:outputText value="Number 3: \#{sliderBean.number3}" /&gt;
+			
+			&lt;h:outputText value="Number 3: \#{sliderBean.number4}" /&gt;
+		&lt;/h:panelGrid&gt;
+		
+	&lt;/p:dialog&gt;	
+	
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="SliderBean.java">
+			<pre name="code" class="java">
+public class SliderBean {
+
+	private int number1;
+	
+	private int number2;
+	
+	private int number3;
+	
+	private int number4;
+
+	public int getNumber1() {
+		return number1;
+	}
+
+	public void setNumber1(int number1) {
+		this.number1 = number1;
+	}
+
+	public int getNumber2() {
+		return number2;
+	}
+
+	public void setNumber2(int number2) {
+		this.number2 = number2;
+	}
+
+	public int getNumber3() {
+		return number3;
+	}
+
+	public void setNumber3(int number3) {
+		this.number3 = number3;
+	}
+
+	public int getNumber4() {
+		return number4;
+	}
+
+	public void setNumber4(int number4) {
+		this.number4 = number4;
+	}
+}
+					</pre>
+				</p:tab>
+			</p:tabView>
+
+         </div>
+        
+	</ui:define>
+</ui:composition>

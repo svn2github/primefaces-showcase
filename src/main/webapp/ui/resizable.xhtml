@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Resizable</h1>
+		<div class="entry">
+			<p>Any JSF component can be made resizable.</p>
+
+			<h:panelGrid columns="1">
+
+				<h:graphicImage id="img" value="/ui/barca/campnou.jpg">
+					<p:resizable proxy="true" animate="true" effect="backBoth"  minWidth="300" minHeight="150" maxWidth="600" maxHeight="350" />
+				</h:graphicImage>
+				
+				<h:inputTextarea id="area" value="Resize me!!!">
+					<p:resizable proxy="true" animate="true" effect="bounceOut" minWidth="150" minHeight="150" maxWidth="600" maxHeight="350"/>
+				</h:inputTextarea>
+			</h:panelGrid>
+
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+&lt;h:graphicImage id="img" value="/ui/barca/campnou.jpg"&gt;
+	&lt;p:resizable animate="true" effect="backBoth" minWidth="300" minHeight="150" maxWidth="600" maxHeight="350"  /&gt;
+&lt;/h:graphicImage/&gt;
+
+&lt;h:inputTextarea id="area" value="Resize me!!!"&gt;
+	&lt;p:resizable proxy="true" animate="true" effect="bounceOut" minWidth="150" minHeight="150" maxWidth="600" maxHeight="350"/&gt;
+&lt;/h:inputTextarea&gt;
+		</pre>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Tooltip - Configuration</h1>
+		<div class="entry">
+			<p>Tooltip is a very customizable component, delay, effect and events can easily be configured.</p>
+	
+			<h3>Delays</h3>
+			<h:outputLink id="longerDelay" value="#">
+				<h:outputText value="Longer" />
+			</h:outputLink>
+			<p:tooltip for="longerDelay" value="Show and hide delays are extended for this tip" showDelay="2000" hideDelay="2000"/>
+			
+			<h3>Events</h3>
+			<h:outputText value="Focus: " />
+			<h:inputText id="focus" />
+			<p:tooltip for="focus" value="This tooltip is displayed when input gets the focus" showEvent="focus" hideEvent="blur"/>
+
+			<h3>Effects</h3>
+			<h:outputLink id="fade" value="#">
+				<h:outputText value="Fade" />
+			</h:outputLink>
+			<p:tooltip for="fade" value="Fade effect is used by default" showEffect="fade" hideEffect="fade"
+						showEffectLength="2000"/>
+			
+			<br /><br />
+			
+			<h:outputLink id="slide" value="#">
+				<h:outputText value="Slide" />
+			</h:outputLink>
+			<p:tooltip for="slide" value="This tooltip uses slide effect for the animation" 
+								showEffect="slide" hideEffect="slide" showEffectLength="2000"/>
+			
+			<br /><br />
+			
+			<h:outputLink id="grow" value="#">
+				<h:outputText value="Grow" />
+			</h:outputLink>
+			<p:tooltip for="grow" value="This tooltip uses grow effect for the animation" 
+					wEffect="grow" hideEffect="grow" showEffectLength="2000"/>
+			
+			<h3>Positioning</h3>
+			<h:outputLink id="topleft" value="#">
+				<h:outputText value="topright" />
+			</h:outputLink>
+			<p:tooltip for="topleft" targetPosition="topRight" position="bottomLeft" value="This tooltip is positioned at top right" /> 
+				
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+&lt;h3&gt;Delays&lt;/h3&gt;
+&lt;h:outputLink id="longerDelay" value="#"&gt;
+	&lt;h:outputText value="Longer" /&gt;
+&lt;/h:outputLink&gt;
+&lt;p:tooltip for="longerDelay" value="Show and hide delays are extended for this tip" showDelay="2000" hideDelay="2000"/&gt;
+
+&lt;h3&gt;Events&lt;/h3&gt;
+&lt;h:outputText value="Focus: " /&gt;
+&lt;h:inputText id="focus" /&gt;
+&lt;p:tooltip for="focus" value="This tooltip is displayed when input gets the focus" showEvent="focus" hideEvent="blur"/&gt;
+
+&lt;h3&gt;Effects&lt;/h3&gt;
+&lt;h:outputLink id="fade" value="#"&gt;
+	&lt;h:outputText value="Fade" /&gt;
+&lt;/h:outputLink&gt;
+&lt;p:tooltip for="fade" value="Fade effect is used by default" showEffect="fade" hideEffect="fade"
+			showEffectLength="2000"/&gt;
+
+&lt;h:outputLink id="slide" value="#"&gt;
+	&lt;h:outputText value="Slide" /&gt;
+&lt;/h:outputLink&gt;
+&lt;p:tooltip for="slide" value="This tooltip uses slide effect for the animation" 
+					showEffect="slide" hideEffect="slide" showEffectLength="2000"/&gt;
+
+&lt;h:outputLink id="grow" value="#"&gt;
+	&lt;h:outputText value="Grow" /&gt;
+&lt;/h:outputLink&gt;
+&lt;p:tooltip for="grow" value="This tooltip uses grow effect for the animation" 
+		wEffect="grow" hideEffect="grow" showEffectLength="2000"/&gt;
+
+&lt;h3&gt;Positioning&lt;/h3&gt;
+&lt;h:outputLink id="topleft" value="#"&gt;
+	&lt;h:outputText value="topright" /&gt;
+&lt;/h:outputLink&gt;
+&lt;p:tooltip for="topleft" targetPosition="topRight" position="bottomLeft" value="This tooltip is positioned at top right" /&gt; 
+			</pre>
+			
+		</div>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Captcha</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/captcha.jsf" value="Simple Captcha" />
+					<p:menuitem url="/ui/captchaCustom.jsf" value="Customized Captcha" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">Captcha component is based on popular reCaptcha api and integrated as a JSF Validator.</span>
+		
+		</div>
+			
+
+	</ui:define>
+</ui:composition>

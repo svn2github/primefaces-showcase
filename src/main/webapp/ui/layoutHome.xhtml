@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Layout</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/layoutFull.jsf" value="Full Page Layout" />
+					<p:menuitem url="/ui/layoutElement.jsf" value="Element Layout" />
+					<p:menuitem url="/ui/layoutComplex.jsf" value="Complex Layout" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">Layout is a border layout panel that can be either applied to a full page or a specific element. Layout can respond
+			to expand, collapse, close and resize events of each layout unit with ajax listeners.</span>
+		
+		</div>
+			
+
+	</ui:define>
+</ui:composition>

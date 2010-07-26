@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">IdleMonitor - Ajax IdleEvents</h1>
+		<div class="entry">
+			<p>IdleMonitor can also invoke server side events with ajax in case user goes idle. IdleListeners are suitable
+				for invalidating user session.</p>
+			
+			<h:form>
+				<p:growl id="messages" showDetail="true" sticky="true" />
+				
+				<p:idleMonitor timeout="5000" update="messages" idleListener="#{idleMonitorController.idleListener}" />
+			</h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="idleMonitorEvents.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+	&lt;p:growl id="messages" showDetail="true" sticky="true" &gt;
+	
+	&lt;p:idleMonitor timeout="5000" update="message"
+				idleListener="\#{idleMonitorController.idleListener}"/&gt;
+
+&lt;/h:form&gt;
+</pre>
+				</p:tab>
+				
+				<p:tab title="idleMonitorEvents.xhtml">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.IdleEvent;
+
+public class IdleMonitorController {
+	
+	public void idleListener(IdleEvent event) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, 
+										"Your session is closed", "You have been idle for at least 5 seconds"));
+		
+		//invalidate session
+	}
+}
+
+					</pre>
+				</p:tab>
+			</p:tabView>
+			
+		</div>
+
+	</ui:define>
+</ui:composition>

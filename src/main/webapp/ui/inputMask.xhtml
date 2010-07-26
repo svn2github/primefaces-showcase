@@ -1,0 +1,213 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">Masked Input</h1>
+		<div class="entry">
+                <p>InputMask component forces input to be formatted in a specific way</p>
+                
+               <p:ajaxStatus style="width:16px;height:16px;">
+					<f:facet name="start">
+						<h:graphicImage value="../design/ajaxloading.gif" />
+					</f:facet>
+		
+					<f:facet name="complete">
+						<h:outputText value="" />
+					</f:facet>
+				</p:ajaxStatus>
+
+				<h:form>
+
+					<p:panel header="Masks">
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="Date: " />
+							<p:inputMask value="#{maskController.date}" mask="99/99/9999"/>
+							
+							<h:outputText value="Phone: " />
+							<p:inputMask value="#{maskController.phone}" mask="(999) 999-9999"/>
+							
+							<h:outputText value="Phone with Ext: " />
+							<p:inputMask value="#{maskController.phoneExt}" mask="(999) 999-9999? x99999"/>
+							
+							<h:outputText value="taxId: " />
+							<p:inputMask value="#{maskController.taxId}" mask="99-9999999"/>
+							
+							<h:outputText value="SSN: " />
+							<p:inputMask value="#{maskController.ssn}" mask="999-99-9999"/>
+							
+							<h:outputText value="Product Key: " />
+							<p:inputMask value="#{maskController.productKey}" mask="a*-999-a999"/>
+						
+							<p:commandButton value="Reset" type="reset" />
+							<p:commandButton value="Submit" update="display" oncomplete="dialog.show()"/>
+	
+						</h:panelGrid>
+					</p:panel>
+					
+					<p:dialog widgetVar="dialog" width="250" height="225" modal="true">
+						<h:panelGrid id="display" columns="2" cellpadding="5">
+					
+							<h:outputText value="Date: " />
+							<h:outputText value="#{maskController.date}" />
+							
+							<h:outputText value="Phone: " />
+							<h:outputText value="#{maskController.phone}" />
+							
+							<h:outputText value="Phone with Ext: " />
+							<h:outputText value="#{maskController.phoneExt}"/>
+							
+							<h:outputText value="taxId: " />
+							<h:outputText value="#{maskController.taxId}" />
+							
+							<h:outputText value="SSN: " />
+							<h:outputText value="#{maskController.ssn}" />
+							
+							<h:outputText value="Product Key: " />
+							<h:outputText value="#{maskController.productKey}" />
+					
+						</h:panelGrid>
+					</p:dialog>
+					
+				</h:form>
+					
+
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="inputMask.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+	&lt;p:panel header="Masks"&gt;
+		&lt;h:panelGrid columns="2" cellpadding="5"&gt;
+			&lt;h:outputText value="Date: " /&gt;
+			&lt;p:inputMask value="\#{maskController.date}" mask="99/99/9999"/&gt;
+			
+			&lt;h:outputText value="Phone: " /&gt;
+			&lt;p:inputMask value="\#{maskController.phone}" mask="(999) 999-9999"/&gt;
+			
+			&lt;h:outputText value="Phone with Ext: " /&gt;
+			&lt;p:inputMask value="\#{maskController.phoneExt}" 
+						mask="(999) 999-9999? x99999"/&gt;
+			
+			&lt;h:outputText value="taxId: " /&gt;
+			&lt;p:inputMask value="\#{maskController.taxId}" mask="99-9999999"/&gt;
+			
+			&lt;h:outputText value="SSN: " /&gt;
+			&lt;p:inputMask value="\#{maskController.ssn}" mask="999-99-9999"/&gt;
+			
+			&lt;h:outputText value="Product Key: " /&gt;
+			&lt;p:inputMask value="\#{maskController.productKey}" mask="a*-999-a999"/&gt;
+		
+			&lt;p:commandButton value="Reset" type="reset" /&gt;
+			&lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()"/&gt;
+
+		&lt;/h:panelGrid&gt;
+	&lt;/p:panel&gt;
+	
+	&lt;p:dialog widgetVar="dialog" width="250" height="225" modal="true"&gt;
+		&lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
+	
+			&lt;h:outputText value="Date: " /&gt;
+			&lt;h:outputText value="\#{maskController.date}" /&gt;
+			
+			&lt;h:outputText value="Phone: " /&gt;
+			&lt;h:outputText value="\#{maskController.phone}" /&gt;
+			
+			&lt;h:outputText value="Phone with Ext: " /&gt;
+			&lt;h:outputText value="\#{maskController.phoneExt}"/&gt;
+			
+			&lt;h:outputText value="taxId: " /&gt;
+			&lt;h:outputText value="\#{maskController.taxId}" /&gt;
+			
+			&lt;h:outputText value="SSN: " /&gt;
+			&lt;h:outputText value="\#{maskController.ssn}" /&gt;
+			
+			&lt;h:outputText value="Product Key: " /&gt;
+			&lt;h:outputText value="\#{maskController.productKey}" /&gt;
+	
+		&lt;/h:panelGrid&gt;
+	&lt;/p:dialog&gt;
+	
+&lt;/h:form&gt;
+					</pre>
+					</p:tab>
+					
+					<p:tab title="MaskController.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+public class MaskController {
+
+	private String date;
+	
+	private String phone;
+	
+	private String phoneExt;
+	
+	private String taxId;
+	
+	private String ssn;
+	
+	private String productKey;
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getPhoneExt() {
+		return phoneExt;
+	}
+
+	public void setPhoneExt(String phoneExt) {
+		this.phoneExt = phoneExt;
+	}
+
+	public String getTaxId() {
+		return taxId;
+	}
+
+	public void setTaxId(String taxId) {
+		this.taxId = taxId;
+	}
+
+	public String getSsn() {
+		return ssn;
+	}
+
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
+
+	public String getProductKey() {
+		return productKey;
+	}
+
+	public void setProductKey(String productKey) {
+		this.productKey = productKey;
+	}
+}
+
+					</pre>
+					</p:tab>
+				</p:tabView>
+				
+            </div>
+
+	</ui:define>
+</ui:composition>

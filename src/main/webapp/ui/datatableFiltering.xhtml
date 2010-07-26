@@ -1,0 +1,125 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.yui-skin-sam .yui-dt th input {
+				width:100px;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Filtering</h1>
+		<div class="entry">
+                <p>Datatable has a customizable filtering feature supporting client side and server side ajax filtering.</p>
+                
+                <h3>Client Side Filtering</h3>
+				<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10">
+					<p:column filterBy="#{car.model}">
+						<f:facet name="header">
+							<h:outputText value="Model" />
+						</f:facet>
+						<h:outputText value="#{car.model}" />
+					</p:column>
+
+					<p:column filterBy="#{car.year}">
+						<f:facet name="header">
+							<h:outputText value="Year" />
+						</f:facet>
+						<h:outputText value="#{car.year}" />
+					</p:column>
+
+					<p:column filterBy="#{car.manufacturer}">
+						<f:facet name="header">
+							<h:outputText value="Manufacturer" />
+						</f:facet>
+						<h:outputText value="#{car.manufacturer}" />
+					</p:column>
+
+					<p:column filterBy="#{car.color}">
+						<f:facet name="header">
+							<h:outputText value="Color" />
+						</f:facet>
+						
+						<h:outputText value="#{car.color}" />
+					</p:column>
+				</p:dataTable>
+				
+                <h3>Ajax Filtering</h3>
+                <h:form>
+					<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10" dynamic="true">
+						<p:column filterBy="#{car.model}">
+							<f:facet name="header">
+								<h:outputText value="Model" />
+							</f:facet>
+							<h:outputText value="#{car.model}" />
+						</p:column>
+	
+						<p:column filterBy="#{car.year}">
+							<f:facet name="header">
+								<h:outputText value="Year" />
+							</f:facet>
+							<h:outputText value="#{car.year}" />
+						</p:column>
+	
+						<p:column filterBy="#{car.manufacturer}">
+							<f:facet name="header">
+								<h:outputText value="Manufacturer" />
+							</f:facet>
+							<h:outputText value="#{car.manufacturer}" />
+						</p:column>
+	
+						<p:column filterBy="#{car.color}">
+							<f:facet name="header">
+								<h:outputText value="Color" />
+							</f:facet>
+							
+							<h:outputText value="#{car.color}" />
+						</p:column>
+					</p:dataTable>
+				</h:form>
+				
+				<h3>Source</h3>
+				<pre name="code" class="xml">
+&lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" 
+		rows="10" dynamic="false or true"&gt;
+	&lt;p:column filterBy="#{car.model}"&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Model" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.model}" /&gt;
+	&lt;/p:column&gt;
+
+	&lt;p:column filterBy="\#{car.year}"&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Year" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.year}" /&gt;
+	&lt;/p:column&gt;
+
+	&lt;p:column filterBy="\#{car.manufacturer}"&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Manufacturer" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.manufacturer}" /&gt;
+	&lt;/p:column&gt;
+
+	&lt;p:column filterBy="\#{car.color}"&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Color" /&gt;
+		&lt;/f:facet&gt;
+		
+		&lt;h:outputText value="\#{car.color}" /&gt;
+	&lt;/p:column&gt;
+&lt;/p:dataTable&gt;
+				</pre>
+           
+</div>
+
+	</ui:define>
+</ui:composition>

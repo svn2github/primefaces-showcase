@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">DataTable</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="DataTable">
+					<p:menuitem url="/ui/basicDataTable.jsf" value="Simple DataTable" />
+					<p:menuitem url="/ui/datatableClient.jsf" value="Client Pagination/Sorting" />
+					<p:menuitem url="/ui/datatableAjax.jsf" value="Ajax Pagination/Sorting" />
+					<p:menuitem url="/ui/datatableLazy.jsf" value="Lazy Loading" />
+					<p:menuitem url="/ui/datatableRowSelection.jsf" value="Single Row Selection" />
+					<p:menuitem url="/ui/datatableRowSelectionMultiple.jsf" value="Multiple Row Selection" />
+					<p:menuitem url="/ui/datatableRowSelectionAjax.jsf" value="Ajax Instant Row Selection" />
+					<p:menuitem url="/ui/datatableCellSelectionSingle.jsf" value="Single Cell Selection" styleClass="new"/>
+					<p:menuitem url="/ui/datatableCellSelectionRange.jsf" value="Cell Range Selection" styleClass="new"/>
+					<p:menuitem url="/ui/datatableCellSelectionBlock.jsf" value="Cell Block Selection" styleClass="new"/>
+					<p:menuitem url="/ui/datatableFiltering.jsf" value="Data Filtering" />
+					<p:menuitem url="/ui/datatableComplex.jsf" value="Complex DataTable" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">DataTable features data paging, sorting, filtering, scrolling, row selection, cell selection, resizable columns, lazy loading and more. 
+			Most of these features can work purely on client side or on server side with ajax.</span>
+		
+		</div>
+			
+
+	</ui:define>
+</ui:composition>

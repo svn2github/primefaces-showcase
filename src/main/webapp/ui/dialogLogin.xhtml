@@ -1,0 +1,149 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<script type="text/javascript">
+			function handleLoginRequest(xhr, status, args) {
+				if(args.validationFailed || !args.loggedIn) {
+					jQuery('#dialog').parent().effect("shake", { times:5 }, 100);
+				} else {
+					dlg.hide();
+					jQuery('#loginLink').fadeOut();
+				}
+			}
+		</script>
+			
+		<p:resource name="/jquery/jquery.js" />
+		<p:resource name="/jquery/plugins/effects/effects.js" />
+		
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Dialog - Login Demo</h1>
+		<div class="entry">
+			<p>This example demonstrates how to create a login dialog. Correct combination is (admin-admin)</p>
+						
+				<h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login">	
+					<p:graphicImage value="/images/login.png" />
+				</h:outputLink>
+				
+				<p:growl id="growl" showDetail="true" life="3000" />
+	
+				<p:dialog id="dialog" header="Login" widgetVar="dlg">
+						
+					<h:form>
+					
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputLabel for="username" value="Username: *" />
+							<h:inputText id="username" value="#{loginBean.username}" required="true" label="username" />
+							
+							<h:outputLabel for="password" value="Password: * " />
+							<h:inputSecret id="password" value="#{loginBean.password}" required="true" label="password" />
+							
+							<f:facet name="footer">
+								<p:commandButton value="Login" update="growl" 
+									actionListener="#{loginBean.login}" oncomplete="handleLoginRequest(xhr, status, args)"/>
+							</f:facet>
+						</h:panelGrid>
+						
+					</h:form>
+				</p:dialog>
+				
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="dialogLogin.xhtml">
+				<pre name="code" class="xml">
+&lt;h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login"&gt;	
+	&lt;p:graphicImage value="/images/login.png" /&gt;
+&lt;/h:outputLink&gt;
+
+&lt;p:growl id="growl" showDetail="true" life="3000" /&gt;
+
+&lt;p:dialog id="dialog" header="Login" widgetVar="dlg"&gt;
+	&lt;h:form&gt;
+
+		&lt;h:panelGrid columns="2" cellpadding="5"&gt;
+			&lt;h:outputLabel for="username" value="Username: *" /&gt;
+			&lt;h:inputText value="\#{loginBean.username}" 
+					id="username" required="true" label="username" /&gt;
+			
+			&lt;h:outputLabel for="password" value="Password: * " /&gt;
+			&lt;h:inputSecret value="\#{loginBean.password}" 
+					id="password" required="true" label="password" /&gt;
+			
+			&lt;f:facet name="footer"&gt;
+				&lt;p:commandButton value="Login" update="growl" 
+					actionListener="\#{loginBean.login}" 
+					oncomplete="handleLoginRequest(xhr, status, args)"/&gt;
+			&lt;/f:facet&gt;
+		&lt;/h:panelGrid&gt;
+		
+	&lt;/h:form&gt;
+&lt;/p:dialog&gt;
+
+&lt;script type="text/javascript"&gt;
+	function handleLoginRequest(xhr, status, args) {
+		if(args.validationFailed || !args.loggedIn) {
+			jQuery('#dialog').parent().effect("shake", { times:3 }, 100);
+		} else {
+			dlg.hide();
+			jQuery('#loginLink').fadeOut();
+		}
+	}
+&lt;/script&gt;
+				</pre>	
+					</p:tab>
+					
+					<p:tab title="LoginBean.java">
+						<pre name="code" class="java">
+public class LoginBean {
+
+	private String username;
+	
+	private String password;
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void login(ActionEvent actionEvent) {
+		RequestContext context = RequestContext.getCurrentInstance();
+		FacesMessage msg = null;
+		boolean loggedIn = false;
+		
+		if(username != null  &amp;&amp;&amp;&amp; username.equals("admin") &amp;&amp; password != null  &amp;&amp; password.equals("admin")) {
+			loggedIn = true;
+			msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+		} else {
+			loggedIn = false;
+			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error", "Invalid credentials");
+		}
+		
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		context.addCallbackParam("loggedIn", loggedIn);
+	}
+}
+						</pre>
+					</p:tab>
+				</p:tabView>
+		</div>
+				
+	</ui:define>
+</ui:composition>

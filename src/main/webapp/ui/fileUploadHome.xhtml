@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">FileUpload</h1>
+		<div class="entry">
+						
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/fileUploadSingle.jsf" value="Single Upload" />
+					<p:menuitem url="/ui/fileUploadMultiple.jsf" value="Multiple File Upload" />
+					<p:menuitem url="/ui/fileUploadAuto.jsf" value="Auto Upload" />
+					<p:menuitem url="/ui/fileUploadUpdate.jsf" value="PPR Integration" />
+					<p:menuitem url="/ui/fileUploadSkinning.jsf" value="Skinning Upload" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">FileUpload is a flash-javascript solution that goes beyond the legacy input type="file". FileUpload component features single and multi file uploads, progress
+			tracking, auto uploads, easy customization and more.</span>
+		
+		</div>
+			
+	</ui:define>
+</ui:composition>

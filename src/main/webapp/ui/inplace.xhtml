@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.column {
+				font-weight: bold;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Inplace</h1>
+		<div class="entry">
+			<p>Inplace provides easy inplace editing and inline content display.</p>
+			
+			<p:panel header="Inplace Editor">
+				<h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+					<h:outputText value="Basic Input: " />
+					<p:inplace>
+						<h:inputText value="Edit Me" />
+					</p:inplace>
+					
+					<h:outputText value="Select One: "/>
+					<p:inplace label="Cities" effectSpeed="fast">
+						<h:selectOneMenu>
+							<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+							<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
+							<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+						</h:selectOneMenu>
+					</p:inplace>
+					
+					<h:outputText value="Checkbox: "/>
+					<p:inplace label="Edit me" effectSpeed="slow">
+						<h:selectBooleanCheckbox />
+					</p:inplace>
+					
+					<h:outputText value="Text Area: " />
+					<p:inplace effect="none">
+						<h:inputTextarea value="Barcelona" />
+					</p:inplace>
+					
+					<h:outputText value="Image: " />
+					<p:inplace label="Show" effect="slide">
+						<p:graphicImage value="/images/nature1.jpg" />
+					</p:inplace>		
+				</h:panelGrid>
+			</p:panel>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="inplace.xhtml">
+					<pre name="code" class="xml">
+&lt;p:panel header="Inplace Editor"&gt;
+	&lt;h:panelGrid columns="2" columnClasses="column" cellpadding="5"&gt;
+		&lt;h:outputText value="Basic Input: " /&gt;
+		&lt;p:inplace&gt;
+			&lt;h:inputText value="Edit Me" /&gt;
+		&lt;/p:inplace&gt;
+		
+		&lt;h:outputText value="Select One: "/&gt;
+		&lt;p:inplace label="Cities" effectSpeed="fast"&gt;
+			&lt;h:selectOneMenu&gt;
+				&lt;f:selectItem itemLabel="Istanbul" itemValue="Istanbul" /&gt;
+				&lt;f:selectItem itemLabel="Ankara" itemValue="Ankara" /&gt;
+				&lt;f:selectItem itemLabel="Istanbul" itemValue="Istanbul" /&gt;
+			&lt;/h:selectOneMenu&gt;
+		&lt;/p:inplace&gt;
+		
+		&lt;h:outputText value="Checkbox: "/&gt;
+		&lt;p:inplace label="Edit me" effectSpeed="slow"&gt;
+			&lt;h:selectBooleanCheckbox /&gt;
+		&lt;/p:inplace&gt;
+		
+		&lt;h:outputText value="Text Area: " /&gt;
+		&lt;p:inplace effect="none"&gt;
+			&lt;h:inputTextarea value="Barcelona" /&gt;
+		&lt;/p:inplace&gt;
+		
+		&lt;h:outputText value="Image: " /&gt;
+		&lt;p:inplace label="Show" effect="slide"&gt;
+			&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+		&lt;/p:inplace&gt;		
+	&lt;/h:panelGrid&gt;
+&lt;/p:panel&gt;
+					</pre>
+				</p:tab>
+			</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

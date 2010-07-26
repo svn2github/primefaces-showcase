@@ -1,0 +1,268 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			span {
+				cursor:pointer;
+			}
+			
+			span:hover {
+				color:#FF9900;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">ImageSwitcher - Effects Catalog</h1>
+		<div class="entry">
+			<p>ImageSwitch supports various effects out of the box.</p>
+
+			<h3>FadeIn</h3>
+			<span onclick="fadein.previous();">Previous</span>
+			<span onclick="fadein.next();">Next</span>
+			
+			<br />
+
+			<p:imageSwitch effect="FadeIn" widgetVar="fadein" slideshowAuto="false">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+		
+			<br /><br />
+			
+			<h3>FlyIn</h3>
+			<span onclick="fadeout.previous();">Previous</span>
+			<span onclick="fadeout.next();">Next</span>
+			
+			<br />
+
+			<p:imageSwitch effect="FlyIn" widgetVar="fadeout" slideshowAuto="false">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+			
+			<br /><br />
+			
+			<h3>FlyOut</h3>
+			<span onclick="flyout.previous();">Previous</span>
+			<span onclick="flyout.next();">Next</span>
+			
+			<br />
+
+			<p:imageSwitch effect="FlyOut" widgetVar="flyout" slideshowAuto="false">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+			
+			<br /><br />
+			
+			<h3>FlipIn</h3>
+			<span onclick="flipin.previous();">Previous</span>
+			<span onclick="flipin.next();">Next</span>
+			
+			<br />
+
+			<p:imageSwitch effect="FlipIn" widgetVar="flipin" slideshowAuto="false">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+			
+			<br /><br />
+			
+			<h3>FlipOut</h3>
+			<span onclick="flipout.previous();">Previous</span>
+			<span onclick="flipout.next();">Next</span>
+			
+			<br />
+
+			<p:imageSwitch effect="FlipOut" widgetVar="flipout" slideshowAuto="false">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+			
+			<br /><br />
+			
+			<h3>ScrollIn</h3>
+			<span onclick="scrollin.previous();">Previous</span>
+			<span onclick="scrollin.next();">Next</span>
+			
+			<br />
+
+			<p:imageSwitch effect="ScrollIn" widgetVar="scrollin" slideshowAuto="false">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+			
+			<br /><br />
+			
+			<h3>ScrollOut</h3>
+			<span onclick="scrollout.previous();">Previous</span>
+			<span onclick="scrollout.next();">Next</span>
+			
+			<br />
+
+			<p:imageSwitch effect="ScrollOut" widgetVar="scrollout" slideshowAuto="false">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+			
+			<br /><br />
+			
+			<h3>SingleDoor</h3>
+			<span onclick="singledoor.previous();">Previous</span>
+			<span onclick="singledoor.next();">Next</span>
+			
+			<br />
+
+			<p:imageSwitch effect="SingleDoor" widgetVar="singledoor" slideshowAuto="false">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+			
+			<br /><br />
+			
+			<h3>DoubleDoor</h3>
+			<span onclick="doubledoor.previous();">Previous</span>
+			<span onclick="doubledoor.next();">Next</span>
+			
+			<br />
+
+			<p:imageSwitch effect="DoubleDoor" widgetVar="doubledoor" slideshowAuto="false">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+						
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="imageSwitchEffect.xhtml">
+<pre name="code" class="xml">
+&lt;h3&gt;FadeIn&lt;/h3&gt;
+&lt;span onclick="fadein.previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="fadein.next();"&gt;Next&lt;/span&gt;
+&lt;p:imageSwitch effect="FadeIn" widgetVar="fadein" slideshowAuto="false"&gt;
+	&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+&lt;/p:imageSwitch&gt;
+
+
+&lt;h3&gt;FlyIn&lt;/h3&gt;
+&lt;span onclick="fadeout.previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="fadeout.next();"&gt;Next&lt;/span&gt;
+&lt;p:imageSwitch effect="FlyIn" widgetVar="fadeout" slideshowAuto="false"&gt;
+	&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+&lt;/p:imageSwitch&gt;
+
+
+&lt;h3&gt;FlyOut&lt;/h3&gt;
+&lt;span onclick="flyout.previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="flyout.next();"&gt;Next&lt;/span&gt;
+&lt;p:imageSwitch effect="FlyOut" widgetVar="flyout" slideshowAuto="false"&gt;
+	&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+&lt;/p:imageSwitch&gt;
+
+
+&lt;h3&gt;FlipIn&lt;/h3&gt;
+&lt;span onclick="flipin.previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="flipin.next();"&gt;Next&lt;/span&gt;
+&lt;p:imageSwitch effect="FlipIn" widgetVar="flipin" slideshowAuto="false"&gt;
+	&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+&lt;/p:imageSwitch&gt;
+
+
+&lt;h3&gt;FlipOut&lt;/h3&gt;
+&lt;span onclick="flipout.previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="flipout.next();"&gt;Next&lt;/span&gt;
+&lt;p:imageSwitch effect="FlipOut" widgetVar="flipout" slideshowAuto="false"&gt;
+	&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+&lt;/p:imageSwitch&gt;
+
+
+&lt;h3&gt;ScrollIn&lt;/h3&gt;
+&lt;span onclick="scrollin.previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="scrollin.next();"&gt;Next&lt;/span&gt;
+&lt;p:imageSwitch effect="ScrollIn" widgetVar="scrollin" slideshowAuto="false"&gt;
+	&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+&lt;/p:imageSwitch&gt;
+
+
+&lt;h3&gt;ScrollOut&lt;/h3&gt;
+&lt;span onclick="scrollout.previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="scrollout.next();"&gt;Next&lt;/span&gt;
+&lt;p:imageSwitch effect="ScrollOut" widgetVar="scrollout" slideshowAuto="false"&gt;
+	&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+&lt;/p:imageSwitch&gt;
+
+
+&lt;h3&gt;SingleDoor&lt;/h3&gt;
+&lt;span onclick="singledoor.previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="singledoor.next();"&gt;Next&lt;/span&gt;
+&lt;p:imageSwitch effect="SingleDoor" widgetVar="singledoor" slideshowAuto="false"&gt;
+	&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+&lt;/p:imageSwitch&gt;
+
+
+&lt;h3&gt;DoubleDoor&lt;/h3&gt;
+&lt;span onclick="doubledoor.previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="doubledoor.next();"&gt;Next&lt;/span&gt;
+&lt;p:imageSwitch effect="DoubleDoor" widgetVar="doubledoor" slideshowAuto="false"&gt;
+	&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+&lt;/p:imageSwitch&gt;
+			</pre>
+
+				</p:tab>
+			</p:tabView>
+			
+		</div>
+
+	</ui:define>
+</ui:composition>

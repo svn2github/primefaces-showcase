@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Ajax Poll</h1>
+		<div class="entry">
+		<p>Poll component make ajax calls in a specified interval.</p>
+
+			<h:form>
+				<h:outputText id="txt_count" value="#{counterBean.count}" />
+				
+				<p:poll interval="3" actionListener="#{counterBean.increment}" update="txt_count" />
+			</h:form>
+			
+			<p:ajaxStatus style="width:16px;height:16px;">
+				<f:facet name="start">
+					<h:graphicImage value="../design/ajaxloading.gif" />
+				</f:facet>
+				
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="poll.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+	&lt;h:outputText id="txt_count" value="\#{counterBean.count}" /&gt;
+	
+	&lt;p:poll interval="3" 
+			actionListener="\#{counterBean.increment}" update="txt_count" /&gt;
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="CounterBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import javax.faces.event.ActionEvent;
+
+public class CounterBean implements Serializable{
+
+	private int count;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	public void increment(ActionEvent actionEvent) {
+		count++;
+	}
+}
+</pre>
+				</p:tab>
+			</p:tabView>
+				
+		</div>
+                    
+	</ui:define>
+</ui:composition>

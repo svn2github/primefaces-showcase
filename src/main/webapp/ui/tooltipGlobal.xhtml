@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Tooltip - Global</h1>
+		<div class="entry">
+			<p>In global mode, tooltip uses title values of JSF component, this is very efficient because placing one tooltip is enough instead of
+			using a tooltip for each target component.</p>
+			
+			<p:tooltip global="true"/>
+
+			<h:panelGrid columns="1" cellpadding="5">
+
+				<h:outputText value="Text" title="Text to Enter" />
+				<h:commandButton value="Submit" title="Save" />
+				<h:outputLink value="#" title="Go to">
+					<h:outputText value="Sample Link" />
+				</h:outputLink>
+				<h:inputText title="Input" />
+				
+			</h:panelGrid>
+				
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+&lt;p:tooltip global="true"/&gt;
+
+&lt;h:panelGrid columns="1"&gt;
+			
+	&lt;h:outputText value="Text" title="Text to Enter" /&gt;
+	
+	&lt;h:commandButton value="Submit" title="Save" /&gt;
+	
+	&lt;h:outputLink value="#" title="Go to"&gt;
+		&lt;h:outputText value="Sample Link" /&gt;
+	&lt;/h:outputLink&gt;
+	&lt;h:inputText title="Input" /&gt;
+	
+&lt;/h:panelGrid&gt;
+			</pre>
+		</div>
+
+	
+
+	</ui:define>
+</ui:composition>

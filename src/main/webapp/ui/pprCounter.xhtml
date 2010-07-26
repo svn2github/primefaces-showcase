@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">AJAX - Counter</h1>
+		<div class="entry">
+			<p>An integer variable(count) in counterBean is incremented each time the button is clicked.</p>
+			
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="Counter: " />
+					<h:outputText id="txt_count" value="#{counterBean.count}" />
+				
+					<p:commandButton value="Count" actionListener="#{counterBean.increment}" update="txt_count"/>
+					<p:ajaxStatus style="width:16px;height:16px;">
+						<f:facet name="start">
+							<h:graphicImage value="../design/ajaxloading.gif" />
+						</f:facet>
+						
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+					</p:ajaxStatus>
+					
+				</h:panelGrid>
+			</h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="pprCounter.xhtml">
+<pre name="code" class="xml">
+&lt;h:form&gt;
+	&lt;h:panelGrid columns="2" cellpadding="5"&gt;
+		&lt;h:outputText value="Counter: " /&gt;
+		&lt;h:outputText id="txt_count" value="\#{counterBean.count}" /&gt;
+	
+		&lt;p:commandButton value="Count" 
+				actionListener="\#{counterBean.increment}" update="txt_count"/&gt;
+		
+		&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+			&lt;f:facet name="start"&gt;
+				&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+			&lt;/f:facet&gt;
+			
+			&lt;f:facet name="complete"&gt;
+				&lt;h:outputText value="" /&gt;
+			&lt;/f:facet&gt;
+		&lt;/p:ajaxStatus&gt;
+		
+	&lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+</pre>	
+				</p:tab>
+				
+				<p:tab title="CounterBean.java">
+<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+public class CounterBean implements Serializable{
+
+	private int count;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	public void increment(ActionEvent actionEvent) {
+		count++;
+	}
+}
+</pre>
+				</p:tab>
+			</p:tabView>
+    	</div>
+                    
+	</ui:define>
+</ui:composition>

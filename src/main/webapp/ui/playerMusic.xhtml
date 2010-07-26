@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/mainTemplate.xhtml">
+
+	<ui:define name="content">
+	
+		<div id="cols">
+		    <div class="main box">
+		    
+		        <div id="content">
+		     
+		            <div id="content-in" class="box">
+		        	<h2>Media</h2>
+		        	<p>Media component can also play music.</p>
+				
+					<h3>QuickTime Player</h3>
+					<p:media value="http://www.tulumba.com/mp3/mogollar/yurudukdurmadan/track%2002.mp3" width="200" height="20" player="quicktime"/>
+					
+					<h3>Source</h3>
+				<pre name="code" class="xml">
+&lt;p:media value="http://www.tulumba.com/mp3/mogollar/yurudukdurmadan/track%2002.mp3" width="200" height="20" player="quicktime"/&gt;
+				</pre>
+		            </div>
+		                    
+		        </div>
+				
+		        <hr class="noscreen" />
+		
+		        <div id="aside">
+		            
+		            <ui:include src="../templates/components.xhtml" />
+		            
+		        </div>
+		    
+		    </div>
+		</div>
+
+	</ui:define>
+</ui:composition>

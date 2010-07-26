@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<script type="text/javascript">
+			var myStyle= { 
+		      width: 200,
+		      padding: 5,
+		      background: '#A2D959',
+		      color: 'black',
+		      textAlign: 'center',
+		      border: {
+		         width: 7,
+		         radius: 5,
+		         color: '#A2D959'
+		      },
+		      tip: 'topLeft',
+		      name: 'dark' 
+		   };
+		</script>
+	</ui:define>
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Tooltip - Skinning</h1>
+		<div class="entry">
+			<p>Tooltip can be styled using custom themes or predefined themes like : "cream","dark","green","light","red" or "blue".</p>
+			
+			<h3>Custom Style</h3>
+			<h:outputLink id="txt_custom" value="#" style="margin-left:5px">Custom</h:outputLink>
+			<p:tooltip for="txt_custom" value="Tooltip with custom style" style="myStyle" />
+			
+			<h3>Predefined Themes</h3>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLink id="txt1" value="#">Default</h:outputLink>
+				<p:tooltip for="txt1" value="Default theme" />
+				
+				<h:outputLink id="txt2" value="#">Cream</h:outputLink>
+				<p:tooltip for="txt2" value="Cream theme" style="cream"/>
+				
+				<h:outputLink id="txt3" value="#">Dark</h:outputLink>
+				<p:tooltip for="txt3" value="Dark theme" style="dark"/>
+				
+				<h:outputLink id="txt4" value="#">Green</h:outputLink>
+				<p:tooltip for="txt4" value="Green theme" style="green"/>
+				
+				<h:outputLink id="txt5" value="#">Light</h:outputLink>
+				<p:tooltip for="txt5" value="Light theme" style="light"/>
+				
+				<h:outputLink id="txt6" value="#">Red</h:outputLink>
+				<p:tooltip for="txt6" value="Red theme" style="red"/> 
+			</h:panelGrid>
+	
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+&lt;h3&gt;Custom Style&lt;/h3&gt;
+&lt;h:outputLink id="txt_custom" value="\#"&gt;Custom&lt;/h:outputLink&gt;
+&lt;p:tooltip for="txt_custom" value="Tooltip with custom style" style="myStyle" /&gt;
+
+&lt;h3&gt;Predefined Themes&lt;/h3&gt;
+&lt;h:panelGrid columns="2" cellpadding="2"&gt;
+	&lt;h:outputLink id="txt1" value="\#"&gt;Default&lt;/h:outputLink&gt;
+	&lt;p:tooltip for="txt1" value="Default theme" /&gt;
+	
+	&lt;h:outputLink id="txt2" value="\#"&gt;Cream&lt;/h:outputLink&gt;
+	&lt;p:tooltip for="txt2" value="Cream theme" style="cream"/&gt;
+	
+	&lt;h:outputLink id="txt3" value="\#"&gt;Dark&lt;/h:outputLink&gt;
+	&lt;p:tooltip for="txt3" value="Dark theme" style="dark"/&gt;
+	
+	&lt;h:outputLink id="txt4" value="\#"&gt;Green&lt;/h:outputLink&gt;
+	&lt;p:tooltip for="txt4" value="Green theme" style="green"/&gt;
+	
+	&lt;h:outputLink id="txt5" value="\#"&gt;Light&lt;/h:outputLink&gt;
+	&lt;p:tooltip for="txt5" value="Light theme" style="light"/&gt;
+	
+	&lt;h:outputLink id="txt6" value="\#"&gt;Red&lt;/h:outputLink&gt;
+	&lt;p:tooltip for="txt6" value="Red theme" style="red"/&gt; 
+&lt;/h:panelGrid&gt;
+			</pre>
+
+			<pre name="code" class="javascript">
+&lt;script type="text/javascript"&gt;
+	var myStyle= { 
+      width: 200,
+      padding: 5,
+      background: '#A2D959',
+      color: 'black',
+      textAlign: 'center',
+      border: {
+         width: 7,
+         radius: 5,
+         color: '#A2D959'
+      },
+      tip: 'topLeft',
+      name: 'dark' 
+   };
+&lt;/script&gt;
+					</pre>
+			</div>
+
+	</ui:define>
+</ui:composition>

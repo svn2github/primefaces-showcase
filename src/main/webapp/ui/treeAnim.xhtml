@@ -1,0 +1,173 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="head">
+		<style type="text/css">
+			.documentStyle {
+				background: transparent url(../images/doc.png) no-repeat;
+				padding-left:20px;
+			}
+			
+			.pictureStyle {
+				background: transparent url(../images/picture.png) no-repeat;
+				padding-left:20px;
+			}
+			
+			.mp3Style {
+				background: transparent url(../images/mp3.png) no-repeat;
+				padding-left:20px;
+			}
+			
+			/* Folder Theme */
+			.ygtvtn { background: url(../images/folders/tn.gif) 0 0 no-repeat; width:17px; height:22px; }
+			
+			.ygtvtm { background: url(../images/folders/tm.gif) 0 0 no-repeat; width:34px; height:22px; cursor:pointer }
+			
+			.ygtvtmh { background: url(../images/folders/tmh.gif) 0 0 no-repeat; width:34px; height:22px; cursor:pointer }
+			
+			.ygtvtp { background: url(../images/folders/tp.gif) 0 0 no-repeat; width:34px; height:22px; cursor:pointer }
+			
+			.ygtvtph { background: url(../images/folders/tph.gif) 0 0 no-repeat; width:34px; height:22px; cursor:pointer }
+			
+			.ygtvln { background: url(../images/folders/ln.gif) 0 0 no-repeat; width:17px; height:22px; }
+			
+			.ygtvlm { background: url(../images/folders/lm.gif) 0 0 no-repeat; width:34px; height:22px; cursor:pointer }
+			
+			.ygtvlmh { background: url(../images/folders/lmh.gif) 0 0 no-repeat; width:34px; height:22px; cursor:pointer }
+			
+			.ygtvlp { background: url(../images/folders/lp.gif) 0 0 no-repeat; width:34px; height:22px; cursor:pointer }
+			
+			.ygtvlph { background: url(../images/folders/lph.gif) 0 0 no-repeat; width:34px; height:22px; cursor:pointer }
+			
+			.ygtvloading { background: url(../images/folders/loading.gif) 0 0 no-repeat; width:16px; height:22px; }
+
+			.ygtvdepthcell { background: url(../images/folders/vline.gif) 0 0 no-repeat; width:17px; height:22px; }
+			
+			.ygtvitem { }  
+			
+			.ygtvitem  table { margin-bottom:0; }
+			
+			.ygtvitem  td { border:none;padding:0; } 
+			
+			.ygtvchildren { }  
+			
+			* html .ygtvchildren { height:1%; }  
+			
+			.ygtvlabel, .ygtvlabel:link, .ygtvlabel:visited, .ygtvlabel:hover {  margin-left:2px; text-decoration: none; }
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Tree - Animations</h1>
+		<div class="entry">
+                <p>Tree has built-in animation support for expand and collapse animations.</p>
+				
+				<h:form>
+					
+					<p:tree value="#{documentsController.root}" var="doc"
+						expandAnim="FADE_IN" collapseAnim="FADE_OUT">
+						<p:treeNode>
+							<h:outputText value="#{doc}"/>
+						</p:treeNode>
+	
+						<p:treeNode type="document">
+							<h:outputText value="#{doc}" styleClass="documentStyle"/>
+						</p:treeNode>
+	
+						<p:treeNode type="picture">
+							<h:outputText value="#{doc}" styleClass="pictureStyle"/>
+						</p:treeNode>
+	
+						<p:treeNode type="mp3">
+							<h:outputText value="#{doc}" styleClass="mp3Style"/>
+						</p:treeNode>
+					</p:tree>
+					
+				</h:form>
+				
+				<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="treeAnim.xhtml">
+<pre name="code" class="xml">
+&lt;p:tree value="\#{documentsController.root}" var="doc"
+	expandAnim="FADE_IN" collapseAnim="FADE_OUT"&gt;
+	&lt;p:treeNode&gt;
+		&lt;h:outputText value="\#{doc}"/&gt;
+	&lt;/p:treeNode&gt;
+
+	&lt;p:treeNode type="document"&gt;
+		&lt;h:outputText value="\#{doc}" styleClass="documentStyle"/&gt;
+	&lt;/p:treeNode>
+
+	&lt;p:treeNode type="picture"&gt;
+		&lt;h:outputText value="\#{doc}" styleClass="pictureStyle"/&gt;
+	&lt;/p:treeNode&gt;
+
+	&lt;p:treeNode type="mp3"&gt;
+		&lt;h:outputText value="\#{doc}" styleClass="mp3Style"/&gt;
+	&lt;/p:treeNode&gt;
+&lt;/p:tree&gt;
+</pre>
+			</p:tab>
+			
+			<p:tab title="DocumentsController.java">
+<pre name="code" class="java">
+public class DocumentsController {
+
+	private TreeNode root;
+	
+	public DocumentsController() {
+		root = new DefaultTreeNode("root", null);
+		
+		TreeNode documents = new DefaultTreeNode("Documents", root);
+		TreeNode pictures = new DefaultTreeNode("Pictures", root);
+		TreeNode music = new DefaultTreeNode("Music", root);
+		
+		TreeNode work = new DefaultTreeNode("Work", documents);
+		TreeNode primefaces = new DefaultTreeNode("PrimeFaces", documents);
+		
+		//Documents
+		TreeNode expenses = new DefaultTreeNode("document", "Expenses.doc", work);
+		TreeNode resume = new DefaultTreeNode("document", "Resume.doc", work);
+		TreeNode refdoc = new DefaultTreeNode("document", "RefDoc.pages", primefaces);
+		
+		//Pictures
+		TreeNode barca = new DefaultTreeNode("picture", "barcelona.jpg", pictures);
+		TreeNode primelogo = new DefaultTreeNode("picture", "logo.jpg", pictures);
+		TreeNode optimus = new DefaultTreeNode("picture", "optimus.png", pictures);
+		
+		//Music
+		TreeNode turkish = new DefaultTreeNode("Turkish", music);
+		
+		TreeNode cemKaraca = new DefaultTreeNode("Cem Karaca", turkish);
+		TreeNode erkinKoray = new DefaultTreeNode("Erkin Koray", turkish);
+		TreeNode mogollar = new DefaultTreeNode("Mogollar", turkish);
+		
+		TreeNode nemalacak = new DefaultTreeNode("mp3", "Nem Alacak Felek Benim", cemKaraca);
+		TreeNode resimdeki = new DefaultTreeNode("mp3", "Resimdeki Goz Yaslari", cemKaraca);
+		
+		TreeNode copculer = new DefaultTreeNode("mp3", "Copculer", erkinKoray);
+		TreeNode oylebirgecer = new DefaultTreeNode("mp3", "Oyle Bir Gecer", erkinKoray);
+		
+		TreeNode toprakana = new DefaultTreeNode("mp3", "Toprak Ana", mogollar);
+		TreeNode bisiyapmali = new DefaultTreeNode("mp3", "Bisi Yapmali", mogollar);
+	}
+	
+	public TreeNode getRoot() {
+		return root;
+	}
+}
+			</pre>
+			</p:tab>
+			
+		</p:tabView>
+
+			
+            </div>
+
+	</ui:define>
+</ui:composition>

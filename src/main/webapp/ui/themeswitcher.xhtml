@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">ThemeSwitcher</h1>
+		<div class="entry">
+ 			<p>ThemeSwitcher enables applying new themes on-the-fly with no page refresh.</p>
+            
+            <p:themeSwitcher initialText="Change Skin" buttonPreText="Skin: "/> 
+            
+            <h:form>
+            
+            	<br />
+            	
+            	<p:commandButton value="Button" />
+            	
+            	<br /><br />
+            	
+       			<p:panel header="Panel">
+       				Panel Content
+       			</p:panel>
+       			
+       			<br /><br />
+            	
+            	<p:tabView>
+            		<p:tab title="Tab1">Tab1 Content</p:tab>
+            		<p:tab title="Tab2">Tab2 Content</p:tab>
+            		<p:tab title="Tab3">Tab3 Content</p:tab>
+            	</p:tabView>
+            	
+            </h:form>
+				
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+&lt;p:themeSwitcher initialText="Change Skin" buttonPreText="Skin: "/&gt; 
+            
+&lt;h:form&gt;
+  
+  	&lt;p:commandButton value="Button" /&gt;
+  	
+	&lt;p:panel header="Panel"&gt;
+		Panel Content
+	&lt;/p:panel&gt;
+
+  	&lt;p:tabView&gt;
+  		&lt;p:tab title="Tab1"&gt;Tab1 Content&lt;/p:tab&gt;
+  		&lt;p:tab title="Tab2"&gt;Tab2 Content&lt;/p:tab&gt;
+  		&lt;p:tab title="Tab3"&gt;Tab3 Content&lt;/p:tab&gt;
+  	&lt;/p:tabView&gt;
+  	
+&lt;/h:form&gt;
+			</pre>
+		
+		</div>
+	</ui:define>
+</ui:composition>

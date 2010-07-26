@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:i="http://primefaces.prime.com.tr/touch"
+	contentType="text/html">
+
+	<script type="text/javascript">
+		function handlePublish(pushed) {
+			jQuery('#display').append(pushed.data + '<br />');
+			var objDiv = document.getElementById('display');
+	        objDiv.scrollTop = objDiv.scrollHeight;
+		}
+	</script>
+	
+	<style type="text/css">
+		#display {
+			height:220px;
+			background: #000000 url("../images/chatback.png") repeat-x; 
+			color: #FFFFFF;
+			margin-top:10px;
+			padding: 10px;
+			display: none;
+			overflow: auto;
+			margin-bottom:2px;
+			text-align: left;
+			font-size: 12px;
+		}	
+	</style>
+	
+	<i:application icon="/images/touch/chat.png" theme="dark">
+	
+			<i:view id="home" title="Chat">
+				<h:form prependId="false">
+
+					<i:tableView id="panel">
+	
+				
+						<i:rowGroup title="Username" rendered="#{!chatController.loggedIn}">
+							<i:rowItem>
+								<h:inputText value="#{chatController.username}" />
+							</i:rowItem>
+						</i:rowGroup>
+						
+						<i:rowGroup title="Message" rendered="#{chatController.loggedIn}">
+							<i:rowItem>
+								<h:inputText value="#{chatController.message}" />
+							</i:rowItem>
+						</i:rowGroup>
+						
+						<p:commandLink actionListener="#{chatController.login}" style="margin:0 10px;" styleClass="whiteButton" update="panel" rendered="#{!chatController.loggedIn}" oncomplete="jQuery('#display').slideDown();">Sign In</p:commandLink>
+						<p:commandLink actionListener="#{chatController.send}" style="margin:0 10px;" styleClass="whiteButton" update="panel" rendered="#{chatController.loggedIn}">Send</p:commandLink>
+						
+					</i:tableView>
+					
+					<i:tableView>
+					
+						<i:rowGroup>
+							<i:rowItem>
+								<center>
+									<h:outputText id="display" />
+								</center>
+							</i:rowItem>
+						</i:rowGroup>
+					
+					</i:tableView>
+				</h:form>
+			</i:view>
+		
+		<p:push channel="chat" onpublish="handlePublish" />
+	
+	</i:application>
+	
+</f:view>

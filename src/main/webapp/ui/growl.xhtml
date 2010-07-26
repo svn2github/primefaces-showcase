@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Growl</h1>
+		<div class="entry">
+				<p>Growl brings the Mac's growl widget to JSF with the ability of displaying FacesMessages. Growl simply
+				replaces h:messages component.</p>
+					
+				<h:form>
+				
+					<p:growl id="growl" showDetail="true" sticky="true" />
+					
+					<p:panel header="Growl">
+						<h:panelGrid columns="2">
+							<h:outputText value="Your Name: *" /> 
+							<h:inputText value="#{growlBean.text}" required="true" label="Name"/>
+							
+							<p:commandButton value="Save" actionListener="#{growlBean.save}" update="growl"/>
+							<p:ajaxStatus>
+								<f:facet name="start">
+									<h:graphicImage value="../design/ajaxloading.gif" />
+								</f:facet>
+									
+								<f:facet name="complete">
+									<h:outputText value="" />
+								</f:facet>
+							</p:ajaxStatus>
+						</h:panelGrid>
+					</p:panel>
+					
+				</h:form>
+				
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="growl.xhtml">
+						<pre name="code" class="xml">
+&lt;h:form&gt;
+				
+	&lt;p:growl id="growl" showDetail="true" /&gt;
+	
+	&lt;p:panel header="Growl"&gt;
+		&lt;h:panelGrid columns="2"&gt;
+			&lt;h:outputText value="Your Name: *" /&gt; 
+			&lt;h:inputText value="\#{growlBean.text}" required="true" label="Name"/&gt;
+			
+			&lt;p:commandButton value="Save" actionListener="\#{growlBean.save}" update="growl"/&gt;
+			&lt;p:ajaxStatus&gt;
+				&lt;f:facet name="start"&gt;
+					&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+				&lt;/f:facet&gt;
+					
+				&lt;f:facet name="complete"&gt;
+					&lt;h:outputText value="" /&gt;
+				&lt;/f:facet&gt;
+			&lt;/p:ajaxStatus&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:panel&gt;
+	
+&lt;/h:form&gt;
+						</pre>
+					</p:tab>
+					
+					<p:tab title="GrowlBean.java">
+<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+public class GrowlBean {
+
+	private String text;
+	
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public void save(ActionEvent actionEvent) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		context.addMessage(null, new FacesMessage("Successful", "Hello " + text));
+		context.addMessage(null, new FacesMessage("Second Message", "Additional Info Here..."));
+	}
+}
+
+						</pre>
+					</p:tab>
+				</p:tabView>
+				
+		</div>
+				
+	</ui:define>
+</ui:composition>

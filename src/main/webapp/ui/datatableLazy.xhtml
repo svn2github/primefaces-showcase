@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Lazy Loading</h1>
+		<div class="entry">
+                <p>DataTable has a built-in feature to deal with huge sets of data with the LazyDataModel. Even if you have billions of data only the rows 
+                corresponding to one page size of datatable will be loaded from the data storage. This example demonstrates how to display one hundred million(100000000) records
+                less than a second.</p>
+                         
+                <h:form>
+                  
+					<p:dataTable var="car" value="#{tableBean.lazyModel}" paginator="true" rows="10" 
+						dynamic="true" lazy="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Model" />
+							</f:facet>
+							<h:outputText value="#{car.model}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Year" />
+							</f:facet>
+							<h:outputText value="#{car.year}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Manufacturer" />
+							</f:facet>
+							<h:outputText value="#{car.manufacturer}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Color" />
+							</f:facet>
+							<h:outputText value="#{car.color}" />
+						</p:column>
+					</p:dataTable>
+					
+				</h:form>
+				
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="datatableLazy.xhtml">
+<pre name="code" class="xml">
+&lt;p:dataTable var="car" value="\#{tableBean.lazyModel}" paginator="true" rows="10" 
+	dynamic="true" lazy="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"&gt;
+	&lt;p:column&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Model" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.model}" /&gt;
+	&lt;/p:column&gt;
+
+	&lt;p:column&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Year" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.year}" /&gt;
+	&lt;/p:column&gt;
+
+	&lt;p:column&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Manufacturer" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.manufacturer}" /&gt;
+	&lt;/p:column&gt;
+
+	&lt;p:column&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;h:outputText value="Color" /&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="\#{car.color}" /&gt;
+	&lt;/p:column&gt;
+&lt;/p:dataTable&gt;
+				</pre>
+					</p:tab>
+					
+					<p:tab title="datatableLazy.xhtml">
+<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
+
+import org.primefaces.examples.domain.Car;
+import org.primefaces.model.LazyDataModel;
+
+public class TableBean {
+	
+	private LazyDataModel&lt;Car&gt; lazyModel;
+
+	public TableBean() {
+		/**
+		* Test with one hundred million records.
+		* In a real application use an sql Count query to get the row count.	
+		*/	
+		lazyModel = new LazyDataModel&lt;Car&gt;(100000000) {
+
+			/**
+			 * Dummy implementation of loading a certain segment of data.
+			 * In a real applicaiton, this method should access db and do a limit based query
+			 */
+			@Override
+			public List&lt;Car&gt; fetchLazyData(int first, int pageSize) {
+				logger.info("Loading the lazy car data between {} and {}", first, first+pageSize);
+				
+				List&lt;Car&gt; lazyCars = new ArrayList&lt;Car&gt;();
+				populateLazyRandomCars(lazyCars, pageSize, first);
+				
+				return lazyCars;
+			}
+		};
+	}
+	
+	public LazyDataModel&lt;Car&gt; getLazyModel() {
+		return lazyModel;
+	}
+
+	private void populateLazyRandomCars(List&lt;Car&gt; list, int size, int first) {
+		for(int i = 0 ; i &lt; size ; i++) {
+			int offset = i + first;
+			list.add(new Car("Model_" + offset, getRandomYear(), "Brand_" + offset, "Color_" + offset));
+		}
+	}
+	
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+}
+				</pre>
+					</p:tab>
+				</p:tabView>
+				
+				
+				
+
+            </div>
+         
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,147 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.ui-datalist {
+				width:300px;
+			}
+		
+			.ui-datalist-item {
+				padding:3px;
+			}
+		</style>
+	</ui:define>
+	
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">DataList - Ordered</h1>
+		<div class="entry">
+			<p>This example presents data in unordered format.</p>
+		
+			<h3>Number</h3>
+			<p:dataList value="#{tableBean.carsSmall}" var="car" type="ordered">
+				#{car.manufacturer}, #{car.year}
+			</p:dataList>
+			
+			<h3>Letter</h3>
+			<p:dataList value="#{tableBean.carsSmall}" var="car" type="ordered" itemType="A">
+				#{car.manufacturer}, #{car.year}
+			</p:dataList>
+			
+			<h3>Lowercase Letter</h3>
+			<p:dataList value="#{tableBean.carsSmall}" var="car" type="ordered" itemType="a">
+				#{car.manufacturer}, #{car.year}
+			</p:dataList>
+			
+			<h3>Roman Letter</h3>
+			<p:dataList value="#{tableBean.carsSmall}" var="car" type="ordered" itemType="i">
+				#{car.manufacturer}, #{car.year}
+			</p:dataList>
+		
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="datagrid.xhtml">
+					<pre name="code" class="xml">
+&lt;h3&gt;Number&lt;/h3&gt;
+&lt;p:dataList value="\#{tableBean.carsSmall}" var="car" type="ordered"&gt;
+	\#{car.manufacturer}, \#{car.year}
+&lt;/p:dataList&gt;
+
+&lt;h3&gt;Letter&lt;/h3&gt;
+&lt;p:dataList value="\#{tableBean.carsSmall}" var="car" type="ordered" itemType="A"&gt;
+	\#{car.manufacturer}, \#{car.year}
+&lt;/p:dataList&gt;
+
+&lt;h3&gt;Lowercase Letter&lt;/h3&gt;
+&lt;p:dataList value="\#{tableBean.carsSmall}" var="car" type="ordered" itemType="a"&gt;
+	\#{car.manufacturer}, \#{car.year}
+&lt;/p:dataList&gt;
+
+&lt;h3&gt;Roman Letter&lt;/h3&gt;
+&lt;p:dataList value="\#{tableBean.carsSmall}" var="car" type="ordered" itemType="i"&gt;
+	\#{car.manufacturer}, \#{car.year}
+&lt;/p:dataList&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="TableBean.java">
+					<pre name="code" class="java">
+public class TableBean implements Serializable {
+	
+	private final static Logger logger = Logger.getLogger(TableBean.class.getName());
+	
+	private final static String[] colors;
+	
+	private final static String[] manufacturers;
+	
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+		
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+	
+	private Lis&lt;Car&gt; carsSmall;
+
+	public TableBean() {
+		carsSmall = new ArrayList&lt;Car&gt;();
+		
+		populateRandomCars(carsSmall, 5);
+	}
+
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+	
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+	
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+}
+					</pre>
+				</p:tab>
+			</p:tabView>
+		
+		</div>
+				
+	</ui:define>
+</ui:composition>

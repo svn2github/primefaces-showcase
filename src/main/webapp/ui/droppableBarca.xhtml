@@ -1,0 +1,379 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.lineup {
+			}
+			
+			.squad {
+				vertical-align: top;
+			}
+			
+			.slot {
+				background:#333333; 
+				width:90px; 
+				height:110px;
+				display:block;
+			}
+			
+			.slotHover {
+				background:#666666; 
+			}
+			
+			.slotActive {
+				background: #FFCC00;
+			}
+			
+			.pf-panel {
+				margin: 10px;
+			}
+		
+			.pf-panel-hd,  .pf-panel-bd,  .pf-panel-ft {
+				border-color:#000000;
+			}
+			
+			 .pf-panel-hd {
+				 background: url(../images/dialoghd.gif);
+				 color: #FFFFFF;
+			}
+			
+			 .pf-panel-bd {
+				background: #333333;
+				color:#CCCCCC;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			function handleDrop(event, ui) {
+				ui.draggable.fadeOut().fadeIn();
+
+				jQuery(this).droppable('disable');
+			}
+		</script>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Drag and Drop</h1>
+		<div class="entry">
+			<p>This example demonstrates an advanced scenario with ajax enhanced draggables, droppables.</p>
+			
+			<p:ajaxStatus style="width:16px;height:16px;">
+				<f:facet name="start">
+					<h:graphicImage value="../design/ajaxloading.gif" />
+				</f:facet>
+				
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+				
+							
+			<h:form prependId="false">
+				<p:growl id="messages" showDetail="true"/>
+				<h:panelGrid columns="2" columnClasses="lineup,squad, squad">
+				
+					<p:panel header="Squad">
+						<h:panelGrid columns="4">
+						
+							<p:graphicImage id="messi" value="barca/messi_thumb.jpg">
+								<p:draggable revert="true" scope="forward"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="ibra" value="barca/ibra_thumb.jpg">
+								<p:draggable revert="true" scope="forward"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="henry" value="barca/henry_thumb.jpg">
+								<p:draggable revert="true" scope="forward"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="xavi" value="barca/xavi_thumb.jpg">
+								<p:draggable revert="true" scope="midfield"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="iniesta" value="barca/iniesta_thumb.jpg">
+								<p:draggable revert="true" scope="midfield"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="marquez" value="barca/marquez_thumb.jpg">
+								<p:draggable revert="true" scope="defence"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="puyol" value="barca/puyol_thumb.jpg">
+								<p:draggable revert="true" scope="defence"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="alves" value="barca/alves_thumb.jpg">
+								<p:draggable revert="true" scope="defence"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="valdes" value="barca/valdes_thumb.jpg">
+								<p:draggable revert="true" scope="goalkeeper"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="abidal" value="barca/abidal_thumb.jpg">
+								<p:draggable revert="true" scope="defence"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="toure" value="barca/toure_thumb.jpg">
+								<p:draggable revert="true" scope="midfield"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="pinto" value="barca/pinto_thumb.jpg">
+								<p:draggable revert="true" scope="goalkeeper"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="bojan" value="barca/bojan_thumb.jpg">
+								<p:draggable revert="true" scope="forward" />
+							</p:graphicImage>
+							
+							<p:graphicImage id="pique" value="barca/pique_thumb.jpg">
+								<p:draggable revert="true" scope="defence"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="keita" value="barca/keita_thumb.jpg">
+								<p:draggable revert="true" scope="midfield"/>
+							</p:graphicImage>
+							
+							<p:graphicImage id="maxwell" value="barca/maxwell_thumb.jpg">
+								<p:draggable revert="true" scope="defence"/>
+							</p:graphicImage>
+						
+						</h:panelGrid>
+					</p:panel>
+				
+					<h:panelGroup>
+						<h:panelGrid columns="3" style="margin-left:40px;">
+							<p:outputPanel id="LF" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="forward" onDrop="handleDrop"/>
+							</p:outputPanel>
+							
+							<p:outputPanel id="CF" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="forward" onDrop="handleDrop"/>
+							</p:outputPanel>
+							
+							<p:outputPanel id="RF" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="forward" onDrop="handleDrop"/>
+							</p:outputPanel>
+						</h:panelGrid>
+						
+						<h:panelGrid columns="3" style="margin-left:40px;">
+							<p:outputPanel id="LCM" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="midfield" onDrop="handleDrop"/>
+							</p:outputPanel>
+							
+							<p:outputPanel id="DM" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="midfield" onDrop="handleDrop"/>
+							</p:outputPanel>
+							
+							<p:outputPanel id="RCM" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="midfield" onDrop="handleDrop"/>
+							</p:outputPanel>
+						</h:panelGrid>
+						
+						<h:panelGrid columns="4">
+							<p:outputPanel id="LB" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="defence" onDrop="handleDrop"/>
+							</p:outputPanel>
+							
+							<p:outputPanel id="CB1" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="defence" onDrop="handleDrop"/>
+							</p:outputPanel>
+							
+							<p:outputPanel id="CB2" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit"  activeStyleClass="slotActive" onDropUpdate="messages" scope="defence" onDrop="handleDrop"/>
+							</p:outputPanel>
+							
+							<p:outputPanel id="RB" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="defence" onDrop="handleDrop"/>
+							</p:outputPanel>
+						</h:panelGrid>
+						
+						<h:panelGrid columns="1" style="margin-left:120px;">
+							<p:outputPanel id="GK" styleClass="slot">
+								<p:droppable dropListener="#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="goalkeeper" onDrop="handleDrop"/>
+							</p:outputPanel>
+						</h:panelGrid>
+					</h:panelGroup>
+				</h:panelGrid>
+				
+			</h:form>
+				
+			<h3>Source</h3>
+<p:tabView>
+	<p:tab title="droppableBarca.xhtml">
+	<pre name="code" class="xml">
+&lt;h:form prependId="false"&gt;
+	&lt;p:growl id="messages" showDetail="true"/&gt;
+	&lt;h:panelGrid columns="2" columnClasses="lineup,squad, squad"&gt;
+	
+		&lt;p:panel header="Squad"&gt;
+			&lt;h:panelGrid columns="4"&gt;
+			
+				&lt;p:graphicImage id="messi" value="barca/messi_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="forward"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="etoo" value="barca/etoo_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="forward"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="henry" value="barca/henry_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="forward"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="xavi" value="barca/xavi_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="midfield"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="iniesta" value="barca/iniesta_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="midfield"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="marquez" value="barca/marquez_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="defence"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="puyol" value="barca/puyol_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="defence"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="alves" value="barca/alves_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="defence"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="valdes" value="barca/valdes_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="goalkeeper"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="abidal" value="barca/abidal_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="defence"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="toure" value="barca/toure_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="midfield"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="pinto" value="barca/pinto_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="goalkeeper"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="bojan" value="barca/bojan_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="forward" /&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="pique" value="barca/pique_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="defence"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="keita" value="barca/keita_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="midfield"/&gt;
+				&lt;/p:graphicImage&gt;
+				
+				&lt;p:graphicImage id="hleb" value="barca/hleb_thumb.jpg"&gt;
+					&lt;p:draggable revert="true" scope="midfield"/&gt;
+				&lt;/p:graphicImage&gt;
+			
+			&lt;/h:panelGrid&gt;
+		&lt;/p:panel&gt;
+	
+		&lt;h:panelGroup&gt;
+			&lt;h:panelGrid columns="3" style="margin-left:40px;"&gt;
+				&lt;p:outputPanel id="LF" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="forward" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+				
+				&lt;p:outputPanel id="CF" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="forward" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+				
+				&lt;p:outputPanel id="RF" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="forward" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+			&lt;/h:panelGrid&gt;
+			
+			&lt;h:panelGrid columns="3" style="margin-left:40px;"&gt;
+				&lt;p:outputPanel id="LCM" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="midfield" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+				
+				&lt;p:outputPanel id="DM" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="midfield" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+				
+				&lt;p:outputPanel id="RCM" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="midfield" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+			&lt;/h:panelGrid&gt;
+			
+			&lt;h:panelGrid columns="4"&gt;
+				&lt;p:outputPanel id="LB" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="defence" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+				
+				&lt;p:outputPanel id="CB1" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="defence" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+				
+				&lt;p:outputPanel id="CB2" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit"  activeStyleClass="slotActive" onDropUpdate="messages" scope="defence" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+				
+				&lt;p:outputPanel id="RB" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="defence" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+			&lt;/h:panelGrid&gt;
+			
+			&lt;h:panelGrid columns="1" style="margin-left:120px;"&gt;
+				&lt;p:outputPanel id="GK" styleClass="slot"&gt;
+					&lt;p:droppable dropListener="\#{ddController.onDrop}" tolerance="fit" activeStyleClass="slotActive" onDropUpdate="messages" scope="goalkeeper" onDrop="handleDrop"/&gt;
+				&lt;/p:outputPanel&gt;
+			&lt;/h:panelGrid&gt;
+		&lt;/h:panelGroup&gt;
+	&lt;/h:panelGrid&gt;
+	
+&lt;/h:form&gt;
+			</pre>
+	</p:tab>
+	
+	<p:tab title="DDController.java">
+		<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.DragDropEvent;
+
+public class DDController {
+	
+	private final static Logger logger = Logger.getLogger(DDController.class.getName());
+	
+	public void onDrop(DragDropEvent ddEvent) {
+		logger.log(Level.INFO, "Drag Id: {0}", ddEvent.getDragId());
+		logger.log(Level.INFO, "Drop Id: {0}", ddEvent.getDropId());
+		
+		FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, ddEvent.getDragId() + " selected",  "Position: "+ ddEvent.getDropId());
+		
+		FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+	}
+}
+		</pre>
+	</p:tab>
+</p:tabView>
+			
+			
+
+		</div>
+
+	</ui:define>
+</ui:composition>

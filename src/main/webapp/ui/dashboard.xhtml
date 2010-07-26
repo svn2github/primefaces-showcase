@@ -1,0 +1,290 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.ui-panel, div.ui-state-hover {
+				margin: 10px;
+				width:200px;
+			}
+			
+			.ui-dashboard-column {
+				width:220px;
+			}
+		</style>
+	</ui:define>
+	
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Dashboard</h1>
+		<div class="entry">
+		
+		<p>Dashboard is a layout component featuring dragdrop based content reordering similar to portals. As a stateful component, dashboard is backed
+		by a DashboardModel API which is used to save the state of the UI. Additionally, reorder events can be intervened using ajax reorderListeners and
+		optional onReorderUpdate feature brings even more flexibility. Content toggling and closing features are provided by panels.</p>
+		
+			<h:form>
+			
+				<p:growl id="growl" showDetail="true" />
+		
+				<p:dashboard id="board" model="#{dashboardBean.model}" 
+					reorderListener="#{dashboardBean.handleReorder}" onReorderUpdate="growl">
+			
+					<p:panel id="sports" header="Sports" toggleable="true" closable="true"
+							closeListener="#{panelBean.handleClose}" onCloseUpdate="growl"
+							toggleListener="#{panelBean.handleToggle}" onToggleUpdate="growl"  widgetVar="sportsWidget">
+						<h:outputText value="Sports Content" />
+						<f:facet name="options">
+							<p:menu>
+								<p:submenu label="Settings">
+									<p:menuitem value="Toggle" url="#" icon="/images/update.png" onclick="sportsWidget.toggle()"/>
+									<p:menuitem value="Remove" url="#" icon="/images/delete.png" onclick="sportsWidget.close()"/>
+								</p:submenu>
+							</p:menu>
+						</f:facet>
+					</p:panel>
+					
+					<p:panel id="finance" header="Finance" toggleable="true" closable="true"
+							closeListener="#{panelBean.handleClose}" onCloseUpdate="growl"
+							toggleListener="#{panelBean.handleToggle}" onToggleUpdate="growl"  widgetVar="financeWidget">
+						<h:outputText value="Finance Content" />
+						<f:facet name="options">
+							<p:menu>
+								<p:submenu label="Settings">
+									<p:menuitem value="Toggle" url="#" icon="/images/update.png" onclick="financeWidget.toggle()"/>
+									<p:menuitem value="Remove" url="#" icon="/images/delete.png" onclick="financeWidget.close()"/>
+								</p:submenu>
+							</p:menu>
+						</f:facet>
+					</p:panel>
+
+					<p:panel id="lifestyle" header="Lifestyle" toggleable="true" closable="true"
+							closeListener="#{panelBean.handleClose}" onCloseUpdate="growl"
+							toggleListener="#{panelBean.handleToggle}" onToggleUpdate="growl" widgetVar="lifestyleWidget">
+						<h:outputText value="Lifestyle Content"  />
+						<f:facet name="options">
+							<p:menu>
+								<p:submenu label="Settings">
+									<p:menuitem value="Toggle" url="#" icon="/images/update.png" onclick="lifestyleWidget.toggle()"/>
+									<p:menuitem value="Remove" url="#" icon="/images/delete.png" onclick="lifestyleWidget.close()"/>
+								</p:submenu>
+							</p:menu>
+						</f:facet>
+					</p:panel>
+			
+					<p:panel id="weather" header="Weather" toggleable="true" closable="true"
+							closeListener="#{panelBean.handleClose}" onCloseUpdate="growl"
+							toggleListener="#{panelBean.handleToggle}" onToggleUpdate="growl" widgetVar="weatherWidget">
+						<h:outputText value="Weather Content" />
+						<f:facet name="options">
+						<p:menu>
+							<p:submenu label="Settings">
+								<p:menuitem value="Toggle" url="#" icon="/images/update.png" onclick="weatherWidget.toggle()"/>
+								<p:menuitem value="Remove" url="#" icon="/images/delete.png" onclick="weatherWidget.close()"/>
+							</p:submenu>
+						</p:menu>
+					</f:facet>
+					</p:panel>
+					
+					<p:panel id="politics" header="Politics" toggleable="true" closable="true"
+							closeListener="#{panelBean.handleClose}" onCloseUpdate="growl"
+							toggleListener="#{panelBean.handleToggle}" onToggleUpdate="growl" widgetVar="politicsWidget">
+						<h:outputText value="Politics Content" />
+						<f:facet name="options">
+							<p:menu>
+								<p:submenu label="Settings">
+									<p:menuitem value="Toggle" url="#" icon="/images/update.png" onclick="politicsWidget.toggle()"/>
+									<p:menuitem value="Remove" url="#" icon="/images/delete.png" onclick="politicsWidget.close()"/>
+								</p:submenu>
+							</p:menu>
+						</f:facet>
+					</p:panel>
+				</p:dashboard>
+				
+				<div style="clear:both" />
+				
+				<hr />
+				
+				<h3>More widgets to add</h3>
+				<p>Draggable component has exclusive support to connect with dashboards</p>
+				
+				<h:panelGrid columns="3">
+					<p:panel id="travel" header="Travel" toggleable="true" closable="true">
+						<h:outputText value="Travel Content" />
+					</p:panel>
+					<p:draggable for="travel" dashboard="board" helper="clone"/>
+					
+					<p:panel id="tv" header="TV" toggleable="true" closable="true">
+						<h:outputText value="TV Content" />
+					</p:panel>
+					<p:draggable for="tv" dashboard="board" helper="clone"/>
+				</h:panelGrid>
+				
+				
+			
+			</h:form>
+			
+			<h3 style="clear:both;">Source</h3>
+			
+			<p:tabView>
+				<p:tab title="DashboardBean.java">
+<pre name="code" class="java">
+public class DashboardBean implements Serializable {
+
+	private DashboardModel model;
+	
+	public DashboardBean() {
+		model = new DefaultDashboardModel();
+		DashboardColumn column1 = new DefaultDashboardColumn();
+		DashboardColumn column2 = new DefaultDashboardColumn();
+		DashboardColumn column3 = new DefaultDashboardColumn();
+		
+		column1.addWidget("sports");
+		column1.addWidget("finance");
+		
+		column2.addWidget("lifestyle");
+		column2.addWidget("weather");
+		
+		column3.addWidget("politics");
+
+		model.addColumn(column1);
+		model.addColumn(column2);
+		model.addColumn(column3);
+	}
+	
+	public void handleReorder(DashboardReorderEvent event) {
+		FacesMessage message = new FacesMessage();
+		message.setSeverity(FacesMessage.SEVERITY_INFO);
+		message.setSummary("Reordered: " + event.getWidgetId());
+		message.setDetail("Item index: " + event.getItemIndex() + ", Column index: " + event.getColumnIndex() + ", Sender index: " + event.getSenderColumnIndex());
+		
+		addMessage(message);
+	}
+	
+	public void handleClose(CloseEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Panel Closed", "Closed panel id:'" + event.getComponent().getId() + "'");
+		
+		addMessage(message);
+	}
+	
+	public void handleToggle(ToggleEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, event.getComponent().getId() + " toggled", "Status:" + event.getVisibility().name());
+		
+		addMessage(message);
+	}
+	
+	private void addMessage(FacesMessage message) {
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+	
+	public DashboardModel getModel() {
+		return model;
+	}
+}
+			</pre>
+				</p:tab>
+				
+				<p:tab title="dashboard.xhtml">
+				<pre name="code" class="xml">
+&lt;p:growl id="growl" showDetail="true" /&gt;
+		
+&lt;p:dashboard id="board" model="\#{dashboardBean.model}" 
+	reorderListener="\#{dashboardBean.handleReorder}" onReorderUpdate="growl"&gt;
+
+	&lt;p:panel id="sports" header="Sports" toggleable="true" closable="true"
+			closeListener="\#{panelBean.handleClose}" onCloseUpdate="growl"
+			toggleListener="\#{panelBean.handleToggle}" onToggleUpdate="growl"  widgetVar="sportsWidget"&gt;
+		&lt;h:outputText value="Sports Content" /&gt;
+		&lt;f:facet name="options"&gt;
+			&lt;p:menu&gt;
+				&lt;p:submenu label="Settings"&gt;
+					&lt;p:menuitem value="Toggle" url="\#" icon="/images/update.png" onclick="sportsWidget.toggle()"/&gt;
+					&lt;p:menuitem value="Remove" url="\#" icon="/images/delete.png" onclick="sportsWidget.close()"/&gt;
+				&lt;/p:submenu&gt;
+			&lt;/p:menu&gt;
+		&lt;/f:facet&gt;
+	&lt;/p:panel&gt;
+	
+	&lt;p:panel id="finance" header="Finance" toggleable="true" closable="true"
+			closeListener="\#{panelBean.handleClose}" onCloseUpdate="growl"
+			toggleListener="\#{panelBean.handleToggle}" onToggleUpdate="growl"  widgetVar="financeWidget"&gt;
+		&lt;h:outputText value="Finance Content" /&gt;
+		&lt;f:facet name="options"&gt;
+			&lt;p:menu&gt;
+				&lt;p:submenu label="Settings"&gt;
+					&lt;p:menuitem value="Toggle" url="\#" icon="/images/update.png" onclick="financeWidget.toggle()"/&gt;
+					&lt;p:menuitem value="Remove" url="\#" icon="/images/delete.png" onclick="financeWidget.close()"/&gt;
+				&lt;/p:submenu&gt;
+			&lt;/p:menu&gt;
+		&lt;/f:facet&gt;
+	&lt;/p:panel&gt;
+
+	&lt;p:panel id="lifestyle" header="Lifestyle" toggleable="true" closable="true"
+			closeListener="\#{panelBean.handleClose}" onCloseUpdate="growl"
+			toggleListener="\#{panelBean.handleToggle}" onToggleUpdate="growl" widgetVar="lifestyleWidget"&gt;
+		&lt;h:outputText value="Lifestyle Content"  /&gt;
+		&lt;f:facet name="options"&gt;
+			&lt;p:menu&gt;
+				&lt;p:submenu label="Settings"&gt;
+					&lt;p:menuitem value="Toggle" url="\#" icon="/images/update.png" onclick="lifestyleWidget.toggle()"/&gt;
+					&lt;p:menuitem value="Remove" url="\#" icon="/images/delete.png" onclick="lifestyleWidget.close()"/&gt;
+				&lt;/p:submenu&gt;
+			&lt;/p:menu&gt;
+		&lt;/f:facet&gt;
+	&lt;/p:panel&gt;
+
+	&lt;p:panel id="weather" header="Weather" toggleable="true" closable="true"
+			closeListener="\#{panelBean.handleClose}" onCloseUpdate="growl"
+			toggleListener="\#{panelBean.handleToggle}" onToggleUpdate="growl" widgetVar="weatherWidget"&gt;
+		&lt;h:outputText value="Weather Content" /&gt;
+		&lt;f:facet name="options"&gt;
+		&lt;p:menu&gt;
+			&lt;p:submenu label="Settings"&gt;
+				&lt;p:menuitem value="Toggle" url="\#" icon="/images/update.png" onclick="weatherWidget.toggle()"/&gt;
+				&lt;p:menuitem value="Remove" url="\#" icon="/images/delete.png" onclick="weatherWidget.close()"/&gt;
+			&lt;/p:submenu&gt;
+		&lt;/p:menu&gt;
+	&lt;/f:facet&gt;
+	&lt;/p:panel&gt;
+	
+	&lt;p:panel id="politics" header="Politics" toggleable="true" closable="true"
+			closeListener="\#{panelBean.handleClose}" onCloseUpdate="growl"
+			toggleListener="\#{panelBean.handleToggle}" onToggleUpdate="growl" widgetVar="politicsWidget"&gt;
+		&lt;h:outputText value="Politics Content" /&gt;
+		&lt;f:facet name="options"&gt;
+			&lt;p:menu&gt;
+				&lt;p:submenu label="Settings"&gt;
+					&lt;p:menuitem value="Toggle" url="\#" icon="/images/update.png" onclick="politicsWidget.toggle()"/&gt;
+					&lt;p:menuitem value="Remove" url="\#" icon="/images/delete.png" onclick="politicsWidget.close()"/&gt;
+				&lt;/p:submenu&gt;
+			&lt;/p:menu&gt;
+		&lt;/f:facet&gt;
+	&lt;/p:panel&gt;
+&lt;/p:dashboard&gt;
+
+&lt;h3&gt;More widgets to add&lt;/h3&gt;
+&lt;p&gt;Draggable component has exclusive support to connect with dashboards&lt;/p&gt;
+
+&lt;h:panelGrid columns="3"&gt;
+	&lt;p:panel id="travel" header="Travel" toggleable="true" closable="true" style="width:200px"&gt;
+		&lt;h:outputText value="Travel Content" /&gt;
+	&lt;/p:panel&gt;
+	&lt;p:draggable for="travel" dashboard="board" helper="clone"/&gt;
+	
+	&lt;p:panel id="tv" header="TV" toggleable="true" closable="true" style="width:200px"&gt;
+		&lt;h:outputText value="TV Content" /&gt;
+	&lt;/p:panel&gt;
+	&lt;p:draggable for="tv" dashboard="board" helper="clone"/&gt;
+&lt;/h:panelGrid&gt;
+			</pre>
+				</p:tab>
+			</p:tabView>
+			
+			
+		</div>
+
+	</ui:define>
+</ui:composition>

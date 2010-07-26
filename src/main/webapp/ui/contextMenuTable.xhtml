@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">ContextMenu - DataTable</h1>
+			<div class="entry">
+			<p>DataTable has special support contextMenu.</p>
+			
+			<h:form>
+			
+				<p:growl id="msg" />
+				
+				<p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}">
+					<p:column>
+						<f:facet name="header">
+							Model
+						</f:facet>
+						<h:outputText value="#{car.model}" />
+					</p:column>
+		
+					<p:column>
+						<f:facet name="header">
+							Year
+						</f:facet>
+						<h:outputText value="#{car.year}" />
+					</p:column>
+		
+					<p:column>
+						<f:facet name="header">
+							Manufacturer
+						</f:facet>
+						<h:outputText value="#{car.manufacturer}" />
+					</p:column>
+		
+					<p:column>
+						<f:facet name="header">
+							Color
+						</f:facet>
+						<h:outputText value="#{car.color}" />
+					</p:column>
+				</p:dataTable>
+				
+				<p:contextMenu for="cars">
+					<p:menuitem value="Delete" actionListener="#{buttonBean.save}" update="msg"/>
+					<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="msg"/>
+					<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false"/>
+					<p:menuitem value="Go Home" url="http://www.primefaces.org" target="_blank"/>
+				</p:contextMenu>
+				
+			</h:form>
+						
+			<h3>Source</h3>
+<pre name="code" class="xml">
+
+</pre>
+						
+					</div>
+				
+	</ui:define>
+</ui:composition>

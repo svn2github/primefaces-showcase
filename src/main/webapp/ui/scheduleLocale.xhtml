@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Schedule</h1>
+		<div class="entry">
+		<p>Schedule supports several languages out of the box, following are examples for Turkish, Italian and Japanese.</p>
+			<h:form>
+				<p:schedule value="#{scheduleController.eventModel}" locale="tr" />
+				
+				<p:schedule value="#{scheduleController.eventModel}" locale="it" style="margin-top:30px;"/>
+				
+				<p:schedule value="#{scheduleController.eventModel}" locale="ja" style="margin-top:30px;"/>
+				
+			</h:form>
+<h3>Source</h3>
+<pre name="code" class="xml">
+&lt;p:schedule value="\#{scheduleController.eventModel}" locale="tr" /&gt;
+				
+&lt;p:schedule value="\#{scheduleController.eventModel}" locale="it"/&gt;
+				
+&lt;p:schedule value="\#{scheduleController.eventModel}" locale="ja"/&gt;
+</pre>
+		</div>
+		
+	</ui:define>
+</ui:composition>

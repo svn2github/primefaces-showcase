@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Carousel</h1>
+		<div class="entry">
+			
+			<p:menu styleClass="homeMenu"> 
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/carousel.jsf" value="Simple Carousel" />
+					<p:menuitem url="/ui/carouselSelect.jsf" value="Item Selection" />
+					<p:menuitem url="/ui/carouselEffects.jsf" value="Effects" />
+					<p:menuitem url="/ui/carouselTabs.jsf" value="Tab Slider" />
+					<p:menuitem url="/ui/carouselSlideshow.jsf" value="SlideShow" />
+				</p:submenu>
+			</p:menu>
+			
+			<span class="homeText">Carousel is a multi purpose component to display a set of data or general content.</span>
+		
+		</div>
+			
+
+	</ui:define>
+</ui:composition>

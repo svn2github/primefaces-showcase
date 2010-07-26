@@ -1,0 +1,146 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<script type="text/javascript">
+			function start() {
+				this.progressInterval = setInterval(function(){
+					pbClient.setValue(pbClient.getValue() + 10);
+				}, 2000);
+			}
+	
+			function cancel() {
+				clearInterval(this.progressInterval);
+				pbClient.setValue(0);
+			}
+		</script>
+		
+		<style type="text/css">
+			span {
+				cursor:pointer;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">ProgressBar</h1>
+		<div class="entry">
+			<p>ProgressBar is a process status indicator that can either work purely on client side or interact with server side
+			via ajax.</p>
+		
+			<p:growl id="growl" />
+			
+			<h:form>
+		
+				<h3>Client Side ProgressBar</h3>
+				<p:commandButton value="Start" onclick="start();return false;" />
+				<p:commandButton value="Cancel" onclick="cancel();return false;" />
+				<br /><br />
+				<p:progressBar widgetVar="pbClient" style="width:300px"/>
+				 
+				 
+				<h3>Ajax ProgressBar with Growl Integration</h3>
+				<p:commandButton value="Start" onclick="pbAjax.start();return false;" />
+				<p:commandButton value="Cancel" onclick="pbAjax.cancel();return false;" />
+				<br /><br />
+				<p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBean.progress}"
+					onCompleteUpdate="growl" completeListener="#{progressBean.onComplete}"
+					onCancelUpdate="growl" cancelListener="#{progressBean.onCancel}" />
+					
+			</h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="progressBar.xhtml">
+					<pre name="code" class="xml">
+&lt;p:growl id="growl" /&gt;
+			
+&lt;h:form&gt;
+
+	&lt;h3&gt;Client Side ProgressBar&lt;/h3&gt;
+	&lt;p:commandButton value="Start" onclick="start();return false;" /&gt;
+	&lt;p:commandButton value="Cancel" onclick="cancel();return false;" /&gt;
+	&lt;br /&gt;&lt;br /&gt;
+	&lt;p:progressBar widgetVar="pbClient" style="width:300px"/&gt;
+	 
+	 
+	&lt;h3&gt;Ajax ProgressBar with Growl Integration&lt;/h3&gt;
+	&lt;p:commandButton value="Start" onclick="pbAjax.start();return false;" /&gt;
+	&lt;p:commandButton value="Cancel" onclick="pbAjax.cancel();return false;" /&gt;
+	&lt;br /&gt;&lt;br /&gt;
+	&lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}"
+		onCompleteUpdate="growl" completeListener="\#{progressBean.onComplete}"
+		onCancelUpdate="growl" cancelListener="\#{progressBean.onCancel}" /&gt;
+		
+&lt;/h:form&gt;
+				</pre>
+				
+				<pre name="code" class="javascript">
+&lt;script type="text/javascript"&gt;
+	function start() {
+		this.progressInterval = setInterval(function(){
+			pbClient.setValue(pbClient.getValue() + 10);
+		}, 2000);
+	}
+
+	function cancel() {
+		clearInterval(this.progressInterval);
+		pbClient.setValue(0);
+	}
+&lt;/script&gt;
+				</pre>
+				</p:tab>
+				
+				<p:tab title="ProgressBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+public class ProgressBean implements Serializable {
+
+	private Integer progress;
+
+	public Integer getProgress() {
+		if(progress == null)
+			progress = 0;
+		else {
+			progress = progress + (int)(Math.random() * 35);
+			
+			if(progress &gt; 100)
+				progress = 100;
+		}
+		
+		return progress;
+	}
+
+	public void setProgress(Integer progress) {
+		this.progress = progress;
+	}
+	
+	public void onComplete() {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Progress Completed", "Progress Completed"));
+	}
+	
+	public void onCancel() {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Progress Cancelled", "Progress Cancelled"));
+	}
+}
+					</pre>
+				</p:tab>
+			</p:tabView>
+			
+						
+		</div>
+	
+				
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,134 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Single Row Selection</h1>
+		<div class="entry">
+                <p>Another easy way to select rows from datatable is to use a column with a selectionMode configuration. Following datatable allows
+                single selection with radio buttons.</p>
+                
+                <h:form prependId="false">
+                     
+					<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
+						selection="#{tableBean.selectedCar}">
+						
+						<p:column selectionMode="single" />
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Model" />
+							</f:facet>
+							<h:outputText value="#{car.model}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Year" />
+							</f:facet>
+							<h:outputText value="#{car.year}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Manufacturer" />
+							</f:facet>
+							<h:outputText value="#{car.manufacturer}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Color" />
+							</f:facet>
+							<h:outputText value="#{car.color}" />
+						</p:column>
+					</p:dataTable>
+					
+					<p:commandButton value="Submit" update="display"/>	
+					
+					<br /><br />
+					
+					<h:outputText id="display" value="#{tableBean.selectedCar.model}" />
+					
+				</h:form>
+			
+				<h3>Source</h3>
+				<pre name="code" class="xml">
+&lt;h:form prependId="false"&gt;
+                     
+	&lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+		selection="\#{tableBean.selectedCar}"&gt;
+		
+		&lt;p:column selectionMode="single" /&gt;
+			
+		&lt;p:column&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Model" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="\#{car.model}" /&gt;
+		&lt;/p:column&gt;
+
+		&lt;p:column&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Year" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="\#{car.year}" /&gt;
+		&lt;/p:column&gt;
+
+		&lt;p:column&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Manufacturer" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="\#{car.manufacturer}" /&gt;
+		&lt;/p:column&gt;
+
+		&lt;p:column&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Color" /&gt;
+			&lt;/f:facet&gt; 
+			&lt;h:outputText value="\#{car.color}" /&gt;
+		&lt;/p:column&gt;
+		
+	&lt;/p:dataTable&gt;
+	
+	&lt;p:commandButton value="Submit" update="display"/&gt;	
+	
+	&lt;h:outputText id="display" value="\#{selectedCar.model}" /&gt;
+	
+&lt;/h:form&gt;
+				</pre>
+				
+<pre name="code" class="java">
+public class TableBean {
+
+	private List&lt;Car&gt; cars;
+	
+	private Car selectedCar;
+
+	public TableBean() {
+		cars = new ArrayList&lt;Car&gt;();
+		
+		for(int i = 0 ; i &lt; 50 ; i++)
+			list.add(new Car("Model_" + i, getRandomYear(), "Brand_" + i, "Color_" + i));
+	}
+
+	public Car getSelectedCar() {
+		return selectedCar;
+	}
+	public void setSelectedCar(Car selectedCar) {
+		this.selectedCar = selectedCar;
+	}
+
+	public List&lt;Car&gt; getCars() {
+		return cars;
+	}
+}
+				</pre>
+           
+</div>
+
+	</ui:define>
+</ui:composition>

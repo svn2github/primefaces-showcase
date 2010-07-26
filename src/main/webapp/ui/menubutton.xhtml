@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">MenuButton</h1>
+		<div class="entry">
+			<p>MenuButton groups multiple commands in a popup menu. Using menuitems, it is easy to execute both ajax and non-ajax actions as well as
+			directly navigating to other pages.</p>
+			
+			<h:form>
+			
+				<p:growl id="messages"/>
+				
+				<h:panelGrid columns="2" cellpadding="5">
+				
+					<p:menuButton value="Options">
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages"/>
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages"/>
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false"/>
+						<p:menuitem value="Homepage" url="http://www.primefaces.org"/>
+					</p:menuButton>
+					
+					<p:ajaxStatus style="width:16px;height:16px;">
+						<f:facet name="start">
+							<h:graphicImage value="../design/ajaxloading.gif" />
+						</f:facet>
+						
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+					</p:ajaxStatus>
+				</h:panelGrid>
+				
+			
+				
+			</h:form>
+					
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="menuButton.xhtml">
+<pre name="code" class="xml">
+&lt;h:form&gt;
+	&lt;p:growl id="messages"/&gt;
+	
+	&lt;p:menuButton value="Options"&gt;
+		&lt;p:menuitem value="Save" 
+			actionListener="\#{buttonBean.save}" update="messages"/&gt;
+		&lt;p:menuitem value="Update" 
+			actionListener="\#{buttonBean.update}" update="messages"/&gt;
+		&lt;p:menuitem value="Delete" 
+			actionListener="\#{buttonBean.delete}" ajax="false"/&gt;
+		&lt;p:menuitem value="Homepage" url="http://www.primefaces.org"/&gt;
+	&lt;/p:menuButton&gt;
+&lt;/h:form&gt;
+			</pre>
+				</p:tab>
+				
+				<p:tab title="ButtonBean.java">
+<pre name="code" class="java">
+package org.primefaces.examples.view;
+		
+import javax.faces.event.ActionEvent;
+import javax.faces.context.FacesContext;
+import javax.faces.application.FacesContext;
+
+public class ButtonBean {
+	
+	public void save(ActionEvent actionEvent) {
+		addMessage("Data saved");
+	}
+	
+	public void update(ActionEvent actionEvent) {
+		addMessage("Data updated");
+	}
+	
+	public void delete(ActionEvent actionEvent) {
+		addMessage("Data deleted");
+	}
+	
+	public void addMessage(String summary) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+			</pre>
+				</p:tab>
+			</p:tabView>
+			
+		</div>
+
+	</ui:define>
+</ui:composition>

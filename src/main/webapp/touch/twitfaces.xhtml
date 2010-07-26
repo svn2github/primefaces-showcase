@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:i="http://primefaces.prime.com.tr/touch"
+	contentType="text/html">
+	
+	<i:application icon="/images/touch/twiticon.png">
+	
+		<i:view id="home" title="TwitFaces">
+			
+			<h:form prependId="false">
+		
+				<i:tableView>
+				
+					<i:rowGroup>
+						<i:rowItem>
+							<h:inputText value="#{twitterController.username}" />
+						</i:rowItem>
+					</i:rowGroup>
+					
+					<p:commandLink actionListener="#{twitterController.loadTweets}" style="margin:10px 10px;" styleClass="whiteButton" update="display">Get Tweets</p:commandLink>
+					
+					<i:rowGroup id="display">
+						<ui:repeat value="#{twitterController.tweets}" var="tweet">
+							<i:rowItem>
+								#{tweet}
+							</i:rowItem>
+						</ui:repeat>
+					</i:rowGroup>
+				
+				</i:tableView>
+			
+			
+			</h:form>
+		</i:view>
+	
+	</i:application>
+	
+</f:view>

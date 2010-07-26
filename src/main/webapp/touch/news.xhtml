@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:i="http://primefaces.prime.com.tr/touch"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	contentType="text/html">
+	
+	<i:application icon="/images/touch/newsicon.png">
+	
+		<i:view id="home" title="News">
+			<h:form>
+				<i:tableView>
+					<i:rowGroup>
+					
+						<ui:repeat value="#{newsController.news}" var="news">
+							<i:rowItem value="#{news.title}" view="summaries" actionListener="#{newsController.click}" update="newsSummaries">
+								<f:param name="newsgroup" value="#{news.title}" />
+							</i:rowItem>
+						</ui:repeat>
+						
+					</i:rowGroup>
+				</i:tableView>
+			</h:form>
+		</i:view>
+		
+		<i:view id="summaries" title="News">
+			<f:facet name="leftNavBar">
+				<i:navBarControl label="Home" view="home" />
+			</f:facet>
+			
+			<h:form prependId="false">
+				<i:tableView id="newsSummaries">
+					<i:rowGroup>
+						<ui:repeat value="#{newsController.entries}" var="entry">
+							<i:rowItem value="#{entry.title}" view="details" actionListener="#{newsController.detail}" update="newsDetails">
+									<f:param name="newsdetailIndex" value="#{entry.index}" />
+								</i:rowItem>
+						</ui:repeat>
+					</i:rowGroup>
+				</i:tableView>
+			</h:form>
+		</i:view>
+		
+		<i:view id="details" title="News">
+			<f:facet name="leftNavBar">
+				<i:navBarControl label="Back" view="summaries" />
+			</f:facet>
+			
+			<i:tableView id="newsDetails">
+				<i:rowGroup>
+					<i:rowItem value="#{newsController.entry.content}" rendered="#{not empty newsController.entry}"/>
+				</i:rowGroup>
+			</i:tableView>
+		</i:view>
+		
+	
+	</i:application>
+	
+</f:view>

@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	
+	<ui:define name="head">
+		<style type="text/css">
+		
+			.yui-skin-sam .yui-editor-container { 
+				border-color: #33CC00;
+			} 
+			
+			.yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar h2 {
+				background: url(../design/nav.gif);
+			} 
+			
+			/* Background color of the toolbar */ 
+			.yui-skin-sam .yui-toolbar-container { 
+			    background-color: #FFFFCC ; 
+			}
+			
+			/* Give the toolbars groups titles some color and padding */ 
+			.yui-skin-sam .yui-toolbar-container .yui-toolbar-group h3 { 
+			    color: #33CC00 ; 
+			} 
+			
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Rich Text Editor - Skinning</h1>
+		<div class="entry">
+			<h:form>
+			<p>Editor supports skinning through global CSS skin selectors.</p>
+
+			<p:editor value="#{editorBean.htmlText}" width="640px" height="320px" />
+
+			
+			<h:commandButton value="Submit" />
+
+			<br />
+			
+					You typed: <h:outputText value="#{editorBean.htmlText}" escape="false"></h:outputText>
+
+			<br />
+			<br />
+
+			<h3>Source</h3>
+			<pre name="code" class="css">
+		
+			.yui-skin-sam .yui-editor-container { 
+				border-color: #33CC00;
+			} 
+			
+			.yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar h2 {
+				background: url(../design/nav.gif);
+			} 
+			
+			/* Background color of the toolbar */ 
+			.yui-skin-sam .yui-toolbar-container { 
+			    background-color: #FFFFCC ; 
+			}
+			
+			/* Give the toolbars groups titles some color and padding */ 
+			.yui-skin-sam .yui-toolbar-container .yui-toolbar-group h3 { 
+			    color: #33CC00 ; 
+			} 
+			</pre>
+		</h:form>
+		</div>
+
+		
+	</ui:define>
+</ui:composition>

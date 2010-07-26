@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">IdleMonitor - Client side</h1>
+		<div class="entry">
+			<p>IdleMonitor on this page
+			is set for 10 seconds for demonstration purposes. Stay idle for 10 seconds and idleMonitor will warn you.</p>
+	
+			<p:idleMonitor timeout="10000" onidle="idleDialog.show();" onactive="idleDialog.hide();"/>
+			
+			<p:dialog header="What's happening?" widgetVar="idleDialog" modal="true" width="400" resizable="false">
+				<h:outputText value="Dude, are you there?" />
+			</p:dialog>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="idleMonitor.xhtml">
+								<pre name="code" class="xml">
+&lt;p:idleMonitor timeout="10000" 
+			onidle="idleDialog.show();" onactive="idleDialog.hide();"/&gt;
+			
+&lt;p:dialog header="What's happening?" resizable="false"
+			widgetVar="idleDialog" modal="true" width="400"&gt;
+	&lt;h:outputText value="Dude, are you there?" /&gt;
+&lt;/p:dialog&gt;
+			</pre>
+				</p:tab>
+			</p:tabView>
+
+			
+		</div>
+
+	</ui:define>
+</ui:composition>

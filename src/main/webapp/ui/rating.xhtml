@@ -1,0 +1,121 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Rating</h1>
+		<div class="entry">
+                <p>Rating component provides a star based rating input. In addition instant rating is available with ajax rate listener</p>
+                	
+                <h3>Input Rating</h3>
+                <h:form>
+                
+                	<h:panelGrid columns="2" cellpadding="5">
+                		<h:outputText value="Rating 1:" />
+                		<p:rating value="#{ratingController.rating1}" />
+  
+                		<h:outputText value="Rating 2:" />
+                		<p:rating value="#{ratingController.rating2}" stars="10"/>
+                	</h:panelGrid>
+                	
+                	<p:commandButton value="Submit" update="displayRatings" style="margin:5px"/>
+                		
+                	<h:panelGrid id="displayRatings" columns="1" cellpadding="5">
+                		<h:outputText value="Rating 1: #{ratingController.rating1}" />
+                		<h:outputText value="Rating 2: #{ratingController.rating2}" />
+                	</h:panelGrid>
+                	
+				 	<h3>Instant Ajax Rating</h3>
+					<h:panelGrid columns="2" cellpadding="5">
+                		<h:outputText value="Rate Me" />
+                		<p:rating rateListener="#{ratingController.handleRate}" update="messages"/>
+                	</h:panelGrid>
+                	
+                	<p:growl id="messages" showDetail="true"/>
+                	
+                	<h3>Display Value Only</h3>
+                	<h:panelGrid columns="2" cellpadding="5">
+                		<h:outputText value="A ReadOnly Rating:"/>
+						<p:rating value="#{ratingController.rating3}" disabled="true"/>
+                	</h:panelGrid>
+					
+				</h:form>
+			
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="rating.xhtml">
+<pre name="code" class="xml">
+&lt;h:form&gt;
+                
+   	&lt;h:panelGrid columns="2" cellpadding="5"&gt;
+   		&lt;h:outputText value="Rating 1:" /&gt;
+   		&lt;p:rating value="\#{ratingController.rating1}" /&gt;
+
+   		&lt;h:outputText value="Rating 2:" /&gt;
+   		&lt;p:rating value="\#{ratingController.rating2}" stars="10"/&gt;
+   	&lt;/h:panelGrid&gt;
+            	
+	&lt;p:commandButton value="Submit" update="displayRatings" style="margin:5px"/&gt;
+            		
+  	&lt;h:panelGrid id="displayRatings" columns="1" cellpadding="5"&gt;
+  		&lt;h:outputText value="Rating 1: \#{ratingController.rating1}" /&gt;
+  		&lt;h:outputText value="Rating 2: \#{ratingController.rating2}" /&gt;
+  	&lt;/h:panelGrid&gt;
+            	
+ 	&lt;h3&gt;Instant Ajax Rating&lt;/h3&gt;
+	&lt;h:panelGrid columns="2" cellpadding="5"&gt;
+   		&lt;h:outputText value="Rate Me" /&gt;
+   		&lt;p:rating update="messages" 
+   				rateListener="\#{ratingController.handleRate}" /&gt;
+   	&lt;/h:panelGrid&gt;
+            	
+   	&lt;p:growl id="messages" showDetail="true"/&gt;
+   	
+   	&lt;h3&gt;Display Value Only&lt;/h3&gt;
+   	&lt;h:panelGrid columns="2" cellpadding="5"&gt;
+		&lt;h:outputText value="A ReadOnly Rating:"/&gt;
+		&lt;p:rating value="\#{ratingController.rating3}" disabled="true"/&gt;
+	&lt;/h:panelGrid&gt;
+	
+&lt;/h:form&gt;
+				</pre>
+					</p:tab>
+					
+					<p:tab title="RatingController.java">
+<pre name="code" class="java">
+public class RatingController {
+
+	private Double rating1;
+	
+	private Double rating2;
+	
+	private Double rating3 = Double.valueOf(3);
+	
+	public void handleRate(RateEvent rateEvent) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", null);
+		Double rating = rateEvent.getRating();
+		
+		if(rating != null)
+			message.setDetail("You rated:" + rateEvent.getRating());
+		else
+			message.setDetail("You cleared your rate");
+			
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+	
+	//Getters and Setters
+}
+        		</pre>
+					</p:tab>
+				</p:tabView>
+				
+				
+        		
+     </div>
+      
+
+	</ui:define>
+</ui:composition>

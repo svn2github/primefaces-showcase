@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">ContextMenu - ImageSwitch</h1>
+			<div class="entry">
+			<p>This example demonstrates how to attach a context-menu for a particular component.
+			Right-click on imageSwitcher to see the available options.</p>
+			
+			<h3>ImageSwitcher with ContextMenu</h3>
+			<p:imageSwitch id="images" effect="FadeIn" widgetVar="gallery" slideshowAuto="false"
+				style="width:400px">
+				<p:graphicImage value="/images/nature1.jpg" />
+				<p:graphicImage value="/images/nature2.jpg" />
+				<p:graphicImage value="/images/nature3.jpg" />
+				<p:graphicImage value="/images/nature4.jpg" />
+			</p:imageSwitch>
+		
+			<p:contextMenu for="images">
+				<p:menuitem value="Previous" url="#" onclick="gallery.previous()" />
+				<p:menuitem value="Next" url="#" onclick="gallery.next()" />
+				<p:menuitem value="Remove All" url="#" onclick="jQuery('#images').fadeOut()" />
+			</p:contextMenu>
+						
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="contextMenuAttach.xhtml">
+	<pre name="code" class="xml">
+
+&lt;h3&gt;ImageSwitcher with ContextMenu&lt;/h3&gt;
+&lt;p:imageSwitch id="images" effect="FadeIn" widgetVar="gallery" slideshowAuto="false"
+	style="width:400px"&gt;
+	&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature2.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
+&lt;/p:imageSwitch&gt;
+
+&lt;p:contextMenu for="images"&gt;
+	&lt;p:menuitem value="Previous" url="#" onclick="gallery.previous()" /&gt;
+	&lt;p:menuitem value="Next" url="\#" onclick="gallery.next()" /&gt;
+	&lt;p:menuitem value="Remove All" url="#" onclick="jQuery('\#images').fadeOut()" /&gt;
+&lt;/p:contextMenu&gt;
+</pre>
+				</p:tab>
+			</p:tabView>
+
+						
+					</div>
+				
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,131 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			body {
+				padding:0;
+				margin:0;
+			}
+			
+			.top {
+				filter:alpha(opacity=70);
+				opacity:0.7;
+				padding:50px 0 0 50px;
+				height:110px;
+			}
+			
+			.bottom {
+				background: url(../images/bottomBack.png) repeat-x;
+				padding:30px 0 0 50px;
+				font-size: 24px;
+				font-weight: bold;
+				font-style: italic;	
+			}
+			
+			.pf-messages {
+				width:80%;
+			}
+			
+			.pf-notificationbar-container {
+				display:none;
+			}
+		</style>
+	
+	</ui:define>
+	
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Notification Bar</h1>
+		<div class="entry">
+			<p>NotificationBar displays a multipurpose fixed positioned panel for notification either on top or bottom of the page. Any group of JSF components
+			can be placed inside notification bar.</p>
+			
+			<h3>Displaying FacesMessages</h3>
+			
+			<h:form id="form">
+				
+				<h:panelGrid columns="4">
+					<h:outputLabel for="name" value="Say: *" />
+					<h:inputText id="name" value="#{buttonBean.text}" required="true" requiredMessage="You must type something!"/>
+					<p:commandButton value="Submit" update="bottomPanel" oncomplete="bottomBar.show();"/>
+					<p:ajaxStatus style="height:24px;display:block;">
+						<f:facet name="start">
+							<h:graphicImage value="../design/ajaxloading.gif" />
+						</f:facet>
+						
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+					</p:ajaxStatus>
+				</h:panelGrid>
+				
+				<p:notificationBar position="top" effect="slide" widgetVar="topBar" styleClass="top">
+					<h:outputText value="What PrimeFaces has so far is just the beginning!" style="color:#FFCC00;font-size:36px;" />
+				</p:notificationBar>
+				
+				<p:notificationBar position="bottom" effect="fade" widgetVar="bottomBar" styleClass="bottom">
+					<f:facet name="close">
+						<p:graphicImage value="/images/closebar.png" />
+					</f:facet>
+					
+					<h:panelGroup id="bottomPanel">
+						<p:messages />
+						<h:outputText value="You said: #{buttonBean.text}" rendered="#{not empty buttonBean.text}"/>
+					</h:panelGroup>
+				</p:notificationBar>
+			</h:form>
+			
+			<h3>Displaying Any Content</h3>
+			
+			<a href="#" onclick="topBar.show()">Show Top Bar</a>
+			<a href="#" onclick="topBar.hide()">Hide Top Bar</a>
+
+			<h3>Source</h3>
+			<pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+				
+	&lt;h:panelGrid columns="4"&gt;
+		&lt;h:outputLabel for="name" value="Name: *" /&gt;
+		&lt;h:inputText id="name" value="\#{buttonBean.text}" label="name" required="true" requiredMessage="You must type something!"/&gt;
+		&lt;p:commandButton value="Submit" update="bottomPanel" oncomplete="bottomBar.show();"/&gt;
+		&lt;p:ajaxStatus style="height:24px;display:block;"&gt;
+			&lt;f:facet name="start"&gt;
+				&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+			&lt;/f:facet&gt;
+			
+			&lt;f:facet name="complete"&gt;
+				&lt;h:outputText value="" /&gt;
+			&lt;/f:facet&gt;
+		&lt;/p:ajaxStatus&gt;
+	&lt;/h:panelGrid&gt;
+	
+	&lt;p:notificationBar position="top" effect="slide" widgetVar="topBar" styleClass="top"&gt;
+		&lt;h:outputText value="What PrimeFaces has so far is just the beginning!" style="color:#FFCC00;font-size:36px;" /&gt;
+	&lt;/p:notificationBar&gt;
+	
+	&lt;p:notificationBar position="bottom" effect="fade" widgetVar="bottomBar" styleClass="bottom"&gt;
+		&lt;f:facet name="close"&gt;
+			&lt;p:graphicImage value="/images/closebar.png" /&gt;
+		&lt;/f:facet&gt;
+		
+		&lt;h:panelGroup id="bottomPanel" style="margin-right:200px;"&gt;
+			&lt;p:messages /&gt;
+			&lt;h:outputText value="Welcome \#{buttonBean.text}" rendered="\#{not empty buttonBean.text}"/&gt;
+		&lt;/h:panelGroup&gt;
+	&lt;/p:notificationBar&gt;
+&lt;/h:form&gt;
+
+&lt;h3&gt;Displaying Any Content&lt;/h3&gt;
+
+&lt;a href="#" onclick="topBar.show()"&gt;Show Top Bar&lt;/a&gt;
+&lt;a href="#" onclick="topBar.hide()"&gt;Hide Top Bar&lt;/a&gt;
+			</pre>			
+		</div>
+
+	</ui:define>
+</ui:composition>
