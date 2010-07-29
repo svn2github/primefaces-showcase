@@ -1,57 +1,53 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
-	
-	<ui:define name="head">
-		<style type="text/css">
-			.yui-ac {
-				width:200px;
-			}
-		</style>
-	</ui:define>
-	
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">AutoComplete - Pojo</h1>
-		<div class="entry">
-			<p>AutoComplete also has the select component behavior to display suggestions with labels and submit corresponding values to server.</p>
-			
-			<h:form>
-				<p:autoComplete value="#{autoCompleteBean.selectedPlayer}" completeMethod="#{autoCompleteBean.completePlayer}"
-					var="player" itemLabel="#{player.name}" itemValue="#{player}" converter="player"/>
-				
-				<br/><br/>
-				
-				<p:commandButton value="Submit" update="player" />
-				
-				<br/><br/>
-				
-				<h:outputText id="player" value="Selected: #{autoCompleteBean.selectedPlayer.name}" />
-			</h:form>
-						
-			<h3>Source</h3>
-			<p:tabView>
-				<p:tab title="autoCompletePojo.xhtml">
-					<pre name="code" class="xml">
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">AutoComplete - Pojo</h1>
+        <div class="entry">
+            <p>AutoComplete also has the select component behavior to display suggestions with labels and submit corresponding values to server.</p>
+
+            <h:form>
+                <p:growl id="messages" showDetail="true"/>
+
+                <p:autoComplete value="#{autoCompleteBean.selectedPlayer}" completeMethod="#{autoCompleteBean.completePlayer}"
+                                var="player" itemLabel="#{player.name}" itemValue="#{player}" converter="player"/>
+
+                <br/><br/>
+
+                <p:commandButton value="Submit" update="player messages" />
+
+                <br/><br/>
+
+                <h:outputText id="player" value="Selected: #{autoCompleteBean.selectedPlayer.name}" />
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="autoCompletePojo.xhtml">
+                    <pre name="code" class="xml">
 &lt;h:form&gt;
-	&lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayer}" 
+    &lt;p:growl id="messages" showDetail="true"/&gt;
+
+    &lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayer}"
 				completeMethod="\#{autoCompleteBean.completePlayer}"
 				var="player" itemLabel="\#{player.name}" 
 				itemValue="\#{player}" converter="player"/&gt;
 	
-	&lt;p:commandButton value="Submit" update="player" /&gt;
+    &lt;p:commandButton value="Submit" update="player messages" /&gt;
 	
-	&lt;h:outputText id="player" value="Selected: \#{autoCompleteBean.selectedPlayer.name}" /&gt;
+    &lt;h:outputText id="player" value="Selected: \#{autoCompleteBean.selectedPlayer.name}" /&gt;
 &lt;/h:form&gt;
-					</pre>
-				</p:tab>
-				
-				<p:tab title="AutoCompleteBean.java">
-				<pre name="code" class="java">
+                    </pre>
+                </p:tab>
+
+                <p:tab title="AutoCompleteBean.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import java.util.ArrayList;
@@ -94,10 +90,10 @@ public class AutoCompleteBean {
 		return suggestions;
 	}
 }
-				</pre>
-				</p:tab>
-			</p:tabView>
-					
-		</div>
-	</ui:define>
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+    </ui:define>
 </ui:composition>
