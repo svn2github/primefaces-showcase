@@ -1,44 +1,59 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
-	
-	<ui:define name="head">
-		<style type="text/css">
-			.ui-dialog .ui-dialog-content {
-				padding:0;
-				overflow: hidden;
-			}
-		</style>
-	</ui:define>
-	
-	<ui:define name="content">
-		<h1 class="title ui-widget-header ui-corner-all">Terminal</h1>
-		<div class="entry">
-               <p>Terminal can be placed inside a dialog. Click the icon below to display the terminal.</p>
-               
-               <h:form>
-	               <p:graphicImage value="/images/terminal.png" onclick="dlg.show();" style="cursor:pointer"/>
-					
-					<p:dialog widgetVar="dlg" width="600" height="400" header="Terminal">
-						<p:terminal commandHandler="#{terminalController.handleCommand}" width="100%" height="100%" 
-							welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>
-					</p:dialog>
-			   </h:form>
-				
-				<h3>Source</h3>
-				<pre name="code" class="xml">
-&lt;p:graphicImage value="/images/terminal.png" onclick="dlg.show();"/&gt;
-				
-&lt;p:dialog widgetVar="dlg" header="Terminal" fixedCenter="true"&gt;
-	&lt;p:terminal commandHandler="\#{terminalController.handleCommand}" 
-				width="100%" height="100%" welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/&gt;
-&lt;/p:dialog&gt;
-				</pre>
-				
-				<pre name="code" class="java">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-dialog .ui-terminal {
+                border:0;
+            }
+
+            .ui-dialog .ui-dialog-content {
+                padding:0;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">Terminal - Dialog</h1>
+        <div class="entry">
+            <p>This example demonstrates dialog integration.</p>
+
+            <h:form>
+                <p:graphicImage value="/images/terminal.png" onclick="dlg.show();term.focus();" style="cursor:pointer"/>
+
+                <p:dialog widgetVar="dlg" width="600" height="400" header="Terminal" resizable="false" modal="true">
+                    <p:terminal widgetVar="term" commandHandler="#{terminalController.handleCommand}" width="590px"
+                                welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>
+                </p:dialog>
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="terminal.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+    &lt;p:graphicImage value="/images/terminal.png"
+            onclick="dlg.show();term.focus();"
+            style="cursor:pointer"/&gt;
+
+    &lt;p:dialog widgetVar="dlg" width="600" height="400" header="Terminal" 
+        resizable="false" modal="true"&gt;
+
+        &lt;p:terminal width="100%" height="100%"
+                    commandHandler="\#{terminalController.handleCommand}"
+                    welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/&gt;
+
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="TerminalController.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import java.util.Date;
@@ -54,10 +69,11 @@ public class TerminalController {
 			return command + " not found";
 	}
 }
+                    </pre>
+                </p:tab>
+            </p:tabView>
+        </div>
 
-				</pre>
-            </div>
 
-
-	</ui:define>
+    </ui:define>
 </ui:composition>
