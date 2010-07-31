@@ -11,21 +11,33 @@
 		<div class="entry">
 		<p>Schedule supports several languages out of the box, following are examples for Turkish, Italian and Japanese.</p>
 			<h:form>
+                <h3>Turkish</h3>
 				<p:schedule value="#{scheduleController.eventModel}" locale="tr" />
-				
+
+                <h3>Italian</h3>
 				<p:schedule value="#{scheduleController.eventModel}" locale="it" style="margin-top:30px;"/>
-				
+
+                <h3>Japanese</h3>
 				<p:schedule value="#{scheduleController.eventModel}" locale="ja" style="margin-top:30px;"/>
-				
 			</h:form>
 <h3>Source</h3>
+<p:tabView>
+    <p:tab title="scheduleLocale.xhtml">
 <pre name="code" class="xml">
-&lt;p:schedule value="\#{scheduleController.eventModel}" locale="tr" /&gt;
-				
-&lt;p:schedule value="\#{scheduleController.eventModel}" locale="it"/&gt;
-				
-&lt;p:schedule value="\#{scheduleController.eventModel}" locale="ja"/&gt;
+&lt;h:form&gt;
+    &lt;h3&gt;Turkish&lt;h3&gt;
+    &lt;p:schedule value="\#{scheduleController.eventModel}" locale="tr" /&gt;
+
+    &lt;h3&gt;Italian&lt;h3&gt;
+    &lt;p:schedule value="\#{scheduleController.eventModel}" locale="it"/&gt;
+
+    &lt;h3&gt;Japanese&lt;h3&gt;
+    &lt;p:schedule value="\#{scheduleController.eventModel}" locale="ja"/&gt;
+&lt;/h:form&gt;
 </pre>
+    </p:tab>
+</p:tabView>
+
 		</div>
 		
 	</ui:define>

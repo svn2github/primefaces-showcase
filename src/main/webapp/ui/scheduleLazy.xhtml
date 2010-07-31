@@ -15,7 +15,7 @@
 		<div class="entry">
 		<p>Schedule supports lazy loading with a lazy ScheduleModel.</p>
 		
-			<h:form prependId="false">
+			<h:form>
 				
 				<p:ajaxStatus style="height:24px;display:block;">
 					<f:facet name="start">
@@ -32,49 +32,60 @@
 			</h:form>
 			
 			<h3>Source</h3>
+            <p:tabView>
+                <p:tab title="scheduleLazy.xhtml">
 <pre name="code" class="xml">
-	&lt;p:schedule value="\#{scheduleController.lazyEventModel}" /&gt;
-</pre>
+&lt;h:form&gt;
 
+	&lt;p:schedule value="\#{scheduleController.lazyEventModel}" /&gt;
+
+&lt;/h:form&gt;
+</pre>
+                </p:tab>
+
+                <p:tab title="ScheduleController.java">
 <pre name="code" class="java">
 public class ScheduleController {
-	
+
 	private ScheduleModel&lt;ScheduleEvent&gt; lazyEventModel;
 
 	public ScheduleController() {
 		lazyEventModel = new ScheduleModel&lt;ScheduleEvent&gt;() {
-			
+
 			@Override
 			public boolean isLazy() {
 				return true;
 			}
-			
+
 			@Override
 			public void fetchEvents(Date start, Date end) {
 				setEvents(new ArrayList&lt;ScheduleEvent&gt;());	//clean other periods
-				
+
 				Date random = getRandomDate(start);
 				addEvent(new ScheduleEventImpl("Lazy Event 1", random, random));
-				
+
 				random = getRandomDate(start);
 				addEvent(new ScheduleEventImpl("Lazy Event 2", random, random));
-			}	
+			}
 		};
 	}
-	
+
 	public Date getRandomDate(Date base) {
 		Calendar date = Calendar.getInstance();
 		date.setTime(base);
 		date.add(Calendar.DATE, ((int) (Math.random()*30)) + 1);	//set random day of month
-		
+
 		return date.getTime();
 	}
-	
+
 	public ScheduleModel&lt;ScheduleEvent&gt; getLazyEventModel() {
 		return lazyEventModel;
 	}
 }
 </pre>
+                </p:tab>
+            </p:tabView>
+
 		</div>
 		
 	</ui:define>

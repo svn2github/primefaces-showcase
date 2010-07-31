@@ -33,32 +33,35 @@
 					dateSelectListener="#{scheduleController.onDateSelect}"
 					eventMoveListener="#{scheduleController.onEventMove}"
 					eventResizeListener="#{scheduleController.onEventResize}"
-					onEventMoveUpdate="messages" onEventResizeUpdate="messages">
+					onEventMoveUpdate="messages" onEventResizeUpdate="messages"
+                    onDateSelectUpdate="eventDetails" onDateSelectComplete="eventDialog.show()"
+                    onEventSelectUpdate="eventDetails" onEventSelectComplete="eventDialog.show()">
 				
-					<p:scheduleEventDialog header="Event Details">
-						<h:panelGrid columns="2">
-							<h:outputLabel for="title" value="Title:" />
-							<h:inputText id="title" value="#{scheduleController.event.title}" required="true"/>
-							
-							<h:outputLabel for="from" value="From:" />
-							<p:inputMask id="from" value="#{scheduleController.event.startDate}" mask="99/99/9999">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</p:inputMask>
-							
-							<h:outputLabel for="to" value="To:" />
-							<p:inputMask id="to" value="#{scheduleController.event.endDate}" mask="99/99/9999">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</p:inputMask>
-							
-							<h:outputLabel for="allDay" value="All Day:" />
-							<h:selectBooleanCheckbox id="allDay" value="#{scheduleController.event.allDay}" />
-							
-							<p:commandButton type="reset" value="Reset" />
-							<p:commandButton value="Save" actionListener="#{scheduleController.addEvent}" oncomplete="myschedule.update();"/>
-						</h:panelGrid>
-					</p:scheduleEventDialog>
 				</p:schedule>
-				
+
+                <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+                    <h:panelGrid id="eventDetails" columns="2">
+                        <h:outputLabel for="title" value="Title:" />
+                        <h:inputText id="title" value="#{scheduleController.event.title}" required="true"/>
+
+                        <h:outputLabel for="from" value="From:" />
+                        <p:inputMask id="from" value="#{scheduleController.event.startDate}" mask="99/99/9999">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </p:inputMask>
+
+                        <h:outputLabel for="to" value="To:" />
+                        <p:inputMask id="to" value="#{scheduleController.event.endDate}" mask="99/99/9999">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </p:inputMask>
+
+                        <h:outputLabel for="allDay" value="All Day:" />
+                        <h:selectBooleanCheckbox id="allDay" value="#{scheduleController.event.allDay}" />
+
+                        <p:commandButton type="reset" value="Reset" />
+                        <p:commandButton value="Save" actionListener="#{scheduleController.addEvent}" oncomplete="myschedule.update();eventDialog.hide();"/>
+                    </h:panelGrid>
+                </p:dialog>
+
 			</h:form>
 			
 			<h3>Source</h3>
@@ -80,36 +83,45 @@
 	
 	&lt;p:growl id="messages" showDetail="true" /&gt;
 
-	&lt;p:schedule value="\#{scheduleController.eventModel}" editable="true" widgetVar="myschedule"
-		eventSelectListener="\#{scheduleController.onEventSelect}"
-		dateSelectListener="\#{scheduleController.onDateSelect}"
-		eventMoveListener="\#{scheduleController.onEventMove}"
-		eventResizeListener="\#{scheduleController.onEventResize}"
-		onEventMoveUpdate="messages" onEventResizeUpdate="messages"&gt;
-	
-		&lt;p:scheduleEventDialog header="Event Details"&gt;
-			&lt;h:panelGrid columns="2"&gt;
-				&lt;h:outputLabel for="title" value="Title:" /&gt;
-				&lt;h:inputText id="title" value="\#{scheduleController.event.title}" required="true"/&gt;
-				
-				&lt;h:outputLabel for="from" value="From:" /&gt;
-				&lt;p:inputMask id="from" value="\#{scheduleController.event.startDate}" mask="99/99/9999"&gt;
-					&lt;f:convertDateTime pattern="dd/MM/yyyy" /&gt;
-				&lt;/p:inputMask&gt;
-				
-				&lt;h:outputLabel for="to" value="To:" /&gt;
-				&lt;p:inputMask id="to" value="\#{scheduleController.event.endDate}" mask="99/99/9999"&gt;
-					&lt;f:convertDateTime pattern="dd/MM/yyyy" /&gt;
-				&lt;/p:inputMask&gt;
-				
-				&lt;h:outputLabel for="allDay" value="All Day:" /&gt;
-				&lt;h:selectBooleanCheckbox id="allDay" value="\#{scheduleController.event.allDay}" /&gt;
-				
-				&lt;p:commandButton type="reset" value="Reset" /&gt;
-				&lt;p:commandButton value="Save" actionListener="\#{scheduleController.addEvent}" oncomplete="myschedule.update();"/&gt;
-			&lt;/h:panelGrid&gt;
-		&lt;/p:scheduleEventDialog&gt;
-	&lt;/p:schedule&gt;
+	&lt;p:schedule value="\#{scheduleController.eventModel}"
+                editable="true" widgetVar="myschedule"
+                eventSelectListener="\#{scheduleController.onEventSelect}"
+                dateSelectListener="\#{scheduleController.onDateSelect}"
+                eventMoveListener="\#{scheduleController.onEventMove}"
+                eventResizeListener="\#{scheduleController.onEventResize}"
+                onEventMoveUpdate="messages" onEventResizeUpdate="messages"
+                onDateSelectUpdate="eventDetails" onDateSelectComplete="eventDialog.show()"
+                onEventSelectUpdate="eventDetails" onEventSelectComplete="eventDialog.show()"&gt;
+
+    &lt;/p:schedule&gt;
+
+    &lt;p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip"&gt;
+        &lt;h:panelGrid id="eventDetails" columns="2"&gt;
+            &lt;h:outputLabel for="title" value="Title:" /&gt;
+            &lt;h:inputText id="title" value="\#{scheduleController.event.title}" /&gt;
+
+            &lt;h:outputLabel for="from" value="From:" /&gt;
+            &lt;p:inputMask id="from" mask="99/99/9999"
+                value="\#{scheduleController.event.startDate}" &gt;
+                &lt;f:convertDateTime pattern="dd/MM/yyyy" /&gt;
+            &lt;/p:inputMask&gt;
+
+            &lt;h:outputLabel for="to" value="To:" /&gt;
+            &lt;p:inputMask id="to" mask="99/99/9999"
+                value="\#{scheduleController.event.endDate}" &gt;
+                &lt;f:convertDateTime pattern="dd/MM/yyyy" /&gt;
+            &lt;/p:inputMask&gt;
+
+            &lt;h:outputLabel for="allDay" value="All Day:" /&gt;
+            &lt;h:selectBooleanCheckbox id="allDay"
+                value="\#{scheduleController.event.allDay}" /&gt;
+
+            &lt;p:commandButton type="reset" value="Reset" /&gt;
+            &lt;p:commandButton value="Save"
+                oncomplete="myschedule.update();eventDialog.hide();"
+                actionListener="\#{scheduleController.addEvent}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
 	
 &lt;/h:form&gt;
 </pre>
