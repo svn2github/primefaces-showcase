@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">AJAX Status</h1>
+		<div class="entry">
+
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/pprAjaxStatus.jsf" value="Declarative AjaxStatus" />
+					<p:menuitem url="/ui/pprAjaxStatusScript.jsf" value="Programmatic AjaxStatus" />
+				</p:submenu>
+			</p:menu>
+
+			<span class="homeText">Ajax Status is a global indicator to inform users about the ajax interactions.</span>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

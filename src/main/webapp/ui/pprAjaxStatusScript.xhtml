@@ -13,7 +13,7 @@
 
 			<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>
 			
-			<p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false"> 
+			<p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false">
 				<p:graphicImage value="/design/ajaxloadingbar.gif" />
 			</p:dialog>
 			
@@ -48,7 +48,8 @@
 					<pre name="code" class="xml">
 &lt;p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/&gt;
 			
-&lt;p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false"&gt; 
+&lt;p:dialog modal="true" widgetVar="statusDialog" header="Status" 
+        draggable="false" closable="false"&gt;
 	&lt;p:graphicImage value="/design/ajaxloadingbar.gif" /&gt;
 &lt;/p:dialog&gt;
 
