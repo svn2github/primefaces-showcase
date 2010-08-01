@@ -23,6 +23,7 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.examples.domain.Birth;
+import org.primefaces.examples.domain.ServerLoad;
 import org.primefaces.examples.domain.Vote;
 
 public class ChartBean implements Serializable {
@@ -32,8 +33,8 @@ public class ChartBean implements Serializable {
 	private List<Birth> births;
 	
 	private List<Vote> votes;
-	
-	private String message;
+
+    private List<ServerLoad> servers;
 
 	public ChartBean() {
 		sales = new ArrayList<Sale>();
@@ -52,6 +53,12 @@ public class ChartBean implements Serializable {
 		votes = new ArrayList<Vote>();
 		votes.add(new Vote("Candidate 1", 100));
 		votes.add(new Vote("Candidate 2", 100));
+
+        servers = new ArrayList<ServerLoad>(4);
+        for (int i = 0; i < 4; i++) {
+            servers.add(i, new ServerLoad("Server " + i, (int)(Math.random() * 100), (int)(Math.random() * 100)));
+        }
+
 	}
 
 	public List<Sale> getSales() {
@@ -71,6 +78,14 @@ public class ChartBean implements Serializable {
 		
 		return votes;
 	}
+
+    public List<ServerLoad> getServers() {
+        for (int i = 0; i < 4; i++) {
+            servers.get(i).update( (int)(Math.random() * 100), (int)(Math.random() * 100));
+        }
+
+        return servers;
+    }
 
 	public void itemSelect(ItemSelectEvent event) {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected",

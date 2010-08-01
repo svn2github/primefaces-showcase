@@ -32,7 +32,7 @@
                 }
             };
 
-            var boysSeriesStyle =
+            var cpuStyle =
                 {
                     image: "../design/column.png",
                     mode: "no-repeat",
@@ -40,7 +40,7 @@
                     size: 35
                 };
 
-            var girlsSeriesStyle =
+            var memoryStyle =
             {
                 image: "../design/column.png",
                 mode: "no-repeat",
@@ -54,22 +54,28 @@
 
         <h1 class="title ui-widget-header ui-corner-all">Charts Skinning</h1>
         <div class="entry">
-        
-            <p:columnChart value="#{chartBean.births}" var="birth" xfield="#{birth.year}"
-                           style="chartStyle" live="true">
-                <p:chartSeries label="Boys" value="#{birth.boys}" style="boysSeriesStyle"/>
-                <p:chartSeries label="Girls" value="#{birth.girls}" style="girlsSeriesStyle"/>
-            </p:columnChart>
+            <p>In this example CPU and Memory usages of four different servers are monitored live and displayed using
+            advanced skinning options.</p>
+
+            <h:form>
+                <p:columnChart value="#{chartBean.servers}" var="server" xfield="#{server.name}"
+                               style="chartStyle" live="true">
+                    <p:chartSeries label="CPU" value="#{server.cpu}" style="cpuStyle"/>
+                    <p:chartSeries label="Memory" value="#{server.memory}" style="memoryStyle"/>
+                </p:columnChart>
+            </h:form>
 
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="chartSkinning.xhtml">
                     <pre name="code" class="xml">
-&lt;p:columnChart value="\#{chartBean.births}" var="birth" xfield="\#{birth.year}"
-               style="chartStyle"&gt;
-    &lt;p:chartSeries label="Boys" value="\#{birth.boys}" style="boysSeriesStyle"/&gt;
-    &lt;p:chartSeries label="Girls" value="\#{birth.girls}" style="girlsSeriesStyle"/&gt;
-&lt;/p:columnChart&gt;
+&lt;h:form&gt;
+    &lt;p:columnChart value="\#{chartBean.servers}" var="server" 
+            xfield="\#{server.name}" style="chartStyle" live="true"&gt;
+        &lt;p:chartSeries label="CPU" value="#{server.cpu}" style="cpuStyle"/&gt;
+        &lt;p:chartSeries label="Memory" value="#{server.memory}" style="memoryStyle"/&gt;
+    &lt;/p:columnChart&gt;
+&lt;/h:form&gt;
                     </pre>
                 </p:tab>
 
@@ -77,20 +83,22 @@
                     <pre name="code" class="java">
 public class ChartBean implements Serializable {
 
-	private List&lt;Birth&gt; births;
+    private List&gt;ServerLoad&gt; servers;
 
 	public ChartBean() {
-		births = new ArrayList&lt;Birth&gt;();
-		births.add(new Birth(2004, 120, 52));
-		births.add(new Birth(2005, 100, 60));
-		births.add(new Birth(2006, 44, 110));
-		births.add(new Birth(2007, 150, 135));
-		births.add(new Birth(2008, 125, 120));
+        servers = new ArrayList&gt;ServerLoad&gt;(5);
+        for (int i = 0; i &lt; 4; i++) {
+            servers.add(i, new ServerLoad("Server " + i, (int)(Math.random() * 100), (int)(Math.random() * 100)));
+        }
 	}
 
-	public List&lt;Birth&gt; getBirths() {
-		return births;
-	}
+    public List&gt;ServerLoad&gt; getServers() {
+        for (int i = 0; i &lt; 4; i++) {
+            servers.get(i).update( (int)(Math.random() * 100), (int)(Math.random() * 100));
+        }
+
+        return servers;
+    }
 }
                     </pre>
                 </p:tab>
@@ -122,7 +130,7 @@ public class ChartBean implements Serializable {
         }
     };
 
-    var boysSeriesStyle =
+    var cpuStyle =
         {
             image: "../design/column.png",
             mode: "no-repeat",
@@ -130,7 +138,7 @@ public class ChartBean implements Serializable {
             size: 35
         };
 
-    var girlsSeriesStyle =
+    var memoryStyle =
     {
         image: "../design/column.png",
         mode: "no-repeat",
