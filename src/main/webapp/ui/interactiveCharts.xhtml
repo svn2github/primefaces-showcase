@@ -1,76 +1,70 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="head">
-		<script type="text/javascript">
-			var chartStyle = {
-				padding:20,
-				legend: {
-					display:"right",
-					spacing:10
-				}
-			};
-		</script>
-	</ui:define>
+    <ui:define name="head">
+        <script type="text/javascript">
+            var chartStyle = {
+                padding:20,
+                legend: {
+                    display:"right",
+                    spacing:10
+                }
+            };
+        </script>
+    </ui:define>
 
-	<ui:define name="content">
-	
-		<h1 class="title ui-widget-header ui-corner-all">Chart - Interactive</h1>
-		<div class="entry">
-			                <p>Charts are interactive components, information about selected series and items can be passed via ajax to a JSF backing bean using ItemSelectEvent.</p>
-			
-							<h:form prependId="false">
-								<h:outputText id="pieInfo" value="PieChart: #{chartBean.message}" />
-								
-								<p:pieChart value="#{chartBean.sales}" var="sale" categoryField="#{sale.brand}" dataField="#{sale.amount}" 
-																	itemSelectListener="#{chartBean.itemSelect}" update="pieInfo"
-																	style="chartStyle"/>
-																	
-								<h:outputText id="columnInfo" value="ColumnChart: #{chartBean.message}" />
-																	
-								<p:columnChart value="#{chartBean.births}" var="birth" xfield="#{birth.year}" 
-									style="chartStyle" itemSelectListener="#{chartBean.itemSelect}" update="columnInfo">
-									<p:chartSeries label="Boys" value="#{birth.boys}" />
-									<p:chartSeries label="Girls" value="#{birth.girls}" />
-								</p:columnChart>	
-							</h:form>								
-								
-								<h3>Source</h3>
-								<pre name="code" class="xml">
-&lt;h:form prependId="false"&gt;
-	&lt;h:outputText id="pieInfo" value="PieChart: \#{chartBean.message}" /&gt;
-	
-	&lt;p:pieChart value="\#{chartBean.sales}" var="sale" categoryField="\#{sale.brand}" dataField="\#{sale.amount}" 
-					itemSelectListener="\#{chartBean.itemSelect}" update="pieInfo"
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">Chart - Interactive</h1>
+        <div class="entry">
+            <p>Charts are interactive components, information about selected series and items can be passed via ajax to a JSF backing bean using ItemSelectEvent.</p>
+
+            <h:form>
+                <p:growl id="growl" showDetail="true" />
+
+                <p:pieChart value="#{chartBean.sales}" var="sale" categoryField="#{sale.brand}" dataField="#{sale.amount}"
+                            itemSelectListener="#{chartBean.itemSelect}" update="growl"
+                            style="chartStyle"/>
+
+                <p:columnChart value="#{chartBean.births}" var="birth" xfield="#{birth.year}"
+                               style="chartStyle" itemSelectListener="#{chartBean.itemSelect}" update="growl">
+                    <p:chartSeries label="Boys" value="#{birth.boys}" />
+                    <p:chartSeries label="Girls" value="#{birth.girls}" />
+                </p:columnChart>
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="interactiveCharts.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+	&lt;p:growl id="growl" showDetail="true" /&gt;
+
+	&lt;p:pieChart value="\#{chartBean.sales}" var="sale"
+                    categoryField="\#{sale.brand}" dataField="\#{sale.amount}"
+					itemSelectListener="\#{chartBean.itemSelect}" update="growl"
 					style="chartStyle"/&gt;
-										
-	&lt;h:outputText id="columnInfo" value="ColumnChart: \#{chartBean.message}" /&gt;
-										
-	&lt;p:columnChart value="\#{chartBean.births}" var="birth" xfield="\#{birth.year}" 
-		style="chartStyle" itemSelectListener="\#{chartBean.itemSelect}" update="columnInfo"&gt;
+
+	&lt;p:columnChart value="\#{chartBean.births}" var="birth" xfield="\#{birth.year}"
+		style="chartStyle" update="growl"
+        itemSelectListener="\#{chartBean.itemSelect}" &gt;
 		&lt;p:chartSeries label="Boys" value="\#{birth.boys}" /&gt;
 		&lt;p:chartSeries label="Girls" value="\#{birth.girls}" /&gt;
-	&lt;/p:columnChart&gt;	
-&lt;/h:form&gt;		
-								</pre>
-								
-								<pre name="code" class="java">
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+	&lt;/p:columnChart&gt;
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
 
-import org.primefaces.examples.domain.Birth;
-import org.primefaces.examples.domain.Vote;
-import org.primefaces.ui.event.chart.ItemSelectEvent;
-
+                <p:tab title="ChartBean.java">
+<pre name="code" class="java">
 public class ChartBean implements Serializable {
 
 	private List&lt;Sale&gt; sales;
-	
+
 	private String message;
 
 	public ChartBean() {
@@ -84,22 +78,18 @@ public class ChartBean implements Serializable {
 	public List&lt;Sale&gt; getSales() {
 		return sales;
 	}
-	
-	public void itemSelect(ItemSelectEvent event) {
-		message = "Item Index: " + event.getItemIndex() + ", Series Index:" + event.getSeriesIndex();
-	}
-	
-	public String getMessage() {
-		return message;
-	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void itemSelect(ItemSelectEvent event) {
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected",
+                        "Item Index: " + event.getItemIndex() + ", Series Index:" + event.getSeriesIndex());
+
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 }
-								</pre>
-								
-		</div>					
-				
-	</ui:define>
+            </pre>
+                </p:tab>
+            </p:tabView>
+        </div>
+
+    </ui:define>
 </ui:composition>

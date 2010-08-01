@@ -1,41 +1,67 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
-	
-	<ui:define name="head">
-		<script type="text/javascript">
-			var chartStyle = {
-				padding:20,
-				legend: {
-					display:"right",
-					spacing:10
-				}
-			};
-		</script>
-	</ui:define>
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
-	<h1 class="title ui-widget-header ui-corner-all">Charts - Stacked Bar</h1>
-	<div class="entry">
+    <ui:define name="head">
+        <script type="text/javascript">
+            var chartStyle = {
+                padding:20,
+                legend: {
+                    display:"right",
+                    spacing:10
+                }
+            };
+        </script>
+    </ui:define>
 
-				<p:stackedBarChart value="#{chartBean.births}" var="birth" yfield="#{birth.year}" 
-						style="chartStyle">
-					<p:chartSeries label="Boys" value="#{birth.boys}" />
-					<p:chartSeries label="Girls" value="#{birth.girls}" />
-				</p:stackedBarChart>
-				
-      <h3>Source</h3>
-		<pre name="code" class="xml">
-&lt;p:stackedBarChart value="\#{chartBean.births}" var="birth" 
-			yfield="\#{birth.year}" style="chartStyle"&gt;
-		&lt;p:chartSeries label="Boys" value="\#{ birth.boys}" /&gt;
-		&lt;p:chartSeries label="Girls" value="\#{ birth.girls}" /&gt;
-&lt;/p:stackedBarChart&gt;
-		</pre>
-            </div>
-       
-	</ui:define>
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">Charts - Stacked Bar</h1>
+        <div class="entry">
+
+            <p:stackedBarChart value="#{chartBean.births}" var="birth" yfield="#{birth.year}"
+                               style="chartStyle">
+                <p:chartSeries label="Boys" value="#{birth.boys}" />
+                <p:chartSeries label="Girls" value="#{birth.girls}" />
+            </p:stackedBarChart>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="stackedBarChart.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:stackedBarChart value="\#{chartBean.births}" var="birth"
+                    yfield="\#{birth.year}" style="chartStyle"&gt;
+	&lt;p:chartSeries label="Boys" value="\#{birth.boys}" /&gt;
+	&lt;p:chartSeries label="Girls" value="\#{birth.girls}" /&gt;
+&lt;/p:stackedBarChart/&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="ChartBean.java">
+                    <pre name="code" class="java">
+public class ChartBean implements Serializable {
+
+	private List&lt;Birth&gt; births;
+
+	public ChartBean() {
+		births = new ArrayList&lt;Birth&gt;();
+		births.add(new Birth(2004, 120, 52));
+		births.add(new Birth(2005, 100, 60));
+		births.add(new Birth(2006, 44, 110));
+		births.add(new Birth(2007, 150, 135));
+		births.add(new Birth(2008, 125, 120));
+	}
+
+	public List&lt;Birth&gt; getBirths() {
+		return births;
+	}
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+        </div>
+
+    </ui:define>
 </ui:composition>

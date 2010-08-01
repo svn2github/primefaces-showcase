@@ -1,134 +1,147 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="head">
-		<style type="text/css">
-			.column {
-				width:700px;
-				height:400px;
-			}
-		</style>
-		
-		<script type="text/javascript">
-			var chartStyle = {
-				border: {color: 0x96acb4, size: 12},
-				background: {
-					image : "../design/bg.jpg"
-				},
-				font: {name: "Arial Black", size: 14, color: 0x586b71},
-				dataTip:
-				{
-					border: {color: 0x2e434d, size: 2},
-					font: {name: "Arial Black", size: 13, color: 0x586b71}
-				},
-				xAxis:
-				{
-					color: 0x2e434d
-				},
-				yAxis:
-				{
-					color: 0x2e434d,
-					majorTicks: {color: 0x2e434d, length: 4},
-					minorTicks: {color: 0x2e434d, length: 2},
-					majorGridLines: {size: 0}
-				}
-			};
+    <ui:define name="head">
+       
+        <script type="text/javascript">
+            var chartStyle = {
+                border: {color: 0x96acb4, size: 12},
+                background: {
+                    image : "../design/bg.jpg"
+                },
+                font: {name: "Arial Black", size: 14, color: 0x586b71},
+                dataTip:
+                {
+                    border: {color: 0x2e434d, size: 2},
+                    font: {name: "Arial Black", size: 13, color: 0x586b71}
+                },
+                xAxis:
+                {
+                    color: 0x2e434d
+                },
+                yAxis:
+                {
+                    color: 0x2e434d,
+                    majorTicks: {color: 0x2e434d, length: 4},
+                    minorTicks: {color: 0x2e434d, length: 2},
+                    majorGridLines: {size: 0}
+                }
+            };
 
-			var boysSeriesStyle =
-				{
-					image: "../design/column.png", 
-					mode: "no-repeat", 
-					color: 0x3399FF,
-					size: 35
-				};
+            var boysSeriesStyle =
+                {
+                    image: "../design/column.png",
+                    mode: "no-repeat",
+                    color: 0x3399FF,
+                    size: 35
+                };
 
-			var girlsSeriesStyle =
-			{
-				image: "../design/column.png", 
-				mode: "no-repeat", 
-				color: 0xFF66CC,
-				size: 35
-			};	
-		</script>
-	</ui:define>
+            var girlsSeriesStyle =
+            {
+                image: "../design/column.png",
+                mode: "no-repeat",
+                color: 0xFF66CC,
+                size: 35
+            };
+        </script>
+    </ui:define>
 
-	<ui:define name="content">
+    <ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">Charts Skinning</h1>
-		<div class="entry">
-	
-						<p:columnChart value="#{chartBean.births}" var="birth" xfield="#{birth.year}" 
-									styleClass="column" style="chartStyle">
-							<p:chartSeries label="Boys" value="#{birth.boys}" style="boysSeriesStyle"/>
-							<p:chartSeries label="Girls" value="#{birth.girls}" style="girlsSeriesStyle"/>
-						</p:columnChart>
-			
-						<h3>Source</h3>
-<pre name="code" class="xml">
-&lt;p:columnChart value="\#{chartBean.births}" var="birth" xfield="\#{birth.year}" 
-			styleClass="column" style="chartStyle"&gt;
-	&lt;p:chartSeries label="Boys" value="\#{birth.boys}" style="boysSeriesStyle"/&gt;
-	&lt;p:chartSeries label="Girls" value="\#{birth.girls}" style="girlsSeriesStyle"/&gt;
-&lt;/p:columnChart>
-</pre>
+        <h1 class="title ui-widget-header ui-corner-all">Charts Skinning</h1>
+        <div class="entry">
+        
+            <p:columnChart value="#{chartBean.births}" var="birth" xfield="#{birth.year}"
+                           style="chartStyle" live="true">
+                <p:chartSeries label="Boys" value="#{birth.boys}" style="boysSeriesStyle"/>
+                <p:chartSeries label="Girls" value="#{birth.girls}" style="girlsSeriesStyle"/>
+            </p:columnChart>
 
-						<pre name="code" class="css">
-&lt;style type="text/css"&gt;
-	.column {
-		width:700px;
-		height:400px;
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="chartSkinning.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:columnChart value="\#{chartBean.births}" var="birth" xfield="\#{birth.year}"
+               style="chartStyle"&gt;
+    &lt;p:chartSeries label="Boys" value="\#{birth.boys}" style="boysSeriesStyle"/&gt;
+    &lt;p:chartSeries label="Girls" value="\#{birth.girls}" style="girlsSeriesStyle"/&gt;
+&lt;/p:columnChart&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="ChartBean.java">
+                    <pre name="code" class="java">
+public class ChartBean implements Serializable {
+
+	private List&lt;Birth&gt; births;
+
+	public ChartBean() {
+		births = new ArrayList&lt;Birth&gt;();
+		births.add(new Birth(2004, 120, 52));
+		births.add(new Birth(2005, 100, 60));
+		births.add(new Birth(2006, 44, 110));
+		births.add(new Birth(2007, 150, 135));
+		births.add(new Birth(2008, 125, 120));
 	}
-&lt;/style&gt;
-</pre>
 
-<pre name="code" class="js">
+	public List&lt;Birth&gt; getBirths() {
+		return births;
+	}
+}
+                    </pre>
+                </p:tab>
+
+                <p:tab title="ChartStyle">
+                    <pre name="code" class="js">
 &lt;script type="text/javascript"&gt;
-	var chartStyle = {
-		border: {color: 0x96acb4, size: 12},
-		background: {
-			image : "../design/bg.jpg"
-		},
-		font: {name: "Arial Black", size: 14, color: 0x586b71},
-		dataTip:
-		{
-			border: {color: 0x2e434d, size: 2},
-			font: {name: "Arial Black", size: 13, color: 0x586b71}
-		},
-		xAxis:
-		{
-			color: 0x2e434d
-		},
-		yAxis:
-		{
-			color: 0x2e434d,
-			majorTicks: {color: 0x2e434d, length: 4},
-			minorTicks: {color: 0x2e434d, length: 2},
-			majorGridLines: {size: 0}
-		}
-	};
+    var chartStyle = {
+        border: {color: 0x96acb4, size: 12},
+        background: {
+            image : "../design/bg.jpg"
+        },
+        font: {name: "Arial Black", size: 14, color: 0x586b71},
+        dataTip:
+        {
+            border: {color: 0x2e434d, size: 2},
+            font: {name: "Arial Black", size: 13, color: 0x586b71}
+        },
+        xAxis:
+        {
+            color: 0x2e434d
+        },
+        yAxis:
+        {
+            color: 0x2e434d,
+            majorTicks: {color: 0x2e434d, length: 4},
+            minorTicks: {color: 0x2e434d, length: 2},
+            majorGridLines: {size: 0}
+        }
+    };
 
-	var boysSeriesStyle =
-		{
-			image: "../design/column.png", 
-			mode: "no-repeat", 
-			color: 0x3399FF,
-			size: 35
-		};
+    var boysSeriesStyle =
+        {
+            image: "../design/column.png",
+            mode: "no-repeat",
+            color: 0x3399FF,
+            size: 35
+        };
 
-	var girlsSeriesStyle =
-	{
-		image: "../design/column.png", 
-		mode: "no-repeat", 
-		color: 0xFF66CC,
-		size: 35
-	};	
+    var girlsSeriesStyle =
+    {
+        image: "../design/column.png",
+        mode: "no-repeat",
+        color: 0xFF66CC,
+        size: 35
+    };
 &lt;/script&gt;
-						</pre>
-				
-		</div>
-	</ui:define>
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+    </ui:define>
 </ui:composition>

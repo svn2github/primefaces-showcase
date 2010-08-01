@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Prime Technology.
+ * Copyright 2010 Prime Technology.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,8 @@ package org.primefaces.examples.view;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.examples.domain.Birth;
@@ -69,16 +71,11 @@ public class ChartBean implements Serializable {
 		
 		return votes;
 	}
-	
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
 
 	public void itemSelect(ItemSelectEvent event) {
-		message = "Item Index: " + event.getItemIndex() + ", Series Index:" + event.getSeriesIndex();
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected",
+                        "Item Index: " + event.getItemIndex() + ", Series Index:" + event.getSeriesIndex());
+        
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 }
