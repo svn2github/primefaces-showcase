@@ -1,17 +1,19 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
+    <ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">Fieldset</h1>
-		<div class="entry">
-			<p>Fieldset is a pre-skinned grouping component.</p>
+        <h1 class="title ui-widget-header ui-corner-all">Fieldset</h1>
+        <div class="entry">
+            <p>Fieldset is a pre-skinned grouping component which also provides content toggling and ajax toggleListener as advanced features.</p>
 
-            <p:fieldset legend="Godfather">
+            <p:growl id="growl" showDetail="true" />
+
+            <p:fieldset legend="Simple FieldSet">
                 <h:panelGrid columns="2" cellpadding="10">
                     <p:graphicImage value="/images/godfather/godfather1.jpg" />
                     <h:outputText
@@ -22,11 +24,27 @@
                 </h:panelGrid>
             </p:fieldset>
 
-			<h3>Source</h3>
-			<p:tabView>
-				<p:tab title="fieldset.xhtml">
+            <br /><br />
+            <h:form>
+
+                <p:fieldset legend="Toggleable Fieldset" toggleable="true" toggleSpeed="500"
+                                toggleListener="#{fieldsetBean.handleToggle}" onToggleUpdate="growl">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage value="/images/godfather/godfather2.jpg" />
+                        <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.
+                                      In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,
+                                      killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows."></h:outputText>
+                    </h:panelGrid>
+                </p:fieldset>
+
+            </h:form>
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="fieldset.xhtml">
                     <pre name="code" class="xml">
-&lt;p:fieldset legend="Godfather"&gt;
+&lt;p:growl id="growl" showDetail="true" /&gt;
+
+&lt;p:fieldset legend="Simple FieldSet"&gt;
     &lt;h:panelGrid columns="2" cellpadding="10"&gt;
         &lt;p:graphicImage value="/images/godfather/godfather1.jpg" /&gt;
         &lt;h:outputText
@@ -36,12 +54,47 @@
             but given to ruthless violence whenever anything stands against the good of the family." /&gt;
     &lt;/h:panelGrid&gt;
 &lt;/p:fieldset&gt;
+
+
+&lt;h:form&gt;
+
+    &lt;p:fieldset legend="Toggleable Fieldset" toggleable="true" toggleSpeed="500"
+                toggleListener="\#{fieldsetBean.handleToggle}"
+                onToggleUpdate="growl"&gt;
+        &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+            &lt;p:graphicImage value="/images/godfather/godfather2.jpg" /&gt;
+            &lt;h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.
+                          In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,
+                          killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows."/&gt;;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:fieldset&gt;
+
+&lt;/h:form&gt;
                     </pre>
-				</p:tab>
-			</p:tabView>
+                </p:tab>
+
+                <p:tab title="FieldsetBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.ToggleEvent;
+
+public class FieldsetBean {
+
+    public void handleToggle(ToggleEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Fieldset Toggled", "Visibility:" + event.getVisibility());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
 
 
-		</div>
+        </div>
 
-	</ui:define>
+    </ui:define>
 </ui:composition>
