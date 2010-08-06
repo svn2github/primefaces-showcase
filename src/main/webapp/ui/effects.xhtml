@@ -1,163 +1,173 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
-	
-	<ui:define name="head">
-		<style type="text/css">
-			.p-panel {
-				width:100px;
-			}
-		</style>
-	</ui:define>
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-panel {
+                width:125px;
+            }
+        </style>
+    </ui:define>
 
-		<h1 class="title ui-widget-header ui-corner-all">Effects</h1>
-		<div class="entry">
-							
-							<h:panelGrid columns="4">
-							
-								<p:panel header="Blind">
-									<h:outputText value="click" />
-									<p:effect type="blind" event="click">
-										<f:param name="direction" value="'horizontal'" />
-									</p:effect>
-								</p:panel>
-								
-								<p:panel header="Clip">
-									<h:outputText value="mouseover" />
-									<p:effect type="clip" event="click" />
-								</p:panel>
-								
-								<p:panel header="Drop">
-									<h:outputText value="click" />
-									<p:effect type="drop" event="click" />
-								</p:panel>
-		
-								<p:panel header="Explode">
-									<h:outputText value="click" />
-									<p:effect type="explode" event="click" />
-								</p:panel>
-								
-								<p:panel header="Fold">
-									<h:outputText value="click" />
-									<p:effect type="fold" event="click" />
-								</p:panel>
-								
-								<p:panel header="Puff">
-									<h:outputText value="click" />
-									<p:effect type="puff" event="click" />
-								</p:panel>
-								
-								<p:panel header="Slide">
-									<h:outputText value="click" />
-									<p:effect type="slide" event="click" />
-								</p:panel>
-								
-								<p:panel header="Scale">
-									<h:outputText value="click" />
-									<p:effect type="scale" event="click">
-										<f:param name="percent" value="90" />
-									</p:effect>
-								</p:panel>
-								
-								<p:panel header="Bounce">
-									<h:outputText value="click" />
-									<p:effect type="bounce" event="click" />
-								</p:panel>
-								
-								<p:panel header="Pulsate">
-									<h:outputText value="click" />
-									<p:effect type="pulsate" event="click" />
-								</p:panel>
-								
-								<p:panel header="Shake">
-									<h:outputText value="click" />
-									<p:effect type="shake" event="click" />
-								</p:panel>
-								
-								<p:panel header="Size">
-									<h:outputText value="click" />
-									<p:effect type="size" event="click">
-										<f:param name="to" value="{width: 200,height: 60}" />
-									</p:effect>
-								</p:panel>
-		
-							</h:panelGrid>
+    <ui:define name="content">
 
-							<h3>Source</h3>
-							<pre name="code" class="xml">
-&lt;p:panel header="Blind"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="blind" event="click"&gt;
-		&lt;f:param name="direction" value="'horizontal'" /&gt;
-	&lt;/p:effect&gt;
-&lt;/p:panel&gt;
+        <h1 class="title ui-widget-header ui-corner-all">Effects</h1>
+        <div class="entry">
+            <p>Effect is simply used as a child component of its effect target.</p>
 
-&lt;p:panel header="Clip"&gt;
-	&lt;h:outputText value="mouseover" /&gt;
-	&lt;p:effect type="clip" event="click" /&gt;
-&lt;/p:panel&gt;
+            <h:panelGrid columns="4">
 
-&lt;p:panel header="Drop"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="drop" event="click" /&gt;
-&lt;/p:panel&gt;
+                <p:panel header="Blind">
+                    <h:outputText value="click" />
+                    <p:effect type="blind" event="click">
+                        <f:param name="direction" value="'horizontal'" />
+                    </p:effect>
+                </p:panel>
 
-&lt;p:panel header="Explode"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="explode" event="click" /&gt;
-&lt;/p:panel&gt;
+                <p:panel header="Clip">
+                    <h:outputText value="mouseover" />
+                    <p:effect type="clip" event="click" />
+                </p:panel>
 
-&lt;p:panel header="Fold"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="fold" event="click" /&gt;
-&lt;/p:panel&gt;
+                <p:panel header="Drop">
+                    <h:outputText value="click" />
+                    <p:effect type="drop" event="click" />
+                </p:panel>
 
-&lt;p:panel header="Puff"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="puff" event="click" /&gt;
-&lt;/p:panel&gt;
+                <p:panel header="Explode">
+                    <h:outputText value="click" />
+                    <p:effect type="explode" event="click" />
+                </p:panel>
 
-&lt;p:panel header="Slide"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="slide" event="click" /&gt;
-&lt;/p:panel&gt;
+                <p:panel header="Fold">
+                    <h:outputText value="doubleclick" />
+                    <p:effect type="fold" event="dblclick" />
+                </p:panel>
 
-&lt;p:panel header="Scale"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="scale" event="click"&gt;
-		&lt;f:param name="percent" value="90" /&gt;
-	&lt;/p:effect&gt;
-&lt;/p:panel&gt;
+                <p:panel header="Puff">
+                    <h:outputText value="doubleclick" />
+                    <p:effect type="puff" event="dblclick" />
+                </p:panel>
 
-&lt;p:panel header="Bounce"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="bounce" event="click" /&gt;
-&lt;/p:panel&gt;
+                <p:panel header="Slide">
+                    <h:outputText value="doubleclick" />
+                    <p:effect type="slide" event="dblclick" />
+                </p:panel>
 
-&lt;p:panel header="Pulsate"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="pulsate" event="click" /&gt;
-&lt;/p:panel&gt;
+                <p:panel header="Scale">
+                    <h:outputText value="doubleclick" />
+                    <p:effect type="scale" event="dblclick">
+                        <f:param name="percent" value="90" />
+                    </p:effect>
+                </p:panel>
 
-&lt;p:panel header="Shake"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="shake" event="click" /&gt;
-&lt;/p:panel&gt;
+                <p:panel header="Bounce">
+                    <h:outputText value="click" />
+                    <p:effect type="bounce" event="click" />
+                </p:panel>
 
-&lt;p:panel header="Size"&gt;
-	&lt;h:outputText value="click" /&gt;
-	&lt;p:effect type="size" event="click"&gt;
-		&lt;f:param name="to" value="{width: 200,height: 60}" /&gt;
-	&lt;/p:effect&gt;
-&lt;/p:panel&gt;
-							</pre>
-						
-					</div>
+                <p:panel header="Pulsate">
+                    <h:outputText value="click" />
+                    <p:effect type="pulsate" event="click" />
+                </p:panel>
 
-	</ui:define>
+                <p:panel header="Shake">
+                    <h:outputText value="click" />
+                    <p:effect type="shake" event="click" />
+                </p:panel>
+
+                <p:panel header="Size">
+                    <h:outputText value="click" />
+                    <p:effect type="size" event="click">
+                        <f:param name="to" value="{width: 200,height: 60}" />
+                    </p:effect>
+                </p:panel>
+
+            </h:panelGrid>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="effects.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:panelGrid columns="4"&gt;
+
+    &lt;p:panel header="Blind"&gt;
+        &lt;h:outputText value="click" /&gt;
+        &lt;p:effect type="blind" event="click"&gt;
+            &lt;f:param name="direction" value="'horizontal'" /&gt;
+        &lt;/p:effect&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Clip"&gt;
+        &lt;h:outputText value="mouseover" /&gt;
+        &lt;p:effect type="clip" event="click" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Drop"&gt;
+        &lt;h:outputText value="click" /&gt;
+        &lt;p:effect type="drop" event="click" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Explode"&gt;
+        &lt;h:outputText value="click" /&gt;
+        &lt;p:effect type="explode" event="click" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Fold"&gt;
+        &lt;h:outputText value="doubleclick" /&gt;
+        &lt;p:effect type="fold" event="dblclick" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Puff"&gt;
+        &lt;h:outputText value="doubleclick" /&gt;
+        &lt;p:effect type="puff" event="dblclick" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Slide"&gt;
+        &lt;h:outputText value="doubleclick" /&gt;
+        &lt;p:effect type="slide" event="dblclick" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Scale"&gt;
+        &lt;h:outputText value="doubleclick" /&gt;
+        &lt;p:effect type="scale" event="dblclick"&gt;
+            &lt;f:param name="percent" value="90" /&gt;
+        &lt;/p:effect&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Bounce"&gt;
+        &lt;h:outputText value="click" /&gt;
+        &lt;p:effect type="bounce" event="click" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Pulsate"&gt;
+        &lt;h:outputText value="click" /&gt;
+        &lt;p:effect type="pulsate" event="click" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Shake"&gt;
+        &lt;h:outputText value="click" /&gt;
+        &lt;p:effect type="shake" event="click" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:panel header="Size"&gt;
+        &lt;h:outputText value="click" /&gt;
+        &lt;p:effect type="size" event="click"&gt;
+            &lt;f:param name="to" value="{width: 200,height: 60}" /&gt;
+        &lt;/p:effect&gt;
+    &lt;/p:panel&gt;
+
+&lt;/h:panelGrid&gt;
+            </pre>
+
+                </p:tab>
+            </p:tabView>
+            
+        </div>
+
+    </ui:define>
 </ui:composition>
