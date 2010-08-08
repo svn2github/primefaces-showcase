@@ -295,4 +295,9 @@
         <managed-bean-class>org.primefaces.examples.view.FieldsetBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>productDetailBean</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.ProductDetailBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

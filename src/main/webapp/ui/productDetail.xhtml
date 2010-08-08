@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="head">
+        <f:metadata>
+            <f:viewParam name="productId" value="#{productDetailBean.productId}" />
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">Button</h1>
+        <div class="entry">
+            <p>You've been redirected to this bookmarkable page with button.
+                ViewParameter you've passed is <strong>"#{productDetailBean.productId}"</strong>
+            </p>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="productDetail.xhtml">
+                    <pre name="code" class="xml">
+&lt;f:metadata&gt;
+    &lt;f:viewParam name="productId" value="\#{productDetailBean.productId}" /&gt;
+&lt;/f:metadata&gt;
+
+...
+
+
+&lt;p&gt;You've been redirected to this bookmarkable page with button.
+    ViewParameter you've passed is &lt;strong&gt;"
+    \#{productDetailBean.productId}"&lt;/strong&gt;
+&lt;/p&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="ProductDetailBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+public class ProductDetailBean {
+
+    private String productId;
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+           
+
+        </div>
+
+    </ui:define>
+</ui:composition>
