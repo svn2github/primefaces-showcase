@@ -3,6 +3,7 @@ package org.primefaces.examples.view;
 import java.io.Serializable;
 
 import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 
 public class CounterBean implements Serializable{
 
@@ -16,7 +17,7 @@ public class CounterBean implements Serializable{
 		this.count = count;
 	}
 	
-	public void increment(ActionEvent actionEvent) {
+	public void increment() {
 		count++;
 	}
 }

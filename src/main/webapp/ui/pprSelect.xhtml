@@ -9,7 +9,7 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">AJAX - Select Components</h1>
 		<div class="entry">
-			<p>This example demonstrates usage of p:ajax with select components.</p>
+			<p>This example demonstrates usage of p:ajax with a regular select component.</p>
 			
 			<p:ajaxStatus style="width:16px;height:16px;">
 				<f:facet name="start">
@@ -23,22 +23,14 @@
 
 			<h:form>
 				
-				<p:panel header="Boolean Checkbox" style="margin-bottom:10px;">
-					<h:selectBooleanCheckbox id="checked" value="#{pprBean.checked}">
-						<p:ajax update="checkedDisplay" event="click"/>
-					</h:selectBooleanCheckbox>
-				
-					<h:outputText id="checkedDisplay" value="Checked: #{pprBean.checked}" />
-				</p:panel>
-				
 				<p:panel header="Double Combo" style="margin-bottom:10px;">
-					<h:selectOneMenu id="city" value="#{pprBean.city}">
+					<h:selectOneMenu id="city" value="#{pprBean.city}" style="margin-right:10px">
 						<f:selectItem itemLabel="Select City" itemValue="" />
 						<f:selectItems value="#{pprBean.cities}" />
-						<p:ajax actionListener="#{pprBean.handleCityChange}" update="suburbs" event="change"/>
+						<p:ajax listener="#{pprBean.handleCityChange}" update="suburbs"/>
 					</h:selectOneMenu>
 				
-					<h:selectOneMenu id="suburbs" value="#{pprBean.suburb}">
+					<h:selectOneMenu id="suburbs" value="#{pprBean.suburb}" style="margin-right:10px">
 						<f:selectItem itemLabel="Select Suburb" itemValue="" />
 						<f:selectItems value="#{pprBean.suburbs}" />
 					</h:selectOneMenu>
@@ -56,42 +48,6 @@
 					</h:panelGrid>
 				</p:panel>
 				
-				<p:panel header="Select Many Checkbox" style="margin-bottom:10px;">
-					<h:selectManyCheckbox id="cities" value="#{pprBean.selectedCities}">
-						<f:selectItems value="#{pprBean.cities}" />
-						<p:ajax update="citiesDisplay" event="click"/>
-					</h:selectManyCheckbox>
-				
-					<h:outputText id="citiesDisplay" value="Selected Cities: #{pprBean.selectedCitiesAsString}" />
-				</p:panel>
-				
-				<p:panel header="Select One Boolean" style="margin-bottom:10px;">
-					<h:panelGrid columns="2">
-						<h:outputLabel for="room" value="Room: " />
-						<h:selectOneRadio id="room" value="#{pprBean.room}">
-							<f:selectItems value="#{pprBean.rooms}" />
-							<p:ajax actionListener="#{pprBean.handleRoomChange}" update="items" event="click"/>
-						</h:selectOneRadio>
-				
-						<h:outputLabel for="items" value="Item: " />
-						<h:selectOneRadio id="items" value="#{pprBean.item}">
-							<f:selectItems value="#{pprBean.items}" />
-						</h:selectOneRadio>
-					</h:panelGrid>
-					
-					<p:commandButton value="Submit" update="display2"/>
-					
-					<br />
-					
-					<h:panelGrid id="display2" columns="2">
-						<h:outputText value="Room:" />
-						<h:outputText value="#{pprBean.room}" />
-						
-						<h:outputText value="Item:" />
-						<h:outputText value="#{pprBean.item}" />
-					</h:panelGrid>
-				</p:panel>
-			
 			</h:form>
 					
 			<h3>Source</h3>
@@ -100,20 +56,12 @@
 <pre name="code" class="xml">
 &lt;h:form&gt;
 				
-	&lt;p:panel header="Boolean Checkbox" style="margin-bottom:10px;"&gt;
-		&lt;h:selectBooleanCheckbox id="checked" value="\#{pprBean.checked}"&gt;
-			&lt;p:ajax update="checkedDisplay" event="click"/&gt;
-		&lt;/h:selectBooleanCheckbox&gt;
-	
-		&lt;h:outputText id="checkedDisplay" value="Checked: \#{pprBean.checked}" /&gt;
-	&lt;/p:panel&gt;
-	
 	&lt;p:panel header="Double Combo" style="margin-bottom:10px;"&gt;
 		&lt;h:selectOneMenu id="city" value="\#{pprBean.city}"&gt;
 			&lt;f:selectItem itemLabel="Select City" itemValue="" /&gt;
 			&lt;f:selectItems value="\#{pprBean.cities}" /&gt;
-			&lt;p:ajax update="suburbs" event="change" 
-					actionListener="\#{pprBean.handleCityChange}" /&gt;
+			&lt;p:ajax update="suburbs" 
+					listener="\#{pprBean.handleCityChange}" /&gt;
 		&lt;/h:selectOneMenu&gt;
 	
 		&lt;h:selectOneMenu id="suburbs" value="\#{pprBean.suburb}"&gt;
@@ -131,41 +79,6 @@
 			&lt;h:outputText value="\#{pprBean.suburb}" /&gt;
 		&lt;/h:panelGrid&gt;
 	&lt;/p:panel&gt;
-	
-	&lt;p:panel header="Select Many Checkbox" style="margin-bottom:10px;"&gt;
-		&lt;h:selectManyCheckbox id="cities" value="\#{pprBean.selectedCities}"&gt;
-			&lt;f:selectItems value="\#{pprBean.cities}" /&gt;
-			&lt;p:ajax update="citiesDisplay" event="click"/&gt;
-		&lt;/h:selectManyCheckbox&gt;
-	
-		&lt;h:outputText id="citiesDisplay" value="Selected Cities: \#{pprBean.selectedCitiesAsString}" /&gt;
-	&lt;/p:panel&gt;
-	
-	&lt;p:panel header="Select One Boolean" style="margin-bottom:10px;"&gt;
-		&lt;h:panelGrid columns="2"&gt;
-			&lt;h:outputLabel for="room" value="Room: " /&gt;
-			&lt;h:selectOneRadio id="room" value="\#{pprBean.room}"&gt;
-				&lt;f:selectItems value="\#{pprBean.rooms}" /&gt;
-				&lt;p:ajax  update="items" event="click" 
-						actionListener="\#{pprBean.handleRoomChange}"/&gt;
-			&lt;/h:selectOneRadio&gt;
-	
-			&lt;h:outputLabel for="items" value="Item: " /&gt;
-			&lt;h:selectOneRadio id="items" value="\#{pprBean.item}"&gt;
-				&lt;f:selectItems value="\#{pprBean.items}" /&gt;
-			&lt;/h:selectOneRadio&gt;
-		&lt;/h:panelGrid&gt;
-		
-		&lt;p:commandButton value="Submit" update="display2"/&gt;
-	
-		&lt;h:panelGrid id="display2" columns="2"&gt;
-			&lt;h:outputText value="Room:" /&gt;
-			&lt;h:outputText value="\#{pprBean.room}" /&gt;
-			
-			&lt;h:outputText value="Item:" /&gt;
-			&lt;h:outputText value="\#{pprBean.item}" /&gt;
-		&lt;/h:panelGrid&gt;
-	&lt;/p:panel&gt;
 
 &lt;/h:form&gt;
 </pre>
@@ -181,7 +94,6 @@ import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 public class PPRBean implements Serializable {
 
@@ -194,20 +106,6 @@ public class PPRBean implements Serializable {
 	private Map&lt;String,Map&lt;String,String&gt;&gt; suburbsData = new HashMap&lt;String, Map&lt;String,String&gt;&gt;();
 	
 	private Map&lt;String,String&gt; suburbs = new HashMap&lt;String, String&gt;();
-	
-	private Map&lt;String,String&gt; rooms = new HashMap&lt;String, String&gt;();
-	
-	private Map&lt;String,Map&lt;String,String&gt;&gt; itemsData = new HashMap&lt;String, Map&lt;String,String&gt;&gt;();
-	
-	private Map&lt;String,String&gt; items = new HashMap&lt;String, String&gt;();
-	
-	private String room;
-
-	private String item;
-
-	private String[] selectedCities;
-	
-	private boolean checked;
 
 	public PPRBean() {
 		cities.put("Istanbul", "Istanbul");
@@ -232,29 +130,6 @@ public class PPRBean implements Serializable {
 		suburbsData.put("Istanbul", suburbsIstanbul);
 		suburbsData.put("Ankara", suburbsAnkara);
 		suburbsData.put("Izmir", suburbsIzmir);
-		
-		rooms.put("Living Room", "Living Room");
-		rooms.put("Kitchen", "Kitchen");
-		rooms.put("Bedroom", "Bedroom");
-		
-		Map&lt;String,String&gt; livingRoomItems = new HashMap&lt;String, String&gt;();
-		livingRoomItems.put("Sofa", "Sofa");
-		livingRoomItems.put("Armchair", "Armchair");
-		livingRoomItems.put("Coffee Table", "Coffee Table");
-		
-		Map&lt;String,String&gt; kitchenItems = new HashMap&lt;String, String&gt;();
-		kitchenItems.put("Refrigirator", "Refrigirator");
-		kitchenItems.put("Dishwasher", "Dishwasher");
-		kitchenItems.put("Oven", "Oven");
-		
-		Map&lt;String,String&gt; bedroomItems = new HashMap&lt;String, String&gt;();
-		bedroomItems.put("Bed", "Bed");
-		bedroomItems.put("Wardrobe", "Wardrobe");
-		bedroomItems.put("Drawer Chest", "Drawer Chest");
-		
-		itemsData.put("Living Room", livingRoomItems);
-		itemsData.put("Kitchen", kitchenItems);
-		itemsData.put("Bedroom", bedroomItems);
 	}
 	
 	public String getCity() {
@@ -297,82 +172,11 @@ public class PPRBean implements Serializable {
 		this.suburbs = suburbs;
 	}
 	
-	public void handleCityChange(ActionEvent actionEvent) {
+	public void handleCityChange() {
 		if(city !=null &amp;&amp; !city.equals(""))
 			suburbs = suburbsData.get(city);
 		else
 			suburbs = new HashMap&lt;String, String&gt;();
-	}
-	
-	public void handleRoomChange(ActionEvent actionEvent) {
-		if(room !=null &amp;&amp; !room.equals(""))
-			items = itemsData.get(room);
-		else
-			items = new HashMap&lt;String, String&gt;();
-	}
-
-	public boolean isChecked() {
-		return checked;
-	}
-	public void setChecked(boolean checked) {
-		this.checked = checked;
-	}
-	
-	public String[] getSelectedCities() {
-		return selectedCities;
-	}
-	public void setSelectedCities(String[] selectedCities) {
-		this.selectedCities = selectedCities;
-	}
-	
-	public String getSelectedCitiesAsString() {
-		if(selectedCities == null)
-			return "";
-		
-		StringBuffer buffer = new StringBuffer();
-		
-		for(String city : selectedCities) {
-			buffer.append("(");
-			buffer.append(city);
-			buffer.append(")");
-		}
-		
-		return buffer.toString();
-	}
-	
-	public Map&lt;String, String&gt; getRooms() {
-		return rooms;
-	}
-	public void setRooms(Map&lt;String, String&gt; rooms) {
-		this.rooms = rooms;
-	}
-
-	public Map&lt;String, Map&lt;String, String&gt;&gt; getItemsData() {
-		return itemsData;
-	}
-	public void setItemsData(Map&lt;String, Map&lt;String, String&gt;&gt; itemsData) {
-		this.itemsData = itemsData;
-	}
-
-	public Map&lt;String, String&gt; getItems() {
-		return items;
-	}
-	public void setItems(Map&lt;String, String&gt; items) {
-		this.items = items;
-	}
-
-	public String getRoom() {
-		return room;
-	}
-	public void setRoom(String room) {
-		this.room = room;
-	}
-
-	public String getItem() {
-		return item;
-	}
-	public void setItem(String item) {
-		this.item = item;
 	}
 }
 

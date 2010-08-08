@@ -159,7 +159,7 @@ public class PPRBean implements Serializable {
 		this.suburbs = suburbs;
 	}
 	
-	public void handleCityChange(ActionEvent actionEvent) {
+	public void handleCityChange() {
 		if(city !=null && !city.equals(""))
 			suburbs = suburbsData.get(city);
 		else

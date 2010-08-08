@@ -8,9 +8,9 @@
 	<ui:define name="content">
 
 
-		<h1 class="title ui-widget-header ui-corner-all">AJAX - Actions</h1>
+		<h1 class="title ui-widget-header ui-corner-all">AJAX - Listener</h1>
 		<div class="entry">
-			<p>p:ajax component can also execute an action on a JSF bean. This examples counts the number of keyups.</p>
+			<p>p:ajax component can also execute a listener on a JSF bean. This examples counts the number of keyups.</p>
 
 			<h:form>
 			
@@ -28,7 +28,7 @@
 					<h:outputText value="Keyup: " />
 					
 					<h:inputText id="counter">
-						<p:ajax event="keyup" update="out" actionListener="#{counterBean.increment}"/>
+						<p:ajax event="keyup" update="out" listener="#{counterBean.increment}"/>
 					</h:inputText>
 					
 					<h:outputText id="out" value="#{counterBean.count}" />
@@ -57,7 +57,7 @@
 		
 		&lt;h:inputText id="counter"&gt;
 			&lt;p:ajax event="keyup" update="out" 
-					actionListener="\#{counterBean.increment}"/&gt;
+					listener="\#{counterBean.increment}"/&gt;
 		&lt;/h:inputText&gt;
 		
 		&lt;h:outputText id="out" value="\#{counterBean.count}" /&gt;
@@ -85,7 +85,7 @@ public class CounterBean implements Serializable{
 		this.count = count;
 	}
 	
-	public void increment(ActionEvent actionEvent) {
+	public void increment() {
 		count++;
 	}
 }
