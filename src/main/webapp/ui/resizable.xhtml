@@ -1,39 +1,119 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-panel {
+                overflow: hidden;
+                margin: 15px;
+				width: 300px;
+            }
+        </style>
+    </ui:define>
 
-		<h1 class="title ui-widget-header ui-corner-all">Resizable</h1>
-		<div class="entry">
-			<p>Any JSF component can be made resizable.</p>
+    <ui:define name="content">
 
-			<h:panelGrid columns="1">
+        <h1 class="title ui-widget-header ui-corner-all">Resizable</h1>
+        <div class="entry">
+            <p>Resizable features various configuration options.</p>
 
-				<h:graphicImage id="img" value="/ui/barca/campnou.jpg">
-					<p:resizable proxy="true" animate="true" effect="backBoth"  minWidth="300" minHeight="150" maxWidth="600" maxHeight="350" />
-				</h:graphicImage>
-				
-				<h:inputTextarea id="area" value="Resize me!!!">
-					<p:resizable proxy="true" animate="true" effect="bounceOut" minWidth="150" minHeight="150" maxWidth="600" maxHeight="350"/>
-				</h:inputTextarea>
-			</h:panelGrid>
+            <p:panel id="basic" header="Basic Resizable">
+                Resize Me!
+            </p:panel>
+            <p:resizable for="basic" />
 
-			<h3>Source</h3>
-			<pre name="code" class="xml">
-&lt;h:graphicImage id="img" value="/ui/barca/campnou.jpg"&gt;
-	&lt;p:resizable animate="true" effect="backBoth" minWidth="300" minHeight="150" maxWidth="600" maxHeight="350"  /&gt;
-&lt;/h:graphicImage/&gt;
+            <p:panel id="aspectRatio" header="Aspect Ratio">
+                Keep the aspect ratio.
+            </p:panel>
+            <p:resizable for="aspectRatio" aspectRatio="true"/>
 
-&lt;h:inputTextarea id="area" value="Resize me!!!"&gt;
-	&lt;p:resizable proxy="true" animate="true" effect="bounceOut" minWidth="150" minHeight="150" maxWidth="600" maxHeight="350"/&gt;
-&lt;/h:inputTextarea&gt;
-		</pre>
+            <p:panel id="ghost" header="Ghost">
+                A ghost is displayed, don't be scared.
+            </p:panel>
+            <p:resizable for="ghost" ghost="true"/>
 
-		</div>
+            <p:panel id="animation" header="Animated">
+                Resize can be animated as well.
+            </p:panel>
+            <p:resizable for="animation" animate="true" effect="swing" effectDuration="normal"/>
 
-	</ui:define>
+            <p:panel id="boundaries" header="Boundaries" style="width:300px;height:150px;">
+                I have min/max boundaries.
+            </p:panel>
+            <p:resizable for="boundaries" minWidth="200" maxWidth="400" minHeight="100" maxHeight="200" />
+
+            <p:panel id="grid" header="Grid">
+                Resize offset is 20 pixels.
+            </p:panel>
+            <p:resizable for="grid" grid="20"/>
+
+            <p:panel id="handles" header="Handles">
+                I can be resized to any direction.
+            </p:panel>
+            <p:resizable for="handles" handles="e,w,n,se,sw,ne,nw"/>
+
+            <p:outputPanel layout="block" style="width:400px;height:200px;border:2px solid black;">
+                <p:panel id="containment" header="Containment" style="margin:0">
+                    I'm restricted to my parent's boundaries.
+                </p:panel>
+                <p:resizable for="containment" containment="true"/>
+            </p:outputPanel>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="resizable.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:panel id="basic" header="Basic Resizable"&gt;
+    Resize Me!
+&lt;/p:panel&gt;
+&lt;p:resizable for="basic" /&gt;
+
+&lt;p:panel id="aspectRatio" header="Aspect Ratio"&gt;
+    Keep the aspect ratio.
+&lt;/p:panel&gt;
+&lt;p:resizable for="aspectRatio" aspectRatio="true"/&gt;
+
+&lt;p:panel id="ghost" header="Ghost"&gt;
+    A ghost is displayed, don't be scared.
+&lt;/p:panel&gt;
+&lt;p:resizable for="ghost" ghost="true"/&gt;
+
+&lt;p:panel id="animation" header="Animated"&gt;
+    Resize can be animated as well.
+&lt;/p:panel&gt;
+&lt;p:resizable for="animation" animate="true" effect="swing" effectDuration="normal"/&gt;
+
+&lt;p:panel id="boundaries" header="Boundaries" style="width:300px;height:150px;"&gt;
+    I have min/max boundaries.
+&lt;/p:panel&gt;
+&lt;p:resizable for="boundaries" minWidth="200" maxWidth="400" minHeight="100" maxHeight="200" /&gt;
+
+&lt;p:panel id="grid" header="Grid"&gt;
+    Resize offset is 20 pixels.
+&lt;/p:panel&gt;
+&lt;p:resizable for="grid" grid="20"/&gt;
+
+&lt;p:panel id="handles" header="Handles"&gt;
+    I can be resized to any direction.
+&lt;/p:panel&gt;
+&lt;p:resizable for="handles" handles="e,w,n,se,sw,ne,nw"/&gt;
+
+&lt;p:outputPanel layout="block" style="width:400px;height:200px;border:2px solid black;"&gt;
+    &lt;p:panel id="containment" header="Containment" style="margin:0"&gt;
+        I'm restricted to my parent's boundaries.
+    &lt;/p:panel&gt;
+    &lt;p:resizable for="containment" containment="true"/&gt;
+&lt;/p:outputPanel&gt;
+                    </pre>
+                </p:tab>
+            </p:tabView>
+            
+
+        </div>
+
+    </ui:define>
 </ui:composition>
