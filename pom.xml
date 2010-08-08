@@ -180,7 +180,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <jsfVersion>Mojarra-2.0.2-FCS</jsfVersion>
+                <jsfVersion>Mojarra-2.0.3-FCS</jsfVersion>
                 <primefacesVersion>PrimeFaces-2.2.RC1-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
