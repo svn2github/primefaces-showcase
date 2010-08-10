@@ -8,34 +8,6 @@
 	<ui:define name="head">
 		
 	<style type="text/css">
-		.pf-panel, .pf-panel-hd, .pf-panel-bd, .pf-panel-ft {
-			border-color:#000000;
-		}
-		
-		.pf-panel-hd {
-			 background: url(../images/dialoghd.gif);
-			 color: #FFFFFF;
-		}
-		
-		.pf-panel-bd {
-			background: #333333;
-			color:#CCCCCC;
-		}
-		
-		.pf-panel-toggler-expanded, .pf-panel-toggler-collapsed{
-			top:3px;
-			width:16px;
-			height:16px;
-		}
-		
-		.pf-panel-toggler-expanded {
-			background: url(../images/toggle_green_expanded.png) no-repeat;
-		}
-		
-		.pf-panel-toggler-collapsed {
-			background: url(../images/toggle_green_collapsed.png) no-repeat;
-		}
-		
 		.disk {
    			background-image: url(../images/disk.png) !important;
 		}
@@ -76,7 +48,7 @@
 							</h:panelGrid>
 						</p:panel>
 
-						<p:commandButton value="Ajax Submit" update="panel,display" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" />
+						<p:commandButton value="Ajax Submit" update="panel,display" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" >
 				
 						<p:commandButton value="Non-Ajax Submit" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" ajax="false" />
 						

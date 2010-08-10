@@ -10,7 +10,7 @@
 		<h1 class="title ui-widget-header ui-corner-all">PPR - Partial Tree Process</h1>
 		<div class="entry">
 			<p>You can choose which components to process in JSF lifecycle using the process attribute. This is very useful to do partial validations, model update, invoke application and more.
-			This simply makes immediate, subforms and regions obselete. Keywords like @this, @form, @all, @none, @parent makes it even easier to choose what to process. Another important feature is that this process is also available for regular page submits not
+			This simply makes immediate, subforms and regions obselete. Keywords like @this, @form, @all, @none, @parent makes it even easier to choose what to process.
 			just for ajax. Following example demonstrates several combinations.</p>
 
 			<p:ajaxStatus style="width:16px;height:16px;">
@@ -42,9 +42,6 @@
 				</p:panel>
 				
 				<h:panelGrid columns="6" cellpadding="5">
-					<f:facet name="header">
-						Ajax
-					</f:facet>
 					<p:commandButton value="All" process="@all" update="grid" actionListener="#{personBean.savePerson}"/>
 					<p:commandButton value="Form" process="@form" update="grid" actionListener="#{personBean.savePerson}"/>
 					<p:commandButton value="This" process="@this" update="grid" actionListener="#{personBean.savePerson}"/>
@@ -52,19 +49,7 @@
 					<p:commandButton value="Parent" process="@parent" update="grid" actionListener="#{personBean.savePerson}"/>
 					<p:commandButton value="This Surname" process="@this,surname" update="grid" actionListener="#{personBean.savePerson}"/>
 				</h:panelGrid>
-				
-				<h:panelGrid columns="6" cellpadding="5">
-					<f:facet name="header">
-						Non-Ajax
-					</f:facet>
-					<p:commandButton value="All" process="@all" actionListener="#{personBean.savePerson}" ajax="false"/>
-					<p:commandButton value="Form" process="@form" actionListener="#{personBean.savePerson}" ajax="false"/>
-					<p:commandButton value="This" process="@this" actionListener="#{personBean.savePerson}" ajax="false"/>
-					<p:commandButton value="None" process="@none" actionListener="#{personBean.savePerson}" ajax="false"/>
-					<p:commandButton value="Parent" process="@parent" actionListener="#{personBean.savePerson}" ajax="false"/>
-					<p:commandButton value="This Surname" process="@this,surname" actionListener="#{personBean.savePerson}" ajax="false"/>
-				</h:panelGrid>
-				
+
 			</h:form>
 		
 			<h3>Source</h3>
@@ -102,9 +87,6 @@
 	&lt;/p:panel&gt;
 	
 	&lt;h:panelGrid columns="6" cellpadding="5"&gt;
-		&lt;f:facet name="header"&gt;
-			Ajax
-		&lt;/f:facet&gt;
 		&lt;p:commandButton value="All" process="@all" update="grid" 
 					actionListener="\#{personBean.savePerson}"/&gt;
 		&lt;p:commandButton value="Form" process="@form" update="grid" 
@@ -118,25 +100,7 @@
 		&lt;p:commandButton value="This Surname" process="@this,surname" update="grid" 
 					actionListener="\#{personBean.savePerson}"/&gt;
 	&lt;/h:panelGrid&gt;
-	
-	&lt;h:panelGrid columns="6" cellpadding="5"&gt;
-		&lt;f:facet name="header"&gt;
-			Non-Ajax
-		&lt;/f:facet&gt;
-		&lt;p:commandButton value="All" process="@all" 
-				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
-		&lt;p:commandButton value="Form" process="@form" 
-				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
-		&lt;p:commandButton value="This" process="@this" 
-				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
-		&lt;p:commandButton value="None" process="@none" 
-				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
-		&lt;p:commandButton value="Parent" process="@parent" 
-				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
-		&lt;p:commandButton value="This Surname" process="@this,surname" 
-				actionListener="\#{personBean.savePerson}" ajax="false"/&gt;
-	&lt;/h:panelGrid&gt;
-	
+
 &lt;/h:form&gt;
 					</pre>
 				</p:tab>
