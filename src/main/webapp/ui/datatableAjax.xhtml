@@ -1,89 +1,77 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
-	
-	<ui:define name="content">
-	<h1 class="title ui-widget-header ui-corner-all">DataTable - Ajax Pagination/Sorting</h1>
-	<p>When datatable's dynamic feature is enabled pagination and sorting is handled by the server via ajax.</p>
-		<div class="entry">
-                  
-               <h:form>
-                 
-				<p:dataTable var="car" value="#{tableBean.cars}" dynamic="true"
-					paginator="true" rows="10">
-					<p:column sortBy="#{car.model}">
-						<f:facet name="header">
-							<h:outputText value="Model" />
-						</f:facet>
-						<h:outputText value="#{car.model}" />
-					</p:column>
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
+    
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - Ajax Pagination/Sorting</h1>
 
-					<p:column sortBy="#{car.year}">
-						<f:facet name="header">
-							<h:outputText value="Year" />
-						</f:facet>
-						<h:outputText value="#{car.year}" />
-					</p:column>
+        <div class="entry">
+            <p>DataTable has built-in support for pagination and sorting with ajax.</p>
+            
+            <h:form>
 
-					<p:column sortBy="#{car.manufacturer}">
-						<f:facet name="header">
-							<h:outputText value="Manufacturer" />
-						</f:facet>
-						<h:outputText value="#{car.manufacturer}" />
-					</p:column>
+                <p:ajaxStatus style="width:16px;height:16px;">
+                    <f:facet name="start">
+                        <h:graphicImage value="../design/ajaxloading.gif" />
+                    </f:facet>
 
-					<p:column sortBy="#{car.color}">
-						<f:facet name="header">
-							<h:outputText value="Color" />
-						</f:facet>
-						<h:outputText value="#{car.color}" />
-					</p:column>
-				</p:dataTable>
-				
-			</h:form>
-			
-			<h3>Source</h3>
-				<p:tabView>
-					<p:tab title="datatableClient.xhtml">
-<pre name="code" class="xml">
-&lt;p:dataTable var="car" value="\#{tableBean.cars}" 
-		paginator="true" rows="10" dynamic="true"&gt;
-	&lt;p:column&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="Model" /&gt;
-		&lt;/f:facet&gt;
-		&lt;h:outputText value="\#{car.model}" /&gt;
-	&lt;/p:column&gt;
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
 
-	&lt;p:column&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="Year" /&gt;
-		&lt;/f:facet&gt;
-		&lt;h:outputText value="\#{car.year}" /&gt;
-	&lt;/p:column&gt;
+                <p:dataTable var="car" value="#{tableBean.cars}"
+                             paginator="true" rows="10"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                    <f:facet name="header">
+                        Ajax Pagination and Sorting
+                    </f:facet>
+                    
+                    <p:column sortBy="#{car.model}">
+                        <f:facet name="header">
+                            <h:outputText value="Model" />
+                        </f:facet>
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
 
-	&lt;p:column&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="Manufacturer" /&gt;
-		&lt;/f:facet&gt;
-		&lt;h:outputText value="\#{car.manufacturer}" /&gt;
-	&lt;/p:column&gt;
+                    <p:column sortBy="#{car.year}">
+                        <f:facet name="header">
+                            <h:outputText value="Year" />
+                        </f:facet>
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
 
-	&lt;p:column&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="Color" /&gt;
-		&lt;/f:facet&gt;
-		&lt;h:outputText value="\#{car.color}" /&gt;
-	&lt;/p:column&gt;
-&lt;/p:dataTable&gt;
-				</pre>
-					</p:tab>
-					
-					<p:tab title="TableBean.java">
-<pre name="code" class="java">
+                    <p:column sortBy="#{car.manufacturer}">
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer" />
+                        </f:facet>
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column sortBy="#{car.color}">
+                        <f:facet name="header">
+                            <h:outputText value="Color" />
+                        </f:facet>
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+                </p:dataTable>
+
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="datatableClient.xhtml">
+                    <pre name="code" class="xml">
+
+                    </pre>
+                </p:tab>
+
+                <p:tab title="TableBean.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
@@ -154,11 +142,11 @@ public class TableBean implements Serializable {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
 }
-				</pre>
-					</p:tab>
-				</p:tabView>
+                    </pre>
+                </p:tab>
+            </p:tabView>
 
-</div>
+        </div>
 
-	</ui:define>
+    </ui:define>
 </ui:composition>

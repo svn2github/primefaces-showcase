@@ -1,0 +1,154 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-datatable .ui-datatable-header {
+                text-align:right;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - Row Selection</h1>
+        <div class="entry">
+            <p>This examples demonstrates how to select a row using a PrimeFaces commandLink.</p>
+
+            <h:form id="form">
+
+                <p:ajaxStatus style="width:16px;height:16px;">
+                    <f:facet name="start">
+                        <h:graphicImage value="../design/ajaxloading.gif" />
+                    </f:facet>
+
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10">
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model" />
+                        </f:facet>
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Year" />
+                        </f:facet>
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer" />
+                        </f:facet>
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Color" />
+                        </f:facet>
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+
+                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Actions" />
+                        </f:facet>
+                        <p:commandLink update="form:display" oncomplete="carDialog.show()">
+                            <p:graphicImage value="/images/search.png" />
+                            <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
+                        </p:commandLink>
+
+                    </p:column>
+
+                </p:dataTable>
+
+                <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+                          width="200" showEffect="explode" hideEffect="explode">
+
+                    <h:panelGrid id="display" columns="2" cellpadding="4">
+
+                        <f:facet name="header">
+                            <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>
+                        </f:facet>
+                        
+                        <h:outputText value="Model:" />
+                        <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
+
+                        <h:outputText value="Year:" />
+                        <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
+
+                        <h:outputText value="Manufacturer:" />
+                        <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="datatableRowSelection.xhtml">
+                    <pre name="code" class="xml">
+
+                    </pre>
+                </p:tab>
+
+                <p:tab title="TableBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean {
+
+	private List&lt;Car&gt; cars;
+
+	private Car selectedCar;
+
+	public TableBean() {
+		cars = new ArrayList&lt;Car&gt;();
+
+		for(int i = 0 ; i &lt; 50 ; i++)
+			list.add(new Car("Model_" + i, getRandomYear(), "Brand_" + i, "Color_" + i));
+	}
+
+	public Car getSelectedCar() {
+		return selectedCar;
+	}
+	public void setSelectedCar(Car selectedCar) {
+		this.selectedCar = selectedCar;
+	}
+
+	public List&lt;Car&gt; getCars() {
+		return cars;
+	}
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+
+    </ui:define>
+</ui:composition>

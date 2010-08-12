@@ -44,6 +44,7 @@ import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
+import org.primefaces.event.SelectEvent;
 
 public class TableBean implements Serializable {
 	
@@ -244,4 +245,16 @@ public class TableBean implements Serializable {
 	public void save() {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Changes Saved"));
 	}
+
+    public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Selected", selectedCar.getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public String onRowSelectNavigate(SelectEvent event) {
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().put("selectedCar", event.getObject());
+
+        return "carDetail?faces-redirect=true";
+    }
 }

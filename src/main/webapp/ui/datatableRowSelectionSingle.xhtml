@@ -10,17 +10,14 @@
             .ui-datatable .ui-datatable-footer {
                 text-align:left;
             }
-
-            .ui-datalist-data {
-                padding:4px;
-            }
         </style>
     </ui:define>
 
     <ui:define name="content">
-        <h1 class="title ui-widget-header ui-corner-all">DataTable - Multiple Row Selection</h1>
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - Row Selection</h1>
         <div class="entry">
-            <p>Multiple selection is achieved by using modifier keys such as ctrl. Note that this example uses an ajax commandButton to set the selected values</p>
+            <p>Datatable makes it very easy to select rows. Selection value reference is populated automatically with selected rows by
+                dataTable.</p>
 
             <h:form id="form">
 
@@ -35,10 +32,10 @@
                 </p:ajaxStatus>
 
                 <p:dataTable var="car" value="#{tableBean.carsSmall}"
-                             selection="#{tableBean.selectedCars}" selectionMode="multiple">
+                             selection="#{tableBean.selectedCar}" selectionMode="single">
 
                     <f:facet name="header">
-                        Click "View Detail" button after selecting multiple to see details
+                        Click "View Detail" button after selecting a row to see details
                     </f:facet>
 
                     <p:column>
@@ -70,35 +67,63 @@
                     </p:column>
 
                     <f:facet name="footer">
-                        <p:commandButton value="Submit" update="form:display" oncomplete="carDialog.show()"/>
+                        <p:commandButton value="View Detail" update="form:display" oncomplete="carDialog.show()"/>
                     </f:facet>
-                </p:dataTable>
-
-                <p:dialog header="Car Detail" widgetVar="carDialog"
-                          width="250" showEffect="explode" hideEffect="explode">
-
-                    <p:dataList id="display" value="#{tableBean.selectedCars}" var="selectedCar" type="definition">
-                        Model: #{selectedCar.model}, Year: #{selectedCar.year}
-                        <f:facet name="description">
-                            <p:graphicImage value="/images/cars/#{selectedCar.manufacturer}.jpg"/>
-                        </f:facet>
-                    </p:dataList>
                     
+                </p:dataTable>                
+
+                <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+                          width="200" showEffect="clip" hideEffect="fold">
+
+                    <h:panelGrid id="display" columns="2" cellpadding="4">
+
+                        <f:facet name="header">
+                            <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>
+                        </f:facet>
+
+                        <h:outputText value="Model:" />
+                        <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
+
+                        <h:outputText value="Year:" />
+                        <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
+
+                        <h:outputText value="Manufacturer:" />
+                        <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
+                    </h:panelGrid>
                 </p:dialog>
 
             </h:form>
 
             <h3>Source</h3>
-            <pre name="code" class="xml">
+            <p:tabView>
+                <p:tab title="datatableRowSelection.xhtml">
+                    <pre name="code" class="xml">
 
-            </pre>
+                    </pre>
+                </p:tab>
 
-            <pre name="code" class="java">
+                <p:tab title="TableBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
+
+import org.primefaces.examples.domain.Car;
+
 public class TableBean {
 
 	private List&lt;Car&gt; cars;
 	
-	private Car[] selectedCars;
+	private Car selectedCar;
 
 	public TableBean() {
 		cars = new ArrayList&lt;Car&gt;();
@@ -107,21 +132,22 @@ public class TableBean {
 			list.add(new Car("Model_" + i, getRandomYear(), "Brand_" + i, "Color_" + i));
 	}
 
-	public Car[] getSelectedCars() {
-		return selectedCars;
+	public Car getSelectedCar() {
+		return selectedCar;
 	}
-	public void setSelectedCar(Car[] selectedCars) {
-		this.selectedCar = selectedCars;
+	public void setSelectedCar(Car selectedCar) {
+		this.selectedCar = selectedCar;
 	}
 
 	public List&lt;Car&gt; getCars() {
 		return cars;
 	}
 }
-            </pre>
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
         </div>
-
-
 
     </ui:define>
 </ui:composition>

@@ -14,15 +14,29 @@
 	</ui:define>
 	
 	<ui:define name="content">
-	<h1 class="title ui-widget-header ui-corner-all">DataTable - Complete</h1>
-	<p>This example demonstrates various features on both client and dynamic datatables.</p>
-		<div class="entry">       
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Complex</h1>
+	
+		<div class="entry"> 
+            <p>This example demonstrates various features such as paging, sorting and filtering.</p>
+            
               <h:form>
-                
-                <h3>Client Side DataTable</h3>
+
+                <p:ajaxStatus style="width:16px;height:16px;">
+                    <f:facet name="start">
+                        <h:graphicImage value="../design/ajaxloading.gif" />
+                    </f:facet>
+
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
+
 				<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
-					selectionMode="single" selection="#{tableBean.selectedCar}" dynamic="false"
-					update="display" onselectComplete="carDialog.show()">
+					selection="#{tableBean.selectedCar}">
+
+                    <f:facet name="header">
+                        List of Cars
+                    </f:facet>
 					
 					<p:column sortBy="#{car.model}" filterBy="#{car.model}">
 						<f:facet name="header">
@@ -51,42 +65,7 @@
 						</f:facet>
 						<h:outputText value="#{car.color}" />
 					</p:column>
-					
-				</p:dataTable>
-				
-				<h3>Ajax Powered DataTable</h3>
-				<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
-					selectionMode="single" selection="#{tableBean.selectedCar}" dynamic="true"
-					update="display" onselectComplete="carDialog.show()">
-					
-					<p:column sortBy="#{car.model}" filterBy="#{car.model}">
-						<f:facet name="header">
-							<h:outputText value="Model" />
-						</f:facet>
-						<h:outputText value="#{car.model}" />
-					</p:column>
-	
-					<p:column sortBy="#{car.year}" filterBy="#{car.year}">
-						<f:facet name="header">
-							<h:outputText value="Year" />
-						</f:facet>
-						<h:outputText value="#{car.year}" />
-					</p:column>
-	
-					<p:column sortBy="#{car.manufacturer}" filterBy="#{car.manufacturer}">
-						<f:facet name="header">
-							<h:outputText value="Manufacturer" />
-						</f:facet>
-						<h:outputText value="#{car.manufacturer}" />
-					</p:column>
-	
-					<p:column sortBy="#{car.color}" filterBy="#{car.color}">
-						<f:facet name="header">
-							<h:outputText value="Color" />
-						</f:facet>
-						<h:outputText value="#{car.color}" />
-					</p:column>
-					
+
 				</p:dataTable>
 				
 				<p:dialog header="Car Detail" widgetVar="carDialog" 

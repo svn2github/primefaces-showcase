@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - Instant Row Selection</h1>
+        <div class="entry">
+            <p>This is a detail page for the selected car.</p>
+
+            <p:fieldset>
+                <f:facet name="legend">
+                    <p:graphicImage value="/images/cars/#{flash.selectedCar.manufacturer}.jpg"/>
+                </f:facet>
+
+                <h:panelGrid id="display" columns="2" cellpadding="4">
+                  
+                    <h:outputText value="Model:" />
+                    <h:outputText value="#{flash.selectedCar.model}" style="font-weight:bold"/>
+
+                    <h:outputText value="Year:" />
+                    <h:outputText value="#{flash.selectedCar.year}" style="font-weight:bold"/>
+
+                    <h:outputText value="Manufacturer:" />
+                    <h:outputText value="#{flash.selectedCar.manufacturer}" style="font-weight:bold"/>
+
+                    <h:outputText value="Color:" />
+                    <h:outputText value="#{flash.selectedCar.color}" style="font-weight:bold"/>
+                </h:panelGrid>
+            </p:fieldset>
+
+
+            <h3>Source</h3>
+            <pre name="code" class="xml">
+
+            </pre>
+
+        </div>
+
+    </ui:define>
+</ui:composition>

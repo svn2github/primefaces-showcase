@@ -1,0 +1,186 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Header and Footer</h1>
+		<div class="entry">
+			<p>Any content can be placed inside header and footer using corresponding facets.</p>
+
+            <h:form>
+                
+                <p:dataTable var="car" value="#{tableBean.carsSmall}">
+
+                    <f:facet name="header">
+                        List of Cars
+                    </f:facet>
+
+                    <p:column>
+                        <f:facet name="header">
+                            Model
+                        </f:facet>
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            Year
+                        </f:facet>
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            Manufacturer
+                        </f:facet>
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            Color
+                        </f:facet>
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+
+                    <f:facet name="footer">
+                        In total there are #{fn:length(tableBean.carsSmall)} cars.
+                    </f:facet>
+                    
+                </p:dataTable>
+
+            </h:form>
+            
+		<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="basicDataTable.xhtml">
+<pre name="code" class="xml">
+&lt;form&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall} " &gt;
+
+        &lt;f:facet name="header"&gt;
+            List of Cars
+        &lt;/f:facet&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                Model
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.model} " /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                Year
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year} " /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                Manufacturer
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.manufacturer} " /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                Color
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color} " /&gt;
+        &lt;/p:column&gt;
+
+        &lt;f:facet name="header"&gt;
+            In total there are #{fn:length(tableBean.carsSmall)} cars.
+        &lt;/f:facet&gt;
+
+    &lt;/p:dataTable&gt;
+
+&lt;/form&gt;
+				</pre>
+			</p:tab>
+
+			<p:tab title="TableBean.java">
+			<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+	private List&lt;Car&gt; carsSmall;
+
+	public TableBean() {
+		carsSmall = new ArrayList&lt;Car&gt;();
+
+		populateRandomCars(carsSmall, 5);
+	}
+
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+}
+				</pre>
+			</p:tab>
+		</p:tabView>
+	       </div>
+
+	</ui:define>
+</ui:composition>

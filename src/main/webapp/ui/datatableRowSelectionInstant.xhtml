@@ -1,0 +1,141 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - Instant Row Selection</h1>
+        <div class="entry">
+            <p>Instant row selection feature processes a selection with ajax when a row is selected. If defined a rowSelectListener
+            is invoked passing selected row data as parameter, optionally other components on page can be updated with onRowSelectUpdate option.
+            onRowSelectStart and onRowSelectComplete are additional client side callbacks for further customization. Note that rowSelectListener
+            is aware of JSF Navigations so by returning an outcome you can navigate to another page with the selected row information.</p>
+
+            <h:form>
+
+                <p:ajaxStatus style="width:16px;height:16px;">
+                    <f:facet name="start">
+                        <h:graphicImage value="../design/ajaxloading.gif" />
+                    </f:facet>
+
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:growl id="growl" showDetail="true"/>
+
+                <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
+                             selection="#{tableBean.selectedCar}" selectionMode="single" 
+                             rowSelectListener="#{tableBean.onRowSelect}" onRowSelectUpdate="growl">
+                    
+                    <f:facet name="header">
+                        Select a row to display a message
+                    </f:facet>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model" />
+                        </f:facet>
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Year" />
+                        </f:facet>
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer" />
+                        </f:facet>
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Color" />
+                        </f:facet>
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
+                             selection="#{tableBean.selectedCar}" selectionMode="single"
+                             rowSelectListener="#{tableBean.onRowSelectNavigate}" style="margin-top:25px">
+
+                    <f:facet name="header">
+                        Select a row to see the detail page
+                    </f:facet>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model" />
+                        </f:facet>
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Year" />
+                        </f:facet>
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer" />
+                        </f:facet>
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Color" />
+                        </f:facet>
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+                </p:dataTable>
+
+            </h:form>
+
+            <h3>Source</h3>
+            <pre name="code" class="xml">
+
+            </pre>
+
+            <pre name="code" class="java">
+public class TableBean {
+
+	private List&lt;Car&gt; cars;
+	
+	private Car selectedCar;
+
+	public TableBean() {
+		cars = new ArrayList&lt;Car&gt;();
+		
+		for(int i = 0 ; i &lt; 50 ; i++)
+			list.add(new Car("Model_" + i, getRandomYear(), "Brand_" + i, "Color_" + i));
+	}
+
+	public Car getSelectedCar() {
+		return selectedCar;
+	}
+	public void setSelectedCar(Car selectedCar) {
+		this.selectedCar = selectedCar;
+	}
+
+	public List&lt;Car&gt; getCars() {
+		return cars;
+	}
+}
+            </pre>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
