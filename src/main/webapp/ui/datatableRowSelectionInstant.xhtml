@@ -29,7 +29,8 @@
 
                 <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCar}" selectionMode="single" 
-                             rowSelectListener="#{tableBean.onRowSelect}" onRowSelectUpdate="growl">
+                             rowSelectListener="#{tableBean.onRowSelect}" onRowSelectUpdate="display growl"
+                             onRowSelectComplete="carDialog.show()">
                     
                     <f:facet name="header">
                         Select a row to display a message
@@ -63,6 +64,29 @@
                         <h:outputText value="#{car.color}" />
                     </p:column>
                 </p:dataTable>
+
+                <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+                          width="200" showEffect="bounce" hideEffect="bounce">
+
+                    <h:panelGrid id="display" columns="2" cellpadding="4">
+
+                        <f:facet name="header">
+                            <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>
+                        </f:facet>
+
+                        <h:outputText value="Model:" />
+                        <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
+
+                        <h:outputText value="Year:" />
+                        <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
+
+                        <h:outputText value="Manufacturer:" />
+                        <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
+                    </h:panelGrid>
+                </p:dialog>
 
                 <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCar}" selectionMode="single"
