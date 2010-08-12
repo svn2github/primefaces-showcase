@@ -101,7 +101,73 @@
             <p:tabView>
                 <p:tab title="datatableRowSelection.xhtml">
                     <pre name="code" class="xml">
+&lt;h:form id="form"&gt;
 
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"
+                 selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
+
+        &lt;f:facet name="header"&gt;
+            Click "View Detail" button after selecting a row to see details
+        &lt;/f:facet&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Model" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Year" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Manufacturer" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Color" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;f:facet name="footer"&gt;
+            &lt;p:commandButton value="View Detail" update="form:display" oncomplete="carDialog.show()"/&gt;
+        &lt;/f:facet&gt;
+
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+              width="200" showEffect="clip" hideEffect="fold"&gt;
+
+        &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;
+
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage value="/images/cars/\#{tableBean.selectedCar.manufacturer}.jpg"/&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Model:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.model}" /&gt;
+
+            &lt;h:outputText value="Year:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.year}" /&gt;
+
+            &lt;h:outputText value="Manufacturer:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" /&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.color}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
                     </pre>
                 </p:tab>
 
@@ -115,21 +181,53 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.ServletContext;
-
 import org.primefaces.examples.domain.Car;
 
 public class TableBean {
 
-	private List&lt;Car&gt; cars;
+    static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+
+	private List&lt;Car&gt; carsSmall;
 	
 	private Car selectedCar;
 
 	public TableBean() {
-		cars = new ArrayList&lt;Car&gt;();
+		carsSmall = new ArrayList&lt;Car&gt;();
 		
-		for(int i = 0 ; i &lt; 50 ; i++)
-			list.add(new Car("Model_" + i, getRandomYear(), "Brand_" + i, "Color_" + i));
+		populateRandomCars(carsSmall, 9);
+	}
+
+    private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 	}
 
 	public Car getSelectedCar() {
@@ -139,8 +237,8 @@ public class TableBean {
 		this.selectedCar = selectedCar;
 	}
 
-	public List&lt;Car&gt; getCars() {
-		return cars;
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
 	}
 }
                     </pre>

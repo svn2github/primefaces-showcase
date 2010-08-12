@@ -95,7 +95,7 @@
             &lt;h:outputText value="\#{car.color} " /&gt;
         &lt;/p:column&gt;
 
-        &lt;f:facet name="header"&gt;
+        &lt;f:facet name="footer"&gt;
             In total there are #{fn:length(tableBean.carsSmall)} cars.
         &lt;/f:facet&gt;
 
@@ -118,7 +118,7 @@ import org.primefaces.examples.domain.Car;
 
 public class TableBean implements Serializable {
 
-	static {
+    static {
 		colors = new String[10];
 		colors[0] = "Black";
 		colors[1] = "White";
@@ -144,12 +144,16 @@ public class TableBean implements Serializable {
 		manufacturers[9] = "Ford";
 	}
 
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+
 	private List&lt;Car&gt; carsSmall;
 
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();
 
-		populateRandomCars(carsSmall, 5);
+		populateRandomCars(carsSmall, 9);
 	}
 
 	private void populateRandomCars(List&lt;Car&gt; list, int size) {

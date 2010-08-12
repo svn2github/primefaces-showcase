@@ -33,9 +33,32 @@
 
 
             <h3>Source</h3>
-            <pre name="code" class="xml">
+            <p:tabView>
+                <p:tab title="carDetail.xhtml">
+                   <pre name="code" class="xml">
+&lt;p:fieldset&gt;
+    &lt;f:facet name="legend"&gt;
+        &lt;p:graphicImage value="/images/cars/\#{flash.selectedCar.manufacturer}.jpg"/&gt;
+    &lt;/f:facet&gt;
 
-            </pre>
+    &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;
+
+        &lt;h:outputText value="Model:" /&gt;
+        &lt;h:outputText value="\#{flash.selectedCar.model}" style="font-weight:bold"/&gt;
+
+        &lt;h:outputText value="Year:" /&gt;
+        &lt;h:outputText value="\#{flash.selectedCar.year}" style="font-weight:bold"/&gt;
+
+        &lt;h:outputText value="Manufacturer:" /&gt;
+        &lt;h:outputText value="\#{flash.selectedCar.manufacturer}" style="font-weight:bold"/&gt;
+
+        &lt;h:outputText value="Color:" /&gt;
+        &lt;h:outputText value="\#{flash.selectedCar.color}" style="font-weight:bold"/&gt;
+    &lt;/h:panelGrid&gt;
+&lt;/p:fieldset&gt;
+                    </pre> 
+                </p:tab>
+            </p:tabView>
 
         </div>
 

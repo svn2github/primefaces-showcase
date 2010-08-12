@@ -66,7 +66,7 @@
                 </p:dataTable>
 
                 <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
-                          width="200" showEffect="bounce" hideEffect="bounce">
+                          width="200" showEffect="explode" hideEffect="explode">
 
                     <h:panelGrid id="display" columns="2" cellpadding="4">
 
@@ -90,10 +90,11 @@
 
                 <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCar}" selectionMode="single"
-                             rowSelectListener="#{tableBean.onRowSelectNavigate}" style="margin-top:25px">
+                             rowSelectListener="#{tableBean.onRowSelectNavigate}" style="margin-top:25px"
+                             dblClickSelect="true">
 
                     <f:facet name="header">
-                        Select a row to see the detail page
+                        Double click a row to see the detail page
                     </f:facet>
 
                     <p:column>
@@ -129,21 +130,169 @@
 
             <h3>Source</h3>
             <pre name="code" class="xml">
+&lt;h:form&gt;
 
+    &lt;p:growl id="growl" showDetail="true"/&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+                 selection="\#{tableBean.selectedCar}" selectionMode="single"
+                 rowSelectListener="\#{tableBean.onRowSelect}" onRowSelectUpdate="display growl"
+                 onRowSelectComplete="carDialog.show()"&gt;
+
+        &lt;f:facet name="header"&gt;
+            Select a row to display a message
+        &lt;/f:facet&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Model" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Year" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Manufacturer" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Color" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+              width="200" showEffect="explode" hideEffect="explode"&gt;
+
+        &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;
+
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage value="/images/cars/\#{tableBean.selectedCar.manufacturer}.jpg"/&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Model:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.model}" style="font-weight:bold"/&gt;
+
+            &lt;h:outputText value="Year:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.year}" style="font-weight:bold"/&gt;
+
+            &lt;h:outputText value="Manufacturer:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.color}" style="font-weight:bold"/&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+                 selection="\#{tableBean.selectedCar}" selectionMode="single"
+                 rowSelectListener="\#{tableBean.onRowSelectNavigate}" style="margin-top:25px"
+                 dblClickSelect="true"&gt;
+
+        &lt;f:facet name="header"&gt;
+            Select a row to see the detail page
+        &lt;/f:facet&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Model" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Year" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Manufacturer" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Color" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+&lt;/h:form&gt;
             </pre>
 
             <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+import org.primefaces.event.SelectEvent;
+
 public class TableBean {
+
+    static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
 
 	private List&lt;Car&gt; cars;
 	
 	private Car selectedCar;
 
 	public TableBean() {
-		cars = new ArrayList&lt;Car&gt;();
-		
-		for(int i = 0 ; i &lt; 50 ; i++)
-			list.add(new Car("Model_" + i, getRandomYear(), "Brand_" + i, "Color_" + i));
+		carsSmall = new ArrayList&lt;Car&gt;();
+
+		populateRandomCars(carsSmall, 9);
+	}
+
+    private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 	}
 
 	public Car getSelectedCar() {
@@ -156,6 +305,18 @@ public class TableBean {
 	public List&lt;Car&gt; getCars() {
 		return cars;
 	}
+
+    public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Selected", selectedCar.getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public String onRowSelectNavigate(SelectEvent event) {
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().put("selectedCar", event.getObject());
+
+        return "carDetail?faces-redirect=true";
+    }
 }
             </pre>
 

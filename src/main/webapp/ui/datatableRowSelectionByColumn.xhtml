@@ -102,7 +102,76 @@
             <p:tabView>
                 <p:tab title="datatableRowSelection.xhtml">
                     <pre name="code" class="xml">
+&lt;h:form id="form"&gt;
 
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Model" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Year" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Manufacturer" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Color" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+
+         &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Actions" /&gt;
+            &lt;/f:facet&gt;
+            &lt;p:commandLink update="form:display" oncomplete="carDialog.show()"&gt;
+                &lt;p:graphicImage value="/images/search.png" /&gt;
+                &lt;f:setPropertyActionListener value="\#{car}"
+                                    target="\#{tableBean.selectedCar}" /&gt;
+            &lt;/p:commandLink&gt;
+
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+              width="200" showEffect="explode" hideEffect="explode"&gt;
+
+        &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;
+
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage value="/images/cars/\#{tableBean.selectedCar.manufacturer}.jpg"/&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Model:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.model}" /&gt;
+
+            &lt;h:outputText value="Year:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.year}" /&gt;
+
+            &lt;h:outputText value="Manufacturer:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" /&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.color}"/&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
                     </pre>
                 </p:tab>
 
@@ -116,21 +185,53 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.ServletContext;
-
 import org.primefaces.examples.domain.Car;
 
 public class TableBean {
+
+    static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
 
 	private List&lt;Car&gt; cars;
 
 	private Car selectedCar;
 
 	public TableBean() {
-		cars = new ArrayList&lt;Car&gt;();
+        cars = new ArrayList&lt;Car&gt;();
 
-		for(int i = 0 ; i &lt; 50 ; i++)
-			list.add(new Car("Model_" + i, getRandomYear(), "Brand_" + i, "Color_" + i));
+		populateRandomCars(cars, 50);
+	}
+
+    private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 	}
 
 	public Car getSelectedCar() {
@@ -142,6 +243,22 @@ public class TableBean {
 
 	public List&lt;Car&gt; getCars() {
 		return cars;
+	}
+
+    private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
 	}
 }
                     </pre>

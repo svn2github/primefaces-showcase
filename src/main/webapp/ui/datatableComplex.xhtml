@@ -17,7 +17,7 @@
 	<h1 class="title ui-widget-header ui-corner-all">DataTable - Complex</h1>
 	
 		<div class="entry"> 
-            <p>This example demonstrates various features such as paging, sorting and filtering.</p>
+            <p>This example demonstrates various features such as paging, sorting, filtering and selection.</p>
             
               <h:form>
 
@@ -32,7 +32,8 @@
                 </p:ajaxStatus>
 
 				<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
-					selection="#{tableBean.selectedCar}">
+                            selection="#{tableBean.selectedCar}" selectionMode="single"
+                            onRowSelectUpdate="display" onRowSelectComplete="carDialog.show()">
 
                     <f:facet name="header">
                         List of Cars
@@ -68,24 +69,28 @@
 
 				</p:dataTable>
 				
-				<p:dialog header="Car Detail" widgetVar="carDialog" 
-					modal="true" draggable="false" width="250">
-					
-					<h:panelGrid id="display" columns="2">
-						<h:outputText value="Model:" />
-						<h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
-						
-						<h:outputText value="Year:" />
-						<h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
-						
-						<h:outputText value="Manufacturer:" />
-						<h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
-						
-						<h:outputText value="Color:" />
-						<h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
-					</h:panelGrid>
-					
-				</p:dialog>
+				<p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+                          width="200" showEffect="explode" hideEffect="explode">
+
+                    <h:panelGrid id="display" columns="2" cellpadding="4">
+
+                        <f:facet name="header">
+                            <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>
+                        </f:facet>
+
+                        <h:outputText value="Model:" />
+                        <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
+
+                        <h:outputText value="Year:" />
+                        <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
+
+                        <h:outputText value="Manufacturer:" />
+                        <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
+                    </h:panelGrid>
+                </p:dialog>
 			
 		</h:form>
 			
@@ -95,101 +100,73 @@
 					<pre name="code" class="xml">
 &lt;h:form&gt;
 
-	&lt;h3&gt;Client Side DataTable&lt;/h3&gt;
-	&lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
-		selectionMode="single" selection="\#{tableBean.selectedCar}" dynamic="false"
-		update="display" onselectComplete="carDialog.show()"&gt;
-		
-		&lt;p:column sortBy="\#{car.model}" filterBy="\#{car.model}"&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Model" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{car.model}" /&gt;
-		&lt;/p:column&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+                selection="\#{tableBean.selectedCar}" selectionMode="single"
+                onRowSelectUpdate="display" onRowSelectComplete="carDialog.show()"&gt;
 
-		&lt;p:column sortBy="\#{car.year}" filterBy="\#{car.year}"&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Year" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{car.year}" /&gt;
-		&lt;/p:column&gt;
+        &lt;f:facet name="header"&gt;
+            List of Cars
+        &lt;/f:facet&gt;
 
-		&lt;p:column sortBy="\#{car.manufacturer}" filterBy="\#{car.manufacturer}"&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Manufacturer" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{car.manufacturer}" /&gt;
-		&lt;/p:column&gt;
+        &lt;p:column sortBy="\#{car.model}" filterBy="\#{car.model}"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Model" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
 
-		&lt;p:column sortBy="\#{car.color}" filterBy="\#{car.color}"&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Color" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{car.color}" /&gt;
-		&lt;/p:column&gt;
-		
-	&lt;/p:dataTable&gt;
-	
-	&lt;h3&gt;Ajax Powered DataTable&lt;/h3&gt;
-	&lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
-		selectionMode="single" selection="\#{tableBean.selectedCar}" dynamic="true"
-		update="display" onselectComplete="carDialog.show()"&gt;
-		
-		&lt;p:column sortBy="\#{car.model}" filterBy="\#{car.model}"&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Model" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{car.model}" /&gt;
-		&lt;/p:column&gt;
+        &lt;p:column sortBy="\#{car.year}" filterBy="\#{car.year}"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Year" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
 
-		&lt;p:column sortBy="\#{car.year}" filterBy="\#{car.year}"&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Year" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{car.year}" /&gt;
-		&lt;/p:column&gt;
+        &lt;p:column sortBy="\#{car.manufacturer}" filterBy="\#{car.manufacturer}"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Manufacturer" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
 
-		&lt;p:column sortBy="\#{car.manufacturer}" filterBy="\#{car.manufacturer}"&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Manufacturer" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{car.manufacturer}" /&gt;
-		&lt;/p:column&gt;
+        &lt;p:column sortBy="\#{car.color}" filterBy="\#{car.color}"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Color" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
 
-		&lt;p:column sortBy="\#{car.color}" filterBy="\#{car.color}"&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Color" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{car.color}" /&gt;
-		&lt;/p:column&gt;
-		
-	&lt;/p:dataTable&gt;
-	
-	&lt;p:dialog header="Car Detail" widgetVar="carDialog" 
-		modal="true" draggable="false" width="250"&gt;
-		
-		&lt;h:panelGrid id="display" columns="2"&gt;
-			&lt;h:outputText value="Model:" /&gt;
-			&lt;h:outputText value="\#{tableBean.selectedCar.model}" style="font-weight:bold"/&gt;
-			
-			&lt;h:outputText value="Year:" /&gt;
-			&lt;h:outputText value="\#{tableBean.selectedCar.year}" style="font-weight:bold"/&gt;
-			
-			&lt;h:outputText value="Manufacturer:" /&gt;
-			&lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/&gt;
-			
-			&lt;h:outputText value="Color:" /&gt;
-			&lt;h:outputText value="\#{tableBean.selectedCar.color}" style="font-weight:bold"/&gt;
-			&lt;/h:panelGrid&gt;
-			
-		&lt;/p:dialog&gt;
-	
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+              width="200" showEffect="explode" hideEffect="explode"&gt;
+
+        &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;
+
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage value="/images/cars/\#{tableBean.selectedCar.manufacturer}.jpg"/&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Model:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.model}" /&gt;
+
+            &lt;h:outputText value="Year:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.year}" /&gt;
+
+            &lt;h:outputText value="Manufacturer:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" /&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.color}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
 &lt;/h:form&gt;
-			</pre>
+                    </pre>
 				</p:tab>
 				
 				<p:tab title="TableBean.java">
-					<pre name="code" class="xml">
+					<pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
@@ -198,21 +175,53 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.ServletContext;
-
 import org.primefaces.examples.domain.Car;
 
 public class TableBean {
 
+    static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+
 	private List&lt;Car&gt; cars;
-	
+
 	private Car selectedCar;
 
 	public TableBean() {
 		cars = new ArrayList&lt;Car&gt;();
-		
-		for(int i = 0 ; i &lt; 50 ; i++)
-			list.add(new Car("Model_" + i, getRandomYear(), "Brand_" + i, "Color_" + i));
+
+		populateRandomCars(carsSmall, 50);
+	}
+
+    private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 	}
 
 	public Car getSelectedCar() {
