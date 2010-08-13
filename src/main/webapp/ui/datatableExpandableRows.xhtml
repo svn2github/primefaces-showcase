@@ -1,0 +1,223 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+         
+            .label, .value {
+                border-right:0px none !important;
+            }
+
+            .value {
+                font-weight: bold;
+            }
+        </style>
+        
+    </ui:define>
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - RowExpansion</h1>
+		<div class="entry">
+			<p>A row can be expanded to display detail content using a row expansion column and expansion facet.</p>
+
+            <h:form>
+
+                 <p:ajaxStatus style="width:16px;height:16px;">
+                    <f:facet name="start">
+                        <h:graphicImage value="../design/ajaxloading.gif" />
+                    </f:facet>
+
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable var="car" value="#{tableBean.carsSmall}">
+
+                    <f:facet name="header">
+                        Expand rows to see detailed information
+                    </f:facet>
+
+                    <p:column expansion="true" />
+
+                    <p:column>
+                        <f:facet name="header">
+								Model
+                        </f:facet>
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+								Year
+                        </f:facet>
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <f:facet name="expansion">
+                        <h:panelGrid id="display" columns="2" cellpadding="4" style="width:300px;"
+                                     styleClass="ui-widget-content" columnClasses="label, value">
+
+                            <f:facet name="header">
+                                <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/>
+                            </f:facet>
+
+                            <h:outputText value="Model:" />
+                            <h:outputText value="#{car.model}" />
+
+                            <h:outputText value="Year:" />
+                            <h:outputText value="#{car.year}" />
+
+                            <h:outputText value="Manufacturer:" />
+                            <h:outputText value="#{car.manufacturer}"/>
+
+                            <h:outputText value="Color:" />
+                            <h:outputText value="#{car.color}"/>
+                        </h:panelGrid>
+                        
+                    </f:facet>
+                </p:dataTable>
+            </h:form>
+
+		<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="basicDataTable.xhtml">
+                <pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
+
+        &lt;f:facet name="header"&gt;
+             Expand rows to see detailed information
+        &lt;/f:facet&gt;
+
+        &lt;p:column expansion="true" /&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                    Model
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                    Year
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;f:facet name="expansion"&gt;
+            &lt;h:panelGrid id="display" columns="2" cellpadding="4" style="width:300px;"
+                         styleClass="ui-widget-content" columnClasses="label, value"&gt;
+
+                &lt;f:facet name="header"&gt;
+                    &lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt;
+                &lt;/f:facet&gt;
+
+                &lt;h:outputText value="Model:" /&gt;
+                &lt;h:outputText value="\#{car.model}" /&gt;
+
+                &lt;h:outputText value="Year:" /&gt;
+                &lt;h:outputText value="\#{car.year}" /&gt;
+
+                &lt;h:outputText value="Manufacturer:" /&gt;
+                &lt;h:outputText value="\#{car.manufacturer}"/&gt;
+
+                &lt;h:outputText value="Color:" /&gt;
+                &lt;h:outputText value="\#{car.color}"/&gt;
+            &lt;/h:panelGrid&gt;
+
+        &lt;/f:facet&gt;
+    &lt;/p:dataTable&gt;
+&lt;/h:form&gt;
+				</pre>
+			</p:tab>
+
+			<p:tab title="TableBean.java">
+			<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+
+	private List&lt;Car&gt; carsSmall;
+
+	public TableBean() {
+		carsSmall = new ArrayList&lt;Car&gt;();
+
+		populateRandomCars(carsSmall, 9);
+	}
+
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+}
+				</pre>
+			</p:tab>
+		</p:tabView>
+	       </div>
+
+	</ui:define>
+</ui:composition>
