@@ -45,6 +45,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
 
 public class TableBean implements Serializable {
@@ -259,7 +260,13 @@ public class TableBean implements Serializable {
 	}
 
     public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Car Selected", selectedCar.getModel());
+        FacesMessage msg = new FacesMessage("Car Selected", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onRowUnselect(UnselectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Unselected", ((Car) event.getObject()).getModel());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
