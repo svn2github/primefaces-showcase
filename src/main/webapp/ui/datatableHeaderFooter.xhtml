@@ -9,7 +9,8 @@
 	<ui:define name="content">
 	<h1 class="title ui-widget-header ui-corner-all">DataTable - Header and Footer</h1>
 		<div class="entry">
-			<p>Any content can be placed inside header and footer using corresponding facets.</p>
+			<p>Any content can be placed inside header and footer using corresponding facets. For column header and footer facets, headerText
+            and footerText can be used as shortcuts.</p>
 
             <h:form>
                 
@@ -23,28 +24,24 @@
                         <f:facet name="header">
                             Model
                         </f:facet>
+                        
                         <h:outputText value="#{car.model}" />
+
+                        <f:facet name="footer">
+                            8 digit code
+                        </f:facet>
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            Year
-                        </f:facet>
-                        <h:outputText value="#{car.year}" />
-                    </p:column>
-
-                    <p:column>
-                        <f:facet name="header">
-                            Manufacturer
-                        </f:facet>
+                    <p:column headerText="Manufacturer">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            Color
-                        </f:facet>
+                    <p:column headerText="Color">
                         <h:outputText value="#{car.color}" />
+                    </p:column>
+
+                    <p:column headerText="Year" footerText="1960-2010">
+                        <h:outputText value="#{car.year}" />
                     </p:column>
 
                     <f:facet name="footer">
@@ -58,10 +55,10 @@
 		<h3>Source</h3>
 		<p:tabView>
 			<p:tab title="basicDataTable.xhtml">
-<pre name="code" class="xml">
-&lt;form&gt;
+                <pre name="code" class="xml">
+&lt;h:form&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall} " &gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
 
         &lt;f:facet name="header"&gt;
             List of Cars
@@ -71,37 +68,33 @@
             &lt;f:facet name="header"&gt;
                 Model
             &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.model} " /&gt;
+
+            &lt;h:outputText value="\#{car.model}" /&gt;
+
+            &lt;f:facet name="footer"&gt;
+                8 digit code
+            &lt;/f:facet&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                Year
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.year} " /&gt;
+        &lt;p:column headerText="Manufacturer"&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                Manufacturer
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.manufacturer} " /&gt;
+        &lt;p:column headerText="Color"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                Color
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.color} " /&gt;
+        &lt;p:column headerText="Year" footerText="1960-2010"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
         &lt;f:facet name="footer"&gt;
-            In total there are #{fn:length(tableBean.carsSmall)} cars.
+            In total there are \#{fn:length(tableBean.carsSmall)} cars.
         &lt;/f:facet&gt;
 
     &lt;/p:dataTable&gt;
 
-&lt;/form&gt;
+&lt;/h:form&gt;
 				</pre>
 			</p:tab>
 
