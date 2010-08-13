@@ -45,6 +45,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.examples.domain.ManufacturerSale;
 
 public class TableBean implements Serializable {
 	
@@ -98,12 +99,15 @@ public class TableBean implements Serializable {
 
 	private LazyDataModel<Car> lazyModel;
 
+    private List<ManufacturerSale> sales;
+
 	public TableBean() {
 		cars = new ArrayList<Car>();
 		carsSmall = new ArrayList<Car>();
 		
 		populateRandomCars(cars, 50);
 		populateRandomCars(carsSmall, 9);
+        populateRandomSales();
 		
 		/**
 		* Test with one hundred million records.
@@ -183,6 +187,14 @@ public class TableBean implements Serializable {
 	private String getRandomManufacturer() {
 		return manufacturers[(int) (Math.random() * 10)];
 	}
+
+    private int getRandomSale() {
+		return (int) (Math.random() * 100000);
+	}
+
+    private int getRandomProfit() {
+		return (int) (Math.random() * 100);
+	}
 	
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
@@ -256,5 +268,17 @@ public class TableBean implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().put("selectedCar", event.getObject());
 
         return "carDetail?faces-redirect=true";
+    }
+
+    public List<ManufacturerSale> getSales() {
+        return sales;
+    }
+
+    private void populateRandomSales() {
+        sales = new ArrayList<ManufacturerSale>();
+
+        for(int i = 0; i < 10; i++) {
+            sales.add(new ManufacturerSale(manufacturers[i], getRandomSale(), getRandomSale(), getRandomProfit(), getRandomProfit()));
+        }
     }
 }

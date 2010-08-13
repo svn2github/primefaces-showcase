@@ -6,10 +6,10 @@
                 template="../templates/ui.xhtml">
     
     <ui:define name="content">
-        <h1 class="title ui-widget-header ui-corner-all">DataTable - Ajax Pagination/Sorting</h1>
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - Pagination</h1>
 
         <div class="entry">
-            <p>DataTable has built-in support for pagination and sorting with ajax.</p>
+            <p>DataTable has built-in support for ajax pagination.</p>
             
             <h:form>
 
@@ -28,31 +28,31 @@
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
                     <f:facet name="header">
-                        Ajax Pagination and Sorting
+                        Ajax Pagination
                     </f:facet>
                     
-                    <p:column sortBy="#{car.model}">
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Model" />
                         </f:facet>
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column sortBy="#{car.year}">
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Year" />
                         </f:facet>
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column sortBy="#{car.manufacturer}">
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Manufacturer" />
                         </f:facet>
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column sortBy="#{car.color}">
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Color" />
                         </f:facet>
@@ -73,31 +73,31 @@
                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                  rowsPerPageTemplate="5,10,15"&gt;
         &lt;f:facet name="header"&gt;
-            Ajax Pagination and Sorting
+            Ajax Pagination
         &lt;/f:facet&gt;
 
-        &lt;p:column sortBy="\#{car.model}"&gt;
+        &lt;p:column&gt;
             &lt;f:facet name="header"&gt;
                 &lt;h:outputText value="Model" /&gt;
             &lt;/f:facet&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column sortBy="\#{car.year}"&gt;
+        &lt;p:column&gt;
             &lt;f:facet name="header"&gt;
                 &lt;h:outputText value="Year" /&gt;
             &lt;/f:facet&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column sortBy="\#{car.manufacturer}"&gt;
+        &lt;p:column&gt;
             &lt;f:facet name="header"&gt;
                 &lt;h:outputText value="Manufacturer" /&gt;
             &lt;/f:facet&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column sortBy="\#{car.color}"&gt;
+        &lt;p:column&gt;
             &lt;f:facet name="header"&gt;
                 &lt;h:outputText value="Color" /&gt;
             &lt;/f:facet&gt;
@@ -155,7 +155,7 @@ public class TableBean implements Serializable {
 	private List&lt;Car&gt; cars;
 	
 	public TableBean() {
-		carsSmall = new ArrayList&lt;Car&gt;();
+		cars = new ArrayList&lt;Car&gt;();
 		
 		populateRandomCars(cars, 50);
 	}
@@ -166,7 +166,7 @@ public class TableBean implements Serializable {
 	}
 	
 	public List&lt;Car&gt; getCars() {
-		return carsSmall;
+		return cars;
 	}
 
 	private int getRandomYear() {

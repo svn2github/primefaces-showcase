@@ -1,0 +1,219 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Nested Header</h1>
+		<div class="entry">
+			<p>DataTable column headers can be grouped for nested display.</p>
+
+            <h:form>
+                <p:dataTable var="sale" value="#{tableBean.sales}">
+
+                    <p:columnGroup>
+                        <p:headerRow>
+                            <p:column rowpan="3">
+                                <f:facet name="header">Manufacturer</f:facet>
+                            </p:column>
+                            <p:column colspan="4">
+                                <f:facet name="header">Sales</f:facet>
+                            </p:column>
+                        </p:headerRow>
+
+                        <p:headerRow>
+                            <p:column colspan="2">
+                                <f:facet name="header">Sales Count</f:facet>
+                            </p:column>
+                             <p:column colspan="2">
+                                <f:facet name="header">Profit</f:facet>
+                            </p:column>
+                        </p:headerRow>
+
+                        <p:headerRow>
+                            <p:column>
+                                <f:facet name="header">Last Year</f:facet>
+                            </p:column>
+                             <p:column>
+                                <f:facet name="header">This Year</f:facet>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Last Year</f:facet>
+                            </p:column>
+                             <p:column>
+                                <f:facet name="header">This Year</f:facet>
+                            </p:column>
+                        </p:headerRow>
+
+                    </p:columnGroup>
+
+                    <f:facet name="header">
+                        Sales/Profits of Manufacturers
+                    </f:facet>
+
+                    <p:column>
+                        #{sale.manufacturer}
+                    </p:column>
+
+                    <p:column>
+                        #{sale.lastYearSale}
+                    </p:column>
+
+                    <p:column>
+                        #{sale.thisYearSale}
+                    </p:column>
+
+                    <p:column>
+                        #{sale.lastYearProfit}
+                    </p:column>
+
+                    <p:column>
+                        #{sale.thisYearProfit}
+                    </p:column>
+
+                    <f:facet name="footer">
+                        Use a bicycle instead of a car
+                    </f:facet>
+                   
+                </p:dataTable>
+            </h:form>
+
+		<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="basicDataTable.xhtml">
+                <pre name="code" class="xml">
+&lt;h:form&gt;
+    &lt;p:dataTable var="sale" value="\#{tableBean.sales}"&gt;
+
+        &lt;p:columnGroup&gt;
+            &lt;p:headerRow&gt;
+                &lt;p:column rowpan="3"&gt;
+                    &lt;f:facet name="header"&gt;Manufacturer&lt;/f:facet&gt;
+                &lt;/p:column&gt;
+                &lt;p:column colspan="4"&gt;
+                    &lt;f:facet name="header"&gt;Sales&lt;/f:facet&gt;
+                &lt;/p:column&gt;
+            &lt;/p:headerRow&gt;
+
+            &lt;p:headerRow&gt;
+                &lt;p:column colspan="2"&gt;
+                    &lt;f:facet name="header"&gt;Sales Count&lt;/f:facet&gt;
+                &lt;/p:column&gt;
+                 &lt;p:column colspan="2"&gt;
+                    &lt;f:facet name="header"&gt;Profit&lt;/f:facet&gt;
+                &lt;/p:column&gt;
+            &lt;/p:headerRow&gt;
+
+            &lt;p:headerRow&gt;
+                &lt;p:column&gt;
+                    &lt;f:facet name="header"&gt;Last Year&lt;/f:facet&gt;
+                &lt;/p:column&gt;
+                 &lt;p:column&gt;
+                    &lt;f:facet name="header"&gt;This Year&lt;/f:facet&gt;
+                &lt;/p:column&gt;
+                &lt;p:column&gt;
+                    &lt;f:facet name="header"&gt;Last Year&lt;/f:facet&gt;
+                &lt;/p:column&gt;
+                 &lt;p:column&gt;
+                    &lt;f:facet name="header"&gt;This Year&lt;/f:facet&gt;
+                &lt;/p:column&gt;
+            &lt;/p:headerRow&gt;
+
+        &lt;/p:columnGroup&gt;
+
+        &lt;f:facet name="header"&gt;
+            Sales/Profits of Manufacturers
+        &lt;/f:facet&gt;
+
+        &lt;p:column&gt;
+            \#{sale.manufacturer}
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            \#{sale.lastYearSale}
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            \#{sale.thisYearSale}
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            \#{sale.lastYearProfit}
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            \#{sale.thisYearProfit}
+        &lt;/p:column&gt;
+
+        &lt;f:facet name="footer"&gt;
+            Use a bicycle instead of a car
+        &lt;/f:facet&gt;
+
+    &lt;/p:dataTable&gt;
+&lt;/h:form&gt;
+				</pre>
+			</p:tab>
+
+			<p:tab title="TableBean.java">
+			<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.primefaces.examples.domain.ManufacturerSale
+
+public class TableBean implements Serializable {
+
+	static {
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+	private final static String[] manufacturers;
+
+	private List&lt;ManufacturerSale&gt; sales;
+
+	public TableBean() {
+		populateRandomSales();
+	}
+
+    private int getRandomSale() {
+		return (int) (Math.random() * 100000);
+	}
+
+    private int getRandomProfit() {
+		return (int) (Math.random() * 100);
+	}
+
+    public List&lt;ManufacturerSale&gt; getSales() {
+        return sales;
+    }
+
+    private void populateRandomSales() {
+        sales = new ArrayList&lt;ManufacturerSale&gt;();
+
+        for(int i = 0; i &lt; 10; i++) {
+            sales.add(new ManufacturerSale(manufacturers[i], getRandomSale(), getRandomSale(), getRandomProfit(), getRandomProfit()));
+        }
+    }
+}
+				</pre>
+			</p:tab>
+		</p:tabView>
+	       </div>
+
+	</ui:define>
+</ui:composition>
