@@ -22,7 +22,7 @@ import org.primefaces.event.TabChangeEvent;
 public class TabBean {
 
     public void onTabChange(TabChangeEvent event) {
-        FacesMessage msg = new FacesMessage("Tab Changed", "Active Index:" + event.getIndex());
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab:" + event.getTab().getId());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
