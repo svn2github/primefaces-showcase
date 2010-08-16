@@ -1,0 +1,322 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .add {
+                background-image: url(../images/add.png) !important;
+            }
+
+            .remove {
+                background-image: url(../images/delete.png) !important;
+            }
+        </style>
+    </ui:define>
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Dynamic Columns</h1>
+		<div class="entry">
+			<p>Columns of datatable can also be defined dynamically with p:columns component. Since columns are created
+            on-the-fly it is easy to add/remove columns programmatically.</p>
+
+            <h:form prependId="false">
+
+                <p:ajaxStatus style="width:16px;height:16px;">
+                    <f:facet name="start">
+                        <h:graphicImage value="../design/ajaxloading.gif" />
+                    </f:facet>
+
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable var="cars" value="#{tableBean.dynamicCars}" id="carsTable">
+
+                    <f:facet name="header">
+                        <p:commandButton type="button" onclick="carDialog.show()" value="Add a New Column" image="add"/>
+                    </f:facet>
+
+                    <p:columns value="#{tableBean.columns}" var="column" columnIndexVar="colIndex">
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                
+                                <p:commandButton image="remove" actionListener="#{tableBean.removeColumn}" 
+                                                 update="carsTable" title="Remove Column" style="float:right">
+                                    <f:param name="columnToRemove" value="#{column}" />
+                                </p:commandButton>
+                                #{column}
+                            </p:outputPanel>  
+                        </f:facet>
+
+                        <h:outputText value="#{cars[colIndex].model}" /> <br />
+                        <h:outputText value="#{cars[colIndex].year}" /> <br />
+                        <h:outputText value="#{cars[colIndex].color}" style="color:#{cars[colIndex].color}"/>
+                    </p:columns>
+
+                     <f:facet name="footer">
+                         Dynamic Columns
+                    </f:facet>
+
+                </p:dataTable>
+
+                <p:dialog widgetVar="carDialog" showEffect="explode" hideEffect="explode">
+                    <h:panelGrid columns="3" id="newColumnGrid">
+                        <h:outputText value="Column Name:" />
+                        <h:selectOneMenu value="#{tableBean.columnName}">
+                            <f:selectItems value="#{tableBean.availableManufacturers}" var="manufacturer" itemLabel="#{manufacturer}" itemValue="#{manufacturer}" />
+                        </h:selectOneMenu>
+                        <p:commandButton value="Add" actionListener="#{tableBean.addColumn}" update="carsTable newColumnGrid" oncomplete="carDialog.hide()"/>
+                    </h:panelGrid>
+                </p:dialog>
+                
+            </h:form>
+
+		<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="datatableDynamicColumns.xhtml">
+                <pre name="code" class="xml">
+&lt;h:form prependId="false"&gt;
+
+    &lt;p:dataTable var="cars" value="\#{tableBean.dynamicCars}" id="carsTable"&gt;
+
+        &lt;f:facet name="header"&gt;
+            &lt;p:commandButton type="button" onclick="carDialog.show()" value="Add a New Column" image="add"/&gt;
+        &lt;/f:facet&gt;
+
+        &lt;p:columns value="\#{tableBean.columns}"
+                var="column" columnIndexVar="colIndex"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;p:outputPanel&gt;
+
+                    &lt;p:commandButton image="remove"
+                                actionListener="\#{tableBean.removeColumn}"
+                                update="carsTable" title="Remove Column" style="float:right"&gt;
+                        &lt;f:param name="columnToRemove" value="\#{column}" /&gt;
+                    &lt;/p:commandButton&gt;
+                    \#{column}
+                &lt;/p:outputPanel&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="\#{cars[colIndex].model}" /&gt;&lt;br /&gt;
+            &lt;h:outputText value="\#{cars[colIndex].year}" /&gt; &lt;br /&gt;
+            &lt;h:outputText value="\#{cars[colIndex].color}"
+                        style="color:\#{cars[colIndex].color}"/&gt;
+        &lt;/p:columns&gt;
+
+         &lt;f:facet name="footer"&gt;
+             Dynamic Columns
+        &lt;/f:facet&gt;
+
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dialog widgetVar="carDialog" showEffect="explode" hideEffect="explode"&gt;
+
+        &lt;h:panelGrid columns="3" id="newColumnGrid"&gt;
+
+            &lt;h:outputText value="Column Name:" /&gt;
+            &lt;h:selectOneMenu value="\#{tableBean.columnName}"&gt;
+                &lt;f:selectItems value="\#{tableBean.availableManufacturers}"
+                    var="manufacturer" itemLabel="\#{manufacturer}"
+                    itemValue="\#{manufacturer}" /&gt;
+            &lt;/h:selectOneMenu&gt;
+            &lt;p:commandButton value="Add" actionListener="\#{tableBean.addColumn}"
+                    update="carsTable newColumnGrid" oncomplete="carDialog.hide()"/&gt;
+
+        &lt;/h:panelGrid&gt;
+
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+				</pre>
+			</p:tab>
+
+			<p:tab title="TableBean.java">
+                <pre name="code" class="java">
+/*
+ * Copyright 2009 Prime Technology.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.primefaces.examples.view;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.servlet.ServletContext;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.primefaces.examples.domain.Car;
+import org.primefaces.model.Cell;
+import org.primefaces.model.LazyDataModel;
+
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
+import org.primefaces.examples.domain.ManufacturerSale;
+
+public class TableBean implements Serializable {
+
+	private final static Logger logger = Logger.getLogger(TableBean.class.getName());
+
+	private final static String[] colors;
+
+	private final static String[] manufacturers;
+
+	private String theme;
+
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+    private List&lt;String&gt; columns;
+
+    private List&lt;Car[]&gt; dynamicCars;
+
+    private String columnName;
+
+	public TableBean() {
+        createDynamicColumns();
+        populateDynamicCars();
+	}
+
+    private void populateDynamicCars() {
+        dynamicCars = new ArrayList&lt;Car[]&gt;();
+
+        for(int i=0; i &lt; 9; i++) {
+            Car[] cars = new Car[columns.size()];
+
+            for(int j=0; j &lt; columns.size(); j++) {
+                cars[j] = new Car(getRandomModel(), getRandomYear(), columns.get(j), getRandomColor());
+            }
+
+            dynamicCars.add(cars);
+        }
+    }
+
+    private void createDynamicColumns() {
+        columns = new ArrayList&lt;String&gt;();
+        for(int i=0; i &lt; 3; i++) {
+            columns.add(manufacturers[i]);
+        }
+    }
+
+    public List&lt;String&gt; getColumns() {
+        return columns;
+    }
+
+    public List&lt;Car[]&gt; getDynamicCars() {
+        return dynamicCars;
+    }
+
+    public String getColumnName() {
+        return columnName;
+    }
+
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
+    }
+
+    public void addColumn() {
+        columns.add(columnName);
+        columnName = null;
+
+        populateDynamicCars();
+    }
+
+    public void removeColumn() {
+        String columnToRemove = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("columnToRemove");
+
+        columns.remove(columnToRemove);
+
+        populateDynamicCars();
+    }
+
+    public String[] getManufacturers() {
+        return manufacturers;
+    }
+
+    public List&lt;String&gt; getAvailableManufacturers() {
+        List&lt;String&gt; availableManufacturers = new ArrayList&lt;String&gt;();
+
+        for(String manufacturer : manufacturers) {
+            if(!columns.contains(manufacturer))
+                availableManufacturers.add(manufacturer);
+        }
+
+        return availableManufacturers;
+    }
+
+    private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+    private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+}
+				</pre>
+			</p:tab>
+		</p:tabView>
+	       </div>
+
+	</ui:define>
+</ui:composition>

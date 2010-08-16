@@ -102,6 +102,12 @@ public class TableBean implements Serializable {
 
     private List<ManufacturerSale> sales;
 
+    private List<String> columns;
+
+    private List<Car[]> dynamicCars;
+
+    private String columnName;
+
 	public TableBean() {
 		cars = new ArrayList<Car>();
 		carsSmall = new ArrayList<Car>();
@@ -109,7 +115,10 @@ public class TableBean implements Serializable {
 		populateRandomCars(cars, 50);
 		populateRandomCars(carsSmall, 9);
         populateRandomSales();
-		
+
+        createDynamicColumns();
+        populateDynamicCars();
+
 		/**
 		* Test with one hundred million records.
 		* In a real application use an sql Count query to get the row count.	
@@ -307,5 +316,72 @@ public class TableBean implements Serializable {
         }
 
         return total;
+    }
+
+    private void populateDynamicCars() {
+        dynamicCars = new ArrayList<Car[]>();
+
+        for(int i=0; i < 9; i++) {
+            Car[] cars = new Car[columns.size()];
+            
+            for(int j=0; j < columns.size(); j++) {
+                cars[j] = new Car(getRandomModel(), getRandomYear(), columns.get(j), getRandomColor());
+            }
+
+            dynamicCars.add(cars);
+        }
+    }
+
+    private void createDynamicColumns() {
+        columns = new ArrayList<String>();
+        for(int i=0; i < 3; i++) {
+            columns.add(manufacturers[i]);
+        }
+    }
+
+    public List<String> getColumns() {
+        return columns;
+    }
+
+    public List<Car[]> getDynamicCars() {
+        return dynamicCars;
+    }
+
+    public String getColumnName() {
+        return columnName;
+    }
+
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
+    }
+
+    public void addColumn() {
+        columns.add(columnName);
+        columnName = null;
+
+        populateDynamicCars();
+    }
+
+    public void removeColumn() {
+        String columnToRemove = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("columnToRemove");
+
+        columns.remove(columnToRemove);
+
+        populateDynamicCars();
+    }
+
+    public String[] getManufacturers() {
+        return manufacturers;
+    }
+
+    public List<String> getAvailableManufacturers() {
+        List<String> availableManufacturers = new ArrayList<String>();
+
+        for(String manufacturer : manufacturers) {
+            if(!columns.contains(manufacturer))
+                availableManufacturers.add(manufacturer);
+        }
+
+        return availableManufacturers;
     }
 }
