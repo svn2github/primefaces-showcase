@@ -118,7 +118,7 @@ public class TableBean implements Serializable {
 
 			/**
 			 * Dummy implementation of loading a certain segment of data.
-			 * In a real applicaiton, this method should access db and do a limit based query
+			 * In a real application, this method should access db and do a limit based query
 			 */
 			@Override
 			public List<Car> fetchLazyData(int first, int pageSize) {
@@ -287,5 +287,25 @@ public class TableBean implements Serializable {
         for(int i = 0; i < 10; i++) {
             sales.add(new ManufacturerSale(manufacturers[i], getRandomSale(), getRandomSale(), getRandomProfit(), getRandomProfit()));
         }
+    }
+
+    public int getLastYearTotal() {
+        int total = 0;
+
+        for(ManufacturerSale sale : getSales()) {
+            total += sale.getLastYearSale();
+        }
+
+        return total;
+    }
+
+    public int getThisYearTotal() {
+        int total = 0;
+
+        for(ManufacturerSale sale : getSales()) {
+            total += sale.getThisYearSale();
+        }
+
+        return total;
     }
 }

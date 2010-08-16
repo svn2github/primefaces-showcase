@@ -8,44 +8,36 @@
 	<ui:define name="content">
 	<h1 class="title ui-widget-header ui-corner-all">DataTable - Nested Header</h1>
 		<div class="entry">
-			<p>DataTable column headers can be grouped for nested display.</p>
+			<p>DataTable column headers and footers can be grouped for complex display.</p>
 
             <h:form>
                 <p:dataTable var="sale" value="#{tableBean.sales}">
-
-                    <p:columnGroup>
-                        <p:headerRow>
-                            <p:column rowpan="3" headerText="Manufacturer" />
-                            <p:column colspan="4" headerText="Sales" />
-                        </p:headerRow>
-
-                        <p:headerRow>
-                            <p:column colspan="2" headerText="Sales Count" />
-                             <p:column colspan="2" headerText="Profit" />
-                        </p:headerRow>
-
-                        <p:headerRow>
-                            <p:column headerText="Last Year" />
-                            <p:column headerText="This Year" />
-                            <p:column headerText="Last Year" />
-                            <p:column headerText="This Year" />
-                        </p:headerRow>
-                    </p:columnGroup>
 
                     <f:facet name="header">
                         Sales/Profits of Manufacturers
                     </f:facet>
 
+                    <p:columnGroup type="header">
+                        <p:row>
+                            <p:column rowpan="3" headerText="Manufacturer" />
+                            <p:column colspan="4" headerText="Sales" />
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="2" headerText="Sales Count" />
+                            <p:column colspan="2" headerText="Profit" />
+                        </p:row>
+
+                        <p:row>
+                            <p:column headerText="Last Year" />
+                            <p:column headerText="This Year" />
+                            <p:column headerText="Last Year" />
+                            <p:column headerText="This Year" />
+                        </p:row>
+                    </p:columnGroup>
+
                     <p:column>
                         #{sale.manufacturer}
-                    </p:column>
-
-                    <p:column>
-                        #{sale.lastYearSale}
-                    </p:column>
-
-                    <p:column>
-                        #{sale.thisYearSale}
                     </p:column>
 
                     <p:column>
@@ -55,6 +47,24 @@
                     <p:column>
                         #{sale.thisYearProfit}%
                     </p:column>
+
+                    <p:column>
+                        #{sale.lastYearSale}$
+                    </p:column>
+
+                    <p:column>
+                        #{sale.thisYearSale}$
+                    </p:column>
+
+                    <p:columnGroup type="footer">
+                        <p:row>
+                            <p:column colspan="3" style="text-align:right" footerText="Totals:" />
+
+                            <p:column footerText="#{tableBean.lastYearTotal}$" />
+
+                            <p:column footerText="#{tableBean.thisYearTotal}$" />
+                        </p:row>
+                    </p:columnGroup>
 
                     <f:facet name="footer">
                         Use a bicycle instead of a car
@@ -70,39 +80,31 @@
 &lt;h:form&gt;
     &lt;p:dataTable var="sale" value="\#{tableBean.sales}"&gt;
 
-        &lt;p:columnGroup&gt;
-            &lt;p:headerRow&gt;
-                &lt;p:column rowpan="3" headerText="Manufacturer" /&gt;
-                &lt;p:column colspan="4" headerText="Sales" /&gt;
-            &lt;/p:headerRow&gt;
-
-            &lt;p:headerRow&gt;
-                &lt;p:column colspan="2" headerText="Sales Count" /&gt;
-                 &lt;p:column colspan="2" headerText="Profit" /&gt;
-            &lt;/p:headerRow&gt;
-
-            &lt;p:headerRow&gt;
-                &lt;p:column headerText="Last Year" /&gt;
-                &lt;p:column headerText="This Year" /&gt;
-                &lt;p:column headerText="Last Year" /&gt;
-                &lt;p:column headerText="This Year" /&gt;
-            &lt;/p:headerRow&gt;
-        &lt;/p:columnGroup&gt;
-
         &lt;f:facet name="header"&gt;
             Sales/Profits of Manufacturers
         &lt;/f:facet&gt;
 
+        &lt;p:columnGroup type="header"&gt;
+            &lt;p:row&gt;
+                &lt;p:column rowpan="3" headerText="Manufacturer" /&gt;
+                &lt;p:column colspan="4" headerText="Sales" /&gt;
+            &lt;/p:row&gt;
+
+            &lt;p:row&gt;
+                &lt;p:column colspan="2" headerText="Sales Count" /&gt;
+                &lt;p:column colspan="2" headerText="Profit" /&gt;
+            &lt;/p:row&gt;
+
+            &lt;p:row&gt;
+                &lt;p:column headerText="Last Year" /&gt;
+                &lt;p:column headerText="This Year" /&gt;
+                &lt;p:column headerText="Last Year" /&gt;
+                &lt;p:column headerText="This Year" /&gt;
+            &lt;/p:row&gt;
+        &lt;/p:columnGroup&gt;
+
         &lt;p:column&gt;
             \#{sale.manufacturer}
-        &lt;/p:column&gt;
-
-        &lt;p:column&gt;
-            \#{sale.lastYearSale}
-        &lt;/p:column&gt;
-
-        &lt;p:column&gt;
-            \#{sale.thisYearSale}
         &lt;/p:column&gt;
 
         &lt;p:column&gt;
@@ -112,6 +114,25 @@
         &lt;p:column&gt;
             \#{sale.thisYearProfit}%
         &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            \#{sale.lastYearSale}$
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            \#{sale.thisYearSale}$
+        &lt;/p:column&gt;
+
+        &lt;p:columnGroup type="footer"&gt;
+            &lt;p:row&gt;
+                &lt;p:column colspan="3" footerText="Totals:"
+                                style="text-align:right"  /&gt;
+
+                &lt;p:column footerText="\#{tableBean.lastYearTotal}$" /&gt;
+
+                &lt;p:column footerText="\#{tableBean.thisYearTotal}$" /&gt;
+            &lt;/p:row&gt;
+        &lt;/p:columnGroup&gt;
 
         &lt;f:facet name="footer"&gt;
             Use a bicycle instead of a car
@@ -174,6 +195,26 @@ public class TableBean implements Serializable {
         for(int i = 0; i &lt; 10; i++) {
             sales.add(new ManufacturerSale(manufacturers[i], getRandomSale(), getRandomSale(), getRandomProfit(), getRandomProfit()));
         }
+    }
+
+    public int getLastYearTotal() {
+        int total = 0;
+
+        for(ManufacturerSale sale : getSales()) {
+            total += sale.getLastYearSale();
+        }
+
+        return total;
+    }
+
+    public int getThisYearTotal() {
+        int total = 0;
+
+        for(ManufacturerSale sale : getSales()) {
+            total += sale.getThisYearSale();
+        }
+
+        return total;
     }
 }
 				</pre>

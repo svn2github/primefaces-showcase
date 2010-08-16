@@ -23,12 +23,21 @@ public class Car implements Serializable {
 	private int year;
 	private String manufacturer;
 	private String color;
-	
-	public Car(String model, int year, String manufacturer, String color) {
+    private int price;
+
+    public Car(String model, int year, String manufacturer, String color) {
 		this.model = model;
 		this.year = year;
 		this.manufacturer = manufacturer;
 		this.color = color;
+	}
+	
+	public Car(String model, int year, String manufacturer, String color, int price) {
+		this.model = model;
+		this.year = year;
+		this.manufacturer = manufacturer;
+		this.color = color;
+        this.price = price;
 	}
 
 	public String getModel() {
@@ -62,6 +71,14 @@ public class Car implements Serializable {
 	public void setColor(String color) {
 		this.color = color;
 	}
+
+     public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
 	@Override
 	public boolean equals(Object obj) {
