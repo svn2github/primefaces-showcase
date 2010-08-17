@@ -374,6 +374,10 @@ public class TableBean implements Serializable {
         return manufacturers;
     }
 
+    public String[] getColors() {
+        return colors;
+    }
+
     public List<String> getAvailableManufacturers() {
         List<String> availableManufacturers = new ArrayList<String>();
 
