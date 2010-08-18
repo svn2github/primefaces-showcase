@@ -48,14 +48,14 @@
 							</h:panelGrid>
 						</p:panel>
 
-						<p:commandButton value="Ajax Submit" update="panel,display" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" >
-				
+						<p:commandButton value="Ajax Submit" update="panel,display" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" />
+
 						<p:commandButton value="Non-Ajax Submit" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" ajax="false" />
-						
+
 						<p:commandButton value="With Icon" actionListener="#{pprBean.savePerson}" update="panel,display" style="margin-right:20px;" image="disk" />
-						
+
 						<p:commandButton actionListener="#{pprBean.savePerson}" update="panel,display" style="margin-right:20px;" image="disk" title="Icon Only"/>
-						
+
 						<p:commandButton value="Disabled" style="margin-right:20px;" disabled="true" />
 					
 						<p:panel id="display" header="Information" style="margin-top:10px;">
@@ -92,7 +92,7 @@
 	&lt;/p:panel&gt;
 
 	&lt;p:commandButton value="Ajax Submit" update="panel,display"
-			 actionListener="\\#{pprBean.savePerson}" style="margin-right:20px;" /&gt;
+			 actionListener="\#{pprBean.savePerson}" style="margin-right:20px;" /&gt;
 				
 	&lt;p:commandButton value="Non-Ajax Submit" actionListener="\#{pprBean.savePerson}" 
 			style="margin-right:20px;" ajax="false" /&gt;
