@@ -1,0 +1,217 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Scrolling</h1>
+		<div class="entry">
+			<p>DataTable supports client and live scrolling. In client mode, whole data
+            is rendered, by enabling liveScroll option data is loaded during scrolling.</p>
+
+            <h:form>
+
+                <h3>Client Side Scrolling</h3>
+                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" height="150">
+
+                    <p:column headerText="Model" footerText="Model">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column headerText="Year" footerText="Year">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column headerText="Manufacturer" footerText="Year">
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column headerText="Color" footerText="Year">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+
+                </p:dataTable>
+
+                <p:ajaxStatus style="width:16px;height:16px;">
+                    <f:facet name="start">
+                        <h:graphicImage value="../design/ajaxloading.gif" />
+                    </f:facet>
+
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <h3>Live Scrolling</h3>
+                <p:dataTable var="car" value="#{tableBean.carsLarge}" rows="20"
+                                scrollable="true" liveScroll="true" height="300">
+                   
+                    <p:column headerText="Model">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column headerText="Year">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column headerText="Manufacturer">
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column headerText="Color">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+
+                </p:dataTable>
+
+
+            </h:form>
+
+		<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="datatableScrolling.xhtml">
+                <pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;h3&gt;Client Side Scrolling&lt;/h3&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}"
+            scrollable="true" height="150"&gt;
+
+        &lt;p:column headerText="Model" footerText="Model"&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year" footerText="Year"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer" footerText="Year"&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" footerText="Year"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+
+    &lt;h3&gt;Live Scrolling&lt;/h3&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsLarge}" rows="20"
+                    scrollable="true" liveScroll="true" height="300"&gt;
+
+        &lt;p:column headerText="Model"&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer"&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+
+
+&lt;/h:form&gt;
+				</pre>
+			</p:tab>
+
+			<p:tab title="TableBean.java">
+                <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+
+    private List&lt;Car&gt; cars;
+
+	private List&lt;Car&gt; carsLarge;
+
+	public TableBean() {
+        cars = new ArrayList&lt;Car&gt;();
+		carsLarge = new ArrayList&lt;Car&gt;();
+
+		populateRandomCars(cars, 50);
+        populateRandomCars(carsLarge, 200);
+	}
+
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+
+	public List&lt;Car&gt; getCars() {
+		return cars;
+	}
+
+    public List&lt;Car&gt; getCarsLarge() {
+   		return cars;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+}
+				</pre>
+			</p:tab>
+		</p:tabView>
+	       </div>
+
+	</ui:define>
+</ui:composition>
