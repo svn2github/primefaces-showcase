@@ -8,7 +8,8 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Filtering</h1>
         <div class="entry">
-            <p>Datatable has a customizable data filtering feature.</p>
+            <p>Datatable has a customizable data filtering feature. There are four different match modes, "startsWith"(default), "endsWith",
+            "contains" and "exact". In addition using filterOptions, predefined filter values can be displayed.</p>
 
             <h:form>
                 <p:ajaxStatus style="width:16px;height:16px;">
@@ -26,32 +27,19 @@
                         Ajax Data Filtering
                     </f:facet>
 
-                    <p:column filterBy="#{car.model}">
-                        <f:facet name="header">
-                            <h:outputText value="Model" />
-                        </f:facet>
+                    <p:column filterBy="#{car.model}" headerText="Model" footerText="contains" filterMatchMode="contains">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column filterBy="#{car.year}">
-                        <f:facet name="header">
-                            <h:outputText value="Year" />
-                        </f:facet>
+                    <p:column filterBy="#{car.year}" headerText="Year" footerText="startsWith">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column filterBy="#{car.manufacturer}">
-                        <f:facet name="header">
-                            <h:outputText value="Manufacturer" />
-                        </f:facet>
+                    <p:column filterBy="#{car.manufacturer}" headerText="Manufacturer" footerText="exact" filterOptions="#{tableBean.manufacturerOptions}" filterMatchMode="exact">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column filterBy="#{car.color}">
-                        <f:facet name="header">
-                            <h:outputText value="Color" />
-                        </f:facet>
-
+                    <p:column filterBy="#{car.color}" headerText="Color" footerText="endsWith" filterMatchMode="endsWith">
                         <h:outputText value="#{car.color}" />
                     </p:column>
                 </p:dataTable>
@@ -68,35 +56,30 @@
             Ajax Data Filtering
         &lt;/f:facet&gt;
 
-        &lt;p:column filterBy="\#{car.model}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Model" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column filterBy="\#{car.model}" 
+                headerText="Model" footerText="contains"
+                filterMatchMode="contains"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column filterBy="\#{car.year}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Year" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column filterBy="\#{car.year}"
+                headerText="Year" footerText="startsWith"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column filterBy="\#{car.manufacturer}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Manufacturer" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column filterBy="\#{car.manufacturer}" 
+                headerText="Manufacturer" footerText="exact"
+                filterOptions="\#{tableBean.manufacturerOptions}"
+                filterMatchMode="exact"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column filterBy="\#{car.color}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Color" /&gt;
-            &lt;/f:facet&gt;
-
+        &lt;p:column filterBy="\#{car.color}"
+                headerText="Color" footerText="endsWith" filterMatchMode="endsWith"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
+    
 &lt;/h:form&gt;
                     </pre>
                 </p:tab>
@@ -144,12 +127,15 @@ public class TableBean implements Serializable {
 
 	private final static String[] manufacturers;
 
+    private SelectItem[] manufacturerOptions;
+
 	private List&lt;Car&gt; carsSmall;
 
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();
 
 		populateRandomCars(carsSmall, 9);
+        manufacturerOptions = createFilterOptions(manufacturers);
 	}
 
 	private void populateRandomCars(List&lt;Car&gt; list, int size) {
@@ -176,6 +162,21 @@ public class TableBean implements Serializable {
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
+
+    private SelectItem[] createFilterOptions(String[] data)  {
+        SelectItem[] options = new SelectItem[data.length + 1];
+
+        options[0] = new SelectItem("", "Select");
+        for(int i = 0; i &lt; data.length; i++) {
+            options[i + 1] = new SelectItem(data[i], data[i]);
+        }
+
+        return options;
+    }
+
+    public SelectItem[] getManufacturerOptions() {
+        return manufacturerOptions;
+    }
 }
                     </pre>
                 </p:tab>

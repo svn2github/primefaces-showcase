@@ -44,6 +44,7 @@ import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
+import javax.faces.model.SelectItem;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
@@ -110,6 +111,8 @@ public class TableBean implements Serializable {
 
     private String columnName;
 
+    private SelectItem[] manufacturerOptions;
+
 	public TableBean() {
 		cars = new ArrayList<Car>();
 		carsSmall = new ArrayList<Car>();
@@ -122,7 +125,8 @@ public class TableBean implements Serializable {
 
         createDynamicColumns();
         populateDynamicCars();
-
+        manufacturerOptions = createFilterOptions(manufacturers);
+        
 		/**
 		* Test with one hundred million records.
 		* In a real application use an sql Count query to get the row count.	
@@ -395,5 +399,20 @@ public class TableBean implements Serializable {
         }
 
         return availableManufacturers;
+    }
+
+    private SelectItem[] createFilterOptions(String[] data)  {
+        SelectItem[] options = new SelectItem[data.length + 1];
+
+        options[0] = new SelectItem("", "Select");
+        for(int i = 0; i < data.length; i++) {
+            options[i + 1] = new SelectItem(data[i], data[i]);
+        }
+
+        return options;
+    }
+
+    public SelectItem[] getManufacturerOptions() {
+        return manufacturerOptions;
     }
 }
