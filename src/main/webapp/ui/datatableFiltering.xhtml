@@ -5,10 +5,18 @@
                 xmlns:p="http://primefaces.prime.com.tr/ui"
                 template="../templates/ui.xhtml">
 
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-datatable .ui-datatable-header {
+                text-align: right;
+            }
+        </style>
+    </ui:define>
+
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Filtering</h1>
         <div class="entry">
-            <p>Datatable has a customizable data filtering feature. There are four different match modes, "startsWith"(default), "endsWith",
+            <p>Datatable provides column based and global data filtering feature. There are four different match modes, "startsWith"(default), "endsWith",
             "contains" and "exact". In addition using filterOptions, predefined filter values can be displayed.</p>
 
             <h:form>
@@ -22,9 +30,13 @@
                     </f:facet>
                 </p:ajaxStatus>
 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}">
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" widgetVar="carsTable">
+
                     <f:facet name="header">
-                        Ajax Data Filtering
+                        <p:outputPanel>
+                            <h:inputText id="global" onkeyup="carsTable.filter(this)" style="width:150px" />
+                            <p:watermark for="global" value="Search all fields" />
+                        </p:outputPanel>
                     </f:facet>
 
                     <p:column filterBy="#{car.model}" headerText="Model" footerText="contains" filterMatchMode="contains">
@@ -42,6 +54,7 @@
                     <p:column filterBy="#{car.color}" headerText="Color" footerText="endsWith" filterMatchMode="endsWith">
                         <h:outputText value="#{car.color}" />
                     </p:column>
+
                 </p:dataTable>
             </h:form>
 
@@ -52,8 +65,12 @@
 &lt;h:form&gt;
 
     &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
+
         &lt;f:facet name="header"&gt;
-            Ajax Data Filtering
+            &lt;p:outputPanel&gt;
+                &lt;h:inputText id="global" onkeyup="carsTable.filter(this)" style="width:150px" /&gt;
+                &lt;p:watermark for="global" value="Search all fields" /&gt;
+            &lt;/p:outputPanel&gt;
         &lt;/f:facet&gt;
 
         &lt;p:column filterBy="\#{car.model}" 
