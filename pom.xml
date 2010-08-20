@@ -181,13 +181,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.0.3-FCS</jsfVersion>
-                <primefacesVersion>PrimeFaces-2.2.RC1-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-2.2.M1-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>2.2.RC1-SNAPSHOT</version>
+                    <version>2.2.M1-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>javax.faces</groupId>
@@ -206,13 +206,13 @@
             <id>myfaces</id>
             <properties>
                 <jsfVersion>MyFaces-2.0.1</jsfVersion>
-                <primefacesVersion>PrimeFaces-2.2.RC1-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-2.2.M1-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>2.2.RC1-SNAPSHOT</version>
+                    <version>2.2.M1-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.myfaces.core</groupId>
@@ -231,13 +231,13 @@
             <id>appserver-2.0</id>
              <properties>
                 <jsfVersion>Native JSF Implementation</jsfVersion>
-                <primefacesVersion>PrimeFaces-2.2.RC1-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-2.2.M1-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>2.2.RC1-SNAPSHOT</version>
+                    <version>2.2.M1-SNAPSHOT</version>
                 </dependency>
             </dependencies>
         </profile>
