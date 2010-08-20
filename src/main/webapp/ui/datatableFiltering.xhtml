@@ -35,8 +35,8 @@
 
                     <f:facet name="header">
                         <p:outputPanel>
-                            <h:inputText id="global" onkeyup="carsTable.filter(this)" style="width:150px" />
-                            <p:watermark for="global" value="Search all fields" />
+                            <h:outputText value="Search all fields:" />
+                            <h:inputText id="globalFilter" onkeyup="carsTable.filter()" style="width:150px" />
                         </p:outputPanel>
                     </f:facet>
 
@@ -68,10 +68,10 @@
     &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"
             emptyMessage="No cars found with given criteria"&gt;
 
-        &lt;f:facet name="header"&gt;
+         &lt;f:facet name="header"&gt;
             &lt;p:outputPanel&gt;
-                &lt;h:inputText id="global" onkeyup="carsTable.filter(this)" style="width:150px" /&gt;
-                &lt;p:watermark for="global" value="Search all fields" /&gt;
+                &lt;h:outputText value="Search all fields:" /&gt;
+                &lt;h:inputText id="globalFilter" onkeyup="carsTable.filter()" style="width:150px" /&gt;
             &lt;/p:outputPanel&gt;
         &lt;/f:facet&gt;
 
