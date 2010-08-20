@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">AccordionPanel</h1>
+		<div class="entry">
+
+			<p:menu styleClass="homeMenu">
+				<p:submenu label="Examples">
+					<p:menuitem url="/ui/accordionPanel.jsf" value="Simple AccordionPanel" />
+					<p:menuitem url="/ui/accordionPanelDynamic.jsf" value="Dynamic Content" styleClass="new" />
+					<p:menuitem url="/ui/accordionPanelChangeListener.jsf" value="TabChange Listener" styleClass="new" />
+				</p:submenu>
+			</p:menu>
+
+			<span class="homeText">AccordionPanel is a container component with vertically stacked panels.</span>
+
+		</div>
+
+
+	</ui:define>
+</ui:composition>
