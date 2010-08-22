@@ -5,19 +5,19 @@
                 xmlns:p="http://primefaces.prime.com.tr/ui"
                 template="../templates/ui.xhtml">
 
-     <ui:define name="content">
+    <ui:define name="content">
 
         <h1 class="title ui-widget-header ui-corner-all">Resizable - AJAX</h1>
         <div class="entry">
             <p>When resizing is completed, a server side resizeListener can be invoked
-             and other components on page can be updated partially with ajax.</p>
+                and other components on page can be updated partially with ajax.</p>
 
             <h:form>
                 <p:growl id="growl" showDetail="true" />
 
                 <p:graphicImage id="campnou" value="/ui/barca/campnou.jpg" />
 
-                <p:resizable for="campnou" animate="true" resizeListener="#{resizeBean.onResize}" onResizeUpdate="growl" />
+                <p:resizable for="campnou" animate="true" resizeListener="#{resizeBean.onResize}" onResizeUpdate="growl" ghost="true" />
             </h:form>
 
             <h3>Source</h3>
@@ -29,13 +29,14 @@
 
     &lt;p:graphicImage id="campnou" value="/ui/barca/campnou.jpg" /&gt;
 
-    &lt;p:resizable for="campnou" animate="true"
-                resizeListener="\#{resizeBean.onResize}" onResizeUpdate="growl" /&gt;
+    &lt;p:resizable for="campnou" animate="true" ghost="true"
+                resizeListener="\#{resizeBean.onResize}"
+                onResizeUpdate="growl" /&gt;
 &lt;/h:form&gt;
                     </pre>
                 </p:tab>
 
-                 <p:tab title="ResizeBean.java">
+                <p:tab title="ResizeBean.java">
                     <pre name="code" class="java">
 package org.primefaces.examples.view;
 
@@ -55,7 +56,7 @@ public class ResizeBean {
                     </pre>
                 </p:tab>
             </p:tabView>
-           
+
 
         </div>
 
