@@ -18,11 +18,11 @@
 	<ui:define name="content">
 	<h1 class="title ui-widget-header ui-corner-all">DataTable - Coloring</h1>
 		<div class="entry">
-			<p>Specific rows be styled based on conditions. Following table highlights cars that are manufactured before 1990.</p>
+			<p>Specific rows be can styled based on conditions. Table below highlights cars that are manufactured before 1980.</p>
 
             <h:form>
 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}" rowStyleClass="#{car.year le 1985 ? 'old' : null}">
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" rowStyleClass="#{car.year le 1980 ? 'old' : null}">
                     <p:column>
                         <f:facet name="header">
 								Model
@@ -61,7 +61,7 @@
 &lt;h:form&gt;
 
     &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"
-                rowStyleClass="\#{car.year le 1985 ? 'old' : null}"&gt;
+                rowStyleClass="\#{car.year le 1980 ? 'old' : null}"&gt;
         &lt;p:column&gt;
             &lt;f:facet name="header"&gt;
                     Model
