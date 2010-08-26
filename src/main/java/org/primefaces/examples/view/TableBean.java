@@ -126,19 +126,15 @@ public class TableBean implements Serializable {
         createDynamicColumns();
         populateDynamicCars();
         manufacturerOptions = createFilterOptions(manufacturers);
-        
-		/**
-		* Test with one hundred million records.
-		* In a real application use an sql Count query to get the row count.	
-		*/	
-		lazyModel = new LazyDataModel<Car>(100000000) {
+        	
+		lazyModel = new LazyDataModel<Car>() {
 
 			/**
 			 * Dummy implementation of loading a certain segment of data.
-			 * In a real application, this method should access db and do a limit based query
+			 * In a real application, this method should load data from a datasource
 			 */
 			@Override
-			public List<Car> fetchLazyData(int first, int pageSize) {
+			public List<Car> load(int first, int pageSize) {
 				logger.log(Level.INFO, "Loading the lazy car data between {0} and {1}", new Object[]{first, (first+pageSize)});
 				
 				List<Car> lazyCars = new ArrayList<Car>();
@@ -147,6 +143,11 @@ public class TableBean implements Serializable {
 				return lazyCars;
 			}
 		};
+
+        /**
+         * In a real application, this number should be resolved by a projection query
+         */
+        lazyModel.setRowCount(100000000);
 	}
 	
 	public LazyDataModel<Car> getLazyModel() {

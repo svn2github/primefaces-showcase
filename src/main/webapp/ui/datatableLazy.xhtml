@@ -1,91 +1,169 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
-	
-	<ui:define name="content">
-	<h1 class="title ui-widget-header ui-corner-all">DataTable - Lazy Loading</h1>
-		<div class="entry">
-                <p>DataTable has a built-in feature to deal with huge sets of data with the LazyDataModel. Even if you have billions of data only the rows 
-                corresponding to one page size of datatable will be loaded from the data storage. This example demonstrates how to display one hundred million(100000000) records
-                less than a second.</p>
-                         
-                <h:form>
-                  
-					<p:dataTable var="car" value="#{tableBean.lazyModel}" paginator="true" rows="10" 
-						dynamic="true" lazy="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Model" />
-							</f:facet>
-							<h:outputText value="#{car.model}" />
-						</p:column>
-	
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Year" />
-							</f:facet>
-							<h:outputText value="#{car.year}" />
-						</p:column>
-	
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Manufacturer" />
-							</f:facet>
-							<h:outputText value="#{car.manufacturer}" />
-						</p:column>
-	
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Color" />
-							</f:facet>
-							<h:outputText value="#{car.color}" />
-						</p:column>
-					</p:dataTable>
-					
-				</h:form>
-				
-				<h3>Source</h3>
-				<p:tabView>
-					<p:tab title="datatableLazy.xhtml">
-<pre name="code" class="xml">
-&lt;p:dataTable var="car" value="\#{tableBean.lazyModel}" paginator="true" rows="10" 
-	dynamic="true" lazy="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"&gt;
-	&lt;p:column&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="Model" /&gt;
-		&lt;/f:facet&gt;
-		&lt;h:outputText value="\#{car.model}" /&gt;
-	&lt;/p:column&gt;
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	&lt;p:column&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="Year" /&gt;
-		&lt;/f:facet&gt;
-		&lt;h:outputText value="\#{car.year}" /&gt;
-	&lt;/p:column&gt;
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - Lazy Loading</h1>
+        <div class="entry">
+            <p>DataTable has a built-in feature to deal with huge sets of data with the LazyDataModel. Even if you have billions of data only the rows
+                corresponding to one page size of datatable will be loaded from the data storage.
+                This example demonstrates how to display one hundred million(100000000) records.</p>
 
-	&lt;p:column&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="Manufacturer" /&gt;
-		&lt;/f:facet&gt;
-		&lt;h:outputText value="\#{car.manufacturer}" /&gt;
-	&lt;/p:column&gt;
+            <h:form>
 
-	&lt;p:column&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="Color" /&gt;
-		&lt;/f:facet&gt;
-		&lt;h:outputText value="\#{car.color}" /&gt;
-	&lt;/p:column&gt;
-&lt;/p:dataTable&gt;
-				</pre>
-					</p:tab>
-					
-					<p:tab title="datatableLazy.xhtml">
-<pre name="code" class="java">
+                 <p:ajaxStatus style="width:16px;height:16px;">
+                    <f:facet name="start">
+                        <h:graphicImage value="../design/ajaxloading.gif" />
+                    </f:facet>
+
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable var="car" value="#{tableBean.lazyModel}" paginator="true" rows="10" lazy="true"
+                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                             rowsPerPageTemplate="5,10,15"
+                             selection="#{tableBean.selectedCar}" selectionMode="single"
+                             onRowSelectComplete="carDialog.show()" onRowSelectUpdate="display">
+
+                    <f:facet name="header">
+                        Displaying 100,000,000 Cars
+                    </f:facet>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model" />
+                        </f:facet>
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Year" />
+                        </f:facet>
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer" />
+                        </f:facet>
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Color" />
+                        </f:facet>
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+                          width="200" showEffect="explode" hideEffect="explode">
+
+                    <h:panelGrid id="display" columns="2" cellpadding="4">
+
+                        <f:facet name="header">
+                            <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>
+                        </f:facet>
+
+                        <h:outputText value="Model:" />
+                        <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
+
+                        <h:outputText value="Year:" />
+                        <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
+
+                        <h:outputText value="Manufacturer:" />
+                        <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="datatableLazy.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;p:dataTable var="car" 
+                 value="\#{tableBean.lazyModel}"
+                 paginator="true" rows="10" lazy="true"
+                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                 rowsPerPageTemplate="5,10,15"
+                 selection="\#{tableBean.selectedCar}" selectionMode="single"
+                 onRowSelectComplete="carDialog.show()" onRowSelectUpdate="display"&gt;
+
+        &lt;f:facet name="header"&gt;
+            Displaying 100,000,000 Cars
+        &lt;/f:facet&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Model" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Year" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Manufacturer" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Color" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+              width="200" showEffect="explode" hideEffect="explode"&gt;
+
+        &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;
+
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage value="/images/cars/\#{tableBean.selectedCar.manufacturer}.jpg"/&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Model:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.model}"/&gt;
+
+            &lt;h:outputText value="Year:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.year}"/&gt;
+
+            &lt;h:outputText value="Manufacturer:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}"/&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.color}"/&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="datatableLazy.xhtml">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
@@ -103,27 +181,40 @@ public class TableBean {
 	
 	private LazyDataModel&lt;Car&gt; lazyModel;
 
+    private Car selectedCar;
+
 	public TableBean() {
-		/**
-		* Test with one hundred million records.
-		* In a real application use an sql Count query to get the row count.	
-		*/	
-		lazyModel = new LazyDataModel&lt;Car&gt;(100000000) {
+
+        lazyModel = new LazyDataModel&lt;Car&gt;() {
 
 			/**
 			 * Dummy implementation of loading a certain segment of data.
-			 * In a real applicaiton, this method should access db and do a limit based query
+			 * In a real application, this method should load data from a datasource
 			 */
 			@Override
-			public List&lt;Car&gt; fetchLazyData(int first, int pageSize) {
-				logger.info("Loading the lazy car data between {} and {}", first, first+pageSize);
-				
+			public List&lt;Car&gt; load(int first, int pageSize) {
+				logger.log(Level.INFO, "Loading the lazy car data between {0} and {1}", new Object[]{first, (first+pageSize)});
+
 				List&lt;Car&gt; lazyCars = new ArrayList&lt;Car&gt;();
 				populateLazyRandomCars(lazyCars, pageSize, first);
-				
+
 				return lazyCars;
 			}
 		};
+
+        /**
+         * In a real application, this number should be resolved by a projection query
+         */
+        lazyModel.setRowCount(100000000);
+
+	}
+
+    public Car getSelectedCar() {
+		return selectedCar;
+	}
+
+	public void setSelectedCar(Car selectedCar) {
+		this.selectedCar = selectedCar;
 	}
 	
 	public LazyDataModel&lt;Car&gt; getLazyModel() {
@@ -132,24 +223,31 @@ public class TableBean {
 
 	private void populateLazyRandomCars(List&lt;Car&gt; list, int size, int first) {
 		for(int i = 0 ; i &lt; size ; i++) {
-			int offset = i + first;
-			list.add(new Car("Model_" + offset, getRandomYear(), "Brand_" + offset, "Color_" + offset));
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 		}
 	}
-	
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
 	private int getRandomYear() {
 		return (int) (Math.random() * 50 + 1960);
 	}
 }
-				</pre>
-					</p:tab>
-				</p:tabView>
-				
-				
-				
+                    </pre>
+                </p:tab>
+            </p:tabView>
 
-            </div>
-         
 
-	</ui:define>
+
+
+        </div>
+
+
+    </ui:define>
 </ui:composition>
