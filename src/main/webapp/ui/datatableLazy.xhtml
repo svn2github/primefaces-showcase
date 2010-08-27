@@ -8,9 +8,12 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Lazy Loading</h1>
         <div class="entry">
-            <p>DataTable has a built-in feature to deal with huge sets of data with the LazyDataModel. Even if you have billions of data only the rows
-                corresponding to one page size of datatable will be loaded from the data storage.
-                This example demonstrates how to display one hundred million(100000000) records.</p>
+            <p>DataTable has built-in support to deal with huge datasets. In order to enable lazy loading, a LazyDataModel needs to be implemented
+                to query the datasource when pagination, sorting, filtering or live scrolling happens.
+                This example demonstrates how to display one hundred million(100000000) records efficiently.</p>
+
+            <p>Notice that lazy sorting is not implemented as showcase has no real datasource connection, just dummy data is returned
+            as the sample implementation for demonstraton purposes.</p>
 
             <h:form>
 
@@ -34,31 +37,19 @@
                         Displaying 100,000,000 Cars
                     </f:facet>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Model" />
-                        </f:facet>
+                    <p:column headerText="Model" sortBy="#{car.model}">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Year" />
-                        </f:facet>
+                    <p:column headerText="Year" sortBy="#{car.year}">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Manufacturer" />
-                        </f:facet>
+                    <p:column headerText="Manufacturer" sortBy="#{car.manufacturer}">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Color" />
-                        </f:facet>
+                    <p:column headerText="Color" sortBy="#{car.color}">
                         <h:outputText value="#{car.color}" />
                     </p:column>
                 </p:dataTable>
@@ -94,9 +85,7 @@
                     <pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;p:dataTable var="car" 
-                 value="\#{tableBean.lazyModel}"
-                 paginator="true" rows="10" lazy="true"
+    &lt;p:dataTable var="car" value="\#{tableBean.lazyModel}" paginator="true" rows="10" lazy="true"
                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  rowsPerPageTemplate="5,10,15"
                  selection="\#{tableBean.selectedCar}" selectionMode="single"
@@ -106,31 +95,19 @@
             Displaying 100,000,000 Cars
         &lt;/f:facet&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Model" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column headerText="Model" sortBy="\#{car.model}"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Year" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column headerText="Year" sortBy="\#{car.year}"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Manufacturer" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column headerText="Manufacturer" sortBy="\#{car.manufacturer}"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Color" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column headerText="Color" sortBy="\#{car.color}"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
@@ -192,11 +169,13 @@ public class TableBean {
 			 * In a real application, this method should load data from a datasource
 			 */
 			@Override
-			public List&lt;Car&gt; load(int first, int pageSize) {
+			public List&lt;Car&gt; load(int first, int pageSize, String sortField, boolean sortOrder, Map&lt;String,String&gt; filters) {
 				logger.log(Level.INFO, "Loading the lazy car data between {0} and {1}", new Object[]{first, (first+pageSize)});
 
+                //Sorting and Filtering information are not used for demo purposes just random dummy data is returned
+
 				List&lt;Car&gt; lazyCars = new ArrayList&lt;Car&gt;();
-				populateLazyRandomCars(lazyCars, pageSize, first);
+				populateLazyRandomCars(lazyCars, pageSize);
 
 				return lazyCars;
 			}
@@ -221,7 +200,7 @@ public class TableBean {
 		return lazyModel;
 	}
 
-	private void populateLazyRandomCars(List&lt;Car&gt; list, int size, int first) {
+	private void populateLazyRandomCars(List&lt;Car&gt; list, int size) {
 		for(int i = 0 ; i &lt; size ; i++) {
 			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 		}

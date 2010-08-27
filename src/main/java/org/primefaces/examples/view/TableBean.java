@@ -44,6 +44,7 @@ import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
+import java.util.Map;
 import javax.faces.model.SelectItem;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
@@ -134,11 +135,13 @@ public class TableBean implements Serializable {
 			 * In a real application, this method should load data from a datasource
 			 */
 			@Override
-			public List<Car> load(int first, int pageSize) {
+			public List<Car> load(int first, int pageSize, String sortField, boolean sortOrder, Map<String,String> filters) {
 				logger.log(Level.INFO, "Loading the lazy car data between {0} and {1}", new Object[]{first, (first+pageSize)});
+
+                //Sorting and Filtering information are not used for demo purposes just random dummy data is returned
 				
 				List<Car> lazyCars = new ArrayList<Car>();
-				populateLazyRandomCars(lazyCars, pageSize, first);
+				populateLazyRandomCars(lazyCars, pageSize);
 				
 				return lazyCars;
 			}
@@ -181,7 +184,7 @@ public class TableBean implements Serializable {
 			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 	}
 	
-	private void populateLazyRandomCars(List<Car> list, int size, int first) {
+	private void populateLazyRandomCars(List<Car> list, int size) {
 		for(int i = 0 ; i < size ; i++) {
 			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 		}
