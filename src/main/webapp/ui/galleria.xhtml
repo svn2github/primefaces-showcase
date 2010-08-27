@@ -10,19 +10,27 @@
 
         <h1 class="title ui-widget-header ui-corner-all">Galleria</h1>
         <div class="entry">
-            <p>Galleria is an image gallery component.</p>
+            <p>Galleria is an image gallery component featuring various transition effects and detail display.</p>
 
-            <h3>Fade Effect</h3>
-            <p:galleria id="gal" effect="fade" effectSpeed="1000">
-                <ui:repeat value="#{galleriaBean.images}" var="image">
-                    <p:graphicImage value="/images/galleria/#{image}" />
-                </ui:repeat>
-            </p:galleria>
+            <h:form id="form">
 
-            <h3>Slide Effect</h3>
-            <p:galleria effect="slide">
+                <h:panelGrid columns="2">
+                    <h:outputText value="Effect: " />
+                    <h:selectOneMenu value="#{galleriaBean.effect}" onchange="jQuery('#form').submit()">
+                        <f:selectItem itemLabel="fade" itemValue="fade" />
+                        <f:selectItem itemLabel="flash" itemValue="flash" />
+                        <f:selectItem itemLabel="pulse" itemValue="pulse" />
+                        <f:selectItem itemLabel="slide" itemValue="slide" />
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                
+            </h:form>
+
+            <br />
+
+            <p:galleria effect="#{galleriaBean.effect}" effectSpeed="1000">
                 <ui:repeat value="#{galleriaBean.images}" var="image">
-                    <p:graphicImage value="/images/galleria/#{image}" />
+                    <p:graphicImage value="/images/galleria/#{image}" title="#{image}" alt="Description goes here"/>
                 </ui:repeat>
             </p:galleria>
 
@@ -31,17 +39,10 @@
             <p:tabView>
                 <p:tab title="galleria.xhtml">
                     <pre name="code" class="xml">
-&lt;h3&gt;Fade Effect&lt;/h3&gt;
-&lt;p:galleria id="gal" effect="fade" effectSpeed="1000"&gt;
+&lt;p:galleria effect="\#{galleriaBean.effect}" effectSpeed="1000"&gt;
     &lt;ui:repeat value="\#{galleriaBean.images}" var="image"&gt;
-        &lt;p:graphicImage value="/images/galleria/\#{image}" /&gt;
-    &lt;/ui:repeat&gt;
-&lt;/p:galleria&gt;
-
-&lt;h3&gt;Slide Effect&lt;/h3&gt;
-&lt;p:galleria effect="slide"&gt;
-    &lt;ui:repeat value="\#{galleriaBean.images}" var="image"&gt;
-        &lt;p:graphicImage value="/images/galleria/\#{image}" /&gt;
+        &lt;p:graphicImage value="/images/galleria/\#{image}"
+            title="\#{image}" alt="Description goes here"/&gt;
     &lt;/ui:repeat&gt;
 &lt;/p:galleria&gt;
                     </pre>
@@ -59,6 +60,8 @@ public class GalleriaBean {
 
     private List&lt;String&gt; images;
 
+    private String effect = "fade";
+
     @PostConstruct
     public void init() {
         images = new ArrayList&lt;String&gt;();
@@ -70,6 +73,14 @@ public class GalleriaBean {
 
     public List&lt;String&gt; getImages() {
         return images;
+    }
+
+    public String getEffect() {
+        return effect;
+    }
+
+    public void setEffect(String effect) {
+        this.effect = effect;
     }
 }
                     </pre>
