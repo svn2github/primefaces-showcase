@@ -310,4 +310,9 @@
         <managed-bean-class>org.primefaces.examples.view.TabBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>galleriaBean</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.GalleriaBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

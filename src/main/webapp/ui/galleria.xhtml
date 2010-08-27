@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">Galleria</h1>
+        <div class="entry">
+            <p>Galleria is an image gallery component.</p>
+
+            <h3>Fade Effect</h3>
+            <p:galleria id="gal" effect="fade" effectSpeed="1000">
+                <ui:repeat value="#{galleriaBean.images}" var="image">
+                    <p:graphicImage value="/images/galleria/#{image}" />
+                </ui:repeat>
+            </p:galleria>
+
+            <h3>Slide Effect</h3>
+            <p:galleria effect="slide">
+                <ui:repeat value="#{galleriaBean.images}" var="image">
+                    <p:graphicImage value="/images/galleria/#{image}" />
+                </ui:repeat>
+            </p:galleria>
+
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="galleria.xhtml">
+                    <pre name="code" class="xml">
+&lt;h3&gt;Fade Effect&lt;/h3&gt;
+&lt;p:galleria id="gal" effect="fade" effectSpeed="1000"&gt;
+    &lt;ui:repeat value="\#{galleriaBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/galleria/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:galleria&gt;
+
+&lt;h3&gt;Slide Effect&lt;/h3&gt;
+&lt;p:galleria effect="slide"&gt;
+    &lt;ui:repeat value="\#{galleriaBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/galleria/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:galleria&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="GalleriaBean.java">
+                    <pre name="code" class="xml">
+package org.primefaces.examples.view;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+
+public class GalleriaBean {
+
+    private List&lt;String&gt; images;
+
+    @PostConstruct
+    public void init() {
+        images = new ArrayList&lt;String&gt;();
+
+        for(int i=1;i&lt;=12;i++) {
+            images.add("galleria" + i + ".jpg");
+        }
+    }
+
+    public List&lt;String&gt; getImages() {
+        return images;
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+    </ui:define>
+</ui:composition>
