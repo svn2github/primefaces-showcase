@@ -18,7 +18,7 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - RadioCheckbox</h1>
         <div class="entry">
-            <p>Row selection based on radio/checkbox controls is a common use case, DataTable provides a solution for this
+            <p>RadioButton/Checkbox based row selection is a common use case and DataTable provides a solution for this
                 with column selection mode feature.</p>
 
             <h:form prependId="false">
@@ -98,7 +98,7 @@
                 </p:dataTable>
 
                 <p:dialog header="Car Detail" widgetVar="singleCarDialog" resizable="false"
-                          width="200" showEffect="explode" hideEffect="explode">
+                          width="250" showEffect="explode" hideEffect="explode">
 
                     <h:panelGrid id="displaySingle" columns="2" cellpadding="4">
 
@@ -121,13 +121,10 @@
                 </p:dialog>
 
                 <p:dialog header="Car Detail" widgetVar="multiCarDialog"
-                          width="250" showEffect="explode" hideEffect="explode">
+                          width="250" height="300" showEffect="explode" hideEffect="explode">
 
-                    <p:dataList id="displayMulti" value="#{tableBean.selectedCars}" var="selectedCar" type="definition">
+                    <p:dataList id="displayMulti" value="#{tableBean.selectedCars}" var="selectedCar">
                         Model: #{selectedCar.model}, Year: #{selectedCar.year}
-                        <f:facet name="description">
-                            <p:graphicImage value="/images/cars/#{selectedCar.manufacturer}.jpg"/>
-                        </f:facet>
                     </p:dataList>
 
                 </p:dialog>
@@ -139,16 +136,6 @@
                 <p:tab title="datatableRowSelectionRadioCheckbox.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form prependId="false"&gt;
-
-    &lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-        &lt;f:facet name="start"&gt;
-            &lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-        &lt;/f:facet&gt;
-
-        &lt;f:facet name="complete"&gt;
-            &lt;h:outputText value="" /&gt;
-        &lt;/f:facet&gt;
-    &lt;/p:ajaxStatus&gt;
 
     &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
                  selection="\#{tableBean.selectedCar}"&gt;
@@ -213,7 +200,7 @@
     &lt;/p:dataTable&gt;
 
     &lt;p:dialog header="Car Detail" widgetVar="singleCarDialog" resizable="false"
-              width="200" showEffect="explode" hideEffect="explode"&gt;
+              width="250" showEffect="explode" hideEffect="explode"&gt;
 
         &lt;h:panelGrid id="displaySingle" columns="2" cellpadding="4"&gt;
 
@@ -236,17 +223,11 @@
     &lt;/p:dialog&gt;
 
     &lt;p:dialog header="Car Detail" widgetVar="multiCarDialog"
-              width="250" showEffect="explode" hideEffect="explode"&gt;
+              width="250" height="300" showEffect="explode" hideEffect="explode"&gt;
 
         &lt;p:dataList id="displayMulti"
-            value="\#{tableBean.selectedCars}" var="selectedCar" type="definition"&gt;
-
+                value="\#{tableBean.selectedCars}" var="selectedCar"&gt;
             Model: \#{selectedCar.model}, Year: \#{selectedCar.year}
-
-            &lt;f:facet name="description"&gt;
-                &lt;p:graphicImage value="/images/cars/\#{selectedCar.manufacturer}.jpg"/&gt;
-            &lt;/f:facet&gt;
-
         &lt;/p:dataList&gt;
 
     &lt;/p:dialog&gt;
