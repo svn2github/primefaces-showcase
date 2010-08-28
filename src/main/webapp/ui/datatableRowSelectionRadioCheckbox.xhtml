@@ -1,0 +1,359 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-datatable .ui-datatable-footer {
+                text-align:left;
+            }
+        </style>
+
+
+    </ui:define>
+
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - RadioCheckbox</h1>
+        <div class="entry">
+            <p>Row selection based on radio/checkbox controls is a common use case, DataTable provides a solution for this
+                with column selection mode feature.</p>
+
+            <h:form prependId="false">
+
+                <p:ajaxStatus style="width:16px;height:16px;">
+                    <f:facet name="start">
+                        <h:graphicImage value="../design/ajaxloading.gif" />
+                    </f:facet>
+
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
+                             selection="#{tableBean.selectedCar}">
+
+                    <f:facet name="header">
+                        RadioButton Based Selection
+                    </f:facet>
+
+                    <p:column selectionMode="single" />
+
+                    <p:column headerText="Model">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column headerText="Year">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column headerText="Manufacturer">
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column headerText="Color">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="View" image="ui-icon ui-icon-search"
+                                         update="displaySingle" oncomplete="singleCarDialog.show()"/>
+                    </f:facet>
+                </p:dataTable>
+
+                <br />
+
+                <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
+                             selection="#{tableBean.selectedCars}">
+
+                    <f:facet name="header">
+                        Checkbox Based Selection
+                    </f:facet>
+
+                    <p:column selectionMode="multiple" />
+
+                    <p:column headerText="Model">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column headerText="Year">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column headerText="Manufacturer">
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column headerText="Color">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="View" image="ui-icon ui-icon-search"
+                                         update="displayMulti" oncomplete="multiCarDialog.show()"/>
+                    </f:facet>
+                </p:dataTable>
+
+                <p:dialog header="Car Detail" widgetVar="singleCarDialog" resizable="false"
+                          width="200" showEffect="explode" hideEffect="explode">
+
+                    <h:panelGrid id="displaySingle" columns="2" cellpadding="4">
+
+                        <f:facet name="header">
+                            <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>
+                        </f:facet>
+
+                        <h:outputText value="Model:" />
+                        <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
+
+                        <h:outputText value="Year:" />
+                        <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
+
+                        <h:outputText value="Manufacturer:" />
+                        <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+                <p:dialog header="Car Detail" widgetVar="multiCarDialog"
+                          width="250" showEffect="explode" hideEffect="explode">
+
+                    <p:dataList id="displayMulti" value="#{tableBean.selectedCars}" var="selectedCar" type="definition">
+                        Model: #{selectedCar.model}, Year: #{selectedCar.year}
+                        <f:facet name="description">
+                            <p:graphicImage value="/images/cars/#{selectedCar.manufacturer}.jpg"/>
+                        </f:facet>
+                    </p:dataList>
+
+                </p:dialog>
+
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="datatableRowSelectionRadioCheckbox.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form prependId="false"&gt;
+
+    &lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+        &lt;f:facet name="start"&gt;
+            &lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+        &lt;/f:facet&gt;
+
+        &lt;f:facet name="complete"&gt;
+            &lt;h:outputText value="" /&gt;
+        &lt;/f:facet&gt;
+    &lt;/p:ajaxStatus&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+                 selection="\#{tableBean.selectedCar}"&gt;
+
+        &lt;f:facet name="header"&gt;
+            RadioButton Based Selection
+        &lt;/f:facet&gt;
+
+        &lt;p:column selectionMode="single" /&gt;
+
+        &lt;p:column headerText="Model"&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer"&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;f:facet name="footer"&gt;
+            &lt;p:commandButton value="View" image="ui-icon ui-icon-search"
+                             update="displaySingle" oncomplete="singleCarDialog.show()"/&gt;
+        &lt;/f:facet&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+                 selection="\#{tableBean.selectedCars}"&gt;
+
+        &lt;f:facet name="header"&gt;
+            Checkbox Based Selection
+        &lt;/f:facet&gt;
+
+        &lt;p:column selectionMode="multiple" /&gt;
+
+        &lt;p:column headerText="Model"&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer"&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;f:facet name="footer"&gt;
+            &lt;p:commandButton value="View" image="ui-icon ui-icon-search"
+                             update="displayMulti" oncomplete="multiCarDialog.show()"/&gt;
+        &lt;/f:facet&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dialog header="Car Detail" widgetVar="singleCarDialog" resizable="false"
+              width="200" showEffect="explode" hideEffect="explode"&gt;
+
+        &lt;h:panelGrid id="displaySingle" columns="2" cellpadding="4"&gt;
+
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage value="/images/cars/\#{tableBean.selectedCar.manufacturer}.jpg"/&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Model:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.model}" /&gt;
+
+            &lt;h:outputText value="Year:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.year}" /&gt;
+
+            &lt;h:outputText value="Manufacturer:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" /&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.color}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+    &lt;p:dialog header="Car Detail" widgetVar="multiCarDialog"
+              width="250" showEffect="explode" hideEffect="explode"&gt;
+
+        &lt;p:dataList id="displayMulti"
+            value="\#{tableBean.selectedCars}" var="selectedCar" type="definition"&gt;
+
+            Model: \#{selectedCar.model}, Year: \#{selectedCar.year}
+
+            &lt;f:facet name="description"&gt;
+                &lt;p:graphicImage value="/images/cars/\#{selectedCar.manufacturer}.jpg"/&gt;
+            &lt;/f:facet&gt;
+
+        &lt;/p:dataList&gt;
+
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+                <p:tab title="TableBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+
+	private final static String[] colors;
+
+	private final static String[] manufacturers;
+
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+	private List&lt;Car&gt; cars;
+
+	private Car selectedCar;
+
+	private Car[] selectedCars;
+
+	public TableBean() {
+		cars = new ArrayList&lt;Car&gt;();
+		
+		populateRandomCars(cars, 50);
+	}
+
+	public Car[] getSelectedCars() {
+		return selectedCars;
+	}
+	public void setSelectedCars(Car[] selectedCars) {
+		this.selectedCars = selectedCars;
+	}
+
+	public Car getSelectedCar() {
+		return selectedCar;
+	}
+
+	public void setSelectedCar(Car selectedCar) {
+		this.selectedCar = selectedCar;
+	}
+
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+
+	public List&lt;Car&gt; getCars() {
+		return cars;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
