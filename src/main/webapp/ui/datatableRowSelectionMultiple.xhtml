@@ -38,7 +38,7 @@
                              selection="#{tableBean.selectedCars}" selectionMode="multiple">
 
                     <f:facet name="header">
-                        Click "View Detail" button after selecting multiple to see details
+                        Click "View" button after selecting multiple to see details
                     </f:facet>
 
                     <p:column>
@@ -70,7 +70,7 @@
                     </p:column>
 
                     <f:facet name="footer">
-                        <p:commandButton value="Submit" update="form:display" oncomplete="carDialog.show()"/>
+                        <p:commandButton value="View" image="ui-icon ui-icon-search" update="form:display" oncomplete="carDialog.show()"/>
                     </f:facet>
                 </p:dataTable>
 
@@ -98,7 +98,7 @@
                  selection="\#{tableBean.selectedCars}" selectionMode="multiple"&gt;
 
         &lt;f:facet name="header"&gt;
-            Click "View Detail" button after selecting multiple to see details
+            Click "View" button after selecting multiple to see details
         &lt;/f:facet&gt;
 
         &lt;p:column&gt;
@@ -130,7 +130,8 @@
         &lt;/p:column&gt;
 
         &lt;f:facet name="footer"&gt;
-            &lt;p:commandButton value="Submit" update="form:display" oncomplete="carDialog.show()"/&gt;
+            &lt;p:commandButton value="View" image="ui-icon ui-icon-search"
+                        update="form:display" oncomplete="carDialog.show()"/&gt;
         &lt;/f:facet&gt;
     &lt;/p:dataTable&gt;
 
