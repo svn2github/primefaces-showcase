@@ -12,9 +12,6 @@
                 to query the datasource when pagination, sorting, filtering or live scrolling happens.
                 This example demonstrates how to display one hundred million(100000000) records efficiently.</p>
 
-            <p>Notice that lazy sorting is not implemented as showcase has no real datasource connection, just dummy data is returned
-            as the sample implementation for demonstraton purposes.</p>
-
             <h:form>
 
                  <p:ajaxStatus style="width:16px;height:16px;">
@@ -37,19 +34,19 @@
                         Displaying 100,000,000 Cars
                     </f:facet>
 
-                    <p:column headerText="Model" sortBy="#{car.model}">
+                    <p:column headerText="Model">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column headerText="Year" sortBy="#{car.year}">
+                    <p:column headerText="Year">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column headerText="Manufacturer" sortBy="#{car.manufacturer}">
+                    <p:column headerText="Manufacturer">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column headerText="Color" sortBy="#{car.color}">
+                    <p:column headerText="Color">
                         <h:outputText value="#{car.color}" />
                     </p:column>
                 </p:dataTable>
@@ -95,19 +92,19 @@
             Displaying 100,000,000 Cars
         &lt;/f:facet&gt;
 
-        &lt;p:column headerText="Model" sortBy="\#{car.model}"&gt;
+        &lt;p:column headerText="Model"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" sortBy="\#{car.year}"&gt;
+        &lt;p:column headerText="Year"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" sortBy="\#{car.manufacturer}"&gt;
+        &lt;p:column headerText="Manufacturer"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" sortBy="\#{car.color}"&gt;
+        &lt;p:column headerText="Color"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
