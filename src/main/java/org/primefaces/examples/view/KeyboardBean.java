@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Prime Technology.
+ * Copyright 2010 Prime Technology.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,14 @@ public class KeyboardBean {
 	private String value4;
 	
 	private String value5;
+
+    private String value6;
+
+    private String value7;
+
+    private String value8;
+
+    private String value9;
 
 	public String getValue1() {
 		return value1;
@@ -66,4 +74,36 @@ public class KeyboardBean {
 	public void setValue5(String value5) {
 		this.value5 = value5;
 	}
+
+    public String getValue6() {
+        return value6;
+    }
+
+    public void setValue6(String value6) {
+        this.value6 = value6;
+    }
+
+    public String getValue7() {
+        return value7;
+    }
+
+    public void setValue7(String value7) {
+        this.value7 = value7;
+    }
+
+    public String getValue8() {
+        return value8;
+    }
+
+    public void setValue8(String value8) {
+        this.value8 = value8;
+    }
+
+    public String getValue9() {
+        return value9;
+    }
+
+    public void setValue9(String value9) {
+        this.value9 = value9;
+    }
 }
