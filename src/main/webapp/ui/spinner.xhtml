@@ -34,9 +34,17 @@
 	                		
 	                		<h:outputLabel for="width" value="Width: " />
 	                		<p:spinner id="width" value="#{spinnerController.number5}" width="32"/>
-	                		
-	                		<h:outputLabel for="showon" value="Show On: " />
-	                		<p:spinner id="showon" value="#{spinnerController.number6}" showOn="hover"/>
+
+                            <h:outputLabel for="ajaxspinner" value="Ajax Spinner: " />
+                            <p:outputPanel>
+                                <p:spinner id="ajaxspinner" value="#{spinnerController.number6}">
+                                    <p:ajax update="ajaxspinnervalue" process="@this" />
+                                </p:spinner>
+                                <h:outputText id="ajaxspinnervalue" value="#{spinnerController.number6}" style="padding-left:10px"/>
+                            </p:outputPanel>
+
+                            <h:outputLabel for="showon" value="Show On: " />
+	                		<p:spinner id="showon" value="#{spinnerController.number7}" showOn="hover"/>
 	                
                 		</h:panelGrid>
                 	</p:panel>
@@ -72,7 +80,10 @@
 							<h:outputText value="#{spinnerController.number5}" /> 
 							
 							<h:outputText value="Value 6: " />
-							<h:outputText value="#{spinnerController.number6}" /> 
+							<h:outputText value="#{spinnerController.number6}" />
+
+                            <h:outputText value="Value 7: " />
+							<h:outputText value="#{spinnerController.number7}" />
 						</h:panelGrid>
                 	</p:dialog>
                 	
@@ -107,6 +118,15 @@
     		&lt;h:outputLabel for="width" value="Width: " /&gt;
     		&lt;p:spinner id="width" 
     				value="\#{spinnerController.number5}" width="32"/&gt;
+
+            &lt;h:outputLabel for="ajaxspinner" value="Ajax Spinner: " /&gt;
+            &lt;p:outputPanel&gt;
+                &lt;p:spinner id="ajaxspinner" value="\#{spinnerController.number6}"&gt;
+                    &lt;p:ajax update="ajaxspinnervalue" process="@this" /&gt;
+                &lt;/p:spinner&gt;
+                &lt;h:outputText id="ajaxspinnervalue"
+                        value="\#{spinnerController.number6}"/&gt;
+            &lt;/p:outputPanel&gt;
     		
     		&lt;h:outputLabel for="showon" value="Show On: " /&gt;
     		&lt;p:spinner id="showon" 
@@ -169,6 +189,8 @@ public class SpinnerController {
 	
 	private int number6;
 
+    private int number7;
+
 	public int getNumber1() {
 		return number1;
 	}
@@ -216,6 +238,14 @@ public class SpinnerController {
 	public void setNumber6(int number6) {
 		this.number6 = number6;
 	}
+
+    public int getNumber7() {
+        return number7;
+    }
+
+    public void setNumber7(int number7) {
+        this.number7 = number7;
+    }
 }
 						</pre>
 					</p:tab>

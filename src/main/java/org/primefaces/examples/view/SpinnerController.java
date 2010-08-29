@@ -29,6 +29,8 @@ public class SpinnerController {
 	
 	private int number6;
 
+    private int number7;
+
 	public int getNumber1() {
 		return number1;
 	}
@@ -76,4 +78,12 @@ public class SpinnerController {
 	public void setNumber6(int number6) {
 		this.number6 = number6;
 	}
+
+    public int getNumber7() {
+        return number7;
+    }
+
+    public void setNumber7(int number7) {
+        this.number7 = number7;
+    }
 }
