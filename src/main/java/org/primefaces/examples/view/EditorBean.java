@@ -17,7 +17,7 @@ package org.primefaces.examples.view;
 
 public class EditorBean {
 
-    private String toolbar;
+    private String toolbar = "complete";
 
 	private String value;
 
