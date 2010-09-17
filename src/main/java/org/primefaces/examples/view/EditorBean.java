@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Prime Technology.
+ * Copyright 2010 Prime Technology.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,23 @@ package org.primefaces.examples.view;
 
 public class EditorBean {
 
-	private String htmlText;
+    private String toolbar;
 
-	public String getHtmlText() {
-		return htmlText;
-	}
+	private String value;
 
-	public void setHtmlText(String htmlText) {
-		this.htmlText = htmlText;
-	}
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getToolbar() {
+        return toolbar;
+    }
+
+    public void setToolbar(String toolbar) {
+        this.toolbar = toolbar;
+    }
 }

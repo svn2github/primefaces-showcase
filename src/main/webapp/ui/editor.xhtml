@@ -7,25 +7,71 @@
 
 	<ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">Rich Text Editor</h1>
+		<h1 class="title ui-widget-header ui-corner-all">Editor</h1>
 		<div class="entry">
-			<h:form>
-				<p:editor value="#{editorBean.htmlText}" width="640px" height="320px" />
+        <p>Editor is an input component with advanced rich text editing features. Toolbar can be customized with
+        predefined controls using toolbar option and advanced customization can be implemented using toolbarTemplate option.</p>
 
-				<h:commandButton value="Submit" />
+			<h:form id="editorForm">
 
-				<br />
-				<br />
-		
-				You typed: <h:outputText value="#{editorBean.htmlText}" escape="false"></h:outputText>
+                <h:panelGrid columns="2">
+                    <h:outputLabel for="toolbar" value="Toolbar: " />
+                    <h:selectOneMenu id="toolbar" value="#{editorBean.toolbar}" onchange="document.editorForm.submit()">
+                        <f:selectItem itemLabel="Complete" itemValue="complete" />
+                        <f:selectItem itemLabel="Tiny" itemValue="tiny" />
+                        <f:selectItem itemLabel="Compact" itemValue="compact" />
+                        <f:selectItem itemLabel="Normal" itemValue="normal" />
+                        <f:selectItem itemLabel="Maxi" itemValue="maxi" />
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                
+                <p:editor value="#{editorBean.value}" widgetVar="editor" toolbar="#{editorBean.toolbar}" />
 
-				<br />
-				<br />
+				<p:commandButton value="Submit" oncomplete="dlg.show()" onclick="editor.saveHTML()" update="display" />
+
+                <p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true">
+                    <h:outputText id="display" value="#{editorBean.value}" escape="false" />
+                </p:dialog>
 
 				<h3>Source</h3>
-				<pre name="code" class="xml">
-					&lt;p:editor value="&#35;{editorBean.htmlText}" width="640px" height="320px"&gt;&lt;/p:editor&gt;
-				</pre>
+                <p:tabView>
+                    <p:tab title="editor.xhtml">
+                        <pre name="code" class="xml">
+                            &lt;p:editor value="\#{editorBean.value}" widgetVar="editor" toolbar="#{editorBean.toolbar}" /&gt;
+                        </pre>
+                    </p:tab>
+
+                    <p:tab title="EditorBean.java">
+                        <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+public class EditorBean {
+
+    private String toolbar;
+
+	private String value;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getToolbar() {
+        return toolbar;
+    }
+
+    public void setToolbar(String toolbar) {
+        this.toolbar = toolbar;
+    }
+}
+                        </pre>
+                    </p:tab>
+                </p:tabView>
+				
+
 			</h:form>
 					
 		</div>
