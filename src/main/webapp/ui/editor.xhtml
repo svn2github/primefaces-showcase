@@ -33,16 +33,41 @@
                     <h:outputText id="display" value="#{editorBean.value}" escape="false" />
                 </p:dialog>
 
-				<h3>Source</h3>
-                <p:tabView>
-                    <p:tab title="editor.xhtml">
-                        <pre name="code" class="xml">
-                            &lt;p:editor value="\#{editorBean.value}" widgetVar="editor" toolbar="#{editorBean.toolbar}" /&gt;
-                        </pre>
-                    </p:tab>
+            </h:form>
 
-                    <p:tab title="EditorBean.java">
-                        <pre name="code" class="java">
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="editor.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form id="editorForm"&gt;
+
+    &lt;h:panelGrid columns="2"&gt;
+        &lt;h:outputLabel for="toolbar" value="Toolbar: " /&gt;
+        &lt;h:selectOneMenu id="toolbar" value="\#{editorBean.toolbar}"
+                onchange="document.editorForm.submit()"&gt;
+            &lt;f:selectItem itemLabel="Complete" itemValue="complete" /&gt;
+            &lt;f:selectItem itemLabel="Tiny" itemValue="tiny" /&gt;
+            &lt;f:selectItem itemLabel="Compact" itemValue="compact" /&gt;
+            &lt;f:selectItem itemLabel="Normal" itemValue="normal" /&gt;
+            &lt;f:selectItem itemLabel="Maxi" itemValue="maxi" /&gt;
+        &lt;/h:selectOneMenu&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:editor value="\#{editorBean.value}" widgetVar="editor"
+            toolbar="\#{editorBean.toolbar}" /&gt;
+
+    &lt;p:commandButton value="Submit" oncomplete="dlg.show()" onclick="editor.saveHTML()" update="display" /&gt;
+
+    &lt;p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true"&gt;
+        &lt;h:outputText id="display" value="\#{editorBean.value}" escape="false" /&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="EditorBean.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 public class EditorBean {
@@ -67,12 +92,9 @@ public class EditorBean {
         this.toolbar = toolbar;
     }
 }
-                        </pre>
-                    </p:tab>
-                </p:tabView>
-				
-
-			</h:form>
+                    </pre>
+                </p:tab>
+            </p:tabView>
 					
 		</div>
 	</ui:define>
