@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">Toolbar</h1>
+		<div class="entry">
+			<p>Toolbar is a grouping component for buttons and other content.</p>
+
+            <h:form>
+                <p:toolbar>
+                    <p:commandButton type="push" value="New" image="ui-icon-document" />
+
+                    <p:commandButton type="push" value="Open" image="ui-icon-folder-open"/>
+
+                    <p:divider />
+
+                    <p:menuButton value="Navigate">
+                        <p:menuitem value="Home" url="http://www.primefaces.org" />
+                        <p:menuitem value="ShowCase" url="http://www.primefaces.org/showcase" />
+                        <p:menuitem value="TouchFaces" url="http://www.primefaces.org/showcase/touch" />
+                    </p:menuButton>
+
+                    <p:divider />
+
+                    <p:commandButton type="push" title="Save" image="ui-icon-disk"/>
+                    <p:commandButton type="push" title="Delete" image="ui-icon-trash"/>
+                    <p:commandButton type="push" title="Print" image="ui-icon-print"/>
+                    
+                    <h:inputText id="search" size="10" style="float:right;margin-top:.2em"/>
+                    <p:watermark for="search" value="Keyword" />
+  
+                </p:toolbar>
+            </h:form>
+	
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="toolbar.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+    &lt;p:toolbar&gt;
+        &lt;p:commandButton type="push" value="New" image="ui-icon-document" /&gt;
+
+        &lt;p:commandButton type="push" value="Open" image="ui-icon-folder-open"/&gt;
+
+        &lt;p:divider /&gt;
+
+        &lt;p:menuButton value="Navigate"&gt;
+            &lt;p:menuitem value="Home"
+                    url="http://www.primefaces.org" /&gt;
+            &lt;p:menuitem value="ShowCase"
+                    url="http://www.primefaces.org/showcase" /&gt;
+            &lt;p:menuitem value="TouchFaces"
+                    url="http://www.primefaces.org/showcase/touch" /&gt;
+        &lt;/p:menuButton&gt;
+
+        &lt;p:divider /&gt;
+
+        &lt;p:commandButton type="push" title="Save" image="ui-icon-disk"/&gt;
+        &lt;p:commandButton type="push" title="Delete" image="ui-icon-trash"/&gt;
+        &lt;p:commandButton type="push" title="Print" image="ui-icon-print"/&gt;
+
+        &lt;h:inputText id="search" size="10" style="float:right;margin-top:.2em"/&gt;
+        &lt;p:watermark for="search" value="Keyword" /&gt;
+
+    &lt;/p:toolbar&gt;
+&lt;/h:form&gt;
+                    </pre>
+				</p:tab>
+			</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>
