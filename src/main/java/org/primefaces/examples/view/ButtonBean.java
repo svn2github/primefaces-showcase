@@ -23,6 +23,8 @@ public class ButtonBean {
 
 	private String text;
 
+    private boolean toggled;
+
 	public String getText() {
 		return text;
 	}
@@ -63,4 +65,12 @@ public class ButtonBean {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
+
+    public boolean isToggled() {
+        return toggled;
+    }
+
+    public void setToggled(boolean toggled) {
+        this.toggled = toggled;
+    }
 }
