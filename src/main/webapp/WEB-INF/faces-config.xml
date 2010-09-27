@@ -315,4 +315,9 @@
         <managed-bean-class>org.primefaces.examples.view.GalleriaBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>imageSwitchBean</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.ImageSwitchBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

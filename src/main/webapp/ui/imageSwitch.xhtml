@@ -4,13 +4,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
-	
+
 	<ui:define name="head">
 		<style type="text/css">
 			span {
 				cursor:pointer;
 			}
-			
+
 			span:hover {
 				color:#FF9900;
 			}
@@ -19,12 +19,12 @@
 
 	<ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">ImageSwitcher - Effects Catalog</h1>
+		<h1 class="title ui-widget-header ui-corner-all">ImageSwitch</h1>
 		<div class="entry">
-			<p>ImageSwitch supports 25+ effects out of the box. Here are some of the effects in action.</p>
+			<p>ImageSwitch supports <strong>25+ effects</strong> out of the box.</p>
 
             <h3>Fade</h3>
-			<p:imageSwitch effect="fade">
+            <p:imageSwitch effect="fade">
                 <ui:repeat value="#{imageSwitchBean.images}" var="image">
                     <p:graphicImage value="/images/#{image}" />
                 </ui:repeat>
@@ -54,18 +54,80 @@
             <h3>Wipe with Manual Controls</h3>
             <span onclick="switcher.previous();">Previous</span>
 			<span onclick="switcher.next();">Next</span>
-            
+
             <p:imageSwitch effect="wipe" widgetVar="switcher" slideshowAuto="false">
                 <ui:repeat value="#{imageSwitchBean.images}" var="image">
                     <p:graphicImage value="/images/#{image}" />
                 </ui:repeat>
 			</p:imageSwitch>
-								
+
+            <h3>Dialog Integration</h3>
+            <p:commandButton type="button" value="Show" onclick="dialog.show()" />
+			
+			<p:dialog header="Images" widgetVar="dialog" modal="true" draggable="false" resizable="false"
+				width="425" height="300">
+
+                <p:imageSwitch effect="uncover">
+                    <ui:repeat value="#{imageSwitchBean.images}" var="image">
+                        <p:graphicImage value="/images/#{image}" />
+                    </ui:repeat>
+                </p:imageSwitch>
+			</p:dialog>
+
 			<h3>Source</h3>
 			<p:tabView>
 				<p:tab title="imageSwitchEffect.xhtml">
                     <pre name="code" class="xml">
+&lt;h3&gt;Fade&lt;/h3&gt;
+&lt;p:imageSwitch effect="fade"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
 
+&lt;h3&gt;Zoom&lt;/h3&gt;
+&lt;p:imageSwitch effect="zoom"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
+
+&lt;h3&gt;TurnDown&lt;/h3&gt;
+&lt;p:imageSwitch effect="turnDown"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
+
+&lt;h3&gt;Shuffle&lt;/h3&gt;
+&lt;p:imageSwitch effect="shuffle"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
+
+&lt;h3&gt;Wipe with Manual Controls&lt;/h3&gt;
+&lt;span onclick="switcher.previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="switcher.next();"&gt;Next&lt;/span&gt;
+
+&lt;p:imageSwitch effect="wipe" widgetVar="switcher" slideshowAuto="false"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
+
+&lt;h3&gt;Dialog Integration&lt;/h3&gt;
+&lt;p:commandButton type="button" value="Show" onclick="dialog.show()" /&gt;
+
+&lt;p:dialog header="Images" widgetVar="dialog" modal="true" draggable="false" resizable="false"
+    width="425" height="300"&gt;
+
+    &lt;p:imageSwitch effect="uncover"&gt;
+        &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+            &lt;p:graphicImage value="/images/\#{image}" /&gt;
+        &lt;/ui:repeat&gt;
+    &lt;/p:imageSwitch&gt;
+&lt;/p:dialog&gt;
                     </pre>
 				</p:tab>
 
@@ -95,7 +157,7 @@ public class ImageSwitchBean {
                     </pre>
 				</p:tab>
 			</p:tabView>
-			
+
 		</div>
 
 	</ui:define>
