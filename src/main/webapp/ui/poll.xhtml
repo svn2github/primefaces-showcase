@@ -13,7 +13,7 @@
 			<h:form>
 				<h:outputText id="txt_count" value="#{counterBean.count}" />
 				
-				<p:poll interval="3" actionListener="#{counterBean.increment}" update="txt_count" />
+				<p:poll interval="3" listener="#{counterBean.increment}" update="txt_count" />
 			</h:form>
 			
 			<p:ajaxStatus style="width:16px;height:16px;">
@@ -34,7 +34,7 @@
 	&lt;h:outputText id="txt_count" value="\#{counterBean.count}" /&gt;
 	
 	&lt;p:poll interval="3" 
-			actionListener="\#{counterBean.increment}" update="txt_count" /&gt;
+			listener="\#{counterBean.increment}" update="txt_count" /&gt;
 &lt;/h:form&gt;
 					</pre>
 				</p:tab>

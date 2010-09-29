@@ -23,30 +23,51 @@
 			<p>Polling can be started and stopped manually on demand.</p>
 			
 			<h:form>
-				<h3>Polling in 4 seconds</h3>
-				<h:outputText id="txt_count" value="#{counterBean.count}" />
+				<p:commandButton type="button" value="Start" image="ui-icon-play" onclick="poll.start()" />
+                <p:commandButton type="button" value="Stop" image="ui-icon-pause" onclick="poll.stop()" />
+                
+                <br /><br />
+
+                <h:outputText id="txt_count" value="#{counterBean.count}" />
 				
-				<span onclick="poll.start();">Start</span>
-				<span onclick="poll.stop();">Stop</span>
-				
-				<p:poll interval="4" actionListener="#{counterBean.increment}" 
+				<p:poll interval="4" listener="#{counterBean.increment}"
 					update="txt_count" widgetVar="poll" autoStart="false"/>
 			</h:form>
-				
-<pre name="code" class="xml">
-&lt;a href="#" onclick="poll.start();"&gt;Start&lt;/a&gt;
-&lt;a href="#" onclick="poll.stop();"&gt;Stop&lt;/a&gt;
-</pre>
-<pre name="code" class="xml">
-&lt;h:form&gt;
-	&lt;h:outputText id="txt_count" value="\#{counterBean.count}" /&gt;
-	
-	&lt;p:poll frequency="4" actionListener="\#{counterBean.increment}" 
-				update="txt_count" widgetVar="poll" autoStart="false"/&gt;
-&lt;/h:form&gt;
-</pre>
 
-<pre name="code" class="java">
+			<p:ajaxStatus style="width:16px;height:16px;">
+				<f:facet name="start">
+					<h:graphicImage value="../design/ajaxloading.gif" />
+				</f:facet>
+
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="poll.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;p:commandButton type="button" value="Start"
+            image="ui-icon-play" onclick="poll.start()" /&gt;
+    &lt;p:commandButton type="button" value="Stop"
+            image="ui-icon-pause" onclick="poll.stop()" /&gt;
+
+    &lt;h:outputText id="txt_count" value="\#{counterBean.count}" /&gt;
+
+    &lt;p:poll interval="4" listener="\#{counterBean.increment}"
+            update="txt_count" widgetVar="poll" autoStart="false"/&gt;
+
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+
+				<p:tab title="CounterBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
 import java.io.Serializable;
 
 import javax.faces.event.ActionEvent;
@@ -62,12 +83,14 @@ public class CounterBean implements Serializable{
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
+
 	public void increment(ActionEvent actionEvent) {
 		count++;
 	}
 }
 </pre>
+				</p:tab>
+			</p:tabView>
             </div>
 
 </ui:define>
