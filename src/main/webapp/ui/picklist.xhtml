@@ -10,32 +10,58 @@
 		<div class="entry">
             <p>PickList is a dual list input component featuring Drag and Drop based reordering, transition effects, pojo support, theme support and more.</p>
 
-            <h:form>
-                <p:ajaxStatus style="width:16px;height:16px;">
-                    <f:facet name="start">
-                        <h:graphicImage value="../design/ajaxloading.gif" />
-                    </f:facet>
+            <p:ajaxStatus style="width:16px;height:16px;">
+                <f:facet name="start">
+                    <h:graphicImage value="../design/ajaxloading.gif" />
+                </f:facet>
 
-                    <f:facet name="complete">
-                        <h:outputText value="" />
-                    </f:facet>
-                </p:ajaxStatus>
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+
+            <h:form>
+
+                <h3 style="margin-top:0">Basic PickList</h3>
 
                 <p:pickList value="#{pickListBean.cities}" var="city"
                             itemLabel="#{city}" itemValue="#{city}" />
 
-                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()"/>
+                <p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px"/>
 
-                <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
-                    <h:panelGrid id="display" columns="2">
-                        <h:outputText value="Source: " />
+                <h3>Pojo Support with Bounce Effect and Header</h3>
+                <p:pickList value="#{pickListBean.players}" var="player" iconOnly="true" effect="bounce"
+								itemLabel="#{player.name}" itemValue="#{player}" converter="player">
+                    <f:facet name="sourceCaption">Available</f:facet>
+                    <f:facet name="targetCaption">Starting</f:facet>
+                </p:pickList>
+
+                <p:commandButton value="Submit" update="displayPlayers" oncomplete="playerDialog.show()" style="margin-top:5px"/>
+
+                <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog">
+                    <h:panelGrid id="displayCities" columns="2">
+                        <h:outputText value="Source: " style="font-weight:bold"/>
                          <ui:repeat value="#{pickListBean.cities.source}" var="item">
                             <h:outputText value="#{item}" style="margin-right:5px" />
                         </ui:repeat>
 
-                        <h:outputText value="Target: " />
+                        <h:outputText value="Target: " style="font-weight:bold"/>
                         <ui:repeat value="#{pickListBean.cities.target}" var="item">
                             <h:outputText value="#{item}" style="margin-right:5px" />
+                        </ui:repeat>
+                    </h:panelGrid>
+                </p:dialog>
+
+                <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="playerDialog">
+                    <h:panelGrid id="displayPlayers" columns="2">
+                        <h:outputText value="Source: " style="font-weight:bold"/>
+                        <ui:repeat value="#{pickListBean.players.source}" var="player">
+                            <h:outputText value="#{player.name}" style="margin-right:5px" />
+                        </ui:repeat>
+
+                        <h:outputText value="Target: " style="font-weight:bold"/>
+                        <ui:repeat value="#{pickListBean.players.target}" var="player">
+                            <h:outputText value="#{player.name}" style="margin-right:5px" />
                         </ui:repeat>
                     </h:panelGrid>
                 </p:dialog>
@@ -46,13 +72,117 @@
             <p:tabView>
                 <p:tab title="picklist.xhtml">
                     <pre name="code" class="xml">
+&lt;h:form&gt;
 
+    &lt;h3&gt;Basic PickList&lt;/h3&gt;
+
+    &lt;p:pickList value="\#{pickListBean.cities}"
+                var="city"
+                itemLabel="\#{city}"
+                itemValue="\#{city}" /&gt;
+
+    &lt;p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()"/&gt;
+
+    &lt;h3&gt;Pojo Support&lt;/h3&gt;
+    &lt;p:pickList value="\#{pickListBean.players}"
+                    var="player" iconOnly="true" effect="bounce"
+                    itemLabel="\#{player.name}"
+                    itemValue="\#{player}" converter="player"&gt;
+        &lt;f:facet name="sourceCaption"&gt;Available&lt;/f:facet&gt;
+        &lt;f:facet name="targetCaption"&gt;Starting&lt;/f:facet&gt;
+    &lt;/p:pickList&gt;
+
+    &lt;p:commandButton value="Submit" update="displayPlayers" oncomplete="playerDialog.show()"/&gt;
+
+    &lt;p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog"&gt;
+        &lt;h:panelGrid id="displayCities" columns="2"&gt;
+            &lt;h:outputText value="Source: " style="font-weight:bold"/&gt;
+             &lt;ui:repeat value="\#{pickListBean.cities.source}" var="item"&gt;
+                &lt;h:outputText value="\#{item}" style="margin-right:5px" /&gt;
+            &lt;/ui:repeat&gt;
+
+            &lt;h:outputText value="Target: " style="font-weight:bold"/&gt;
+            &lt;ui:repeat value="\#{pickListBean.cities.target}" var="item"&gt;
+                &lt;h:outputText value="\#{item}" style="margin-right:5px" /&gt;
+            &lt;/ui:repeat&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+    &lt;p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="playerDialog"&gt;
+        &lt;h:panelGrid id="displayPlayers" columns="2"&gt;
+            &lt;h:outputText value="Source: " style="font-weight:bold"/&gt;
+            &lt;ui:repeat value="\#{pickListBean.players.source}" var="player"&gt;
+                &lt;h:outputText value="\#{player.name}" style="margin-right:5px" /&gt;
+            &lt;/ui:repeat&gt;
+
+            &lt;h:outputText value="Target: " style="font-weight:bold"/&gt;
+            &lt;ui:repeat value="\#{pickListBean.players.target}" var="player"&gt;
+                &lt;h:outputText value="\#{player.name}" style="margin-right:5px" /&gt;
+            &lt;/ui:repeat&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
                     </pre>
                 </p:tab>
 
                 <p:tab title="PickListBean.java">
                     <pre name="code" class="java">
+package org.primefaces.examples.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.primefaces.examples.domain.Player;
+import org.primefaces.model.DualListModel;
+
+public class PickListBean {
+
+	private DualListModel&lt;Player&gt; players;
+
+	private DualListModel&lt;String&gt; cities;
+
+	public PickListBean() {
+		//Players
+		List&lt;Player&gt; source = new ArrayList&lt;Player&gt;();
+		List&lt;Player&gt; target = new ArrayList&lt;Player&gt;();
+
+		source.add(new Player("Messi", 10));
+		source.add(new Player("Ibrahimovic", 9));
+		source.add(new Player("Henry", 14));
+		source.add(new Player("Iniesta", 8));
+		source.add(new Player("Xavi", 6));
+		source.add(new Player("Puyol", 5));
+
+		players = new DualListModel&lt;Player&gt;(source, target);
+
+		//Cities
+		List&lt;String&gt; citiesSource = new ArrayList&lt;String&gt;();
+		List&lt;String&gt; citiesTarget = new ArrayList&lt;String&gt;();
+
+		citiesSource.add("Istanbul");
+		citiesSource.add("Ankara");
+		citiesSource.add("Izmir");
+		citiesSource.add("Antalya");
+		citiesSource.add("Bursa");
+
+		cities = new DualListModel&lt;String&gt;(citiesSource, citiesTarget);
+	}
+
+	public DualListModel&lt;Player&gt; getPlayers() {
+		return players;
+	}
+	public void setPlayers(DualListModel&lt;Player&gt; players) {
+		this.players = players;
+	}
+
+	public DualListModel&lt;String&gt; getCities() {
+		return cities;
+	}
+	public void setCities(DualListModel&lt;String&gt; cities) {
+		this.cities = cities;
+	}
+}
                     </pre>
                 </p:tab>
 
