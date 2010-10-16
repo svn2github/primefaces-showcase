@@ -21,7 +21,7 @@
 				<p:graphicImage value="/images/nature4.jpg" />
 			</p:imageSwitch>
 		
-			<p:contextMenu for="images">
+			<p:contextMenu for="images" zindex="50">
 				<p:menuitem value="Previous" url="#" onclick="gallery.previous()" />
 				<p:menuitem value="Next" url="#" onclick="gallery.next()" />
 				<p:menuitem value="Remove All" url="#" onclick="jQuery('#images').fadeOut()" />
@@ -41,7 +41,7 @@
 	&lt;p:graphicImage value="/images/nature4.jpg" /&gt;
 &lt;/p:imageSwitch&gt;
 
-&lt;p:contextMenu for="images"&gt;
+&lt;p:contextMenu for="images" zindex="50"&gt;
 	&lt;p:menuitem value="Previous" url="#" onclick="gallery.previous()" /&gt;
 	&lt;p:menuitem value="Next" url="\#" onclick="gallery.next()" /&gt;
 	&lt;p:menuitem value="Remove All" url="#" onclick="jQuery('\#images').fadeOut()" /&gt;
