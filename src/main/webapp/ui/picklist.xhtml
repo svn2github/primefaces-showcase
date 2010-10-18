@@ -29,9 +29,10 @@
 
                 <p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px"/>
 
-                <h3>Pojo Support with Bounce Effect and Header</h3>
+                <h3>Pojo Support with Bounce Effect, Captions and Reorder Controls</h3>
                 <p:pickList value="#{pickListBean.players}" var="player" iconOnly="true" effect="bounce"
-								itemLabel="#{player.name}" itemValue="#{player}" converter="player">
+								itemLabel="#{player.name}" itemValue="#{player}" converter="player"
+                                showSourceControls="true" showTargetControls="true">
                     <f:facet name="sourceCaption">Available</f:facet>
                     <f:facet name="targetCaption">Starting</f:facet>
                 </p:pickList>
@@ -83,11 +84,12 @@
 
     &lt;p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()"/&gt;
 
-    &lt;h3&gt;Pojo Support&lt;/h3&gt;
+    &lt;h3&gt;Pojo Support with Bounce Effect, Captions and Reorder Controls&lt;/h3&gt;
     &lt;p:pickList value="\#{pickListBean.players}"
                     var="player" iconOnly="true" effect="bounce"
                     itemLabel="\#{player.name}"
-                    itemValue="\#{player}" converter="player"&gt;
+                    itemValue="\#{player}" converter="player"
+                    showSourceControls="true" showTargetControls="true"&gt;
         &lt;f:facet name="sourceCaption"&gt;Available&lt;/f:facet&gt;
         &lt;f:facet name="targetCaption"&gt;Starting&lt;/f:facet&gt;
     &lt;/p:pickList&gt;
