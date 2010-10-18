@@ -10,8 +10,13 @@
     </context-param>
 
     <context-param>
-        <param-name>org.primefaces.component.captcha.PRIVATE_KEY</param-name>
+        <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
         <param-value>6LfwZwoAAAAAAEhRyntKF1PBzysAJLzqp2v-GMRR</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+        <param-value>6LfwZwoAAAAAAI-oUHpdvRnkMfu9fXQHxc0P7IBu</param-value>
     </context-param>
 	
     <context-param>

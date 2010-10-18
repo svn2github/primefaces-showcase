@@ -11,11 +11,11 @@
 		<div class="entry">
 			<p>Captcha's theme and displayed language can be customized.</p>
 			
-			<h:form prependId="false">
+			<h:form>
 				
 				<p:messages />
 
-				<p:captcha id="captcha" language="tr" theme="white" publicKey="6LfwZwoAAAAAAI-oUHpdvRnkMfu9fXQHxc0P7IBu"/>
+				<p:captcha label="Captcha" language="tr" theme="white" />
 
 				<br />
 				
@@ -26,12 +26,11 @@
 			<p:tabView>
 				<p:tab title="captcha.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form prependId="false"&gt;
+&lt;h:form&gt;
 				
 	&lt;p:messages /&gt;
 
-	&lt;p:captcha id="captcha" language="tr" theme="white" 
-				publicKey="6LfwZwoAAAAAAI-oUHpdvRnkMfu9fXQHxc0P7IBu"/&gt;
+	&lt;p:captcha label="Captcha" language="tr" theme="white"/&gt;
 
 	&lt;p:commandButton value="Check" ajax="false"
 				actionListener="\#{captchaBean.submit}" /&gt;
