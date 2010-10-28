@@ -11,6 +11,9 @@
 			<p>Slider is used to provide input in various ways.</p>
 			
 			<h:form>
+
+                <p:growl id="growl" showDetail="true" />
+
 				<h3>Input Text Slider</h3>
 				<h:panelGrid columns="1" style="margin-bottom:10px">
 					<h:inputText id="txt1" value="#{sliderBean.number1}" />
@@ -39,6 +42,12 @@
 					<h:inputText id="txt4" value="#{sliderBean.number4}"/>
 					<p:slider for="txt4" value="#{sliderBean.number4}" type="vertical" />
 				</h:panelGrid>
+
+                <h3>Ajax Slider</h3>
+                <h:panelGrid columns="1" style="margin-bottom:10px">
+					<h:inputText id="txt5" value="#{sliderBean.number5}" />
+                    <p:slider for="txt5" value="#{sliderBean.number5}" slideEndListener="#{sliderBean.onSlideEnd}" onSlideEndUpdate="growl"/>
+				</h:panelGrid>
 				
 				<h:panelGrid columns="2">
 					<p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
@@ -65,7 +74,9 @@
 						
 						<h:outputText value="Number 3: #{sliderBean.number3}" />
 						
-						<h:outputText value="Number 3: #{sliderBean.number4}" />
+						<h:outputText value="Number 4: #{sliderBean.number4}" />
+
+                        <h:outputText value="Number 5: #{sliderBean.number5}" />
 					</h:panelGrid>
 					
 				</p:dialog>	
@@ -77,6 +88,9 @@
 				<p:tab title="slider.xhtml">
 					<pre name="code" class="xml">
 &lt;h:form&gt;
+
+    &lt;p:growl id="growl" showDetail="true" /&gt;
+
 	&lt;h3&gt;Input Text Slider&lt;/h3&gt;
 	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
 		&lt;h:inputText id="txt1" value="\#{sliderBean.number1}" /&gt;
@@ -106,6 +120,13 @@
 		&lt;h:inputText id="txt4" value="\#{sliderBean.number4}"/&gt;
 		&lt;p:slider for="txt4" value="\#{sliderBean.number4}" type="vertical" /&gt;
 	&lt;/h:panelGrid&gt;
+
+    &lt;h3&gt;Ajax Slider&lt;/h3&gt;
+    &lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
+        &lt;h:inputText id="txt5" value="\#{sliderBean.number5}" /&gt;
+        &lt;p:slider for="txt5" value="\#{sliderBean.number5}"
+            slideEndListener="\#{sliderBean.onSlideEnd}" onSlideEndUpdate="growl"/&gt;
+    &lt;/h:panelGrid&gt;
 	
 	&lt;h:panelGrid columns="2"&gt;
 		&lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
@@ -132,7 +153,9 @@
 			
 			&lt;h:outputText value="Number 3: \#{sliderBean.number3}" /&gt;
 			
-			&lt;h:outputText value="Number 3: \#{sliderBean.number4}" /&gt;
+			&lt;h:outputText value="Number 4: \#{sliderBean.number4}" /&gt;
+
+            &lt;h:outputText value="Number 5: \#{sliderBean.number5}" /&gt;
 		&lt;/h:panelGrid&gt;
 		
 	&lt;/p:dialog&gt;	
@@ -152,6 +175,8 @@ public class SliderBean {
 	private int number3;
 	
 	private int number4;
+
+    private int number5;
 
 	public int getNumber1() {
 		return number1;
@@ -184,6 +209,19 @@ public class SliderBean {
 	public void setNumber4(int number4) {
 		this.number4 = number4;
 	}
+
+    public int getNumber5() {
+        return number5;
+    }
+
+    public void setNumber5(int number5) {
+        this.number5 = number5;
+    }
+
+    public void onSlideEnd(SlideEndEvent event) {
+        FacesMessage msg = new FacesMessage("Slide Ended", "Value: " + event.getValue());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
 					</pre>
 				</p:tab>
