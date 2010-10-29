@@ -15,7 +15,7 @@
 					
 					<p:growl id="messages" showDetail="true" />
 				
-					<p:commandButton value="Destroy the World" onclick="confirmation.show()" />
+					<p:commandButton value="Destroy the World" onclick="confirmation.show()" type="button"/>
 					
 					<p:confirmDialog message="Are you sure about destroying the world?"
 								showEffect="bounce" hideEffect="explode"
@@ -39,7 +39,7 @@
 	&lt;h:panelGrid columns="1" cellpadding="5"&gt;
 		&lt;h:outputText id="msg" value="\#{buttonBean.text}"/&gt;
 		
-		&lt;p:commandButton value="Destroy the World" onclick="confirmation.show()" /&gt;
+		&lt;p:commandButton value="Destroy the World" onclick="confirmation.show()" type="button"/&gt;
 	&lt;/h:panelGrid&gt;
 	
 	&lt;p:confirmDialog message="Are you sure about destroying the world?"
