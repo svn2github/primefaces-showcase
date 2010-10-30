@@ -26,8 +26,8 @@
 				<p:messages id="messages"/>
 				
 				<h3>Dynamic Position</h3>
-				<p:commandButton value="Show" onclick="dynaMenu.show();return false;" />
-				<p:menu widgetVar="dynaMenu" position="dynamic" context="'form:dynamicPosition','tl','br'">
+				<p:commandButton id="dynaButton" value="Show" onclick="dynaMenu.show();return false;" />
+                <p:menu widgetVar="dynaMenu" position="dynamic" context="'form:dynaButton','tl','bl'">
 					<p:submenu label="Ajax Menuitems">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
@@ -88,8 +88,8 @@
 	&lt;p:messages id="messages"/&gt;
 	
 	&lt;h3&gt;Dynamic Position&lt;/h3&gt;
-	&lt;p:commandButton value="Show" onclick="dynaMenu.show();return false;" /&gt;
-	&lt;p:menu widgetVar="dynaMenu" position="dynamic" context="'form:dynamicPosition','tl','br'"&gt;
+	&lt;p:commandButton id="dynaButton" value="Show" onclick="dynaMenu.show();return false;" /&gt;
+	&lt;p:menu widgetVar="dynaMenu" position="dynamic" context="'form:dynaButton','tl','br'"&gt;
 		&lt;p:submenu label="Ajax Menuitems"&gt;
 			&lt;p:menuitem value="Save" update="messages" icon="/images/save.png" 
 					actionListener="\#{buttonBean.save}" /&gt;
