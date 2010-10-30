@@ -9,16 +9,23 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">Separator</h1>
 		<div class="entry">
-			<p>Separator is used to create a horizantal line on a page.</p>
+			<p>Separator is used to create a horizantal line.</p>
 
-			Header: <p:separator title="Header-Content separator" style="height:3px;"/> Content of header.
+            <h3>Default Separator</h3>
+            <p:separator />
+
+            <h3>Custom Size</h3>
+            <p:separator style="width:500px;height:20px" />
 
 			<h3>Source</h3>
 			<p:tabView>
-				<p:tab title="spacer.xhtml">
+				<p:tab title="separator.xhtml">
                     <pre name="code" class="xml">
-						Header: &lt;p:separator title="Header-Content separator" style="height:3px;"/&gt; 
-						Content of header.
+&lt;h3&gt;Default Separator&lt;/h3&gt;
+&lt;p:separator /&gt;
+
+&lt;h3&gt;Custom Size&lt;/h3&gt;
+&lt;p:separator style="width:500px;height:20px" /&gt;	
                     </pre>
 				</p:tab>
 			</p:tabView>
