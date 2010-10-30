@@ -29,38 +29,38 @@
                     </f:facet>
 
                     <p:column headerText="Model" style="width:150px">
-                        <h:outputText value="#{car.model}" />
-
                         <p:cellEditor>
-                            <h:inputText value="#{car.model}" style="width:100%"/>
+                            <f:facet name="output"><h:outputText value="#{car.model}" /></f:facet>
+                            <f:facet name="input"><h:inputText value="#{car.model}" style="width:100%"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
                     <p:column headerText="Year" style="width:150px">
-                        <h:outputText value="#{car.year}" />
-
                         <p:cellEditor>
-                            <h:inputText value="#{car.year}" style="width:100%"/>
-                       </p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
+                            <f:facet name="input"><h:inputText value="#{car.year}" style="width:100%"/></f:facet>
+                        </p:cellEditor>
                     </p:column>
 
                     <p:column headerText="Manufacturer" style="width:150px">
-                        <h:outputText value="#{car.manufacturer}" />
-
                         <p:cellEditor>
-                            <h:selectOneMenu value="#{car.manufacturer}" style="width:100%">
-                                <f:selectItems value="#{tableBean.manufacturers}" var="man" itemLabel="#{man}" itemValue="#{man}" />
-                            </h:selectOneMenu>
+                            <f:facet name="output"><h:outputText value="#{car.manufacturer}" /></f:facet>
+                            <f:facet name="input">
+                                <h:selectOneMenu value="#{car.manufacturer}" style="width:100%">
+                                    <f:selectItems value="#{tableBean.manufacturers}" var="man" itemLabel="#{man}" itemValue="#{man}" />
+                                </h:selectOneMenu>
+                            </f:facet>
                         </p:cellEditor>
                     </p:column>
 
                     <p:column headerText="Color" style="width:150px">
-                        <h:outputText value="#{car.color}" />
-
                         <p:cellEditor>
-                            <h:selectOneMenu value="#{car.color}" style="width:100%">
-                                <f:selectItems value="#{tableBean.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />
-                            </h:selectOneMenu>
+                            <f:facet name="output"><h:outputText value="#{car.color}" /></f:facet>
+                            <f:facet name="input">
+                                <h:selectOneMenu value="#{car.color}" style="width:100%">
+                                    <f:selectItems value="#{tableBean.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />
+                                </h:selectOneMenu>
+                            </f:facet>
                         </p:cellEditor>
                     </p:column>
 
@@ -78,48 +78,63 @@
                 <pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;p:dataTable var="car"
-            value="\#{tableBean.carsSmall}" id="carList"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" id="carList"&gt;
 
         &lt;f:facet name="header"&gt;
             In-Cell Editing
         &lt;/f:facet&gt;
 
         &lt;p:column headerText="Model" style="width:150px"&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
-
             &lt;p:cellEditor&gt;
-                &lt;h:inputText value="\#{car.model}" style="width:100%"/&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.model}" /&gt;
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;h:inputText value="\#{car.model}" style="width:100%"/&gt;
+                &lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Year" style="width:150px"&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
-
             &lt;p:cellEditor&gt;
-                &lt;h:inputText value="\#{car.year}" style="width:100%"/&gt;
-           &lt;/p:cellEditor&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.year}" /&gt;
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;h:inputText value="\#{car.year}" style="width:100%"/&gt;
+                &lt;/f:facet&gt;
+            &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Manufacturer" style="width:150px"&gt;
-            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
-
             &lt;p:cellEditor&gt;
-                &lt;h:selectOneMenu value="\#{car.manufacturer}" style="width:100%"&gt;
-                    &lt;f:selectItems value="\#{tableBean.manufacturers}"
-                            var="man" itemLabel="\#{man}" itemValue="\#{man}" /&gt;
-                &lt;/h:selectOneMenu&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;h:selectOneMenu value="\#{car.manufacturer}" &gt;
+                        &lt;f:selectItems value="\#{tableBean.manufacturers}"
+                            var="man" 
+                            itemLabel="\#{man}"
+                            itemValue="\#{man}" /&gt;
+                    &lt;/h:selectOneMenu&gt;
+                &lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Color" style="width:150px"&gt;
-            &lt;h:outputText value="\#{car.color}" /&gt;
-
             &lt;p:cellEditor&gt;
-                &lt;h:selectOneMenu value="\#{car.color}" style="width:100%"&gt;
-                    &lt;f:selectItems value="\#{tableBean.colors}"
-                        var="color" itemLabel="\#{color}" itemValue="\#{color}" /&gt;
-                &lt;/h:selectOneMenu&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.color}" /&gt;
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;h:selectOneMenu value="\#{car.color}" &gt;
+                        &lt;f:selectItems value="\#{tableBean.colors}"
+                            var="color" 
+                            itemLabel="\#{color}"
+                            itemValue="\#{color}" /&gt;
+                    &lt;/h:selectOneMenu&gt;
+                &lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
