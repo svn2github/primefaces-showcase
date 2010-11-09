@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="head">
+		<script type="text/javascript">
+			var chartStyle = {
+				padding:20,
+				legend: {
+					display:"right",
+					spacing:10
+				}
+			};
+		</script>
+	</ui:define>
+
+	<ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">Charts - Model</h1>
+		<div class="entry">
+            <p>Chart model is used to create chart series programmatically.</p>
+
+            <h3>Pie Chart</h3>
+            <p:pieChart model="#{chartBean.pieModel}" />
+
+            <h3>Line Chart</h3>
+            <p:lineChart model="#{chartBean.cartesianModel}" />
+
+            <h3>Bar Chart</h3>
+            <p:barChart model="#{chartBean.cartesianModel}" />
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="chartModel.xhtml">
+                    <pre name="code" class="xml">
+&lt;h3&gt;Pie Chart&lt;/h3&gt;
+&lt;p:pieChart model="\#{chartBean.pieModel}" /&gt;
+
+&lt;h3&gt;Line Chart&lt;/h3&gt;
+&lt;p:lineChart model="\#{chartBean.cartesianModel}" /&gt;
+
+&lt;h3&gt;Bar Chart&lt;/h3&gt;
+&lt;p:barChart model="\#{chartBean.cartesianModel}" /&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="ChartBean.java">
+                    <pre name="code" class="java">
+public class ChartBean implements Serializable {
+
+    private CartesianChartModel cartesianModel;
+
+    private PieChartModel pieModel;
+
+	public ChartBean() {
+        createCartesianModel();
+        createPieModel();
+	}
+
+    public CartesianChartModel getCartesianModel() {
+        return cartesianModel;
+    }
+
+    public PieChartModel getPieModel() {
+        return pieModel;
+    }
+
+    private void createCartesianModel() {
+        cartesianModel = new CartesianChartModel();
+
+        ChartSeries boys = new ChartSeries();
+        boys.setLabel("Boys");
+
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        ChartSeries girls = new ChartSeries();
+        girls.setLabel("Girls");
+
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
+
+        cartesianModel.addSeries(boys);
+        cartesianModel.addSeries(girls);
+    }
+
+    private void createPieModel() {
+        pieModel = new PieChartModel();
+
+        pieModel.set("Brand 1", 540);
+        pieModel.set("Brand 2", 325);
+        pieModel.set("Brand 3", 702);
+        pieModel.set("Brand 4", 421);
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+
+	</ui:define>
+</ui:composition>

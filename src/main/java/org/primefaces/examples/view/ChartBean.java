@@ -20,11 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.primefaces.component.chart.series.ChartSeries;
 
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.examples.domain.Birth;
 import org.primefaces.examples.domain.ServerLoad;
 import org.primefaces.examples.domain.Vote;
+import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.PieChartModel;
 
 public class ChartBean implements Serializable {
 
@@ -35,6 +38,10 @@ public class ChartBean implements Serializable {
 	private List<Vote> votes;
 
     private List<ServerLoad> servers;
+
+    private CartesianChartModel cartesianModel;
+
+    private PieChartModel pieModel;
 
 	public ChartBean() {
 		sales = new ArrayList<Sale>();
@@ -59,6 +66,8 @@ public class ChartBean implements Serializable {
             servers.add(i, new ServerLoad("Server " + i, (int)(Math.random() * 100), (int)(Math.random() * 100)));
         }
 
+        createCartesianModel();
+        createPieModel();
 	}
 
 	public List<Sale> getSales() {
@@ -93,4 +102,46 @@ public class ChartBean implements Serializable {
         
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
+
+    public CartesianChartModel getCartesianModel() {
+        return cartesianModel;
+    }
+
+    public PieChartModel getPieModel() {
+        return pieModel;
+    }
+    
+    private void createCartesianModel() {
+        cartesianModel = new CartesianChartModel();
+
+        ChartSeries boys = new ChartSeries();
+        boys.setLabel("Boys");
+
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        ChartSeries girls = new ChartSeries();
+        girls.setLabel("Girls");
+
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
+
+        cartesianModel.addSeries(boys);
+        cartesianModel.addSeries(girls);
+    }
+
+    private void createPieModel() {
+        pieModel = new PieChartModel();
+        
+        pieModel.set("Brand 1", 540);
+        pieModel.set("Brand 2", 325);
+        pieModel.set("Brand 3", 702);
+        pieModel.set("Brand 4", 421);
+    }
 }
