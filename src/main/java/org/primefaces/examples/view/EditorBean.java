@@ -17,8 +17,6 @@ package org.primefaces.examples.view;
 
 public class EditorBean {
 
-    private String toolbar = "complete";
-
 	private String value;
 
     public String getValue() {
@@ -27,13 +25,5 @@ public class EditorBean {
 
     public void setValue(String value) {
         this.value = value;
-    }
-
-    public String getToolbar() {
-        return toolbar;
-    }
-
-    public void setToolbar(String toolbar) {
-        this.toolbar = toolbar;
     }
 }
