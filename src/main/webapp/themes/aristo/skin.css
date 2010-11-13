@@ -1349,7 +1349,7 @@ a
  *
  * http://docs.jquery.com/UI/Menu#theming
  */
-.ui-menu
+.ui-autocomplete.ui-menu
 {
     list-style: none;
     padding: 2px;
@@ -1357,11 +1357,11 @@ a
     display: block;
     float: left;
 }
-.ui-menu .ui-menu
+.ui-autocomplete.ui-menu .ui-menu
 {
     margin-top: -3px;
 }
-.ui-menu .ui-menu-item
+.ui-autocomplete.ui-menu .ui-menu-item
 {
     margin: 0;
     padding: 0;
@@ -1370,7 +1370,7 @@ a
     clear: left;
     width: 100%;
 }
-.ui-menu .ui-menu-item a
+.ui-autocomplete.ui-menu .ui-menu-item a
 {
     text-decoration: none;
     display: block;
@@ -1378,7 +1378,7 @@ a
     line-height: 1.5;
     zoom: 1;
 }
-.ui-menu .ui-menu-item a.ui-state-hover, .ui-menu .ui-menu-item a.ui-state-active
+.ui-autocomplete.ui-menu .ui-menu-item a.ui-state-hover, .ui-autocomplete.ui-menu .ui-menu-item a.ui-state-active
 {
     font-weight: normal;
     margin: -1px;
