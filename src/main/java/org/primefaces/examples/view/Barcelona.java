@@ -44,7 +44,7 @@ public class Barcelona implements Serializable {
         players.add(new Player("Alves", 2, "alves.jpg", "defence"));
         players.add(new Player("Valdes", 1, "valdes.jpg", "goalkeeper"));
         players.add(new Player("Abidal", 22, "abidal.jpg", "defence"));
-        players.add(new Player("Adriano", 16, "adriano.jpg", "midfield"));
+        players.add(new Player("Adriano", 16, "adriano.jpg", "defence"));
         players.add(new Player("Pinto", 13, "pinto.jpg", "goalkeeper"));
         players.add(new Player("Pique", 3, "pique.jpg", "defence"));
         players.add(new Player("Keita", 7, "keita.jpg", "midfield"));

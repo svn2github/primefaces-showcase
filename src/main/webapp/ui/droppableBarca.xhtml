@@ -148,13 +148,171 @@
 <p:tabView>
 	<p:tab title="droppableBarca.xhtml">
 	<pre name="code" class="xml">
+&lt;h:form prependId="false"&gt;
 
-			</pre>
+    &lt;p:growl id="growl" showDetail="true"/&gt;
+
+    &lt;h:panelGrid columns="2" columnClasses="lineup,squad"&gt;
+
+        &lt;p:panel header="Squad"&gt;
+            &lt;p:dataGrid id="availablePlayers"
+                value="\#{barcelona.players}" var="player" columns="4"&gt;
+                &lt;p:column&gt;
+                    &lt;p:graphicImage id="player"
+                        value="/images/barca/\#{player.photo}" /&gt;
+
+                    &lt;p:draggable for="player" revert="true"
+                        scope="\#{player.position}"/&gt;
+                &lt;/p:column&gt;
+            &lt;/p:dataGrid&gt;
+        &lt;/p:panel&gt;
+
+        &lt;h:panelGroup&gt;
+            &lt;h:panelGrid columns="3" style="margin-left:40px;"&gt;
+                &lt;p:outputPanel id="LF" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit" activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="forward" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                &lt;/p:outputPanel&gt;
+
+                &lt;p:outputPanel id="CF" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit" activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="forward" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                &lt;/p:outputPanel&gt;
+
+                &lt;p:outputPanel id="RF" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit" activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="forward" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                &lt;/p:outputPanel&gt;
+            &lt;/h:panelGrid&gt;
+
+            &lt;h:panelGrid columns="3" style="margin-left:40px;"&gt;
+                &lt;p:outputPanel id="LCM" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit" activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="midfield" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                &lt;/p:outputPanel&gt;
+
+                &lt;p:outputPanel id="DM" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit" activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="midfield" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                &lt;/p:outputPanel&gt;
+
+                &lt;p:outputPanel id="RCM" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit" activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="midfield" onDrop="handleDrop" datasource="availablePlayers" /&gt;
+                &lt;/p:outputPanel&gt;
+            &lt;/h:panelGrid&gt;
+
+            &lt;h:panelGrid columns="4"&gt;
+                &lt;p:outputPanel id="LB" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit" activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                &lt;/p:outputPanel&gt;
+
+                &lt;p:outputPanel id="CB1" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit" activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                &lt;/p:outputPanel&gt;
+
+                &lt;p:outputPanel id="CB2" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit"  activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                &lt;/p:outputPanel&gt;
+
+                &lt;p:outputPanel id="RB" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit" activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                &lt;/p:outputPanel&gt;
+            &lt;/h:panelGrid&gt;
+
+            &lt;h:panelGrid columns="1" style="margin-left:120px;"&gt;
+                &lt;p:outputPanel id="GK" styleClass="slot"&gt;
+                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
+                                tolerance="fit" activeStyleClass="slotActive"
+                                 onDropUpdate="selectedPlayers growl" scope="goalkeeper" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                &lt;/p:outputPanel&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/h:panelGroup&gt;
+
+
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:panel header="Squad"&gt;
+        &lt;p:dataList value="\#{barcelona.selectedPlayers}"
+                        var="player" id="selectedPlayers"&gt;
+            \#{player.number} - \#{player.name}
+        &lt;/p:dataList&gt;
+    &lt;/p:panel&gt;
+
+&lt;/h:form&gt;
+    </pre>
 	</p:tab>
 	
-	<p:tab title="barcelona.java">
+	<p:tab title="Barcelona.java">
 		<pre name="code" class="java">
+package org.primefaces.examples.view;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.DragDropEvent;
+import org.primefaces.examples.domain.Player;
+
+public class Barcelona implements Serializable {
+
+    private List&lt;Player&gt; players;
+
+    private List&lt;Player&gt; selectedPlayers;
+
+    public Barcelona() {
+        players = new ArrayList&lt;Player&gt;();
+        selectedPlayers = new ArrayList&lt;Player&gt;();
+
+        players.add(new Player("Messi", 10, "messi.jpg", "forward"));
+        players.add(new Player("Villa", 7, "villa.jpg", "forward"));
+        players.add(new Player("Pedro", 17, "pedro.jpg", "forward"));
+        players.add(new Player("Bojan", 9, "bojan.jpg", "forward"));
+        players.add(new Player("Xavi", 6, "xavi.jpg", "midfield"));
+        players.add(new Player("Iniesta", 8, "iniesta.jpg", "midfield"));
+        players.add(new Player("Mascherano", 16, "mascherano.jpg", "defence"));
+        players.add(new Player("Puyol", 5, "puyol.jpg", "defence"));
+        players.add(new Player("Alves", 2, "alves.jpg", "defence"));
+        players.add(new Player("Valdes", 1, "valdes.jpg", "goalkeeper"));
+        players.add(new Player("Abidal", 22, "abidal.jpg", "defence"));
+        players.add(new Player("Adriano", 16, "adriano.jpg", "defence"));
+        players.add(new Player("Pinto", 13, "pinto.jpg", "goalkeeper"));
+        players.add(new Player("Pique", 3, "pique.jpg", "defence"));
+        players.add(new Player("Keita", 7, "keita.jpg", "midfield"));
+        players.add(new Player("Maxwell", 5, "maxwell.jpg", "defence"));
+    }
+
+    public List&lt;Player&gt; getPlayers() {
+        return players;
+    }
+
+    public List&lt;Player&gt; getSelectedPlayers() {
+        return selectedPlayers;
+    }
+
+    public void onDrop(DragDropEvent event) {
+        Player player = (Player) event.getData();
+
+        selectedPlayers.add(player);
+
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(player.getName() + " added", "Position:" + event.getDropId()));
+    }
+}
 		</pre>
 	</p:tab>
 </p:tabView>
