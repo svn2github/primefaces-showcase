@@ -26,7 +26,7 @@
 	</style>
 </h:head>
 
-<h:body class="yui-skin-sam">
+<h:body>
 
 	<p:growl id="msg" showDetail="true"/>
 		
@@ -54,7 +54,7 @@
 		<p:layoutUnit id="left" position="left" width="300" resizable="true" closable="true" collapsible="true" header="Options" minWidth="200">
 			<p:accordionPanel activeIndex="0" autoHeight="false">
 				<p:tab title="Menu 1">
-					<p:calendar mode="inline" close="false" navigator="none"/>
+					<p:calendar mode="inline" navigator="none"/>
 				</p:tab>
 				
 				<p:tab title="Menu 2">
@@ -67,9 +67,9 @@
 			</p:accordionPanel>
 		</p:layoutUnit>
 		
-		<p:layoutUnit id="right" position="right" width="200" header="Gallery" resizable="true" closable="true" collapsible="true">
+		<p:layoutUnit id="right" position="right" width="250" header="Gallery" resizable="true" closable="true" collapsible="true">
 		
-			<h:form>
+			<h:form id="themeForm">
 				<p:commandButton id="themeButton" value="Change Theme: #{guestPreferences.theme}" onclick="themeMenu.show()" type="button"/>
 				<p:menu widgetVar="themeMenu" position="dynamic" context="'themeForm:themeButton','tl','bl'" styleClass="themeMenu">
 					<p:submenu label="Themes">

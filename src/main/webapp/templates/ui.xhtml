@@ -69,9 +69,7 @@
 											<p:commandButton id="themeButton" value="Change Theme: #{guestPreferences.theme}" onclick="themeMenu.show()" type="button" style="width:100%"/>
 											<p:menu widgetVar="themeMenu" position="dynamic" context="'themeForm:themeButton','tl','bl'" styleClass="themeMenu">
 												<p:submenu label="Themes">
-													<p:menuitem value="Sam (Default)" ajax="false"><f:setPropertyActionListener value="sam" target="#{guestPreferences.theme}" /></p:menuitem>
                                                     <p:menuitem value="Aristo" ajax="false"><f:setPropertyActionListener value="aristo" target="#{guestPreferences.theme}" /></p:menuitem>
-													<p:menuitem value="Base" ajax="false"><f:setPropertyActionListener value="base" target="#{guestPreferences.theme}" /></p:menuitem>
 													<p:menuitem value="Black-Tie" ajax="false"><f:setPropertyActionListener value="black-tie" target="#{guestPreferences.theme}" /></p:menuitem>
 													<p:menuitem value="Blitzer" ajax="false"><f:setPropertyActionListener value="blitzer" target="#{guestPreferences.theme}" /></p:menuitem>
 													<p:menuitem value="BlueSky" ajax="false"><f:setPropertyActionListener value="bluesky" target="#{guestPreferences.theme}" /></p:menuitem>
@@ -89,6 +87,7 @@
 													<p:menuitem value="Overcast" ajax="false"><f:setPropertyActionListener value="overcast" target="#{guestPreferences.theme}" /></p:menuitem>
 													<p:menuitem value="Pepper-Grinder" ajax="false"><f:setPropertyActionListener value="pepper-grinder" target="#{guestPreferences.theme}" /></p:menuitem>
 													<p:menuitem value="Redmond" ajax="false"><f:setPropertyActionListener value="redmond" target="#{guestPreferences.theme}" /></p:menuitem>
+                                                    <p:menuitem value="Sam" ajax="false"><f:setPropertyActionListener value="sam" target="#{guestPreferences.theme}" /></p:menuitem>
 													<p:menuitem value="Smoothness" ajax="false"><f:setPropertyActionListener value="smoothness" target="#{guestPreferences.theme}" /></p:menuitem>
 													<p:menuitem value="South-Street" ajax="false"><f:setPropertyActionListener value="south-street" target="#{guestPreferences.theme}" /></p:menuitem>
 													<p:menuitem value="Start" ajax="false"><f:setPropertyActionListener value="start" target="#{guestPreferences.theme}" /></p:menuitem>
