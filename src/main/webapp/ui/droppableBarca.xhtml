@@ -61,9 +61,9 @@
 					<p:panel header="Squad">
                         <p:dataGrid id="availablePlayers" value="#{barcelona.players}" var="player" columns="4">
                             <p:column>
-                                <p:graphicImage id="player" value="/images/barca/#{player.photo}" />
+                                <p:graphicImage id="player" value="/images/barca/#{player.photo}" styleClass="playerImage"/>
 
-                                <p:draggable for="player" revert="true" scope="#{player.position}"/>
+                                <p:draggable for="player" revert="true" scope="#{player.position}" stack=".playerImage"/>
                             </p:column>
                         </p:dataGrid>
 					</p:panel>
@@ -159,10 +159,12 @@
                 value="\#{barcelona.players}" var="player" columns="4"&gt;
                 &lt;p:column&gt;
                     &lt;p:graphicImage id="player"
-                        value="/images/barca/\#{player.photo}" /&gt;
+                        value="/images/barca/\#{player.photo}"
+                        styleClass="playerImage" /&gt;
 
                     &lt;p:draggable for="player" revert="true"
-                        scope="\#{player.position}"/&gt;
+                        scope="\#{player.position}"
+                        stack=".playerImage"/&gt;
                 &lt;/p:column&gt;
             &lt;/p:dataGrid&gt;
         &lt;/p:panel&gt;

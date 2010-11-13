@@ -41,11 +41,11 @@
 
                             <p:panel id="pnl" header="#{car.model}" style="text-align:center">
                                 <h:panelGrid columns="1" style="width:100%">
-                                    <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/>
+                                    <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg" />
                                 </h:panelGrid>
                             </p:panel>
 
-                            <p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar"/>
+                            <p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>
 
                         </p:column>
 
@@ -135,7 +135,8 @@
                     &lt;/h:panelGrid&gt;
                 &lt;/p:panel&gt;
 
-                &lt;p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar"/&gt;
+                &lt;p:draggable for="pnl" revert="true"
+                        handle=".ui-panel-titlebar" stack=".ui-panel"/&gt;
 
             &lt;/p:column&gt;
 
