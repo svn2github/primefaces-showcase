@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Prime Technology.
+ * Copyright 2010 Prime Technology.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,9 +43,11 @@ public class Player {
 		this.name = name;
 	}
 
-	public Player(String name, String photo) {
+    public Player(String name, int number, String photo, String position) {
 		this.name = name;
+        this.number = number;
 		this.photo = photo;
+        this.position = position;
 	}
 	
 	public String getHeight() {

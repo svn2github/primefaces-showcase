@@ -1,0 +1,137 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+    <ui:define name="head">
+        <script type="text/javascript">
+			function handleDrop(event, ui) {
+                var droppedCar = ui.draggable;
+
+                droppedCar.fadeOut('fast');
+			}
+		</script>
+	</ui:define>
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">DataGrid - Drag and Drop</h1>
+		<div class="entry">
+		<p>Drag and Drop components have special integration with data components, this example demonstrates dataGrid integration.
+        Drag cars using headers to the drop area.</p>
+
+			<p:ajaxStatus style="width:16px;height:16px;">
+				<f:facet name="start">
+					<h:graphicImage value="../design/ajaxloading.gif" />
+				</f:facet>
+
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+
+			<h:form id="carForm">
+
+                <p:fieldset legend="AvailableCars">
+
+                    <p:dataGrid id="availableCars" var="car" value="#{tableBean.carsSmall}" columns="3">
+
+                        <p:column>
+
+                            <p:panel id="pnl" header="#{car.model}" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/>
+                                </h:panelGrid>
+                            </p:panel>
+
+                            <p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar"/>
+
+                        </p:column>
+
+                    </p:dataGrid>
+
+                </p:fieldset>
+
+                <p:fieldset id="selectedCars" legend="Selected Cars" style="margin-top:20px">
+
+                    <p:outputPanel id="dropArea">
+                        
+                        <h:outputText value="!!!Drop here!!!" rendered="#{empty tableBean.droppedCars}" style="font-size:24px;" />
+
+                        <p:dataTable var="car" value="#{tableBean.droppedCars}" rendered="#{not empty tableBean.droppedCars}">
+                            <p:column headerText="Model">
+                                <h:outputText value="#{car.model}" />
+                            </p:column>
+
+                            <p:column headerText="Year">
+                                <h:outputText value="#{car.year}" />
+                            </p:column>
+
+                            <p:column headerText="Manufacturer">
+                                <h:outputText value="#{car.manufacturer}" />
+                            </p:column>
+
+                            <p:column headerText="Color">
+                                <h:outputText value="#{car.color}" />
+                            </p:column>
+
+                             <p:column style="width:32px">
+                                <p:commandButton update="carForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search">
+                                    <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+
+                    </p:outputPanel>
+                    
+                </p:fieldset>
+
+                <p:droppable for="selectedCars" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="availableCars"
+                             dropListener="#{tableBean.onCarDrop}" onDropUpdate="dropArea availableCars" onDrop="handleDrop"/>
+
+                <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" draggable="false"
+                          width="200" showEffect="fade" hideEffect="fade" modal="true">
+
+                    <h:panelGrid id="display" columns="2" cellpadding="4">
+
+                        <f:facet name="header">
+                            <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>
+                        </f:facet>
+
+                        <h:outputText value="Model:" />
+                        <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
+
+                        <h:outputText value="Year:" />
+                        <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
+
+                        <h:outputText value="Manufacturer:" />
+                        <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+
+			</h:form>
+
+		<h3>Source</h3>
+<p:tabView>
+	<p:tab title="datagrid.xhtml">
+		<pre name="code" class="xml">
+
+		</pre>
+	</p:tab>
+
+	<p:tab title="TableBean.java">
+		<pre name="code" class="java">
+
+		</pre>
+	</p:tab>
+</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

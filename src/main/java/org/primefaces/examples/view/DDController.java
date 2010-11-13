@@ -27,4 +27,8 @@ public class DDController {
 		
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
+
+    public void onCarDrop(DragDropEvent ddEvent) {
+        System.out.println("Dropped:" + ddEvent.getDragId());
+    }
 }

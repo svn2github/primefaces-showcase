@@ -320,4 +320,9 @@
         <managed-bean-class>org.primefaces.examples.view.ImageSwitchBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>barcelona</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.Barcelona</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>

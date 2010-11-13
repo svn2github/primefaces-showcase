@@ -46,6 +46,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import java.util.Map;
 import javax.faces.model.SelectItem;
+import org.primefaces.event.DragDropEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
@@ -114,10 +115,13 @@ public class TableBean implements Serializable {
 
     private SelectItem[] manufacturerOptions;
 
+    private List<Car> droppedCars;
+
 	public TableBean() {
 		cars = new ArrayList<Car>();
 		carsSmall = new ArrayList<Car>();
         carsLarge = new ArrayList<Car>();
+        droppedCars = new ArrayList<Car>();
 		
 		populateRandomCars(cars, 50);
 		populateRandomCars(carsSmall, 9);
@@ -418,5 +422,16 @@ public class TableBean implements Serializable {
 
     public SelectItem[] getManufacturerOptions() {
         return manufacturerOptions;
+    }
+
+    public void onCarDrop(DragDropEvent ddEvent) {
+        Car car = ((Car) ddEvent.getData());
+
+        droppedCars.add(car);
+        carsSmall.remove(car);
+    }
+
+    public List<Car> getDroppedCars() {
+        return droppedCars;
     }
 }
