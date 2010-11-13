@@ -22,7 +22,7 @@ import javax.faces.context.FacesContext;
 
 public class GuestPreferences implements Serializable {
 
-	private String theme = "cupertino"; //default
+	private String theme = "aristo"; //default
 
 	public String getTheme() {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
