@@ -58,7 +58,7 @@
 
 						<p:wizard widgetVar="wiz" flowListener="#{userWizard.onFlowProcess}">
 						
-							<p:tab id="personal">
+							<p:tab id="personal" title="Personal">
 
 								<p:panel header="Personal Details">
 								
@@ -80,8 +80,8 @@
 								</p:panel>
 							</p:tab>
 								
-							<p:tab id="address">
-								<p:panel header="Adress Details">
+							<p:tab id="address" title="Address">
+								<p:panel header="Address Details">
 								
 									<p:messages />
 									
@@ -102,7 +102,7 @@
 								</p:panel>
 							</p:tab>
 								
-							<p:tab id="contact">
+							<p:tab id="contact" title="Contact">
 								<p:panel header="Contact Information">
 									
 									<p:messages />
@@ -122,7 +122,7 @@
 								</p:panel>
 							</p:tab>
 								
-							<p:tab id="confirm">
+							<p:tab id="confirm" title="Confirmation">
 								<p:panel header="Confirmation">
 									
 									<p:growl id="growl" sticky="true" showDetail="true"/>
