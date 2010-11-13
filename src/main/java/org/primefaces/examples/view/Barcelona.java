@@ -18,6 +18,8 @@ package org.primefaces.examples.view;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import org.primefaces.event.DragDropEvent;
 import org.primefaces.examples.domain.Player;
 
@@ -31,22 +33,22 @@ public class Barcelona implements Serializable {
         players = new ArrayList<Player>();
         selectedPlayers = new ArrayList<Player>();
         
-        players.add(new Player("Messi", 10, "messi_thumb.jpg", "forward"));
-        players.add(new Player("Ibrahimovic", 9, "ibra_thumb.jpg", "forward"));
-        players.add(new Player("Henry", 14, "henry_thumb.jpg", "forward"));
-        players.add(new Player("Bojan", 22, "bojan_thumb.jpg", "forward"));
-        players.add(new Player("Xavi", 6, "xavi_thumb.jpg", "midfield"));
-        players.add(new Player("Iniesta", 8, "iniesta_thumb.jpg", "midfield"));
-        players.add(new Player("Marquez", 4, "marquez_thumb.jpg", "defence"));
-        players.add(new Player("Puyol", 2, "puyol_thumb.jpg", "defence"));
-        players.add(new Player("Alves", 3, "alves_thumb.jpg", "defence"));
-        players.add(new Player("Valdes", 1, "valdes_thumb.jpg", "goalkeeper"));
-        players.add(new Player("Abidal", 15, "abidal_thumb.jpg", "defence"));
-        players.add(new Player("Toure", 16, "toure_thumb.jpg", "midfield"));
-        players.add(new Player("Pinto", 25, "pinto_thumb.jpg", "goalkeeper"));
-        players.add(new Player("Pique", 25, "pique_thumb.jpg", "defence"));
-        players.add(new Player("Keita", 7, "keita_thumb.jpg", "midfield"));
-        players.add(new Player("Maxwell", 5, "maxwell_thumb.jpg", "defence"));
+        players.add(new Player("Messi", 10, "messi.jpg", "forward"));
+        players.add(new Player("Villa", 7, "villa.jpg", "forward"));
+        players.add(new Player("Pedro", 17, "pedro.jpg", "forward"));
+        players.add(new Player("Bojan", 9, "bojan.jpg", "forward"));
+        players.add(new Player("Xavi", 6, "xavi.jpg", "midfield"));
+        players.add(new Player("Iniesta", 8, "iniesta.jpg", "midfield"));
+        players.add(new Player("Mascherano", 16, "mascherano.jpg", "defence"));
+        players.add(new Player("Puyol", 5, "puyol.jpg", "defence"));
+        players.add(new Player("Alves", 2, "alves.jpg", "defence"));
+        players.add(new Player("Valdes", 1, "valdes.jpg", "goalkeeper"));
+        players.add(new Player("Abidal", 22, "abidal.jpg", "defence"));
+        players.add(new Player("Adriano", 16, "adriano.jpg", "midfield"));
+        players.add(new Player("Pinto", 13, "pinto.jpg", "goalkeeper"));
+        players.add(new Player("Pique", 3, "pique.jpg", "defence"));
+        players.add(new Player("Keita", 7, "keita.jpg", "midfield"));
+        players.add(new Player("Maxwell", 5, "maxwell.jpg", "defence"));
     }
 
     public List<Player> getPlayers() {
@@ -61,5 +63,7 @@ public class Barcelona implements Serializable {
         Player player = (Player) event.getData();
         
         selectedPlayers.add(player);
+
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(player.getName() + " added", "Position:" + event.getDropId()));
     }
 }
