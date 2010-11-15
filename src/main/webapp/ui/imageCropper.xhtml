@@ -16,7 +16,7 @@
 					<h:panelGrid columns="2">
 						<p:imageCropper value="#{imageCropperBean.croppedImage}" image="/images/barca/camp_nou.jpg" initialCoords="225,75,300,125"/>
 						
-						<p:graphicImage id="localCroppedImage" value="barca/#{imageCropperBean.newImageName}.jpg" />
+						<p:graphicImage id="localCroppedImage" value="/images/barca/#{imageCropperBean.newImageName}.jpg" />
 					</h:panelGrid>
 					
 					<h:panelGrid columns="2">
@@ -95,7 +95,7 @@ public class ImageCropperBean {
 
 	public String crop() {
 		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-		String newFileName = servletContext.getRealPath("") + File.separator + "ui" + File.separator + "barca" + File.separator+ "croppedImage.jpg";
+		String newFileName = servletContext.getRealPath("") + File.separator + "images" + File.separator + "barca" + File.separator+ "croppedImage.jpg";
 		
 		FileImageOutputStream imageOutput;
 		try {

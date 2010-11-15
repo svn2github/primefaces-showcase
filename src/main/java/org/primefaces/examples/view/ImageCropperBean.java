@@ -45,7 +45,7 @@ public class ImageCropperBean {
 		
 		setNewImageName(getRandomImageName());
 		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-		String newFileName = servletContext.getRealPath("") + File.separator + "ui" + File.separator + "barca" + File.separator + getNewImageName() + ".jpg";
+		String newFileName = servletContext.getRealPath("") + File.separator + "images" + File.separator + "barca" + File.separator + getNewImageName() + ".jpg";
 		
 		FileImageOutputStream imageOutput;
 		try {
