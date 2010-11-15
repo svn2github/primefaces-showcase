@@ -4,16 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
-	
-	<ui:define name="head">
-		
-	<style type="text/css">
-		.disk {
-   			background-image: url(../images/disk.png) !important;
-		}
-	</style>
-	</ui:define>
-
+    
 	<ui:define name="content">
 
 
@@ -52,9 +43,9 @@
 
 						<p:commandButton value="Non-Ajax Submit" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" ajax="false" />
 
-						<p:commandButton value="With Icon" actionListener="#{pprBean.savePerson}" update="panel,display" style="margin-right:20px;" image="disk" />
+						<p:commandButton value="With Icon" actionListener="#{pprBean.savePerson}" update="panel,display" style="margin-right:20px;" image="ui-icon ui-icon-disk" />
 
-						<p:commandButton actionListener="#{pprBean.savePerson}" update="panel,display" style="margin-right:20px;" image="disk" title="Icon Only"/>
+						<p:commandButton actionListener="#{pprBean.savePerson}" update="panel,display" style="margin-right:20px;" image="ui-icon ui-icon-disk" title="Icon Only"/>
 
 						<p:commandButton value="Disabled" style="margin-right:20px;" disabled="true" />
 					
@@ -92,18 +83,18 @@
 	&lt;/p:panel&gt;
 
 	&lt;p:commandButton value="Ajax Submit" update="panel,display"
-			 actionListener="\#{pprBean.savePerson}" style="margin-right:20px;" /&gt;
+			 actionListener="\#{pprBean.savePerson}" /&gt;
 				
 	&lt;p:commandButton value="Non-Ajax Submit" actionListener="\#{pprBean.savePerson}" 
-			style="margin-right:20px;" ajax="false" /&gt;
+			ajax="false" /&gt;
 	
 	&lt;p:commandButton value="With Icon" actionListener="\#{pprBean.savePerson}" 
-			update="panel,display" style="margin-right:20px;" image="disk" /&gt;
+			update="panel,display" image="ui-icon ui-icon-disk" /&gt;
 	
 	&lt;p:commandButton actionListener="\#{pprBean.savePerson}" update="panel,display" 
-			style="margin-right:20px;" image="disk" title="Icon Only"/&gt;
+			image="ui-icon ui-icon-disk" title="Icon Only"/&gt;
 	
-	&lt;p:commandButton value="Disabled" style="margin-right:20px;" disabled="true" /&gt;
+	&lt;p:commandButton value="Disabled" disabled="true" /&gt;
 	
 	&lt;p:panel id="display" header="Information" style="margin-top:10px;"&gt;
 		&lt;h:panelGrid columns="2"&gt;
