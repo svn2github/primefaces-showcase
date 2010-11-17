@@ -40,8 +40,13 @@
                             <h:inputText value="Edit Me" />
                         </p:inplace>
 
-                        <h:outputText value="Select One: "/>
-                        <p:inplace label="Cities" effectSpeed="fast">
+                        <h:outputText value="Ajax Inplace Editor: " />
+                        <p:inplace editor="true" onEditUpdate="msgs">
+                            <h:inputText value="#{inplaceBean.text}" required="true" label="text"/>
+                        </p:inplace>
+
+                        <h:outputText value="Select One (Dlbclick): "/>
+                        <p:inplace label="Cities" effectSpeed="fast" event="dblclick">
                             <h:selectOneMenu>
                                 <f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
                                 <f:selectItem itemLabel="Ankara" itemValue="Ankara" />
@@ -52,11 +57,6 @@
                         <h:outputText value="Checkbox: "/>
                         <p:inplace label="Edit me" effect="none">
                             <h:selectBooleanCheckbox />
-                        </p:inplace>
-
-                        <h:outputText value="Ajax Inplace Editor: " />
-                        <p:inplace editor="true" onEditUpdate="msgs">
-                            <h:inputText value="#{inplaceBean.text}" required="true" label="text"/>
                         </p:inplace>
 
                         <h:outputText value="Sliding Image: " />
@@ -83,8 +83,14 @@
                 &lt;h:inputText value="Edit Me" /&gt;
             &lt;/p:inplace&gt;
 
-            &lt;h:outputText value="Select One: "/&gt;
-            &lt;p:inplace label="Cities" effectSpeed="fast"&gt;
+            &lt;h:outputText value="Ajax Inplace Editor: " /&gt;
+            &lt;p:inplace editor="true" onEditUpdate="msgs"&gt;
+                &lt;h:inputText value="\#{inplaceBean.text}"
+                            required="true" label="text"/&gt;
+            &lt;/p:inplace&gt;
+
+            &lt;h:outputText value="Select One (Dlbclick): "/&gt;
+            &lt;p:inplace label="Cities" effectSpeed="fast" event="dblclick"&gt;
                 &lt;h:selectOneMenu&gt;
                     &lt;f:selectItem itemLabel="Istanbul" itemValue="Istanbul" /&gt;
                     &lt;f:selectItem itemLabel="Ankara" itemValue="Ankara" /&gt;
@@ -95,12 +101,6 @@
             &lt;h:outputText value="Checkbox: "/&gt;
             &lt;p:inplace label="Edit me" effect="none"&gt;
                 &lt;h:selectBooleanCheckbox /&gt;
-            &lt;/p:inplace&gt;
-
-            &lt;h:outputText value="Ajax Inplace Editor: " /&gt;
-            &lt;p:inplace editor="true" onEditUpdate="msgs"&gt;
-                &lt;h:inputText value="\#{inplaceBean.text}"
-                            required="true" label="text"/&gt;
             &lt;/p:inplace&gt;
 
             &lt;h:outputText value="Sliding Image: " /&gt;
