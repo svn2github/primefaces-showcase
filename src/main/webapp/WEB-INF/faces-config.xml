@@ -325,4 +325,9 @@
         <managed-bean-class>org.primefaces.examples.view.Barcelona</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>inplaceBean</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.InplaceBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>

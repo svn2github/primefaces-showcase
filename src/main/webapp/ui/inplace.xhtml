@@ -18,76 +18,117 @@
 		<h1 class="title ui-widget-header ui-corner-all">Inplace</h1>
 		<div class="entry">
 			<p>Inplace provides easy inplace editing and inline content display.</p>
+
+            <p:ajaxStatus style="width:16px;height:16px;">
+                <f:facet name="start">
+                    <h:graphicImage value="../design/ajaxloading.gif" />
+                </f:facet>
+
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+
+            <h:form>
+
+                <p:growl id="msgs" />
 			
-			<p:panel header="Inplace Editor">
-				<h:panelGrid columns="2" columnClasses="column" cellpadding="5">
-					<h:outputText value="Basic Input: " />
-					<p:inplace>
-						<h:inputText value="Edit Me" />
-					</p:inplace>
-					
-					<h:outputText value="Select One: "/>
-					<p:inplace label="Cities" effectSpeed="fast">
-						<h:selectOneMenu>
-							<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
-							<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
-							<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
-						</h:selectOneMenu>
-					</p:inplace>
-					
-					<h:outputText value="Checkbox: "/>
-					<p:inplace label="Edit me" effectSpeed="slow">
-						<h:selectBooleanCheckbox />
-					</p:inplace>
-					
-					<h:outputText value="Text Area: " />
-					<p:inplace effect="none">
-						<h:inputTextarea value="Barcelona" />
-					</p:inplace>
-					
-					<h:outputText value="Image: " />
-					<p:inplace label="Show" effect="slide">
-						<p:graphicImage value="/images/nature1.jpg" />
-					</p:inplace>		
-				</h:panelGrid>
-			</p:panel>
+                <p:panel header="Inplace Editor">
+                    <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+                        <h:outputText value="Basic Input: " />
+                        <p:inplace>
+                            <h:inputText value="Edit Me" />
+                        </p:inplace>
+
+                        <h:outputText value="Select One: "/>
+                        <p:inplace label="Cities" effectSpeed="fast">
+                            <h:selectOneMenu>
+                                <f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+                                <f:selectItem itemLabel="Ankara" itemValue="Ankara" />
+                                <f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+                            </h:selectOneMenu>
+                        </p:inplace>
+
+                        <h:outputText value="Checkbox: "/>
+                        <p:inplace label="Edit me" effect="none">
+                            <h:selectBooleanCheckbox />
+                        </p:inplace>
+
+                        <h:outputText value="Ajax Inplace Editor: " />
+                        <p:inplace editor="true" onEditUpdate="msgs">
+                            <h:inputText value="#{inplaceBean.text}" required="true" label="text"/>
+                        </p:inplace>
+
+                        <h:outputText value="Sliding Image: " />
+                        <p:inplace label="Show" effect="slide">
+                            <p:graphicImage value="/images/nature1.jpg" />
+                        </p:inplace>
+                    </h:panelGrid>
+                </p:panel>
+
+            </h:form>
 			
 			<h3>Source</h3>
 			<p:tabView>
 				<p:tab title="inplace.xhtml">
 					<pre name="code" class="xml">
-&lt;p:panel header="Inplace Editor"&gt;
-	&lt;h:panelGrid columns="2" columnClasses="column" cellpadding="5"&gt;
-		&lt;h:outputText value="Basic Input: " /&gt;
-		&lt;p:inplace&gt;
-			&lt;h:inputText value="Edit Me" /&gt;
-		&lt;/p:inplace&gt;
-		
-		&lt;h:outputText value="Select One: "/&gt;
-		&lt;p:inplace label="Cities" effectSpeed="fast"&gt;
-			&lt;h:selectOneMenu&gt;
-				&lt;f:selectItem itemLabel="Istanbul" itemValue="Istanbul" /&gt;
-				&lt;f:selectItem itemLabel="Ankara" itemValue="Ankara" /&gt;
-				&lt;f:selectItem itemLabel="Istanbul" itemValue="Istanbul" /&gt;
-			&lt;/h:selectOneMenu&gt;
-		&lt;/p:inplace&gt;
-		
-		&lt;h:outputText value="Checkbox: "/&gt;
-		&lt;p:inplace label="Edit me" effectSpeed="slow"&gt;
-			&lt;h:selectBooleanCheckbox /&gt;
-		&lt;/p:inplace&gt;
-		
-		&lt;h:outputText value="Text Area: " /&gt;
-		&lt;p:inplace effect="none"&gt;
-			&lt;h:inputTextarea value="Barcelona" /&gt;
-		&lt;/p:inplace&gt;
-		
-		&lt;h:outputText value="Image: " /&gt;
-		&lt;p:inplace label="Show" effect="slide"&gt;
-			&lt;p:graphicImage value="/images/nature1.jpg" /&gt;
-		&lt;/p:inplace&gt;		
-	&lt;/h:panelGrid&gt;
-&lt;/p:panel&gt;
+&lt;h:form&gt;
+
+    &lt;p:growl id="msgs" /&gt;
+
+    &lt;p:panel header="Inplace Editor"&gt;
+        &lt;h:panelGrid columns="2" columnClasses="column" cellpadding="5"&gt;
+            &lt;h:outputText value="Basic Input: " /&gt;
+            &lt;p:inplace&gt;
+                &lt;h:inputText value="Edit Me" /&gt;
+            &lt;/p:inplace&gt;
+
+            &lt;h:outputText value="Select One: "/&gt;
+            &lt;p:inplace label="Cities" effectSpeed="fast"&gt;
+                &lt;h:selectOneMenu&gt;
+                    &lt;f:selectItem itemLabel="Istanbul" itemValue="Istanbul" /&gt;
+                    &lt;f:selectItem itemLabel="Ankara" itemValue="Ankara" /&gt;
+                    &lt;f:selectItem itemLabel="Istanbul" itemValue="Istanbul" /&gt;
+                &lt;/h:selectOneMenu&gt;
+            &lt;/p:inplace&gt;
+
+            &lt;h:outputText value="Checkbox: "/&gt;
+            &lt;p:inplace label="Edit me" effect="none"&gt;
+                &lt;h:selectBooleanCheckbox /&gt;
+            &lt;/p:inplace&gt;
+
+            &lt;h:outputText value="Ajax Inplace Editor: " /&gt;
+            &lt;p:inplace editor="true" onEditUpdate="msgs"&gt;
+                &lt;h:inputText value="\#{inplaceBean.text}"
+                            required="true" label="text"/&gt;
+            &lt;/p:inplace&gt;
+
+            &lt;h:outputText value="Sliding Image: " /&gt;
+            &lt;p:inplace label="Show" effect="slide"&gt;
+                &lt;p:graphicImage value="/images/nature1.jpg" /&gt;
+            &lt;/p:inplace&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:panel&gt;
+
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+                <p:tab title="InplaceBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+public class InplaceBean {
+
+    private String text = "PrimeFaces";
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+}
 					</pre>
 				</p:tab>
 			</p:tabView>
