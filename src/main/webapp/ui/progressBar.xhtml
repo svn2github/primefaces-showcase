@@ -38,19 +38,19 @@
 			<h:form>
 		
 				<h3>Client Side ProgressBar</h3>
-				<p:commandButton value="Start" onclick="start();return false;" />
-				<p:commandButton value="Cancel" onclick="cancel();return false;" />
+				<p:commandButton value="Start" type="button" onclick="start();startButton1.disable()" widgetVar="startButton1"/>
+				<p:commandButton value="Cancel" type="button" onclick="cancel();startButton1.enable()" />
 				<br /><br />
 				<p:progressBar widgetVar="pbClient" style="width:300px"/>
 				 
 				 
 				<h3>Ajax ProgressBar with Growl Integration</h3>
-				<p:commandButton value="Start" onclick="pbAjax.start();return false;" />
-				<p:commandButton value="Cancel" onclick="pbAjax.cancel();return false;" />
+				<p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2"/>
+				<p:commandButton value="Cancel" type="button" onclick="pbAjax.cancel();startButton2.enable();" />
 				<br /><br />
 				<p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBean.progress}"
 					onCompleteUpdate="growl" completeListener="#{progressBean.onComplete}"
-					onCancelUpdate="growl" cancelListener="#{progressBean.onCancel}" />
+                    onCancelUpdate="growl" cancelListener="#{progressBean.onCancel}" oncomplete="startButton2.enable()"/>
 					
 			</h:form>
 			
@@ -62,21 +62,26 @@
 			
 &lt;h:form&gt;
 
-	&lt;h3&gt;Client Side ProgressBar&lt;/h3&gt;
-	&lt;p:commandButton value="Start" onclick="start();return false;" /&gt;
-	&lt;p:commandButton value="Cancel" onclick="cancel();return false;" /&gt;
-	&lt;br /&gt;&lt;br /&gt;
-	&lt;p:progressBar widgetVar="pbClient" style="width:300px"/&gt;
-	 
-	 
-	&lt;h3&gt;Ajax ProgressBar with Growl Integration&lt;/h3&gt;
-	&lt;p:commandButton value="Start" onclick="pbAjax.start();return false;" /&gt;
-	&lt;p:commandButton value="Cancel" onclick="pbAjax.cancel();return false;" /&gt;
-	&lt;br /&gt;&lt;br /&gt;
-	&lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}"
-		onCompleteUpdate="growl" completeListener="\#{progressBean.onComplete}"
-		onCancelUpdate="growl" cancelListener="\#{progressBean.onCancel}" /&gt;
-		
+    &lt;h3&gt;Client Side ProgressBar&lt;/h3&gt;
+    &lt;p:commandButton value="Start" type="button"
+       onclick="start();startButton1.disable()" widgetVar="startButton1"/&gt;
+    &lt;p:commandButton value="Cancel" type="button"
+       onclick="cancel();startButton1.enable()" /&gt;
+
+    &lt;p:progressBar widgetVar="pbClient" style="width:300px"/&gt;
+
+
+    &lt;h3&gt;Ajax ProgressBar with Growl Integration&lt;/h3&gt;
+    &lt;p:commandButton value="Start" type="button"
+       onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2"/&gt;
+    &lt;p:commandButton value="Cancel" type="button"
+       onclick="pbAjax.cancel();startButton2.enable();" /&gt;
+
+    &lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}"
+        onCompleteUpdate="growl" completeListener="\#{progressBean.onComplete}"
+        onCancelUpdate="growl" cancelListener="\#{progressBean.onCancel}"
+        oncomplete="startButton2.enable()"/&gt;
+
 &lt;/h:form&gt;
 				</pre>
 				
