@@ -12,11 +12,10 @@
          	row and column resizing are notable features. When the form is posted, spreadsheet will update it's data model with the submitted values.</p>
          	
          	<h:form>
-         		
-         		<p:growl id="growl" showDetail="true" />
-         	
+
          		<h:panelGrid columns="2">
-	         		<p:commandButton onclick="ss.save()" update="growl" value="Save" actionListener="#{tableBean.save}"/>
+	         		<p:commandButton onclick="ss.save()" update="cars growl" oncomplete="carDialog.show()"
+                                     value="Save"/>
 				
 					<p:ajaxStatus style="width:16px;height:16px;">
 							<f:facet name="start">
@@ -48,9 +47,45 @@
 						</p:column>
 					</p:sheet>
 				</p:spreadsheet>
+
+                <p:dialog widgetVar="carDialog" width="500" modal="true" showEffect="fade" hideEffect="fade">
+                    <p:dataTable var="car" id="cars" value="#{tableBean.cars}"
+                                 paginator="true" rows="10">
+                        <f:facet name="header">
+                            Here is how your spreadsheet data looks in a datatable
+                        </f:facet>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Model" />
+                            </f:facet>
+                            <h:outputText value="#{car.model}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Year" />
+                            </f:facet>
+                            <h:outputText value="#{car.year}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Manufacturer" />
+                            </f:facet>
+                            <h:outputText value="#{car.manufacturer}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Color" />
+                            </f:facet>
+                            <h:outputText value="#{car.color}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:dialog>
 			
 			</h:form>
-		
 
 			<h3>Source</h3>
 			<p:tabView>
@@ -58,42 +93,77 @@
 					<pre name="code" class="xml">
 &lt;h:form&gt;
 
-	&lt;p:growl id="growl" showDetail="true" /&gt;
-         	
-	&lt;h:panelGrid columns="2"&gt;
-		&lt;p:commandButton onclick="ss.save()" update="growl" 
-					value="Save" actionListener="\#{tableBean.save}"&gt;
-	
-		&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-				&lt;f:facet name="start"&gt;
-					&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-				&lt;/f:facet&gt;
-				
-				&lt;f:facet name="complete"&gt;
-					&lt;h:outputText value="" /&gt;
-				&lt;/f:facet&gt;
-			&lt;/p:ajaxStatus&gt;
-	&lt;/h:panelGrid&gt;
-      	
-	&lt;p:spreadsheet widgetVar="ss" title="PrimeFaces Spreadsheet" columnWidth="162"&gt;
-		&lt;p:sheet var="car" value="\#{tableBean.cars}" title="Cars"&gt;
-			&lt;p:column&gt;
-				&lt;h:inputText value="\#{car.model}" /&gt;
-			&lt;/p:column&gt;
+    &lt;h:panelGrid columns="2"&gt;
+        &lt;p:commandButton onclick="ss.save()" update="cars growl" oncomplete="carDialog.show()"
+                         value="Save"/&gt;
 
-			&lt;p:column&gt;
-				&lt;h:inputText value="\#{car.year}" /&gt;
-			&lt;/p:column&gt;
+        &lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+                &lt;f:facet name="start"&gt;
+                    &lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+                &lt;/f:facet&gt;
 
-			&lt;p:column&gt;
-				&lt;h:inputText value="\#{car.manufacturer}" /&gt;
-			&lt;/p:column&gt;
+                &lt;f:facet name="complete"&gt;
+                    &lt;h:outputText value="" /&gt;
+                &lt;/f:facet&gt;
+            &lt;/p:ajaxStatus&gt;
+    &lt;/h:panelGrid&gt;
 
-			&lt;p:column&gt;
-				&lt;h:inputText value="\#{car.color}" /&gt;
-			&lt;/p:column&gt;
-		&lt;/p:sheet&gt;
-	&lt;/p:spreadsheet&gt;
+    &lt;p:spreadsheet widgetVar="ss" title="PrimeFaces Spreadsheet" columnWidth="162"&gt;
+        &lt;p:sheet var="car" value="\#{tableBean.cars}" title="Cars"&gt;
+            &lt;p:column&gt;
+                &lt;h:inputText value="\#{car.model}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                &lt;h:inputText value="\#{car.year}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                &lt;h:inputText value="\#{car.manufacturer}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                &lt;h:inputText value="\#{car.color}" /&gt;
+            &lt;/p:column&gt;
+        &lt;/p:sheet&gt;
+    &lt;/p:spreadsheet&gt;
+
+    &lt;p:dialog widgetVar="carDialog" width="500" modal="true" showEffect="fade" hideEffect="fade"&gt;
+        &lt;p:dataTable var="car" id="cars" value="\#{tableBean.cars}"
+                     paginator="true" rows="10"&gt;
+            &lt;f:facet name="header"&gt;
+                Here is how your spreadsheet data looks in a datatable
+            &lt;/f:facet&gt;
+
+            &lt;p:column&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;h:outputText value="Model" /&gt;
+                &lt;/f:facet&gt;
+                &lt;h:outputText value="\#{car.model}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;h:outputText value="Year" /&gt;
+                &lt;/f:facet&gt;
+                &lt;h:outputText value="\#{car.year}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;h:outputText value="Manufacturer" /&gt;
+                &lt;/f:facet&gt;
+                &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;h:outputText value="Color" /&gt;
+                &lt;/f:facet&gt;
+                &lt;h:outputText value="\#{car.color}" /&gt;
+            &lt;/p:column&gt;
+        &lt;/p:dataTable&gt;
+    &lt;/p:dialog&gt;
 
 &lt;/h:form&gt;
 					</pre>

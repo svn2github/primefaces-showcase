@@ -10,7 +10,8 @@
 		<div class="entry">
          	<p>Any number of sheets can be displayed inside a spreadsheet.</p>
          	
-			<p:spreadsheet widgetVar="ss" title="Multiple PrimeFaces Spreadsheet" columnWidth="162">
+			<p:spreadsheet widgetVar="ss" title="Multiple PrimeFaces Spreadsheet" columnWidth="162"
+                           editable="false">
 				<p:sheet var="car" value="#{tableBean.cars}" title="Cars">
 					<p:column>
 						<h:inputText value="#{car.model}" />
@@ -53,7 +54,8 @@
 			<p:tabView>
 				<p:tab title="spreadsheet.xhtml">
 					<pre name="code" class="xml">
-&lt;p:spreadsheet widgetVar="ss" title="Multiple PrimeFaces Spreadsheet" columnWidth="162"&gt;
+&lt;p:spreadsheet widgetVar="ss" title="Multiple PrimeFaces Spreadsheet" columnWidth="162"
+                        editable="false"&gt;
 	&lt;p:sheet var="car" value="\#{tableBean.cars}" title="Cars"&gt;
 		&lt;p:column&gt;
 			&lt;h:inputText value="\#{car.model}" /&gt;
