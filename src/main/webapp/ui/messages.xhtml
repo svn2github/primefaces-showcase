@@ -51,25 +51,17 @@
 			</h:form>
 
 			<h3>Source</h3>
-			<pre name="code" class="xml">
+            <p:tabView>
+                <p:tab title="messages.xhtml">
+<pre name="code" class="xml">
 &lt;h:form prependId="false"&gt;
 	&lt;p:messages id="msgs" showDetail="true"/&gt;
-	
+
 	&lt;p:commandButton value="Info" actionListener="\#{messagesController.addInfo}" update="msgs"/&gt;
 	&lt;p:commandButton value="Warn" actionListener="\#{messagesController.addWarn}" update="msgs"/&gt;
 	&lt;p:commandButton value="Error" actionListener="\#{messagesController.addError}" update="msgs"/&gt;
 	&lt;p:commandButton value="Fatal" actionListener="\#{messagesController.addFatal}" update="msgs"/&gt;
 &lt;/h:form&gt;
-
-&lt;p:ajaxStatus style="height:16px"&gt;
-	&lt;f:facet name="start"&gt;
-		&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-	&lt;/f:facet&gt;
-	
-	&lt;f:facet name="complete"&gt;
-		&lt;h:outputText value="" /&gt;
-	&lt;/f:facet&gt;
-&lt;/p:ajaxStatus&gt;
 
 &lt;h3&gt;Message&lt;/h3&gt;
 &lt;h:form prependId="false"&gt;
@@ -86,12 +78,14 @@
         &lt;h:inputText id="iconOnly" required="true" /&gt;
         &lt;p:message for="iconOnly" display="icon" /&gt;
     &lt;/h:panelGrid&gt;
-	
+
 	&lt;p:commandButton value="Submit" update="grid"/&gt;
 &lt;/h:form&gt;
 			</pre>
-			
-			<pre name="code" class="java">
+                </p:tab>
+
+                <p:tab title="MessagesController.java">
+<pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import javax.faces.event.ActionEvent;
@@ -103,21 +97,23 @@ public class MessagesController {
 	public void addInfo(ActionEvent actionEvent) {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sample info message", "PrimeFaces rocks!"));
 	}
-	
+
 	public void addWarn(ActionEvent actionEvent) {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Sample warn message", "Watch out for PrimeFaces!"));
 	}
-	
+
 	public void addError(ActionEvent actionEvent) {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Sample error message", "PrimeFaces makes no mistakes"));
 	}
-	
+
 	public void addFatal(ActionEvent actionEvent) {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Sample fatal message", "Fatal Error in System"));
 	}
 }
-
 			</pre>
+                </p:tab>
+            </p:tabView>
+
 			
 		</div>
 
