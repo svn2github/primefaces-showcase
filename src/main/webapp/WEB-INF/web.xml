@@ -52,7 +52,7 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
-	
+	<!--
     <servlet>
         <servlet-name>Comet Servlet</servlet-name>
         <servlet-class>org.primefaces.comet.PrimeFacesCometServlet</servlet-class>
@@ -62,5 +62,6 @@
         <servlet-name>Comet Servlet</servlet-name>
         <url-pattern>/primefaces_comet/*</url-pattern>
     </servlet-mapping>
+    -->
 	
 </web-app>

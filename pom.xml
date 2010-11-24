@@ -117,12 +117,12 @@
             <version>1.4</version>
         </dependency>
 
-	<!-- Atmosphere (Comet) -->
+	<!-- Atmosphere (Comet)
         <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-runtime</artifactId>
             <version>0.5</version>
-        </dependency>
+        </dependency>-->
 
 	<!-- TouchFaces Sample Apps -->
         <dependency>
