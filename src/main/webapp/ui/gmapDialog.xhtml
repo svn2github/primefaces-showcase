@@ -13,26 +13,30 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">GMap - Dialog</h1>
 		<div class="entry">
-			<p>A gmap can be displayed in overlays such as a dialog.</p>
+			<p>Special care needs to be taken when gmap is place inside containers that are initially hidden.
+            In this example, dialog's onShow event is use to calculate the actual dimensions of map.</p>
 			
-			<h:outputLink value="#" title="Show Map" onclick="dlg.show()">
-    			<p:graphicImage value="/images/map.png" />
-    		</h:outputLink>
+			<p:commandButton type="button" image="ui-icon ui-icon-pin-s" value="Show Map" onclick="dlg.show()" />
 			
-			<p:dialog widgetVar="dlg" width="625" height="450" modal="true">
-       			<p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" />
+			<p:dialog widgetVar="dlg" width="625" height="450" modal="true" onShow="mymap.checkResize()">
+       			<p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" widgetVar="mymap"/>
        		</p:dialog>
 			
 			<h3>Source</h3>
-			<pre name="code" class="xml">
-&lt;h:outputLink value="#" title="Show Map" onclick="dlg.show()"&gt;
- 	&lt;p:graphicImage value="/images/map.png" /&gt;
- &lt;/h:outputLink&gt;
+            <p:tabView>
+                <p:tab title="gmapDialog.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:commandButton type="button" image="ui-icon ui-icon-pin-s"
+        value="Show Map" onclick="dlg.show()" /&gt;
 
-&lt;p:dialog widgetVar="dlg" width="625" height="450" modal="true"&gt;
-    &lt;p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" /&gt;
+&lt;p:dialog widgetVar="dlg" width="625" height="450" modal="true"
+    onShow="mymap.checkResize()"&gt;
+    &lt;p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" widgetVar="mymap"/&gt;
 &lt;/p:dialog&gt;
 			</pre>
+                </p:tab>
+            </p:tabView>
+			
 												
 		</div>
 	</ui:define>
