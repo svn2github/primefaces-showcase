@@ -36,7 +36,7 @@
 				
 				<p:growl id="messages"/>
 				
-                <p:menubar>
+                <p:menubar autoSubmenuDisplay="true">
 					<p:submenu label="Barca" labelStyleClass="barca">
 						<p:menuitem value="Home" url="http://www.fcbarcelona.com"></p:menuitem>
 					</p:submenu>
@@ -44,7 +44,7 @@
 					<p:submenu label="File">
 						<p:submenu>
 							<f:facet name="label">
-								<p:menuitem value="New" icon="/images/new.png"/>
+								<p:menuitem value="New" icon="/images/new.png" url="#"/>
 							</f:facet>
 							<p:menuitem value="Project" url="#" helpText="CTRL+N"/>
 							<p:menuitem value="Other" url="#" helpText="CTRL+O"/>
@@ -62,7 +62,7 @@
 						<p:menuitem value="Contents" url="#"></p:menuitem>
 						<p:submenu>
 							<f:facet name="label">
-								<p:menuitem value="Search" icon="/images/search.png" />
+								<p:menuitem value="Search" icon="/images/search.png" url="#"/>
 							</f:facet>
 							
 							<p:submenu label="Text">
@@ -109,15 +109,15 @@
 
 	&lt;p:growl id="messages"/&gt;
 
-	&lt;p:menubar&gt;
+	&lt;p:menubar autoSubmenuDisplay="true"&gt;
 		&lt;p:submenu label="Barca" labelStyleClass="barca"&gt;
-			&lt;p:menuitem value="Home" url="http://www.fcbarcelona.com"&gt;&lt;/p:menuitem&gt;
+			&lt;p:menuitem value="Home" url="http://www.fcbarcelona.com" /&gt;
 		&lt;/p:submenu&gt;
 		
 		&lt;p:submenu label="File"&gt;
 			&lt;p:submenu&gt;
 				&lt;f:facet name="label"&gt;
-					&lt;p:menuitem value="New" icon="/images/new.png"/&gt;
+					&lt;p:menuitem value="New" icon="/images/new.png" url="\#"/&gt;
 				&lt;/f:facet&gt;
 				&lt;p:menuitem value="Project" url="\#" helpText="CTRL+N"/&gt;
 				&lt;p:menuitem value="Other" url="\#" helpText="CTRL+O"/&gt;
@@ -137,7 +137,7 @@
 			&lt;p:menuitem value="Contents" url="\#"&gt;&lt;/p:menuitem&gt;
 			&lt;p:submenu&gt;
 				&lt;f:facet name="label"&gt;
-					&lt;p:menuitem value="Search" icon="/images/search.png" /&gt;
+					&lt;p:menuitem value="Search" icon="/images/search.png" url="\#"/&gt;
 				&lt;/f:facet&gt;
 				
 				&lt;p:submenu label="Text"&gt;
