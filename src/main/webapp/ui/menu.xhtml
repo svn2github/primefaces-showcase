@@ -6,13 +6,11 @@
 	template="../templates/ui.xhtml">
 	
 	<ui:define name="head">
-		<!--[if IE 7]>
 		<style type="text/css">
-			.ui-menu .ui-menu-item {
-				width:200px;
+			.wijmo-wijmenu {
+                z-index: 50
 			}
 		</style>
-		<![endif]-->
 	</ui:define>
 	
 	<ui:define name="content">
@@ -21,28 +19,12 @@
 			<p>Menu is a highly customizable navigation/command component that supports dynamic and static positioning as well as
 			tiered display.</p>
 			
-			<h:form id="form">
+			<h:form>
 			
-				<p:messages id="messages"/>
-				
-				<h3>Dynamic Position</h3>
-				<p:commandButton id="dynaButton" value="Show" onclick="dynaMenu.show();return false;" type="button"/>
-                <p:menu widgetVar="dynaMenu" position="dynamic" context="'form:dynaButton','tl','bl'">
-					<p:submenu label="Ajax Menuitems">
-						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
-						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
-					</p:submenu>
-					<p:submenu label="Non-Ajax Menuitem">
-						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="/images/delete.png"/>
-					</p:submenu>
-					<p:submenu label="Navigations">
-						<p:menuitem value="Home" url="http://www.primefaces.org" icon="/images/home.png"/>
-						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" icon="/images/mobile.png"/>
-					</p:submenu>
-				</p:menu>
+				<p:growl id="messages"/>
 				
 				<h3>Tiered Menu</h3>
-				<p:menu widgetVar="tieredMenu" context="'start','tl','br'" tiered="true" style="width:200px">
+				<p:menu tiered="true">
 					<p:submenu label="Ajax Menuitems">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
@@ -59,8 +41,8 @@
 					</p:submenu>
 				</p:menu>
 			
-				<h3>Static Position</h3>
-				<p:menu style="width:200px">
+				<h3>Regular Menu</h3>
+				<p:menu>
 					<p:submenu label="Ajax Menuitems">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
@@ -73,92 +55,103 @@
 						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" icon="/images/mobile.png"/>
 					</p:submenu>
 				</p:menu>
-				
-				<h3>Dynamic Menu</h3>
-				<p:menu style="width:200px" model="#{menuBean.model}"/>
+
+                <h3>Programmatic Menu</h3>
+				<p:menu model="#{menuBean.model}"/>
+
+                <h3>Dynamic Position</h3>
+				<p:commandButton id="dynaButton" value="Show" type="button"/>
+                <p:menu position="dynamic" trigger="dynaButton" my="left top" at="left bottom">
+					<p:submenu label="Ajax Menuitems">
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
+					</p:submenu>
+					<p:submenu label="Non-Ajax Menuitem">
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="/images/delete.png"/>
+					</p:submenu>
+					<p:submenu label="Navigations">
+						<p:menuitem value="Home" url="http://www.primefaces.org" icon="/images/home.png"/>
+						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" icon="/images/mobile.png"/>
+					</p:submenu>
+				</p:menu>
 
 			</h:form>
 			
 			<h3>Source</h3>
 			<p:tabView>
 				<p:tab title="menu.xhtml">
-<pre name="code" class="xml">
-&lt;h:form id="form"&gt;
-			
-	&lt;p:messages id="messages"/&gt;
-	
-	&lt;h3&gt;Dynamic Position&lt;/h3&gt;
-	&lt;p:commandButton id="dynaButton" value="Show"
-            onclick="dynaMenu.show();return false;" type="button"/&gt;
-	&lt;p:menu widgetVar="dynaMenu" position="dynamic" context="'form:dynaButton','tl','br'"&gt;
-		&lt;p:submenu label="Ajax Menuitems"&gt;
-			&lt;p:menuitem value="Save" update="messages" icon="/images/save.png" 
-					actionListener="\#{buttonBean.save}" /&gt;
-			&lt;p:menuitem value="Update" update="messages" icon="/images/update.png"
-					actionListener="\#{buttonBean.update}" /&gt;
-		&lt;/p:submenu&gt;
-		&lt;p:submenu label="Non-Ajax Menuitem"&gt;
-			&lt;p:menuitem value="Delete" update="messages" ajax="false" 
-					icon="/images/delete.png" 
-					actionListener="\#{buttonBean.delete}" /&gt;
-		&lt;/p:submenu&gt;
-		&lt;p:submenu label="Navigations"&gt;
-			&lt;p:menuitem value="Home" url="http://www.primefaces.org" 
-					icon="/images/home.png"/&gt;
-			&lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch" 
-					icon="/images/mobile.png"/&gt;
-		&lt;/p:submenu&gt;
-	&lt;/p:menu&gt;
-	
-	&lt;h3&gt;Tiered Menu&lt;/h3&gt;
-	&lt;p:menu widgetVar="tieredMenu" context="'start','tl','br'" tiered="true" style="width:200px"&gt;
-		&lt;p:submenu label="Ajax Menuitems"&gt;
-			&lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" 
-					update="messages" icon="/images/save.png"/&gt;
-			&lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}"
-					 update="messages" icon="/images/update.png"/&gt;
-		&lt;/p:submenu&gt;
-		&lt;p:submenu label="Non-Ajax Menuitem"&gt;
-			&lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" 
-					update="messages" ajax="false" icon="/images/delete.png"/&gt;
-		&lt;/p:submenu&gt;
-		&lt;p:submenu label="Navigations"&gt;
-			&lt;p:submenu label="Prime Links"&gt;
-				&lt;p:menuitem value="Prime" url="http://www.prime.com.tr" 
-						icon="/images/home.png"/&gt;
-				&lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org" 
-						icon="/images/home.png"/&gt;
-			&lt;/p:submenu&gt;
-			&lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch" 
-						icon="/images/mobile.png"/&gt;
-		&lt;/p:submenu&gt;
-	&lt;/p:menu&gt;
+            <pre name="code" class="xml">
+&lt;h:form&gt;
 
-	&lt;h3&gt;Static Position&lt;/h3&gt;
-	&lt;p:menu style="width:200px"&gt;
-		&lt;p:submenu label="Ajax Menuitems"&gt;
-			&lt;p:menuitem value="Save" 
-					actionListener="\#{buttonBean.save}" 
-					update="messages" icon="/images/save.png"/&gt;
-			&lt;p:menuitem value="Update" 
-					actionListener="\#{buttonBean.update}" 
-					update="messages" icon="/images/update.png"/&gt;
-		&lt;/p:submenu&gt;
-		&lt;p:submenu label="Non-Ajax Menuitem"&gt;
-			&lt;p:menuitem value="Delete" 
-					actionListener="\#{buttonBean.delete}" 
-					update="messages" ajax="false" icon="/images/delete.png"/&gt;
-		&lt;/p:submenu&gt;
-		&lt;p:submenu label="Navigations"&gt;
-			&lt;p:menuitem value="Home" url="http://www.primefaces.org" 
-					icon="/images/home.png"/&gt;
-			&lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch" 
-					icon="/images/mobile.png"/&gt;
-		&lt;/p:submenu&gt;
-	&lt;/p:menu&gt;
-	
-	&lt;h3&gt;Dynamic Menu&lt;/h3&gt;
-	&lt;p:menu style="width:200px" model="\#{menuBean.model}"/&gt;
+    &lt;p:growl id="messages"/&gt;
+
+    &lt;h3&gt;Tiered Menu&lt;/h3&gt;
+    &lt;p:menu tiered="true"&gt;
+        &lt;p:submenu label="Ajax Menuitems"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}"
+                        update="messages" icon="/images/save.png"/&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}"
+                        update="messages" icon="/images/update.png"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}"
+                    update="messages" ajax="false" icon="/images/delete.png"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Navigations"&gt;
+            &lt;p:submenu label="Prime Links"&gt;
+                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr"
+                        icon="/images/home.png"/&gt;
+                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org"
+                        icon="/images/home.png"/&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch"
+                        icon="/images/mobile.png"/&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:menu&gt;
+
+    &lt;h3&gt;Regular Menu&lt;/h3&gt;
+    &lt;p:menu&gt;
+        &lt;p:submenu label="Ajax Menuitems"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}"
+                        update="messages" icon="/images/save.png"/&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}"
+                        update="messages" icon="/images/update.png"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}"
+                        update="messages" ajax="false" icon="/images/delete.png"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Navigations"&gt;
+            &lt;p:menuitem value="Home" url="http://www.primefaces.org"
+                        icon="/images/home.png"/&gt;
+            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch"
+                        icon="/images/mobile.png"/&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:menu&gt;
+
+    &lt;h3&gt;Programmatic Menu&lt;/h3&gt;
+    &lt;p:menu model="\#{menuBean.model}"/&gt;
+
+    &lt;h3&gt;Dynamic Position&lt;/h3&gt;
+    &lt;p:commandButton id="dynaButton" value="Show" type="button"/&gt;
+    &lt;p:menu position="dynamic" trigger="dynaButton" my="left top" at="left bottom"&gt;
+        &lt;p:submenu label="Ajax Menuitems"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}"
+                        update="messages" icon="/images/save.png"/&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}"
+                        update="messages" icon="/images/update.png"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}"
+                        update="messages" ajax="false" icon="/images/delete.png"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Navigations"&gt;
+            &lt;p:menuitem value="Home" url="http://www.primefaces.org"
+                        icon="/images/home.png"/&gt;
+            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch"
+                        icon="/images/mobile.png"/&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:menu&gt;
 
 &lt;/h:form&gt;
 			</pre>

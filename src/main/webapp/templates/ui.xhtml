@@ -67,7 +67,7 @@
 										<h:form id="themeForm">
 											
 											<p:commandButton id="themeButton" value="Change Theme: #{guestPreferences.theme}" onclick="themeMenu.show()" type="button" style="width:100%"/>
-											<p:menu widgetVar="themeMenu" position="dynamic" context="'themeForm:themeButton','tl','bl'" styleClass="themeMenu">
+											<p:menu widgetVar="themeMenu" position="dynamic" trigger="themeButton" my="left top" at="left bottom" styleClass="themeMenu">
 												<p:submenu label="Themes">
                                                     <p:menuitem value="Aristo" ajax="false"><f:setPropertyActionListener value="aristo" target="#{guestPreferences.theme}" /></p:menuitem>
 													<p:menuitem value="Black-Tie" ajax="false"><f:setPropertyActionListener value="black-tie" target="#{guestPreferences.theme}" /></p:menuitem>
