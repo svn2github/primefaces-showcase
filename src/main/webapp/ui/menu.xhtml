@@ -14,9 +14,27 @@
 			<h:form>
 			
 				<p:growl id="messages"/>
+
+                <h3>Sliding Menu</h3>
+				<p:menu type="sliding">
+					<p:submenu label="Ajax Menuitems">
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
+					</p:submenu>
+					<p:submenu label="Non-Ajax Menuitem">
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="/images/delete.png"/>
+					</p:submenu>
+					<p:submenu label="Navigations">
+						<p:submenu label="Prime Links">
+							<p:menuitem value="Prime" url="http://www.prime.com.tr" icon="/images/home.png"/>
+							<p:menuitem value="PrimeFaces" url="http://www.primefaces.org" icon="/images/home.png"/>
+						</p:submenu>
+						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" icon="/images/mobile.png"/>
+					</p:submenu>
+				</p:menu>
 				
 				<h3>Tiered Menu</h3>
-				<p:menu tiered="true">
+				<p:menu type="tiered">
 					<p:submenu label="Ajax Menuitems">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
@@ -77,8 +95,32 @@
 
     &lt;p:growl id="messages"/&gt;
 
+    &lt;h3&gt;Sliding Menu&lt;/h3&gt;
+    &lt;p:menu type="sliding"&gt;
+        &lt;p:submenu label="Ajax Menuitems"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}"
+                        update="messages" icon="/images/save.png"/&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}"
+                        update="messages" icon="/images/update.png"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}"
+                    update="messages" ajax="false" icon="/images/delete.png"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Navigations"&gt;
+            &lt;p:submenu label="Prime Links"&gt;
+                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr"
+                        icon="/images/home.png"/&gt;
+                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org"
+                        icon="/images/home.png"/&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch"
+                        icon="/images/mobile.png"/&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:menu&gt;
+
     &lt;h3&gt;Tiered Menu&lt;/h3&gt;
-    &lt;p:menu tiered="true"&gt;
+    &lt;p:menu type="tiered"&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}"
                         update="messages" icon="/images/save.png"/&gt;
