@@ -18,51 +18,51 @@
 				<h3>Tiered Menu</h3>
 				<p:menu type="tiered">
 					<p:submenu label="Ajax Menuitems">
-						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
-						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" />
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" />
 					</p:submenu>
 					<p:submenu label="Non-Ajax Menuitem">
-						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="/images/delete.png"/>
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" />
 					</p:submenu>
 					<p:submenu label="Navigations">
 						<p:submenu label="Prime Links">
-							<p:menuitem value="Prime" url="http://www.prime.com.tr" icon="/images/home.png"/>
-							<p:menuitem value="PrimeFaces" url="http://www.primefaces.org" icon="/images/home.png"/>
+							<p:menuitem value="Prime" url="http://www.prime.com.tr" />
+							<p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
 						</p:submenu>
-						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" icon="/images/mobile.png"/>
+						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" />
 					</p:submenu>
 				</p:menu>
 
                 <h3>Sliding Menu</h3>
 				<p:menu type="sliding" maxHeight="150">
 					<p:submenu label="Ajax Menuitems">
-						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
-						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" />
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" />
 					</p:submenu>
 					<p:submenu label="Non-Ajax Menuitem">
-						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="/images/delete.png"/>
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" />
 					</p:submenu>
 					<p:submenu label="Navigations">
 						<p:submenu label="Prime Links">
-							<p:menuitem value="Prime" url="http://www.prime.com.tr" icon="/images/home.png"/>
-							<p:menuitem value="PrimeFaces" url="http://www.primefaces.org" icon="/images/home.png"/>
+							<p:menuitem value="Prime" url="http://www.prime.com.tr" />
+							<p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
 						</p:submenu>
-						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" icon="/images/mobile.png"/>
+						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" />
 					</p:submenu>
 				</p:menu>
 			
 				<h3>Regular Menu</h3>
 				<p:menu>
 					<p:submenu label="Ajax Menuitems">
-						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
-						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" />
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" />
 					</p:submenu>
 					<p:submenu label="Non-Ajax Menuitem">
-						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="/images/delete.png"/>
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" />
 					</p:submenu>
 					<p:submenu label="Navigations">
-						<p:menuitem value="Home" url="http://www.primefaces.org" icon="/images/home.png"/>
-						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" icon="/images/mobile.png"/>
+						<p:menuitem value="Home" url="http://www.primefaces.org" />
+						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" />
 					</p:submenu>
 				</p:menu>
 
@@ -73,15 +73,15 @@
 				<p:commandButton id="dynaButton" value="Show" type="button"/>
                 <p:menu position="dynamic" trigger="dynaButton" my="left top" at="left bottom">
 					<p:submenu label="Ajax Menuitems">
-						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
-						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" />
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" />
 					</p:submenu>
 					<p:submenu label="Non-Ajax Menuitem">
-						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="/images/delete.png"/>
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false"/>
 					</p:submenu>
 					<p:submenu label="Navigations">
-						<p:menuitem value="Home" url="http://www.primefaces.org" icon="/images/home.png"/>
-						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" icon="/images/mobile.png"/>
+						<p:menuitem value="Home" url="http://www.primefaces.org" />
+						<p:menuitem value="TouchFaces" url="#{request.contextPath}/touch" />
 					</p:submenu>
 				</p:menu>
 
@@ -99,23 +99,20 @@
     &lt;p:menu type="tiered"&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}"
-                        update="messages" icon="/images/save.png"/&gt;
+                        update="messages" /&gt;
             &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}"
-                        update="messages" icon="/images/update.png"/&gt;
+                        update="messages" /&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Non-Ajax Menuitem"&gt;
             &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}"
-                    update="messages" ajax="false" icon="/images/delete.png"/&gt;
+                    update="messages" ajax="false" /&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Navigations"&gt;
             &lt;p:submenu label="Prime Links"&gt;
-                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr"
-                        icon="/images/home.png"/&gt;
-                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org"
-                        icon="/images/home.png"/&gt;
+                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr" /&gt;
+                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org" /&gt;
             &lt;/p:submenu&gt;
-            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch"
-                        icon="/images/mobile.png"/&gt;
+            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch" /&gt;
         &lt;/p:submenu&gt;
     &lt;/p:menu&gt;
 
@@ -123,23 +120,20 @@
     &lt;p:menu type="sliding" maxHeight="150"&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}"
-                        update="messages" icon="/images/save.png"/&gt;
+                        update="messages" /&gt;
             &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}"
-                        update="messages" icon="/images/update.png"/&gt;
+                        update="messages" /&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Non-Ajax Menuitem"&gt;
             &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}"
-                    update="messages" ajax="false" icon="/images/delete.png"/&gt;
+                    update="messages" ajax="false" /&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Navigations"&gt;
             &lt;p:submenu label="Prime Links"&gt;
-                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr"
-                        icon="/images/home.png"/&gt;
-                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org"
-                        icon="/images/home.png"/&gt;
+                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr" /&gt;
+                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org" /&gt;
             &lt;/p:submenu&gt;
-            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch"
-                        icon="/images/mobile.png"/&gt;
+            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch" /&gt;
         &lt;/p:submenu&gt;
     &lt;/p:menu&gt;
 
@@ -147,19 +141,17 @@
     &lt;p:menu&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}"
-                        update="messages" icon="/images/save.png"/&gt;
+                        update="messages" /&gt;
             &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}"
-                        update="messages" icon="/images/update.png"/&gt;
+                        update="messages" /&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Non-Ajax Menuitem"&gt;
             &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}"
-                        update="messages" ajax="false" icon="/images/delete.png"/&gt;
+                        update="messages" ajax="false" /&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Navigations"&gt;
-            &lt;p:menuitem value="Home" url="http://www.primefaces.org"
-                        icon="/images/home.png"/&gt;
-            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch"
-                        icon="/images/mobile.png"/&gt;
+            &lt;p:menuitem value="Home" url="http://www.primefaces.org" /&gt;
+            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch" /&gt;
         &lt;/p:submenu&gt;
     &lt;/p:menu&gt;
 
@@ -171,19 +163,17 @@
     &lt;p:menu position="dynamic" trigger="dynaButton" my="left top" at="left bottom"&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}"
-                        update="messages" icon="/images/save.png"/&gt;
+                        update="messages" /&gt;
             &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}"
-                        update="messages" icon="/images/update.png"/&gt;
+                        update="messages" /&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Non-Ajax Menuitem"&gt;
             &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}"
-                        update="messages" ajax="false" icon="/images/delete.png"/&gt;
+                        update="messages" ajax="false" /&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Navigations"&gt;
-            &lt;p:menuitem value="Home" url="http://www.primefaces.org"
-                        icon="/images/home.png"/&gt;
-            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch"
-                        icon="/images/mobile.png"/&gt;
+            &lt;p:menuitem value="Home" url="http://www.primefaces.org" /&gt;
+            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch" /&gt;
         &lt;/p:submenu&gt;
     &lt;/p:menu&gt;
 
