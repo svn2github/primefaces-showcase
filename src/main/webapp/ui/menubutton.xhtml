@@ -5,14 +5,6 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
 
-    <ui:define name="head">
-		<style type="text/css">
-			.wijmo-wijmenu {
-                z-index: 50
-			}
-		</style>
-	</ui:define>
-	
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">MenuButton</h1>
@@ -26,7 +18,7 @@
 				
 				<h:panelGrid columns="2" cellpadding="5">
 				
-					<p:menuButton value="Options">
+					<p:menuButton value="Options" zindex="10">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages"/>
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages"/>
 						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false"/>
