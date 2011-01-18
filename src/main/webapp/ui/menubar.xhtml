@@ -5,26 +5,6 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
 	
-	<ui:define name="head">
-		<style type="text/css">
-			.barca {
-				background: url(../images/barca_logo.png) no-repeat 2%;
-			 	padding-left:20px !important;
-			}
-		</style>
-		<!--[if IE 7]>
-			<style type="text/css">
-				.ui-menu .ui-menu-item {
-					width:120px;
-				}
-				
-				.ui-menu-item-label .helptext {
-					margin:-1.5em 0 0 5em;
-				}
-			</style>
-		<![endif]-->
-	</ui:define>
-
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">Menubar</h1>
@@ -32,39 +12,28 @@
 			<p>Menubar brings the desktop application menubars to JSF. Using menuitems, it is very easy to execute both ajax and non-ajax actions
 			as well as directly navigating to other resources.</p>
 			
-			<h:form id="form">
+			<h:form>
 				
 				<p:growl id="messages"/>
 				
                 <p:menubar autoSubmenuDisplay="true">
-					<p:submenu label="Barca" labelStyleClass="barca">
-						<p:menuitem value="Home" url="http://www.fcbarcelona.com"></p:menuitem>
-					</p:submenu>
-					
-					<p:submenu label="File">
-						<p:submenu>
-							<f:facet name="label">
-								<p:menuitem value="New" url="#"/>
-							</f:facet>
-							<p:menuitem value="Project" url="#" helpText="CTRL+N"/>
+					<p:submenu label="File" icon="ui-icon ui-icon-document">
+						<p:submenu label="New" icon="ui-icon ui-icon-contact">
+							<p:menuitem value="Project" url="#" helpText="CTRL+N" />
 							<p:menuitem value="Other" url="#" helpText="CTRL+O"/>
 						</p:submenu>
 						<p:menuitem value="Open" url="#" />
-						<p:menuitem value="Quit" url="#"></p:menuitem>
+						<p:menuitem value="Quit" url="#" />
 					</p:submenu>
 					
-					<p:submenu label="Edit">
-						<p:menuitem value="Undo" url="#" styleClass="undo" helpText="CTRL+Z"></p:menuitem>
-						<p:menuitem value="Redo" url="#" styleClass="redo" helpText="CTRL+Y"></p:menuitem>
+					<p:submenu label="Edit" icon="ui-icon ui-icon-pencil">
+						<p:menuitem value="Undo" url="#" icon="ui-icon ui-icon-arrowreturnthick-1-w" helpText="CTRL+Z"></p:menuitem>
+						<p:menuitem value="Redo" url="#" icon="ui-icon ui-icon-arrowreturnthick-1-e" helpText="CTRL+Y"></p:menuitem>
 					</p:submenu>
 					
-					<p:submenu label="Help">
-						<p:menuitem value="Contents" url="#"></p:menuitem>
-						<p:submenu>
-							<f:facet name="label">
-								<p:menuitem value="Search" url="#"/>
-							</f:facet>
-							
+					<p:submenu label="Help" icon="ui-icon ui-icon-help">
+						<p:menuitem value="Contents" url="#" />
+						<p:submenu label="Search" icon="ui-icon ui-icon-search">
 							<p:submenu label="Text">
 								<p:menuitem value="Workspace" url="#" />
 							</p:submenu>
@@ -72,19 +41,19 @@
 						</p:submenu>
 					</p:submenu>
 					
-					<p:submenu label="Actions">
-						<p:submenu label="Ajax">
-							<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages"/>
-							<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages"/>
+					<p:submenu label="Actions" icon="ui-icon ui-icon-gear">
+						<p:submenu label="Ajax" icon="ui-icon ui-icon-refresh">
+							<p:menuitem value="Save" actionListener="#{buttonBean.save}" icon="ui-icon ui-icon-disk" update="messages"/>
+							<p:menuitem value="Update" actionListener="#{buttonBean.update}" icon="ui-icon ui-icon-arrowrefresh-1-w" update="messages"/>
 						</p:submenu>
-						<p:submenu label="Non-Ajax">
-							<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false"/>
+						<p:submenu label="Non-Ajax" icon="ui-icon ui-icon-newwin">
+							<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" icon="ui-icon ui-icon-close" update="messages" ajax="false"/>
 						</p:submenu>
 					</p:submenu>
 					
 					<p:submenu>
 						<f:facet name="label">
-							<p:menuitem value="Quit" url="http://www.primefaces.org" />
+							<p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon ui-icon-close" />
 						</f:facet>
 					</p:submenu>
 				</p:menubar>
@@ -105,77 +74,51 @@
 			<p:tabView>
 				<p:tab title="menubar.xhtml">
 <pre name="code" class="xml">
-&lt;h:form id="form"&gt;
+&lt;h:form&gt;
 
-	&lt;p:growl id="messages"/&gt;
+    &lt;p:growl id="messages"/&gt;
 
-	&lt;p:menubar autoSubmenuDisplay="true"&gt;
-		&lt;p:submenu label="Barca" labelStyleClass="barca"&gt;
-			&lt;p:menuitem value="Home" url="http://www.fcbarcelona.com" /&gt;
-		&lt;/p:submenu&gt;
-		
-		&lt;p:submenu label="File"&gt;
-			&lt;p:submenu&gt;
-				&lt;f:facet name="label"&gt;
-					&lt;p:menuitem value="New" url="\#"/&gt;
-				&lt;/f:facet&gt;
-				&lt;p:menuitem value="Project" url="\#" helpText="CTRL+N"/&gt;
-				&lt;p:menuitem value="Other" url="\#" helpText="CTRL+O"/&gt;
-			&lt;/p:submenu&gt;
-			&lt;p:menuitem value="Open" url="\#" /&gt;
-			&lt;p:menuitem value="Quit" url="\#"&gt;&lt;/p:menuitem&gt;
-		&lt;/p:submenu&gt;
-		
-		&lt;p:submenu label="Edit"&gt;
-			&lt;p:menuitem value="Undo" url="\#" styleClass="undo" 
-						helpText="CTRL+Z"&gt;&lt;/p:menuitem&gt;
-			&lt;p:menuitem value="Redo" url="\#" styleClass="redo" 
-						helpText="CTRL+Y" &gt;&lt;/p:menuitem&gt;
-		&lt;/p:submenu&gt;
-		
-		&lt;p:submenu label="Help"&gt;
-			&lt;p:menuitem value="Contents" url="\#"&gt;&lt;/p:menuitem&gt;
-			&lt;p:submenu&gt;
-				&lt;f:facet name="label"&gt;
-					&lt;p:menuitem value="Search" url="\#"/&gt;
-				&lt;/f:facet&gt;
-				
-				&lt;p:submenu label="Text"&gt;
-					&lt;p:menuitem value="Workspace" url="\#" /&gt;
-				&lt;/p:submenu&gt;
-				&lt;p:menuitem value="File" url="\#" /&gt;
-			&lt;/p:submenu&gt;
-		&lt;/p:submenu&gt;
-		
-		&lt;p:submenu label="Actions"&gt;
-			&lt;p:submenu label="Ajax"&gt;
-				&lt;p:menuitem value="Save" update="messages" 
-						actionListener="\#{menuBean.save}" /&gt;
-				&lt;p:menuitem value="Update" update="messages" 
-						actionListener="\#{menuBean.update}" /&gt;
-			&lt;/p:submenu&gt;
-			&lt;p:submenu label="Non-Ajax"&gt;
-				&lt;p:menuitem value="Delete" update="messages" ajax="false" 
-						actionListener="\#{menuBean.delete}" /&gt;
-			&lt;/p:submenu&gt;
-		&lt;/p:submenu&gt;
-		
-		&lt;p:submenu&gt;
-			&lt;f:facet name="label"&gt;
-				&lt;p:menuitem value="Quit" url="http://www.primefaces.org" /&gt;
-			&lt;/f:facet&gt;
-		&lt;/p:submenu&gt;
-	&lt;/p:menubar&gt;
-	
-	&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-		&lt;f:facet name="start"&gt;
-			&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-		&lt;/f:facet&gt;
-		
-		&lt;f:facet name="complete"&gt;
-			&lt;h:outputText value="" /&gt;
-		&lt;/f:facet&gt;
-	&lt;/p:ajaxStatus&gt;
+    &lt;p:menubar autoSubmenuDisplay="true"&gt;
+        &lt;p:submenu label="File" icon="ui-icon ui-icon-document"&gt;
+            &lt;p:submenu label="New" icon="ui-icon ui-icon-contact"&gt;
+                &lt;p:menuitem value="Project" url="\#" helpText="CTRL+N" /&gt;
+                &lt;p:menuitem value="Other" url="\#" helpText="CTRL+O"/&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:menuitem value="Open" url="\#" /&gt;
+            &lt;p:menuitem value="Quit" url="\#" /&gt;
+        &lt;/p:submenu&gt;
+
+        &lt;p:submenu label="Edit" icon="ui-icon ui-icon-pencil"&gt;
+            &lt;p:menuitem value="Undo" url="\#" icon="ui-icon ui-icon-arrowreturnthick-1-w" helpText="CTRL+Z"&gt;&lt;/p:menuitem&gt;
+            &lt;p:menuitem value="Redo" url="\#" icon="ui-icon ui-icon-arrowreturnthick-1-e" helpText="CTRL+Y"&gt;&lt;/p:menuitem&gt;
+        &lt;/p:submenu&gt;
+
+        &lt;p:submenu label="Help" icon="ui-icon ui-icon-help"&gt;
+            &lt;p:menuitem value="Contents" url="\#" /&gt;
+            &lt;p:submenu label="Search" icon="ui-icon ui-icon-search"&gt;
+                &lt;p:submenu label="Text"&gt;
+                    &lt;p:menuitem value="Workspace" url="\#" /&gt;
+                &lt;/p:submenu&gt;
+                &lt;p:menuitem value="File" url="\#" /&gt;
+            &lt;/p:submenu&gt;
+        &lt;/p:submenu&gt;
+
+        &lt;p:submenu label="Actions" icon="ui-icon ui-icon-gear"&gt;
+            &lt;p:submenu label="Ajax" icon="ui-icon ui-icon-refresh"&gt;
+                &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" icon="ui-icon ui-icon-disk" update="messages"/&gt;
+                &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" icon="ui-icon ui-icon-arrowrefresh-1-w" update="messages"/&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:submenu label="Non-Ajax" icon="ui-icon ui-icon-newwin"&gt;
+                &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" icon="ui-icon ui-icon-close" update="messages" ajax="false"/&gt;
+            &lt;/p:submenu&gt;
+        &lt;/p:submenu&gt;
+
+        &lt;p:submenu&gt;
+            &lt;f:facet name="label"&gt;
+                &lt;p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon ui-icon-close" /&gt;
+            &lt;/f:facet&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:menubar&gt;
 
 &lt;/h:form&gt;
 			</pre>
