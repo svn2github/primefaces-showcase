@@ -16,7 +16,7 @@
 				<p:growl id="messages"/>
 
                 <h3>Sliding Menu</h3>
-				<p:menu type="sliding">
+				<p:menu type="sliding" maxHeight="150">
 					<p:submenu label="Ajax Menuitems">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="/images/save.png"/>
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="/images/update.png"/>
@@ -96,7 +96,7 @@
     &lt;p:growl id="messages"/&gt;
 
     &lt;h3&gt;Sliding Menu&lt;/h3&gt;
-    &lt;p:menu type="sliding"&gt;
+    &lt;p:menu type="sliding" maxHeight="150"&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}"
                         update="messages" icon="/images/save.png"/&gt;
