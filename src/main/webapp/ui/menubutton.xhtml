@@ -19,10 +19,10 @@
 				<h:panelGrid columns="2" cellpadding="5">
 				
 					<p:menuButton value="Options" zindex="10">
-						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages"/>
-						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages"/>
-						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false"/>
-						<p:menuitem value="Homepage" url="http://www.primefaces.org"/>
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk"/>
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w"/>
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false" icon="ui-icon ui-icon-close"/>
+						<p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon ui-icon-extlink"/>
 					</p:menuButton>
 					
 					<p:ajaxStatus style="width:16px;height:16px;">
@@ -48,13 +48,15 @@
 	&lt;p:growl id="messages"/&gt;
 	
 	&lt;p:menuButton value="Options"&gt;
-		&lt;p:menuitem value="Save" 
-			actionListener="\#{buttonBean.save}" update="messages"/&gt;
-		&lt;p:menuitem value="Update" 
-			actionListener="\#{buttonBean.update}" update="messages"/&gt;
-		&lt;p:menuitem value="Delete" 
+		&lt;p:menuitem value="Save" update="messages"
+			actionListener="\#{buttonBean.save}" icon="ui-icon ui-icon-disk"/&gt;
+		&lt;p:menuitem value="Update" update="messages"
+			actionListener="\#{buttonBean.update}"
+            icon="ui-icon ui-icon-arrowrefresh-1-w"/&gt;
+		&lt;p:menuitem value="Delete" icon="ui-icon ui-icon-close"
 			actionListener="\#{buttonBean.delete}" ajax="false"/&gt;
-		&lt;p:menuitem value="Homepage" url="http://www.primefaces.org"/&gt;
+		&lt;p:menuitem value="Homepage" url="http://www.primefaces.org"
+            icon="ui-icon ui-icon-extlink"/&gt;
 	&lt;/p:menuButton&gt;
 &lt;/h:form&gt;
 			</pre>
