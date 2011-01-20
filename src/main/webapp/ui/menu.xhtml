@@ -16,7 +16,7 @@
 				<p:growl id="messages"/>
 
 				<h3>Tiered Menu</h3>
-				<p:menu type="tiered">
+				<p:menu type="tiered" style="width:180px">
 					<p:submenu label="Ajax Menuitems" icon="ui-icon ui-icon-refresh">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk" />
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w" />
@@ -96,7 +96,7 @@
     &lt;p:growl id="messages"/&gt;
 
     &lt;h3&gt;Tiered Menu&lt;/h3&gt;
-    &lt;p:menu type="tiered"&gt;
+    &lt;p:menu type="tiered" style="width:180px"&gt;
         &lt;p:submenu label="Ajax Menuitems" icon="ui-icon ui-icon-refresh"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk" /&gt;
             &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w" /&gt;
