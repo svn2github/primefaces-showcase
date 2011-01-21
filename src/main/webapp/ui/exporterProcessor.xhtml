@@ -115,10 +115,13 @@ public void postProcessXLS(Object document) {
 
 public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
 	Document pdf = (Document) document;
-	ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-	String logo = servletContext.getRealPath("") + File.separator + "images" + File.separator + "prime_logo.png";
-	
-	pdf.add(Image.getInstance(logo));
+    pdf.open();
+    pdf.setPageSize(PageSize.A4);
+
+    ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+    String logo = servletContext.getRealPath("") + File.separator + "images" + File.separator + "prime_logo.png";
+
+    pdf.add(Image.getInstance(logo));
 }
 </pre>
             </div>
