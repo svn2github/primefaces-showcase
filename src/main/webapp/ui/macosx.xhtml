@@ -11,7 +11,7 @@
 		<ui:insert name="title">PrimeFaces ShowCase</ui:insert>
 	</title>
 	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/sam/skin.css" />
+	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/aristo/skin.css" />
 	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css"></link>
 	<style type="text/css">
 		body {
@@ -23,15 +23,16 @@
 		}
 
 		.appleIcon {
-			background: url(../images/macosx/apple.png) no-repeat 20%;
-			padding-left:22px !important;
+			background: url(../images/macosx/apple.png) no-repeat;
+            width:16px;
+            height:16px;
 		}
 
         .ui-dialog .ui-terminal {
             border:0;
         }
 
-        .ui-dialog .ui-dialog-content {
+        .ui-dialog.terminalDialog .ui-dialog-content {
             padding:0;
         }
 	</style>
@@ -44,25 +45,25 @@
 	<p:growl showDetail="true" sticky="true"/>
 
 	<p:menubar>
-		<p:submenu labelStyleClass="appleIcon" label="&nbsp;">
-			<p:menuitem value="About This Mac" url="#" onclick="info.show();"></p:menuitem>
+		<p:submenu icon="appleIcon">
+			<p:menuitem value="About This Mac" url="#" onclick="info.show();" icon="ui-icon ui-icon-info"></p:menuitem>
 		</p:submenu>
 				
 		<p:submenu label="Finder">
-			<p:menuitem value="About Finder" url="#" styleClass="open"></p:menuitem>
+			<p:menuitem value="About Finder" url="#" styleClass="open" icon="ui-icon ui-icon-info"></p:menuitem>
 		</p:submenu>
 		
 		<p:submenu label="Edit">
-			<p:menuitem value="Undo" url="#" styleClass="undo" helpText="⌘Z"></p:menuitem>
-			<p:menuitem value="Redo" url="#" styleClass="redo" helpText="⌘Y"></p:menuitem>
+			<p:menuitem value="Undo" url="#" styleClass="undo" helpText="⌘Z" icon="ui-icon ui-icon-arrowreturnthick-1-w"></p:menuitem>
+			<p:menuitem value="Redo" url="#" styleClass="redo" helpText="⌘Y" icon="ui-icon ui-icon-arrowreturnthick-1-e"></p:menuitem>
 		</p:submenu>
 		
 		<p:submenu label="View">
-			<p:menuitem value="Source" url="#" onclick="source.show();"></p:menuitem>
+			<p:menuitem value="Source" url="#" onclick="source.show();" icon="ui-icon ui-icon-search"></p:menuitem>
 		</p:submenu>
 	</p:menubar>
 		
-	<p:dialog header="About This Mac" draggable="true" widgetVar="info">
+	<p:dialog header="About This Mac" draggable="true" widgetVar="info" showEffect="fade" hideEffect="fade">
 		<h:form>
 			<h:panelGrid columns="1" style="width:100%;text-align:center;">
 				<p:graphicImage value="/images/macosx/apple_logo.png" />
@@ -85,11 +86,12 @@
 		</h:form>
 	</p:dialog>
 	
-	<p:dialog header="PrimeFaces Mock OS X" draggable="true" visible="true" modal="true">
+	<p:dialog header="PrimeFaces Mock OS X" draggable="true" visible="true" modal="true" showEffect="fade" hideEffect="fade">
 		<h:outputText value="Welcome! Everything here is a PrimeFaces JSF component." />
 	</p:dialog>
 	
-	<p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false">
+	<p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade"
+              styleClass="terminalDialog">
         <h:form>
             <p:terminal widgetVar="term" commandHandler="#{terminalController.handleCommand}" width="590px"
                     welcomeMessage="Welcome to PrimeFaces Terminal, how are you today? Try date and greet  commands."/>
@@ -103,7 +105,7 @@
 &lt;p:growl showDetail="true" sticky="true"/&gt;
 
 &lt;p:menubar&gt;
-	&lt;p:submenu labelStyleClass="appleIcon" label="&nbsp;"&gt;
+	&lt;p:submenu icon="appleIcon" label="&nbsp;"&gt;
 		&lt;p:menuitem value="About This Mac" url="\#" onclick="info.show();"&gt;&lt;/p:menuitem&gt;
 	&lt;/p:submenu&gt;
 			
@@ -121,7 +123,7 @@
 	&lt;/p:submenu&gt;
 &lt;/p:menubar&gt;
 	
-&lt;p:dialog header="About This Mac" draggable="true" widgetVar="info"&gt;
+&lt;p:dialog header="About This Mac" draggable="true" widgetVar="info" showEffect="fade" hideEffect="fade"&gt;
 	&lt;h:form&gt;
 		&lt;h:panelGrid columns="1" style="width:100%;text-align:center;"&gt;
 			&lt;p:graphicImage value="/images/macosx/apple_logo.png" /&gt;
@@ -144,14 +146,15 @@
 	&lt;/h:form&gt;
 &lt;/p:dialog&gt;
 
-&lt;p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false"&gt;
+&lt;p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade"&gt;
     &lt;h:form&gt;
         &lt;p:terminal widgetVar="term" commandHandler="\#{terminalController.handleCommand}" width="590px"
                 welcomeMessage="Welcome to PrimeFaces Terminal, how are you today? Try date and greet  commands."/&gt;
     &lt;/h:form&gt;
 &lt;/p:dialog&gt;
 
-&lt;p:dialog widgetVar="terminal" styleClass="terminal" width="600" height="400" header="Terminal"&gt;
+&lt;p:dialog widgetVar="terminal" styleClass="terminal" width="600" height="400" header="Terminal" showEffect="fade" hideEffect="fade"
+    styleClass="terminalDialog"&gt;
 	&lt;h:form&gt;
 	&lt;p:terminal commandHandler="\#{terminalController.handleCommand}" width="100%" height="100%" 
 				welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/&gt;
@@ -166,7 +169,14 @@
 	&lt;p:menuitem label="iChat" icon="/images/macosx/ichat.png" url="\#"/&gt;
 	&lt;p:menuitem label="Trash" icon="/images/macosx/trash.png" url="\#"/&gt;
 &lt;/p:dock&gt;
-				
+
+&lt;p:stack icon="/images/stack/stack.png"&gt;
+    &lt;p:menuitem value="Aperture" icon="/images/stack/aperture.png" url="#" /&gt;
+    &lt;p:menuitem value="Photoshop" icon="/images/stack/photoshop.png" url="#"/&gt;
+    &lt;p:menuitem value="Coda" icon="/images/stack/coda.png" url="#"/&gt;
+    &lt;p:menuitem value="Safari" icon="/images/stack/safari.png" url="#" /&gt;
+    &lt;p:menuitem value="Finder" icon="/images/stack/finder.png" url="#" /&gt;
+&lt;/p:stack&gt;
 			</pre>
 
 	</p:dialog>
@@ -179,6 +189,14 @@
 		<p:menuitem label="iChat" icon="/images/macosx/ichat.png" url="#"/>
 		<p:menuitem label="Trash" icon="/images/macosx/trash.png" url="#"/>
 	</p:dock>
+
+    <p:stack icon="/images/stack/stack.png">
+		<p:menuitem value="Aperture" icon="/images/stack/aperture.png" url="#" />
+		<p:menuitem value="Photoshop" icon="/images/stack/photoshop.png" url="#"/>
+		<p:menuitem value="Coda" icon="/images/stack/coda.png" url="#"/>
+		<p:menuitem value="Safari" icon="/images/stack/safari.png" url="#" />
+		<p:menuitem value="Finder" icon="/images/stack/finder.png" url="#" />
+	</p:stack>
 	
 </h:body>
 
