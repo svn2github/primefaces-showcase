@@ -27,9 +27,9 @@
 				<h:panelGrid columns="3">
 					<h:outputText value="Keyup: " />
 					
-					<h:inputText id="counter">
+					<p:inputText id="counter">
 						<p:ajax event="keyup" update="out" listener="#{counterBean.increment}"/>
-					</h:inputText>
+					</p:inputText>
 					
 					<h:outputText id="out" value="#{counterBean.count}" />
 				</h:panelGrid>
@@ -55,10 +55,10 @@
 	&lt;h:panelGrid columns="3"&gt;
 		&lt;h:outputText value="Keyup: " /&gt;
 		
-		&lt;h:inputText id="counter"&gt;
+		&lt;p:inputText id="counter"&gt;
 			&lt;p:ajax event="keyup" update="out" 
 					listener="\#{counterBean.increment}"/&gt;
-		&lt;/h:inputText&gt;
+		&lt;/p:inputText&gt;
 		
 		&lt;h:outputText id="out" value="\#{counterBean.count}" /&gt;
 	&lt;/h:panelGrid&gt;

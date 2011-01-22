@@ -14,10 +14,10 @@
        			<p:panel header="New Book">
 					<h:panelGrid columns="2">		
 						<h:outputLabel value="Title :" for="txt_title"></h:outputLabel>
-						<h:inputText id="txt_title" value="#{createBookBean.book.title}" required="true"/>
+						<p:inputText id="txt_title" value="#{createBookBean.book.title}" required="true"/>
 						
 						<h:outputLabel value="Author :" for="txt_author"></h:outputLabel>
-						<h:inputText id="txt_author" value="#{createBookBean.book.author}" required="true"/>
+						<p:inputText id="txt_author" value="#{createBookBean.book.author}" required="true"/>
 	
 					
 						<p:commandButton value="Add" action="#{createBookBean.createNew}" update="books" />
@@ -62,11 +62,11 @@
     &lt;p:panel header="New Book"&gt;
 		&lt;h:panelGrid columns="2"&gt;		
 			&lt;h:outputLabel value="Title :" for="txt_title"&gt;&lt;/h:outputLabel&gt;
-			&lt;h:inputText id="txt_title" 
+			&lt;p:inputText id="txt_title" 
 						value="\#{createBookBean.book.title}" required="true"/&gt;
 			
 			&lt;h:outputLabel value="Author :" for="txt_author"&gt;&lt;/h:outputLabel&gt;
-			&lt;h:inputText id="txt_author" 
+			&lt;p:inputText id="txt_author" 
 						value="\#{createBookBean.book.author}" required="true"/&gt;
 
 		

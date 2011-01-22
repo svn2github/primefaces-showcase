@@ -42,7 +42,7 @@
                 <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
                     <h:panelGrid id="eventDetails" columns="2">
                         <h:outputLabel for="title" value="Title:" />
-                        <h:inputText id="title" value="#{scheduleController.event.title}" required="true"/>
+                        <p:inputText id="title" value="#{scheduleController.event.title}" required="true"/>
 
                         <h:outputLabel for="from" value="From:" />
                         <p:inputMask id="from" value="#{scheduleController.event.startDate}" mask="99/99/9999">
@@ -98,7 +98,7 @@
     &lt;p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip"&gt;
         &lt;h:panelGrid id="eventDetails" columns="2"&gt;
             &lt;h:outputLabel for="title" value="Title:" /&gt;
-            &lt;h:inputText id="title" value="\#{scheduleController.event.title}" /&gt;
+            &lt;p:inputText id="title" value="\#{scheduleController.event.title}" /&gt;
 
             &lt;h:outputLabel for="from" value="From:" /&gt;
             &lt;p:inputMask id="from" mask="99/99/9999"

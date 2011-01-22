@@ -30,13 +30,13 @@
 						
 						<h:panelGrid columns="3" cellpadding="5">
 							<h:outputLabel for="firstname" value="Firstname: *" />
-							<h:inputText id="firstname" value="#{personBean.firstname}" required="true" label="Firstname">
+							<p:inputText id="firstname" value="#{personBean.firstname}" required="true" label="Firstname">
 								<f:validateLength minimum="2" />
-							</h:inputText>
+							</p:inputText>
 							<p:message for="firstname" />
 							
 							<h:outputLabel for="surname" value="Surname: *" />
-							<h:inputText id="surname" value="#{personBean.surname}" required="true" label="Surname"/>
+							<p:inputText id="surname" value="#{personBean.surname}" required="true" label="Surname"/>
 							<p:message for="surname" />
 	
 						</h:panelGrid>
@@ -70,15 +70,15 @@
 		
 		&lt;h:panelGrid columns="3" cellpadding="5"&gt;
 			&lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
-			&lt;h:inputText id="firstname" 
+			&lt;p:inputText id="firstname" 
 					value="\#{personBean.firstname}" 
 					required="true" label="Firstname"&gt;
 				&lt;f:validateLength minimum="2" /&gt;
-			&lt;/h:inputText&gt;
+			&lt;/p:inputText&gt;
 			&lt;p:message for="firstname" /&gt;
 			
 			&lt;h:outputLabel for="surname" value="Surname: *" /&gt;
-			&lt;h:inputText id="surname" 
+			&lt;p:inputText id="surname" 
 					value="\#{personBean.surname}" 
 					required="true" label="Surname"/&gt;
 			&lt;p:message for="surname" /&gt;

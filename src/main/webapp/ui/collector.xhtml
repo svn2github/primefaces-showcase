@@ -15,10 +15,10 @@
                 <p:panel header="Create a new book">
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Title : *" for="txt_title"></h:outputLabel>
-						<h:inputText id="txt_title" value="#{createBookBean.book.title}" required="true"/>
+						<p:inputText id="txt_title" value="#{createBookBean.book.title}" required="true"/>
 						
 						<h:outputLabel value="Author : *" for="txt_author"></h:outputLabel>
-						<h:inputText id="txt_author" value="#{createBookBean.book.author}" required="true"/>
+						<p:inputText id="txt_author" value="#{createBookBean.book.author}" required="true"/>
 						
 						<p:commandButton value="Reset" type="reset"/>
 						<p:commandButton value="Add" update="books" action="#{createBookBean.reinit}" >
@@ -77,11 +77,11 @@
 	&lt;p:panel header="Create a new book"&gt;
 		&lt;h:panelGrid columns="2"&gt;
 			&lt;h:outputLabel value="Title : *" for="txt_title"&gt;&lt;/h:outputLabel&gt;
-			&lt;h:inputText id="txt_title" 
+			&lt;p:inputText id="txt_title" 
 							value="\#{createBookBean.book.title}" required="true"/&gt;
 			
 			&lt;h:outputLabel value="Author : *" for="txt_author"&gt;&lt;/h:outputLabel&gt;
-			&lt;h:inputText id="txt_author" required="true" 
+			&lt;p:inputText id="txt_author" required="true" 
 							value="\#{createBookBean.book.author}" /&gt;
 			
 			&lt;p:commandButton value="Reset" type="reset"/&gt;

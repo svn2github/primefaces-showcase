@@ -51,7 +51,7 @@
 				
 				<h:panelGrid columns="4">
 					<h:outputLabel for="name" value="Say: *" />
-					<h:inputText id="name" value="#{buttonBean.text}" required="true" requiredMessage="You must type something!"/>
+					<p:inputText id="name" value="#{buttonBean.text}" required="true" requiredMessage="You must type something!"/>
 					<p:commandButton value="Submit" update="bottomPanel" oncomplete="bottomBar.show();"/>
 					<p:ajaxStatus style="height:24px;display:block;">
 						<f:facet name="start">
@@ -91,7 +91,7 @@
 				
 	&lt;h:panelGrid columns="4"&gt;
 		&lt;h:outputLabel for="name" value="Name: *" /&gt;
-		&lt;h:inputText id="name" value="\#{buttonBean.text}" label="name" required="true" requiredMessage="You must type something!"/&gt;
+		&lt;p:inputText id="name" value="\#{buttonBean.text}" label="name" required="true" requiredMessage="You must type something!"/&gt;
 		&lt;p:commandButton value="Submit" update="bottomPanel" oncomplete="bottomBar.show();"/&gt;
 		&lt;p:ajaxStatus style="height:24px;display:block;"&gt;
 			&lt;f:facet name="start"&gt;

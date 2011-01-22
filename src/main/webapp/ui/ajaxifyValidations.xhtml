@@ -21,10 +21,10 @@
 				<h:panelGrid columns="3">
 					<h:outputLabel for="firstname" value="Name: " />
 					
-					<h:inputText id="firstname" value="#{pprBean.firstname}" label="Firstname">
+					<p:inputText id="firstname" value="#{pprBean.firstname}" label="Firstname">
 						<f:validateLength minimum="5" />
 						<p:ajax event="blur" update="messages" />
-					</h:inputText>
+					</p:inputText>
 					
 					<p:ajaxStatus style="width:16px;height:16px;">
 						<f:facet name="start">
@@ -53,11 +53,11 @@
 		&lt;h:panelGrid columns="3"&gt;
 			&lt;h:outputLabel for="firstname" value="Name: " /&gt;
 			
-			&lt;h:inputText id="firstname" 
+			&lt;p:inputText id="firstname" 
 					value="\#{pprBean.firstname}" label="Firstname"&gt;
 				&lt;f:validateLength minimum="5" /&gt;
 				&lt;p:ajax event="blur" update="messages" /&gt;
-			&lt;/h:inputText&gt;
+			&lt;/p:inputText&gt;
 			
 			&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
 				&lt;f:facet name="start"&gt;

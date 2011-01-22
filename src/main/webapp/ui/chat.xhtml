@@ -78,7 +78,7 @@
 	              		<p:panel header="Sign in" rendered="#{!chatController.loggedIn}">
 		              		<h:panelGrid  columns="3" >
 		              			<h:outputText value="Username:" />
-		              			<h:inputText value="#{chatController.username}" />
+		              			<p:inputText value="#{chatController.username}" />
 		              			<p:commandButton value="Login" actionListener="#{chatController.login}" oncomplete="jQuery('#display').slideDown()" update="panel"/>
 		              		</h:panelGrid>
 	              		</p:panel>
@@ -86,7 +86,7 @@
 	 					<p:panel header="Signed in as : #{chatController.username}" rendered="#{chatController.loggedIn}" toggleable="true">
 		              		<h:panelGrid  columns="3">
 		              			<h:outputText value="Message:" />
-			              		<h:inputText id="txt" value="#{chatController.message}" size="50"/>
+			              		<p:inputText id="txt" value="#{chatController.message}" size="50"/>
 								<p:commandButton value="Send" actionListener="#{chatController.send}" oncomplete="jQuery('#txt').val('');"/>
 		              		</h:panelGrid>
 	              		</p:panel>
@@ -111,7 +111,7 @@
 		&lt;p:panel header="Sign in" rendered="\#{!chatController.loggedIn}"&gt;
 			&lt;h:panelGrid  columns="3" &gt;
 				&lt;h:outputText value="Username:" /&gt;
-				&lt;h:inputText value="\#{chatController.username}" /&gt;
+				&lt;p:inputText value="\#{chatController.username}" /&gt;
 				&lt;p:commandButton value="Login" actionListener="\#{chatController.login}" oncomplete="jQuery('#display').slideDown()" update="panel"/&gt;
 			&lt;/h:panelGrid&gt;
 		&lt;/p:panel&gt;
@@ -119,7 +119,7 @@
 	 	&lt;p:panel header="Signed in as : \#{chatController.username}" rendered="\#{chatController.loggedIn}" toggleable="true"&gt;
 			&lt;h:panelGrid  columns="3"&gt;
 				&lt;h:outputText value="Message:" /&gt;
-				&lt;h:inputText value="\#{chatController.message}" size="50"/&gt;
+				&lt;p:inputText value="\#{chatController.message}" size="50"/&gt;
 				&lt;p:commandButton value="Send" actionListener="\#{chatController.send}" /&gt;
 			&lt;/h:panelGrid&gt;
 		&lt;/p:panel&gt;

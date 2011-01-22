@@ -22,7 +22,7 @@
                 <p:panel header="Message Effects" toggleable="true">
                     <h:panelGrid columns="2">
                         <h:outputText value="Type: *" />
-                        <h:inputText value="#{buttonBean.text}" required="true" label="Text"/>
+                        <p:inputText value="#{buttonBean.text}" required="true" label="Text"/>
 
                         <h:outputText />
                         <p:commandButton value="Echo" actionListener="#{buttonBean.displayMessage}" update="messages"/>
@@ -45,7 +45,7 @@
 	&lt;p:panel header="Message Effects" toggleable="true"&gt;
 		&lt;h:panelGrid columns="2"&gt;
 			&lt;h:outputText value="Type: *" /&gt;
-			&lt;h:inputText value="\#{buttonBean.text}" required="true" label="Text"/&gt;
+			&lt;p:inputText value="\#{buttonBean.text}" required="true" label="Text"/&gt;
 
 			&lt;h:outputText /&gt;
 			&lt;p:commandButton value="Save" update="messages"

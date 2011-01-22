@@ -36,7 +36,7 @@
 					
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputLabel for="username" value="Username: *" />
-							<h:inputText id="username" value="#{loginBean.username}" required="true" label="username" />
+							<p:inputText id="username" value="#{loginBean.username}" required="true" label="username" />
 							
 							<h:outputLabel for="password" value="Password: * " />
 							<h:inputSecret id="password" value="#{loginBean.password}" required="true" label="password" />
@@ -65,7 +65,7 @@
 
 		&lt;h:panelGrid columns="2" cellpadding="5"&gt;
 			&lt;h:outputLabel for="username" value="Username: *" /&gt;
-			&lt;h:inputText value="\#{loginBean.username}" 
+			&lt;p:inputText value="\#{loginBean.username}" 
 					id="username" required="true" label="username" /&gt;
 			
 			&lt;h:outputLabel for="password" value="Password: * " /&gt;

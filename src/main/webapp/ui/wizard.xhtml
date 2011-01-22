@@ -66,13 +66,13 @@
 									
 									<h:panelGrid columns="2" columnClasses="label, value">
 										<h:outputText value="Firstname: *" />
-										<h:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname"/>
+										<p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname"/>
 										
 										<h:outputText value="Lastname: *" />
-										<h:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
+										<p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
 										
 										<h:outputText value="Age: " />
-										<h:inputText value="#{userWizard.user.age}" />
+										<p:inputText value="#{userWizard.user.age}" />
 
 										<h:outputText value="Skip to last: " />
 										<h:selectBooleanCheckbox value="#{userWizard.skip}" />
@@ -87,13 +87,13 @@
 									
 									<h:panelGrid columns="2" columnClasses="label, value">
 										<h:outputText value="Street: " />
-										<h:inputText value="#{userWizard.user.street}" />
+										<p:inputText value="#{userWizard.user.street}" />
 										
 										<h:outputText value="Postal Code: " />
-										<h:inputText value="#{userWizard.user.postalCode}" />
+										<p:inputText value="#{userWizard.user.postalCode}" />
 										
 										<h:outputText value="City: " />
-										<h:inputText value="#{userWizard.user.city}" />
+										<p:inputText value="#{userWizard.user.city}" />
 										
 										<h:outputText value="Skip to last: " />
 										<h:selectBooleanCheckbox value="#{userWizard.skip}" />
@@ -109,13 +109,13 @@
 								
 									<h:panelGrid columns="2" columnClasses="label, value">
 										<h:outputText value="Email: *" />
-										<h:inputText value="#{userWizard.user.email}" required="true" label="Email"/>
+										<p:inputText value="#{userWizard.user.email}" required="true" label="Email"/>
 										
 										<h:outputText value="Phone: " />
-										<h:inputText value="#{userWizard.user.phone}"/>
+										<p:inputText value="#{userWizard.user.phone}"/>
 										
 										<h:outputText value="Additional Info: " />
-										<h:inputText value="#{userWizard.user.info}"/>
+										<p:inputText value="#{userWizard.user.info}"/>
 										
 									</h:panelGrid>
 
@@ -191,15 +191,15 @@
 				
 				&lt;h:panelGrid columns="2" columnClasses="label, value" styleClass="grid"&gt;
 					&lt;h:outputText value="Firstname: *" /&gt;
-					&lt;h:inputText required="true" label="Firstname"
+					&lt;p:inputText required="true" label="Firstname"
 							value="\#{userWizard.user.firstname}" /&gt;
 					
 					&lt;h:outputText value="Lastname: *" /&gt;
-					&lt;h:inputText required="true" label="Lastname"
+					&lt;p:inputText required="true" label="Lastname"
 							value="\#{userWizard.user.lastname}" /&gt;
 					
 					&lt;h:outputText value="Age: " /&gt;
-					&lt;h:inputText value="\#{userWizard.user.age}" /&gt;
+					&lt;p:inputText value="\#{userWizard.user.age}" /&gt;
 					
 					&lt;h:outputText value="Skip to last: " /&gt;
 					&lt;h:selectBooleanCheckbox value="\#{userWizard.skip}" /&gt;
@@ -214,13 +214,13 @@
 				
 				&lt;h:panelGrid columns="2" columnClasses="label, value"&gt;
 					&lt;h:outputText value="Street: " /&gt;
-					&lt;h:inputText value="\#{userWizard.user.street}" /&gt;
+					&lt;p:inputText value="\#{userWizard.user.street}" /&gt;
 					
 					&lt;h:outputText value="Postal Code: " /&gt;
-					&lt;h:inputText value="\#{userWizard.user.postalCode}" /&gt;
+					&lt;p:inputText value="\#{userWizard.user.postalCode}" /&gt;
 					
 					&lt;h:outputText value="City: " /&gt;
-					&lt;h:inputText value="\#{userWizard.user.city}" /&gt;
+					&lt;p:inputText value="\#{userWizard.user.city}" /&gt;
 					
 					&lt;h:outputText value="Skip to last: " /&gt;
 					&lt;h:selectBooleanCheckbox value="\#{userWizard.skip}" /&gt;
@@ -235,14 +235,14 @@
 			
 				&lt;h:panelGrid columns="2" columnClasses="label, value"&gt;
 					&lt;h:outputText value="Email: *" /&gt;
-					&lt;h:inputText required="true" label="Email"
+					&lt;p:inputText required="true" label="Email"
 							value="\#{userWizard.user.email}" /&gt;
 					
 					&lt;h:outputText value="Phone: " /&gt;
-					&lt;h:inputText value="\#{userWizard.user.phone}"/&gt;
+					&lt;p:inputText value="\#{userWizard.user.phone}"/&gt;
 					
 					&lt;h:outputText value="Additional Info: " /&gt;
-					&lt;h:inputText value="\#{userWizard.user.info}"/&gt;
+					&lt;p:inputText value="\#{userWizard.user.info}"/&gt;
 				&lt;/h:panelGrid&gt;
 			&lt;/p:panel&gt;
 		&lt;/p:tab&gt;

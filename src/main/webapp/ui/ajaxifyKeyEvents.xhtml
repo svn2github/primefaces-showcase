@@ -17,15 +17,15 @@
 				<p:panel header="Ajaxify">
 					<h:panelGrid columns="3" cellpadding="5">
 						<h:outputText value="KeyUp: " />
-						<h:inputText id="firstname" value="#{pprBean.firstname}">
+						<p:inputText id="firstname" value="#{pprBean.firstname}">
 							<p:ajax event="keyup" update="out1" />
-						</h:inputText>
+						</p:inputText>
 						<h:outputText id="out1" value="#{pprBean.firstname}" />
 						
 						<h:outputText value="Blur: " />
-						<h:inputText id="surname" value="#{pprBean.surname}">
+						<p:inputText id="surname" value="#{pprBean.surname}">
 							<p:ajax event="blur" update="out2" />
-						</h:inputText>
+						</p:inputText>
 						<h:outputText id="out2" value="#{pprBean.surname}" />
 					</h:panelGrid>
 				</p:panel>
@@ -51,15 +51,15 @@
 	&lt;p:panel header="Ajaxify"&gt;
 		&lt;h:panelGrid columns="3" cellpadding="5"&gt;
 			&lt;h:outputText value="KeyUp: " /&gt;
-			&lt;h:inputText id="firstname" value="\#{pprBean.firstname}"&gt;
+			&lt;p:inputText id="firstname" value="\#{pprBean.firstname}"&gt;
 				&lt;p:ajax event="keyup" update="out1" /&gt;
-			&lt;/h:inputText&gt;
+			&lt;/p:inputText&gt;
 			&lt;h:outputText id="out1" value="\#{pprBean.firstname}" /&gt;
 			
 			&lt;h:outputText value="Blur: " /&gt;
-			&lt;h:inputText id="surname" value="\#{pprBean.surname}"&gt;
+			&lt;p:inputText id="surname" value="\#{pprBean.surname}"&gt;
 				&lt;p:ajax event="blur" update="out2" /&gt;
-			&lt;/h:inputText&gt;
+			&lt;/p:inputText&gt;
 			&lt;h:outputText id="out2" value="\#{pprBean.surname}" /&gt;
 		&lt;/h:panelGrid&gt;
 	&lt;/p:panel&gt;

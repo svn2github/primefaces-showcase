@@ -16,7 +16,7 @@
 
 				<h3>Input Text Slider</h3>
 				<h:panelGrid columns="1" style="margin-bottom:10px">
-					<h:inputText id="txt1" value="#{sliderBean.number1}" />
+					<p:inputText id="txt1" value="#{sliderBean.number1}" />
 					<p:slider for="txt1" />
 				</h:panelGrid>
 				
@@ -33,19 +33,19 @@
 				
 				<h3>Slider with Step Factor</h3>
 				<h:panelGrid columns="1" style="margin-bottom:10px">
-					<h:inputText id="txt3" value="#{sliderBean.number3}"/>
+					<p:inputText id="txt3" value="#{sliderBean.number3}"/>
 					<p:slider for="txt3" step="10"/>
 				</h:panelGrid>
 				
 				<h3>Vertical Slider</h3>
 				<h:panelGrid columns="1" style="margin-bottom:10px">
-					<h:inputText id="txt4" value="#{sliderBean.number4}"/>
+					<p:inputText id="txt4" value="#{sliderBean.number4}"/>
 					<p:slider for="txt4" type="vertical" />
 				</h:panelGrid>
 
                 <h3>Ajax Slider</h3>
                 <h:panelGrid columns="1" style="margin-bottom:10px">
-					<h:inputText id="txt5" value="#{sliderBean.number5}" />
+					<p:inputText id="txt5" value="#{sliderBean.number5}" />
                     <p:slider for="txt5" slideEndListener="#{sliderBean.onSlideEnd}" onSlideEndUpdate="growl"/>
 				</h:panelGrid>
 				
@@ -93,7 +93,7 @@
 
 	&lt;h3&gt;Input Text Slider&lt;/h3&gt;
 	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
-		&lt;h:inputText id="txt1" value="\#{sliderBean.number1}" /&gt;
+		&lt;p:inputText id="txt1" value="\#{sliderBean.number1}" /&gt;
 		&lt;p:slider for="txt1"/&gt;
 	&lt;/h:panelGrid&gt;
 	
@@ -110,19 +110,19 @@
 	
 	&lt;h3&gt;Slider with Step Factor&lt;/h3&gt;
 	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
-		&lt;h:inputText id="txt3" value="\#{sliderBean.number3}"/&gt;
+		&lt;p:inputText id="txt3" value="\#{sliderBean.number3}"/&gt;
 		&lt;p:slider for="txt3" step="10"/&gt;
 	&lt;/h:panelGrid&gt;
 	
 	&lt;h3&gt;Vertical Slider&lt;/h3&gt;
 	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
-		&lt;h:inputText id="txt4" value="\#{sliderBean.number4}"/&gt;
+		&lt;p:inputText id="txt4" value="\#{sliderBean.number4}"/&gt;
 		&lt;p:slider for="txt4" type="vertical" /&gt;
 	&lt;/h:panelGrid&gt;
 
     &lt;h3&gt;Ajax Slider&lt;/h3&gt;
     &lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
-        &lt;h:inputText id="txt5" value="\#{sliderBean.number5}" /&gt;
+        &lt;p:inputText id="txt5" value="\#{sliderBean.number5}" /&gt;
         &lt;p:slider for="txt5" onSlideEndUpdate="growl"
             slideEndListener="\#{sliderBean.onSlideEnd}" /&gt;
     &lt;/h:panelGrid&gt;

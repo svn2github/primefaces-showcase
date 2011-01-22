@@ -37,12 +37,12 @@
                     <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
                         <h:outputText value="Basic Input: " />
                         <p:inplace>
-                            <h:inputText value="Edit Me" />
+                            <p:inputText value="Edit Me" />
                         </p:inplace>
 
                         <h:outputText value="Ajax Inplace Editor: " />
                         <p:inplace editor="true" onEditUpdate="msgs">
-                            <h:inputText value="#{inplaceBean.text}" required="true" label="text"/>
+                            <p:inputText value="#{inplaceBean.text}" required="true" label="text"/>
                         </p:inplace>
 
                         <h:outputText value="Select One (Dlbclick): "/>
@@ -80,12 +80,12 @@
         &lt;h:panelGrid columns="2" columnClasses="column" cellpadding="5"&gt;
             &lt;h:outputText value="Basic Input: " /&gt;
             &lt;p:inplace&gt;
-                &lt;h:inputText value="Edit Me" /&gt;
+                &lt;p:inputText value="Edit Me" /&gt;
             &lt;/p:inplace&gt;
 
             &lt;h:outputText value="Ajax Inplace Editor: " /&gt;
             &lt;p:inplace editor="true" onEditUpdate="msgs"&gt;
-                &lt;h:inputText value="\#{inplaceBean.text}"
+                &lt;p:inputText value="\#{inplaceBean.text}"
                             required="true" label="text"/&gt;
             &lt;/p:inplace&gt;
 

@@ -19,7 +19,7 @@
 					<p:panel header="Growl">
 						<h:panelGrid columns="2">
 							<h:outputText value="Your Name: *" /> 
-							<h:inputText value="#{growlBean.text}" required="true" label="Name"/>
+							<p:inputText value="#{growlBean.text}" required="true" label="Name"/>
 							
 							<p:commandButton value="Save" actionListener="#{growlBean.save}" update="growl"/>
 							<p:ajaxStatus>
@@ -47,7 +47,7 @@
 	&lt;p:panel header="Growl"&gt;
 		&lt;h:panelGrid columns="2"&gt;
 			&lt;h:outputText value="Your Name: *" /&gt; 
-			&lt;h:inputText value="\#{growlBean.text}" required="true" label="Name"/&gt;
+			&lt;p:inputText value="\#{growlBean.text}" required="true" label="Name"/&gt;
 			
 			&lt;p:commandButton value="Save" actionListener="\#{growlBean.save}" update="growl"/&gt;
 			&lt;p:ajaxStatus&gt;

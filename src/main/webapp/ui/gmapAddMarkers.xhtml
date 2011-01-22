@@ -88,7 +88,7 @@
 				<h:form prependId="false">
 					<h:panelGrid columns="2">
 						<h:outputLabel for="title" value="Title:" />
-						<h:inputText id="title" value="#{mapBean.title}" />
+						<p:inputText id="title" value="#{mapBean.title}" />
 						
 						<f:facet name="footer">
 							<p:commandButton value="Add" actionListener="#{mapBean.addMarker}" update="messages" oncomplete="markerAddComplete()"/>
@@ -117,7 +117,7 @@
 	&lt;h:form prependId="false"&gt;
 		&lt;h:panelGrid columns="2"&gt;
 			&lt;h:outputLabel for="title" value="Title:" /&gt;
-			&lt;h:inputText id="title" value="\#{mapBean.title}" /&gt;
+			&lt;p:inputText id="title" value="\#{mapBean.title}" /&gt;
 			
 			&lt;f:facet name="footer"&gt;
 				&lt;p:commandButton value="Add" 
