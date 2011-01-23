@@ -662,3 +662,15 @@ background: #00a6dd url(images/ui-bg_highlight-soft_15_8A56B2_1x100.png) 50% 50%
   color: #fafafa;
   text-shadow: none;
 }
+
+/* PrimeFaces Extensions */
+.ui-inputfield {
+    background: #f1f1f1 !important;
+    color: #404040 !important;
+
+}
+
+.ui-inputfield.ui-state-focus {
+    background: #fafafa !important;
+    color: #404040 !important;
+}
