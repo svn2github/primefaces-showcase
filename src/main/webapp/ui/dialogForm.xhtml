@@ -11,7 +11,7 @@
 		<div class="entry">
 				<p>Dialogs can contain forms to provide ajax interaction.</p>
 							
-					<h:outputLink value="javascript:void(0)" onclick="dlg.show()">Show</h:outputLink>
+					<p:commandButton type="button" value="Show" onclick="dlg.show()" />
 		
 					<p:dialog header="Enter FirstName" widgetVar="dlg" resizable="false">
 						<h:form>
@@ -34,7 +34,7 @@
 					<p:tabView>
 						<p:tab title="dialogForm.xhtml">
 							<pre name="code" class="xml">
-&lt;h:outputLink value="javascript:void(0)" onclick="dlg.show()"&gt;Show&lt;/h:outputLink&gt;
+&lt;p:commandButton type="button" value="Show" onclick="dlg.show()" /&gt;
 		
 &lt;p:dialog header="Enter FirstName" widgetVar="dlg" resizable="false"&gt;
 	&lt;h:form&gt;
