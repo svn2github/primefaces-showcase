@@ -16,19 +16,19 @@
                 <h3>Client Side Scrolling</h3>
                 <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" height="150">
 
-                    <p:column headerText="Model" footerText="Model">
+                    <p:column headerText="Model" footerText="Model" style="width:100px">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column headerText="Year" footerText="Year">
+                    <p:column headerText="Year" footerText="Year" style="width:50px">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column headerText="Manufacturer" footerText="Year">
+                    <p:column headerText="Manufacturer" footerText="Year" style="width:100px">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column headerText="Color" footerText="Year">
+                    <p:column headerText="Color" footerText="Year" style="width:100px">
                         <h:outputText value="#{car.color}" />
                     </p:column>
 
@@ -46,21 +46,21 @@
 
                 <h3>Live Scrolling</h3>
                 <p:dataTable var="car" value="#{tableBean.carsLarge}" rows="20"
-                                scrollable="true" liveScroll="true" height="300">
+                                scrollable="true" liveScroll="true" height="150">
                    
-                    <p:column headerText="Model">
+                    <p:column headerText="Model" style="width:100px">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column headerText="Year">
+                    <p:column headerText="Year" style="width:50px">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column headerText="Manufacturer">
+                    <p:column headerText="Manufacturer" style="width:100px">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column headerText="Color">
+                    <p:column headerText="Color" style="width:100px">
                         <h:outputText value="#{car.color}" />
                     </p:column>
 
@@ -79,19 +79,19 @@
     &lt;p:dataTable var="car" value="\#{tableBean.cars}"
             scrollable="true" height="150"&gt;
 
-        &lt;p:column headerText="Model" footerText="Model"&gt;
+        &lt;p:column headerText="Model" footerText="Model" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" footerText="Year"&gt;
+        &lt;p:column headerText="Year" footerText="Year" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" footerText="Year"&gt;
+        &lt;p:column headerText="Manufacturer" footerText="Year" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" footerText="Year"&gt;
+        &lt;p:column headerText="Color" footerText="Year" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
 
@@ -101,19 +101,19 @@
     &lt;p:dataTable var="car" value="\#{tableBean.carsLarge}" rows="20"
                     scrollable="true" liveScroll="true" height="300"&gt;
 
-        &lt;p:column headerText="Model"&gt;
+        &lt;p:column headerText="Model" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year"&gt;
+        &lt;p:column headerText="Year" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer"&gt;
+        &lt;p:column headerText="Manufacturer" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color"&gt;
+        &lt;p:column headerText="Color" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
 
