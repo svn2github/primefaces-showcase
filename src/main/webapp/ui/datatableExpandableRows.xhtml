@@ -60,7 +60,7 @@
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <f:facet name="expansion">
+                    <p:rowExpansion>
                         <h:panelGrid id="display" columns="2" cellpadding="4" style="width:300px;"
                                      styleClass="ui-widget-content" columnClasses="label, value">
 
@@ -81,7 +81,7 @@
                             <h:outputText value="#{car.color}"/>
                         </h:panelGrid>
                         
-                    </f:facet>
+                    </p:rowExpansion>
                 </p:dataTable>
             </h:form>
 
@@ -115,9 +115,11 @@
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;f:facet name="expansion"&gt;
-            &lt;h:panelGrid id="display" columns="2" cellpadding="4" style="width:300px;"
-                         styleClass="ui-widget-content" columnClasses="label, value"&gt;
+        &lt;p:rowExpansion&gt;
+            &lt;h:panelGrid id="display" columns="2" cellpadding="4"
+                        style="width:300px;"
+                        styleClass="ui-widget-content"
+                        columnClasses="label, value"&gt;
 
                 &lt;f:facet name="header"&gt;
                     &lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt;
@@ -136,7 +138,7 @@
                 &lt;h:outputText value="\#{car.color}"/&gt;
             &lt;/h:panelGrid&gt;
 
-        &lt;/f:facet&gt;
+        &lt;/p:rowExpansion&gt;
     &lt;/p:dataTable&gt;
 &lt;/h:form&gt;
 				</pre>
