@@ -35,6 +35,20 @@
                     </f:facet>
                 </p:ajaxStatus>
 
+                <h3>Simple</h3>
+                <p:dataTable var="car" value="#{tableBean.carsSmall}">
+
+                    <p:columns value="#{tableBean.simpleColumns}" var="column" columnIndexVar="colIndex">
+                        <f:facet name="header">
+                            #{column.header}
+                        </f:facet>
+
+                        #{car[column.property]}
+                    </p:columns>
+
+                </p:dataTable>
+
+                <h3>Advanced</h3>
                 <p:dataTable var="cars" value="#{tableBean.dynamicCars}" id="carsTable">
 
                     <f:facet name="header">
@@ -62,7 +76,7 @@
                          Dynamic Columns
                     </f:facet>
 
-                </p:dataTable>
+                </p:dataTable>               
 
                 <p:dialog widgetVar="carDialog" showEffect="explode" hideEffect="explode" header="New Column">
                     <h:panelGrid columns="3" id="newColumnGrid">
@@ -82,6 +96,19 @@
                 <pre name="code" class="xml">
 &lt;h:form prependId="false"&gt;
 
+    &lt;h3&gt;Simple&lt;/h3&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
+        &lt;p:columns value="\#{tableBean.simpleColumns}"
+                    var="column" columnIndexVar="colIndex"&gt;
+            &lt;f:facet name="header"&gt;
+                \#{column.header}
+            &lt;/f:facet&gt;
+
+            \#{car[column.property]}
+        &lt;/p:columns&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;h3&gt;Advanced&lt;/h3&gt;
     &lt;p:dataTable var="cars" value="\#{tableBean.dynamicCars}" id="carsTable"&gt;
 
         &lt;f:facet name="header"&gt;
@@ -156,6 +183,8 @@ public class TableBean implements Serializable {
 
 	private final static String[] manufacturers;
 
+    private List&lt;ColumnModel&gt; simpleColumns;
+
 	private String theme;
 
 	static {
@@ -214,10 +243,18 @@ public class TableBean implements Serializable {
         for(int i=0; i &lt; 3; i++) {
             columns.add(manufacturers[i]);
         }
+
+        simpleColumns = new ArrayList&lt;ColumnModel&gt;();
+        simpleColumns.add(new ColumnModel("Model", "model"));
+        simpleColumns.add(new ColumnModel("Manufacturer", "manufacturer"));
     }
 
     public List&lt;String&gt; getColumns() {
         return columns;
+    }
+
+    public List&lt;ColumnModel&gt; getSimpleColumns() {
+        return simpleColumns;
     }
 
     public List&lt;Car[]&gt; getDynamicCars() {
@@ -273,6 +310,25 @@ public class TableBean implements Serializable {
     private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
+
+    static public class ColumnModel implements Serializable {
+
+        private String header;
+        private String property;
+
+        public ColumnModel(String header, String property) {
+            this.header = header;
+            this.property = property;
+        }
+
+        public String getHeader() {
+            return header;
+        }
+
+        public String getProperty() {
+            return property;
+        }
+    }
 }
 				</pre>
 			</p:tab>

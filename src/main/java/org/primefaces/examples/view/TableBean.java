@@ -119,6 +119,8 @@ public class TableBean implements Serializable {
 
     private List<Car> droppedCars;
 
+    private List<ColumnModel> simpleColumns;
+
 	public TableBean() {
 		cars = new ArrayList<Car>();
 		carsSmall = new ArrayList<Car>();
@@ -362,10 +364,18 @@ public class TableBean implements Serializable {
         for(int i=0; i < 3; i++) {
             columns.add(manufacturers[i]);
         }
+
+        simpleColumns = new ArrayList<ColumnModel>();
+        simpleColumns.add(new ColumnModel("Model", "model"));
+        simpleColumns.add(new ColumnModel("Manufacturer", "manufacturer"));
     }
 
     public List<String> getColumns() {
         return columns;
+    }
+
+    public List<ColumnModel> getSimpleColumns() {
+        return simpleColumns;
     }
 
     public List<Car[]> getDynamicCars() {
@@ -438,5 +448,24 @@ public class TableBean implements Serializable {
 
     public List<Car> getDroppedCars() {
         return droppedCars;
+    }
+    
+    static public class ColumnModel implements Serializable {
+
+        private String header;
+        private String property;
+
+        public ColumnModel(String header, String property) {
+            this.header = header;
+            this.property = property;
+        }
+
+        public String getHeader() {
+            return header;
+        }
+
+        public String getProperty() {
+            return property;
+        }
     }
 }
