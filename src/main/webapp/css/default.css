@@ -380,3 +380,25 @@ img.right {
 	float:left;
 	margin-right:10px
 }
+
+.new {
+    background: url(../images/new-ico.gif) no-repeat 1%;
+}
+
+.ui-widget {
+    font-size: 98% !important;
+}
+
+.ui-growl {
+    top:115px;
+}
+
+.themeMenu {
+    overflow: auto;
+    height:300px;
+    width:200px;
+}
+
+.sidebar .wijmo-wijmenu a {
+    text-decoration: none !important;
+}
