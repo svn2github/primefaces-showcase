@@ -12,8 +12,10 @@
                
               <h:form id="form">
 
+                <p:growl id="msgs" />
+
                 <p:panel header="Create a new book">
-					<h:panelGrid columns="2">
+					<h:panelGrid columns="2" id="grid">
 						<h:outputLabel value="Title : *" for="txt_title"></h:outputLabel>
 						<p:inputText id="txt_title" value="#{createBookBean.book.title}" required="true"/>
 						
@@ -21,7 +23,7 @@
 						<p:inputText id="txt_author" value="#{createBookBean.book.author}" required="true"/>
 						
 						<p:commandButton value="Reset" type="reset"/>
-						<p:commandButton value="Add" update="books" action="#{createBookBean.reinit}" >
+						<p:commandButton value="Add" update="books msgs @parent" action="#{createBookBean.reinit}" >
 							<p:collector value="#{createBookBean.book}" addTo="#{createBookBean.books}" />
 						</p:commandButton>
 					</h:panelGrid>
@@ -58,7 +60,7 @@
 							<f:facet name="header">
 								<h:outputText value="Operation" />
 							</f:facet>
-							<p:commandLink value="Remove" update="form:books">
+							<p:commandLink value="Remove" update="form:books" process="@this">
 								<p:collector value="#{book}" removeFrom="#{createBookBean.books}" />
 							</p:commandLink>
 						</p:column>
@@ -74,8 +76,10 @@
 					<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
+    &lt;p:growl id="msgs" /&gt;
+
 	&lt;p:panel header="Create a new book"&gt;
-		&lt;h:panelGrid columns="2"&gt;
+		&lt;h:panelGrid columns="2" id="grid"&gt;
 			&lt;h:outputLabel value="Title : *" for="txt_title"&gt;&lt;/h:outputLabel&gt;
 			&lt;p:inputText id="txt_title" 
 							value="\#{createBookBean.book.title}" required="true"/&gt;
@@ -85,7 +89,7 @@
 							value="\#{createBookBean.book.author}" /&gt;
 			
 			&lt;p:commandButton value="Reset" type="reset"/&gt;
-			&lt;p:commandButton value="Add" update="books" 
+			&lt;p:commandButton value="Add" update="books msgs @parent"
 							action="\#{createBookBean.reinit}" &gt;
 				&lt;p:collector value="\#{createBookBean.book}" 
 							addTo="\#{createBookBean.books}" /&gt;
@@ -124,7 +128,7 @@
 				&lt;f:facet name="header"&gt;
 					&lt;h:outputText value="Operation" /&gt;
 				&lt;/f:facet&gt;
-				&lt;p:commandLink value="Remove" update="form:books"&gt;
+				&lt;p:commandLink value="Remove" update="form:books" process="@this"&gt;
 					&lt;p:collector value="\#{book}"
 								 removeFrom="\#{createBookBean.books}" /&gt;
 				&lt;/p:commandLink&gt;
