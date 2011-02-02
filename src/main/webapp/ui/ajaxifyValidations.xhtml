@@ -13,28 +13,29 @@
 		executed when input field loses focus(blur).</p>
 
 		<h:form>
+
+            <p:ajaxStatus style="width:16px;height:16px;">
+                <f:facet name="start">
+                    <h:graphicImage value="../design/ajaxloading.gif" />
+                </f:facet>
+
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
 		
 			<p:panel header="New Person">
 			
-				<p:messages id="messages" />
-				
 				<h:panelGrid columns="3">
 					<h:outputLabel for="firstname" value="Name: " />
 					
 					<p:inputText id="firstname" value="#{pprBean.firstname}" label="Firstname">
 						<f:validateLength minimum="5" />
-						<p:ajax event="blur" update="messages" />
+						<p:ajax event="blur" update="msg" />
 					</p:inputText>
+                    <p:message id="msg" for="firstname" display="icon"/>
 					
-					<p:ajaxStatus style="width:16px;height:16px;">
-						<f:facet name="start">
-							<h:graphicImage value="../design/ajaxloading.gif" />
-						</f:facet>
-						
-						<f:facet name="complete">
-							<h:outputText value="" />
-						</f:facet>
-					</p:ajaxStatus>
+					
 				</h:panelGrid>
 			</p:panel>
 	
@@ -45,11 +46,19 @@
 				<p:tab title="ajaxifyValidations.xhtml">
 					<pre name="code" class="xml">
 &lt;h:form&gt;
+
+    &lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
+        &lt;f:facet name="start"&gt;
+            &lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
+        &lt;/f:facet&gt;
+
+        &lt;f:facet name="complete"&gt;
+            &lt;h:outputText value="" /&gt;
+        &lt;/f:facet&gt;
+    &lt;/p:ajaxStatus&gt;
 		
 	&lt;p:panel header="New Person"&gt;
 	
-		&lt;p:messages id="messages" /&gt;
-		
 		&lt;h:panelGrid columns="3"&gt;
 			&lt;h:outputLabel for="firstname" value="Name: " /&gt;
 			
@@ -58,16 +67,8 @@
 				&lt;f:validateLength minimum="5" /&gt;
 				&lt;p:ajax event="blur" update="messages" /&gt;
 			&lt;/p:inputText&gt;
+            &lt;p:message id="msg" for="firstname" display="icon"/&gt;
 			
-			&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-				&lt;f:facet name="start"&gt;
-					&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-				&lt;/f:facet&gt;
-				
-				&lt;f:facet name="complete"&gt;
-					&lt;h:outputText value="" /&gt;
-				&lt;/f:facet&gt;
-			&lt;/p:ajaxStatus&gt;
 		&lt;/h:panelGrid&gt;
 	&lt;/p:panel&gt;
 
