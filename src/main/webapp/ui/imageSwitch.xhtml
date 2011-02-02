@@ -5,18 +5,6 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
 
-	<ui:define name="head">
-		<style type="text/css">
-			span {
-				cursor:pointer;
-			}
-
-			span:hover {
-				color:#FF9900;
-			}
-		</style>
-	</ui:define>
-
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">ImageSwitch</h1>
@@ -52,8 +40,8 @@
 			</p:imageSwitch>
 
             <h3>Wipe with Manual Controls</h3>
-            <span onclick="switcher.previous();">Previous</span>
-			<span onclick="switcher.next();">Next</span>
+            <p:commandButton type="button" onclick="switcher.previous();" image="ui-icon ui-icon-circle-triangle-w"/>
+			<p:commandButton type="button" onclick="switcher.next();" image="ui-icon ui-icon-circle-triangle-e"/>
 
             <p:imageSwitch effect="wipe" widgetVar="switcher" slideshowAuto="false">
                 <ui:repeat value="#{imageSwitchBean.images}" var="image">
@@ -67,7 +55,7 @@
 			<p:dialog header="Images" widgetVar="dialog" modal="true" draggable="false" resizable="false"
 				width="425" height="300">
 
-                <p:imageSwitch effect="uncover">
+                <p:imageSwitch effect="fade">
                     <ui:repeat value="#{imageSwitchBean.images}" var="image">
                         <p:graphicImage value="/images/#{image}" />
                     </ui:repeat>
@@ -107,8 +95,10 @@
 &lt;/p:imageSwitch&gt;
 
 &lt;h3&gt;Wipe with Manual Controls&lt;/h3&gt;
-&lt;span onclick="switcher.previous();"&gt;Previous&lt;/span&gt;
-&lt;span onclick="switcher.next();"&gt;Next&lt;/span&gt;
+&lt;p:commandButton type="button" onclick="switcher.previous();"
+                image="ui-icon ui-icon-circle-triangle-w"/&gt;
+&lt;p:commandButton type="button" onclick="switcher.next();"
+                image="ui-icon ui-icon-circle-triangle-e"/&gt;
 
 &lt;p:imageSwitch effect="wipe" widgetVar="switcher" slideshowAuto="false"&gt;
     &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
@@ -122,7 +112,7 @@
 &lt;p:dialog header="Images" widgetVar="dialog" modal="true" draggable="false" resizable="false"
     width="425" height="300"&gt;
 
-    &lt;p:imageSwitch effect="uncover"&gt;
+    &lt;p:imageSwitch effect="fade"&gt;
         &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
             &lt;p:graphicImage value="/images/\#{image}" /&gt;
         &lt;/ui:repeat&gt;
