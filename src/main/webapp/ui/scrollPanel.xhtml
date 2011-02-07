@@ -19,8 +19,10 @@
                     <p:dataGrid var="car" value="#{tableBean.carsSmall}" columns="3">
                         <p:panel header="#{car.model}" style="text-align:center">
                             <h:panelGrid columns="1" style="width:100%">
-                                <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/>
                                 <h:outputText value="#{car.model}" />
+                                <h:outputText value="#{car.manufacturer}" />
+                                <h:outputText value="#{car.year}" />
+                                <h:outputText value="#{car.color}" />
                             </h:panelGrid>
                         </p:panel>
                     </p:dataGrid>
@@ -31,8 +33,10 @@
                     <p:dataGrid var="car" value="#{tableBean.carsSmall}" columns="3">
                         <p:panel header="#{car.model}" style="text-align:center">
                             <h:panelGrid columns="1" style="width:100%">
-                                <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/>
                                 <h:outputText value="#{car.model}" />
+                                <h:outputText value="#{car.manufacturer}" />
+                                <h:outputText value="#{car.year}" />
+                                <h:outputText value="#{car.color}" />
                             </h:panelGrid>
                         </p:panel>
                     </p:dataGrid>
@@ -43,8 +47,10 @@
                     <p:dataGrid var="car" value="#{tableBean.carsSmall}" columns="3">
                         <p:panel header="#{car.model}" style="text-align:center">
                             <h:panelGrid columns="1" style="width:100%">
-                                <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/>
                                 <h:outputText value="#{car.model}" />
+                                <h:outputText value="#{car.manufacturer}" />
+                                <h:outputText value="#{car.year}" />
+                                <h:outputText value="#{car.color}" />
                             </h:panelGrid>
                         </p:panel>
                     </p:dataGrid>
@@ -55,8 +61,10 @@
                     <p:dataGrid var="car" value="#{tableBean.carsSmall}" columns="3">
                         <p:panel header="#{car.model}" style="text-align:center">
                             <h:panelGrid columns="1" style="width:100%">
-                                <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/>
                                 <h:outputText value="#{car.model}" />
+                                <h:outputText value="#{car.manufacturer}" />
+                                <h:outputText value="#{car.year}" />
+                                <h:outputText value="#{car.color}" />
                             </h:panelGrid>
                         </p:panel>
                     </p:dataGrid>
@@ -71,8 +79,10 @@
                     <p:dataGrid var="car" value="#{tableBean.carsSmall}" columns="3">
                         <p:panel header="#{car.model}" style="text-align:center">
                             <h:panelGrid columns="1" style="width:100%">
-                                <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/>
                                 <h:outputText value="#{car.model}" />
+                                <h:outputText value="#{car.manufacturer}" />
+                                <h:outputText value="#{car.year}" />
+                                <h:outputText value="#{car.color}" />
                             </h:panelGrid>
                         </p:panel>
                     </p:dataGrid>
@@ -89,8 +99,10 @@
     &lt;p:dataGrid var="car" value="\#{tableBean.carsSmall}" columns="3"&gt;
         &lt;p:panel header="\#{car.model}" style="text-align:center"&gt;
             &lt;h:panelGrid columns="1" style="width:100%"&gt;
-                &lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt;
                 &lt;h:outputText value="\#{car.model}" /&gt;
+                &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+                &lt;h:outputText value="\#{car.year}" /&gt;
+                &lt;h:outputText value="\#{car.color}" /&gt;
             &lt;/h:panelGrid&gt;
         &lt;/p:panel&gt;
     &lt;/p:dataGrid&gt;
