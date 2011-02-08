@@ -28,17 +28,27 @@ import org.primefaces.examples.domain.Player;
 
 public class PlayerConverter implements Converter {
 
-    private static List<Player> playerDB;
+    public static List<Player> playerDB;
 
     static {
         playerDB = new ArrayList<Player>();
 
         playerDB.add(new Player("Messi", 10));
-        playerDB.add(new Player("Ibrahimovic", 9));
+        playerDB.add(new Player("Bojan", 9));
         playerDB.add(new Player("Henry", 14));
         playerDB.add(new Player("Iniesta", 8));
+        playerDB.add(new Player("Villa", 7));
         playerDB.add(new Player("Xavi", 6));
         playerDB.add(new Player("Puyol", 5));
+        playerDB.add(new Player("Afellay", 20));
+        playerDB.add(new Player("Abidal", 22));
+        playerDB.add(new Player("Alves", 2));
+        playerDB.add(new Player("Pique", 3));
+        playerDB.add(new Player("Keita", 15));
+        playerDB.add(new Player("Busquets", 16));
+        playerDB.add(new Player("Adriano", 21));
+        playerDB.add(new Player("Valdes", 1));
+        playerDB.add(new Player("Thiago", 30));
     }
 
     public Object getAsObject(FacesContext facesContext, UIComponent component, String submittedValue) {
@@ -63,8 +73,8 @@ public class PlayerConverter implements Converter {
     }
 
     public String getAsString(FacesContext facesContext, UIComponent component, Object value) {
-        if (value == null) {
-            return null;
+        if (value == null || value.equals("")) {
+            return "";
         } else {
             return String.valueOf(((Player) value).getNumber());
         }

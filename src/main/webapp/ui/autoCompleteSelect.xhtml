@@ -48,7 +48,9 @@
 
 			<br />
 			<h3>Source</h3>
-			<pre name="code" class="xml">
+            <p:tabView>
+                <p:tab title="autoCompleteSelect.xhtml">
+                    <pre name="code" class="xml">
 &lt;h:form&gt;
 	&lt;p:growl id="messages"/&gt;
 	
@@ -65,24 +67,33 @@
 			completeMethod="\#{autoCompleteBean.completePlayer}"
 			var="player" itemLabel="\#{player.name}" 
 			itemValue="\#{player}" converter="player"
-			selectListener="\#{autoCompleteBean.handleSelect}" onSelectUpdate="messages"/&gt;
-		&lt;h:outputText id="acPojoOut" value="\#{autoCompleteBean.selectedPlayer.name}" /&gt;
+			selectListener="\#{autoCompleteBean.handleSelect}"
+            onSelectUpdate="messages"/&gt;
+		&lt;h:outputText id="acPojoOut"
+                value="\#{autoCompleteBean.selectedPlayer.name}" /&gt;
 		
 	&lt;/h:panelGrid&gt;
 	
 	&lt;p:commandButton value="Submit" update="acSimpleOut acPojoOut" /&gt;
 	
 &lt;/h:form&gt;
-			</pre>
-						
+                    </pre>
+                </p:tab>
+
+                <p:tab title="AutoCompleteBean.java">
 			<pre name="code" class="java">
+...
+
 public void handleSelect(SelectEvent event) {
 	FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected:" + event.getObject().toString(), null);
 		
 	FacesContext.getCurrentInstance().addMessage(null, message);
 }
+
+...
 			</pre>
-					
+                </p:tab>
+            </p:tabView>
 		</div>
 
 	</ui:define>

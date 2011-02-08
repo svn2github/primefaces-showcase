@@ -41,14 +41,7 @@ public class AutoCompleteBean {
 	private List<Player> players;
 	
 	public AutoCompleteBean() {
-		players = new ArrayList<Player>();
-		
-		players.add(new Player("Messi", 10));
-		players.add(new Player("Ibrahimovic", 9));
-		players.add(new Player("Henry", 14));
-		players.add(new Player("Iniesta", 8));
-		players.add(new Player("Xavi", 6));
-		players.add(new Player("Puyol", 5));
+		players = PlayerConverter.playerDB;
 	}
 
 	public Player getSelectedPlayer() {
@@ -85,7 +78,11 @@ public class AutoCompleteBean {
 		
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
-	
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+    
 	public String getTxt1() {
 		return txt1;
 	}
