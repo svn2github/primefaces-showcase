@@ -9,7 +9,7 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">AJAX - Select Components</h1>
 		<div class="entry">
-			<p>This example demonstrates usage of p:ajax with a regular select component.</p>
+			<p>This example demonstrates usage of p:ajax with PrimeFaces selectOneMenu.</p>
 			
 			<p:ajaxStatus style="width:16px;height:16px;">
 				<f:facet name="start">
@@ -22,30 +22,30 @@
 			</p:ajaxStatus>
 
 			<h:form>
+
+                <p:growl id="msgs" showDetail="true" />
 				
 				<p:panel header="Double Combo" style="margin-bottom:10px;">
-					<h:selectOneMenu id="city" value="#{pprBean.city}" style="margin-right:10px">
-						<f:selectItem itemLabel="Select City" itemValue="" />
-						<f:selectItems value="#{pprBean.cities}" />
-						<p:ajax listener="#{pprBean.handleCityChange}" update="suburbs"/>
-					</h:selectOneMenu>
-				
-					<h:selectOneMenu id="suburbs" value="#{pprBean.suburb}" style="margin-right:10px">
-						<f:selectItem itemLabel="Select Suburb" itemValue="" />
-						<f:selectItems value="#{pprBean.suburbs}" />
-					</h:selectOneMenu>
-					
-					<p:commandButton value="Submit" update="display"/>
-					
-					<br />
-					
-					<h:panelGrid id="display" columns="2">
-						<h:outputText value="City: " />
-						<h:outputText value="#{pprBean.city}" />
-						
-						<h:outputText value="Suburb: " />
-						<h:outputText value="#{pprBean.suburb}" />
-					</h:panelGrid>
+
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputText value="City: " />
+                        <p:selectOneMenu id="city" value="#{pprBean.city}" style="margin-right:10px">
+                            <f:selectItem itemLabel="Select City" itemValue="" />
+                            <f:selectItems value="#{pprBean.cities}" />
+                            <p:ajax listener="#{pprBean.handleCityChange}" update="suburbs"/>
+                        </p:selectOneMenu>
+
+                        <h:outputText value="Suburb: " />
+                        <p:selectOneMenu id="suburbs" value="#{pprBean.suburb}" style="margin-right:10px">
+                            <f:selectItem itemLabel="Select Suburb" itemValue="" />
+                            <f:selectItems value="#{pprBean.suburbs}" />
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+
+                    <p:separator />
+
+					<p:commandButton value="Submit" update="msgs" actionListener="#{pprBean.displayLocation}"/>
+
 				</p:panel>
 				
 			</h:form>
@@ -55,29 +55,28 @@
 				<p:tab title="pprSelect.xhtml">
 <pre name="code" class="xml">
 &lt;h:form&gt;
+
+    &lt;p:growl id="msgs" showDetail="true"/&gt;
 				
 	&lt;p:panel header="Double Combo" style="margin-bottom:10px;"&gt;
-		&lt;h:selectOneMenu id="city" value="\#{pprBean.city}"&gt;
-			&lt;f:selectItem itemLabel="Select City" itemValue="" /&gt;
-			&lt;f:selectItems value="\#{pprBean.cities}" /&gt;
-			&lt;p:ajax update="suburbs" 
-					listener="\#{pprBean.handleCityChange}" /&gt;
-		&lt;/h:selectOneMenu&gt;
-	
-		&lt;h:selectOneMenu id="suburbs" value="\#{pprBean.suburb}"&gt;
-			&lt;f:selectItem itemLabel="Select Suburb" itemValue="" /&gt;
-			&lt;f:selectItems value="\#{pprBean.suburbs}" /&gt;
-		&lt;/h:selectOneMenu&gt;
+        &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+            &lt;p:selectOneMenu id="city" value="\#{pprBean.city}"&gt;
+                &lt;f:selectItem itemLabel="Select City" itemValue="" /&gt;
+                &lt;f:selectItems value="\#{pprBean.cities}" /&gt;
+                &lt;p:ajax update="suburbs"
+                        listener="\#{pprBean.handleCityChange}" /&gt;
+            &lt;/p:selectOneMenu&gt;
+
+            &lt;p:selectOneMenu id="suburbs" value="\#{pprBean.suburb}"&gt;
+                &lt;f:selectItem itemLabel="Select Suburb" itemValue="" /&gt;
+                &lt;f:selectItems value="\#{pprBean.suburbs}" /&gt;
+            &lt;/p:selectOneMenu&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:separator /&gt;
 		
-		&lt;p:commandButton value="Submit" update="display"/&gt;
-	
-		&lt;h:panelGrid id="display" columns="2"&gt;
-			&lt;h:outputText value="City: " /&gt;
-			&lt;h:outputText value="\#{pprBean.city}" /&gt;
-			
-			&lt;h:outputText value="Suburb: " /&gt;
-			&lt;h:outputText value="\#{pprBean.suburb}" /&gt;
-		&lt;/h:panelGrid&gt;
+		&lt;p:commandButton value="Submit" update="msgs" actionListener="\#{pprBean.displayLocation}"/&gt;
+
 	&lt;/p:panel&gt;
 
 &lt;/h:form&gt;
@@ -178,6 +177,12 @@ public class PPRBean implements Serializable {
 		else
 			suburbs = new HashMap&lt;String, String&gt;();
 	}
+
+    public void displayLocation() {
+        FacesMessage msg = new FacesMessage("Selected", "City:" + city + ", Suburb: " + suburb);
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
 
 					</pre>

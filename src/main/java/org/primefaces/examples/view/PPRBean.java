@@ -238,4 +238,10 @@ public class PPRBean implements Serializable {
 	public void setItem(String item) {
 		this.item = item;
 	}
+
+    public void displayLocation() {
+        FacesMessage msg = new FacesMessage("Selected", "City:" + city + ", Suburb: " + suburb);
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
