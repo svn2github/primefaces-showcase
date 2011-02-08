@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">SelectOneRadio</h1>
+		<div class="entry">
+			<p>SelectOneRadio extends standard SelectOneRadio with skinning capabilities.</p>
+
+			<h:form>
+
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+                    <h:outputText value="Horizontal: " />
+                    <p:selectOneRadio value="#{buttonBean.text}">
+                        <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+                        <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+                        <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+                    </p:selectOneRadio>
+
+                    <h:outputText value="Vertical: " />
+                    <p:selectOneRadio value="#{pprBean.city}" layout="pageDirection">
+                        <f:selectItems value="#{pprBean.cities}" />
+                    </p:selectOneRadio>
+
+                </h:panelGrid>
+
+                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+
+                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                    <h:panelGrid columns="1" id="display">
+                        <h:outputText value="Value 1: #{buttonBean.text}" />
+
+                        <h:outputText value="Value 2: #{pprBean.city}" />
+                    </h:panelGrid>
+                </p:dialog>
+
+			</h:form>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="selectOneMenu.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
+
+        &lt;h:outputText value="Horizontal: " /&gt;
+        &lt;p:selectOneRadio value="\#{buttonBean.text}"&gt;
+            &lt;f:selectItem itemLabel="Option 1" itemValue="Option 1" /&gt;
+            &lt;f:selectItem itemLabel="Option 2" itemValue="Option 2" /&gt;
+            &lt;f:selectItem itemLabel="Option 3" itemValue="Option 3" /&gt;
+        &lt;/p:selectOneRadio&gt;
+
+        &lt;h:outputText value="Vertical: " /&gt;
+        &lt;p:selectOneRadio value="\#{pprBean.city}" layout="pageDirection"&gt;
+            &lt;f:selectItems value="\#{pprBean.cities}" /&gt;
+        &lt;/p:selectOneRadio&gt;
+
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="dlg.show()" /&gt;
+
+    &lt;p:dialog header="Selected Values" modal="true"
+            showEffect="fade" hideEffect="fade" widgetVar="dlg"&gt;
+        &lt;h:panelGrid columns="1" id="display"&gt;
+            &lt;h:outputText value="Value 1: \#{buttonBean.text}" /&gt;
+
+            &lt;h:outputText value="Value 2: \#{pprBean.city}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+			</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>
