@@ -330,4 +330,9 @@
         <managed-bean-class>org.primefaces.examples.view.InplaceBean</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>formBean</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.FormBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>

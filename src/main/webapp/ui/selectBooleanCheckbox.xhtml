@@ -1,0 +1,108 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">SelectBooleanCheckbox</h1>
+		<div class="entry">
+			<p>SelectBooleanCheckbox extends standard SelectBooleanCheckbox with skinning capabilities.</p>
+
+			<h:form>
+
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+                    <h:outputText value="Basic Usage: " />
+                    <p:selectBooleanCheckbox value="#{formBean.value1}" />
+
+                    <h:outputText value="Ajax Behavior: " />
+                    <p:selectBooleanCheckbox value="#{formBean.value2}">
+                        <p:ajax update="display" process="@form" oncomplete="dlg.show()"/>
+                    </p:selectBooleanCheckbox>
+
+                </h:panelGrid>
+
+                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+
+                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                    <h:panelGrid columns="1" id="display">
+                        <h:outputText value="Value 1: #{formBean.value1}" />
+
+                        <h:outputText value="Value 2: #{formBean.value2}" />
+                    </h:panelGrid>
+                </p:dialog>
+
+			</h:form>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="selectBooleanCheckbox.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
+
+        &lt;h:outputText value="Basic Usage: " /&gt;
+        &lt;p:selectBooleanCheckbox value="\#{formBean.value1}" /&gt;
+
+        &lt;h:outputText value="Ajax Behavior: " /&gt;
+        &lt;p:selectBooleanCheckbox value="\#{formBean.value2}"&gt;
+            &lt;p:ajax update="display" process="@form" oncomplete="dlg.show()"/&gt;
+        &lt;/p:selectBooleanCheckbox&gt;
+
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="dlg.show()" /&gt;
+
+    &lt;p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg"&gt;
+        &lt;h:panelGrid columns="1" id="display"&gt;
+            &lt;h:outputText value="Value 1: \#{formBean.value1}" /&gt;
+
+            &lt;h:outputText value="Value 2: \#{formBean.value2}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+					</pre>
+
+                    </p:tab>
+
+                    <p:tab title="FormBean.java">
+                        <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+public class FormBean implements Serializable {
+
+    private boolean value1;
+
+    private boolean value2;
+
+    public boolean isValue1() {
+        return value1;
+    }
+
+    public void setValue1(boolean value1) {
+        this.value1 = value1;
+    }
+
+    public boolean isValue2() {
+        return value2;
+    }
+
+    public void setValue2(boolean value2) {
+        this.value2 = value2;
+    }
+}
+                        </pre>
+                    </p:tab>
+			</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>
