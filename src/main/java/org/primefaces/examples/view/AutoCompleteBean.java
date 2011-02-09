@@ -39,6 +39,8 @@ public class AutoCompleteBean {
 	private Player selectedPlayer;
 	
 	private List<Player> players;
+
+    private List<Player> selectedPlayers;
 	
 	public AutoCompleteBean() {
 		players = PlayerConverter.playerDB;
@@ -82,7 +84,15 @@ public class AutoCompleteBean {
     public List<Player> getPlayers() {
         return players;
     }
-    
+
+    public List<Player> getSelectedPlayers() {
+        return selectedPlayers;
+    }
+
+    public void setSelectedPlayers(List<Player> selectedPlayers) {
+        this.selectedPlayers = selectedPlayers;
+    }
+
 	public String getTxt1() {
 		return txt1;
 	}
