@@ -382,7 +382,8 @@ img.right {
 }
 
 .new {
-    background: url(../images/new-ico.gif) no-repeat 1%;
+    color: #FF9900 !important;
+    font-weight: bold
 }
 
 .ui-widget {

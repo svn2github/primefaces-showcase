@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -14,7 +14,7 @@
 		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css" />
 		<ui:insert name="head"></ui:insert>
 	</h:head>
-	
+
 	<h:body>
 
 		<div class="ui-widget ui-widget-header">
@@ -22,7 +22,7 @@
 				<h1>PRIMEFACES</h1>
 			</div>
 		</div>
-		
+
 		<div id="menu" class="ui-widget ui-widget-content ui-corner-all">
 			<ul id="main">
 				<li class="current_page_item"><a href="#{request.contextPath}/ui/home.jsf" style="background:url('../design/ui.png') no-repeat center left;">UI Components</a></li>
@@ -30,9 +30,9 @@
 				<li><a href="#{request.contextPath}/facestrace/createBook.jsf" style="background:url('../design/facestrace.png') no-repeat center left;">FacesTrace</a></li>
 			</ul>
 		</div>
-		
+
 		<div id="wrapper">
-		
+
 			<div id="page">
 				<div id="sidebar1" class="ui-widget-content ui-corner-all ui-helper-clearfix sidebar">
 					<ul>
@@ -42,7 +42,7 @@
 									<td colspan="2" align="left" style="padding:8px;">
 										<h:form>
                                             <ui:include src="themeMenu.xhtml" />
-										</h:form>									
+										</h:form>
 									</td>
 								</tr>
 								<tr>
@@ -117,12 +117,12 @@
 											<li><a href="#{request.contextPath}/ui/resizableHome.jsf">Resizable</a></li>
 											<li><a href="#{request.contextPath}/ui/remoteCommand.jsf">RemoteCommand</a></li>
 											<li><a href="#{request.contextPath}/ui/scheduleHome.jsf">Schedule</a></li>
-                                            <li><a href="#{request.contextPath}/ui/scrollPanel.jsf">ScrollPanel</a><img src="#{request.contextPath}/images/new-ico.gif" /></li>
-                                            <li><a href="#{request.contextPath}/ui/selectBooleanCheckbox.jsf">SelectBoolCheckbox</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectManyCheckbox.jsf">SelectManyCheckbox</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectOneMenu.jsf">SelectOneMenu</a><img src="#{request.contextPath}/images/new-ico.gif" /></li>
-                                            <li><a href="#{request.contextPath}/ui/selectOneRadio.jsf">SelectOneRadio</a><img src="#{request.contextPath}/images/new-ico.gif" /></li>
-											<li><a href="#{request.contextPath}/ui/separator.jsf">Separator</a></li>										
+                                            <li><a href="#{request.contextPath}/ui/scrollPanel.jsf" class="new">ScrollPanel</a></li>
+                                            <li><a href="#{request.contextPath}/ui/selectBooleanCheckbox.jsf" class="new">SelectBoolCheckbox</a></li>
+                                            <li><a href="#{request.contextPath}/ui/selectManyCheckbox.jsf" class="new">SelectManyCheckbox</a></li>
+                                            <li><a href="#{request.contextPath}/ui/selectOneMenu.jsf" class="new">SelectOneMenu</a></li>
+                                            <li><a href="#{request.contextPath}/ui/selectOneRadio.jsf" class="new">SelectOneRadio</a></li>
+											<li><a href="#{request.contextPath}/ui/separator.jsf">Separator</a></li>
 											<li><a href="#{request.contextPath}/ui/slider.jsf">Slider</a></li>
                                             <li><a href="#{request.contextPath}/ui/spacer.jsf">Spacer</a></li>
 											<li><a href="#{request.contextPath}/ui/spinner.jsf">Spinner</a></li>
@@ -141,28 +141,28 @@
 									</td>
 								</tr>
 							</table>
-							
+
 						</li>
 					</ul>
 				</div>
-		
+
 				<div id="content" class="ui-widget">
 					<div class="post">
 						<ui:insert name="content">...</ui:insert>
 					</div>
 				</div>
-				
+
 				<div style="clear: both;">&nbsp;</div>
 			</div>
 		</div>
-		
+
 		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
 			<p class="copyright">&copy;&nbsp;&nbsp;2009-2010 &nbsp;&bull;&nbsp; <a href="http://www.prime.com.tr">Prime Technology</a>.</p>
 			<p style="float:right">Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
 		</div>
-		
+
 	</h:body>
-	
+
 	<ui:insert name="highlight">
 		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
 		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
