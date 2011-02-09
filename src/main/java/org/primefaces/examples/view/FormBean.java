@@ -75,4 +75,10 @@ public class FormBean implements Serializable {
     public Map<String, String> getMovies() {
         return movies;
     }
+
+    public void addMessage() {
+        String summary = value2 ? "Checked" : "Unchecked";
+        
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+    }
 }
