@@ -13,8 +13,6 @@
 
 			<h:form>
 
-                <p:growl id="messages" />
-
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
                     <h:outputText value="Horizontal: " />
@@ -22,7 +20,6 @@
                         <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
                         <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
                         <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
-                        <p:ajax update="messages" listener="#{formBean.print}" />
                     </p:selectManyCheckbox>
 
                     <h:outputText value="Vertical: " />

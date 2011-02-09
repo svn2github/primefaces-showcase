@@ -75,8 +75,4 @@ public class FormBean implements Serializable {
     public Map<String, String> getMovies() {
         return movies;
     }
-
-    public void print() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("LAAAN"));
-    }
 }
