@@ -1,0 +1,100 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .label, column {
+                vertical-align: top;
+            }
+        </style>
+    </ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">SelectOneMenu</h1>
+		<div class="entry">
+			<p>SelectOneMenu extends standard SelectOneMenu with skinning capabilities and various effects.</p>
+
+			<h:form>
+
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+                             columnClasses="label, column">
+
+                    <h:outputText value="Basic Usage: " />
+                    <p:selectOneListbox value="#{buttonBean.text}">
+                        <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+                        <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+                        <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+                    </p:selectOneListbox>
+
+                    <h:outputText value="Scrollbar: " />
+                    <p:selectOneListbox value="#{autoCompleteBean.selectedPlayer}" converter="player" style="height:100px">
+                        <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}" />
+                    </p:selectOneListbox>
+
+                </h:panelGrid>
+
+                <p:separator />
+
+                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+
+                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                    <h:panelGrid columns="1" id="display">
+                        <h:outputText value="Value 1: #{buttonBean.text}" />
+
+                        <h:outputText value="Value 2: #{autoCompleteBean.selectedPlayer}" />
+                    </h:panelGrid>
+                </p:dialog>
+
+			</h:form>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="selectOneMenu.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+                 columnClasses="label, column"&gt;
+
+        &lt;h:outputText value="Basic Usage: " /&gt;
+        &lt;p:selectOneListbox value="\#{buttonBean.text}"&gt;
+            &lt;f:selectItem itemLabel="Option 1" itemValue="Option 1" /&gt;
+            &lt;f:selectItem itemLabel="Option 2" itemValue="Option 2" /&gt;
+            &lt;f:selectItem itemLabel="Option 3" itemValue="Option 3" /&gt;
+        &lt;/p:selectOneListbox&gt;
+
+        &lt;h:outputText value="Scrollbar: " /&gt;
+        &lt;p:selectOneListbox value="\#{autoCompleteBean.selectedPlayer}"
+            converter="player" style="height:100px"&gt;
+            &lt;f:selectItems value="\#{autoCompleteBean.players}"
+                var="player" itemLabel="\#{player.name}" itemValue="\#{player}" /&gt;
+        &lt;/p:selectOneListbox&gt;
+
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:separator /&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="dlg.show()" /&gt;
+
+    &lt;p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg"&gt;
+        &lt;h:panelGrid columns="1" id="display"&gt;
+            &lt;h:outputText value="Value 1: \#{buttonBean.text}" /&gt;
+
+            &lt;h:outputText value="Value 2: \#{autoCompleteBean.selectedPlayer}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+			</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>
