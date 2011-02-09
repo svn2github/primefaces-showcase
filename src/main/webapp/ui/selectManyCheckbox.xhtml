@@ -1,0 +1,143 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">SelectManyCheckbox</h1>
+		<div class="entry">
+			<p>SelectManyCheckbox extends standard SelectManyCheckbox with skinning capabilities.</p>
+
+			<h:form>
+
+                <p:growl id="messages" />
+
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+                    <h:outputText value="Horizontal: " />
+                    <p:selectManyCheckbox value="#{formBean.selectedOptions}">
+                        <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+                        <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+                        <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+                        <p:ajax update="messages" listener="#{formBean.print}" />
+                    </p:selectManyCheckbox>
+
+                    <h:outputText value="Vertical: " />
+                    <p:selectManyCheckbox value="#{formBean.selectedMovies}" layout="pageDirection">
+                        <f:selectItems value="#{formBean.movies}" />
+                    </p:selectManyCheckbox>
+
+                </h:panelGrid>
+
+                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+
+                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                    <p:outputPanel id="display">
+                        <p:dataList value="#{formBean.selectedOptions}" var="option">
+                            #{option}
+                        </p:dataList>
+
+                        <p:dataList value="#{formBean.selectedMovies}" var="movie">
+                            #{movie}
+                        </p:dataList>
+                    </p:outputPanel>
+                </p:dialog>
+
+			</h:form>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="selectManyCheckbox.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
+
+        &lt;h:outputText value="Horizontal: " /&gt;
+        &lt;p:selectManyCheckbox value="\#{formBean.selectedOptions}"&gt;
+            &lt;f:selectItem itemLabel="Option 1" itemValue="Option 1" /&gt;
+            &lt;f:selectItem itemLabel="Option 2" itemValue="Option 2" /&gt;
+            &lt;f:selectItem itemLabel="Option 3" itemValue="Option 3" /&gt;
+        &lt;/p:selectManyCheckbox&gt;
+
+        &lt;h:outputText value="Vertical: " /&gt;
+        &lt;p:selectManyCheckbox value="\#{formBean.selectedMovies}"
+            layout="pageDirection"&gt;
+            &lt;f:selectItems value="\#{formBean.movies}" /&gt;
+        &lt;/p:selectManyCheckbox&gt;
+
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="dlg.show()" /&gt;
+
+    &lt;p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg"&gt;
+        &lt;p:outputPanel id="display"&gt;
+            &lt;p:dataList value="\#{formBean.selectedOptions}" var="option"&gt;
+                \#{option}
+            &lt;/p:dataList&gt;
+
+            &lt;p:dataList value="\#{formBean.selectedMovies}" var="movie"&gt;
+                \#{movie}
+            &lt;/p:dataList&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+					</pre>
+
+                    </p:tab>
+
+                    <p:tab title="FormBean.java">
+                        <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class FormBean implements Serializable {
+
+    private List&lt;String&gt; selectedMovies;
+
+    private List&lt;String&gt; selectedOptions;
+
+    private Map&lt;String,String&gt; movies;
+
+    public FormBean() {
+        movies = new HashMap&lt;String, String&gt;();
+        movies.put("Scarface", "Scarface");
+        movies.put("Goodfellas", "Goodfellas");
+        movies.put("Godfather", "Godfather");
+        movies.put("Carlito's Way", "Carlito's Way");
+    }
+
+    public List&lt;String&gt; getSelectedMovies() {
+        return selectedMovies;
+    }
+    public void setSelectedMovies(List&lt;String&gt; selectedMovies) {
+        this.selectedMovies = selectedMovies;
+    }
+
+    public List&lt;String&gt; getSelectedOptions() {
+        return selectedOptions;
+    }
+    public void setSelectedOptions(List&lt;String&gt; selectedOptions) {
+        this.selectedOptions = selectedOptions;
+    }
+
+    public Map&lt;String, String&gt; getMovies() {
+        return movies;
+    }
+}
+                        </pre>
+                    </p:tab>
+			</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

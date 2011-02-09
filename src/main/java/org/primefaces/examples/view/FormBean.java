@@ -16,12 +16,31 @@
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 public class FormBean implements Serializable {
 
     private boolean value1;
 
     private boolean value2;
+
+    private List<String> selectedMovies;
+
+    private List<String> selectedOptions;
+
+    private Map<String,String> movies;
+
+    public FormBean() {
+        movies = new HashMap<String, String>();
+        movies.put("Scarface", "Scarface");
+        movies.put("Goodfellas", "Goodfellas");
+        movies.put("Godfather", "Godfather");
+        movies.put("Carlito's Way", "Carlito's Way");
+    }
 
     public boolean isValue1() {
         return value1;
@@ -37,5 +56,27 @@ public class FormBean implements Serializable {
 
     public void setValue2(boolean value2) {
         this.value2 = value2;
+    }
+
+    public List<String> getSelectedMovies() {
+        return selectedMovies;
+    }
+    public void setSelectedMovies(List<String> selectedMovies) {
+        this.selectedMovies = selectedMovies;
+    }
+
+    public List<String> getSelectedOptions() {
+        return selectedOptions;
+    }
+    public void setSelectedOptions(List<String> selectedOptions) {
+        this.selectedOptions = selectedOptions;
+    }
+
+    public Map<String, String> getMovies() {
+        return movies;
+    }
+
+    public void print() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("LAAAN"));
     }
 }
