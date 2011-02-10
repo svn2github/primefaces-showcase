@@ -206,6 +206,11 @@
         </dependency>
         <dependency>
             <groupId>org.primefaces.themes</groupId>
+            <artifactId>glass-x</artifactId>
+            <version>${theme.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
             <artifactId>hot-sneaks</artifactId>
             <version>${theme.version}</version>
         </dependency>
