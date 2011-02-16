@@ -4,42 +4,62 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
-	
+
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">FileUpload - Multiple</h1>
 		<div class="entry">
-			<p>Setting the multiple attribute to true enables multiple file selection and uploads.</p>
-			
-			<h:form>
-			
-				<p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" multiple="true"
-					label="Choose" allowTypes="*.jpg;*.png;*.gif;" description="Images"/>
-				
+            <p>Multiple fileUpload is supported on all major browsers.</p>
+
+            <h:form>
+
+                <p:growl id="messages" showDetail="true"/>
+
+				<p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced"
+						allowTypes="*.jpg;*.png;*.gif;" description="Images" update="messages" multiple="true" />
+
 			</h:form>
-						
-						
+
 			<h3>Source</h3>
-			<pre name="code" class="xml">
-&lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}" 
-	multiple="true" label="choose" allowTypes="*.jpg;*.png;*.gif;" description="Images"/&gt;
-			</pre>
-						
-			<pre name="code" class="java">
+            <p:tabView>
+                <p:tab title="fileUploadMultiple.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;p:growl id="messages" showDetail="true"/&gt;
+
+    &lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}"
+            mode="advanced"
+            allowTypes="*.jpg;*.png;*.gif;"
+            description="Images"
+            update="messages" multiple="true"/&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="FileUploadController.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
+
 public class FileUploadController {
-	
-	private Logger logger = LoggerFactory.getLogger(FileUploadController.class);
 
-	public void handleFileUpload(FileUploadEvent event) {
-		logger.info("Uploaded: {}", event.getFile().getFileName());
-
+    public void handleFileUpload(FileUploadEvent event) {
 		FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 }
-			</pre>
-						
-					</div>
-			
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+		</div>
+
 	</ui:define>
 </ui:composition>

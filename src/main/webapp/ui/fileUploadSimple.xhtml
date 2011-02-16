@@ -7,32 +7,34 @@
 
 	<ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">FileUpload - Auto</h1>
+		<h1 class="title ui-widget-header ui-corner-all">FileUpload - Simple</h1>
 		<div class="entry">
-            <p>When auto upload is enabled, upload process begins once the file is selected.</p>
+            <p>Simple uploader uses native browser file upload.</p>
 
             <h:form>
 
-                <p:growl id="messages" showDetail="true"/>
+                <p:messages showDetail="true"/>
 
-				<p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced"
-						allowTypes="*.jpg;*.png;*.gif;" description="Images" update="messages" auto="true"/>
+				<p:fileUpload value="#{fileUploadController.file}" />
+
+                <br /><br />
+
+                <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload}"/>
 
 			</h:form>
 
 			<h3>Source</h3>
             <p:tabView>
-                <p:tab title="fileUploadAuto.xhtml">
+                <p:tab title="fileUploadSimple.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;p:growl id="messages" showDetail="true"/&gt;
+    &lt;p:messages showDetail="true"/&gt;
 
-    &lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}"
-            mode="advanced"
-            allowTypes="*.jpg;*.png;*.gif;"
-            description="Images" update="messages"
-            auto="true"/&gt;
+    &lt;p:fileUpload value="\#{fileUploadController.file}" /&gt;
+
+    &lt;p:commandButton value="Submit" ajax="false"
+                actionListener="\#{fileUploadController.upload}"/&gt;
 
 &lt;/h:form&gt;
                     </pre>
@@ -45,20 +47,29 @@ package org.primefaces.examples.view;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 public class FileUploadController {
 
-    public void handleFileUpload(FileUploadEvent event) {
-		FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+    private UploadedFile file;
+
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+
+    public void upload() {
+        FacesMessage msg = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
-	}
+    }
 }
                     </pre>
                 </p:tab>
             </p:tabView>
-
+	
 		</div>
 
 	</ui:define>

@@ -12,16 +12,17 @@
 						
 			<p:menu styleClass="homeMenu">
 				<p:submenu label="Examples">
-					<p:menuitem url="/ui/fileUploadSingle.jsf" value="Single Upload" />
-					<p:menuitem url="/ui/fileUploadMultiple.jsf" value="Multiple File Upload" />
-					<p:menuitem url="/ui/fileUploadAuto.jsf" value="Auto Upload" />
-					<p:menuitem url="/ui/fileUploadUpdate.jsf" value="PPR Integration" />
-					<p:menuitem url="/ui/fileUploadSkinning.jsf" value="Skinning Upload" />
+                    <p:menuitem url="/ui/fileUploadSimple.jsf" value="Basic Upload" icon="ui-icon ui-icon-notice"/>
+					<p:menuitem url="/ui/fileUploadSingle.jsf" value="Single Upload" icon="ui-icon ui-icon-notice"/>
+					<p:menuitem url="/ui/fileUploadMultiple.jsf" value="Multiple Upload" icon="ui-icon ui-icon-notice"/>
+					<p:menuitem url="/ui/fileUploadAuto.jsf" value="Auto Upload" icon="ui-icon ui-icon-notice"/>
+					<p:menuitem url="/ui/fileUploadComplex.jsf" value="Complex Example" icon="ui-icon ui-icon-notice"/>
 				</p:submenu>
 			</p:menu>
 			
-			<span class="homeText">FileUpload is a flash-javascript solution that goes beyond the legacy input type="file". FileUpload component features single and multi file uploads, progress
-			tracking, auto uploads, easy customization and more.</span>
+			<span class="homeText">FileUpload is an HTML5 solution with graceful degradation for older browsers. It has two modes, "simple" fileUpload
+            uses native browser upload and "advanced" features dragdrop from operating system, progress bar, multi file uploads and more. FileUpload
+            does not require any kind of plugin like flash.</span>
 		
 		</div>
 			
