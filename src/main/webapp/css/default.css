@@ -383,7 +383,8 @@ img.right {
 
 .new {
     color: #FF9900 !important;
-    font-weight: bold
+    font-weight: bold;
+    display:block;
 }
 
 .ui-widget {

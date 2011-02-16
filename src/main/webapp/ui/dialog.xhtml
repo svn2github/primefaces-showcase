@@ -15,8 +15,8 @@
 					<p:commandButton id="basic" value="Basic" onclick="dlg1.show();" type="button" />
 					
 					<p:commandButton value="Modal" onclick="dlg2.show();" type="button"/>
-					
-					<p:commandButton value="Effects" onclick="dlg3.show();" type="button" />
+
+                    <p:commandButton value="Advanced" onclick="dlg3.show();" type="button" />
 				</h:panelGrid>
 				
 								
@@ -28,33 +28,36 @@
 					<h:outputText value="This is a Modal Dialog." />
 				</p:dialog>	
 				
-				<p:dialog header="Effect Dialog" widgetVar="dlg3" showEffect="bounce" hideEffect="explode" height="200">
-					<h:outputText value="This dialog has cool effects." />
-				</p:dialog>	
+				<p:dialog header="Advanced Dialog" widgetVar="dlg3" showEffect="explode" hideEffect="explode" height="100"
+                          pinnable="true" minimizable="true" maximizable="true" toggleable="true">
+					<h:outputText value="This dialog is closable, pinnable, minimizable, maximizable with nice effects." />
+				</p:dialog>
 				
 				<h3>Source</h3>
 				<p:tabView>
 					<p:tab title="dialog.xhtml">
 				<pre name="code" class="xml">	
 &lt;h:panelGrid columns="1" cellpadding="5"&gt;
-	&lt;p:commandButton value="Basic" onclick="dlg1.show();" type="button"/&gt;
-	
-	&lt;p:commandButton value="Modal" onclick="dlg2.show();" type="button"/&gt;
-	
-	&lt;p:commandButton value="Effects" onclick="dlg3.show();" type="button"/&gt;
+    &lt;p:commandButton id="basic" value="Basic" onclick="dlg1.show();" type="button" /&gt;
+
+    &lt;p:commandButton value="Modal" onclick="dlg2.show();" type="button"/&gt;
+
+    &lt;p:commandButton value="Advanced" onclick="dlg3.show();" type="button" /&gt;
 &lt;/h:panelGrid&gt;
-				
+
+
 &lt;p:dialog header="Basic Dialog" widgetVar="dlg1"&gt;
-	&lt;h:outputText value="Resistance to PrimeFaces is futile!" /&gt;
-&lt;/p:dialog&gt;	
+    &lt;h:outputText value="Resistance to PrimeFaces is futile!" /&gt;
+&lt;/p:dialog&gt;
 
 &lt;p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="200"&gt;
-	&lt;h:outputText value="This is a Modal Dialog." /&gt;
-&lt;/p:dialog&gt;	
+    &lt;h:outputText value="This is a Modal Dialog." /&gt;
+&lt;/p:dialog&gt;
 
-&lt;p:dialog header="Effect Dialog" widgetVar="dlg3" showEffect="bounce" hideEffect="explode" height="200"&gt;
-	&lt;h:outputText value="This dialog has cool effects." /&gt;
-&lt;/p:dialog&gt;	
+&lt;p:dialog header="Advanced Dialog" widgetVar="dlg3" showEffect="explode" hideEffect="explode" height="100"
+          pinnable="true" minimizable="true" maximizable="true" toggleable="true"&gt;
+    &lt;h:outputText value="This dialog is closable, pinnable, minimizable, maximizable with nice effects." /&gt;
+&lt;/p:dialog&gt;
 				</pre>
 					</p:tab>
 				</p:tabView>
