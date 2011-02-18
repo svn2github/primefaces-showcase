@@ -11,7 +11,7 @@
 		<div class="entry">
             <p>Simple uploader uses native browser file upload.</p>
 
-            <h:form>
+            <h:form enctype="multipart/form-data">
 
                 <p:messages showDetail="true"/>
 
@@ -27,7 +27,7 @@
             <p:tabView>
                 <p:tab title="fileUploadSimple.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form enctype="multipart/form-data"&gt;
 
     &lt;p:messages showDetail="true"/&gt;
 
