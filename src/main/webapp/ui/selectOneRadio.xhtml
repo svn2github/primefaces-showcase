@@ -15,15 +15,15 @@
 
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
-                    <h:outputText value="Horizontal: " />
+                    <h:outputText value="Default: " />
                     <p:selectOneRadio value="#{buttonBean.text}">
                         <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
                         <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
                         <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
                     </p:selectOneRadio>
 
-                    <h:outputText value="Vertical: " />
-                    <p:selectOneRadio value="#{pprBean.city}" layout="pageDirection">
+                    <h:outputText value="Unselectable: " />
+                    <p:selectOneRadio value="#{pprBean.city}" layout="pageDirection" unselectable="true">
                         <f:selectItems value="#{pprBean.cities}" />
                     </p:selectOneRadio>
 
@@ -49,15 +49,16 @@
 
     &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
 
-        &lt;h:outputText value="Horizontal: " /&gt;
+        &lt;h:outputText value="Default: " /&gt;
         &lt;p:selectOneRadio value="\#{buttonBean.text}"&gt;
             &lt;f:selectItem itemLabel="Option 1" itemValue="Option 1" /&gt;
             &lt;f:selectItem itemLabel="Option 2" itemValue="Option 2" /&gt;
             &lt;f:selectItem itemLabel="Option 3" itemValue="Option 3" /&gt;
         &lt;/p:selectOneRadio&gt;
 
-        &lt;h:outputText value="Vertical: " /&gt;
-        &lt;p:selectOneRadio value="\#{pprBean.city}" layout="pageDirection"&gt;
+        &lt;h:outputText value="Unselectable: " /&gt;
+        &lt;p:selectOneRadio value="\#{pprBean.city}" layout="pageDirection"
+                                unselectable="true"&gt;
             &lt;f:selectItems value="\#{pprBean.cities}" /&gt;
         &lt;/p:selectOneRadio&gt;
 
