@@ -95,13 +95,15 @@
         &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer}"
                          converter="player" height="250"
                          effect="fade" var="p"&gt;
+
             &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
             &lt;f:selectItems value="\#{autoCompleteBean.players}"
                         var="player" itemLabel="\#{player.name}"
                         itemValue="\#{player}"/&gt;
 
             &lt;p:column&gt;
-                &lt;p:graphicImage value="/images/barca/\#{p.photo}" width="40" height="50"/&gt;
+                &lt;p:graphicImage value="/images/barca/\#{p.photo}"
+                        width="40" height="50"/&gt;
             &lt;/p:column&gt;
 
             &lt;p:column&gt;
