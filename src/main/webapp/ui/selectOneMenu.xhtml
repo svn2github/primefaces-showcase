@@ -5,6 +5,14 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
 
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-selectonemenu {
+                width:200px
+            }
+        </style>
+    </ui:define>
+
 	<ui:define name="content">
 
 
@@ -31,13 +39,13 @@
                     </p:selectOneMenu>
 
                     <h:outputText value="Custom Content:" />
-                    <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer}" converter="player" width="150" height="100"
-                                     effect="fade" var="p">
+                    <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer}" converter="player"
+                                     effect="fade" var="p" height="250">
                         <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}"/>
 
                         <p:column>
-                            <p:graphicImage value="/images/barca/#{p.photo}" />
+                            <p:graphicImage value="/images/barca/#{p.photo}" width="40" height="50"/>
                         </p:column>
                         
                         <p:column>
@@ -85,7 +93,7 @@
 
         &lt;h:outputText value="Custom Content:" /&gt;
         &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer}"
-                         converter="player" width="150" height="100"
+                         converter="player" height="250"
                          effect="fade" var="p"&gt;
             &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
             &lt;f:selectItems value="\#{autoCompleteBean.players}"
@@ -93,7 +101,7 @@
                         itemValue="\#{player}"/&gt;
 
             &lt;p:column&gt;
-                &lt;p:graphicImage value="/images/barca/\#{p.photo}" /&gt;
+                &lt;p:graphicImage value="/images/barca/\#{p.photo}" width="40" height="50"/&gt;
             &lt;/p:column&gt;
 
             &lt;p:column&gt;
