@@ -33,22 +33,19 @@ public class PlayerConverter implements Converter {
     static {
         playerDB = new ArrayList<Player>();
 
-        playerDB.add(new Player("Messi", 10));
-        playerDB.add(new Player("Bojan", 9));
-        playerDB.add(new Player("Henry", 14));
-        playerDB.add(new Player("Iniesta", 8));
-        playerDB.add(new Player("Villa", 7));
-        playerDB.add(new Player("Xavi", 6));
-        playerDB.add(new Player("Puyol", 5));
-        playerDB.add(new Player("Afellay", 20));
-        playerDB.add(new Player("Abidal", 22));
-        playerDB.add(new Player("Alves", 2));
-        playerDB.add(new Player("Pique", 3));
-        playerDB.add(new Player("Keita", 15));
-        playerDB.add(new Player("Busquets", 16));
-        playerDB.add(new Player("Adriano", 21));
-        playerDB.add(new Player("Valdes", 1));
-        playerDB.add(new Player("Thiago", 30));
+        playerDB.add(new Player("Messi", 10, "messi.jpg", "CF"));
+        playerDB.add(new Player("Bojan", 9, "bojan.jpg", "CF"));
+        playerDB.add(new Player("Iniesta", 8, "iniesta.jpg", "CM"));
+        playerDB.add(new Player("Villa", 7, "villa.jpg", "CF"));
+        playerDB.add(new Player("Xavi", 6, "xavi.jpg", "CM"));
+        playerDB.add(new Player("Puyol", 5, "puyol.jpg", "CB"));
+        playerDB.add(new Player("Afellay", 20, "afellay.jpg", "AMC"));
+        playerDB.add(new Player("Abidal", 22, "abidal.jpg", "LB"));
+        playerDB.add(new Player("Alves", 2, "alves.jpg", "RB"));
+        playerDB.add(new Player("Pique", 3, "afellay.jpg", "AMC"));
+        playerDB.add(new Player("Keita", 15, "keita.jpg", "DM"));
+        playerDB.add(new Player("Adriano", 21, "adriano.jpg", "LB"));
+        playerDB.add(new Player("Valdes", 1, "valdes.jpg", "GK"));
     }
 
     public Object getAsObject(FacesContext facesContext, UIComponent component, String submittedValue) {

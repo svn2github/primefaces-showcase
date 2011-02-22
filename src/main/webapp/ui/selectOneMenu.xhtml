@@ -10,7 +10,7 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">SelectOneMenu</h1>
 		<div class="entry">
-			<p>SelectOneMenu extends standard SelectOneMenu with skinning capabilities and various effects.</p>
+			<p>SelectOneMenu extends standard SelectOneMenu with skinning capabilities, effects and custom content display.</p>
 
 			<h:form>
 
@@ -30,12 +30,21 @@
                         <f:selectItems value="#{pprBean.cities}" />
                     </p:selectOneMenu>
 
-                    <h:outputText value="ScrollBar:" />
-                    <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer}" converter="player" width="150" height="100" effect="fade">
+                    <h:outputText value="Custom Content:" />
+                    <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer}" converter="player" width="150" height="100"
+                                     effect="fade" var="p">
                         <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}"/>
-                    </p:selectOneMenu>
 
+                        <p:column>
+                            <p:graphicImage value="/images/barca/#{p.photo}" />
+                        </p:column>
+                        
+                        <p:column>
+                            #{p.name} - #{p.number}
+                        </p:column>
+                    </p:selectOneMenu>
+                    
                 </h:panelGrid>
 
                 <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
@@ -74,12 +83,22 @@
             &lt;f:selectItems value="\#{pprBean.cities}" /&gt;
         &lt;/p:selectOneMenu&gt;
 
-        &lt;h:outputText value="ScrollBar:" /&gt;
+        &lt;h:outputText value="Custom Content:" /&gt;
         &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer}"
-                converter="player" width="150" height="100" effect="fade"&gt;
+                         converter="player" width="150" height="100"
+                         effect="fade" var="p"&gt;
             &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
-            &lt;f:selectItems value="\#{autoCompleteBean.players}" var="player"
-                itemLabel="\#{player.name}" itemValue="\#{player}"/&gt;
+            &lt;f:selectItems value="\#{autoCompleteBean.players}"
+                        var="player" itemLabel="\#{player.name}"
+                        itemValue="\#{player}"/&gt;
+
+            &lt;p:column&gt;
+                &lt;p:graphicImage value="/images/barca/\#{p.photo}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                \#{p.name} - \#{p.number}
+            &lt;/p:column&gt;
         &lt;/p:selectOneMenu&gt;
 
     &lt;/h:panelGrid&gt;
