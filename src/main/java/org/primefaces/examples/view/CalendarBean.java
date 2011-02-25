@@ -37,6 +37,10 @@ public class CalendarBean {
 
     private Date date4;
 
+    private Date date5;
+
+    private Date date6;
+
 	private Date[] dates;
 
 	public Date getDate1() {
@@ -70,7 +74,23 @@ public class CalendarBean {
 	public void setDate4(Date date4) {
 		this.date4 = date4;
 	}
-	
+
+    public Date getDate5() {
+        return date5;
+    }
+
+    public void setDate5(Date date5) {
+        this.date5 = date5;
+    }
+
+    public Date getDate6() {
+        return date6;
+    }
+
+    public void setDate6(Date date6) {
+        this.date6 = date6;
+    }
+    
 	public Date[] getDates() {
 		return dates;
 	}

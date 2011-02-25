@@ -11,18 +11,24 @@
 			<p>Calendar has built-in support selecting times.</p>
 
 			<h:form>
-
+ 
 				<h3>DateTime</h3>
 				<p:calendar value="#{calendarBean.date1}" pattern="MM/dd/yyyy HH:mm" />
 
+                <h3>TimeOnly</h3>
+				<p:calendar value="#{calendarBean.date2}" pattern="HH:mm" timeOnly="true" />
+
 				<h3>AM/PM</h3>
-				<p:calendar value="#{calendarBean.date2}" pattern="MM/dd/yyyy HH:mm a"/>
+				<p:calendar value="#{calendarBean.date3}" pattern="MM/dd/yyyy HH:mm a"/>
 
 				<h3>Seconds</h3>
-				<p:calendar value="#{calendarBean.date3}" pattern="MM/dd/yyyy HH:mm:ss" />
+				<p:calendar value="#{calendarBean.date4}" pattern="MM/dd/yyyy HH:mm:ss" />
 
-                <h3>TimeOnly</h3>
-				<p:calendar value="#{calendarBean.date4}" pattern="HH:mm" timeOnly="true" />
+                <h3>Steps</h3>
+				<p:calendar value="#{calendarBean.date5}" pattern="MM/dd/yyyy HH:mm:ss" stepHour="2" stepMinute="10" stepSecond="10"/>
+
+                <h3>Min/Max</h3>
+				<p:calendar value="#{calendarBean.date6}" pattern="MM/dd/yyyy HH:mm" minHour="9" maxHour="18"/>
 
 				<h:panelGrid columns="2" style="margin-top:10px">
 					<p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
@@ -40,7 +46,7 @@
 
 				<p:dialog header="Selected Dates" widgetVar="dialog"
 							showEffect="fold" hideEffect="fold"
-							height="150">
+							height="225">
 
                 	<h:panelGrid id="display" columns="2" cellpadding="5">
 
@@ -49,21 +55,31 @@
 							<f:convertDateTime pattern="MM/dd/yyyy HH:mm" />
 						</h:outputText>
 
-						<h:outputText value="AM/PM: " />
+                        <h:outputText value="Time Only: " />
 						<h:outputText value="#{calendarBean.date2}">
+							<f:convertDateTime pattern="HH:mm" />
+						</h:outputText>
+
+						<h:outputText value="AM/PM: " />
+						<h:outputText value="#{calendarBean.date3}">
 							<f:convertDateTime pattern="MM/dd/yyyy HH:mm a"/>
 						</h:outputText>
 
 						<h:outputText value="Seconds: " />
-						<h:outputText value="#{calendarBean.date3}">
+						<h:outputText value="#{calendarBean.date4}">
 							<f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 						</h:outputText>
 
-                        <h:outputText value="Time Only: " />
-						<h:outputText value="#{calendarBean.date4}">
-							<f:convertDateTime pattern="HH:mm" />
+                        <h:outputText value="Step: " />
+						<h:outputText value="#{calendarBean.date5}">
+							<f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 						</h:outputText>
 
+                        <h:outputText value="Min/Max: " />
+						<h:outputText value="#{calendarBean.date6}">
+							<f:convertDateTime pattern="MM/dd/yyyy HH:mm" />
+						</h:outputText>
+                        
 					</h:panelGrid>
                 </p:dialog>
 
@@ -78,20 +94,28 @@
     &lt;h3&gt;DateTime&lt;/h3&gt;
     &lt;p:calendar value="\#{calendarBean.date1}" pattern="MM/dd/yyyy HH:mm" /&gt;
 
+    &lt;h3&gt;TimeOnly&lt;/h3&gt;
+    &lt;p:calendar value="\#{calendarBean.date2}" pattern="HH:mm" timeOnly="true" /&gt;
+
     &lt;h3&gt;AM/PM&lt;/h3&gt;
-    &lt;p:calendar value="\#{calendarBean.date2}" pattern="MM/dd/yyyy HH:mm a"/&gt;
+    &lt;p:calendar value="\#{calendarBean.date3}" pattern="MM/dd/yyyy HH:mm a"/&gt;
 
     &lt;h3&gt;Seconds&lt;/h3&gt;
-    &lt;p:calendar value="\#{calendarBean.date3}" pattern="MM/dd/yyyy HH:mm:ss" /&gt;
+    &lt;p:calendar value="\#{calendarBean.date4}" pattern="MM/dd/yyyy HH:mm:ss" /&gt;
 
-    &lt;h3&gt;TimeOnly&lt;/h3&gt;
-    &lt;p:calendar value="\#{calendarBean.date4}" pattern="HH:mm" timeOnly="true" /&gt;
+    &lt;h3&gt;Steps&lt;/h3&gt;
+    &lt;p:calendar value="\#{calendarBean.date5}" pattern="MM/dd/yyyy HH:mm:ss"
+                stepHour="2" stepMinute="10" stepSecond="10"/&gt;
+
+    &lt;h3&gt;Min/Max&lt;/h3&gt;
+    &lt;p:calendar value="\#{calendarBean.date6}" pattern="MM/dd/yyyy HH:mm"
+                minHour="9" maxHour="18"/&gt;
 
     &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
 
     &lt;p:dialog header="Selected Dates" widgetVar="dialog"
                 showEffect="fold" hideEffect="fold"
-                height="150"&gt;
+                height="225"&gt;
 
         &lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
 
@@ -100,19 +124,29 @@
                 &lt;f:convertDateTime pattern="MM/dd/yyyy HH:mm" /&gt;
             &lt;/h:outputText&gt;
 
-            &lt;h:outputText value="AM/PM: " /&gt;
+            &lt;h:outputText value="Time Only: " /&gt;
             &lt;h:outputText value="\#{calendarBean.date2}"&gt;
+                &lt;f:convertDateTime pattern="HH:mm" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="AM/PM: " /&gt;
+            &lt;h:outputText value="\#{calendarBean.date3}"&gt;
                 &lt;f:convertDateTime pattern="MM/dd/yyyy HH:mm a"/&gt;
             &lt;/h:outputText&gt;
 
             &lt;h:outputText value="Seconds: " /&gt;
-            &lt;h:outputText value="\#{calendarBean.date3}"&gt;
+            &lt;h:outputText value="\#{calendarBean.date4}"&gt;
                 &lt;f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" /&gt;
             &lt;/h:outputText&gt;
 
-            &lt;h:outputText value="Time Only: " /&gt;
-            &lt;h:outputText value="\#{calendarBean.date4}"&gt;
-                &lt;f:convertDateTime pattern="HH:mm" /&gt;
+            &lt;h:outputText value="Step: " /&gt;
+            &lt;h:outputText value="\#{calendarBean.date5}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Min/Max: " /&gt;
+            &lt;h:outputText value="\#{calendarBean.date6}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy HH:mm" /&gt;
             &lt;/h:outputText&gt;
 
         &lt;/h:panelGrid&gt;
@@ -140,37 +174,11 @@ public class CalendarBean {
 
     private Date date4;
 
-	public Date getDate1() {
-		return date1;
-	}
+    private Date date5;
 
-	public void setDate1(Date date1) {
-		this.date1 = date1;
-	}
+    private Date date6;
 
-	public Date getDate2() {
-		return date2;
-	}
-
-	public void setDate2(Date date2) {
-		this.date2 = date2;
-	}
-
-	public Date getDate3() {
-		return date3;
-	}
-
-	public void setDate3(Date date3) {
-		this.date3 = date3;
-	}
-
-    public Date getDate4() {
-		return date4;
-	}
-
-	public void setDate4(Date date4) {
-		this.date4 = date4;
-	}
+	//getters and setters
 }
 					</pre>
 				</p:tab>
