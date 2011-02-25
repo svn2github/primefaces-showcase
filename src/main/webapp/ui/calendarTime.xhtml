@@ -1,0 +1,182 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Calendar - Time</h1>
+		<div class="entry">
+			<p>Calendar has built-in support selecting times.</p>
+
+			<h:form>
+
+				<h3>DateTime</h3>
+				<p:calendar value="#{calendarBean.date1}" pattern="MM/dd/yyyy HH:mm" />
+
+				<h3>AM/PM</h3>
+				<p:calendar value="#{calendarBean.date2}" pattern="MM/dd/yyyy HH:mm a"/>
+
+				<h3>Seconds</h3>
+				<p:calendar value="#{calendarBean.date3}" pattern="MM/dd/yyyy HH:mm:ss" />
+
+                <h3>TimeOnly</h3>
+				<p:calendar value="#{calendarBean.date4}" pattern="HH:mm" timeOnly="true" />
+
+				<h:panelGrid columns="2" style="margin-top:10px">
+					<p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
+
+					<p:ajaxStatus style="width:16px;height:16px;">
+						<f:facet name="start">
+							<h:graphicImage value="../design/ajaxloading.gif" />
+						</f:facet>
+
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+					</p:ajaxStatus>
+				</h:panelGrid>
+
+				<p:dialog header="Selected Dates" widgetVar="dialog"
+							showEffect="fold" hideEffect="fold"
+							height="150">
+
+                	<h:panelGrid id="display" columns="2" cellpadding="5">
+
+						<h:outputText value="DateTime: " />
+						<h:outputText value="#{calendarBean.date1}">
+							<f:convertDateTime pattern="MM/dd/yyyy HH:mm" />
+						</h:outputText>
+
+						<h:outputText value="AM/PM: " />
+						<h:outputText value="#{calendarBean.date2}">
+							<f:convertDateTime pattern="MM/dd/yyyy HH:mm a"/>
+						</h:outputText>
+
+						<h:outputText value="Seconds: " />
+						<h:outputText value="#{calendarBean.date3}">
+							<f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+						</h:outputText>
+
+                        <h:outputText value="Time Only: " />
+						<h:outputText value="#{calendarBean.date4}">
+							<f:convertDateTime pattern="HH:mm" />
+						</h:outputText>
+
+					</h:panelGrid>
+                </p:dialog>
+
+			</h:form>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="calendarBasic.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;h3&gt;DateTime&lt;/h3&gt;
+    &lt;p:calendar value="\#{calendarBean.date1}" pattern="MM/dd/yyyy HH:mm" /&gt;
+
+    &lt;h3&gt;AM/PM&lt;/h3&gt;
+    &lt;p:calendar value="\#{calendarBean.date2}" pattern="MM/dd/yyyy HH:mm a"/&gt;
+
+    &lt;h3&gt;Seconds&lt;/h3&gt;
+    &lt;p:calendar value="\#{calendarBean.date3}" pattern="MM/dd/yyyy HH:mm:ss" /&gt;
+
+    &lt;h3&gt;TimeOnly&lt;/h3&gt;
+    &lt;p:calendar value="\#{calendarBean.date4}" pattern="HH:mm" timeOnly="true" /&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
+
+    &lt;p:dialog header="Selected Dates" widgetVar="dialog"
+                showEffect="fold" hideEffect="fold"
+                height="150"&gt;
+
+        &lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
+
+            &lt;h:outputText value="DateTime: " /&gt;
+            &lt;h:outputText value="\#{calendarBean.date1}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy HH:mm" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="AM/PM: " /&gt;
+            &lt;h:outputText value="\#{calendarBean.date2}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy HH:mm a"/&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Seconds: " /&gt;
+            &lt;h:outputText value="\#{calendarBean.date3}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Time Only: " /&gt;
+            &lt;h:outputText value="\#{calendarBean.date4}"&gt;
+                &lt;f:convertDateTime pattern="HH:mm" /&gt;
+            &lt;/h:outputText&gt;
+
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+
+				<p:tab title="CalendarBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.Date;
+
+import org.primefaces.event.DateSelectEvent;
+
+public class CalendarBean {
+
+	private Date date1;
+
+	private Date date2;
+
+	private Date date3;
+
+    private Date date4;
+
+	public Date getDate1() {
+		return date1;
+	}
+
+	public void setDate1(Date date1) {
+		this.date1 = date1;
+	}
+
+	public Date getDate2() {
+		return date2;
+	}
+
+	public void setDate2(Date date2) {
+		this.date2 = date2;
+	}
+
+	public Date getDate3() {
+		return date3;
+	}
+
+	public void setDate3(Date date3) {
+		this.date3 = date3;
+	}
+
+    public Date getDate4() {
+		return date4;
+	}
+
+	public void setDate4(Date date4) {
+		this.date4 = date4;
+	}
+}
+					</pre>
+				</p:tab>
+			</p:tabView>
+
+         </div>
+
+	</ui:define>
+</ui:composition>

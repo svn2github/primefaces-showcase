@@ -35,6 +35,8 @@ public class CalendarBean {
 	
 	private Date date3;
 
+    private Date date4;
+
 	private Date[] dates;
 
 	public Date getDate1() {
@@ -59,6 +61,14 @@ public class CalendarBean {
 
 	public void setDate3(Date date3) {
 		this.date3 = date3;
+	}
+
+    public Date getDate4() {
+		return date4;
+	}
+
+	public void setDate4(Date date4) {
+		this.date4 = date4;
 	}
 	
 	public Date[] getDates() {
