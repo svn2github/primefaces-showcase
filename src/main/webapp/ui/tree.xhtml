@@ -25,11 +25,15 @@
 			<p:tabView>
 				<p:tab title="tree.xhtml">
 					<pre name="code" class="xml">
-&lt;p:tree value="\#{treeBean.root}" var="node"&gt;
-	&lt;p:treeNode&gt;
-		&lt;h:outputText value="\#{node}"/&gt;
-	&lt;/p:treeNode&gt;
-&lt;/p:tree&gt;
+&lt;h:form&gt;
+
+    &lt;p:tree value="\#{treeBean.root}" var="node"&gt;
+        &lt;p:treeNode&gt;
+            &lt;h:outputText value="\#{node}"/&gt;
+        &lt;/p:treeNode&gt;
+    &lt;/p:tree&gt;
+
+&lt;/h:form&gt;
 					</pre> 
 				</p:tab>
 				
