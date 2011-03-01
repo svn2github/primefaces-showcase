@@ -8,22 +8,12 @@
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Tree - Single Selection</h1>
 		<div class="entry">
-			<p>Node selection is a built-in feature and support three different modes, "single", "multiple" and "checkbox.
+			<p>Node selection is a built-in feature and support three different modes, "single", "multiple" and "checkbox".
               Selection propagation is controlled via propagateSelectionUp and propagateSelectionDown options.</p>
 			
 			<h:form>
 			
 				<p:growl id="messages" showDetail="true" />
-
-				<p:ajaxStatus style="width:16px;height:16px;">
-					<f:facet name="start">
-						<h:graphicImage value="../design/ajaxloading.gif" />
-					</f:facet>
-					
-					<f:facet name="complete">
-						<h:outputText value="" />
-					</f:facet>
-				</p:ajaxStatus>
 
 				<p:tree value="#{treeBean.root}" var="node"
 						selectionMode="single"
@@ -43,81 +33,13 @@
 			<p:tabView>
 				<p:tab title="treeSelectionMultiple.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
 
-	&lt;p:growl id="messages" showDetail="true" /&gt;
-
-	&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-		&lt;f:facet name="start"&gt;
-			&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-		&lt;/f:facet&gt;
-		
-		&lt;f:facet name="complete"&gt;
-			&lt;h:outputText value="" /&gt;
-		&lt;/f:facet&gt;
-	&lt;/p:ajaxStatus&gt;
-
-	&lt;p:tree value="\#{treeBean.root}" var="node"
-		selectionMode="single" selection="\#{treeBean.selectedNode}"&gt;
-
-		&lt;p:treeNode&gt;
-			&lt;h:outputText value="\#{node}" /&gt;
-		&lt;/p:treeNode&gt;
-	&lt;/p:tree&gt;
-	
-	&lt;p:commandButton value="Display Selected" update="messages"
-		style="margin:20px 0 20px 0;"
-		actionListener="\#{treeBean.displaySelectedSingle}" /&gt;
-	
-&lt;/h:form&gt;
 					</pre>
 				</p:tab>
 				
 				<p:tab title="TreeBean.java">
 					<pre name="code" class="java">
-public class TreeBean implements Serializable {
-	
-	private TreeNode root;
-	
-	private TreeNode selectedNode;
 
-	public TreeBean() {
-		root = new DefaultTreeNode("Root", null);
-		TreeNode node0 = new DefaultTreeNode("Node 0", root);
-		TreeNode node1 = new DefaultTreeNode("Node 1", root);
-		TreeNode node2 = new DefaultTreeNode("Node 2", root);
-		
-		TreeNode node00 = new DefaultTreeNode("Node 0.0", node0);
-		TreeNode node01 = new DefaultTreeNode("Node 0.1", node0);
-		
-		TreeNode node10 = new DefaultTreeNode("Node 1.0", node1);
-		TreeNode node11 = new DefaultTreeNode("Node 1.1", node1);
-		
-		TreeNode node000 = new DefaultTreeNode("Node 0.0.0", node00);
-		TreeNode node001 = new DefaultTreeNode("Node 0.0.1", node00);
-		TreeNode node010 = new DefaultTreeNode("Node 0.1.0", node01);
-		
-		TreeNode node100 = new DefaultTreeNode("Node 1.0.0", node10);
-	}
-
-	public TreeNode getRoot() {
-		return root;
-	}
-	
-	public TreeNode getSelectedNode() {
-		return selectedNode;
-	}
-
-	public void setSelectedNode(TreeNode selectedNode) {
-		this.selectedNode = selectedNode;
-	}
-	
-	public void displaySelectedSingle(ActionEvent actionEvent) {
-		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", builder.toString());
-		
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-	}
-}
 					</pre>
 				</p:tab>
 			</p:tabView>
