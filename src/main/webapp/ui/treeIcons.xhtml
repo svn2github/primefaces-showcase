@@ -13,8 +13,8 @@
 
 			<h:form>
 
-				<p:tree value="#{documentsController.root}" var="doc" id="docTree">
-					<p:treeNode icon="ui-icon ui-icon-folder-collapsed">
+				<p:tree id="docTree" value="#{documentsController.root}" var="doc">
+					<p:treeNode expandedIcon="ui-icon ui-icon-folder-open" collapsedIcon="ui-icon ui-icon-folder-collapsed">
 						<h:outputText value="#{doc.name}"/>
 					</p:treeNode>
 
@@ -39,8 +39,9 @@
 			<pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;p:tree value="\#{documentsController.root}" var="doc"&gt;
-        &lt;p:treeNode icon="ui-icon ui-icon-folder-collapsed"&gt;
+    &lt;p:tree id="docTree" value="\#{documentsController.root}" var="doc"&gt;
+        &lt;p:treeNode expandedIcon="ui-icon ui-icon-folder-open"
+                    collapsedIcon="ui-icon ui-icon-folder-collapsed"&gt;
             &lt;h:outputText value="\#{doc.name}"/&gt;
         &lt;/p:treeNode&gt;
 
