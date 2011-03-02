@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Prime Technology.
+ * Copyright 2009-2011 Prime Technology.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,9 +107,10 @@ public class TreeBean implements Serializable {
 	}
 	
 	public void displaySelectedSingle(ActionEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", selectedNode.getData().toString());
-		
-		FacesContext.getCurrentInstance().addMessage(null, message);
-		
+        if(selectedNode != null) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", selectedNode.getData().toString());
+
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
 	}
 }
