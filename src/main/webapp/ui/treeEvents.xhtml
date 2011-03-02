@@ -6,90 +6,43 @@
 	template="../templates/ui.xhtml">
 
 	<ui:define name="content">
-		<h1 class="title ui-widget-header ui-corner-all">Tree - Ajax Events</h1>
-
+		<h1 class="title ui-widget-header ui-corner-all">Tree - Listeners</h1>
 		<div class="entry">
-			<p>Tree can respond to events like expand and collapse, these events are useful to implement lazy loading when dealing with huge datasets.</p>
+			<p>Tree can respond to events such as expand, collapse and selection and invoke server side listeners.</p>
 
 			<h:form>
 
-				<p:tree value="#{treeBean.root}" var="node" 
-					dynamic="true"
-					cache="false"
-					nodeExpandListener="#{treeBean.onNodeExpand}"
-					nodeCollapseListener="#{treeBean.onNodeCollapse}">
-					
+				<p:tree value="#{treeBean.root}" var="node" dynamic="true"
+						selectionMode="single"  selection="#{treeBean.selectedNode}"
+						onSelectUpdate="messages"
+						nodeSelectListener="#{treeBean.onNodeSelect}"
+                        onSelectComplete="dlg.show()">
+
 					<p:treeNode>
-						<h:outputText value="#{node}"/>
+						<h:outputText value="#{node}" />
 					</p:treeNode>
-					
 				</p:tree>
 
+                <p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true">
+                    <p:messages id="messages" showDetail="true" />
+                </p:dialog>
+
 			</h:form>
-			
-			<h3>Source</h3>
+
+		<h3>Source</h3>
 			<p:tabView>
-				<p:tab title="tree.xhtml">
+				<p:tab title="treeSelectionAjax.xhtml">
 					<pre name="code" class="xml">
-&lt;p:tree value="\#{treeBean.root}" var="node" 
-	dynamic="true"
-	cache="false"
-	nodeExpandListener="\#{treeBean.onNodeExpand}"
-	nodeCollapseListener="\#{treeBean.onNodeCollapse}"&gt;
-	
-	&lt;p:treeNode&gt;
-		&lt;h:outputText value="\#{node}"/&gt;
-	&lt;/p:treeNode&gt;
-	
-&lt;/p:tree&gt;
-					</pre> 
+
+					</pre>
 				</p:tab>
-				
+
 				<p:tab title="TreeBean.java">
 					<pre name="code" class="java">
-public class TreeBean {
-	
-	private static final Logger logger = Logger.getLogger(TreeBean.class.getName());
-	
-	private TreeNode root;
 
-	public TreeBean() {
-		root = new DefaultTreeNode("Root", null);
-		TreeNode node0 = new DefaultTreeNode("Node 0", root);
-		TreeNode node1 = new DefaultTreeNode("Node 1", root);
-		TreeNode node2 = new DefaultTreeNode("Node 2", root);
-		
-		TreeNode node00 = new DefaultTreeNode("Node 0.0", node0);
-		TreeNode node01 = new DefaultTreeNode("Node 0.1", node0);
-		
-		TreeNode node10 = new DefaultTreeNode("Node 1.0", node1);
-		TreeNode node11 = new DefaultTreeNode("Node 1.1", node1);
-		
-		TreeNode node000 = new DefaultTreeNode("Node 0.0.0", node00);
-		TreeNode node001 = new DefaultTreeNode("Node 0.0.1", node00);
-		TreeNode node010 = new DefaultTreeNode("Node 0.1.0", node01);
-		
-		TreeNode node100 = new DefaultTreeNode("Node 1.0.0", node10);
-	}
-
-	public TreeNode getRoot() {
-		return root;
-	}
-	
-	public void onNodeExpand(NodeExpandEvent event) {
-		String node = event.getTreeNode().getData().toString();
-		logger.info("Expanded:" + node);
-	}
-	
-	public void onNodeCollapse(NodeCollapseEvent event) {
-		String node = event.getTreeNode().getData().toString();
-		logger.info("Collapsed:" + node);
-	}
-}
 					</pre>
 				</p:tab>
 			</p:tabView>
-		</div>
-
+            </div>
 	</ui:define>
 </ui:composition>
