@@ -94,16 +94,18 @@ public class TreeBean implements Serializable {
 	}
 	
 	public void displaySelectedMultiple(ActionEvent event) {
-		StringBuilder builder = new StringBuilder();
-		
-		for(TreeNode node : selectedNodes) {
-			builder.append(node.getData().toString());
-			builder.append("<br />");
-		}
-		
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", builder.toString());
-		
-		FacesContext.getCurrentInstance().addMessage(null, message);
+        if(selectedNodes != null && selectedNodes.length > 0) {
+            StringBuilder builder = new StringBuilder();
+
+            for(TreeNode node : selectedNodes) {
+                builder.append(node.getData().toString());
+                builder.append("<br />");
+            }
+
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", builder.toString());
+
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
 	}
 	
 	public void displaySelectedSingle(ActionEvent event) {

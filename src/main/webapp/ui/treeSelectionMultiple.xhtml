@@ -8,22 +8,11 @@
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Tree - Multiple Selection</h1>
 		<div class="entry">
-			<p>Node selection is a built-in feature and support three different modes, "single", "multiple" and "checkbox.
-              Selection propagation is controlled via propagateSelectionUp and propagateSelectionDown options.</p>
+			<p>Node selection is a built-in feature and support three different modes, "single", "multiple" and "checkbox.</p>
 			
 			<h:form>
 			
 				<p:growl id="messages" showDetail="true" />
-
-				<p:ajaxStatus style="width:16px;height:16px;">
-					<f:facet name="start">
-						<h:graphicImage value="../design/ajaxloading.gif" />
-					</f:facet>
-					
-					<f:facet name="complete">
-						<h:outputText value="" />
-					</f:facet>
-				</p:ajaxStatus>
 
 				<p:tree value="#{treeBean.root}" var="node"
 						selectionMode="multiple"
@@ -47,16 +36,6 @@
 
 	&lt;p:growl id="messages" showDetail="true" /&gt;
 
-	&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-		&lt;f:facet name="start"&gt;
-			&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-		&lt;/f:facet&gt;
-		
-		&lt;f:facet name="complete"&gt;
-			&lt;h:outputText value="" /&gt;
-		&lt;/f:facet&gt;
-	&lt;/p:ajaxStatus&gt;
-
 	&lt;p:tree value="\#{treeBean.root}" var="node"
 		selectionMode="multiple" selection="\#{treeBean.selectedNodes}"&gt;
 
@@ -66,8 +45,7 @@
 	&lt;/p:tree&gt;
 	
 	&lt;p:commandButton value="Display Selected" update="messages"
-		style="margin:20px 0 20px 0;"
-		actionListener="\#{treeBean.displaySelected}" /&gt;
+		actionListener="\#{treeBean.displaySelectedMultiple}" /&gt;
 	
 &lt;/h:form&gt;
 					</pre>
@@ -75,6 +53,17 @@
 				
 				<p:tab title="TreeBean.java">
 					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
+
 public class TreeBean implements Serializable {
 	
 	private TreeNode root;
@@ -113,16 +102,18 @@ public class TreeBean implements Serializable {
 	}
 	
 	public void displaySelectedMultiple(ActionEvent event) {
-		StringBuilder builder = new StringBuilder();
-		
-		for(TreeNode node : selectedNodes) {
-			builder.append(node.getData().toString());
-			builder.append("&lt;br /&gt;");
-		}
-		
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", builder.toString());
-		
-		FacesContext.getCurrentInstance().addMessage(null, message);
+        if(selectedNodes != null &amp;&amp; selectedNodes.length > 0) {
+            StringBuilder builder = new StringBuilder();
+
+            for(TreeNode node : selectedNodes) {
+                builder.append(node.getData().toString());
+                builder.append("&lt;br /&gt;");
+            }
+
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", builder.toString());
+
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
 	}
 }
 					</pre>
