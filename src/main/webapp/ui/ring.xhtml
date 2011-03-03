@@ -25,7 +25,7 @@
                     </p:column>
                 </p:ring>
 
-                <p:dialog widgetVar="dlg" showEffect="explode" hideEffect="explode" width="125">
+                <p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true" width="125">
 
                     <p:outputPanel id="detail" style="text-align:center;" layout="block">
 
@@ -62,26 +62,31 @@
                 &lt;p:commandButton update=":form:detail"
                             image="ui-icon ui-icon-search"
                             title="View" oncomplete="dlg.show()"&gt;
-                    &lt;f:setPropertyActionListener value="\#{player}" target="\#{ringBean.selectedPlayer}" /&gt;
+                    &lt;f:setPropertyActionListener value="\#{player}"
+                        target="\#{ringBean.selectedPlayer}" /&gt;
                 &lt;/p:commandButton&gt;
             &lt;/p:outputPanel&gt;
         &lt;/p:column&gt;
     &lt;/p:ring&gt;
 
-    &lt;p:dialog widgetVar="dlg" showEffect="explode" hideEffect="explode" width="125"&gt;
+    &lt;p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true" width="125"&gt;
 
         &lt;p:outputPanel id="detail" style="text-align:center;" layout="block"&gt;
 
             &lt;h:panelGrid  columns="2" cellpadding="5" rendered="\#{not empty ringBean.selectedPlayer}"&gt;
                 &lt;f:facet name="header"&gt;
-                    &lt;p:graphicImage value="/images/barca/\#{ringBean.selectedPlayer.photo}" width="40" height="50"/&gt;
+                    &lt;p:graphicImage
+                            value="/images/barca/\#{ringBean.selectedPlayer.photo}"
+                            width="40" height="50"/&gt;
                 &lt;/f:facet&gt;
 
                 &lt;h:outputText value="Name: " /&gt;
-                &lt;h:outputText id="modelNo" value="\#{ringBean.selectedPlayer.name}" /&gt;
+                &lt;h:outputText id="modelNo"
+                            value="\#{ringBean.selectedPlayer.name}" /&gt;
 
                 &lt;h:outputText value="Number " /&gt;
-                &lt;h:outputText id="year" value="\#{ringBean.selectedPlayer.number}" /&gt;
+                &lt;h:outputText id="year"
+                            value="\#{ringBean.selectedPlayer.number}" /&gt;
 
                 &lt;h:outputText value="Position " /&gt;
                 &lt;h:outputText value="\#{ringBean.selectedPlayer.position}"/&gt;
