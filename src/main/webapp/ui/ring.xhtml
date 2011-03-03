@@ -1,0 +1,141 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Ring</h1>
+
+		<div class="entry">
+			<p>Ring is used for data iteration or tabbed display.</p>
+
+			<h:form id="form">
+
+                <p:ring value="#{ringBean.players}" var="player">
+                    <p:column>
+                        <p:outputPanel style="text-align:center;" layout="block">
+                            #{player.name}
+                            <br />
+                            <p:commandButton update=":form:detail" image="ui-icon ui-icon-search" title="View" oncomplete="dlg.show()">
+                                <f:setPropertyActionListener value="#{player}" target="#{ringBean.selectedPlayer}" />
+                            </p:commandButton>
+                        </p:outputPanel>
+                    </p:column>
+                </p:ring>
+
+                <p:dialog widgetVar="dlg" showEffect="explode" hideEffect="explode" width="125">
+
+                    <p:outputPanel id="detail" style="text-align:center;" layout="block">
+
+						<h:panelGrid  columns="2" cellpadding="5" rendered="#{not empty ringBean.selectedPlayer}">
+                            <f:facet name="header">
+                                <p:graphicImage value="/images/barca/#{ringBean.selectedPlayer.photo}" width="40" height="50"/>
+                            </f:facet>
+
+							<h:outputText value="Name: " />
+							<h:outputText id="modelNo" value="#{ringBean.selectedPlayer.name}" />
+
+							<h:outputText value="Number " />
+							<h:outputText id="year" value="#{ringBean.selectedPlayer.number}" />
+
+							<h:outputText value="Position " />
+							<h:outputText value="#{ringBean.selectedPlayer.position}"/>
+						</h:panelGrid>
+					</p:outputPanel>
+
+                </p:dialog>
+
+			</h:form>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="ring.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+
+    &lt;p:ring value="\#{ringBean.players}" var="player"&gt;
+        &lt;p:column&gt;
+            &lt;p:outputPanel style="text-align:center;" layout="block"&gt;
+                \#{player.name}
+                &lt;p:commandButton update=":form:detail"
+                            image="ui-icon ui-icon-search"
+                            title="View" oncomplete="dlg.show()"&gt;
+                    &lt;f:setPropertyActionListener value="\#{player}" target="\#{ringBean.selectedPlayer}" /&gt;
+                &lt;/p:commandButton&gt;
+            &lt;/p:outputPanel&gt;
+        &lt;/p:column&gt;
+    &lt;/p:ring&gt;
+
+    &lt;p:dialog widgetVar="dlg" showEffect="explode" hideEffect="explode" width="125"&gt;
+
+        &lt;p:outputPanel id="detail" style="text-align:center;" layout="block"&gt;
+
+            &lt;h:panelGrid  columns="2" cellpadding="5" rendered="\#{not empty ringBean.selectedPlayer}"&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;p:graphicImage value="/images/barca/\#{ringBean.selectedPlayer.photo}" width="40" height="50"/&gt;
+                &lt;/f:facet&gt;
+
+                &lt;h:outputText value="Name: " /&gt;
+                &lt;h:outputText id="modelNo" value="\#{ringBean.selectedPlayer.name}" /&gt;
+
+                &lt;h:outputText value="Number " /&gt;
+                &lt;h:outputText id="year" value="\#{ringBean.selectedPlayer.number}" /&gt;
+
+                &lt;h:outputText value="Position " /&gt;
+                &lt;h:outputText value="\#{ringBean.selectedPlayer.position}"/&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:outputPanel&gt;
+
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+
+				<p:tab title="RingBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.examples.domain.Player;
+
+public class RingBean implements Serializable {
+
+    private List&lt;Player&gt; players;
+
+    private Player selectedPlayer;
+
+    public RingBean() {
+        players = new ArrayList&lt;Player&gt;();
+
+        players.add(new Player("Messi", 10, "messi.jpg", "CF"));
+        players.add(new Player("Bojan", 9, "bojan.jpg", "CF"));
+        players.add(new Player("Iniesta", 8, "iniesta.jpg", "CM"));
+        players.add(new Player("Villa", 7, "villa.jpg", "CF"));
+        players.add(new Player("Xavi", 6, "xavi.jpg", "CM"));
+        players.add(new Player("Puyol", 5, "puyol.jpg", "CB"));
+    }
+
+    public List&lt;Player&gt; getPlayers() {
+        return players;
+    }
+
+    public Player getSelectedPlayer() {
+        return selectedPlayer;
+    }
+
+    public void setSelectedPlayer(Player selectedPlayer) {
+        this.selectedPlayer = selectedPlayer;
+    }
+}
+					</pre>
+				</p:tab>
+			</p:tabView>
+		</div>
+
+	</ui:define>
+</ui:composition>
