@@ -78,13 +78,15 @@ public class TreeBean implements Serializable {
 	}
 	
 	public void onNodeExpand(NodeExpandEvent event) {
-		String node = event.getTreeNode().getData().toString();
-		logger.info("Expanded:" + node);
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Expanded", event.getTreeNode().toString());
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 	
 	public void onNodeCollapse(NodeCollapseEvent event) {
-		String node = event.getTreeNode().getData().toString();
-		logger.info("Collapsed:" + node);
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Collapsed", event.getTreeNode().toString());
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 	
 	public void onNodeSelect(NodeSelectEvent event) {
