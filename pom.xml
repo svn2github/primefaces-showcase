@@ -12,6 +12,7 @@
     <properties>
         <theme.version>1.0.0</theme.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netbeans.hint.deploy.server>Tomcat70</netbeans.hint.deploy.server>
     </properties>
 
     <build>
@@ -384,6 +385,7 @@
         </profile>
 
         <profile>
+        
             <id>appserver-2.0</id>
              <properties>
                 <jsfVersion>Native JSF Implementation</jsfVersion>
