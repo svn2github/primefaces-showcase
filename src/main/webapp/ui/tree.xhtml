@@ -5,6 +5,59 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
 
+    <ui:define name="head">
+        <script type="text/javascript">
+            jQuery(function() {
+                jQuery('.ui-tree .ui-tree-node-label').draggable({
+                    revert:'invalid',
+                    helper: 'clone',
+                    containment:'#j_idt59\\:j_idt60'
+                });
+            });
+
+            jQuery(function() {
+                jQuery('.ui-tree .ui-tree-node-content').droppable({
+                    hoverClass: 'ui-state-hover',
+                    drop: function(event, ui) {
+                        var newParent = jQuery(this).parents('li:first'),
+                        droppedNode = ui.draggable.parents('li:first'),
+                        newParentChildrenContainer = newParent.children('.ui-tree-nodes'),
+                        oldParent = null;
+
+                        //ignore self dragdrop
+                        if(newParent.attr('id') == droppedNode.attr('id')) {
+                            return false;
+                        }
+
+                        //If newParent had no children before, make it a parent
+                        if(newParentChildrenContainer.length == 0) {
+                            newParent.append('<ul class="ui-tree-nodes ui-helper-reset ui-tree-child"></ul>')
+                            .find('.ui-tree-node-content:first').prepend('<span class="ui-tree-icon ui-icon ui-icon-triangle-1-s"></span>')
+                            .removeClass('ui-tree-item').addClass('ui-tree-parent');
+                        }
+
+                        //If old parent has no children left, make it a leaf
+                        if(droppedNode.siblings().length == 0) {
+                            oldParent = droppedNode.parents('li:first');
+                            newParent.children('.ui-tree-nodes').append(droppedNode);
+                            oldParent.removeClass('ui-tree-parent').addClass('ui-tree-item');
+                            oldParent.find('.ui-tree-icon:first').remove();
+                            oldParent.children('.ui-tree-nodes').remove();
+                            
+                        }
+                        else {
+                            //append droppedNode to newParent
+                            newParent.children('.ui-tree-nodes').append(droppedNode);
+                        }
+
+                        droppedNode.hide().fadeIn('fast');
+ 
+                    }
+                });
+            });
+        </script>
+    </ui:define>
+
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Tree - Basic</h1>
 
