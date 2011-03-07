@@ -14,27 +14,83 @@
 
 			<h:form>
 
-				<p:tree id="treeDnd" value="#{treeBean.root}" var="node" dragdrop="true">
+                <p:growl id="messages" showDetail="true"/>
+
+				<p:tree id="treeDnd" value="#{treeBean.root}" var="node" dragdrop="true"
+                        dragdropListener="#{treeBean.onDragDrop}" onDragdropUpdate="messages">
 					<p:treeNode>
 						<h:outputText value="#{node}"/>
 					</p:treeNode>
 				</p:tree>
-
-                <p:commandButton value="Submit" ajax="false" style="margin-top:10px"/>
-
+                
 			</h:form>
 
 			<h3>Source</h3>
 			<p:tabView>
 				<p:tab title="treeDragDrop.xhtml">
 					<pre name="code" class="xml">
+&lt;h:form&gt;
 
+    &lt;p:growl id="messages" showDetail="true"/&gt;
+
+    &lt;p:tree id="treeDnd" value="\#{treeBean.root}" var="node" dragdrop="true"
+            dragdropListener="\#{treeBean.onDragDrop}" onDragdropUpdate="messages"&gt;
+        &lt;p:treeNode&gt;
+            &lt;h:outputText value="\#{node}"/&gt;
+        &lt;/p:treeNode&gt;
+    &lt;/p:tree&gt;
+
+&lt;/h:form&gt;
 					</pre>
 				</p:tab>
 
 				<p:tab title="TreeBean.java">
 					<pre name="code" class="java">
+package org.primefaces.examples.view;
 
+import java.io.Serializable;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.DragDropEvent;
+
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
+
+public class TreeBean implements Serializable {
+
+	private TreeNode root;
+
+	public TreeBean() {
+		root = new DefaultTreeNode("Root", null);
+		TreeNode node0 = new DefaultTreeNode("Node 0", root);
+		TreeNode node1 = new DefaultTreeNode("Node 1", root);
+		TreeNode node2 = new DefaultTreeNode("Node 2", root);
+
+		TreeNode node00 = new DefaultTreeNode("Node 0.0", node0);
+		TreeNode node01 = new DefaultTreeNode("Node 0.1", node0);
+
+		TreeNode node10 = new DefaultTreeNode("Node 1.0", node1);
+		TreeNode node11 = new DefaultTreeNode("Node 1.1", node1);
+
+		TreeNode node000 = new DefaultTreeNode("Node 0.0.0", node00);
+		TreeNode node001 = new DefaultTreeNode("Node 0.0.1", node00);
+		TreeNode node010 = new DefaultTreeNode("Node 0.1.0", node01);
+
+		TreeNode node100 = new DefaultTreeNode("Node 1.0.0", node10);
+	}
+
+	public TreeNode getRoot() {
+		return root;
+	}
+
+    public void onDragDrop(DragDropEvent event) {
+        TreeNode node = (TreeNode) event.getData();
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "DragDrop", node + " moved to " + node.getParent());
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
 					</pre>
 				</p:tab>
 			</p:tabView>

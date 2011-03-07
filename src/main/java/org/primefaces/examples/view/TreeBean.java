@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import org.primefaces.event.DragDropEvent;
 
 import org.primefaces.event.NodeCollapseEvent;
 import org.primefaces.event.NodeExpandEvent;
@@ -92,6 +93,13 @@ public class TreeBean implements Serializable {
 	public void onNodeSelect(NodeSelectEvent event) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
 		
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+
+    public void onDragDrop(DragDropEvent event) {
+        TreeNode node = (TreeNode) event.getData();
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "DragDrop", node + " moved to " + node.getParent());
+
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 	
