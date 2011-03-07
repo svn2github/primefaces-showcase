@@ -16,7 +16,7 @@
 
                 <p:growl id="messages" showDetail="true"/>
 
-				<p:tree id="treeDnd" value="#{treeBean.root}" var="node" dragdrop="true"
+                <p:tree id="treeDnd" value="#{treeBean.root}" var="node" dragdrop="true"
                         dragdropListener="#{treeBean.onDragDrop}" onDragdropUpdate="messages">
 					<p:treeNode>
 						<h:outputText value="#{node}"/>
