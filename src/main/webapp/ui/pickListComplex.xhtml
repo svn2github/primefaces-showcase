@@ -30,16 +30,6 @@
               	<p>PickList provides a dual list to switch items between each other. Since picklist is a composite component
              	it uses a facet based design to make customization of controls easier.</p>
                
-               <p:ajaxStatus style="height:24px;display:block;">
-						<f:facet name="start">
-							<h:graphicImage value="../design/ajaxloadingbar.gif" />
-						</f:facet>
-						
-						<f:facet name="complete">
-							<h:outputText value="" />
-						</f:facet>
-				</p:ajaxStatus>
-
 				<h:form id="form">
 					<p:pickList value="#{pickListBean.players}" var="player" 
 								itemLabel="#{player.name}" itemValue="#{player}" converter="player">

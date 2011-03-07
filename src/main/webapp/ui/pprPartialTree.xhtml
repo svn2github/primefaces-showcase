@@ -13,16 +13,6 @@
 			This simply makes immediate, subforms and regions obselete. Keywords like @this, @form, @all, @none, @parent makes it even easier to choose what to process.
 			just for ajax. Following example demonstrates several combinations.</p>
 
-			<p:ajaxStatus style="width:16px;height:16px;">
-				<f:facet name="start">
-					<h:graphicImage value="../design/ajaxloading.gif" />
-				</f:facet>
-				
-				<f:facet name="complete">
-					<h:outputText value="" />
-				</f:facet>
-			</p:ajaxStatus>
-
 			<h:form>
 				
 				<p:panel header="Partial Process">
@@ -56,16 +46,6 @@
 			<p:tabView>
 				<p:tab title="pprPartialTree.xhtml">
 					<pre name="code" class="xml">
-&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-	&lt;f:facet name="start"&gt;
-		&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-	&lt;/f:facet&gt;
-	
-	&lt;f:facet name="complete"&gt;
-		&lt;h:outputText value="" /&gt;
-	&lt;/f:facet&gt;
-&lt;/p:ajaxStatus&gt;
-
 &lt;h:form&gt;
 	
 	&lt;p:panel header="Partial Process"&gt;

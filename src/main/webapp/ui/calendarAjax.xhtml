@@ -11,17 +11,7 @@
 			<h:form>
 				<p>When a date is selected, a server side listener can be invoked with ajax instantly. Optionally
 				other components on page can be updated using onSelectUpdate attribute.</p>
-				
-				<p:ajaxStatus style="width:16px;height:16px;">
-					<f:facet name="start">
-						<h:graphicImage value="../design/ajaxloading.gif" />
-					</f:facet>
-					
-					<f:facet name="complete">
-						<h:outputText value="" />
-					</f:facet>
-				</p:ajaxStatus>
-				
+                
 				<p:growl id="growl" showDetail="true"/>
 				
 				<p:calendar value="#{calendarBean.date1}" mode="inline" 

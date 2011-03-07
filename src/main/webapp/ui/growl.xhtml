@@ -20,18 +20,9 @@
 						<h:panelGrid columns="2">
 							<h:outputText value="Your Name: *" /> 
 							<p:inputText value="#{growlBean.text}" required="true" label="Name"/>
-							
-							<p:commandButton value="Save" actionListener="#{growlBean.save}" update="growl"/>
-							<p:ajaxStatus>
-								<f:facet name="start">
-									<h:graphicImage value="../design/ajaxloading.gif" />
-								</f:facet>
-									
-								<f:facet name="complete">
-									<h:outputText value="" />
-								</f:facet>
-							</p:ajaxStatus>
 						</h:panelGrid>
+
+                        <p:commandButton value="Save" actionListener="#{growlBean.save}" update="growl"/>
 					</p:panel>
 					
 				</h:form>
@@ -48,18 +39,9 @@
 		&lt;h:panelGrid columns="2"&gt;
 			&lt;h:outputText value="Your Name: *" /&gt; 
 			&lt;p:inputText value="\#{growlBean.text}" required="true" label="Name"/&gt;
-			
-			&lt;p:commandButton value="Save" actionListener="\#{growlBean.save}" update="growl"/&gt;
-			&lt;p:ajaxStatus&gt;
-				&lt;f:facet name="start"&gt;
-					&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-				&lt;/f:facet&gt;
-					
-				&lt;f:facet name="complete"&gt;
-					&lt;h:outputText value="" /&gt;
-				&lt;/f:facet&gt;
-			&lt;/p:ajaxStatus&gt;
 		&lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton value="Save" actionListener="\#{growlBean.save}" update="growl"/&gt;
 	&lt;/p:panel&gt;
 	
 &lt;/h:form&gt;

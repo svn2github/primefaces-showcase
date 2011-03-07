@@ -48,21 +48,8 @@
 					<p:inputText id="txt5" value="#{sliderBean.number5}" />
                     <p:slider for="txt5" slideEndListener="#{sliderBean.onSlideEnd}" onSlideEndUpdate="growl"/>
 				</h:panelGrid>
-				
-				<h:panelGrid columns="2">
-					<p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
-					
-					<p:ajaxStatus style="width:16px;height:16px;">
-						<f:facet name="start">
-							<h:graphicImage value="../design/ajaxloading.gif" />
-						</f:facet>
-						
-						<f:facet name="complete">
-							<h:outputText value="" />
-						</f:facet>
-					</p:ajaxStatus>
-				</h:panelGrid>
-				
+
+                <p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
 				
 				<p:dialog header="Slider Values" widgetVar="dialog" 
                           showEffect="bounce" hideEffect="fade" width="200">
@@ -126,21 +113,8 @@
         &lt;p:slider for="txt5" onSlideEndUpdate="growl"
             slideEndListener="\#{sliderBean.onSlideEnd}" /&gt;
     &lt;/h:panelGrid&gt;
-	
-	&lt;h:panelGrid columns="2"&gt;
-		&lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
-		
-		&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-			&lt;f:facet name="start"&gt;
-				&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-			&lt;/f:facet&gt;
-			
-			&lt;f:facet name="complete"&gt;
-				&lt;h:outputText value="" /&gt;
-			&lt;/f:facet&gt;
-		&lt;/p:ajaxStatus&gt;
-	&lt;/h:panelGrid&gt;
-	
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
 	
 	&lt;p:dialog header="Slider Values" widgetVar="dialog" 
 		showEffect="bounce" hideEffect="fade" width="200"&gt;

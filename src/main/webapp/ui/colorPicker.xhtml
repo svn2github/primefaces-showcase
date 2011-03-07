@@ -25,19 +25,9 @@
 							<f:converter converterId="colorPickerConverter"/>
 						</p:colorPicker>
 						<h:outputText id="rgbDisplay" value="#{colorBean.rgbColor}" style="background-color:rgb(#{colorBean.rgbColor})"/>
-						
-						<p:commandButton value="Submit" update="awtDisplay rgbDisplay"/>
-						<p:ajaxStatus style="width:16px;height:16px;">
-							<f:facet name="start">
-								<h:graphicImage value="../design/ajaxloading.gif" />
-							</f:facet>
-							
-							<f:facet name="complete">
-								<h:outputText value="" />
-							</f:facet>
-						</p:ajaxStatus>
-						<h:outputText />
 					</h:panelGrid>
+
+                    <p:commandButton value="Submit" update="awtDisplay rgbDisplay"/>
 				</p:panel>
 				
 			</h:form>
@@ -61,19 +51,9 @@
 			&lt;h:outputText id="rgbDisplay" 
 					value="\\#{colorBean.rgbColor}" 
 					style="background-color:rgb(\#{colorBean.rgbColor})"/&gt;
-			
-			&lt;p:commandButton value="Submit" update="awtDisplay rgbDisplay" /&gt;
-			&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-				&lt;f:facet name="start"&gt;
-					&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-				&lt;/f:facet&gt;
-				
-				&lt;f:facet name="complete"&gt;
-					&lt;h:outputText value="" /&gt;
-				&lt;/f:facet&gt;
-			&lt;/p:ajaxStatus&gt;
-			&lt;h:outputText /&gt;
 		&lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton value="Submit" update="awtDisplay rgbDisplay" /&gt;
 	&lt;/p:panel&gt;
 	
 &lt;/h:form&gt;

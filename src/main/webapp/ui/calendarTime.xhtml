@@ -30,19 +30,7 @@
                 <h3>Min/Max</h3>
 				<p:calendar value="#{calendarBean.date6}" pattern="MM/dd/yyyy HH:mm" minHour="9" maxHour="18"/>
 
-				<h:panelGrid columns="2" style="margin-top:10px">
-					<p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
-
-					<p:ajaxStatus style="width:16px;height:16px;">
-						<f:facet name="start">
-							<h:graphicImage value="../design/ajaxloading.gif" />
-						</f:facet>
-
-						<f:facet name="complete">
-							<h:outputText value="" />
-						</f:facet>
-					</p:ajaxStatus>
-				</h:panelGrid>
+                <p:commandButton value="Submit" update="display" oncomplete="dialog.show()" style="margin-top:10px"/>
 
 				<p:dialog header="Selected Dates" widgetVar="dialog"
 							showEffect="fold" hideEffect="fold"

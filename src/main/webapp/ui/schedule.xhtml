@@ -16,16 +16,6 @@
 		
 			<h:form>
 
-				<p:ajaxStatus style="height:24px;display:block;">
-					<f:facet name="start">
-						<h:graphicImage value="../design/ajaxloading.gif" />
-					</f:facet>
-				
-					<f:facet name="complete">
-						<h:outputText value="" />
-					</f:facet>
-				</p:ajaxStatus>
-				
 				<p:growl id="messages" showDetail="true" />
 			
 				<p:schedule value="#{scheduleController.eventModel}" editable="true" widgetVar="myschedule"
@@ -70,16 +60,6 @@
 				<p:tab title="schedule.xhtml">
 <pre name="code" class="xml">
 &lt;h:form&gt;
-
-	&lt;p:ajaxStatus style="height:24px;display:block;"&gt;
-		&lt;f:facet name="start"&gt;
-			&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-		&lt;/f:facet&gt;
-	
-		&lt;f:facet name="complete"&gt;
-			&lt;h:outputText value="" /&gt;
-		&lt;/f:facet&gt;
-	&lt;/p:ajaxStatus&gt;
 	
 	&lt;p:growl id="messages" showDetail="true" /&gt;
 

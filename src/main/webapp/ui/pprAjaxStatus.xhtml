@@ -1,57 +1,57 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
-	
-	<ui:define name="content">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-		<h1 class="title ui-widget-header ui-corner-all">AJAX - Status</h1>
-		<div class="entry">
-			<p>Ajax Status is a global indicator to inform users about the ajax interactions. By default ajax requests trigger the ajaxStatus
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">AJAX - Status</h1>
+        <div class="entry">
+            <p>Ajax Status is a global indicator to inform users about the ajax interactions. By default ajax requests trigger the ajaxStatus
 				component, setting global to false disables this behavior.</p>
-	
-				<p:ajaxStatus style="width:16px;height:16px;">
-					<f:facet name="start">
-						<h:graphicImage value="../design/ajaxloading.gif" />
-					</f:facet>
-					
-					<f:facet name="complete">
-						<h:outputText value="" />
-					</f:facet>
-				</p:ajaxStatus>
-						
-				<h:form>
-				
-					<p:panel id="panel" header="Ajax Status">
-				
-						<p:messages />
-						
-						<h:panelGrid columns="3" cellpadding="5">
-							<h:outputLabel for="firstname" value="Firstname: *" />
-							<p:inputText id="firstname" value="#{personBean.firstname}" required="true" label="Firstname">
-								<f:validateLength minimum="2" />
-							</p:inputText>
-							<p:message for="firstname" />
-							
-							<h:outputLabel for="surname" value="Surname: *" />
-							<p:inputText id="surname" value="#{personBean.surname}" required="true" label="Surname"/>
-							<p:message for="surname" />
-	
-						</h:panelGrid>
-						
-						<p:commandButton value="Global" update="panel" actionListener="#{personBean.savePerson}" />
-						<p:commandButton value="Non-Global" update="panel" actionListener="#{personBean.savePerson}" global="false" style="margin-left:5px"/>
 
-					</p:panel>
-					
-				</h:form>
-						
-				<h3>Source</h3>
-				<p:tabView>
-					<p:tab title="pprAjaxStatus.xhtml">
-						<pre name="code" class="xml">
+            <p:ajaxStatus style="width:16px;height:16px;">
+                <f:facet name="start">
+                    <h:graphicImage value="../design/ajaxloading.gif" />
+                </f:facet>
+
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+
+            <h:form>
+
+                <p:panel id="panel" header="Ajax Status">
+
+                    <p:messages />
+
+                    <h:panelGrid columns="3" cellpadding="5">
+                        <h:outputLabel for="firstname" value="Firstname: *" />
+                        <p:inputText id="firstname" value="#{personBean.firstname}" required="true" label="Firstname">
+                            <f:validateLength minimum="2" />
+                        </p:inputText>
+                        <p:message for="firstname" />
+
+                        <h:outputLabel for="surname" value="Surname: *" />
+                        <p:inputText id="surname" value="#{personBean.surname}" required="true" label="Surname"/>
+                        <p:message for="surname" />
+
+                    </h:panelGrid>
+
+                    <p:commandButton value="Global" update="panel" actionListener="#{personBean.savePerson}" />
+                    <p:commandButton value="Non-Global" update="panel" actionListener="#{personBean.savePerson}" global="false" style="margin-left:5px"/>
+
+                </p:panel>
+
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="pprAjaxStatus.xhtml">
+                    <pre name="code" class="xml">
 &lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
 	&lt;f:facet name="start"&gt;
 		&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
@@ -94,11 +94,11 @@
 	&lt;/p:panel&gt;
 	
 &lt;/h:form&gt;
-						</pre>
-					</p:tab>
-					
-					<p:tab title="PersonBean.java">
-				<pre name="code" class="java">
+                    </pre>
+                </p:tab>
+
+                <p:tab title="PersonBean.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import javax.faces.application.FacesMessage;
@@ -129,12 +129,12 @@ public class PersonBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome " + firstname + " " + surname + "!"));
 	}
 }
-</pre>
-					</p:tab>
-				</p:tabView>
-				
-						
-		</div>
-				
-	</ui:define>
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+
+        </div>
+
+    </ui:define>
 </ui:composition>

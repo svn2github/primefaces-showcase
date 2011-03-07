@@ -25,16 +25,6 @@
 
             <h:form prependId="false">
 
-                <p:ajaxStatus style="width:16px;height:16px;">
-                    <f:facet name="start">
-                        <h:graphicImage value="../design/ajaxloading.gif" />
-                    </f:facet>
-
-                    <f:facet name="complete">
-                        <h:outputText value="" />
-                    </f:facet>
-                </p:ajaxStatus>
-
                 <h3>Simple</h3>
                 <p:dataTable var="car" value="#{tableBean.carsSmall}">
 

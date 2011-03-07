@@ -16,17 +16,7 @@
 			<p>Markers can respond to selection by invoking a server side
 			overlaySelectListener with ajax, passing an overlaySelectEvent that contains a reference to the selected marker. Optionally other components can be updated with ajax response
 			using onOverlaySelectUpdate attribute. onOverlaySelectStart and onOverlaySelectComplete are optional javascript callbacks.</p>
-			
-			<p:ajaxStatus style="width:16px;height:16px;">
-				<f:facet name="start">
-					<h:graphicImage value="../design/ajaxloading.gif" />
-				</f:facet>
-				
-				<f:facet name="complete">
-					<h:outputText value="" />
-				</f:facet>
-			</p:ajaxStatus>
-	
+		
 			<h:form>
 			
 				<p:growl id="growl" showDetail="true"/>

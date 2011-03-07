@@ -18,20 +18,8 @@
 						
 						<p:graphicImage id="localCroppedImage" value="/images/barca/#{imageCropperBean.newImageName}.jpg" />
 					</h:panelGrid>
-					
-					<h:panelGrid columns="2">
-						<p:commandButton value="Crop" action="#{imageCropperBean.crop}" update="localCroppedImage"/>
-						
-						<p:ajaxStatus style="height:24px;display:block;">
-							<f:facet name="start">
-								<h:graphicImage value="../design/ajaxloading.gif" />
-							</f:facet>
-						
-							<f:facet name="complete">
-								<h:outputText value="" />
-							</f:facet>
-						</p:ajaxStatus>
-					</h:panelGrid>
+				
+                    <p:commandButton value="Crop" action="#{imageCropperBean.crop}" update="localCroppedImage"/>
 				</h:form>
 				
 				<h3>Source</h3>
@@ -47,22 +35,10 @@
 		&lt;p:graphicImage id="localCroppedImage"
                     value="barca/\#{imageCropperBean.newImageName}.jpg" /&gt;
 	&lt;/h:panelGrid&gt;
-	
-	&lt;h:panelGrid columns="2"&gt;
-		&lt;p:commandButton value="Crop" 
+
+    &lt;p:commandButton value="Crop"
                 action="\#{imageCropperBean.crop}"
                 update="localCroppedImage"/&gt;
-		
-		&lt;p:ajaxStatus style="height:24px;display:block;"&gt;
-			&lt;f:facet name="start"&gt;
-				&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-			&lt;/f:facet&gt;
-		
-			&lt;f:facet name="complete"&gt;
-				&lt;h:outputText value="" /&gt;
-			&lt;/f:facet&gt;
-		&lt;/p:ajaxStatus&gt;
-	&lt;/h:panelGrid&gt;
 &lt;/h:form&gt;
 						</pre>
 					</p:tab>

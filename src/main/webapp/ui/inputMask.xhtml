@@ -1,84 +1,75 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
-	<h1 class="title ui-widget-header ui-corner-all">Masked Input</h1>
-		<div class="entry">
-                <p>InputMask component forces input to be formatted in a specific way</p>
-                
-               <p:ajaxStatus style="width:16px;height:16px;">
-					<f:facet name="start">
-						<h:graphicImage value="../design/ajaxloading.gif" />
-					</f:facet>
-		
-					<f:facet name="complete">
-						<h:outputText value="" />
-					</f:facet>
-				</p:ajaxStatus>
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">Masked Input</h1>
+        <div class="entry">
+            <p>InputMask component forces input to be formatted in a specific way</p>
 
-				<h:form>
 
-					<p:panel header="Masks">
-						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputText value="Date: " />
-							<p:inputMask value="#{maskController.date}" mask="99/99/9999"/>
-							
-							<h:outputText value="Phone: " />
-							<p:inputMask value="#{maskController.phone}" mask="(999) 999-9999"/>
-							
-							<h:outputText value="Phone with Ext: " />
-							<p:inputMask value="#{maskController.phoneExt}" mask="(999) 999-9999? x99999"/>
-							
-							<h:outputText value="taxId: " />
-							<p:inputMask value="#{maskController.taxId}" mask="99-9999999"/>
-							
-							<h:outputText value="SSN: " />
-							<p:inputMask value="#{maskController.ssn}" mask="999-99-9999"/>
-							
-							<h:outputText value="Product Key: " />
-							<p:inputMask value="#{maskController.productKey}" mask="a*-999-a999"/>
-						
-							<p:commandButton value="Reset" type="reset" />
-							<p:commandButton value="Submit" update="display" oncomplete="dialog.show()"/>
-	
-						</h:panelGrid>
-					</p:panel>
-					
-					<p:dialog widgetVar="dialog" width="250" height="225" modal="true">
-						<h:panelGrid id="display" columns="2" cellpadding="5">
-					
-							<h:outputText value="Date: " />
-							<h:outputText value="#{maskController.date}" />
-							
-							<h:outputText value="Phone: " />
-							<h:outputText value="#{maskController.phone}" />
-							
-							<h:outputText value="Phone with Ext: " />
-							<h:outputText value="#{maskController.phoneExt}"/>
-							
-							<h:outputText value="taxId: " />
-							<h:outputText value="#{maskController.taxId}" />
-							
-							<h:outputText value="SSN: " />
-							<h:outputText value="#{maskController.ssn}" />
-							
-							<h:outputText value="Product Key: " />
-							<h:outputText value="#{maskController.productKey}" />
-					
-						</h:panelGrid>
-					</p:dialog>
-					
-				</h:form>
-					
+            <h:form>
 
-				<h3>Source</h3>
-				<p:tabView>
-					<p:tab title="inputMask.xhtml">
-					<pre name="code" class="xml">
+                <p:panel header="Masks">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputText value="Date: " />
+                        <p:inputMask value="#{maskController.date}" mask="99/99/9999"/>
+
+                        <h:outputText value="Phone: " />
+                        <p:inputMask value="#{maskController.phone}" mask="(999) 999-9999"/>
+
+                        <h:outputText value="Phone with Ext: " />
+                        <p:inputMask value="#{maskController.phoneExt}" mask="(999) 999-9999? x99999"/>
+
+                        <h:outputText value="taxId: " />
+                        <p:inputMask value="#{maskController.taxId}" mask="99-9999999"/>
+
+                        <h:outputText value="SSN: " />
+                        <p:inputMask value="#{maskController.ssn}" mask="999-99-9999"/>
+
+                        <h:outputText value="Product Key: " />
+                        <p:inputMask value="#{maskController.productKey}" mask="a*-999-a999"/>
+
+                        <p:commandButton value="Reset" type="reset" />
+                        <p:commandButton value="Submit" update="display" oncomplete="dialog.show()"/>
+
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:dialog widgetVar="dialog" width="250" height="225" modal="true">
+                    <h:panelGrid id="display" columns="2" cellpadding="5">
+
+                        <h:outputText value="Date: " />
+                        <h:outputText value="#{maskController.date}" />
+
+                        <h:outputText value="Phone: " />
+                        <h:outputText value="#{maskController.phone}" />
+
+                        <h:outputText value="Phone with Ext: " />
+                        <h:outputText value="#{maskController.phoneExt}"/>
+
+                        <h:outputText value="taxId: " />
+                        <h:outputText value="#{maskController.taxId}" />
+
+                        <h:outputText value="SSN: " />
+                        <h:outputText value="#{maskController.ssn}" />
+
+                        <h:outputText value="Product Key: " />
+                        <h:outputText value="#{maskController.productKey}" />
+
+                    </h:panelGrid>
+                </p:dialog>
+
+            </h:form>
+
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="inputMask.xhtml">
+                    <pre name="code" class="xml">
 &lt;h:form&gt;
 
 	&lt;p:panel header="Masks"&gt;
@@ -133,11 +124,11 @@
 	&lt;/p:dialog&gt;
 	
 &lt;/h:form&gt;
-					</pre>
-					</p:tab>
-					
-					<p:tab title="MaskController.java">
-					<pre name="code" class="java">
+                    </pre>
+                </p:tab>
+
+                <p:tab title="MaskController.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 public class MaskController {
@@ -203,11 +194,11 @@ public class MaskController {
 	}
 }
 
-					</pre>
-					</p:tab>
-				</p:tabView>
-				
-            </div>
+                    </pre>
+                </p:tab>
+            </p:tabView>
 
-	</ui:define>
+        </div>
+
+    </ui:define>
 </ui:composition>

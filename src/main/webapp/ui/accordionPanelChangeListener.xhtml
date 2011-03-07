@@ -1,27 +1,17 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
+    <ui:define name="content">
 
-			<h1 class="title ui-widget-header ui-corner-all">AccordionPanel - Change Listener</h1>
-			<div class="entry">
-			<p>Tab change event can be listened both on client and server side. onTabChange is a client side callback that is invoked
-            when active tab changed and tabChangeListener is a server side listener is invoked with ajax. Optionally
-            other components on page can be updated partially using onTabChangeUpdate attribute.</p>
-
-            <p:ajaxStatus style="width:16px;height:16px;">
-                <f:facet name="start">
-                    <h:graphicImage value="../design/ajaxloading.gif" />
-                </f:facet>
-
-                <f:facet name="complete">
-                    <h:outputText value="" />
-                </f:facet>
-            </p:ajaxStatus>
+        <h1 class="title ui-widget-header ui-corner-all">AccordionPanel - Change Listener</h1>
+        <div class="entry">
+            <p>Tab change event can be listened both on client and server side. onTabChange is a client side callback that is invoked
+                when active tab changed and tabChangeListener is a server side listener is invoked with ajax. Optionally
+                other components on page can be updated partially using onTabChangeUpdate attribute.</p>
 
             <h:form>
 
@@ -42,25 +32,25 @@
                         <h:panelGrid columns="2" cellpadding="10">
                             <p:graphicImage value="/images/godfather/godfather2.jpg" />
                             <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.
-                            In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,
-                            killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />
+                                          In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,
+                                          killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />
                         </h:panelGrid>
                     </p:tab>
                     <p:tab title="Godfather Part III" id="Godfather3">
                         <h:panelGrid columns="2" cellpadding="10">
                             <p:graphicImage value="/images/godfather/godfather3.jpg" />
                             <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.
-                                Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate."/>
+                                          Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate."/>
                         </h:panelGrid>
                     </p:tab>
                 </p:accordionPanel>
-                
+
             </h:form>
 
-		<h3>Source</h3>
-        <p:tabView>
-            <p:tab title="accordionPanelDynamic.xhtml">
-                <pre name="code" class="xml">
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="accordionPanelDynamic.xhtml">
+                    <pre name="code" class="xml">
 &lt;h:form&gt;
 
     &lt;p:growl id="growl" showDetail="true" /&gt;
@@ -96,11 +86,11 @@
     &lt;/p:accordionPanel&gt;
 
 &lt;/h:form&gt;
-                </pre>
-            </p:tab>
+                    </pre>
+                </p:tab>
 
-            <p:tab title="TabBean.java">
-                <pre name="code" class="java">
+                <p:tab title="TabBean.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import javax.faces.application.FacesMessage;
@@ -116,11 +106,11 @@ public class TabBean {
     }
 }
 
-                </pre>
-            </p:tab>
-        </p:tabView>
+                    </pre>
+                </p:tab>
+            </p:tabView>
 
 
-		</div>
-	</ui:define>
+        </div>
+    </ui:define>
 </ui:composition>

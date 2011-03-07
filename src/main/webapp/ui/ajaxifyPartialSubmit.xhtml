@@ -1,49 +1,39 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
+    <ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">AJAX - Partial Processing</h1>
-		<div class="entry">			
-			<p>In the example below, although firstname is required, there won't be validation errors because of ajax requests caused by ajaxified surname
+        <h1 class="title ui-widget-header ui-corner-all">AJAX - Partial Processing</h1>
+        <div class="entry">
+            <p>In the example below, although firstname is required, there won't be validation errors because of ajax requests caused by ajaxified surname
 			as only surname is processed.</p>
-			
-			<h:form>
 
-				<p:panel header="New Person">
-					<h:panelGrid columns="3">
-						<h:outputLabel for="firstname" value="Required Firstname *:" />
-						<p:inputText id="firstname" value="#{pprBean.firstname}" required="true" />
-						<h:outputText />
-						
-						<h:outputLabel for="surname" value="Surname (request on blur): " />
-						<p:inputText id="surname" value="#{pprBean.surname}">
-							<p:ajax event="blur" update="out2" process="@this"/>
-						</p:inputText>
-						<h:outputText id="out2" value="#{pprBean.surname}" />
-					</h:panelGrid>
-				</p:panel>
-				
-			</h:form>
-			
-			<p:ajaxStatus style="width:16px;height:16px;">
-				<f:facet name="start">
-					<h:graphicImage value="../design/ajaxloading.gif" />
-				</f:facet>
-				
-				<f:facet name="complete">
-					<h:outputText value="" />
-				</f:facet>
-			</p:ajaxStatus>
-					
-						<h3>Source</h3>
-			<p:tabView>
-				<p:tab title="ajaxifyPartialSubmit.xhtml">
-					<pre name="code" class="xml">
+            <h:form>
+
+                <p:panel header="New Person">
+                    <h:panelGrid columns="3">
+                        <h:outputLabel for="firstname" value="Required Firstname *:" />
+                        <p:inputText id="firstname" value="#{pprBean.firstname}" required="true" />
+                        <h:outputText />
+
+                        <h:outputLabel for="surname" value="Surname (request on blur): " />
+                        <p:inputText id="surname" value="#{pprBean.surname}">
+                            <p:ajax event="blur" update="out2" process="@this"/>
+                        </p:inputText>
+                        <h:outputText id="out2" value="#{pprBean.surname}" />
+                    </h:panelGrid>
+                </p:panel>
+
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="ajaxifyPartialSubmit.xhtml">
+                    <pre name="code" class="xml">
 &lt;h:form&gt;
 
 	&lt;p:panel header="New Person"&gt;
@@ -61,21 +51,11 @@
 	&lt;/p:panel&gt;
 	
 &lt;/h:form&gt;
+                    </pre>
+                </p:tab>
 
-&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-	&lt;f:facet name="start"&gt;
-		&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-	&lt;/f:facet&gt;
-	
-	&lt;f:facet name="complete"&gt;
-		&lt;h:outputText value="" /&gt;
-	&lt;/f:facet&gt;
-&lt;/p:ajaxStatus&gt;
-					</pre>
-				</p:tab>
-				
-				<p:tab title="PersonBean.java">
-				<pre name="code" class="java">
+                <p:tab title="PersonBean.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import javax.faces.application.FacesMessage;
@@ -106,12 +86,12 @@ public class PersonBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome " + firstname + " " + surname + "!"));
 	}
 }
-</pre>
-				</p:tab>
-			</p:tabView>
-						
-					</div>
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
 
 
-	</ui:define>
+    </ui:define>
 </ui:composition>

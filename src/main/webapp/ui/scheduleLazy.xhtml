@@ -17,16 +17,6 @@
 		
 			<h:form>
 				
-				<p:ajaxStatus style="height:24px;display:block;">
-					<f:facet name="start">
-						<h:graphicImage value="../design/ajaxloading.gif" />
-					</f:facet>
-				
-					<f:facet name="complete">
-						<h:outputText value="" />
-					</f:facet>
-				</p:ajaxStatus>
-			
 				<p:schedule value="#{scheduleController.lazyEventModel}" />
 				
 			</h:form>

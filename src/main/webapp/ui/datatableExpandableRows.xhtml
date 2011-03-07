@@ -7,7 +7,6 @@
 
     <ui:define name="head">
         <style type="text/css">
-         
             .label, .value {
                 border-right:0px none !important;
             }
@@ -25,16 +24,6 @@
 			<p>A row can be expanded to display detail content using a row expansion column and expansion facet.</p>
 
             <h:form>
-
-                 <p:ajaxStatus style="width:16px;height:16px;">
-                    <f:facet name="start">
-                        <h:graphicImage value="../design/ajaxloading.gif" />
-                    </f:facet>
-
-                    <f:facet name="complete">
-                        <h:outputText value="" />
-                    </f:facet>
-                </p:ajaxStatus>
 
                 <p:dataTable var="car" value="#{tableBean.carsSmall}">
 

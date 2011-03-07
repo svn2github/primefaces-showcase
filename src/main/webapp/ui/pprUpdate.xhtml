@@ -13,22 +13,12 @@
 
 			<h:form>
 				
-				<h:panelGrid columns="4" cellpadding="5">
+				<h:panelGrid columns="3" cellpadding="5">
 					<h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
 					
 					<p:inputText id="name" value="#{pprBean.firstname}" />
 					
 					<p:commandButton value="Submit" update="display"/>
-					
-					<p:ajaxStatus style="width:16px;height:16px;">
-						<f:facet name="start">
-							<h:graphicImage value="../design/ajaxloading.gif" />
-						</f:facet>
-						
-						<f:facet name="complete">
-							<h:outputText value="" />
-						</f:facet>
-					</p:ajaxStatus>
 				</h:panelGrid>
 				
 				<h:outputText value="#{pprBean.firstname}" id="display" />
@@ -41,22 +31,12 @@
 <pre name="code" class="xml">
 &lt;h:form&gt;
 							
-	&lt;h:panelGrid columns="4" cellpadding="5"&gt;
+	&lt;h:panelGrid columns="3" cellpadding="5"&gt;
 		&lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
 		
 		&lt;p:inputText id="name" value="\#{pprBean.firstname}" /&gt;
 		
 		&lt;p:commandButton value="Submit" update="display"/&gt;
-		
-		&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-			&lt;f:facet name="start"&gt;
-				&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-			&lt;/f:facet&gt;
-			
-			&lt;f:facet name="complete"&gt;
-				&lt;h:outputText value="" /&gt;
-			&lt;/f:facet&gt;
-		&lt;/p:ajaxStatus&gt;
 	&lt;/h:panelGrid&gt;
 	
 	&lt;h:outputText value="\#{pprBean.firstname}" id="display" /&gt;

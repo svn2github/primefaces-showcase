@@ -17,16 +17,6 @@
 		<p>DataGrid displays a collection of data in grid layout. Ajax Pagination is a built-in feature and paginator UI is fully customizable via various options like paginatorTemplate, rowsPerPageOptions, 
 		pageLinks and more.</p>
 		
-			<p:ajaxStatus style="width:16px;height:16px;">
-				<f:facet name="start">
-					<h:graphicImage value="../design/ajaxloading.gif" />
-				</f:facet>
-				
-				<f:facet name="complete">
-					<h:outputText value="" />
-				</f:facet>
-			</p:ajaxStatus>	
-		
 			<h:form prependId="false">
 
 				<p:dataGrid var="car" value="#{tableBean.cars}" columns="3"

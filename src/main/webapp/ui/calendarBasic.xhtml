@@ -21,19 +21,7 @@
 				<h3>Popup Button</h3>
 				<p:calendar value="#{calendarBean.date3}" showOn="button" />
 				
-				<h:panelGrid columns="2" style="margin-top:10px">
-					<p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
-				
-					<p:ajaxStatus style="width:16px;height:16px;">
-						<f:facet name="start">
-							<h:graphicImage value="../design/ajaxloading.gif" />
-						</f:facet>
-						
-						<f:facet name="complete">
-							<h:outputText value="" />
-						</f:facet>
-					</p:ajaxStatus>
-				</h:panelGrid>
+                <p:commandButton value="Submit" update="display" oncomplete="dialog.show()" style="margin-top:10px"/>
 				
 				<p:dialog header="Selected Dates" widgetVar="dialog" 
 							showEffect="fold" hideEffect="fold"
@@ -76,19 +64,7 @@
 	&lt;h3&gt;Popup Button&lt;/h3&gt;
 	&lt;p:calendar value="\#{calendarBean.date3}" showOn="button" /&gt;
 
-	&lt;h:panelGrid columns="2" style="margin-top:10px"&gt;
-		&lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()"/&gt;
-	
-		&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-			&lt;f:facet name="start"&gt;
-				&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-			&lt;/f:facet&gt;
-			
-			&lt;f:facet name="complete"&gt;
-				&lt;h:outputText value="" /&gt;
-			&lt;/f:facet&gt;
-		&lt;/p:ajaxStatus&gt;
-	&lt;/h:panelGrid&gt;
+    &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
 	
 	&lt;p:dialog header="Selected Dates" widgetVar="dialog" 
 			showEffect="fold" hideEffect="fold"

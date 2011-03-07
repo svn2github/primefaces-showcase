@@ -13,16 +13,6 @@
             
             <h:form>
 
-                <p:ajaxStatus style="width:16px;height:16px;">
-                    <f:facet name="start">
-                        <h:graphicImage value="../design/ajaxloading.gif" />
-                    </f:facet>
-
-                    <f:facet name="complete">
-                        <h:outputText value="" />
-                    </f:facet>
-                </p:ajaxStatus>
-
                 <p:dataTable var="car" value="#{tableBean.cars}"
                              paginator="true" rows="10"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"

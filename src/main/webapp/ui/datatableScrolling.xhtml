@@ -34,16 +34,6 @@
 
                 </p:dataTable>
 
-                <p:ajaxStatus style="width:16px;height:16px;">
-                    <f:facet name="start">
-                        <h:graphicImage value="../design/ajaxloading.gif" />
-                    </f:facet>
-
-                    <f:facet name="complete">
-                        <h:outputText value="" />
-                    </f:facet>
-                </p:ajaxStatus>
-
                 <h3>Live Scrolling</h3>
                 <p:dataTable var="car" value="#{tableBean.carsLarge}" rows="20"
                                 scrollable="true" liveScroll="true" height="150">

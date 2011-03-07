@@ -49,19 +49,10 @@
 			
 			<h:form id="form">
 				
-				<h:panelGrid columns="4">
+				<h:panelGrid columns="3">
 					<h:outputLabel for="name" value="Say: *" />
 					<p:inputText id="name" value="#{buttonBean.text}" required="true" requiredMessage="You must type something!"/>
 					<p:commandButton value="Submit" update="bottomPanel" oncomplete="bottomBar.show();"/>
-					<p:ajaxStatus style="height:24px;display:block;">
-						<f:facet name="start">
-							<h:graphicImage value="../design/ajaxloading.gif" />
-						</f:facet>
-						
-						<f:facet name="complete">
-							<h:outputText value="" />
-						</f:facet>
-					</p:ajaxStatus>
 				</h:panelGrid>
 				
 				<p:notificationBar position="top" effect="slide" widgetVar="topBar" styleClass="top">
@@ -89,19 +80,10 @@
 			<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 				
-	&lt;h:panelGrid columns="4"&gt;
+	&lt;h:panelGrid columns="3"&gt;
 		&lt;h:outputLabel for="name" value="Name: *" /&gt;
 		&lt;p:inputText id="name" value="\#{buttonBean.text}" label="name" required="true" requiredMessage="You must type something!"/&gt;
 		&lt;p:commandButton value="Submit" update="bottomPanel" oncomplete="bottomBar.show();"/&gt;
-		&lt;p:ajaxStatus style="height:24px;display:block;"&gt;
-			&lt;f:facet name="start"&gt;
-				&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-			&lt;/f:facet&gt;
-			
-			&lt;f:facet name="complete"&gt;
-				&lt;h:outputText value="" /&gt;
-			&lt;/f:facet&gt;
-		&lt;/p:ajaxStatus&gt;
 	&lt;/h:panelGrid&gt;
 	
 	&lt;p:notificationBar position="top" effect="slide" widgetVar="topBar" styleClass="top"&gt;

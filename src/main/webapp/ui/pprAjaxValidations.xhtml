@@ -10,16 +10,6 @@
 	<h1 class="title ui-widget-header ui-corner-all">AJAX - Validations</h1>
 		<div class="entry">
 			<p>Validations are executed on the server side and page is updated with the response.</p>
-
-			<p:ajaxStatus style="width:16px;height:16px;">
-				<f:facet name="start">
-					<h:graphicImage value="../design/ajaxloading.gif" />
-				</f:facet>
-				
-				<f:facet name="complete">
-					<h:outputText value="" />
-				</f:facet>
-			</p:ajaxStatus>
 						
 			<h:form>
 
@@ -49,16 +39,6 @@
 			<p:tabView>
 				<p:tab title="pprAjaxValidations.xhtml">
 					<pre name="code" class="xml">
-&lt;p:ajaxStatus style="width:16px;height:16px;"&gt;
-	&lt;f:facet name="start"&gt;
-		&lt;h:graphicImage value="../design/ajaxloading.gif" /&gt;
-	&lt;/f:facet&gt;
-	
-	&lt;f:facet name="complete"&gt;
-		&lt;h:outputText value="" /&gt;
-	&lt;/f:facet&gt;
-&lt;/p:ajaxStatus&gt;
-			
 &lt;h:form&gt;
 
 	&lt;p:panel id="panel" header="New Person"&gt;

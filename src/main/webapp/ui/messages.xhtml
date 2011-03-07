@@ -21,16 +21,6 @@
 				<p:commandButton value="Fatal" actionListener="#{messagesController.addFatal}" update="msgs"/>
 			</h:form>
 			
-			<p:ajaxStatus style="height:16px">
-				<f:facet name="start">
-					<h:graphicImage value="../design/ajaxloading.gif" />
-				</f:facet>
-				
-				<f:facet name="complete">
-					<h:outputText value="" />
-				</f:facet>
-			</p:ajaxStatus>
-			
 			<h3>Message</h3>
 			<h:form prependId="false">
 				<h:panelGrid id="grid" columns="3">

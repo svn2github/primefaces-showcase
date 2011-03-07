@@ -1,58 +1,48 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	xmlns:c="http://java.sun.com/jstl/core"
-	template="../templates/ui.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                xmlns:c="http://java.sun.com/jstl/core"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
+    <ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">Calendar - Multiple Selection</h1>
-		<div class="entry">
-			<p>Multiple date selection is enabled by setting selection attribute to "multiple". In this case selected dates are bound as a java.util.Date array.</p>
+        <h1 class="title ui-widget-header ui-corner-all">Calendar - Multiple Selection</h1>
+        <div class="entry">
+            <p>Multiple date selection is enabled by setting selection attribute to "multiple". In this case selected dates are bound as a java.util.Date array.</p>
 
-			<h:form>
+            <h:form>
 
-			<h:panelGrid columns="1">
+                <h:panelGrid columns="1">
 
-				<p:calendar value="#{calendarBean.dates}" mode="inline" selection="multiple" close="false"/>
-				
-				<br />
+                    <p:calendar value="#{calendarBean.dates}" mode="inline" selection="multiple" close="false"/>
 
-				<p:commandButton value="Submit" update="datesDisplay"/>
-				
-				<p:ajaxStatus style="width:16px;height:16px;">
-					<f:facet name="start">
-						<h:graphicImage value="../design/ajaxloading.gif" />
-					</f:facet>
-					
-					<f:facet name="complete">
-						<h:outputText value="" />
-					</f:facet>
-				</p:ajaxStatus>
+                    <br />
 
-				<p:outputPanel id="datesDisplay">
-					<h:outputText value="Selected Dates:" />
+                    <p:commandButton value="Submit" update="datesDisplay"/>
 
-					<c:forEach var="date" items="#{calendarBean.selectedDates}">
-						<br />
-						<h:outputText value="#{date}">
-							<f:convertDateTime pattern="MM/dd/yyyy" />
-						</h:outputText>
-					</c:forEach>
+                    <p:outputPanel id="datesDisplay">
+                        <h:outputText value="Selected Dates:" />
 
-				</p:outputPanel>
+                        <ui:repeat var="date" value="#{calendarBean.selectedDates}">
+                            <br />
+                            <h:outputText value="#{date}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </ui:repeat>
 
-			</h:panelGrid>
+                    </p:outputPanel>
 
-			<h3>Source</h3>
-			<pre name="code" class="xml">
+                </h:panelGrid>
+
+                <h3>Source</h3>
+                <pre name="code" class="xml">
 						&lt;p:calendar value="\#{calendarBean.dates}" mode="inline" selection="multiple" close="false"/&gt;
-					</pre>
+                </pre>
 
-			</h:form>
-		</div>
+            </h:form>
+        </div>
 
-	</ui:define>
+    </ui:define>
 </ui:composition>
