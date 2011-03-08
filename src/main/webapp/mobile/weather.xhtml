@@ -1,0 +1,44 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:pm="http://primefaces.prime.com.tr/mobile"
+	contentType="text/html">
+
+    <pm:page title="PrimeFaces Mobile Weather">
+
+        <pm:view>
+            <pm:header title="Weather">
+                <f:facet name="right"><pm:button value="Settings" icon="gear"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                <h:form>
+
+                    <fieldset data-role="fieldcontain">
+                        <span>Select City:</span>
+                        <h:selectOneMenu value="#{weatherController.city}">
+                            <f:selectItem itemLabel="Istanbul" itemValue="TUXX0014" />
+                            <f:selectItem itemLabel="Barcelona" itemValue="SPXX0015" />
+                            <f:selectItem itemLabel="London" itemValue="UKXX0085" />
+                            <f:selectItem itemLabel="New York" itemValue="USNY0996" />
+                            <f:selectItem itemLabel="Paris" itemValue="FRXX2071" />
+                            <f:selectItem itemLabel="Rome" itemValue="ITXX0067" />
+                        </h:selectOneMenu>
+                    </fieldset>
+
+                    <p:separator />
+
+                    <pm:commandButton value="Get Forecast" update="display" actionListener="#{weatherController.retrieveConditions}"/>
+
+                    <p:outputPanel layout="block" style="text-align:center">
+                        <h:outputText id="display" value="#{weatherController.conditions}" escape="false" />
+                    </p:outputPanel>
+                </h:form>
+            </pm:content>
+
+        </pm:view>
+
+    </pm:page>
+
+</f:view>

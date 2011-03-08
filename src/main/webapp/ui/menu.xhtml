@@ -71,7 +71,7 @@
 
                 <h3>Dynamic Position</h3>
 				<p:commandButton id="dynaButton" value="Show" type="button"/>
-                <p:menu position="dynamic" trigger="dynaButton" my="left top" at="left bottom">
+                <p:menu position="dynamic" trigger="dynaButton" my="left top" at="left bottom" triggerEvent="mouseenter">
 					<p:submenu label="Ajax Menuitems">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk"/>
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w"/>
