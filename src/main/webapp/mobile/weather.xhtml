@@ -7,26 +7,19 @@
 
     <pm:page title="PrimeFaces Mobile Weather">
 
-        <pm:view>
+        <!-- Main View -->
+        <pm:view id="main">
             <pm:header title="Weather">
-                <f:facet name="right"><pm:button value="Settings" icon="gear"/></f:facet>
+                <f:facet name="right"><pm:button value="Settings" icon="gear" href="settings"/></f:facet>
             </pm:header>
 
             <pm:content>
-                <h:form>
-
-                    <fieldset data-role="fieldcontain">
-                        <span>Select City:</span>
-                        <h:selectOneMenu value="#{weatherController.city}">
-                            <f:selectItem itemLabel="Istanbul" itemValue="TUXX0014" />
-                            <f:selectItem itemLabel="Barcelona" itemValue="SPXX0015" />
-                            <f:selectItem itemLabel="London" itemValue="UKXX0085" />
-                            <f:selectItem itemLabel="New York" itemValue="USNY0996" />
-                            <f:selectItem itemLabel="Paris" itemValue="FRXX2071" />
-                            <f:selectItem itemLabel="Rome" itemValue="ITXX0067" />
-                        </h:selectOneMenu>
-                    </fieldset>
-
+                <h:form id="mainForm">
+                    <h:outputText value="Select City:" />
+                    <h:selectOneMenu value="#{weatherController.city}">
+                        <f:selectItems value="#{weatherController.cities}" />
+                    </h:selectOneMenu>
+                   
                     <p:separator />
 
                     <pm:commandButton value="Get Forecast" update="display" actionListener="#{weatherController.retrieveConditions}"/>
@@ -36,7 +29,30 @@
                     </p:outputPanel>
                 </h:form>
             </pm:content>
+        </pm:view>
 
+        <!-- Settings View -->
+        <pm:view id="settings">
+            <pm:header title="Weather">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                <h:form id="settingsForm">
+
+                    <h:outputText value="Select Unit:" />
+                    <h:selectOneMenu value="#{weatherController.unit}">
+                        <f:selectItem itemLabel="Celcius" itemValue="c" />
+                        <f:selectItem itemLabel="Fahrenheit" itemValue="f" />
+                    </h:selectOneMenu>
+
+                    <p:separator />
+
+                    <pm:commandButton value="Save" actionListener="#{weatherController.saveSettings}" update=":mainForm:display"
+                                      oncomplete="PrimeFaces.changePage('#main', 'slide', true)"/>
+                    
+                </h:form>
+            </pm:content>
         </pm:view>
 
     </pm:page>

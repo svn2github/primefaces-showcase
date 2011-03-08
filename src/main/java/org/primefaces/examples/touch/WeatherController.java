@@ -16,6 +16,9 @@
 package org.primefaces.examples.touch;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import javax.annotation.PostConstruct;
 
 import javax.faces.event.ActionEvent;
 
@@ -25,12 +28,22 @@ import org.primefaces.examples.service.YAHOOWeatherService;
 public class WeatherController implements Serializable {
 
 	private String conditions;
-	
 	private String city;
-	
 	private String unit = "c";		//default
+    private Map<String,String> cities;
 
 	private WeatherService weatherService = new YAHOOWeatherService();
+
+    @PostConstruct
+    public void init() {
+        cities = new LinkedHashMap<String, String>();
+        cities.put("Istanbul", "TUXX0014");
+        cities.put("Barcelona", "SPXX0015");
+        cities.put("London", "UKXX0085");
+        cities.put("New York", "USNY0996");
+        cities.put("Paris", "FRXX2071");
+        cities.put("Rome", "ITXX0067");
+    }
 
 	public String getCity() {
 		return city;
@@ -45,15 +58,23 @@ public class WeatherController implements Serializable {
 	public void setConditions(String conditions) {
 		this.conditions = conditions;
 	}
-	
-	public void retrieveConditions(ActionEvent actionEvent) {
-		conditions = weatherService.getConditions(city, unit);
-	}
-	
+		
 	public String getUnit() {
 		return unit;
 	}
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
+
+    public Map<String, String> getCities() {
+        return cities;
+    }
+
+    public void retrieveConditions() {
+		conditions = weatherService.getConditions(city, unit);
+	}
+
+    public void saveSettings() {
+        conditions = null;
+    }
 }
