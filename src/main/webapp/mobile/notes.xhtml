@@ -31,7 +31,7 @@
 
             <pm:content>
                 <h:form id="listNotesForm">
-                    <pm:listView id="notesList" value="#{notesView.notes}" var="note">
+                    <pm:listView id="notesList" value="#{notesView.notes}" var="note" swatch="e" inset="true">
                         <p:column>
                             <p:commandLink value="#{note.shortText}" oncomplete="afterSelectNote()" update="newNoteForm:noteText">
                                 <f:setPropertyActionListener value="#{note}" target="#{notesView.note}" />
