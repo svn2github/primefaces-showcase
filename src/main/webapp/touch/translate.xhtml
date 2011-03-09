@@ -35,13 +35,7 @@
 				<i:rowGroup title="From">
 					<i:rowItem>
 						<h:selectOneMenu id="fromLang">
-   							<f:selectItem itemLabel="English" itemValue="en" />
-   							<f:selectItem itemLabel="Turkish" itemValue="tr" />
-   							<f:selectItem itemLabel="Italian" itemValue="it" />
-   							<f:selectItem itemLabel="Spanish" itemValue="es" />
-   							<f:selectItem itemLabel="German" itemValue="de" />
-   							<f:selectItem itemLabel="French" itemValue="fr" />
-   							<f:selectItem itemLabel="Portuguese" itemValue="pt" />
+   							<f:selectItems value="#{translatorView.languages}" />
       					</h:selectOneMenu>
 					</i:rowItem>
 					<i:rowItem>
@@ -54,13 +48,7 @@
 				<i:rowGroup title="To">
 					<i:rowItem>
 						<h:selectOneMenu id="toLang">
-   							<f:selectItem itemLabel="English" itemValue="en" />
-   							<f:selectItem itemLabel="Turkish" itemValue="tr" />
-   							<f:selectItem itemLabel="Italian" itemValue="it" />
-   							<f:selectItem itemLabel="Spanish" itemValue="es" />
-   							<f:selectItem itemLabel="German" itemValue="de" />
-   							<f:selectItem itemLabel="French" itemValue="fr" />
-   							<f:selectItem itemLabel="Portuguese" itemValue="pt" />
+   							<f:selectItems value="#{translatorView.languages}" />
       					</h:selectOneMenu>
 					</i:rowItem>
 					<i:rowItem>

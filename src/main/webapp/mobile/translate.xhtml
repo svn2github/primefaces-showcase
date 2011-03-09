@@ -1,0 +1,87 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:pm="http://primefaces.prime.com.tr/mobile"
+	contentType="text/html">
+
+    <pm:page title="Translator">
+
+        <f:facet name="postinit">
+			<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+			<script type="text/javascript">
+			  google.load("language", "1");
+
+			  function translate() {
+				  var fromText = $('#fromText').val(),
+				  fromLang = $('#fromLang').val(),
+				  toLang = $('#toLang').val();
+
+				  google.language.translate(fromText, fromLang, toLang, function(result) {
+					  if (!result.error) {
+
+					   	$('#toText').text(result.translation);
+					  }
+					});
+
+			  }
+			</script>
+		</f:facet>
+
+        <!-- Main View -->
+        <pm:view id="main" swatch="d">
+            <pm:header title="Translator">
+                <f:facet name="right"><pm:button value="About" icon="info" href="about" transition="slideup"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                <h:outputText value="From: " />
+                <h:selectOneMenu id="fromLang">
+                    <f:selectItem itemLabel="English" itemValue="en" />
+                    <f:selectItem itemLabel="Turkish" itemValue="tr" />
+                    <f:selectItem itemLabel="Italian" itemValue="it" />
+                    <f:selectItem itemLabel="Spanish" itemValue="es" />
+                    <f:selectItem itemLabel="German" itemValue="de" />
+                    <f:selectItem itemLabel="French" itemValue="fr" />
+                    <f:selectItem itemLabel="Portuguese" itemValue="pt" />
+                </h:selectOneMenu>
+
+                <h:inputText id="fromText" />
+
+                <p:separator />
+
+                <pm:commandButton value="Translate" type="button" onclick="translate()" />
+
+                <p:separator />
+
+                <h:outputText value="To: " />
+                <h:selectOneMenu id="toLang">
+                    <f:selectItem itemLabel="English" itemValue="en" />
+                    <f:selectItem itemLabel="Turkish" itemValue="tr" />
+                    <f:selectItem itemLabel="Italian" itemValue="it" />
+                    <f:selectItem itemLabel="Spanish" itemValue="es" />
+                    <f:selectItem itemLabel="German" itemValue="de" />
+                    <f:selectItem itemLabel="French" itemValue="fr" />
+                    <f:selectItem itemLabel="Portuguese" itemValue="pt" />
+                </h:selectOneMenu>
+
+                <h:outputText id="toText" />
+            </pm:content>
+
+        </pm:view>
+
+        <!-- About -->
+        <pm:view id="about" swatch="d">
+            <pm:header title="About">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                <h:outputText value="Brought to you by PrimeFaces Mobile and Google Translate" />
+            </pm:content>
+        </pm:view>
+
+    </pm:page>
+
+</f:view>
