@@ -1,6 +1,8 @@
 package org.primefaces.examples.domain;
 
-public class NewsEntry {
+import java.io.Serializable;
+
+public class NewsEntry implements Serializable {
 	
 	private String title;
 	

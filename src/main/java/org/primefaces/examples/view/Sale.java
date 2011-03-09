@@ -15,7 +15,9 @@
  */
 package org.primefaces.examples.view;
 
-public class Sale {
+import java.io.Serializable;
+
+public class Sale implements Serializable {
 
 	private String brand;
 	

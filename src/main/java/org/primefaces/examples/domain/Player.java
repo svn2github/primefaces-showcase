@@ -15,9 +15,10 @@
  */
 package org.primefaces.examples.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Player {
+public class Player implements Serializable {
 
 	private String name;
 	

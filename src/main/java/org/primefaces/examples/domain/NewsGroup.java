@@ -1,8 +1,9 @@
 package org.primefaces.examples.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class NewsGroup {
+public class NewsGroup implements Serializable {
 
 	private String title;
 	

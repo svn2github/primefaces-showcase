@@ -15,7 +15,9 @@
  */
 package org.primefaces.examples.domain;
 
-public class Birth {
+import java.io.Serializable;
+
+public class Birth implements Serializable {
 
 	private int year;
 	

@@ -15,7 +15,9 @@
  */
 package org.primefaces.examples.domain;
 
-public class ServerLoad {
+import java.io.Serializable;
+
+public class ServerLoad implements Serializable {
 
     private String name;
 

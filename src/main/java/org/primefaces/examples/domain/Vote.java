@@ -1,6 +1,8 @@
 package org.primefaces.examples.domain;
 
-public class Vote {
+import java.io.Serializable;
+
+public class Vote implements Serializable {
 
 	private String candidate;
 	

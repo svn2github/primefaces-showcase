@@ -15,7 +15,9 @@
  */
 package org.primefaces.examples.domain;
 
-public class ManufacturerSale {
+import java.io.Serializable;
+
+public class ManufacturerSale implements Serializable {
 
     private String manufacturer;
 
