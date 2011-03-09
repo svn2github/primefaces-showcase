@@ -1,0 +1,67 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:pm="http://primefaces.prime.com.tr/mobile"
+	contentType="text/html">
+
+    <pm:page title="PrimeFaces News">
+
+        <!-- Groups -->
+        <pm:view id="groups" swatch="c">
+            <pm:header title="News">
+                <f:facet name="right"><pm:button value="About" icon="info" href="about"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                <h:form id="groupsForm">
+
+                    <pm:listView  value="#{newsController.groups}" var="group">
+                        <p:column>
+                            <p:commandLink value="#{group.title}" update="entriesForm:entries" oncomplete="PrimeFaces.changePage('#summaries', 'slide');PrimeFaces.refreshList('entriesForm:entries');">
+                                <f:setPropertyActionListener value="#{group}" target="#{newsController.selectedGroup}" />
+                            </p:commandLink>
+                        </p:column>
+                    </pm:listView>
+
+                </h:form>
+
+            </pm:content>
+        </pm:view>
+
+        <!-- Summaries -->
+        <pm:view id="summaries" swatch="c">
+            <pm:header title="News">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="right"><pm:button value="About" icon="info" href="about"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                <h:form id="entriesForm">
+
+                    <pm:listView id="entries" value="#{newsController.selectedGroup.entries}" var="entry">
+                        <p:column>
+                            <p:commandLink value="#{entry.title}" update="content" oncomplete="PrimeFaces.changePage('#details', 'slide');">
+                                <f:setPropertyActionListener value="#{entry}" target="#{newsController.selectedEntry}" />
+                            </p:commandLink>
+                        </p:column>
+
+                    </pm:listView>
+                </h:form>
+            </pm:content>
+        </pm:view>
+
+        <!-- Details -->
+        <pm:view id="details" swatch="c">
+            <pm:header title="News">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="right"><pm:button value="About" icon="info" href="about"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                <h:outputText id="content" value="#{newsController.selectedEntry.content}" escape="false" />
+            </pm:content>
+        </pm:view>
+
+    </pm:page>
+</f:view>

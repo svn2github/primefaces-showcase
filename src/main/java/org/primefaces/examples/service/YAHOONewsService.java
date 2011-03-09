@@ -45,7 +45,9 @@ public class YAHOONewsService implements NewsService {
 				int i = 0;
 				for(Object f : feed.getEntries()) {
 					SyndEntry entry = (SyndEntry) f;
-					entries.add(new NewsEntry(i, entry.getTitle(), entry.getDescription().getValue()));
+                    String title = entry.getTitle();
+                    title = title.length() <= 25 ? title : title.substring(0, 25);
+					entries.add(new NewsEntry(i, title + "...", entry.getDescription().getValue()));
 					i++;
 				}
 				
