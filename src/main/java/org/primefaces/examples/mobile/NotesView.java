@@ -18,7 +18,6 @@ package org.primefaces.examples.mobile;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.context.FacesContext;
 import org.primefaces.examples.domain.Note;
 
 public class NotesView implements Serializable {
@@ -44,9 +43,5 @@ public class NotesView implements Serializable {
         }
 
 		note = new Note();
-	}
-
-	public void removeNote() {
-		
 	}
 }
