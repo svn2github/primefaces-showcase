@@ -1,0 +1,67 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:pm="http://primefaces.prime.com.tr/mobile"
+	contentType="text/html">
+
+    <pm:page title="Notes">
+
+        <f:facet name="postinit">
+            <script type="text/javascript">
+                function afterNewNote() {
+                    PrimeFaces.refreshList('listNotesForm:notesList');              //reapply styles to list
+                    $('.ui-dialog').dialog('close');                                //close the dialog
+                    $(PrimeFaces.escapeClientId('newNoteForm:noteText')).val('');    //clean text
+                }
+
+                function afterSelectNote() {
+                    PrimeFaces.changePage('#new', 'pop');
+                    $(PrimeFaces.escapeClientId('newNoteForm:noteText')).textinput();
+                }
+             </script>
+        </f:facet>
+
+        <!-- Main View -->
+        <pm:view id="main" swatch="e">
+            <pm:header title="Notes">
+                <f:facet name="right"><pm:button value="New" icon="plus" href="new" role="dialog" transition="pop"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                <h:form id="listNotesForm">
+                    <pm:listView id="notesList" value="#{notesView.notes}" var="note">
+                        <p:column>
+                            <p:commandLink value="#{note.shortText}" oncomplete="afterSelectNote()" update="newNoteForm:noteText">
+                                <f:setPropertyActionListener value="#{note}" target="#{notesView.note}" />
+                            </p:commandLink>
+                        </p:column>
+                    </pm:listView>
+                </h:form>
+            </pm:content>
+
+        </pm:view>
+
+        <!-- New Notes -->
+        <pm:view id="new" swatch="e">
+            <pm:header title="New Note">
+            </pm:header>
+
+            <pm:content>
+                <h:form id="newNoteForm">
+                    <h:inputTextarea id="noteText" value="#{notesView.note.text}" />
+
+                    <p:separator />
+
+                    <pm:commandButton value="Save" actionListener="#{notesView.save}" update="listNotesForm:notesList"
+                                      oncomplete="afterNewNote()" icon="check" />
+
+                </h:form>
+            </pm:content>
+
+        </pm:view>
+
+    </pm:page>
+
+</f:view>

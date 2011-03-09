@@ -16,17 +16,8 @@
 package org.primefaces.examples.domain;
 
 public class Note {
-
-	private String id;
 	
 	private String text;
-
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getText() {
 		return text;
@@ -34,4 +25,37 @@ public class Note {
 	public void setText(String text) {
 		this.text = text;
 	}
+
+    public String getShortText() {
+        if(text == null) {
+            return "";
+        }
+        else if(text.length() >= 25) {
+            return this.text.substring(0, 25) + "...";
+        } else {
+            return this.text;
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Note other = (Note) obj;
+        if ((this.text == null) ? (other.text != null) : !this.text.equals(other.text)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + (this.text != null ? this.text.hashCode() : 0);
+        return hash;
+    }
 }
