@@ -15,7 +15,9 @@
  */
 package org.primefaces.examples.view;
 
-public class InplaceBean {
+import java.io.Serializable;
+
+public class InplaceBean implements Serializable {
 
     private String text = "PrimeFaces";
 
