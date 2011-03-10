@@ -15,6 +15,7 @@
  */
 package org.primefaces.examples.view;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -32,7 +33,7 @@ import org.primefaces.model.LazyScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
-public class ScheduleController {
+public class ScheduleController implements Serializable {
 
 	private ScheduleModel eventModel;
 	
