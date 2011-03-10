@@ -1,0 +1,70 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:pm="http://primefaces.prime.com.tr/mobile"
+	contentType="text/html">
+
+    <pm:page title="Components">
+
+        <!-- Main View -->
+        <pm:view id="main">
+            <pm:header title="Mobile">
+            </pm:header>
+
+            <pm:content>
+
+                <pm:listView inset="true">
+                    <h:outputLink value="#buttons">Buttons</h:outputLink>
+                </pm:listView>
+
+            </pm:content>
+
+        </pm:view>
+
+        <!-- Buttons -->
+        <pm:view id="buttons">
+            <pm:header title="Buttons">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+
+                <h3>Basic</h3>
+
+                <pm:commandButton value="Default" type="button"/>
+
+                <pm:commandButton value="With Icon" type="button" icon="check"/>
+
+                <pm:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right"/>
+
+                <pm:commandButton value="Inline" type="button" icon="delete" inline="true" />
+
+                <h3>Themes</h3>
+
+                <pm:commandButton value="Default" type="button" swatch="a"/>
+
+                <pm:commandButton value="With Icon" type="button" icon="check" swatch="b"/>
+
+                <pm:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right" swatch="e"/>
+
+                <h3>Grouping</h3>
+
+                <pm:buttonGroup>
+                    <pm:commandButton value="Yes" type="button" icon="check"/>
+                    <pm:commandButton value="No" type="button" icon="delete"/>
+                </pm:buttonGroup>
+
+                <pm:buttonGroup orientation="horizontal">
+                    <pm:commandButton value="Yes" type="button" icon="check" />
+                    <pm:commandButton value="No" type="button" icon="delete" />
+                </pm:buttonGroup>
+
+            </pm:content>
+
+        </pm:view>
+
+    </pm:page>
+
+</f:view>
