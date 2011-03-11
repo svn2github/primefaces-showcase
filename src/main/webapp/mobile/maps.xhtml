@@ -25,6 +25,12 @@
                             });
 
                             marker.setMap(map);
+                        },
+                        function(error) {
+                            alert(error.message);
+                        },
+                        {
+                           enableHighAccuracy: true
                         });
                 }
 
