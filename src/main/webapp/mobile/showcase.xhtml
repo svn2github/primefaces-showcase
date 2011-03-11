@@ -183,18 +183,36 @@
             </pm:header>
 
             <pm:content>
+                <pm:button href="#dialogContent" value="Show Dialog" role="dialog" transition="pop"/>
+            </pm:content>
+        </pm:view>
 
+        <pm:view id="dialogContent">
+            <pm:header title="Header" />
+
+            <pm:content>
+                Content
             </pm:content>
         </pm:view>
 
         <!-- NavBar -->
         <pm:view id="navbar">
-            <pm:header title="TODO">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+            <pm:header title="NavBar">
+                <pm:navBar>
+                    <pm:button value="Home" icon="home" role="back" styleClass="ui-btn-active"/>
+                    <pm:button value="Info" icon="info" role="back" />
+                    <pm:button value="Search" icon="search" role="back" />
+                </pm:navBar>
             </pm:header>
 
             <pm:content>
-
+                <pm:navBar>
+                    <pm:button value="Home" icon="home" role="back" styleClass="ui-btn-active"/>
+                    <pm:button value="Info" icon="info" role="back" />
+                    <pm:button value="Search" icon="search" role="back" />
+                    <pm:button value="Favs" icon="star" role="back" />
+                    <pm:button value="Setup" icon="gear" role="back" />
+                </pm:navBar>
             </pm:content>
         </pm:view>
 
