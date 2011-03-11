@@ -17,7 +17,7 @@
                 }
 
                 function afterSelectNote() {
-                    PrimeFaces.changePage('#new', 'pop');
+                    PrimeFaces.navigate('#new', 'pop');
                     $(PrimeFaces.escapeClientId('newNoteForm:noteText')).textinput();
                     $(PrimeFaces.escapeClientId('newNoteForm:deleteButton')).show();
                 }

@@ -49,7 +49,7 @@
                     <p:separator />
 
                     <pm:commandButton value="Save" actionListener="#{weatherController.saveSettings}" update=":mainForm:display"
-                                      oncomplete="PrimeFaces.changePage('#main', 'slide', true)"/>
+                                      oncomplete="PrimeFaces.navigate('#main', 'slide', true)"/>
                     
                 </h:form>
             </pm:content>
