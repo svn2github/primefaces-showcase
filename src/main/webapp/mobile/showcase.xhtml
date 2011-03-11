@@ -16,12 +16,85 @@
             <pm:content>
 
                 <pm:listView inset="true" title="Components">
+                    <h:outputLink value="#forms">Forms</h:outputLink>
                     <h:outputLink value="#buttons">Buttons</h:outputLink>
+                    <h:outputLink value="#lists">Lists</h:outputLink>
+                    <h:outputLink value="#dialog">Dialog</h:outputLink>
+                    <h:outputLink value="#navbar">NavBar</h:outputLink>
+                    <h:outputLink value="#grid">Grid</h:outputLink>
+                </pm:listView>
+
+                <pm:listView inset="true" title="Framework">
+                    <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
+                    <h:outputLink value="#ajaxLoading">Ajax View Loading</h:outputLink>
+                    <h:outputLink value="#ajaxUpdate">Ajax Updates</h:outputLink>
+                    <h:outputLink value="#theming">Theming</h:outputLink>
                 </pm:listView>
 
             </pm:content>
 
         </pm:view>
+
+        <!-- Forms -->
+        <pm:view id="forms">
+            <pm:header title="Forms">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+
+                <pm:field>
+                    <h:outputLabel for="inputText" value="Input: "/>
+                    <h:inputText id="inputText" />
+                </pm:field>
+
+                <pm:field>
+                    <h:outputLabel for="inputTextarea" value="Textarea: "/>
+                    <h:inputTextarea id="inputTextarea" />
+                </pm:field>
+
+                <pm:field>
+                    <h:outputLabel for="selectOneMenu" value="Dropdown: "/>
+                    <h:selectOneMenu id="selectOneMenu">
+                        <f:selectItem itemLabel="Select One" itemValue="" />
+                        <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+                        <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+                        <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+                    </h:selectOneMenu>
+                </pm:field>
+
+                <pm:field>
+                    <h:outputLabel for="slider" value="Slider: "/>
+                    <pm:slider id="slider" min="0" max="100" value="0"/>
+                </pm:field>
+
+                <pm:field>
+                    <h:outputLabel for="switch" value="Switch: "/>
+                    <pm:switch id="switch" onLabel="yes" offLabel="no"/>
+                </pm:field>
+
+                <pm:field>
+                    <h:outputLabel for="checkbox" value="Checkbox: "/>
+                    <h:selectManyCheckbox id="checkbox">
+                        <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+                        <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+                        <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+                    </h:selectManyCheckbox>
+                </pm:field>
+
+                <pm:field>
+                    <h:outputLabel for="radio" value="Radio: "/>
+                    <h:selectOneRadio id="radio">
+                        <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+                        <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+                        <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+                    </h:selectOneRadio>
+                </pm:field>
+
+            </pm:content>
+
+        </pm:view>
+
 
         <!-- Buttons -->
         <pm:view id="buttons">
@@ -32,34 +105,73 @@
             <pm:content>
 
                 <h3>Basic</h3>
-
                 <pm:commandButton value="Default" type="button"/>
-
                 <pm:commandButton value="With Icon" type="button" icon="check"/>
-
                 <pm:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right"/>
-
                 <pm:commandButton value="Inline" type="button" icon="delete" inline="true" />
 
                 <h3>Themes</h3>
-
                 <pm:commandButton value="Default" type="button" swatch="a"/>
-
                 <pm:commandButton value="With Icon" type="button" icon="check" swatch="b"/>
-
                 <pm:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right" swatch="e"/>
 
                 <h3>Grouping</h3>
-
                 <pm:buttonGroup>
                     <pm:commandButton value="Yes" type="button" icon="check"/>
                     <pm:commandButton value="No" type="button" icon="delete"/>
                 </pm:buttonGroup>
-
+                
                 <pm:buttonGroup orientation="horizontal">
                     <pm:commandButton value="Yes" type="button" icon="check" />
                     <pm:commandButton value="No" type="button" icon="delete" />
                 </pm:buttonGroup>
+
+            </pm:content>
+
+        </pm:view>
+
+        <!-- Lists -->
+        <pm:view id="lists">
+            <pm:header title="Lists">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+
+                <h3>Read-Only</h3>
+                <pm:listView>
+                    <h:outputText value="Item 1" />
+                    <h:outputText value="Item 2" />
+                    <h:outputText value="Item 3" />
+                </pm:listView>
+
+                <p:spacer height="10em" />
+
+                <h3>Links</h3>
+                <pm:listView>
+                    <h:outputLink value="#main">Item 1</h:outputLink>
+                    <h:outputLink value="#main">Item 2</h:outputLink>
+                    <h:outputLink value="#main">Item 3</h:outputLink>
+                </pm:listView>
+
+                <p:spacer height="10em" />
+
+                <h3>Inset</h3>
+                <pm:listView inset="true">
+                    <h:outputLink value="#main">Item 1</h:outputLink>
+                    <h:outputLink value="#main">Item 2</h:outputLink>
+                    <h:outputLink value="#main">Item 3</h:outputLink>
+                </pm:listView>
+
+                <p:spacer height="10em" />
+
+                <h3>Theming</h3>
+                <pm:listView swatch="e">
+                    <h:outputLink value="#main">Item 1</h:outputLink>
+                    <h:outputLink value="#main">Item 2</h:outputLink>
+                    <h:outputLink value="#main">Item 3</h:outputLink>
+                </pm:listView>
+                
 
             </pm:content>
 
