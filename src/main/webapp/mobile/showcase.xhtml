@@ -21,7 +21,7 @@
                     <h:outputLink value="#lists">Lists</h:outputLink>
                     <h:outputLink value="#dialog">Dialog</h:outputLink>
                     <h:outputLink value="#navbar">NavBar</h:outputLink>
-                    <h:outputLink value="#grid">Grid</h:outputLink>
+                    <h:outputLink value="#panels">Panels</h:outputLink>
                 </pm:listView>
 
                 <pm:listView inset="true" title="Framework">
@@ -216,14 +216,21 @@
             </pm:content>
         </pm:view>
 
-        <!-- Grid -->
-        <pm:view id="grid">
-            <pm:header title="TODO">
+        <!-- Panels -->
+        <pm:view id="panels">
+            <pm:header title="Panels">
                 <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
             </pm:header>
 
             <pm:content>
+                <h3>TogglePanel</h3>
+                <pm:togglePanel title="Expanded">
+                    Toggle panel content
+                </pm:togglePanel>
 
+                <pm:togglePanel title="Collapsed" collapsed="true">
+                    Initially collapsed content
+                </pm:togglePanel>
             </pm:content>
         </pm:view>
 
