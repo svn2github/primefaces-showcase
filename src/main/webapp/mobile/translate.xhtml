@@ -38,13 +38,7 @@
             <pm:content>
                 <h:outputText value="From: " />
                 <h:selectOneMenu id="fromLang">
-                    <f:selectItem itemLabel="English" itemValue="en" />
-                    <f:selectItem itemLabel="Turkish" itemValue="tr" />
-                    <f:selectItem itemLabel="Italian" itemValue="it" />
-                    <f:selectItem itemLabel="Spanish" itemValue="es" />
-                    <f:selectItem itemLabel="German" itemValue="de" />
-                    <f:selectItem itemLabel="French" itemValue="fr" />
-                    <f:selectItem itemLabel="Portuguese" itemValue="pt" />
+                    <f:selectItems value="#{translatorView.languages}" />
                 </h:selectOneMenu>
 
                 <h:inputText id="fromText" />
@@ -57,13 +51,7 @@
 
                 <h:outputText value="To: " />
                 <h:selectOneMenu id="toLang">
-                    <f:selectItem itemLabel="English" itemValue="en" />
-                    <f:selectItem itemLabel="Turkish" itemValue="tr" />
-                    <f:selectItem itemLabel="Italian" itemValue="it" />
-                    <f:selectItem itemLabel="Spanish" itemValue="es" />
-                    <f:selectItem itemLabel="German" itemValue="de" />
-                    <f:selectItem itemLabel="French" itemValue="fr" />
-                    <f:selectItem itemLabel="Portuguese" itemValue="pt" />
+                    <f:selectItems value="#{translatorView.languages}" />
                 </h:selectOneMenu>
 
                 <h:outputText id="toText" />

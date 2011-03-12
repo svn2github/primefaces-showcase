@@ -15,7 +15,7 @@
 
             <pm:content>
 
-                <pm:listView inset="true" title="Components">
+                <pm:listView inset="true" title="Components" titleSwatch="a">
                     <h:outputLink value="#forms">Forms</h:outputLink>
                     <h:outputLink value="#buttons">Buttons</h:outputLink>
                     <h:outputLink value="#lists">Lists</h:outputLink>
@@ -24,7 +24,8 @@
                     <h:outputLink value="#panels">Panels</h:outputLink>
                 </pm:listView>
 
-                <pm:listView inset="true" title="Framework">
+                <pm:listView inset="true" title="Framework" titleSwatch="a">
+                    <h:outputLink value="#transitions">Transitions</h:outputLink>
                     <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
                     <h:outputLink value="#ajaxView">Ajax View Loading</h:outputLink>
                     <h:outputLink value="#ajaxUpdate">Ajax Updates</h:outputLink>
@@ -38,7 +39,7 @@
         <!-- Forms -->
         <pm:view id="forms">
             <pm:header title="Forms">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back" swatch="b"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -264,12 +265,52 @@
         </pm:view>
 
         <!-- Ajax Status -->
-        <pm:view id="ajaxStatus">
-            <pm:header title="TODO">
+        <pm:view id="transitions">
+            <pm:header title="Transitions">
                 <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
             </pm:header>
 
             <pm:content>
+                There are 6 types of view transition effects.
+
+                <pm:button href="#transition" value="Slide" transition="slide" />
+                <pm:button href="#transition" value="Slide Up" transition="slideup" />
+                <pm:button href="#transition" value="Slide Down" transition="slidedown" />
+                <pm:button href="#transition" value="Pop" transition="pop" />
+                <pm:button href="#transition" value="Fade" transition="fade" />
+                <pm:button href="#transition" value="Flip" transition="flip" />
+
+
+            </pm:content>
+        </pm:view>
+
+        <pm:view id="transition">
+            <pm:header title="Transition">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+
+                <h1>Displayed with a Transition</h1>
+
+            </pm:content>
+        </pm:view>
+
+        <!-- Ajax Status -->
+        <pm:view id="ajaxStatus">
+            <pm:header title="Ajax Status">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                Core PrimeFaces Ajax implementation is integrated with jQuery Mobile's built-in ajax loading dialog indicator.
+
+                <h:form>
+                    
+                    <pm:commandButton value="Count" actionListener="#{counterBean.increment}" update="txt_count" process="@this"/>
+                    <h3><h:outputText id="txt_count" value="Counter: #{counterBean.count}" /></h3>
+                    
+                </h:form>
 
             </pm:content>
         </pm:view>
