@@ -350,4 +350,9 @@
         <managed-bean-class>org.primefaces.examples.view.RingBean</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>showcaseView</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.mobile.ShowcaseView</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>
