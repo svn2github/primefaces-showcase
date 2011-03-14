@@ -27,7 +27,7 @@
                 <pm:listView inset="true" title="Framework" titleSwatch="a">
                     <h:outputLink value="#transitions">Transitions</h:outputLink>
                     <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
-                    <h:outputLink value="#ajaxView">Ajax View Loading</h:outputLink>
+                    <h:link outcome="ajaxLoaded">Ajax View Loading</h:link>
                     <h:outputLink value="#ajaxUpdate">Ajax Updates</h:outputLink>
                     <h:outputLink value="#theming">Theming</h:outputLink>
                 </pm:listView>
@@ -199,6 +199,7 @@
         <!-- NavBar -->
         <pm:view id="navbar">
             <pm:header title="NavBar">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
                 <pm:navBar>
                     <pm:button value="Home" icon="home" role="back" styleClass="ui-btn-active"/>
                     <pm:button value="Info" icon="info" role="back" />
@@ -311,17 +312,6 @@
                     <h3><h:outputText id="txt_count" value="Counter: #{counterBean.count}" /></h3>
                     
                 </h:form>
-
-            </pm:content>
-        </pm:view>
-
-        <!-- Ajax View Loading -->
-        <pm:view id="ajaxView">
-            <pm:header title="TODO">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
-            </pm:header>
-
-            <pm:content>
 
             </pm:content>
         </pm:view>
