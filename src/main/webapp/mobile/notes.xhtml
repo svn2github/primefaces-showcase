@@ -8,24 +8,6 @@
 
     <pm:page title="Notes">
 
-        <f:facet name="postinit">
-            <script type="text/javascript">
-                function afterNewNote() {
-                    PrimeFaces.refreshList('listNotesForm:notesList');              //reapply styles to list
-                    $('.ui-dialog').dialog('close');                                //close the dialog
-                    $(PrimeFaces.escapeClientId('newNoteForm:noteText')).val('');    //clean text
-                }
-
-                function afterSelectNote() {
-                    PrimeFaces.navigate('#new', 'pop');
-                    $(PrimeFaces.escapeClientId('newNoteForm:noteText')).textinput();
-                    $(PrimeFaces.escapeClientId('newNoteForm:deleteButton')).show();
-                }
-             </script>
-
-
-        </f:facet>
-
         <!-- Main View -->
         <pm:view id="main" swatch="e">
             <pm:header title="Notes">
@@ -36,7 +18,7 @@
                 <h:form id="listNotesForm">
                     <pm:listView id="notesList" value="#{notesView.notes}" var="note" swatch="e" inset="true">
                         <p:column>
-                            <p:commandLink value="#{note.shortText}" oncomplete="afterSelectNote()" update="newNoteForm:noteText">
+                            <p:commandLink value="#{note.shortText}" oncomplete="PrimeFaces.navigate('#new', 'pop')" update="newNoteForm:noteText">
                                 <f:setPropertyActionListener value="#{note}" target="#{notesView.note}" />
                             </p:commandLink>
                         </p:column>
@@ -57,8 +39,8 @@
 
                     <p:separator />
 
-                    <pm:commandButton value="Save" actionListener="#{notesView.save}" update="listNotesForm:notesList"
-                                      oncomplete="afterNewNote()" icon="check" />
+                    <pm:commandButton value="Save" actionListener="#{notesView.save}" update="noteText listNotesForm:notesList"
+                                      oncomplete="$('.ui-dialog').dialog('close')" icon="check" />
 
                 </h:form>
             </pm:content>

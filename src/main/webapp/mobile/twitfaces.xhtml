@@ -20,8 +20,8 @@
 
                     <p:separator />
 
-                    <pm:commandButton value="Get Tweets" actionListener="#{twitterController.loadTweets}" update="tweetList"
-                                      oncomplete="PrimeFaces.refreshList('twitForm:tweetList')" icon="refresh"/>
+                    <pm:commandButton value="Get Tweets" icon="refresh" update="tweetList"
+                                      actionListener="#{twitterController.loadTweets}" />
 
                     <pm:listView id="tweetList" value="#{twitterController.tweets}" var="tweet" style="margin-top:1em">
                         #{tweet}

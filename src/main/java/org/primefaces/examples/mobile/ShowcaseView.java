@@ -38,5 +38,6 @@ public class ShowcaseView implements Serializable {
 
     public void add() {
         texts.add(text);
+        text = null;
     }
 }

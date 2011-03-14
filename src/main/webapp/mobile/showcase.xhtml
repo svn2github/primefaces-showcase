@@ -325,7 +325,7 @@
             <pm:content>
                 jQuery Mobile uses progressive enhancement on page elements to optimize them for mobile environment. This happens
                 on page load and elements lose styles/behaviors attached after an ajax update. PrimeFaces fixes this mismatch
-                by providing extensions.
+                by providing extensions whereas client side ajax of a JSF implementation causes various problems.
 
                 <h:form prependId="false">
 
@@ -335,13 +335,13 @@
                     </pm:field>
 
                     <pm:panelGrid columns="2">
-                        <pm:commandButton value="PF Ajax" actionListener="#{showcaseView.add}" update="txt txts" process="@form"/>
-                        <h:commandButton value="JSF2 Ajax" actionListener="#{showcaseView.add}">
+                        <pm:commandButton value="PrimeFaces" actionListener="#{showcaseView.add}" update="txt txts" process="@form"/>
+                        <h:commandButton value="JSF Impl" actionListener="#{showcaseView.add}">
                             <f:ajax render="txt txts" execute="@form"/>
                         </h:commandButton>
                     </pm:panelGrid>
 
-                    <pm:listView id="txts" var="text" value="#{showcaseView.texts}">
+                    <pm:listView id="txts" var="text" value="#{showcaseView.texts}" inset="true" title="Values" titleSwatch="a">
                         #{text}
                     </pm:listView>
 
@@ -364,7 +364,6 @@
                 <pm:commandButton value="C Swatch" type="button" icon="check" swatch="c"/>
                 <pm:commandButton value="D Swatch" type="button" icon="check" swatch="d"/>
                 <pm:commandButton value="E Swatch" type="button" icon="check" swatch="e"/>
-
 
             </pm:content>
         </pm:view>
