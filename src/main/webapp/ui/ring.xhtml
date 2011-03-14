@@ -5,14 +5,27 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
 
+    <ui:define name="head">
+        <style type="text/css">
+            .image-ring .ui-ring-item {
+                border:0 none;
+            }
+
+            .image-ring .ui-ring-item img {
+				width: 100%;
+			}
+        </style>
+    </ui:define>
+
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Ring</h1>
 
 		<div class="entry">
-			<p>Ring is used for data iteration or tabbed display.</p>
+			<p>Ring is a data display component with a circular animation.</p>
 
 			<h:form id="form">
 
+                <h3>Basic Ring</h3>
                 <p:ring value="#{ringBean.players}" var="player">
                     <p:column>
                         <p:outputPanel style="text-align:center;" layout="block">
@@ -24,6 +37,13 @@
                         </p:outputPanel>
                     </p:column>
                 </p:ring>
+
+                <h3>Images with Custom Easing</h3>
+                <p:ring value="#{ringBean.players}" var="player" styleClass="image-ring" easing="easeInOutBack">
+                    <p:graphicImage value="/images/barca/#{player.photo}"/>
+                </p:ring>
+
+                <br />
 
                 <p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true" width="125">
 
@@ -55,6 +75,7 @@
 					<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
+    &lt;h3&gt;Basic Ring&lt;/h3&gt;
     &lt;p:ring value="\#{ringBean.players}" var="player"&gt;
         &lt;p:column&gt;
             &lt;p:outputPanel style="text-align:center;" layout="block"&gt;
@@ -67,6 +88,12 @@
                 &lt;/p:commandButton&gt;
             &lt;/p:outputPanel&gt;
         &lt;/p:column&gt;
+    &lt;/p:ring&gt;
+
+    &lt;h3&gt;Images with Custom Easing&lt;/h3&gt;
+    &lt;p:ring value="\#{ringBean.players}" var="player"
+                styleClass="image-ring" easing="easeInOutBack"&gt;
+        &lt;p:graphicImage value="/images/barca/\#{player.photo}"/&gt;
     &lt;/p:ring&gt;
 
     &lt;p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true" width="125"&gt;
