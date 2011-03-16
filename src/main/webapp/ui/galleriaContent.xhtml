@@ -21,7 +21,7 @@
             <p>Galleria can also display custom content not just images.</p>
 
             <p:galleria value="#{galleriaBean.players}" var="player" frameWidth="64" frameHeight="87"
-                        panelWidth="300" panelHeight="200" styleClass="ui-widget-content">
+                        panelWidth="300" panelHeight="200" transitionInterval="0" styleClass="ui-widget-content ui-corner-all">
                 <p:graphicImage value="/images/barca/#{player.photo}"/>
                 <p:galleriaContent>
                     <h:panelGrid  columns="2" cellpadding="5">
@@ -47,7 +47,8 @@
                     <pre name="code" class="xml">
 &lt;p:galleria value="\#{galleriaBean.players}"
             var="player" frameWidth="64" frameHeight="87"
-            panelWidth="300" panelHeight="200" styleClass="ui-widget-content"&gt;
+            panelWidth="300" panelHeight="200" transitionInterval="0"
+            styleClass="ui-widget-content ui-corner-all"&gt;
 
     &lt;p:graphicImage value="/images/barca/\#{player.photo}"/&gt;
     &lt;p:galleriaContent&gt;
