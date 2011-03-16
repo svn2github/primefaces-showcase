@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Prime Technology.
+ * Copyright 2009-2011 Prime Technology.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,31 +18,47 @@ package org.primefaces.examples.view;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import org.primefaces.examples.domain.Player;
 
 public class GalleriaBean {
 
     private List<String> images;
 
-    private String effect = "fade";
+    private List<Player> players;
+
+    private Player selectedPlayer;
 
     @PostConstruct
     public void init() {
         images = new ArrayList<String>();
-        
+
         for(int i=1;i<=12;i++) {
             images.add("galleria" + i + ".jpg");
         }
+
+        players = new ArrayList<Player>();
+
+        players.add(new Player("Messi", 10, "messi.jpg", "CF"));
+        players.add(new Player("Iniesta", 8, "iniesta.jpg", "CM"));
+        players.add(new Player("Villa", 7, "villa.jpg", "CF"));
+        players.add(new Player("Xavi", 6, "xavi.jpg", "CM"));
+        players.add(new Player("Puyol", 5, "puyol.jpg", "CB"));
     }
 
+    public Player getSelectedPlayer() {
+        return selectedPlayer;
+    }
+
+    public void setSelectedPlayer(Player selectedPlayer) {
+        this.selectedPlayer = selectedPlayer;
+    }
+
+   
     public List<String> getImages() {
         return images;
     }
 
-    public String getEffect() {
-        return effect;
-    }
-
-    public void setEffect(String effect) {
-        this.effect = effect;
+    public List<Player> getPlayers() {
+        return players;
     }
 }
