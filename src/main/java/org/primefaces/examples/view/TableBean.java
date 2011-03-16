@@ -468,4 +468,8 @@ public class TableBean implements Serializable {
             return property;
         }
     }
+
+    public void delete() {
+        carsSmall.remove(selectedCar);
+    }
 }

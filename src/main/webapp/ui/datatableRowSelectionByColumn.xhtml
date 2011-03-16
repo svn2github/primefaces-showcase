@@ -10,6 +10,11 @@
             .ui-datatable .ui-datatable-header {
                 text-align:right;
             }
+
+            .actions td {
+                border: 0px none !important;
+                padding: 2px !important;
+            }
         </style>
     </ui:define>
 
@@ -20,7 +25,7 @@
 
             <h:form prependId="false">
 
-                <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10">
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}">
 
                     <p:column>
                         <f:facet name="header">
@@ -50,10 +55,15 @@
                         <h:outputText value="#{car.color}" />
                     </p:column>
 
-                     <p:column style="width:32px">
-                        <p:commandButton update="display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search">
-                            <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
-                        </p:commandButton>
+                    <p:column style="width:50px">
+                         <h:panelGrid columns="2" styleClass="actions" cellpadding="2">
+                             <p:commandButton update="display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="View">
+                                 <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
+                             </p:commandButton>
+                             <p:commandButton update="cars" oncomplete="confirmation.show()" image="ui-icon ui-icon-close" title="Delete">
+                                 <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
+                             </p:commandButton>
+                         </h:panelGrid>
                     </p:column>
 
                 </p:dataTable>
@@ -81,6 +91,15 @@
                     </h:panelGrid>
                 </p:dialog>
 
+                <p:confirmDialog message="Are you sure?" width="200"
+								showEffect="explode" hideEffect="explode"
+								header="Confirm" severity="alert" widgetVar="confirmation">
+
+                    <p:commandButton value="Yes sure" update="cars" actionListener="#{tableBean.delete}" oncomplete="confirmation.hide()"/>
+                    <p:commandButton value="Not yet" onclick="confirmation.hide()" type="button" />
+
+                </p:confirmDialog>
+
             </h:form>
 
             <h3>Source</h3>
@@ -89,7 +108,7 @@
                     <pre name="code" class="xml">
 &lt;h:form prependId="false"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"&gt;
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}"&gt;
 
         &lt;p:column&gt;
             &lt;f:facet name="header"&gt;
@@ -119,12 +138,20 @@
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
 
-         &lt;p:column style="width:32px"&gt;
-            &lt;p:commandButton update="display" oncomplete="carDialog.show()"
-                    image="ui-icon ui-icon-search"&gt;
-                &lt;f:setPropertyActionListener value="\#{car}"
-                    target="\#{tableBean.selectedCar}" /&gt;
-            &lt;/p:commandButton&gt;
+        &lt;p:column style="width:50px"&gt;
+             &lt;h:panelGrid columns="2" styleClass="actions"\&gt;
+
+                 &lt;p:commandButton update="display" oncomplete="carDialog.show()"
+                                image="ui-icon ui-icon-search" title="View"&gt;
+                     &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
+                 &lt;/p:commandButton&gt;
+
+                 &lt;p:commandButton update="cars" oncomplete="confirmation.show()"
+                                image="ui-icon ui-icon-close" title="Delete"&gt;
+                     &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
+                 &lt;/p:commandButton&gt;
+
+             &lt;/h:panelGrid&gt;
         &lt;/p:column&gt;
 
     &lt;/p:dataTable&gt;
@@ -151,6 +178,15 @@
             &lt;h:outputText value="\#{tableBean.selectedCar.color}" /&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
+
+    &lt;p:confirmDialog message="Are you sure?" width=200
+                    showEffect="explode" hideEffect="explode"
+                    header="Confirm" severity="alert" widgetVar="confirmation"&gt;
+
+        &lt;p:commandButton value="Yes sure" update="cars" actionListener="\#{tableBean.delete}" oncomplete="confirmation.hide()"/&gt;
+        &lt;p:commandButton value="Not yet" onclick="confirmation.hide()" type="button" /&gt;
+
+    &lt;/p:confirmDialog&gt;
 
 &lt;/h:form&gt;
                     </pre>
@@ -241,6 +277,10 @@ public class TableBean {
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
+
+    public void delete() {
+        carsSmall.remove(selectedCar);
+    }
 }
                     </pre>
                 </p:tab>
