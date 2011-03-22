@@ -4,21 +4,44 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
-	
+
+    <ui:define name="head">
+        <script type="text/javascript">
+            //<![CDATA[
+            PrimeFaces.widget.LocaleManager['tr'] = {
+                closeText: 'kapat',
+                prevText: '&#x3c;geri',
+                nextText: 'ileri&#x3e',
+                currentText: 'bugün',
+                monthNames: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran',
+                'Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
+                monthNamesShort: ['Oca','Şub','Mar','Nis','May','Haz',
+                'Tem','Ağu','Eyl','Eki','Kas','Ara'],
+                dayNames: ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],
+                dayNamesShort: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+                dayNamesMin: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+                weekHeader: 'Hf',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                month: 'Ay',
+                week: 'Hafta',
+                day: 'Gün',
+                allDayText : 'Tüm Gün'
+            };
+//]]>
+        </script>
+    </ui:define>
+
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">Schedule</h1>
 		<div class="entry">
-		<p>Schedule supports several languages out of the box, following are examples for Turkish, Italian and Japanese.</p>
+		<p>Schedule provides flexible I18N support.</p>
 			<h:form>
                 <h3>Turkish</h3>
 				<p:schedule value="#{scheduleController.eventModel}" locale="tr" />
-
-                <h3>Italian</h3>
-				<p:schedule value="#{scheduleController.eventModel}" locale="it" style="margin-top:30px;"/>
-
-                <h3>Japanese</h3>
-				<p:schedule value="#{scheduleController.eventModel}" locale="ja" style="margin-top:30px;"/>
 			</h:form>
 <h3>Source</h3>
 <p:tabView>
@@ -27,12 +50,6 @@
 &lt;h:form&gt;
     &lt;h3&gt;Turkish&lt;h3&gt;
     &lt;p:schedule value="\#{scheduleController.eventModel}" locale="tr" /&gt;
-
-    &lt;h3&gt;Italian&lt;h3&gt;
-    &lt;p:schedule value="\#{scheduleController.eventModel}" locale="it"/&gt;
-
-    &lt;h3&gt;Japanese&lt;h3&gt;
-    &lt;p:schedule value="\#{scheduleController.eventModel}" locale="ja"/&gt;
 &lt;/h:form&gt;
 </pre>
     </p:tab>
