@@ -166,6 +166,16 @@
 
                 <p:spacer height="10em" />
 
+                <h3>Custom Content</h3>
+                <pm:listView value="#{ringBean.players}" var="player">
+                    <p:graphicImage value="/images/barca/#{player.photo}" />
+                    <h3><h:outputLink value="#main">#{player.name}</h:outputLink></h3>
+                    <p>#{player.position}</p>
+                    <h:outputText styleClass="ui-li-count" value="#{player.number}" />
+                </pm:listView>
+
+                <p:spacer height="10em" />
+
                 <h3>Theming</h3>
                 <pm:listView swatch="e">
                     <h:outputLink value="#main">Item 1</h:outputLink>
