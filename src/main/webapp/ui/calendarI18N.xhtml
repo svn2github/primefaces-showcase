@@ -5,43 +5,81 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
 
+    <ui:define name="head">
+        <script type="text/javascript">
+            //<![CDATA[
+            PrimeFaces.widget.LocaleManager['tr'] = {
+                closeText: 'kapat',
+                prevText: '&#x3c;geri',
+                nextText: 'ileri&#x3e',
+                currentText: 'bugün',
+                monthNames: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran',
+                'Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
+                monthNamesShort: ['Oca','Şub','Mar','Nis','May','Haz',
+                'Tem','Ağu','Eyl','Eki','Kas','Ara'],
+                dayNames: ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],
+                dayNamesShort: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+                dayNamesMin: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+                weekHeader: 'Hf',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+
+            PrimeFaces.widget.LocaleManager['ca'] = {
+                closeText: 'Tancar',
+                prevText: '&#x3c;Ant',
+                nextText: 'Seg&#x3e;',
+                currentText: 'Avui',
+                monthNames: ['Gener','Febrer','Mar&ccedil;','Abril','Maig','Juny',
+                'Juliol','Agost','Setembre','Octubre','Novembre','Desembre'],
+                monthNamesShort: ['Gen','Feb','Mar','Abr','Mai','Jun',
+                'Jul','Ago','Set','Oct','Nov','Des'],
+                dayNames: ['Diumenge','Dilluns','Dimarts','Dimecres','Dijous','Divendres','Dissabte'],
+                dayNamesShort: ['Dug','Dln','Dmt','Dmc','Djs','Dvn','Dsb'],
+                dayNamesMin: ['Dg','Dl','Dt','Dc','Dj','Dv','Ds'],
+                weekHeader: 'Sm',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+
+            PrimeFaces.widget.LocaleManager['ar'] = {
+                closeText: 'إغلاق',
+                prevText: '&#x3c;السابق',
+                nextText: 'التالي&#x3e;',
+                currentText: 'اليوم',
+                monthNames: ['كانون الثاني', 'شباط', 'آذار', 'نيسان', 'آذار', 'حزيران',
+                'تموز', 'آب', 'أيلول',	'تشرين الأول', 'تشرين الثاني', 'كانون الأول'],
+                monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+                dayNames: ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'],
+                dayNamesShort: ['سبت', 'أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة'],
+                dayNamesMin: ['سبت', 'أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة'],
+                weekHeader: 'أسبوع',
+                firstDay: 0,
+                isRTL: true,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+//]]>
+        </script>
+    </ui:define>
+
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Calendar - I18N</h1>
 		<div class="entry">
-			<p>Calendar has built-in support for <strong>52</strong> languages.</p>
+			<p>Calendar provides flexible I18N support.</p>
 			
 			<h:panelGrid columns="3" cellpadding="5">
 				<h:outputText value="Turkish" />
 				<h:outputText value="Catalan" />
-				<h:outputText value="Brazilian Portuguese" />
+				<h:outputText value="Arabic" />
 				
 				<p:calendar mode="inline" locale="tr" showButtonPanel="true" navigator="true"/>
 				<p:calendar mode="inline" locale="ca" showButtonPanel="true" navigator="true"/>
-				<p:calendar mode="inline" locale="pt_BR" showButtonPanel="true" navigator="true"/>
-				
-				<h:outputText value="French" />
-				<h:outputText value="Italian" />
-				<h:outputText value="German" />
-				
-				<p:calendar mode="inline" locale="fr" showButtonPanel="true" navigator="true"/>
-				<p:calendar mode="inline" locale="it" showButtonPanel="true" navigator="true"/>
-				<p:calendar mode="inline" locale="de" showButtonPanel="true" navigator="true"/>
-				
-				<h:outputText value="Chinese Hong-Kong" />
-				<h:outputText value="Chinese Simplified" />
-				<h:outputText value="Chinese Traditional" />
-				
-				<p:calendar mode="inline" locale="zh_HK" showButtonPanel="true" navigator="true"/>
-				<p:calendar mode="inline" locale="zh_CN" showButtonPanel="true" navigator="true"/>
-				<p:calendar mode="inline" locale="zh_TW" showButtonPanel="true" navigator="true"/>
-				
-				<h:outputText value="Azerbaijani" />
-				<h:outputText value="Arabic" />
-				<h:outputText value="Russian" />
-				
-				<p:calendar mode="inline" locale="az" showButtonPanel="true" navigator="true"/>
 				<p:calendar mode="inline" locale="ar" showButtonPanel="true" navigator="true"/>
-				<p:calendar mode="inline" locale="ru" showButtonPanel="true" navigator="true"/>
 			</h:panelGrid>
 			
 			<h3>Source</h3>
@@ -51,35 +89,11 @@
 &lt;h:panelGrid columns="3" cellpadding="5"&gt;
 	&lt;h:outputText value="Turkish" /&gt;
 	&lt;h:outputText value="Catalan" /&gt;
-	&lt;h:outputText value="Brazilian Portuguese" /&gt;
+	&lt;h:outputText value="Arabic" /&gt;
 	
 	&lt;p:calendar mode="inline" locale="tr" showButtonPanel="true" navigator="true"/&gt;
 	&lt;p:calendar mode="inline" locale="ca" showButtonPanel="true" navigator="true"/&gt;
-	&lt;p:calendar mode="inline" locale="pt_BR" showButtonPanel="true" navigator="true"/&gt;
-	
-	&lt;h:outputText value="French" /&gt;
-	&lt;h:outputText value="Italian" /&gt;
-	&lt;h:outputText value="German" /&gt;
-	
-	&lt;p:calendar mode="inline" locale="fr" showButtonPanel="true" navigator="true"/&gt;
-	&lt;p:calendar mode="inline" locale="it" showButtonPanel="true" navigator="true"/&gt;
-	&lt;p:calendar mode="inline" locale="de" showButtonPanel="true" navigator="true"/&gt;
-	
-	&lt;h:outputText value="Chinese Hong-Kong" /&gt;
-	&lt;h:outputText value="Chinese Simplified" /&gt;
-	&lt;h:outputText value="Chinese Traditional" /&gt;
-	
-	&lt;p:calendar mode="inline" locale="zh_HK" showButtonPanel="true" navigator="true"/&gt;
-	&lt;p:calendar mode="inline" locale="zh_CN" showButtonPanel="true" navigator="true"/&gt;
-	&lt;p:calendar mode="inline" locale="zh_TW" showButtonPanel="true" navigator="true"/&gt;
-	
-	&lt;h:outputText value="Azerbaijani" /&gt;
-	&lt;h:outputText value="Arabic" /&gt;
-	&lt;h:outputText value="Russian" /&gt;
-	
-	&lt;p:calendar mode="inline" locale="az" showButtonPanel="true" navigator="true"/&gt;
 	&lt;p:calendar mode="inline" locale="ar" showButtonPanel="true" navigator="true"/&gt;
-	&lt;p:calendar mode="inline" locale="ru" showButtonPanel="true" navigator="true"/&gt;
 &lt;/h:panelGrid&gt;
 					</pre>
 				</p:tab>
