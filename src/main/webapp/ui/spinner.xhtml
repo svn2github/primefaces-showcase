@@ -6,7 +6,11 @@
                 template="../templates/ui.xhtml">
 
     <ui:define name="head">
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/roller/#{tableBean.theme}/theme.css" />
+        <style type="text/css">
+            .ui-spinner-input {
+                padding-right: 18px
+            }
+        </style>
     </ui:define>
 
     <ui:define name="content">
@@ -32,19 +36,13 @@
                             <f:convertNumber currencySymbol="$" type="currency"/>
                         </p:spinner>
 
-                        <h:outputLabel for="width" value="Width: " />
-                        <p:spinner id="width" value="#{spinnerController.number5}" width="32"/>
-
                         <h:outputLabel for="ajaxspinner" value="Ajax Spinner: " />
                         <p:outputPanel>
-                            <p:spinner id="ajaxspinner" value="#{spinnerController.number6}">
+                            <p:spinner id="ajaxspinner" value="#{spinnerController.number5}">
                                 <p:ajax update="ajaxspinnervalue" process="@this" />
                             </p:spinner>
-                            <h:outputText id="ajaxspinnervalue" value="#{spinnerController.number6}" style="padding-left:10px"/>
+                            <h:outputText id="ajaxspinnervalue" value="#{spinnerController.number5}" style="padding-left:10px"/>
                         </p:outputPanel>
-
-                        <h:outputLabel for="showon" value="Show On: " />
-                        <p:spinner id="showon" value="#{spinnerController.number7}" showOn="hover"/>
 
                     </h:panelGrid>
                 </p:panel>
@@ -68,12 +66,6 @@
 
                         <h:outputText value="Value 5: " />
                         <h:outputText value="#{spinnerController.number5}" />
-
-                        <h:outputText value="Value 6: " />
-                        <h:outputText value="#{spinnerController.number6}" />
-
-                        <h:outputText value="Value 7: " />
-                        <h:outputText value="#{spinnerController.number7}" />
                     </h:panelGrid>
                 </p:dialog>
 
@@ -104,10 +96,6 @@
     				value="\#{spinnerController.number4}" prefix="$"&gt;
     			&lt;f:convertNumber currencySymbol="$" type="currency"/&gt;
     		&lt;/p:spinner&gt;
-    		
-    		&lt;h:outputLabel for="width" value="Width: " /&gt;
-    		&lt;p:spinner id="width" 
-    				value="\#{spinnerController.number5}" width="32"/&gt;
 
             &lt;h:outputLabel for="ajaxspinner" value="Ajax Spinner: " /&gt;
             &lt;p:outputPanel&gt;
@@ -115,12 +103,9 @@
                     &lt;p:ajax update="ajaxspinnervalue" process="@this" /&gt;
                 &lt;/p:spinner&gt;
                 &lt;h:outputText id="ajaxspinnervalue"
-                        value="\#{spinnerController.number6}"/&gt;
+                        value="\#{spinnerController.number5}"/&gt;
             &lt;/p:outputPanel&gt;
-    		
-    		&lt;h:outputLabel for="showon" value="Show On: " /&gt;
-    		&lt;p:spinner id="showon" 
-    				value="\#{spinnerController.number6}" showOn="hover"/&gt;
+
     
    		&lt;/h:panelGrid&gt;
    	&lt;/p:panel&gt;
@@ -143,9 +128,6 @@
 			
 			&lt;h:outputText value="Value 5: " /&gt;
 			&lt;h:outputText value="\#{spinnerController.number5}" /&gt; 
-			
-			&lt;h:outputText value="Value 6: " /&gt;
-			&lt;h:outputText value="\#{spinnerController.number6}" /&gt; 
 		&lt;/h:panelGrid&gt;
      &lt;/p:dialog&gt;
             	
