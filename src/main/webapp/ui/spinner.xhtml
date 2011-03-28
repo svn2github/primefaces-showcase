@@ -5,14 +5,6 @@
                 xmlns:p="http://primefaces.prime.com.tr/ui"
                 template="../templates/ui.xhtml">
 
-    <ui:define name="head">
-        <style type="text/css">
-            .ui-spinner-input {
-                padding-right: 18px
-            }
-        </style>
-    </ui:define>
-
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">Spinner</h1>
         <div class="entry">
@@ -33,7 +25,7 @@
 
                         <h:outputLabel for="prefix" value="Prefix: " />
                         <p:spinner id="prefix" value="#{spinnerController.number4}" prefix="$">
-                            <f:convertNumber currencySymbol="$" type="currency"/>
+                            <f:convertNumber currencySymbol="$" type="currency" minFractionDigits="0"/>
                         </p:spinner>
 
                         <h:outputLabel for="ajaxspinner" value="Ajax Spinner: " />
@@ -94,7 +86,7 @@
     		&lt;h:outputLabel for="prefix" value="Prefix: " /&gt;
     		&lt;p:spinner id="prefix" 
     				value="\#{spinnerController.number4}" prefix="$"&gt;
-    			&lt;f:convertNumber currencySymbol="$" type="currency"/&gt;
+    			&lt;f:convertNumber currencySymbol="$" type="currency" minFractionDigits="0"/&gt;
     		&lt;/p:spinner&gt;
 
             &lt;h:outputLabel for="ajaxspinner" value="Ajax Spinner: " /&gt;
