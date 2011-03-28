@@ -15,7 +15,7 @@
 
                 <p:messages showDetail="true"/>
 
-				<p:fileUpload value="#{fileUploadController.file}" />
+				<p:fileUpload value="#{fileUploadController.file}" mode="simple" />
 
                 <br /><br />
 
@@ -31,7 +31,7 @@
 
     &lt;p:messages showDetail="true"/&gt;
 
-    &lt;p:fileUpload value="\#{fileUploadController.file}" /&gt;
+    &lt;p:fileUpload value="\#{fileUploadController.file}" mode="simple"/&gt;
 
     &lt;p:commandButton value="Submit" ajax="false"
                 actionListener="\#{fileUploadController.upload}"/&gt;
