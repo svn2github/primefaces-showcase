@@ -121,6 +121,8 @@ public class TableBean implements Serializable {
 
     private List<ColumnModel> simpleColumns;
 
+    private boolean editMode;
+
 	public TableBean() {
 		cars = new ArrayList<Car>();
 		carsSmall = new ArrayList<Car>();
@@ -471,5 +473,13 @@ public class TableBean implements Serializable {
 
     public void delete() {
         carsSmall.remove(selectedCar);
+    }
+
+    public boolean isEditMode() {
+        return editMode;
+    }
+
+    public void setEditMode(boolean editMode) {
+        this.editMode = editMode;
     }
 }
