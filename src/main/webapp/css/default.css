@@ -404,3 +404,7 @@ img.right {
 .sidebar .wijmo-wijmenu a {
     text-decoration: none !important;
 }
+
+.dp-xml {
+    width:1000px;
+}
