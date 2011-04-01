@@ -8,17 +8,17 @@
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Output Panel</h1>
 		<div class="entry">
-			<p>Output panel is a container element with several use cases, this example uses outputPanel to update a component page which doesn't exist on page initially
-              and rendered based on a condition.</p>
+			<p>Output panel is a container element with several use cases, this example uses an autoUpdate outputPanel to update a component page 
+                which doesn't exist on page initially and rendered based on a condition.</p>
 
 			<h:form>
-				<p:commandButton value="Show" update="campnou">
+				<p:commandButton value="Show">
 					<f:setPropertyActionListener value="true" target="#{requestScope.renderCampNou}" />
 				</p:commandButton>
 				
 				<br /><br />
 				
-				<p:outputPanel id="campnou">
+                <p:outputPanel autoUpdate="true">
 					<p:graphicImage value="/images/barca/camp_nou.jpg" rendered="#{requestScope.renderCampNou}"/>
 				</p:outputPanel>
 			</h:form>
@@ -26,11 +26,11 @@
 		<h3>Source</h3>
 		<pre name="code" class="xml">
 &lt;h:form&gt;
-	&lt;p:commandButton value="Show" update="campnou"&gt;
+	&lt;p:commandButton value="Show"&gt;
 		&lt;f:setPropertyActionListener value="\#{true}" target="\#{requestScope.renderCampNou}" /&gt;
 	&lt;/p:commandButton&gt;
 	
-	&lt;p:outputPanel id="campnou"&gt;
+	&lt;p:outputPanel autoUpdate="true"&gt;
 		&lt;p:graphicImage value="/images/barca/camp_nou.jpg" rendered="\#{requestScope.renderCampNou}"/&gt;
 	&lt;/p:outputPanel&gt;
 &lt;/h:form&gt;
