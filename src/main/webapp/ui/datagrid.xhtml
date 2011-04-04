@@ -31,7 +31,7 @@
 							
 								<h:outputText value="#{car.year}" />
 								
-								<p:commandLink update="carDetail" oncomplete="carDialog.show()" title="View Detail">
+								<p:commandLink update="carDetail" oncomplete="carDialog.show()" title="View Detail" >
 									<p:graphicImage value="/images/search.png"/> 
 									<f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
 								</p:commandLink>
