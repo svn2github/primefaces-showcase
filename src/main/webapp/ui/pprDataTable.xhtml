@@ -10,7 +10,8 @@
         <div class="entry">
            	<p>In this example, datatable is updated with ajax.</p>
 
-            <h:form prependId="false">
+            <h:form id="addBook" prependId="false">
+            	 <p:growl id="growl" showDetail="true" />
                 <p:panel header="New Book">
                     <h:panelGrid columns="2">
                         <h:outputLabel value="Title :" for="txt_title"></h:outputLabel>
@@ -21,7 +22,7 @@
                     </h:panelGrid>
                 </p:panel>
 
-                <p:commandButton value="Add" action="#{createBookBean.createNew}" update="books" style="margin:10px 0"/>
+                <p:commandButton value="Add" action="#{createBookBean.createNew}" update="books, addBook, growl" style="margin:10px 0"/>
 
                 <p:dataTable id="books" value="#{createBookBean.books}" var="book">
 

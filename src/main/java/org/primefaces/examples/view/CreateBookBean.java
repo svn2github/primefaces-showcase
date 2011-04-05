@@ -18,6 +18,9 @@ package org.primefaces.examples.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import org.primefaces.examples.domain.Book;
 import org.primefaces.examples.service.BookService;
 import org.primefaces.examples.service.BookServiceImpl;
@@ -31,6 +34,11 @@ public class CreateBookBean {
 	private BookService bookService = new BookServiceImpl();	
 	
 	public String createNew() {
+		if(books.contains(book)) {
+			FacesMessage msg = new FacesMessage("Dublicated", "This book has already added");  
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+			return null;
+		}
 		books.add(book);
 		bookService.saveBook(book);
 		book = new Book();	//reset form
