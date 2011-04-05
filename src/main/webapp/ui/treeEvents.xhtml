@@ -18,7 +18,8 @@
 						selectionMode="single"  selection="#{treeBean.selectedNode}"
 						onSelectUpdate="messages" nodeSelectListener="#{treeBean.onNodeSelect}"
                         onExpandUpdate="messages" nodeExpandListener="#{treeBean.onNodeExpand}"
-                        onCollapseUpdate="messages" nodeCollapseListener="#{treeBean.onNodeCollapse}">
+                        onCollapseUpdate="messages" nodeCollapseListener="#{treeBean.onNodeCollapse}"
+                        onUnselectUpdate="messages" nodeUnselectListener="#{treeBean.onNodeUnselect}">
 
 					<p:treeNode>
 						<h:outputText value="#{node}" />
@@ -38,6 +39,7 @@
   &lt;p:tree value="\#{treeBean.root}" var="node" dynamic="true" cache="false"
     selectionMode="single"  selection="\#{treeBean.selectedNode}"
     onSelectUpdate="messages" nodeSelectListener="\#{treeBean.onNodeSelect}"
+    onUnselectUpdate="messages" nodeUnselectListener="#{treeBean.onNodeUnselect}"
     onExpandUpdate="messages" nodeExpandListener="\#{treeBean.onNodeExpand}"
     onCollapseUpdate="messages" nodeCollapseListener="\#{treeBean.onNodeCollapse}"&gt;
 
@@ -62,6 +64,7 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.NodeCollapseEvent;
 import org.primefaces.event.NodeExpandEvent;
 import org.primefaces.event.NodeSelectEvent;
+import org.primefaces.event.NodeUnselectEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 
@@ -116,6 +119,12 @@ public class TreeBean implements Serializable {
 
 	public void onNodeSelect(NodeSelectEvent event) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+
+    public void onNodeUnselect(NodeUnselectEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unselected", event.getTreeNode().toString());
 
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
