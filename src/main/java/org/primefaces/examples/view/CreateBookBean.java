@@ -33,17 +33,15 @@ public class CreateBookBean {
 	
 	private BookService bookService = new BookServiceImpl();	
 	
-	public String createNew() {
+	public void createNew() {
 		if(books.contains(book)) {
-			FacesMessage msg = new FacesMessage("Dublicated", "This book has already added");  
+			FacesMessage msg = new FacesMessage("Dublicated", "This book has already been added");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
-			return null;
-		}
-		books.add(book);
-		bookService.saveBook(book);
-		book = new Book();	//reset form
-		
-		return null;
+		} else {
+            books.add(book);
+            bookService.saveBook(book);
+            book = new Book();          //reset form
+        }
 	}
 	
 	public String reinit() {
