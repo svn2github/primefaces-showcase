@@ -12,7 +12,9 @@
 
             <h:form>
 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}" id="carList">
+                <p:growl id="messages" />
+
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" id="carList" onRowEditUpdate="messages">
 
                     <f:facet name="header">
                         In-Cell Editing
@@ -28,7 +30,7 @@
                     <p:column headerText="Year" style="width:150px">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
-                            <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%"/></f:facet>
+                            <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
@@ -68,7 +70,9 @@
                 <pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" id="carList"&gt;
+    &lt;p:growl id="messages" /&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" id="carList" onRowEditUpdate="messages"&gt;
 
         &lt;f:facet name="header"&gt;
             In-Cell Editing
@@ -91,7 +95,7 @@
                     &lt;h:outputText value="\#{car.year}" /&gt;
                 &lt;/f:facet&gt;
                 &lt;f:facet name="input"&gt;
-                    &lt;p:inputText value="\#{car.year}" style="width:100%"/&gt;
+                    &lt;p:inputText value="\#{car.year}" style="width:100%" label="Year"/&gt;
                 &lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
