@@ -4,7 +4,7 @@
             xmlns:ui="http://java.sun.com/jsf/facelets"
             xmlns:p="http://primefaces.prime.com.tr/ui">
 
-    <p:commandButton id="themeButton" value="Change Theme: #{guestPreferences.theme}" type="button" style="width:100%"/>
+    <p:commandButton id="themeButton" value="Change Theme: #{guestPreferences.theme}" type="button" style="width:90%;margin:0 auto;"/>
     <p:menu widgetVar="themeMenu" position="dynamic" trigger="themeButton" my="left top" at="left bottom" styleClass="themeMenu">
         <p:submenu label="Themes">
             <p:menuitem value="Aristo" ajax="false"><f:setPropertyActionListener value="aristo" target="#{guestPreferences.theme}" /></p:menuitem>

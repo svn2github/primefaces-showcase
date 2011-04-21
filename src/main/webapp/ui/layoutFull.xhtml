@@ -21,60 +21,67 @@
 		.themeMenu {
 			overflow: auto;
 			height:300px;
-			width:200px;
+			width:180px;
 		}
 	</style>
+
 </h:head>
 
 <h:body>
 	
 	<p:layout fullPage="true">
 	
-		<p:layoutUnit position="top" height="75" header="Top" resizable="true" closable="true" collapsible="true">
-			<h:outputText value="North unit content." />
+		<p:layoutUnit position="top" size="100" header="Top" resizable="true" closable="true" collapsible="true">
+			<h:outputText value="Top unit content." />
 		</p:layoutUnit>
 		
-		<p:layoutUnit position="bottom" height="75" header="Bottom" resizable="true" closable="true" collapsible="true">
+		<p:layoutUnit position="bottom" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
 			<h:outputText value="South unit content." />
 		</p:layoutUnit>
 		
-		<p:layoutUnit position="left" width="200" header="Left" resizable="true" closable="true" collapsible="true">
+		<p:layoutUnit position="left" size="200" header="Left" resizable="true" closable="true" collapsible="true">
+            
 			<h:form>
                 <ui:include src="../templates/themeMenu.xhtml" />
 			</h:form>		
 		</p:layoutUnit>
 		
-		<p:layoutUnit position="right" width="200" header="Right" resizable="true" closable="true" collapsible="true">
-			<h:outputText value="East unit content." />
+		<p:layoutUnit position="right" size="200" header="Right" resizable="true" closable="true" collapsible="true">
+			<h:outputText value="Right unit content." />
 		</p:layoutUnit>
 		
 		<p:layoutUnit position="center">
 			<h:form>
 			This fullPage layout consists of five different layoutUnits which are resizable and closable by default.
 			
-			<pre name="code" class="xml">
+                <pre name="code" class="xml">
 &lt;p:layout fullPage="true"&gt;
-	
-	&lt;p:layoutUnit position="top" height="75" header="Top" resizable="true" closable="true" collapsible="true"&gt;
-		&lt;h:outputText value="North unit content." /&gt;
-	&lt;/p:layoutUnit&gt;
-	
-	&lt;p:layoutUnit position="bottom" height="75" header="Bottom" resizable="true" closable="true" collapsible="true"&gt;
-		&lt;h:outputText value="South unit content." /&gt;
-	&lt;/p:layoutUnit&gt;
-	
-	&lt;p:layoutUnit position="left" width="200" header="Left" resizable="true" closable="true" collapsible="true"&gt;
-		&lt;h:outputText value="West unit content." /&gt;
-	&lt;/p:layoutUnit&gt;
-	
-	&lt;p:layoutUnit position="right" width="200" header="Right" resizable="true" closable="true" collapsible="true"&gt;
-		&lt;h:outputText value="East unit content." /&gt;
-	&lt;/p:layoutUnit&gt;
-	
-	&lt;p:layoutUnit position="center"&gt;
-		This fullPage layout consists of five different layoutUnits which are resizable and closable by default.
-	&lt;/p:layoutUnit&gt;
-	
+
+    &lt;p:layoutUnit position="top" size="100" header="Top" resizable="true" closable="true" collapsible="true"&gt;
+        &lt;h:outputText value="Top unit content." /&gt;
+    &lt;/p:layoutUnit&gt;
+
+    &lt;p:layoutUnit position="bottom" size="100" header="Bottom" resizable="true" closable="true" collapsible="true"&gt;
+        &lt;h:outputText value="South unit content." /&gt;
+    &lt;/p:layoutUnit&gt;
+
+    &lt;p:layoutUnit position="left" size="200" header="Left" resizable="true" closable="true" collapsible="true"&gt;
+        &lt;h:form&gt;
+            &lt;ui:include src="../templates/themeMenu.xhtml" /&gt;
+        &lt;/h:form&gt;
+    &lt;/p:layoutUnit&gt;
+
+    &lt;p:layoutUnit position="right" size="200" header="Right" resizable="true" closable="true" collapsible="true"&gt;
+        &lt;h:outputText value="Right unit content." /&gt;
+    &lt;/p:layoutUnit&gt;
+
+    &lt;p:layoutUnit position="center"&gt;
+        &lt;h:form&gt;
+            This fullPage layout consists of five different layoutUnits which are resizable and closable by default.
+
+        &lt;/h:form&gt;
+    &lt;/p:layoutUnit&gt;
+
 &lt;/p:layout&gt;
 				</pre>
 			</h:form>
