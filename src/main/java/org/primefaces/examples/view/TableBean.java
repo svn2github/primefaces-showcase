@@ -482,4 +482,8 @@ public class TableBean implements Serializable {
     public void setEditMode(boolean editMode) {
         this.editMode = editMode;
     }
+
+    public String navigate() {
+        return "home";
+    }
 }

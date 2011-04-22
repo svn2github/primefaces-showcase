@@ -37,7 +37,9 @@
                         <f:facet name="header">
 								Color
                         </f:facet>
-                        <h:outputText value="#{car.color}" />
+                        <h:commandLink action="#{tableBean.navigate}">
+                            <h:outputText value="#{car.color}" />
+                        </h:commandLink>
                     </p:column>
                 </p:dataTable>
             </h:form>

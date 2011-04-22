@@ -5,35 +5,46 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
 
+    <ui:define name="head">
+        <style type="text/css">
+            #layout {
+                
+            }
+        </style>
+    </ui:define>
+
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Layout - Element</h1>
 		<div class="entry">
            	<p>Layouts can also be created at element level. Example below is a simple split panel implementation.</p>    	
            	
-       		<p:layout style="width:400px;height:200px;">
-       			<p:layoutUnit position="left" width="100" resizable="true" minWidth="50" maxWidth="200">
-       				Left Pane
+       		<p:layout style="min-width:400px;min-height:200px;" id="layout">
+       			<p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
+       				Left
        			</p:layoutUnit>
        			
        			<p:layoutUnit position="center">
-       				<h:form>
-       					Center Pane
-       				</h:form>
+       				Center
        			</p:layoutUnit>
        		</p:layout>
 				
 			<h3>Source</h3>
-<pre name="code" class="xml">
-&lt;p:layout style="width:400px;height:200px;"&gt;
-	&lt;p:layoutUnit position="left" width="100" resizable="true" minWidth="50" maxWidth="200"&gt;
-		Left Pane
-	&lt;/p:layoutUnit&gt;
-    			
-	&lt;p:layoutUnit position="center"&gt;
-		Center Pane
-	&lt;/p:layoutUnit&gt;
+            <p:tabView>
+                <p:tab title="layoutElement.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:layout style="min-width:400px;min-height:200px;" id="layout"&gt;
+    &lt;p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200"&gt;
+        Left
+    &lt;/p:layoutUnit&gt;
+
+    &lt;p:layoutUnit position="center"&gt;
+        Center
+    &lt;/p:layoutUnit&gt;
 &lt;/p:layout&gt;
-</pre>
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
       </div>
  
 </ui:define>

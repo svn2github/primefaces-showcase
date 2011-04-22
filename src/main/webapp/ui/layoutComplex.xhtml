@@ -27,19 +27,14 @@
 </h:head>
 
 <h:body>
-
-	<p:growl id="msg" showDetail="true"/>
 		
-	<p:layout fullPage="true" 
-			toggleListener="#{layoutBean.handleToggle}" onToggleUpdate="msg"
-			closeListener="#{layoutBean.handleClose}" onCloseUpdate="msg"
-			resizeListener="#{layoutBean.handleResize}" onResizeUpdate="msg">
+	<p:layout fullPage="true" >
 	
-		<p:layoutUnit id="top" position="top" resizable="true" height="150" minHeight="100" maxHeight="175">
-			<h:outputText value="PRIMEFACES - Next Generation Component Suite" style="font-size:36px;position:absolute;top:50px;left:100px;"/>
+		<p:layoutUnit id="top" position="north" resizable="true" size="100" minSize="100" maxSize="175">
+			<h:outputText value="PRIMEFACES - Next Generation Component Suite" style="font-size:36px;position:absolute;top:25px;left:100px;"/>
 		</p:layoutUnit>
 		
-		<p:layoutUnit id="bottom" position="bottom" height="50" zindex="0" scrollable="null">
+		<p:layoutUnit id="bottom" position="south" size="50" zindex="0" scrollable="null">
 			<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/ui/layoutComplex.xhtml">
 				View Page Source (layoutComplex.xhtml)
 			</h:outputLink>
@@ -51,7 +46,7 @@
 			</h:outputLink>
 		</p:layoutUnit>
 		
-		<p:layoutUnit id="left" position="left" width="300" resizable="true" closable="true" collapsible="true" header="Options" minWidth="200">
+		<p:layoutUnit id="left" position="west" size="300" resizable="true" closable="true" collapsible="true" header="Options" minSize="200">
 			<p:accordionPanel activeIndex="0" autoHeight="false">
 				<p:tab title="Menu 1">
 					<p:calendar mode="inline" navigator="none"/>
@@ -67,7 +62,7 @@
 			</p:accordionPanel>
 		</p:layoutUnit>
 		
-		<p:layoutUnit id="right" position="right" width="250" header="Gallery" resizable="true" closable="true" collapsible="true">
+		<p:layoutUnit id="right" position="east" size="250" header="Gallery" resizable="true" closable="true" collapsible="true">
 		
 			<h:form>
                 <ui:include src="../templates/themeMenu.xhtml" />
@@ -95,11 +90,7 @@
 		
 		<p:layoutUnit id="center" position="center" style="text-align:center;" scrollable="true">
 			<h:form>
-				<p:tabView>
-					<p:tab title="Organize">
-						<p:schedule value="#{scheduleController.eventModel}" editable="false" />
-					</p:tab>
-					
+				<p:tabView>					
 					<p:tab title="Videos">
 						<p:media value="http://vimeo.com/moogaloop.swf?clip_id=12440890" width="500" height="400" player="flash"/>
 					</p:tab>
