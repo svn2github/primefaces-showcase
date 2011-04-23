@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<f:view contentType="text/html">
+<h:head>
+	<title>
+		<ui:insert name="title">PrimeFaces ShowCase</ui:insert>
+	</title>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/#{guestPreferences.theme}/skin.css" />
+	<style type="text/css">
+		.ui-widget {
+			font-size: 75%;
+		}
+
+        .nestedUnit {
+            border:0px none !important
+        }
+
+        .ui-layout-center .ui-layout-resizer {
+            border:1px solid #A8A8A8;
+        }
+
+        .ui-tree-item span {
+            float:left;
+        }
+
+        .ui-tree {
+            border:0px none;
+        }
+
+        .ui-tabs {
+            border:0px none;
+        }
+	</style>
+</h:head>
+
+<h:body>
+
+	<p:layout fullPage="true">
+
+        <p:layoutUnit position="north" size="40">
+            <p:commandButton value="Compose" onclick="composeDlg.show()" type="button" image="ui-icon ui-icon-document"/>
+        </p:layoutUnit>
+
+        <p:layoutUnit position="west" size="200" resizable="true" collapsible="true" header="MAILBOXES">
+            <h:form>
+                <p:tree value="#{mailbox.mailboxes}" var="box" selectionMode="single" selection="#{mailbox.mailbox}" style="width:170px">
+                    <p:treeNode icon="ui-icon ui-icon-mail-closed">
+                        <h:outputText value="#{box}"/>
+                    </p:treeNode>
+
+                    <p:treeNode type="i" icon="ui-icon ui-icon-mail-closed">
+                        <h:outputText value="#{box}"/>
+                    </p:treeNode>
+
+                    <p:treeNode type="s" icon="ui-icon ui-icon-transfer-e-w">
+                        <h:outputText value="#{box}"/>
+                    </p:treeNode>
+
+                    <p:treeNode type="t" icon="ui-icon ui-icon-trash">
+                        <h:outputText value="#{box}"/>
+                    </p:treeNode>
+
+                    <p:treeNode type="j" icon="ui-icon ui-icon-alert">
+                        <h:outputText value="#{box}"/>
+                    </p:treeNode>
+                </p:tree>
+            </h:form>
+        </p:layoutUnit>
+        
+        <p:layoutUnit position="center">
+
+            <p:layout>
+
+                <p:layoutUnit position="north" size="50%" resizable="true" styleClass="nestedUnit">
+
+                    <p:tabView>
+
+                        <p:tab title="Gmail">
+
+                            <h:form>
+
+                                <p:dataTable var="mail" value="#{mailbox.mails}"
+                                             selection="#{mailbox.mail}" selectionMode="single"
+                                             onRowSelectUpdate=":mailViewer">
+
+                                    <p:column headerText="From" sortBy="#{mail.from}">
+                                        #{mail.from}
+                                    </p:column>
+
+                                    <p:column headerText="Subject" sortBy="#{mail.subject}">
+                                        #{mail.subject}
+                                    </p:column>
+
+                                    <p:column headerText="Date" sortBy="#{mail.date}">
+                                        #{mail.date}
+                                    </p:column>
+
+                                </p:dataTable>
+
+                            </h:form>
+
+                        </p:tab>
+
+                    </p:tabView>
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" styleClass="nestedUnit">
+
+                    <p:outputPanel id="mailViewer">
+                        <h:outputText value="#{mailbox.mail.subject}" rendered="#{not empty mailbox.mail}" />
+                    </p:outputPanel>
+
+                </p:layoutUnit>
+                
+            </p:layout>
+
+        </p:layoutUnit>
+
+    </p:layout>
+
+    <p:ajaxStatus style="width:32px;height:32px;display:block;position:fixed;right:0;top:0;z-index:100">
+        <f:facet name="start">
+            <p:graphicImage value="/images/loading.gif" />
+        </f:facet>
+
+        <f:facet name="complete">
+            <h:outputText value="" />
+        </f:facet>
+    </p:ajaxStatus>
+
+    <p:dialog widgetVar="composeDlg" modal="true" header="New Email" width="530" onShow="editor.init()"
+              showEffect="fade" hideEffect="fade">
+
+        <h:form>
+
+            <h:panelGrid columns="2" cellspacing="5">
+                <h:outputLabel for="to" value="To: " />
+                <p:inputText id="to"/>
+
+                <h:outputLabel for="cc" value="CC: " />
+                <p:inputText id="cc"/>
+
+                <h:outputLabel for="subject" value="To: " />
+                <p:inputText id="subject" size="50"/>
+            </h:panelGrid>
+
+            <p:separator />
+
+            <p:editor widgetVar="editor" lazy="true" />
+
+            <p:separator />
+
+            <p:commandButton value="Send" onclick="composeDlg.hide()" actionListener="#{mailbox.send}" update="msg" process="@this"/>
+            <p:commandButton value="Cancel" onclick="composeDlg.hide()" type="button"/>
+
+        </h:form>
+
+    </p:dialog>
+
+    <p:growl id="msg" />
+
+</h:body>
+
+</f:view>
+
+</html>
+
+	
