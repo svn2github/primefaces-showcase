@@ -4,7 +4,39 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
-	
+
+    <ui:define name="head">
+        <style type="text/css">
+            .silver .ui-colorpicker {
+                background-image: url(../images/colorpicker/silver_background.png);
+            }
+            .silver .ui-colorpicker_hex {
+                background-image: url(../images/colorpicker/silver_hex.png);
+            }
+            .silver .ui-colorpicker_rgb_r {
+                background-image: url(../images/colorpicker/silver_rgb_r.png);
+            }
+            .silver .ui-colorpicker_rgb_g {
+                background-image: url(../images/colorpicker/silver_rgb_g.png);
+            }
+            .silver .ui-colorpicker_rgb_b {
+                background-image: url(../images/colorpicker/silver_rgb_b.png);
+            }
+            .silver .ui-colorpicker_hsb_s {
+                background-image: url(../images/colorpicker/silver_hsb_s.png);
+            }
+            .silver .ui-colorpicker_hsb_h {
+                background-image: url(../images/colorpicker/silver_hsb_h.png);
+            }
+            .silver .ui-colorpicker_hsb_b {
+                background-image: url(../images/colorpicker/silver_hsb_b.png);
+            }
+            .silver .ui-colorpicker_submit {
+                background-image: url(../images/colorpicker/silver_submit.png);
+            }
+        </style>
+    </ui:define>
+
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">Color Picker</h1>
@@ -15,107 +47,141 @@
 			<h:form>
 			
 				<p:panel header="Colors">
-					<h:panelGrid columns="3">
-						<h:outputText value="AWT Color: " />
-						<p:colorPicker value="#{colorBean.color}" />
-						<h:outputText id="awtDisplay" value="#{colorBean.color}" escape="false"/>
-						
-						<h:outputText value="RGB Color: " />
-						<p:colorPicker value="#{colorBean.rgbColor}">
-							<f:converter converterId="colorPickerConverter"/>
-						</p:colorPicker>
-						<h:outputText id="rgbDisplay" value="#{colorBean.rgbColor}" style="background-color:rgb(#{colorBean.rgbColor})"/>
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="Inline: " />
+						<p:colorPicker value="#{colorBean.color1}" mode="inline" />
+
+                        <h:outputText value="Styled: " />
+						<p:colorPicker value="#{colorBean.color4}" styleClass="silver" mode="inline" />
+
+                        <h:outputText value="Popup: " />
+						<p:colorPicker value="#{colorBean.color2}" widgetVar="picker"/>
+
+                        <h:outputText value="Effect: " />
+						<p:colorPicker value="#{colorBean.color3}" effect="fold" />
 					</h:panelGrid>
 
-                    <p:commandButton value="Submit" update="awtDisplay rgbDisplay"/>
+                    <p:separator />
+
+                    <p:commandButton value="Submit" oncomplete="dlg.show()" update="grid @parent" />
 				</p:panel>
+
+                <p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors">
+                    <h:panelGrid columns="2" id="grid">
+                        <h:outputText value="Color 1: " />
+                        <h:outputText value="#{colorBean.color1.hex}" style="background-color:\##{colorBean.color1.hex}"/>
+
+                        <h:outputText value="Color 2: " />
+                        <h:outputText value="#{colorBean.color2.hex}" style="background-color:\##{colorBean.color2.hex}"/>
+
+                        <h:outputText value="Color 3: " />
+                        <h:outputText value="#{colorBean.color3.hex}" style="background-color:\##{colorBean.color3.hex}"/>
+
+                        <h:outputText value="Color 4: " />
+                        <h:outputText value="#{colorBean.color4.hex}" style="background-color:\##{colorBean.color4.hex}"/>
+                    </h:panelGrid>
+                </p:dialog>
 				
 			</h:form>
-		<h3>Source</h3>
-		<p:tabView>
-			<p:tab title="colorPicker.xhtml">
-			<pre name="code" class="xml">
-&lt;h:form&gt;
-			
-	&lt;p:panel header="Colors"&gt;
-		&lt;h:panelGrid columns="3"&gt;
-			&lt;h:outputText value="AWT Color: " /&gt;
-			&lt;p:colorPicker value="\#{colorBean.color}" /&gt;
-			&lt;h:outputText id="awtDisplay" 
-					value="\#{colorBean.color}" escape="false"/&gt;
-			
-			&lt;h:outputText value="RGB Color: " /&gt;
-			&lt;p:colorPicker value="\#{colorBean.rgbColor}"&gt;
-				&lt;f:converter converterId="colorPickerConverter"/&gt;
-			&lt;/p:colorPicker&gt;
-			&lt;h:outputText id="rgbDisplay" 
-					value="\\#{colorBean.rgbColor}" 
-					style="background-color:rgb(\#{colorBean.rgbColor})"/&gt;
-		&lt;/h:panelGrid&gt;
 
-        &lt;p:commandButton value="Submit" update="awtDisplay rgbDisplay" /&gt;
-	&lt;/p:panel&gt;
-	
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="colorPicker.xhtml">
+                <pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;p:panel header="Colors"&gt;
+        &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+            &lt;h:outputText value="Inline: " /&gt;
+            &lt;p:colorPicker value="\#{colorBean.color1}" mode="inline" /&gt;
+
+            &lt;h:outputText value="Styled: " /&gt;
+            &lt;p:colorPicker value="\#{colorBean.color4}" styleClass="silver" mode="inline" /&gt;
+
+            &lt;h:outputText value="Popup: " /&gt;
+            &lt;p:colorPicker value="\#{colorBean.color2}" widgetVar="picker"/&gt;
+
+            &lt;h:outputText value="Effect: " /&gt;
+            &lt;p:colorPicker value="\#{colorBean.color3}" effect="fold" /&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:separator /&gt;
+
+        &lt;p:commandButton value="Submit" oncomplete="dlg.show()" update="grid @parent" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors"&gt;
+        &lt;h:panelGrid columns="2" id="grid"&gt;
+            &lt;h:outputText value="Color 1: " /&gt;
+            &lt;h:outputText value="\#{colorBean.color1.hex}" style="background-color:\\#\#{colorBean.color1.hex}"/&gt;
+
+            &lt;h:outputText value="Color 2: " /&gt;
+            &lt;h:outputText value="\#{colorBean.color2.hex}" style="background-color:\\#\#{colorBean.color2.hex}"/&gt;
+
+            &lt;h:outputText value="Color 3: " /&gt;
+            &lt;h:outputText value="\#{colorBean.color3.hex}" style="background-color:\\#\#{colorBean.color3.hex}"/&gt;
+
+            &lt;h:outputText value="Color 4: " /&gt;
+            &lt;h:outputText value="\#{colorBean.color4.hex}" style="background-color:\\#\#{colorBean.color4.hex}"/&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
 &lt;/h:form&gt;
-		</pre>
-			</p:tab>
-			
-			<p:tab title="ColorBean.java">		
-				<pre name="code" class="java">
-		package org.primefaces.examples.view;
-		
-		import java.awt.Color;
-		
-		public class ColorBean {
-		
-			private Color color;
-			
-			private String rgbColor;
-		
-			public String getRgbColor() {
-				return rgbColor;
-			}
-		
-			public void setRgbColor(String rgbColor) {
-				this.rgbColor = rgbColor;
-			}
-		
-			public Color getColor() {
-				return color;
-			}
-		
-			public void setColor(Color color) {
-				this.color = color;
-			}
-		}
-				</pre>
-			</p:tab>
-			
-			<p:tab title="ColorPickerConverter.java">		
-				<pre name="code" class="java">
+                </pre>
+                </p:tab>
+
+                <p:tab title="ColorBean.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
+import org.primefaces.model.Color;
 
-public class ColorPickerConverter implements Converter {
+public class ColorBean {
 
-	public Object getAsObject(FacesContext facesContext, UIComponent component, String submittedValue) {
-		return submittedValue; //just return the rgb value as string
-	}
+	private Color color1;
 
-	public String getAsString(FacesContext facesContext, UIComponent component, Object value) {
-		if (value == null)
-			return null;
-		else{
-			return value.toString();
-		}
-	}
+    private Color color2;
+
+    private Color color3;
+
+    private Color color4;
+
+    public Color getColor1() {
+        return color1;
+    }
+
+    public void setColor1(Color color1) {
+        this.color1 = color1;
+    }
+
+    public Color getColor2() {
+        return color2;
+    }
+
+    public void setColor2(Color color2) {
+        this.color2 = color2;
+    }
+
+    public Color getColor3() {
+        return color3;
+    }
+
+    public void setColor3(Color color3) {
+        this.color3 = color3;
+    }
+
+    public Color getColor4() {
+        return color4;
+    }
+
+    public void setColor4(Color color4) {
+        this.color4 = color4;
+    }
 }
-				</pre>
-			</p:tab>
-		</p:tabView>
+                    </pre>
+                </p:tab>
+
+            </p:tabView>
 
 		</div>
 

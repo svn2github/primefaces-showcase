@@ -15,28 +15,47 @@
  */
 package org.primefaces.examples.view;
 
-import java.awt.Color;
+import org.primefaces.model.Color;
 
 public class ColorBean {
 
-	private Color color;
-	
-	private String rgbColor;
+	private Color color1;
 
-	public String getRgbColor() {
-		return rgbColor;
-	}
+    private Color color2;
 
-	public void setRgbColor(String rgbColor) {
-		this.rgbColor = rgbColor;
-	}
+    private Color color3;
 
-	public Color getColor() {
-		return color;
-	}
+    private Color color4;
 
-	public void setColor(Color color) {
-		this.color = color;
-	}
+    public Color getColor1() {
+        return color1;
+    }
 
+    public void setColor1(Color color1) {
+        this.color1 = color1;
+    }
+
+    public Color getColor2() {
+        return color2;
+    }
+
+    public void setColor2(Color color2) {
+        this.color2 = color2;
+    }
+
+    public Color getColor3() {
+        return color3;
+    }
+
+    public void setColor3(Color color3) {
+        this.color3 = color3;
+    }
+
+    public Color getColor4() {
+        return color4;
+    }
+
+    public void setColor4(Color color4) {
+        this.color4 = color4;
+    }
 }
