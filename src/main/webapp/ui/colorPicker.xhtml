@@ -7,7 +7,7 @@
 
     <ui:define name="head">
         <style type="text/css">
-            .silver .ui-colorpicker {
+            .silver .ui-colorpicker-container {
                 background-image: url(../images/colorpicker/silver_background.png);
             }
             .silver .ui-colorpicker_hex {
@@ -63,7 +63,7 @@
 
                     <p:separator />
 
-                    <p:commandButton value="Submit" oncomplete="dlg.show()" update="grid @parent" />
+                    <p:commandButton value="Submit" oncomplete="dlg.show()" update="grid" />
 				</p:panel>
 
                 <p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors">
