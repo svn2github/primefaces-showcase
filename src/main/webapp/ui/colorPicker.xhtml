@@ -41,8 +41,7 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">Color Picker</h1>
 		<div class="entry">
-			<p>ColorPicker is a highly customizable component that also gives a live feedback when selecting a color. By default,
-			value is passed as a java.awt.Color, using custom converters formats like RGB can also be supported.</p>
+			<p>Gone are the days to manually enter in hex codes to select colors.</p>
 		
 			<h:form>
 			
@@ -69,16 +68,16 @@
                 <p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors">
                     <h:panelGrid columns="2" id="grid">
                         <h:outputText value="Color 1: " />
-                        <h:outputText value="#{colorBean.color1.hex}" style="background-color:\##{colorBean.color1.hex}"/>
+                        <h:outputText value="#{colorBean.color1}" style="background-color:\##{colorBean.color1}"/>
 
                         <h:outputText value="Color 2: " />
-                        <h:outputText value="#{colorBean.color2.hex}" style="background-color:\##{colorBean.color2.hex}"/>
+                        <h:outputText value="#{colorBean.color2}" style="background-color:\##{colorBean.color2}"/>
 
                         <h:outputText value="Color 3: " />
-                        <h:outputText value="#{colorBean.color3.hex}" style="background-color:\##{colorBean.color3.hex}"/>
+                        <h:outputText value="#{colorBean.color3}" style="background-color:\##{colorBean.color3}"/>
 
                         <h:outputText value="Color 4: " />
-                        <h:outputText value="#{colorBean.color4.hex}" style="background-color:\##{colorBean.color4.hex}"/>
+                        <h:outputText value="#{colorBean.color4}" style="background-color:\##{colorBean.color4}"/>
                     </h:panelGrid>
                 </p:dialog>
 				
@@ -113,16 +112,16 @@
     &lt;p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors"&gt;
         &lt;h:panelGrid columns="2" id="grid"&gt;
             &lt;h:outputText value="Color 1: " /&gt;
-            &lt;h:outputText value="\#{colorBean.color1.hex}" style="background-color:\\#\#{colorBean.color1.hex}"/&gt;
+            &lt;h:outputText value="\#{colorBean.color1}" style="background-color:\\#\#{colorBean.color1}"/&gt;
 
             &lt;h:outputText value="Color 2: " /&gt;
-            &lt;h:outputText value="\#{colorBean.color2.hex}" style="background-color:\\#\#{colorBean.color2.hex}"/&gt;
+            &lt;h:outputText value="\#{colorBean.color2}" style="background-color:\\#\#{colorBean.color2}"/&gt;
 
             &lt;h:outputText value="Color 3: " /&gt;
-            &lt;h:outputText value="\#{colorBean.color3.hex}" style="background-color:\\#\#{colorBean.color3.hex}"/&gt;
+            &lt;h:outputText value="\#{colorBean.color3}" style="background-color:\\#\#{colorBean.color3}"/&gt;
 
             &lt;h:outputText value="Color 4: " /&gt;
-            &lt;h:outputText value="\#{colorBean.color4.hex}" style="background-color:\\#\#{colorBean.color4.hex}"/&gt;
+            &lt;h:outputText value="\#{colorBean.color4}" style="background-color:\\#\#{colorBean.color4}"/&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
 
@@ -134,47 +133,45 @@
                     <pre name="code" class="java">
 package org.primefaces.examples.view;
 
-import org.primefaces.model.Color;
-
 public class ColorBean {
 
-	private Color color1;
+	private String color1;
 
-    private Color color2;
+    private String color2;
 
-    private Color color3;
+    private String color3;
 
-    private Color color4;
+    private String color4;
 
-    public Color getColor1() {
+    public String getColor1() {
         return color1;
     }
 
-    public void setColor1(Color color1) {
+    public void setColor1(String color1) {
         this.color1 = color1;
     }
 
-    public Color getColor2() {
+    public String getColor2() {
         return color2;
     }
 
-    public void setColor2(Color color2) {
+    public void setColor2(String color2) {
         this.color2 = color2;
     }
 
-    public Color getColor3() {
+    public String getColor3() {
         return color3;
     }
 
-    public void setColor3(Color color3) {
+    public void setColor3(String color3) {
         this.color3 = color3;
     }
 
-    public Color getColor4() {
+    public String getColor4() {
         return color4;
     }
 
-    public void setColor4(Color color4) {
+    public void setColor4(String color4) {
         this.color4 = color4;
     }
 }
