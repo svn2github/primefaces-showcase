@@ -18,12 +18,18 @@
             <p:pieChart model="#{chartBean.pieModel}" legendPosition="w" 
                         title="Sample Pie Chart" style="width:400px" />
 
+            <p:pieChart model="#{chartBean.pieModel}" legendPosition="e" fill="false"
+                        title="Custom Options" style="width:400px" sliceMargin="5" diameter="150" />
+
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="pieChart.xhtml">
                     <pre name="code" class="xml">
 &lt;p:pieChart model="\#{chartBean.pieModel}" legendPosition="w"
                 title="Sample Pie Chart" style="width:400px" /&gt;
+
+&lt;p:pieChart model="\#{chartBean.pieModel}" legendPosition="e" fill="false"
+                title="Custom Options" style="width:400px" sliceMargin="5" diameter="150" /&gt;
                     </pre>
                 </p:tab>
 
