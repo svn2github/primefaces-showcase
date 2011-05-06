@@ -20,13 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.primefaces.component.chart.series.ChartSeries;
 
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.examples.domain.Birth;
 import org.primefaces.examples.domain.ServerLoad;
 import org.primefaces.examples.domain.Vote;
 import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.LineChartSeries;
 import org.primefaces.model.chart.PieChartModel;
 
 public class ChartBean implements Serializable {
@@ -114,23 +114,24 @@ public class ChartBean implements Serializable {
     private void createCartesianModel() {
         cartesianModel = new CartesianChartModel();
 
-        ChartSeries boys = new ChartSeries();
-        boys.setLabel("Boys");
+        LineChartSeries boys = new LineChartSeries();
+        boys.setTitle("Boys");
 
-        boys.set("2004", 120);
-        boys.set("2005", 100);
-        boys.set("2006", 44);
-        boys.set("2007", 150);
-        boys.set("2008", 25);
+        boys.set(2004, 120);
+        boys.set(2005, 100);
+        boys.set(2006, 44);
+        boys.set(2007, 150);
+        boys.set(2008, 25);
 
-        ChartSeries girls = new ChartSeries();
-        girls.setLabel("Girls");
+        LineChartSeries girls = new LineChartSeries();
+        girls.setTitle("Girls");
+        girls.setMarkerStyle("diamond");
 
-        girls.set("2004", 52);
-        girls.set("2005", 60);
-        girls.set("2006", 110);
-        girls.set("2007", 135);
-        girls.set("2008", 120);
+        girls.set(2004, 52);
+        girls.set(2005, 60);
+        girls.set(2006, 110);
+        girls.set(2007, 135);
+        girls.set(2008, 120);
 
         cartesianModel.addSeries(boys);
         cartesianModel.addSeries(girls);
