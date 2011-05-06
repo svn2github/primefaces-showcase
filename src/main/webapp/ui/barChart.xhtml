@@ -5,58 +5,82 @@
                 xmlns:p="http://primefaces.prime.com.tr/ui"
                 template="../templates/ui.xhtml">
 
-    <ui:define name="head">
-        <script type="text/javascript">
-            var chartStyle = {
-                padding:20,
-                legend: {
-                    display:"right",
-                    spacing:10
-                }
-            };
-        </script>
-    </ui:define>
-
     <ui:define name="content">
 
         <h1 class="title ui-widget-header ui-corner-all">Charts - Bar</h1>
         <div class="entry">
-            <p:barChart value="#{chartBean.births}" var="birth" yfield="#{birth.year}"
-                        style="chartStyle">
-                <p:chartSeries label="Boys" value="#{birth.boys}" />
-                <p:chartSeries label="Girls" value="#{birth.girls}" />
-            </p:barChart>
+            <p>BarChart displays a CartesianChartModel.</p>
+
+            <p:barChart value="#{chartBean.cartesianModel}" legendPosition="ne"
+                        title="Basic Bar Chart" />
+
+            <p:barChart value="#{chartBean.cartesianModel}" legendPosition="se" style="margin-top:20px"
+                        title="Horizontal Bar Chart" orientation="horizontal"/>
+
+            <p:barChart value="#{chartBean.cartesianModel}" legendPosition="nw" style="margin-top:20px"
+                        title="Stacked Bar Chart" stacked="true" barMargin="50"/>
 
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="barChart.xhtml">
                     <pre name="code" class="xml">
-&lt;p:barChart value="\#{chartBean.births}" var="birth"
-                    yfield="\#{birth.year}" style="chartStyle"&gt;
-	&lt;p:chartSeries label="Boys" value="\#{birth.boys}" /&gt;
-	&lt;p:chartSeries label="Girls" value="\#{birth.girls}" /&gt;
-&lt;/p:barChart/&gt;
+&lt;p:barChart value="\#{chartBean.cartesianModel}" legendPosition="ne"
+            title="Basic Bar Chart" /&gt;
+
+&lt;p:barChart value="\#{chartBean.cartesianModel}" legendPosition="se"
+            title="Horizontal Bar Chart" orientation="horizontal"/&gt;
+
+&lt;p:barChart value="\#{chartBean.cartesianModel}" legendPosition="nw"
+            title="Stacked Bar Chart" stacked="true" barMargin="50"/&gt;
                     </pre>
                 </p:tab>
 
                 <p:tab title="ChartBean.java">
                     <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.LineChartSeries;
+
 public class ChartBean implements Serializable {
 
-	private List&lt;Birth&gt; births;
+    private CartesianChartModel cartesianModel;
 
 	public ChartBean() {
-		births = new ArrayList&lt;Birth&gt;();
-		births.add(new Birth(2004, 120, 52));
-		births.add(new Birth(2005, 100, 60));
-		births.add(new Birth(2006, 44, 110));
-		births.add(new Birth(2007, 150, 135));
-		births.add(new Birth(2008, 125, 120));
+        createCartesianModel();
 	}
 
-	public List&lt;Birth&gt; getBirths() {
-		return births;
-	}
+    public CartesianChartModel getCartesianModel() {
+        return cartesianModel;
+    }
+
+    private void createCartesianModel() {
+        cartesianModel = new CartesianChartModel();
+
+        LineChartSeries boys = new LineChartSeries();
+        boys.setTitle("Boys");
+
+        boys.set(2004, 120);
+        boys.set(2005, 100);
+        boys.set(2006, 44);
+        boys.set(2007, 150);
+        boys.set(2008, 25);
+
+        LineChartSeries girls = new LineChartSeries();
+        girls.setTitle("Girls");
+        girls.setMarkerStyle("diamond");
+
+        girls.set(2004, 52);
+        girls.set(2005, 60);
+        girls.set(2006, 110);
+        girls.set(2007, 135);
+        girls.set(2008, 120);
+
+        cartesianModel.addSeries(boys);
+        cartesianModel.addSeries(girls);
+    }
 }
                     </pre>
                 </p:tab>
