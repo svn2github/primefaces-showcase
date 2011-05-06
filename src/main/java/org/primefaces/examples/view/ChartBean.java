@@ -43,6 +43,8 @@ public class ChartBean implements Serializable {
 
     private PieChartModel pieModel;
 
+    private PieChartModel livePieModel;
+
 	public ChartBean() {
 		sales = new ArrayList<Sale>();
 		sales.add(new Sale("Brand 1", 540));
@@ -68,6 +70,7 @@ public class ChartBean implements Serializable {
 
         createCartesianModel();
         createPieModel();
+        createLivePieModel();
 	}
 
 	public List<Sale> getSales() {
@@ -110,6 +113,16 @@ public class ChartBean implements Serializable {
     public PieChartModel getPieModel() {
         return pieModel;
     }
+
+    public PieChartModel getLivePieModel() {
+        int random1 = (int)(Math.random() * 1000);
+		int random2 = (int)(Math.random() * 1000);
+
+		livePieModel.getData().put("Candidate 1", random1);
+        livePieModel.getData().put("Candidate 2", random2);
+        
+        return livePieModel;
+    }
     
     private void createCartesianModel() {
         cartesianModel = new CartesianChartModel();
@@ -144,5 +157,12 @@ public class ChartBean implements Serializable {
         pieModel.set("Brand 2", 325);
         pieModel.set("Brand 3", 702);
         pieModel.set("Brand 4", 421);
+    }
+
+    private void createLivePieModel() {
+        livePieModel = new PieChartModel();
+
+        livePieModel.set("Candidate 1", 540);
+        livePieModel.set("Candidate 2", 325);
     }
 }
