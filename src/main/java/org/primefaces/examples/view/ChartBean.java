@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.BehaviorEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.examples.domain.Birth;
@@ -100,10 +100,9 @@ public class ChartBean implements Serializable {
         return servers;
     }
 
-	public void itemSelect(BehaviorEvent event) {
-        ItemSelectEvent itemSelectEvent = (ItemSelectEvent) event;
+	public void itemSelect(ItemSelectEvent event) {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected",
-                        "Item Index: " + itemSelectEvent.getItemIndex() + ", Series Index:" + itemSelectEvent.getSeriesIndex());
+                        "Item Index: " + event.getItemIndex() + ", Series Index:" + event.getSeriesIndex());
         
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
