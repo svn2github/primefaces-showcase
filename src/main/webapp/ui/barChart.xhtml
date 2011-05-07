@@ -59,7 +59,7 @@ public class ChartBean implements Serializable {
     private void createCartesianModel() {
         cartesianModel = new CartesianChartModel();
 
-        LineChartSeries boys = new LineChartSeries();
+        ChartSeries boys = new ChartSeries();
         boys.setTitle("Boys");
 
         boys.set(2004, 120);
@@ -68,7 +68,7 @@ public class ChartBean implements Serializable {
         boys.set(2007, 150);
         boys.set(2008, 25);
 
-        LineChartSeries girls = new LineChartSeries();
+        ChartSeries girls = new ChartSeries();
         girls.setTitle("Girls");
         girls.setMarkerStyle("diamond");
 

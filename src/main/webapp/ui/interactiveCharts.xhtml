@@ -5,18 +5,6 @@
                 xmlns:p="http://primefaces.prime.com.tr/ui"
                 template="../templates/ui.xhtml">
 
-    <ui:define name="head">
-        <script type="text/javascript">
-            var chartStyle = {
-                padding:20,
-                legend: {
-                    display:"right",
-                    spacing:10
-                }
-            };
-        </script>
-    </ui:define>
-
     <ui:define name="content">
 
         <h1 class="title ui-widget-header ui-corner-all">Chart - Interactive</h1>
@@ -26,15 +14,16 @@
             <h:form>
                 <p:growl id="growl" showDetail="true" />
 
-                <p:pieChart value="#{chartBean.sales}" var="sale" categoryField="#{sale.brand}" dataField="#{sale.amount}"
-                            itemSelectListener="#{chartBean.itemSelect}" update="growl"
-                            style="chartStyle"/>
+                <p:pieChart value="#{chartBean.pieModel}" legendPosition="w"
+                        title="Interactive Pie Chart" style="width:400px">
+                    <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
+                </p:pieChart>
 
-                <p:columnChart value="#{chartBean.births}" var="birth" xfield="#{birth.year}"
-                               style="chartStyle" itemSelectListener="#{chartBean.itemSelect}" update="growl">
-                    <p:chartSeries label="Boys" value="#{birth.boys}" />
-                    <p:chartSeries label="Girls" value="#{birth.girls}" />
-                </p:columnChart>
+                <p:barChart value="#{chartBean.cartesianModel}" legendPosition="ne"
+                        title="Interactive Bar Chart">
+                    <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
+                </p:barChart>
+                
             </h:form>
 
             <h3>Source</h3>
@@ -42,51 +31,97 @@
                 <p:tab title="interactiveCharts.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
-	&lt;p:growl id="growl" showDetail="true" /&gt;
+    &lt;p:growl id="growl" showDetail="true" /&gt;
 
-	&lt;p:pieChart value="\#{chartBean.sales}" var="sale"
-                    categoryField="\#{sale.brand}" dataField="\#{sale.amount}"
-					itemSelectListener="\#{chartBean.itemSelect}" update="growl"
-					style="chartStyle"/&gt;
+    &lt;p:pieChart value="\#{chartBean.pieModel}" legendPosition="w"
+            title="Interactive Pie Chart" style="width:400px"&gt;
+        &lt;p:ajax event="itemSelect" listener="\#{chartBean.itemSelect}" update="growl" /&gt;
+    &lt;/p:pieChart&gt;
 
-	&lt;p:columnChart value="\#{chartBean.births}" var="birth" xfield="\#{birth.year}"
-		style="chartStyle" update="growl"
-        itemSelectListener="\#{chartBean.itemSelect}" &gt;
-		&lt;p:chartSeries label="Boys" value="\#{birth.boys}" /&gt;
-		&lt;p:chartSeries label="Girls" value="\#{birth.girls}" /&gt;
-	&lt;/p:columnChart&gt;
+    &lt;p:barChart value="\#{chartBean.cartesianModel}" legendPosition="ne"
+            title="Interactive Bar Chart"&gt;
+        &lt;p:ajax event="itemSelect" listener="\#{chartBean.itemSelect}" update="growl" /&gt;
+    &lt;/p:barChart&gt;
+
 &lt;/h:form&gt;
                     </pre>
                 </p:tab>
 
                 <p:tab title="ChartBean.java">
-<pre name="code" class="java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.BehaviorEvent;
+
+import org.primefaces.event.ItemSelectEvent;
+import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.PieChartModel;
+
 public class ChartBean implements Serializable {
 
-	private List&lt;Sale&gt; sales;
+    private CartesianChartModel cartesianModel;
 
-	private String message;
+    private PieChartModel pieModel;
 
 	public ChartBean() {
-		sales = new ArrayList&lt;Sale&gt;();
-		sales.add(new Sale("Brand 1", 540));
-		sales.add(new Sale("Brand 2", 325));
-		sales.add(new Sale("Brand 3", 702));
-		sales.add(new Sale("Brand 4", 421));
+        createCartesianModel();
+        createPieModel();
 	}
 
-	public List&lt;Sale&gt; getSales() {
-		return sales;
-	}
-
-	public void itemSelect(ItemSelectEvent event) {
-		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected",
-                        "Item Index: " + event.getItemIndex() + ", Series Index:" + event.getSeriesIndex());
+	public void itemSelect(BehaviorEvent event) {
+        ItemSelectEvent itemSelectEvent = (ItemSelectEvent) event;
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected",
+                        "Item Index: " + itemSelectEvent.getItemIndex() + ", Series Index:" + itemSelectEvent.getSeriesIndex());
 
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
+
+    public CartesianChartModel getCartesianModel() {
+        return cartesianModel;
+    }
+
+    public PieChartModel getPieModel() {
+        return pieModel;
+    }
+
+    private void createCartesianModel() {
+        cartesianModel = new CartesianChartModel();
+
+        ChartSeries boys = new ChartSeries();
+        boys.setTitle("Boys");
+
+        boys.set(2004, 120);
+        boys.set(2005, 100);
+        boys.set(2006, 44);
+        boys.set(2007, 150);
+        boys.set(2008, 25);
+
+        ChartSeries girls = new ChartSeries();
+        girls.setTitle("Girls");
+
+        girls.set(2004, 52);
+        girls.set(2005, 60);
+        girls.set(2006, 110);
+        girls.set(2007, 135);
+        girls.set(2008, 120);
+
+        cartesianModel.addSeries(boys);
+        cartesianModel.addSeries(girls);
+    }
+
+    private void createPieModel() {
+        pieModel = new PieChartModel();
+
+        pieModel.set("Brand 1", 540);
+        pieModel.set("Brand 2", 325);
+        pieModel.set("Brand 3", 702);
+        pieModel.set("Brand 4", 421);
+    }
 }
-            </pre>
+                    </pre>
                 </p:tab>
             </p:tabView>
         </div>
