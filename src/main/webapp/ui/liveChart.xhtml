@@ -12,8 +12,10 @@
             <p>This example displays an ongoing election between two candidates. Votes are updated live and displayed on a pie chart.</p>
 
             <h:form>
+
+                <p:poll interval="3" update="votes" />
                 
-                <p:pieChart value="#{chartBean.livePieModel}" live="true" title="Live Chart"
+                <p:pieChart id="votes" value="#{chartBean.livePieModel}" title="Live Chart"
                             legendPosition="nw" style="width:400px"/>
 
             </h:form>
@@ -24,7 +26,9 @@
                     <pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;p:pieChart value="\#{chartBean.livePieModel}" live="true" title="Live Chart"
+    &lt;p:poll interval="3" update="votes" /&gt;
+
+    &lt;p:pieChart id="votes" value="\#{chartBean.livePieModel}" title="Live Chart"
                 legendPosition="nw" style="width:400px"/&gt;
 
 &lt;/h:form&gt;
