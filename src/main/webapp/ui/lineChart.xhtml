@@ -11,7 +11,7 @@
             <p>LineChart is created with a CartesianChartModel.</p>
 
             <p:lineChart value="#{chartBean.cartesianModel}" legendPosition="e"
-                         title="Sample Line Chart"/>
+                         title="Sample Line Chart" minY="0" maxY="200"/>
 
             <h3>Source</h3>
             <p:tabView>
@@ -67,6 +67,12 @@ public class ChartBean implements Serializable {
 
         cartesianModel.addSeries(boys);
         cartesianModel.addSeries(girls);
+
+        cartesianModel.getCategories().add("2004");
+        cartesianModel.getCategories().add("2005");
+        cartesianModel.getCategories().add("2006");
+        cartesianModel.getCategories().add("2007");
+        cartesianModel.getCategories().add("2008");
     }
 }
                     </pre>

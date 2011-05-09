@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.examples.domain.Birth;
@@ -149,6 +148,12 @@ public class ChartBean implements Serializable {
 
         cartesianModel.addSeries(boys);
         cartesianModel.addSeries(girls);
+
+        cartesianModel.getCategories().add("2004");
+        cartesianModel.getCategories().add("2005");
+        cartesianModel.getCategories().add("2006");
+        cartesianModel.getCategories().add("2007");
+        cartesianModel.getCategories().add("2008");
     }
 
     private void createPieModel() {
