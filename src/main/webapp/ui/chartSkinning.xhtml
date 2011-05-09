@@ -6,146 +6,35 @@
                 template="../templates/ui.xhtml">
 
     <ui:define name="head">
-       
-        <script type="text/javascript">
-            var chartStyle = {
-                border: {color: 0x96acb4, size: 12},
-                background: {
-                    image : "../design/bg.jpg"
-                },
-                font: {name: "Arial Black", size: 14, color: 0x586b71},
-                dataTip:
-                {
-                    border: {color: 0x2e434d, size: 2},
-                    font: {name: "Arial Black", size: 13, color: 0x586b71}
-                },
-                xAxis:
-                {
-                    color: 0x2e434d
-                },
-                yAxis:
-                {
-                    color: 0x2e434d,
-                    majorTicks: {color: 0x2e434d, length: 4},
-                    minorTicks: {color: 0x2e434d, length: 2},
-                    majorGridLines: {size: 0}
-                }
-            };
-
-            var cpuStyle =
-                {
-                    image: "../design/column.png",
-                    mode: "no-repeat",
-                    color: 0x3399FF,
-                    size: 35
-                };
-
-            var memoryStyle =
-            {
-                image: "../design/column.png",
-                mode: "no-repeat",
-                color: 0xFF66CC,
-                size: 35
-            };
-        </script>
+        <style type="text/css">
+            .jqplot-title {
+                background-color: #CEE3F6;
+            }
+        </style>
     </ui:define>
 
     <ui:define name="content">
 
         <h1 class="title ui-widget-header ui-corner-all">Charts Skinning</h1>
         <div class="entry">
-            <p>In this example CPU and Memory usages of four different servers are monitored live and displayed using
-            advanced skinning options.</p>
+            <p>Chart skinning is done via CSS selectors.</p>
 
             <h:form>
-                <p:columnChart value="#{chartBean.servers}" var="server" xfield="#{server.name}"
-                               style="chartStyle" live="true">
-                    <p:chartSeries label="CPU" value="#{server.cpu}" style="cpuStyle"/>
-                    <p:chartSeries label="Memory" value="#{server.memory}" style="memoryStyle"/>
-                </p:columnChart>
+                <p:pieChart value="#{chartBean.pieModel}" legendPosition="w"
+                        title="Sample Pie Chart" style="width:400px" />
             </h:form>
 
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="chartSkinning.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
-    &lt;p:columnChart value="\#{chartBean.servers}" var="server" 
-            xfield="\#{server.name}" style="chartStyle" live="true"&gt;
-        &lt;p:chartSeries label="CPU" value="#{server.cpu}" style="cpuStyle"/&gt;
-        &lt;p:chartSeries label="Memory" value="#{server.memory}" style="memoryStyle"/&gt;
-    &lt;/p:columnChart&gt;
-&lt;/h:form&gt;
+
                     </pre>
                 </p:tab>
 
                 <p:tab title="ChartBean.java">
                     <pre name="code" class="java">
-public class ChartBean implements Serializable {
 
-    private List&lt;ServerLoad&gt; servers;
-
-	public ChartBean() {
-        servers = new ArrayList&lt;ServerLoad&gt;(5);
-        for (int i = 0; i &lt; 4; i++) {
-            servers.add(i, new ServerLoad("Server " + i, (int)(Math.random() * 100), (int)(Math.random() * 100)));
-        }
-	}
-
-    public List&lt;ServerLoad&gt; getServers() {
-        for (int i = 0; i &lt; 4; i++) {
-            servers.get(i).update( (int)(Math.random() * 100), (int)(Math.random() * 100));
-        }
-
-        return servers;
-    }
-}
-                    </pre>
-                </p:tab>
-
-                <p:tab title="ChartStyle">
-                    <pre name="code" class="js">
-&lt;script type="text/javascript"&gt;
-    var chartStyle = {
-        border: {color: 0x96acb4, size: 12},
-        background: {
-            image : "../design/bg.jpg"
-        },
-        font: {name: "Arial Black", size: 14, color: 0x586b71},
-        dataTip:
-        {
-            border: {color: 0x2e434d, size: 2},
-            font: {name: "Arial Black", size: 13, color: 0x586b71}
-        },
-        xAxis:
-        {
-            color: 0x2e434d
-        },
-        yAxis:
-        {
-            color: 0x2e434d,
-            majorTicks: {color: 0x2e434d, length: 4},
-            minorTicks: {color: 0x2e434d, length: 2},
-            majorGridLines: {size: 0}
-        }
-    };
-
-    var cpuStyle =
-        {
-            image: "../design/column.png",
-            mode: "no-repeat",
-            color: 0x3399FF,
-            size: 35
-        };
-
-    var memoryStyle =
-    {
-        image: "../design/column.png",
-        mode: "no-repeat",
-        color: 0xFF66CC,
-        size: 35
-    };
-&lt;/script&gt;
                     </pre>
                 </p:tab>
             </p:tabView>
