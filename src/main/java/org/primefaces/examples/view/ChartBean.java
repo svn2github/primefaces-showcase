@@ -16,15 +16,10 @@
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.ItemSelectEvent;
-import org.primefaces.examples.domain.Birth;
-import org.primefaces.examples.domain.ServerLoad;
-import org.primefaces.examples.domain.Vote;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 import org.primefaces.model.chart.PieChartModel;
