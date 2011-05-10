@@ -67,7 +67,7 @@ public class ChartBean implements Serializable {
         cartesianModel = new CartesianChartModel();
 
         LineChartSeries boys = new LineChartSeries();
-        boys.setTitle("Boys");
+        boys.setLabel("Boys");
 
         boys.set(2004, 120);
         boys.set(2005, 100);
@@ -76,7 +76,7 @@ public class ChartBean implements Serializable {
         boys.set(2008, 25);
 
         LineChartSeries girls = new LineChartSeries();
-        girls.setTitle("Girls");
+        girls.setLabel("Girls");
         girls.setMarkerStyle("diamond");
 
         girls.set(2004, 52);
