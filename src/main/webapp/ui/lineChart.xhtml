@@ -10,15 +10,21 @@
 		<div class="entry">
             <p>LineChart is created with a CartesianChartModel.</p>
 
-            <p:lineChart value="#{chartBean.cartesianModel}" legendPosition="e"
-                         title="Sample Line Chart" minY="0" maxY="200"/>
+            <p:lineChart value="#{chartBean.linearModel}" legendPosition="e"
+                         title="Linear Chart" minY="0" maxY="10"/>
+
+            <p:lineChart value="#{chartBean.categoryModel}" legendPosition="e"
+                         title="Category Chart" minY="0" maxY="200"/>
 
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="lineChart.xhtml">
                     <pre name="code" class="xml">
-&lt;p:lineChart value="\#{chartBean.cartesianModel}" legendPosition="e"
-                         title="Sample Line Chart"/&gt;
+&lt;p:lineChart value="\#{chartBean.linearModel}" legendPosition="e"
+     title="Linear Chart" minY="0" maxY="10"/&gt;
+
+&lt;p:lineChart value="\#{chartBean.categoryModel}" legendPosition="e"
+     title="Category Chart" minY="0" maxY="200"/&gt;
                     </pre>
                 </p:tab>
 
@@ -29,50 +35,77 @@ package org.primefaces.examples.view;
 import java.io.Serializable;
 
 import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.LineChartSeries;
 
 public class ChartBean implements Serializable {
 
-    private CartesianChartModel cartesianModel;
+    private CartesianChartModel categoryModel;
+
+    private CartesianChartModel linearModel;
 
 	public ChartBean() {
-        createCartesianModel();
+        createCategoryModel();
+        createLinearModel();
 	}
 
-    public CartesianChartModel getCartesianModel() {
-        return cartesianModel;
+    public CartesianChartModel getCategoryModel() {
+        return categoryModel;
     }
 
-    private void createCartesianModel() {
-        cartesianModel = new CartesianChartModel();
+    public CartesianChartModel getLinearModel() {
+        return linearModel;
+    }
 
-        LineChartSeries boys = new LineChartSeries();
+    private void createCategoryModel() {
+        categoryModel = new CartesianChartModel();
+
+        ChartSeries boys = new ChartSeries();
         boys.setLabel("Boys");
 
-        boys.set(2004, 120);
-        boys.set(2005, 100);
-        boys.set(2006, 44);
-        boys.set(2007, 150);
-        boys.set(2008, 25);
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
 
-        LineChartSeries girls = new LineChartSeries();
+        ChartSeries girls = new ChartSeries();
         girls.setLabel("Girls");
-        girls.setMarkerStyle("diamond");
 
-        girls.set(2004, 52);
-        girls.set(2005, 60);
-        girls.set(2006, 110);
-        girls.set(2007, 135);
-        girls.set(2008, 120);
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
 
-        cartesianModel.addSeries(boys);
-        cartesianModel.addSeries(girls);
+        categoryModel.addSeries(boys);
+        categoryModel.addSeries(girls);
+    }
 
-        cartesianModel.getCategories().add("2004");
-        cartesianModel.getCategories().add("2005");
-        cartesianModel.getCategories().add("2006");
-        cartesianModel.getCategories().add("2007");
-        cartesianModel.getCategories().add("2008");
+    private void createLinearModel() {
+        linearModel = new CartesianChartModel();
+
+        LineChartSeries series1 = new LineChartSeries();
+        series1.setLabel("Series 1");
+
+        series1.set(1, 2);
+        series1.set(2, 1);
+        series1.set(3, 3);
+        series1.set(4, 6);
+        series1.set(5, 8);
+
+        LineChartSeries series2 = new LineChartSeries();
+        series2.setLabel("Series 2");
+        series2.setMarkerStyle("diamond");
+
+        series2.set(1, 6);
+        series2.set(2, 3);
+        series2.set(3, 2);
+        series2.set(4, 7);
+        series2.set(5, 9);
+
+        linearModel.addSeries(series1);
+        linearModel.addSeries(series2);
     }
 }
                     </pre>

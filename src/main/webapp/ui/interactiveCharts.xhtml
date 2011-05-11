@@ -19,7 +19,7 @@
                     <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
                 </p:pieChart>
 
-                <p:barChart value="#{chartBean.cartesianModel}" legendPosition="ne"
+                <p:barChart value="#{chartBean.categoryModel}" legendPosition="ne"
                         title="Interactive Bar Chart">
                     <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
                 </p:barChart>
@@ -38,7 +38,7 @@
         &lt;p:ajax event="itemSelect" listener="\#{chartBean.itemSelect}" update="growl" /&gt;
     &lt;/p:pieChart&gt;
 
-    &lt;p:barChart value="\#{chartBean.cartesianModel}" legendPosition="ne"
+    &lt;p:barChart value="\#{chartBean.categoryModel}" legendPosition="ne"
             title="Interactive Bar Chart"&gt;
         &lt;p:ajax event="itemSelect" listener="\#{chartBean.itemSelect}" update="growl" /&gt;
     &lt;/p:barChart&gt;
@@ -61,12 +61,12 @@ import org.primefaces.model.chart.PieChartModel;
 
 public class ChartBean implements Serializable {
 
-    private CartesianChartModel cartesianModel;
+    private CartesianChartModel categoryModel;
 
     private PieChartModel pieModel;
 
 	public ChartBean() {
-        createCartesianModel();
+        createCategoryModel();
         createPieModel();
 	}
 
@@ -77,37 +77,37 @@ public class ChartBean implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-    public CartesianChartModel getCartesianModel() {
-        return cartesianModel;
+    public CartesianChartModel getCategoryModel() {
+        return categoryModel;
     }
 
     public PieChartModel getPieModel() {
         return pieModel;
     }
 
-    private void createCartesianModel() {
-        cartesianModel = new CartesianChartModel();
+    private void createCategoryModel() {
+        categoryModel = new CartesianChartModel();
 
         ChartSeries boys = new ChartSeries();
         boys.setLabel("Boys");
 
-        boys.set(2004, 120);
-        boys.set(2005, 100);
-        boys.set(2006, 44);
-        boys.set(2007, 150);
-        boys.set(2008, 25);
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
 
         ChartSeries girls = new ChartSeries();
         girls.setLabel("Girls");
 
-        girls.set(2004, 52);
-        girls.set(2005, 60);
-        girls.set(2006, 110);
-        girls.set(2007, 135);
-        girls.set(2008, 120);
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
 
-        cartesianModel.addSeries(boys);
-        cartesianModel.addSeries(girls);
+        categoryModel.addSeries(boys);
+        categoryModel.addSeries(girls);
     }
 
     private void createPieModel() {
