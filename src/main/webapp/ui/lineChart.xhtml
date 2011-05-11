@@ -10,11 +10,11 @@
 		<div class="entry">
             <p>LineChart is created with a CartesianChartModel.</p>
 
-            <p:lineChart value="#{chartBean.linearModel}" legendPosition="e"
+            <p:lineChart  value="#{chartBean.linearModel}" legendPosition="e"
                          title="Linear Chart" minY="0" maxY="10"/>
 
-            <p:lineChart value="#{chartBean.categoryModel}" legendPosition="e"
-                         title="Category Chart" minY="0" maxY="200"/>
+            <p:lineChart id="linear" value="#{chartBean.categoryModel}" legendPosition="e"
+                         title="Category Chart" minY="0" maxY="200" style="margin-top:20px"/>
 
             <h3>Source</h3>
             <p:tabView>
@@ -24,7 +24,7 @@
      title="Linear Chart" minY="0" maxY="10"/&gt;
 
 &lt;p:lineChart value="\#{chartBean.categoryModel}" legendPosition="e"
-     title="Category Chart" minY="0" maxY="200"/&gt;
+     title="Category Chart" minY="0" maxY="200" style="margin-top:20px"/&gt;
                     </pre>
                 </p:tab>
 
