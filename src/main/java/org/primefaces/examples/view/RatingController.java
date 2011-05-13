@@ -10,8 +10,10 @@ public class RatingController {
 	private double rating1;
 
 	private double rating2;
+
+    private double rating3;
 	
-	private double rating3 = 3;
+	private double rating4 = 3;
 	
 	public void handleRate(RateEvent rateEvent) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + (int) rateEvent.getRating());
@@ -42,4 +44,12 @@ public class RatingController {
 	public void setRating3(double rating3) {
 		this.rating3 = rating3;
 	}
+
+    public double getRating4() {
+        return rating4;
+    }
+
+    public void setRating4(double rating4) {
+        this.rating4 = rating4;
+    }
 }

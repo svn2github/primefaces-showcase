@@ -8,10 +8,12 @@
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Rating</h1>
 		<div class="entry">
-                <p>Rating component provides a star based rating input. In addition instant rating is available with ajax rate listener</p>
+                <p>Rating component provides a star based rating input.</p>
                 	
                 <h3>Input Rating</h3>
                 <h:form>
+
+                    <p:growl id="messages" showDetail="true"/>
                 
                 	<h:panelGrid columns="2" cellpadding="5">
                 		<h:outputText value="Rating 1:" />
@@ -31,15 +33,15 @@
 				 	<h3>Instant Ajax Rating</h3>
 					<h:panelGrid columns="2" cellpadding="5">
                 		<h:outputText value="Rate Me" />
-                		<p:rating rateListener="#{ratingController.handleRate}" update="messages"/>
+                		<p:rating value="#{ratingController.rating3}">
+                            <p:ajax event="rate" listener="#{ratingController.handleRate}" update="messages" />
+                        </p:rating>
                 	</h:panelGrid>
-                	
-                	<p:growl id="messages" showDetail="true"/>
-                	
+
                 	<h3>Display Value Only</h3>
                 	<h:panelGrid columns="2" cellpadding="5">
                 		<h:outputText value="A ReadOnly Rating:"/>
-						<p:rating value="#{ratingController.rating3}" disabled="true"/>
+						<p:rating value="#{ratingController.rating4}" disabled="true" />
                 	</h:panelGrid>
 					
 				</h:form>
@@ -47,92 +49,14 @@
 				<h3>Source</h3>
 				<p:tabView>
 					<p:tab title="rating.xhtml">
-<pre name="code" class="xml">
-&lt;h:form&gt;
-                
-   	&lt;h:panelGrid columns="2" cellpadding="5"&gt;
-   		&lt;h:outputText value="Rating 1:" /&gt;
-   		&lt;p:rating value="\#{ratingController.rating1}" /&gt;
+                        <pre name="code" class="xml">
 
-   		&lt;h:outputText value="Rating 2:" /&gt;
-   		&lt;p:rating value="\#{ratingController.rating2}" stars="10"/&gt;
-   	&lt;/h:panelGrid&gt;
-            	
-	&lt;p:commandButton value="Submit" update="displayRatings" style="margin:5px"/&gt;
-            		
-  	&lt;h:panelGrid id="displayRatings" columns="1" cellpadding="5"&gt;
-  		&lt;h:outputText value="Rating 1: \#{ratingController.rating1}" /&gt;
-  		&lt;h:outputText value="Rating 2: \#{ratingController.rating2}" /&gt;
-  	&lt;/h:panelGrid&gt;
-            	
- 	&lt;h3&gt;Instant Ajax Rating&lt;/h3&gt;
-	&lt;h:panelGrid columns="2" cellpadding="5"&gt;
-   		&lt;h:outputText value="Rate Me" /&gt;
-   		&lt;p:rating update="messages" 
-   				rateListener="\#{ratingController.handleRate}" /&gt;
-   	&lt;/h:panelGrid&gt;
-            	
-   	&lt;p:growl id="messages" showDetail="true"/&gt;
-   	
-   	&lt;h3&gt;Display Value Only&lt;/h3&gt;
-   	&lt;h:panelGrid columns="2" cellpadding="5"&gt;
-		&lt;h:outputText value="A ReadOnly Rating:"/&gt;
-		&lt;p:rating value="\#{ratingController.rating3}" disabled="true"/&gt;
-	&lt;/h:panelGrid&gt;
-	
-&lt;/h:form&gt;
-				</pre>
+                        </pre>
 					</p:tab>
 					
 					<p:tab title="RatingController.java">
-<pre name="code" class="java">
-package org.primefaces.examples.view;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-
-import org.primefaces.event.RateEvent;
-
-public class RatingController {
-
-	private double rating1;
-
-	private double rating2;
-
-	private double rating3 = 3;
-
-	public void handleRate(RateEvent rateEvent) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + (int) rateEvent.getRating());
-
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
-
-	public double getRating1() {
-		return rating1;
-	}
-
-	public void setRating1(double rating1) {
-		this.rating1 = rating1;
-	}
-
-	public double getRating2() {
-		return rating2;
-	}
-
-	public void setRating2(double rating2) {
-		this.rating2 = rating2;
-	}
-
-	public double getRating3() {
-		return rating3;
-	}
-
-	public void setRating3(double rating3) {
-		this.rating3 = rating3;
-	}
-}
-
-        		</pre>
+                        <pre name="code" class="java">
+                        </pre>
 					</p:tab>
 				</p:tabView>
 				
