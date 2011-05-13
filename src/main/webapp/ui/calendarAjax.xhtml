@@ -8,14 +8,15 @@
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Calendar</h1>
 		<div class="entry">
+            <p>When a date is selected, a server side listener can be invoked using dateSelect event.</p>
+            
 			<h:form>
-				<p>When a date is selected, a server side listener can be invoked with ajax instantly. Optionally
-				other components on page can be updated using onSelectUpdate attribute.</p>
-                
+				
 				<p:growl id="growl" showDetail="true"/>
 				
-				<p:calendar value="#{calendarBean.date1}" mode="inline" 
-						onSelectUpdate="growl" selectListener="#{calendarBean.handleDateSelect}"/>		
+				<p:calendar value="#{calendarBean.date1}" mode="inline">
+                    <p:ajax event="dateSelect" listener="#{calendarBean.handleDateSelect}" update="growl" />
+                </p:calendar>
 			
 			</h:form>
 	
@@ -24,11 +25,13 @@
 				<p:tab title="calendarAjax.html">
 <pre name="code" class="xml">
 &lt;h:form&gt;
-	&lt;p:growl id="growl" showDetail="true"/&gt;
-				
-	&lt;p:calendar value="\#{calendarBean.date1}" mode="inline" 
-			onSelectUpdate="growl" 
-			selectListener="\#{calendarBean.handleDateSelect}"/&gt;		
+
+    &lt;p:growl id="growl" showDetail="true"/&gt;
+
+    &lt;p:calendar value="\#{calendarBean.date1}" mode="inline"&gt;
+        &lt;p:ajax event="dateSelect" listener="\#{calendarBean.handleDateSelect}" update="growl" /&gt;
+    &lt;/p:calendar&gt;
+
 &lt;/h:form&gt;
 </pre>
 				</p:tab>
