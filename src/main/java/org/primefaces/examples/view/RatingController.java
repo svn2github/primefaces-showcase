@@ -16,7 +16,7 @@ public class RatingController {
 	private double rating4 = 3;
 	
 	public void handleRate(RateEvent rateEvent) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + (int) rateEvent.getRating());
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + ((Double) rateEvent.getRating()).intValue());
 
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}

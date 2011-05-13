@@ -50,12 +50,100 @@
 				<p:tabView>
 					<p:tab title="rating.xhtml">
                         <pre name="code" class="xml">
+&lt;h:form&gt;
 
+    &lt;p:growl id="messages" showDetail="true"/&gt;
+
+    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+        &lt;h:outputText value="Rating 1:" /&gt;
+        &lt;p:rating value="\#{ratingController.rating1}" /&gt;
+
+        &lt;h:outputText value="Rating 2:" /&gt;
+        &lt;p:rating value="\#{ratingController.rating2}" stars="10"/&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Submit" update="displayRatings" style="margin:5px"/&gt;
+
+    &lt;h:panelGrid id="displayRatings" columns="1" cellpadding="5"&gt;
+        &lt;h:outputText value="Rating 1: \#{ratingController.rating1}" /&gt;
+        &lt;h:outputText value="Rating 2: \#{ratingController.rating2}" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;h3&gt;Instant Ajax Rating&lt;/h3&gt;
+    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+        &lt;h:outputText value="Rate Me" /&gt;
+        &lt;p:rating value="\#{ratingController.rating3}"&gt;
+            &lt;p:ajax event="rate" listener="\#{ratingController.handleRate}" update="messages" /&gt;
+        &lt;/p:rating&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;h3&gt;Display Value Only&lt;/h3&gt;
+    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+        &lt;h:outputText value="A ReadOnly Rating:"/&gt;
+        &lt;p:rating value="\#{ratingController.rating4}" disabled="true" /&gt;
+    &lt;/h:panelGrid&gt;
+
+&lt;/h:form&gt;
                         </pre>
 					</p:tab>
 					
 					<p:tab title="RatingController.java">
                         <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.RateEvent;
+
+public class RatingController {
+
+	private double rating1;
+
+	private double rating2;
+
+    private double rating3;
+
+	private double rating4 = 3;
+
+	public void handleRate(RateEvent rateEvent) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + ((Double) rateEvent.getRating()).intValue());
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+
+	public double getRating1() {
+		return rating1;
+	}
+
+	public void setRating1(double rating1) {
+		this.rating1 = rating1;
+	}
+
+	public double getRating2() {
+		return rating2;
+	}
+
+	public void setRating2(double rating2) {
+		this.rating2 = rating2;
+	}
+
+	public double getRating3() {
+		return rating3;
+	}
+
+	public void setRating3(double rating3) {
+		this.rating3 = rating3;
+	}
+
+    public double getRating4() {
+        return rating4;
+    }
+
+    public void setRating4(double rating4) {
+        this.rating4 = rating4;
+    }
+}
                         </pre>
 					</p:tab>
 				</p:tabView>
