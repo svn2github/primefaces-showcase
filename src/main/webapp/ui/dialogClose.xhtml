@@ -5,74 +5,49 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
 	
-	<ui:define name="head">
-		<style type="text/css">
-		
-			.yui-skin-sam .yui-panel .bd{
-				background: #333333;
-				border-color: #000000;
-				color:#CCCCCC;
-			}
-			
-		 	.yui-skin-sam .yui-panel .hd {  
-			    background: url(../images/dialoghd.gif);
-			    border-color : #000000;
-			    color: #FFFFFF;
-			} 
-			
-			.yui-skin-sam .yui-panel-container.shadow .underlay {
-				background-color: #333333;
-				bottom:-7px;
-				left: 7px;
-				opacity:0.5;
-				position:absolute;
-				right:-7px;
-				top:7px;
-			}
-			
-			.yui-skin-sam .container-close {
-				background: url(../images/dialogclose.png) no-repeat;
-			}
-			 
-		</style>
-	</ui:define>
-	
 	<ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">Dialog - Ajax CloseListener</h1>
+		<h1 class="title ui-widget-header ui-corner-all">Dialog - Close</h1>
 		<div class="entry">
-			<p>CloseListeners can be attached to dialog to execute custom logic, additional onCloseUpdate options allow
-			partial page update after closeListener is processed and dialog is closed.</p>
-			
-			<p:growl id="growl" showDetail="true"/>
-						
-			<h:outputLink value="javascript:void(0)" onclick="dlg.show()">Show the Picture of the Day</h:outputLink>
-			
-			<p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" width="425" height="300"
-				closeListener="#{dialogBean.handleClose}" onCloseUpdate="growl" resizable="false" showEffect="clip" hideEffect="clip">
-				<h:form>
-					<p:graphicImage value="/images/nature3.jpg" />
-				</h:form>
-			</p:dialog>
+			<p>Close event can be listened via ajax behavior.</p>
+
+            <h:form>
+
+                <p:growl id="growl" showDetail="true"/>
+
+                <h:outputLink value="javascript:void(0)" onclick="dlg.show()">Show the Picture of the Day</h:outputLink>
+
+                <p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" width="425" height="300"
+                    resizable="false" showEffect="clip" hideEffect="clip">
+                    
+                    <p:ajax event="close" update="growl" listener="#{dialogBean.handleClose}"/>
+                    
+                    <p:graphicImage value="/images/nature3.jpg" />
+                    
+                </p:dialog>
+
+            </h:form>
 
 		<h3>Source</h3>
 		<p:tabView>
 			<p:tab title="dialogClose.xhtml">
 <pre name="code" class="xml">
-&lt;p:growl id="growl" showDetail="true"/&gt;
-						
-&lt;h:outputLink value="javascript:void(0)" onclick="dlg.show()"&gt;Show the Picture of the Day&lt;/h:outputLink&gt;
+&lt;h:form&gt;
 
-&lt;p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" width="425" height="300"
-			closeListener="\#{dialogBean.handleClose}" 
-			onCloseUpdate="growl" 
-			resizable="false" showEffect="clip" hideEffect="clip"&gt;
-	
-	&lt;h:form&gt;
-		&lt;p:graphicImage value="/images/nature3.jpg" /&gt;
-	&lt;/h:form&gt;
-	
-&lt;/p:dialog&gt;	
+    &lt;p:growl id="growl" showDetail="true"/&gt;
+
+    &lt;h:outputLink value="javascript:void(0)" onclick="dlg.show()"&gt;Show the Picture of the Day&lt;/h:outputLink&gt;
+
+    &lt;p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" width="425" height="300"
+        resizable="false" showEffect="clip" hideEffect="clip"&gt;
+
+        &lt;p:ajax event="close" update="growl" listener="\#{dialogBean.handleClose}"/&gt;
+
+        &lt;p:graphicImage value="/images/nature3.jpg" /&gt;
+
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
 </pre>
 			</p:tab>
 			
