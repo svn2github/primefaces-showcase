@@ -6,80 +6,58 @@
 	template="../templates/ui.xhtml">
 
 	<ui:define name="content">
-	<h1 class="title ui-widget-header ui-corner-all">DataTable</h1>
-		<div class="entry">
-			<p>Basic usage is same as standard datatable.</p>
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - Resizable Columns</h1>
+            <div class="entry">
+                <p>Basic usage is same as standard datatable.</p>
 
-            <h:form>
-                <p:dataTable var="car" value="#{tableBean.carsSmall}">
-                    <p:column>
-                        <f:facet name="header">
-								Model
-                        </f:facet>
-                        <h:outputText value="#{car.model}" />
-                    </p:column>
+                <h:form>
+                    <p:dataTable var="car" value="#{tableBean.carsSmall}" resizableColumns="true">
+                        <p:column headerText="Model">
+                            #{car.model}
+                        </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-								Year
-                        </f:facet>
-                        <h:outputText value="#{car.year}" />
-                    </p:column>
+                        <p:column headerText="Year">
+                            <h:outputText value="#{car.year}" />
+                        </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-								Manufacturer
-                        </f:facet>
-                        <h:outputText value="#{car.manufacturer}" />
-                    </p:column>
+                        <p:column headerText="Manufacturer">
+                            <h:outputText value="#{car.manufacturer}" />
+                        </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-								Color
-                        </f:facet>
-                        <h:outputText value="#{car.color}" />
-                    </p:column>
-                </p:dataTable>
-            </h:form>
+                        <p:column headerText="Color">
+                            <h:outputText value="#{car.color}" />
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:commandButton value="Submit" ajax="false" />
+                </h:form>
 
 		<h3>Source</h3>
 		<p:tabView>
 			<p:tab title="datatableBasic.xhtml">
 <pre name="code" class="xml">
 &lt;h:form&gt;
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                    Model
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" resizableColumns="true"&gt;
+        &lt;p:column headerText="Model"&gt;
+            \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                    Year
-            &lt;/f:facet&gt;
+        &lt;p:column headerText="Year"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                    Manufacturer
-            &lt;/f:facet&gt;
+        &lt;p:column headerText="Manufacturer"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                    Color
-            &lt;/f:facet&gt;
+        &lt;p:column headerText="Color"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
 &lt;/h:form&gt;
 				</pre>
 			</p:tab>
-			
+
 			<p:tab title="TableBean.java">
 			<pre name="code" class="java">
 package org.primefaces.examples.view;
@@ -92,7 +70,7 @@ import java.util.UUID;
 import org.primefaces.examples.domain.Car;
 
 public class TableBean implements Serializable {
-	
+
 	static {
 		colors = new String[10];
 		colors[0] = "Black";
@@ -105,7 +83,7 @@ public class TableBean implements Serializable {
 		colors[7] = "Yellow";
 		colors[8] = "Brown";
 		colors[9] = "Maroon";
-		
+
 		manufacturers = new String[10];
 		manufacturers[0] = "Mercedes";
 		manufacturers[1] = "BMW";
@@ -122,20 +100,20 @@ public class TableBean implements Serializable {
     private final static String[] colors;
 
 	private final static String[] manufacturers;
-	
+
 	private List&lt;Car&gt; carsSmall;
-	
+
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();
-		
+
 		populateRandomCars(carsSmall, 9);
 	}
-	
+
 	private void populateRandomCars(List&lt;Car&gt; list, int size) {
 		for(int i = 0 ; i &lt; size ; i++)
 			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 	}
-	
+
 	public List&lt;Car&gt; getCarsSmall() {
 		return carsSmall;
 	}
@@ -143,15 +121,15 @@ public class TableBean implements Serializable {
 	private int getRandomYear() {
 		return (int) (Math.random() * 50 + 1960);
 	}
-	
+
 	private String getRandomColor() {
 		return colors[(int) (Math.random() * 10)];
 	}
-	
+
 	private String getRandomManufacturer() {
 		return manufacturers[(int) (Math.random() * 10)];
 	}
-	
+
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
@@ -160,6 +138,6 @@ public class TableBean implements Serializable {
 			</p:tab>
 		</p:tabView>
 	       </div>
-				
+
 	</ui:define>
 </ui:composition>
