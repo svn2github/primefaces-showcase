@@ -19,7 +19,7 @@
 				<p:calendar value="#{calendarBean.date2}" pattern="HH:mm" timeOnly="true" />
 
 				<h3>AM/PM</h3>
-				<p:calendar value="#{calendarBean.date3}" pattern="MM/dd/yyyy HH:mm a"/>
+				<p:calendar value="#{calendarBean.date3}" pattern="MM/dd/yyyy hh:mm a"/>
 
 				<h3>Seconds</h3>
 				<p:calendar value="#{calendarBean.date4}" pattern="MM/dd/yyyy HH:mm:ss" />
@@ -52,7 +52,7 @@
 
 						<h:outputText value="AM/PM: " />
 						<h:outputText value="#{calendarBean.date3}">
-							<f:convertDateTime pattern="MM/dd/yyyy HH:mm a"/>
+							<f:convertDateTime pattern="MM/dd/yyyy hh:mm a"/>
 						</h:outputText>
 
 						<h:outputText value="Seconds: " />
@@ -88,7 +88,7 @@
     &lt;p:calendar value="\#{calendarBean.date2}" pattern="HH:mm" timeOnly="true" /&gt;
 
     &lt;h3&gt;AM/PM&lt;/h3&gt;
-    &lt;p:calendar value="\#{calendarBean.date3}" pattern="MM/dd/yyyy HH:mm a"/&gt;
+    &lt;p:calendar value="\#{calendarBean.date3}" pattern="MM/dd/yyyy hh:mm a"/&gt;
 
     &lt;h3&gt;Seconds&lt;/h3&gt;
     &lt;p:calendar value="\#{calendarBean.date4}" pattern="MM/dd/yyyy HH:mm:ss" /&gt;
@@ -121,7 +121,7 @@
 
             &lt;h:outputText value="AM/PM: " /&gt;
             &lt;h:outputText value="\#{calendarBean.date3}"&gt;
-                &lt;f:convertDateTime pattern="MM/dd/yyyy HH:mm a"/&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy hh:mm a"/&gt;
             &lt;/h:outputText&gt;
 
             &lt;h:outputText value="Seconds: " /&gt;
