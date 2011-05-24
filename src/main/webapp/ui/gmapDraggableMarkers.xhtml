@@ -20,8 +20,9 @@
 			
 				<p:growl id="growl" showDetail="true"/>
 				
-				<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px"
-					model="#{mapBean.draggableModel}" markerDragListener="#{mapBean.onMarkerDrag}" onMarkerDragUpdate="growl" />
+				<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID"  model="#{mapBean.draggableModel}" style="width:600px;height:400px">
+                    <p:ajax event="markerDrag" listener="#{mapBean.onMarkerDrag}" update="growl" />
+                </p:gmap>
 
 			</h:form>
 			
@@ -30,14 +31,12 @@
 				<p:tab title="gmapDraggableMarkers.xhtml">
 					<pre name="code" class="xml">
 &lt;h:form&gt;
-			
-	&lt;p:growl id="growl" showDetail="true"/&gt;
-	
-	&lt;p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" 
-			style="width:600px;height:400px"
-			model="\#{mapBean.draggableModel}"
-			markerDragListener="\#{mapBean.onMarkerDrag}" 
-			onMarkerDragUpdate="growl" /&gt;
+
+    &lt;p:growl id="growl" showDetail="true"/&gt;
+
+    &lt;p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID"  model="\#{mapBean.draggableModel}" style="width:600px;height:400px"
+        &lt;p:ajax event="markerDrag" listener="\#{mapBean.onMarkerDrag}" update="growl" /&gt;
+    &lt;/p:gmap&gt;
 
 &lt;/h:form&gt;
 					</pre>

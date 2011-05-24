@@ -13,16 +13,18 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">GMap - Events</h1>
 		<div class="entry">
-			<p>Map can respond to various events such as click, zoom change, drag by invoking server side listeners
-			with Ajax.</p>
+			<p>Map can respond to various events such as click, zoom change and overlay select.</p>
 			
 			<h:form>
 				
 				<p:growl id="messages" showDetail="true" life="2000" />
 			
-				<p:gmap center="41.381542, 2.122893" zoom="15" type="ROADMAP" style="width:600px;height:400px" 
-					stateChangeListener="#{mapBean.onStateChange}" onStateChangeUpdate="messages" 
-					pointSelectListener="#{mapBean.onPointSelect}" onPointSelectUpdate="messages" />
+				<p:gmap center="41.381542, 2.122893" zoom="15" type="ROADMAP" style="width:600px;height:400px">
+
+                    <p:ajax event="stateChange" listener="#{mapBean.onStateChange}" update="messages" />
+                    <p:ajax event="pointSelect" listener="#{mapBean.onPointSelect}" update="messages" />
+
+                </p:gmap>
 				
 			</h:form>
 			
@@ -31,14 +33,16 @@
 				<p:tab title="gmapEvents.xhtml">
 					<pre name="code" class="xml">
 &lt;h:form&gt;
-					
-	&lt;p:growl id="messages" showDetail="true" life="2000" /&gt;
 
-	&lt;p:gmap center="41.381542, 2.122893" zoom="15" type="ROADMAP" 
-		style="width:600px;height:400px" 
-		stateChangeListener="\#{mapBean.onStateChange}" onStateChangeUpdate="messages" 
-		pointSelectListener="\#{mapBean.onPointSelect}" onPointSelectUpdate="messages" /&gt;
-	
+    &lt;p:growl id="messages" showDetail="true" life="2000" /&gt;
+
+    &lt;p:gmap center="41.381542, 2.122893" zoom="15" type="ROADMAP" style="width:600px;height:400px"&gt;
+
+        &lt;p:ajax event="stateChange" listener="\#{mapBean.onStateChange}" update="messages" /&gt;
+        &lt;p:ajax event="pointSelect" listener="\#{mapBean.onPointSelect}" update="messages" /&gt;
+
+    &lt;/p:gmap&gt;
+
 &lt;/h:form&gt;
 					</pre>
 				</p:tab>

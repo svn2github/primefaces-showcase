@@ -13,16 +13,15 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">GMap - Marker Selection</h1>
 		<div class="entry">
-			<p>Markers can respond to selection by invoking a server side
-			overlaySelectListener with ajax, passing an overlaySelectEvent that contains a reference to the selected marker. Optionally other components can be updated with ajax response
-			using onOverlaySelectUpdate attribute. onOverlaySelectStart and onOverlaySelectComplete are optional javascript callbacks.</p>
+			<p>Overlays can be selected via ajax behaviors.</p>
 		
 			<h:form>
 			
 				<p:growl id="growl" showDetail="true"/>
 				
-				<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px"
-					model="#{mapBean.simpleModel}" overlaySelectListener="#{mapBean.onMarkerSelect}" onOverlaySelectUpdate="growl" />
+				<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" model="#{mapBean.simpleModel}"  style="width:600px;height:400px">
+                    <p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}" update="growl" />
+                </p:gmap>
 
 			</h:form>
 			
@@ -31,14 +30,12 @@
 				<p:tab title="gmapMarkerSelect.xhtml">
 					<pre name="code" class="xml">
 &lt;h:form&gt;
-			
-	&lt;p:growl id="growl" showDetail="true"/&gt;
-	
-	&lt;p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" 
-			style="width:600px;height:400px"
-			model="\#{mapBean.simpleModel}" 
-			overlaySelectListener="\#{mapBean.onMarkerSelect}" 
-			onOverlaySelectUpdate="growl" /&gt;
+
+    &lt;p:growl id="growl" showDetail="true"/&gt;
+
+    &lt;p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" model="\#{mapBean.simpleModel}"  style="width:600px;height:400px"&gt;
+        &lt;p:ajax event="overlaySelect" listener="\#{mapBean.onMarkerSelect}" update="growl" /&gt;
+    &lt;/p:gmap&gt;
 
 &lt;/h:form&gt;
 					</pre>
