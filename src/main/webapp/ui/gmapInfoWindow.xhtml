@@ -13,13 +13,13 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">GMap - Info Window</h1>
 		<div class="entry">
-			<p>When a marker is selected, an info window can be displayed to provide more information about the marker
-			using ajax..</p>
+			<p>When a marker is selected, an info window can be displayed to provide detailed information.</p>
 			
 			<h:form>
 			
-				<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px"
-					model="#{mapBean.advancedModel}" overlaySelectListener="#{mapBean.onMarkerSelect}">
+				<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" model="#{mapBean.advancedModel}" style="width:600px;height:400px">
+
+                    <p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}" />
 					
 					<p:gmapInfoWindow>
 						<p:outputPanel style="text-align:center;display:block;margin:auto:">
@@ -48,24 +48,23 @@
 				<p:tab title="gmapInfoWindow.xhtml">
 					<pre name="code" class="xml">
 &lt;h:form&gt;
-			
-	&lt;p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" 
-		style="width:600px;height:400px"
-		model="\#{mapBean.advancedModel}" 
-		overlaySelectListener="\#{mapBean.onMarkerSelect}"&gt;
-		
-		&lt;p:gmapInfoWindow&gt;
-			&lt;p:outputPanel style="text-align:center;display:block;margin:auto:"&gt;
-				
-				&lt;p:graphicImage value="/images/antalya/\#{mapBean.marker.data}"/&gt;
-				&lt;br /&gt;
-				&lt;h:outputText value="\#{mapBean.marker.title}" /&gt;
-					
-			&lt;/p:outputPanel&gt;
-			
-		&lt;/p:gmapInfoWindow&gt;
-	&lt;/p:gmap&gt;
-	
+
+    &lt;p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" model="\#{mapBean.advancedModel}" style="width:600px;height:400px"&gt;
+
+        &lt;p:ajax event="overlaySelect" listener="\#{mapBean.onMarkerSelect}" /&gt;
+
+        &lt;p:gmapInfoWindow&gt;
+            &lt;p:outputPanel style="text-align:center;display:block;margin:auto:"&gt;
+
+                    &lt;p:graphicImage value="/images/antalya/\#{mapBean.marker.data}" height="150"/&gt;
+                    &lt;br /&gt;
+                    &lt;h:outputText value="\#{mapBean.marker.title}" /&gt;
+
+            &lt;/p:outputPanel&gt;
+
+        &lt;/p:gmapInfoWindow&gt;
+    &lt;/p:gmap&gt;
+
 &lt;/h:form&gt;
 					</pre>
 				</p:tab>
