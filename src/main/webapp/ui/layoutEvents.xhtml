@@ -12,7 +12,7 @@
 	</title>
 	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
 	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/#{guestPreferences.theme}/skin.css" />
-	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css"></link>
+	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css" />
 	<style type="text/css">
 		.ui-widget {
 			font-size: 75%;
@@ -31,11 +31,13 @@
 
     <p:growl id="msg" showDetail="true"/>
 
-	<p:layout fullPage="true" toggleListener="#{layoutBean.handleToggle}" onToggleUpdate="msg"
-			closeListener="#{layoutBean.handleClose}" onCloseUpdate="msg">
+	<p:layout fullPage="true">
+
+        <p:ajax event="toggle" listener="#{layoutBean.handleToggle}" update="msg" />
+        <p:ajax event="close" listener="#{layoutBean.handleClose}" update="msg" />
 
 		<p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">
-			<h:outputText value="Top unit content." />
+                <h:outputText value="Top unit content." />
 		</p:layoutUnit>
 
 		<p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
@@ -58,8 +60,10 @@
             <p:tabView style="margin-top:10px">
                 <p:tab title="layoutElement.xhtml">
                     <pre name="code" class="xml">
-&lt;p:layout fullPage="true" toggleListener="\#{layoutBean.handleToggle}" onToggleUpdate="msg"
-			closeListener="\#{layoutBean.handleClose}" onCloseUpdate="msg"&gt;
+&lt;p:layout fullPage="true"&gt;
+
+    &lt;p:ajax event="toggle" listener="\#{layoutBean.handleToggle}" update="msg" /&gt;
+    &lt;p:ajax event="close" listener="\#{layoutBean.handleClose}" update="msg" /&gt;
 
     &lt;p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true"&gt;
         &lt;h:outputText value="Top unit content." /&gt;
