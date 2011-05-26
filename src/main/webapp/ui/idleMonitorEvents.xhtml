@@ -13,7 +13,7 @@
 
             <p:growl id="messages" showDetail="true" sticky="true" />
 
-            <p:idleMonitor timeout="5000" update="messages" idleListener="">
+            <p:idleMonitor timeout="5000" update="messages">
                 <p:ajax event="idle" listener="#{idleMonitorController.idleListener}" update="messages" />
                 <p:ajax event="active" listener="#{idleMonitorController.activeListener}" update="messages" />
             </p:idleMonitor>
@@ -24,7 +24,7 @@
 					<pre name="code" class="xml">
 &lt;p:growl id="messages" showDetail="true" sticky="true" /&gt;
 
-&lt;p:idleMonitor timeout="5000" update="messages" idleListener=""&gt;
+&lt;p:idleMonitor timeout="5000" update="messages"&gt;
     &lt;p:ajax event="idle" listener="\#{idleMonitorController.idleListener}" update="messages" /&gt;
     &lt;p:ajax event="active" listener="\#{idleMonitorController.activeListener}" update="messages" /&gt;
 &lt;/p:idleMonitor&gt;
