@@ -9,10 +9,9 @@
 	
 		<h1 class="title ui-widget-header ui-corner-all">IdleMonitor - Client side</h1>
 		<div class="entry">
-			<p>IdleMonitor on this page
-			is set for 10 seconds for demonstration purposes. Stay idle for 10 seconds and idleMonitor will warn you.</p>
+			<p>IdleMonitor on this page is set for 10 seconds for demonstration purposes. Stay idle for 10 seconds and idleMonitor will warn you.</p>
 	
-			<p:idleMonitor timeout="10000" onidle="idleDialog.show();" onactive="idleDialog.hide();"/>
+			<p:idleMonitor timeout="10000" onidle="idleDialog.show()" onactive="idleDialog.hide()"/>
 			
 			<p:dialog header="What's happening?" widgetVar="idleDialog" modal="true" width="400" resizable="false">
 				<h:outputText value="Dude, are you there?" />
@@ -23,7 +22,7 @@
 				<p:tab title="idleMonitor.xhtml">
 								<pre name="code" class="xml">
 &lt;p:idleMonitor timeout="10000" 
-			onidle="idleDialog.show();" onactive="idleDialog.hide();"/&gt;
+			onidle="idleDialog.show()" onactive="idleDialog.hide()"/&gt;
 			
 &lt;p:dialog header="What's happening?" resizable="false"
 			widgetVar="idleDialog" modal="true" width="400"&gt;

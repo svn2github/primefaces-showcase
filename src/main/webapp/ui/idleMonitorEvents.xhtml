@@ -7,15 +7,17 @@
 	
 	<ui:define name="content">
 	
-		<h1 class="title ui-widget-header ui-corner-all">IdleMonitor - Ajax IdleEvents</h1>
+		<h1 class="title ui-widget-header ui-corner-all">IdleMonitor - Ajax Behaviors</h1>
 		<div class="entry">
-			<p>IdleMonitor can also invoke server side events with ajax in case user goes idle. IdleListeners are suitable
-				for invalidating user session.</p>
+			<p>IdleMonitor can also invoke server side events with ajax behaviors in case user goes idle or active.</p>
 			
 			<h:form>
 				<p:growl id="messages" showDetail="true" sticky="true" />
 				
-				<p:idleMonitor timeout="5000" update="messages" idleListener="#{idleMonitorController.idleListener}" />
+				<p:idleMonitor timeout="5000" update="messages" idleListener="">
+                    <p:ajax event="idle" listener="#{idleMonitorController.idleListener}" update="messages" />
+                    <p:ajax event="active" listener="#{idleMonitorController.activeListener}" update="messages" />
+                </p:idleMonitor>
 			</h:form>
 			
 			<h3>Source</h3>
@@ -23,12 +25,12 @@
 				<p:tab title="idleMonitorEvents.xhtml">
 					<pre name="code" class="xml">
 &lt;h:form&gt;
+    &lt;p:growl id="messages" showDetail="true" sticky="true" /&gt;
 
-	&lt;p:growl id="messages" showDetail="true" sticky="true" &gt;
-	
-	&lt;p:idleMonitor timeout="5000" update="message"
-				idleListener="\#{idleMonitorController.idleListener}"/&gt;
-
+    &lt;p:idleMonitor timeout="5000" update="messages" idleListener=""&gt;
+        &lt;p:ajax event="idle" listener="\#{idleMonitorController.idleListener}" update="messages" /&gt;
+        &lt;p:ajax event="active" listener="\#{idleMonitorController.activeListener}" update="messages" /&gt;
+    &lt;/p:idleMonitor&gt;
 &lt;/h:form&gt;
 </pre>
 				</p:tab>
@@ -49,6 +51,11 @@ public class IdleMonitorController {
 										"Your session is closed", "You have been idle for at least 5 seconds"));
 		
 		//invalidate session
+	}
+
+    public void activeListener() {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+										"Welcome Back", "That's a long coffee break!"));
 	}
 }
 
