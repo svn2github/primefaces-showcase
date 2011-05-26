@@ -18,13 +18,7 @@ public class FileUploadController {
         this.file = file;
     }
 
-    public void upload() {
-        FacesMessage msg = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
     public void handleFileUpload(FileUploadEvent event) {
-        System.out.println("Uploaded");
 		FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
