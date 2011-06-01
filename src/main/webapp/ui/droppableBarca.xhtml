@@ -28,9 +28,9 @@
 		
 		<script type="text/javascript">
 			function handleDrop(event, ui) {
-				ui.draggable.fadeOut(function() {jQuery(this).fadeIn();});
+				ui.draggable.fadeOut(function() {$(this).fadeIn();});
 
-				jQuery(this).droppable('disable');
+				$(this).droppable('disable');
 			}
 		</script>
 	</ui:define>
@@ -60,64 +60,75 @@
 					<h:panelGroup>
 						<h:panelGrid columns="3" style="margin-left:40px;">
 							<p:outputPanel id="LF" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit" activeStyleClass="slotActive" 
-                                             onDropUpdate="selectedPlayers growl" scope="forward" onDrop="handleDrop" datasource="availablePlayers"/>
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="forward" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 							
 							<p:outputPanel id="CF" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit" activeStyleClass="slotActive"
-                                             onDropUpdate="selectedPlayers growl" scope="forward" onDrop="handleDrop" datasource="availablePlayers"/>
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="forward" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 							
 							<p:outputPanel id="RF" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit" activeStyleClass="slotActive"
-                                             onDropUpdate="selectedPlayers growl" scope="forward" onDrop="handleDrop" datasource="availablePlayers"/>
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="forward" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 						</h:panelGrid>
 						
 						<h:panelGrid columns="3" style="margin-left:40px;">
 							<p:outputPanel id="LCM" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit" activeStyleClass="slotActive"
-                                             onDropUpdate="selectedPlayers growl" scope="midfield" onDrop="handleDrop" datasource="availablePlayers"/>
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="midfield" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 							
 							<p:outputPanel id="DM" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit" activeStyleClass="slotActive"
-                                             onDropUpdate="selectedPlayers growl" scope="midfield" onDrop="handleDrop" datasource="availablePlayers"/>
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="midfield" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 							
 							<p:outputPanel id="RCM" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit" activeStyleClass="slotActive"
-                                             onDropUpdate="selectedPlayers growl" scope="midfield" onDrop="handleDrop" datasource="availablePlayers" />
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="midfield" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 						</h:panelGrid>
 						
 						<h:panelGrid columns="4">
 							<p:outputPanel id="LB" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit" activeStyleClass="slotActive"
-                                             onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/>
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="defence" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 							
 							<p:outputPanel id="CB1" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit" activeStyleClass="slotActive"
-                                             onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/>
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="defence" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 							
 							<p:outputPanel id="CB2" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit"  activeStyleClass="slotActive"
-                                             onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/>
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="defence" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 							
 							<p:outputPanel id="RB" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit" activeStyleClass="slotActive"
-                                             onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/>
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="defence" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 						</h:panelGrid>
 						
 						<h:panelGrid columns="1" style="margin-left:120px;">
 							<p:outputPanel id="GK" styleClass="slot">
-								<p:droppable dropListener="#{barcelona.onDrop}" tolerance="fit" activeStyleClass="slotActive"
-                                             onDropUpdate="selectedPlayers growl" scope="goalkeeper" onDrop="handleDrop" datasource="availablePlayers"/>
+								<p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="goalkeeper" onDrop="handleDrop" datasource="availablePlayers">
+                                    <p:ajax listener="#{barcelona.onDrop}" update="selectedPlayers growl" />
+                                </p:droppable>
 							</p:outputPanel>
 						</h:panelGrid>
 					</h:panelGroup>
@@ -144,16 +155,11 @@
     &lt;h:panelGrid columns="2" columnClasses="lineup,squad"&gt;
 
         &lt;p:panel header="Squad"&gt;
-            &lt;p:dataGrid id="availablePlayers"
-                value="\#{barcelona.players}" var="player" columns="4"&gt;
+            &lt;p:dataGrid id="availablePlayers" value="\#{barcelona.players}" var="player" columns="4"&gt;
                 &lt;p:column&gt;
-                    &lt;p:graphicImage id="player"
-                        value="/images/barca/\#{player.photo}"
-                        styleClass="playerImage" /&gt;
+                    &lt;p:graphicImage id="player" value="/images/barca/\#{player.photo}" styleClass="playerImage"/&gt;
 
-                    &lt;p:draggable for="player" revert="true"
-                        scope="\#{player.position}"
-                        stack=".playerImage"/&gt;
+                    &lt;p:draggable for="player" revert="true" scope="\#{player.position}" stack=".playerImage"/&gt;
                 &lt;/p:column&gt;
             &lt;/p:dataGrid&gt;
         &lt;/p:panel&gt;
@@ -161,75 +167,75 @@
         &lt;h:panelGroup&gt;
             &lt;h:panelGrid columns="3" style="margin-left:40px;"&gt;
                 &lt;p:outputPanel id="LF" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit" activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="forward" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="forward" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
 
                 &lt;p:outputPanel id="CF" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit" activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="forward" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="forward" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
 
                 &lt;p:outputPanel id="RF" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit" activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="forward" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="forward" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
             &lt;/h:panelGrid&gt;
 
             &lt;h:panelGrid columns="3" style="margin-left:40px;"&gt;
                 &lt;p:outputPanel id="LCM" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit" activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="midfield" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="midfield" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
 
                 &lt;p:outputPanel id="DM" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit" activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="midfield" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="midfield" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
 
                 &lt;p:outputPanel id="RCM" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit" activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="midfield" onDrop="handleDrop" datasource="availablePlayers" /&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="midfield" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
             &lt;/h:panelGrid&gt;
 
             &lt;h:panelGrid columns="4"&gt;
                 &lt;p:outputPanel id="LB" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit" activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="defence" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
 
                 &lt;p:outputPanel id="CB1" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit" activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="defence" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
 
                 &lt;p:outputPanel id="CB2" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit"  activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="defence" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
 
                 &lt;p:outputPanel id="RB" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit" activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="defence" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="defence" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
             &lt;/h:panelGrid&gt;
 
             &lt;h:panelGrid columns="1" style="margin-left:120px;"&gt;
                 &lt;p:outputPanel id="GK" styleClass="slot"&gt;
-                    &lt;p:droppable dropListener="\#{barcelona.onDrop}"
-                                tolerance="fit" activeStyleClass="slotActive"
-                                 onDropUpdate="selectedPlayers growl" scope="goalkeeper" onDrop="handleDrop" datasource="availablePlayers"/&gt;
+                    &lt;p:droppable  tolerance="fit" activeStyleClass="slotActive" scope="goalkeeper" onDrop="handleDrop" datasource="availablePlayers"&gt;
+                        &lt;p:ajax listener="\#{barcelona.onDrop}" update="selectedPlayers growl" /&gt;
+                    &lt;/p:droppable&gt;
                 &lt;/p:outputPanel&gt;
             &lt;/h:panelGrid&gt;
         &lt;/h:panelGroup&gt;
@@ -238,8 +244,7 @@
     &lt;/h:panelGrid&gt;
 
     &lt;p:panel header="Squad"&gt;
-        &lt;p:dataList value="\#{barcelona.selectedPlayers}"
-                        var="player" id="selectedPlayers"&gt;
+        &lt;p:dataList value="\#{barcelona.selectedPlayers}" var="player" id="selectedPlayers"&gt;
             \#{player.number} - \#{player.name}
         &lt;/p:dataList&gt;
     &lt;/p:panel&gt;

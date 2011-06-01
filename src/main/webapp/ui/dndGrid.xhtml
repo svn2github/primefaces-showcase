@@ -77,8 +77,9 @@
                     
                 </p:fieldset>
 
-                <p:droppable for="selectedCars" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="availableCars"
-                             dropListener="#{tableBean.onCarDrop}" onDropUpdate="dropArea availableCars" onDrop="handleDrop"/>
+                <p:droppable for="selectedCars" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="availableCars" onDrop="handleDrop">
+                    <p:ajax listener="#{tableBean.onCarDrop}" update="dropArea availableCars" />
+                </p:droppable>
 
                 <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" draggable="false"
                           width="200" showEffect="fade" hideEffect="fade" modal="true">
@@ -175,12 +176,9 @@
 
     &lt;/p:fieldset&gt;
 
-    &lt;p:droppable for="selectedCars" tolerance="touch"
-                activeStyleClass="ui-state-highlight"
-                datasource="availableCars"
-                dropListener="\#{tableBean.onCarDrop}" 
-                onDropUpdate="dropArea availableCars"
-                onDrop="handleDrop"/&gt;
+    &lt;p:droppable for="selectedCars" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="availableCars" onDrop="handleDrop"&gt;
+        &lt;p:ajax listener="\#{tableBean.onCarDrop}" update="dropArea availableCars" /&gt;
+    &lt;/p:droppable&gt;
 
     &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" draggable="false"
               width="200" showEffect="fade" hideEffect="fade" modal="true"&gt;
