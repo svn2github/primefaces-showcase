@@ -10,14 +10,16 @@
         <h1 class="title ui-widget-header ui-corner-all">AccordionPanel - Change Listener</h1>
         <div class="entry">
             <p>Tab change event can be listened both on client and server side. onTabChange is a client side callback that is invoked
-                when active tab changed and tabChangeListener is a server side listener is invoked with ajax. Optionally
-                other components on page can be updated partially using onTabChangeUpdate attribute.</p>
+                when active tab changed and and there is also an ajax behavior provided.</p>
 
             <h:form>
 
                 <p:growl id="growl" showDetail="true" />
 
-                <p:accordionPanel autoHeight="false" tabChangeListener="#{tabBean.onTabChange}" onTabChangeUpdate="growl">
+                <p:accordionPanel autoHeight="false">
+                    
+                    <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" update="growl"/>
+                    
                     <p:tab title="Godfather Part I" id="Godfather1">
                         <h:panelGrid columns="2" cellpadding="10">
                             <p:graphicImage value="/images/godfather/godfather1.jpg" />
@@ -55,9 +57,10 @@
 
     &lt;p:growl id="growl" showDetail="true" /&gt;
 
-    &lt;p:accordionPanel autoHeight="false"
-            tabChangeListener="\#{tabBean.onTabChange}"
-            onTabChangeUpdate="growl"&gt;
+    &lt;p:accordionPanel autoHeight="false"&gt;
+
+        &lt;p:ajax event="tabChange" listener="\#{tabBean.onTabChange}" update="growl"/&gt;
+
         &lt;p:tab title="Godfather Part I" id="Godfather1"&gt;
             &lt;h:panelGrid columns="2" cellpadding="10"&gt;
                 &lt;p:graphicImage value="/images/godfather/godfather1.jpg" /&gt;
