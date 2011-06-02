@@ -9,8 +9,7 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">AutoComplete - Instant Selection</h1>
 		<div class="entry">
-			<p>AutoComplete supports instant ajax selection out of the box, selection can be listened using a selectListener
-			and other components can be updated with onSelectUpdate feature.</p>
+			<p>AutoComplete supports instant ajax selection out of the box.</p>
 		
 			<h:form>
 				<p:growl id="messages"/>
@@ -18,13 +17,15 @@
 				<p:panel header="Selection">
 					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputLabel value="Simple: " for="acSimple" />
-						<p:autoComplete id="acSimple" value="#{autoCompleteBean.txt1}" completeMethod="#{autoCompleteBean.complete}"
-										selectListener="#{autoCompleteBean.handleSelect}" onSelectUpdate="messages"/>
+						<p:autoComplete id="acSimple" value="#{autoCompleteBean.txt1}" completeMethod="#{autoCompleteBean.complete}">
+                            <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="messages" />
+                        </p:autoComplete>
 						
 						<h:outputLabel value="Pojo: " for="acPojo" />
 						<p:autoComplete id="acPojo" value="#{autoCompleteBean.selectedPlayer}" completeMethod="#{autoCompleteBean.completePlayer}"
-										var="player" itemLabel="#{player.name}" itemValue="#{player}" converter="player"
-										selectListener="#{autoCompleteBean.handleSelect}" onSelectUpdate="messages"/>
+										var="player" itemLabel="#{player.name}" itemValue="#{player}" converter="player">
+                            <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="messages" />
+                        </p:autoComplete>
 					
 					</h:panelGrid>
 					
@@ -52,30 +53,39 @@
                 <p:tab title="autoCompleteSelect.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
-	&lt;p:growl id="messages"/&gt;
-	
-	&lt;h:panelGrid columns="3" cellpadding="5"&gt;
-		&lt;h:outputLabel value="Simple" for="acSimple" /&gt;
-		&lt;p:autoComplete id="acSimple" value="\#{autoCompleteBean.text}" 
-			completeMethod="\#{autoCompleteBean.complete}"
-			selectListener="\#{autoCompleteBean.handleSelect}" 
-			onSelectUpdate="messages"/&gt;
-		&lt;h:outputText id="acSimpleOut" value="\#{autoCompleteBean.text}" /&gt;
-		
-		&lt;h:outputLabel value="Pojo" for="acPojo" /&gt;
-		&lt;p:autoComplete id="acPojo" value="\#{autoCompleteBean.selectedPlayer}" 
-			completeMethod="\#{autoCompleteBean.completePlayer}"
-			var="player" itemLabel="\#{player.name}" 
-			itemValue="\#{player}" converter="player"
-			selectListener="\#{autoCompleteBean.handleSelect}"
-            onSelectUpdate="messages"/&gt;
-		&lt;h:outputText id="acPojoOut"
-                value="\#{autoCompleteBean.selectedPlayer.name}" /&gt;
-		
-	&lt;/h:panelGrid&gt;
-	
-	&lt;p:commandButton value="Submit" update="acSimpleOut acPojoOut" /&gt;
-	
+    &lt;p:growl id="messages"/&gt;
+
+    &lt;p:panel header="Selection"&gt;
+        &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+            &lt;h:outputLabel value="Simple: " for="acSimple" /&gt;
+            &lt;p:autoComplete id="acSimple" value="\#{autoCompleteBean.txt1}" completeMethod="\#{autoCompleteBean.complete}"&gt;
+                &lt;p:ajax event="itemSelect" listener="\#{autoCompleteBean.handleSelect}" update="messages" /&gt;
+            &lt;/p:autoComplete&gt;
+
+            &lt;h:outputLabel value="Pojo: " for="acPojo" /&gt;
+            &lt;p:autoComplete id="acPojo" value="\#{autoCompleteBean.selectedPlayer}" completeMethod="\#{autoCompleteBean.completePlayer}"
+                            var="player" itemLabel="\#{player.name}" itemValue="\#{player}" converter="player"&gt;
+                &lt;p:ajax event="itemSelect" listener="\#{autoCompleteBean.handleSelect}" update="messages" /&gt;
+            &lt;/p:autoComplete&gt;
+
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:dialog header="Values" widgetVar="dialog"
+            showEffect="bounce" hideEffect="fold" width="200"&gt;
+
+        &lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
+            &lt;h:outputText value="Simple: " /&gt;
+            &lt;h:outputText value="\#{autoCompleteBean.txt1}" /&gt; 
+
+            &lt;h:outputText value="Pojo: " /&gt;
+            &lt;h:outputText value="\#{autoCompleteBean.selectedPlayer}" /&gt; 
+        &lt;/h:panelGrid&gt;
+
+    &lt;/p:dialog&gt;
+
 &lt;/h:form&gt;
                     </pre>
                 </p:tab>
