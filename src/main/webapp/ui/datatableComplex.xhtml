@@ -22,8 +22,9 @@
               <h:form>
 
 				<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
-                            selection="#{tableBean.selectedCar}" selectionMode="single"
-                            onRowSelectUpdate="display" onRowSelectComplete="carDialog.show()">
+                            selection="#{tableBean.selectedCar}" selectionMode="single">
+                    
+                    <p:ajax event="rowSelect" update="display" oncomplete="carDialog.show()" />
 
                     <f:facet name="header">
                         List of Cars
@@ -91,8 +92,9 @@
 &lt;h:form&gt;
 
     &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
-                selection="\#{tableBean.selectedCar}" selectionMode="single"
-                onRowSelectUpdate="display" onRowSelectComplete="carDialog.show()"&gt;
+                selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
+
+        &lt;p:ajax event="rowSelect" update="display" oncomplete="carDialog.show()" /&gt;
 
         &lt;f:facet name="header"&gt;
             List of Cars
