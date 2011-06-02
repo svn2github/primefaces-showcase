@@ -19,12 +19,12 @@
 		<div class="entry"> 
             <p>This example demonstrates various features such as paging, sorting, filtering and selection.</p>
             
-              <h:form>
+              <h:form id="form">
 
 				<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
                             selection="#{tableBean.selectedCar}" selectionMode="single">
                     
-                    <p:ajax event="rowSelect" update="display" oncomplete="carDialog.show()" />
+                    <p:ajax event="selectRow" update=":form:display" oncomplete="carDialog.show()" />
 
                     <f:facet name="header">
                         List of Cars
@@ -89,12 +89,12 @@
 			<p:tabView>
 				<p:tab title="datatableComplex.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
                 selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
 
-        &lt;p:ajax event="rowSelect" update="display" oncomplete="carDialog.show()" /&gt;
+        &lt;p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" /&gt;
 
         &lt;f:facet name="header"&gt;
             List of Cars
