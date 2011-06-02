@@ -45,7 +45,6 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
-import com.lowagie.text.Rectangle;
 import java.util.Map;
 import javax.faces.model.SelectItem;
 import org.primefaces.event.DragDropEvent;

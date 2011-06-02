@@ -8,20 +8,17 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Instant Row Selection</h1>
         <div class="entry">
-            <p>Instant row selection feature processes a selection with ajax when a row is selected. If defined a rowSelectListener or rowUnselectListener
-            is invoked passing row data as parameter, optionally other components on page can be updated with onRowSelectUpdate/onRowUnselectUpdate options.
-            onRowSelectStart and onRowSelectComplete are additional client side callbacks for further customization. Note that rowSelectListener
-            is aware of JSF Navigations so by returning an outcome you can navigate to another page with the selected row information.</p>
+            <p>Instant row selection-unselection is implemented using ajax behaviors.</p>
 
-            <h:form>
+            <h:form id="form">
 
                 <p:growl id="growl" showDetail="true"/>
 
                 <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
-                             selection="#{tableBean.selectedCar}" selectionMode="single" 
-                             rowSelectListener="#{tableBean.onRowSelect}" onRowSelectUpdate="display growl"
-                             rowUnselectListener="#{tableBean.onRowUnselect}" onRowUnselectUpdate="growl"
-                             onRowSelectComplete="carDialog.show()">
+                             selection="#{tableBean.selectedCar}" selectionMode="single">
+                    
+                    <p:ajax event="selectRow" listener="#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" />
+                    <p:ajax event="unselectRow" listener="#{tableBean.onRowUnselect}" update=":form:growl"/>
                     
                     <f:facet name="header">
                         Select a row to display a message
@@ -79,44 +76,6 @@
                     </h:panelGrid>
                 </p:dialog>
 
-                <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
-                             selection="#{tableBean.selectedCar}" selectionMode="single"
-                             rowSelectListener="#{tableBean.onRowSelectNavigate}" style="margin-top:25px"
-                             dblClickSelect="true">
-
-                    <f:facet name="header">
-                        Double click a row to see the detail page
-                    </f:facet>
-
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Model" />
-                        </f:facet>
-                        <h:outputText value="#{car.model}" />
-                    </p:column>
-
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Year" />
-                        </f:facet>
-                        <h:outputText value="#{car.year}" />
-                    </p:column>
-
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Manufacturer" />
-                        </f:facet>
-                        <h:outputText value="#{car.manufacturer}" />
-                    </p:column>
-
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Color" />
-                        </f:facet>
-                        <h:outputText value="#{car.color}" />
-                    </p:column>
-                </p:dataTable>
-
             </h:form>
 
             <h3>Source</h3>
@@ -128,12 +87,10 @@
     &lt;p:growl id="growl" showDetail="true"/&gt;
 
     &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
-                 selection="\#{tableBean.selectedCar}" selectionMode="single"
-                 rowSelectListener="\#{tableBean.onRowSelect}"
-                 onRowSelectUpdate="display growl"
-                 onRowSelectComplete="carDialog.show()"
-                 rowUnselectListener="\#{tableBean.onRowUnselect}"
-                 onRowUnselectUpdate="growl"&gt;
+                 selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
+
+        &lt;p:ajax event="selectRow" listener="\#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" /&gt;
+        &lt;p:ajax event="unselectRow" listener="\#{tableBean.onRowUnselect}" update=":form:growl"/&gt;
 
         &lt;f:facet name="header"&gt;
             Select a row to display a message
@@ -190,44 +147,6 @@
             &lt;h:outputText value="\#{tableBean.selectedCar.color}" /&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
-
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
-                 selection="\#{tableBean.selectedCar}" selectionMode="single"
-                 rowSelectListener="\#{tableBean.onRowSelectNavigate}"
-                 dblClickSelect="true"&gt;
-
-        &lt;f:facet name="header"&gt;
-            Select a row to see the detail page
-        &lt;/f:facet&gt;
-
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Model" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Year" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Manufacturer" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Color" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.color}" /&gt;
-        &lt;/p:column&gt;
-    &lt;/p:dataTable&gt;
 
 &lt;/h:form&gt;
                     </pre>
