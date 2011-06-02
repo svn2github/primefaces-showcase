@@ -345,7 +345,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <jsfVersion>Mojarra-2.1.0</jsfVersion>
+                <jsfVersion>Mojarra-2.1.1</jsfVersion>
                 <primefacesVersion>PrimeFaces-3.0.M2-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
@@ -357,12 +357,12 @@
                 <dependency>
                     <groupId>com.sun.faces</groupId>
                     <artifactId>jsf-api</artifactId>
-                    <version>2.1.0</version>
+                    <version>2.1.1-b04</version>
                 </dependency>
                 <dependency>
                     <groupId>com.sun.faces</groupId>
                     <artifactId>jsf-impl</artifactId>
-                    <version>2.1.0</version>
+                    <version>2.1.1-b04</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -423,12 +423,12 @@
                 <dependency>
                     <groupId>com.sun.faces</groupId>
                     <artifactId>jsf-api</artifactId>
-                    <version>2.1.0</version>
+                    <version>2.1.1-b04</version>
                 </dependency>
                 <dependency>
                     <groupId>com.sun.faces</groupId>
                     <artifactId>jsf-impl</artifactId>
-                    <version>2.1.0</version>
+                    <version>2.1.1-b04</version>
                 </dependency>
             </dependencies>
         </profile>
