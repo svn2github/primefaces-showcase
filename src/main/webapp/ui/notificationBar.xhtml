@@ -13,26 +13,9 @@
 			}
 			
 			.top {
-				filter:alpha(opacity=70);
-				opacity:0.7;
+				filter:alpha(opacity=80);
+				opacity:0.8;
 				padding:50px 0 0 50px;
-				height:110px;
-			}
-			
-			.bottom {
-				background: url(../images/bottomBack.png) repeat-x;
-				padding:30px 0 0 50px;
-				font-size: 24px;
-				font-weight: bold;
-				font-style: italic;	
-			}
-			
-			.pf-messages {
-				width:80%;
-			}
-			
-			.pf-notificationbar-container {
-				display:none;
 			}
 		</style>
 	
@@ -44,69 +27,27 @@
 		<div class="entry">
 			<p>NotificationBar displays a multipurpose fixed positioned panel for notification either on top or bottom of the page. Any group of JSF components
 			can be placed inside notification bar.</p>
-			
-			<h3>Displaying FacesMessages</h3>
-			
-			<h:form id="form">
-				
-				<h:panelGrid columns="3">
-					<h:outputLabel for="name" value="Say: *" />
-					<p:inputText id="name" value="#{buttonBean.text}" required="true" requiredMessage="You must type something!"/>
-					<p:commandButton value="Submit" update="bottomPanel" oncomplete="bottomBar.show();"/>
-				</h:panelGrid>
-				
-				<p:notificationBar position="top" effect="slide" widgetVar="topBar" styleClass="top">
-					<h:outputText value="What PrimeFaces has so far is just the beginning!" style="color:#FFCC00;font-size:36px;" />
-				</p:notificationBar>
-				
-				<p:notificationBar position="bottom" effect="fade" widgetVar="bottomBar" styleClass="bottom">
-					<f:facet name="close">
-						<p:graphicImage value="/images/closebar.png" />
-					</f:facet>
-					
-					<h:panelGroup id="bottomPanel">
-						<p:messages />
-						<h:outputText value="You said: #{buttonBean.text}" rendered="#{not empty buttonBean.text}"/>
-					</h:panelGroup>
-				</p:notificationBar>
-			</h:form>
-			
-			<h3>Displaying Any Content</h3>
-			
-			<a href="#" onclick="topBar.show()">Show Top Bar</a>
-			<a href="#" onclick="topBar.hide()">Hide Top Bar</a>
+            
+            <p:notificationBar position="top" effect="slide" widgetVar="bar" styleClass="top">
+                <h:outputText value="What PrimeFaces has so far is just the beginning!" style="font-size:36px;" />
+            </p:notificationBar>
+            
+            <p:commandButton value="Show" onclick="bar.show()" type="button" />
+            <p:commandButton value="Hide" onclick="bar.hide()" type="button" />
 
 			<h3>Source</h3>
+            <p:tabView>
+				<p:tab title="notificationBar.xhtml">
 			<pre name="code" class="xml">
-&lt;h:form id="form"&gt;
-				
-	&lt;h:panelGrid columns="3"&gt;
-		&lt;h:outputLabel for="name" value="Name: *" /&gt;
-		&lt;p:inputText id="name" value="\#{buttonBean.text}" label="name" required="true" requiredMessage="You must type something!"/&gt;
-		&lt;p:commandButton value="Submit" update="bottomPanel" oncomplete="bottomBar.show();"/&gt;
-	&lt;/h:panelGrid&gt;
-	
-	&lt;p:notificationBar position="top" effect="slide" widgetVar="topBar" styleClass="top"&gt;
-		&lt;h:outputText value="What PrimeFaces has so far is just the beginning!" style="color:#FFCC00;font-size:36px;" /&gt;
-	&lt;/p:notificationBar&gt;
-	
-	&lt;p:notificationBar position="bottom" effect="fade" widgetVar="bottomBar" styleClass="bottom"&gt;
-		&lt;f:facet name="close"&gt;
-			&lt;p:graphicImage value="/images/closebar.png" /&gt;
-		&lt;/f:facet&gt;
-		
-		&lt;h:panelGroup id="bottomPanel" style="margin-right:200px;"&gt;
-			&lt;p:messages /&gt;
-			&lt;h:outputText value="Welcome \#{buttonBean.text}" rendered="\#{not empty buttonBean.text}"/&gt;
-		&lt;/h:panelGroup&gt;
-	&lt;/p:notificationBar&gt;
-&lt;/h:form&gt;
+&lt;p:notificationBar position="top" effect="slide" widgetVar="bar" styleClass="top"&gt;
+    &lt;h:outputText value="What PrimeFaces has so far is just the beginning!" style="color:#FFCC00;font-size:36px;" /&gt;
+&lt;/p:notificationBar&gt;
 
-&lt;h3&gt;Displaying Any Content&lt;/h3&gt;
-
-&lt;a href="#" onclick="topBar.show()"&gt;Show Top Bar&lt;/a&gt;
-&lt;a href="#" onclick="topBar.hide()"&gt;Hide Top Bar&lt;/a&gt;
-			</pre>			
+&lt;p:commandButton value="Show" onclick="bar.show()" type="button" /&gt;
+&lt;p:commandButton value="Hide" onclick="bar.hide()" type="button" /&gt;
+            </pre>
+                </p:tab>
+            </p:tabView>
 		</div>
 
 	</ui:define>
