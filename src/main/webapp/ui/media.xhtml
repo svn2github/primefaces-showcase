@@ -8,10 +8,10 @@
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Media</h1>
 		<div class="entry">
-         <p>Media component is a cross browser generic player that makes it very easy to embed
+         <p>Media component is a cross browser generic player to embed
 		 multimedia content such as videos and audio to JSF pages. Depending on the user-agent media either renders an object or an embed tag. Suitable player is discovered using the source type or a player can be specified explicitly.
 		Media component can also play binary media using the StreamedContent API.		
-		</p>	
+         </p>
      
 			<h3>Flash</h3>
 			<p:media value="http://www.youtube.com/v/KZnUr8lcqjo" width="425" height="344" player="flash"/>
@@ -23,7 +23,9 @@
 			<p:media value="http://www.tulumba.com/mp3/mogollar/yurudukdurmadan/track%2002.mp3" width="200" height="20" player="quicktime"/>
 			
 			<h3>Source</h3>
-			<pre name="code" class="xml">
+            <p:tabView>
+                <p:tab title="media.xhtml">
+                    <pre name="code" class="xml">
 &lt;h3&gt;Flash&lt;/h3&gt;
 &lt;p:media value="http://www.youtube.com/v/KZnUr8lcqjo" width="425" height="344" player="flash"/&gt;
 
@@ -32,30 +34,10 @@
 
 &lt;h3&gt;Music&lt;/h3&gt;
 &lt;p:media value="http://www.tulumba.com/mp3/mogollar/yurudukdurmadan/track%2002.mp3" width="200" height="20" player="quicktime"/&gt;
-				</pre>
-
-<pre name="code" class="java">
-public class MediaController {
-	
-	private StreamedContent media;
-	
-	public MediaController() {
-		InputStream stream = this.getClass().getResourceAsStream("ria_with_primefaces.mov");
-		media = new DefaultStreamedContent(stream, "video/quicktime");
-	}
-
-	public StreamedContent getMedia() {
-		return media;
-	}
-
-	public void setMedia(StreamedContent media) {
-		this.media = media;
-	}
-
-}
-</pre>
-			
-			
+				</pre>	
+                </p:tab>
+            </p:tabView>
+					
       	</div>
  
 </ui:define>
