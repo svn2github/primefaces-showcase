@@ -33,24 +33,23 @@
 			<p>ProgressBar is a process status indicator that can either work purely on client side or interact with server side
 			via ajax.</p>
 		
-			<p:growl id="growl" />
-			
 			<h:form>
+                
+                <p:growl id="growl" />
 		
 				<h3>Client Side ProgressBar</h3>
 				<p:commandButton value="Start" type="button" onclick="start();startButton1.disable()" widgetVar="startButton1"/>
 				<p:commandButton value="Cancel" type="button" onclick="cancel();startButton1.enable()" />
 				<br /><br />
 				<p:progressBar widgetVar="pbClient" style="width:300px"/>
-				 
-				 
+				 				 
 				<h3>Ajax ProgressBar with Growl Integration</h3>
-				<p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2"/>
-				<p:commandButton value="Cancel" type="button" onclick="pbAjax.cancel();startButton2.enable();" />
+				<p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2" />
+				<p:commandButton value="Cancel" actionListener="#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" />
 				<br /><br />
-				<p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBean.progress}"
-					onCompleteUpdate="growl" completeListener="#{progressBean.onComplete}"
-                    onCancelUpdate="growl" cancelListener="#{progressBean.onCancel}" oncomplete="startButton2.enable()"/>
+				<p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBean.progress}" oncomplete="startButton2.enable()">
+                    <p:ajax event="complete" listener="#{progressBean.onComplete}" update="growl" />
+                </p:progressBar>
 					
 			</h:form>
 			
@@ -58,32 +57,26 @@
 			<p:tabView>
 				<p:tab title="progressBar.xhtml">
 					<pre name="code" class="xml">
-&lt;p:growl id="growl" /&gt;
-			
 &lt;h:form&gt;
+                
+    &lt;p:growl id="growl" /&gt;
 
     &lt;h3&gt;Client Side ProgressBar&lt;/h3&gt;
-    &lt;p:commandButton value="Start" type="button"
-       onclick="start();startButton1.disable()" widgetVar="startButton1"/&gt;
-    &lt;p:commandButton value="Cancel" type="button"
-       onclick="cancel();startButton1.enable()" /&gt;
+    &lt;p:commandButton value="Start" type="button" onclick="start();startButton1.disable()" widgetVar="startButton1"/&gt;
+    &lt;p:commandButton value="Cancel" type="button" onclick="cancel();startButton1.enable()" /&gt;
 
     &lt;p:progressBar widgetVar="pbClient" style="width:300px"/&gt;
 
-
     &lt;h3&gt;Ajax ProgressBar with Growl Integration&lt;/h3&gt;
-    &lt;p:commandButton value="Start" type="button"
-       onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2"/&gt;
-    &lt;p:commandButton value="Cancel" type="button"
-       onclick="pbAjax.cancel();startButton2.enable();" /&gt;
+    &lt;p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2"/&gt;
+    &lt;p:commandButton value="Cancel" actionListener="\#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" /&gt;
 
-    &lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}"
-        onCompleteUpdate="growl" completeListener="\#{progressBean.onComplete}"
-        onCancelUpdate="growl" cancelListener="\#{progressBean.onCancel}"
-        oncomplete="startButton2.enable()"/&gt;
+    &lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}" oncomplete="startButton2.enable()"&gt;
+        &lt;p:ajax event="complete" listener="\#{progressBean.onComplete}" update="growl" /&gt;
+    &lt;/p:progressBar&gt;
 
 &lt;/h:form&gt;
-				</pre>
+                    </pre>
 				
 				<pre name="code" class="javascript">
 &lt;script type="text/javascript"&gt;
@@ -135,8 +128,8 @@ public class ProgressBean implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Progress Completed", "Progress Completed"));
 	}
 	
-	public void onCancel() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Progress Cancelled", "Progress Cancelled"));
+	public void cancel() {
+		progress = null;
 	}
 }
 					</pre>
