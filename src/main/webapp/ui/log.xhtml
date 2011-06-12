@@ -9,9 +9,15 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">Log</h1>
 		<div class="entry">
-            <p>Log component displays a console to display logs of PrimeFaces.</p>
+            <p>Log component is a visual console to display logs of PrimeFaces. Using log client side API,
+            you can also use the component.</p>
 
             <p:log />
+            
+            <p:commandButton type="button" value="Info" onclick="PrimeFaces.info('This is an info message.')" />
+            <p:commandButton type="button" value="Warn" onclick="PrimeFaces.warn('This is a warn messages.')" />
+            <p:commandButton type="button" value="Debug" onclick="PrimeFaces.debug('This is a debug message.')" />
+            <p:commandButton type="button" value="Error" onclick="PrimeFaces.error('This is an error message.')" />
 				
             <h3>Source</h3>
             <p:tabView>
