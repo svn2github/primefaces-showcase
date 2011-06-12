@@ -24,7 +24,7 @@
 				<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
                             selection="#{tableBean.selectedCar}" selectionMode="single">
                     
-                    <p:ajax event="selectRow" update=":form:display" oncomplete="carDialog.show()" />
+                    <p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" />
 
                     <f:facet name="header">
                         List of Cars

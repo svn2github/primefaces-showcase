@@ -18,7 +18,7 @@
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                              rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{tableBean.selectedCar}">
                     
-                    <p:ajax event="selectRow" update=":form:display" oncomplete="carDialog.show()" />
+                    <p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" />
 
                     <f:facet name="header">
                         Displaying 100,000,000 Cars
@@ -76,7 +76,7 @@
                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{tableBean.selectedCar}"&gt;
 
-        &lt;p:ajax event="selectRow" update=":form:display" oncomplete="carDialog.show()" /&gt;
+        &lt;p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" /&gt;
 
         &lt;f:facet name="header"&gt;
             Displaying 100,000,000 Cars
