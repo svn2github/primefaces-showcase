@@ -17,8 +17,8 @@
                 <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCar}" selectionMode="single">
                     
-                    <p:ajax event="selectRow" listener="#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" />
-                    <p:ajax event="unselectRow" listener="#{tableBean.onRowUnselect}" update=":form:growl"/>
+                    <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" />
+                    <p:ajax event="rowUnselect" listener="#{tableBean.onRowUnselect}" update=":form:growl"/>
                     
                     <f:facet name="header">
                         Select a row to display a message
@@ -89,8 +89,8 @@
     &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
                  selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
 
-        &lt;p:ajax event="selectRow" listener="\#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" /&gt;
-        &lt;p:ajax event="unselectRow" listener="\#{tableBean.onRowUnselect}" update=":form:growl"/&gt;
+        &lt;p:ajax event="rowSelect" listener="\#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" /&gt;
+        &lt;p:ajax event="rowUnselect" listener="\#{tableBean.onRowUnselect}" update=":form:growl"/&gt;
 
         &lt;f:facet name="header"&gt;
             Select a row to display a message

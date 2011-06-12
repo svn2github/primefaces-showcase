@@ -48,6 +48,7 @@ import com.lowagie.text.PageSize;
 import java.util.Map;
 import javax.faces.model.SelectItem;
 import org.primefaces.event.DragDropEvent;
+import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
@@ -484,5 +485,11 @@ public class TableBean implements Serializable {
 
     public String navigate() {
         return "home";
+    }
+    
+    public void onEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Car Edited", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }

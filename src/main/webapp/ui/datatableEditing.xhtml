@@ -10,11 +10,11 @@
 		<div class="entry">
 			<p>DataTable provides in-cell editing feature.</p>
 
-            <h:form>
+            <h:form id="form">
 
-                <p:growl id="messages" />
+                <p:growl id="messages" showDetail="true"/>
 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}" id="carList" onRowEditUpdate="messages">
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" id="carList">
 
                     <f:facet name="header">
                         In-Cell Editing
@@ -56,7 +56,7 @@
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Edit">
+                    <p:column headerText="Options">
                         <p:rowEditor />
                     </p:column>
 
@@ -68,11 +68,11 @@
 		<p:tabView>
 			<p:tab title="datatableEditing.xhtml">
                 <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
-    &lt;p:growl id="messages" /&gt;
+    &lt;p:growl id="messages" showDetail="true"/&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" id="carList" onRowEditUpdate="messages"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" id="carList"&gt;
 
         &lt;f:facet name="header"&gt;
             In-Cell Editing
