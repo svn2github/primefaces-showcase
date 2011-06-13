@@ -14,16 +14,53 @@
 
             <p:log />
             
+            <h3>Client Side API</h3>
             <p:commandButton type="button" value="Info" onclick="PrimeFaces.info('This is an info message.')" />
             <p:commandButton type="button" value="Warn" onclick="PrimeFaces.warn('This is a warn messages.')" />
             <p:commandButton type="button" value="Debug" onclick="PrimeFaces.debug('This is a debug message.')" />
             <p:commandButton type="button" value="Error" onclick="PrimeFaces.error('This is an error message.')" />
+            
+            <h3>Ajax Request</h3>
+            <h:form id="frm">
+				
+				<h:panelGrid columns="4" cellpadding="5">
+					<h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+					
+					<p:inputText id="name" value="#{pprBean.firstname}" />
+					
+					<p:commandButton value="Submit" update="display"/>
+                    
+                    <h:outputText value="#{pprBean.firstname}" id="display" />
+				</h:panelGrid>
+				
+			</h:form>
 				
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="log.xhtml">
                     <pre name="code" class="xml">
 &lt;p:log /&gt;
+            
+&lt;h3&gt;Client Side API&lt;/h3&gt;
+&lt;p:commandButton type="button" value="Info" onclick="PrimeFaces.info('This is an info message.')" /&gt;
+&lt;p:commandButton type="button" value="Warn" onclick="PrimeFaces.warn('This is a warn messages.')" /&gt;
+&lt;p:commandButton type="button" value="Debug" onclick="PrimeFaces.debug('This is a debug message.')" /&gt;
+&lt;p:commandButton type="button" value="Error" onclick="PrimeFaces.error('This is an error message.')" /&gt;
+
+&lt;h3&gt;Ajax Request&lt;/h3&gt;
+&lt;h:form id="frm"&gt;
+
+    &lt;h:panelGrid columns="4" cellpadding="5"&gt;
+        &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
+
+        &lt;p:inputText id="name" value="\#{pprBean.firstname}" /&gt;
+
+        &lt;p:commandButton value="Submit" update="display"/&gt;
+
+        &lt;h:outputText value="\#{pprBean.firstname}" id="display" /&gt;
+    &lt;/h:panelGrid&gt;
+
+&lt;/h:form&gt;
                     </pre>
                 </p:tab>
 
