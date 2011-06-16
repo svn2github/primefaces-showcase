@@ -140,6 +140,7 @@ import javax.servlet.ServletContext;
 
 import org.primefaces.examples.domain.Car;
 import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortOrder;
 
 public class TableBean {
 	
@@ -156,7 +157,7 @@ public class TableBean {
 			 * In a real application, this method should load data from a datasource
 			 */
 			@Override
-			public List&lt;Car&gt; load(int first, int pageSize, String sortField, boolean sortOrder, Map&lt;String,String&gt; filters) {
+			public List&lt;Car&gt; load(int first, int pageSize, String sortField, SortOrder sortOrder, Map&lt;String,String&gt; filters) {
 				logger.log(Level.INFO, "Loading the lazy car data between {0} and {1}", new Object[]{first, (first+pageSize)});
 
                 //Sorting and Filtering information are not used for demo purposes just random dummy data is returned

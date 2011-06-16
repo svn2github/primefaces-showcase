@@ -52,6 +52,7 @@ import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
+import org.primefaces.model.SortOrder;
 
 public class TableBean implements Serializable {
 	
@@ -145,7 +146,7 @@ public class TableBean implements Serializable {
 			 * In a real application, this method should load data from a datasource
 			 */
 			@Override
-			public List<Car> load(int first, int pageSize, String sortField, boolean sortOrder, Map<String,String> filters) {
+			public List<Car> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,String> filters) {
 				logger.log(Level.INFO, "Loading the lazy car data between {0} and {1}", new Object[]{first, (first+pageSize)});
 
                 //Sorting and Filtering information are not used for demo purposes just random dummy data is returned
