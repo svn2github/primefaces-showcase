@@ -40,7 +40,7 @@
 
                     <h:outputText value="Custom Content:" />
                     <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer}" converter="player"
-                                     effect="fade" var="p" height="250">
+                                     effect="fade" var="p">
                         <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}"/>
 
@@ -93,7 +93,7 @@
 
         &lt;h:outputText value="Custom Content:" /&gt;
         &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer}"
-                         converter="player" height="250"
+                         converter="player"
                          effect="fade" var="p"&gt;
 
             &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
