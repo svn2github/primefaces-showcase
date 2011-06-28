@@ -21,7 +21,7 @@
 
             <h:form id="form">
 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}"
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}"
                              selection="#{tableBean.selectedCar}" selectionMode="single">
 
                     <f:facet name="header">
@@ -59,9 +59,11 @@
                     <f:facet name="footer">
                         <p:commandButton value="View" image="ui-icon ui-icon-search"
                                 update="form:display" oncomplete="carDialog.show()"/>
+                        
+                        <p:commandButton value="Clear" image="ui-icon ui-icon-close" process="@this" update="cars" onclick="carDialog.hide()"/>
                     </f:facet>
                     
-                </p:dataTable>                
+                </p:dataTable>   
 
                 <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
                           width="200" showEffect="clip" hideEffect="fold">
@@ -94,7 +96,7 @@
                     <pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}"
                  selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
 
         &lt;f:facet name="header"&gt;
@@ -132,6 +134,9 @@
         &lt;f:facet name="footer"&gt;
             &lt;p:commandButton value="View" image="ui-icon ui-icon-search"
                     update="form:display" oncomplete="carDialog.show()"/&gt;
+
+            &lt;p:commandButton value="Clear" image="ui-icon ui-icon-close" process="@this" 
+                    update="cars" onclick="carDialog.hide()"/&gt;
         &lt;/f:facet&gt;
 
     &lt;/p:dataTable&gt;
