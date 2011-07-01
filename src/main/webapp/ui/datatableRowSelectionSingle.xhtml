@@ -60,7 +60,7 @@
                         <p:commandButton value="View" image="ui-icon ui-icon-search"
                                 update="form:display" oncomplete="carDialog.show()"/>
                         
-                        <p:commandButton value="Clear" image="ui-icon ui-icon-close" process="@this" update="cars" onclick="carDialog.hide()"/>
+                        <p:commandButton value="Clear" image="ui-icon ui-icon-close" process="@this" update="cars" />
                     </f:facet>
                     
                 </p:dataTable>   
@@ -136,7 +136,7 @@
                     update="form:display" oncomplete="carDialog.show()"/&gt;
 
             &lt;p:commandButton value="Clear" image="ui-icon ui-icon-close" process="@this" 
-                    update="cars" onclick="carDialog.hide()"/&gt;
+                    update="cars"/&gt;
         &lt;/f:facet&gt;
 
     &lt;/p:dataTable&gt;
