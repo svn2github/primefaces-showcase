@@ -15,12 +15,12 @@
                 <p:growl id="growl" showDetail="true" />
 
                 <p:pieChart value="#{chartBean.pieModel}" legendPosition="w"
-                        title="Interactive Pie Chart" style="width:400px">
+                        title="Interactive Pie Chart" style="width:400px;height:300px">
                     <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
                 </p:pieChart>
 
                 <p:barChart value="#{chartBean.categoryModel}" legendPosition="ne"
-                        title="Interactive Bar Chart">
+                        title="Interactive Bar Chart" style="height:300px">
                     <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
                 </p:barChart>
                 
@@ -34,12 +34,12 @@
     &lt;p:growl id="growl" showDetail="true" /&gt;
 
     &lt;p:pieChart value="\#{chartBean.pieModel}" legendPosition="w"
-            title="Interactive Pie Chart" style="width:400px"&gt;
+            title="Interactive Pie Chart" style="width:400px;height:300px"&gt;
         &lt;p:ajax event="itemSelect" listener="\#{chartBean.itemSelect}" update="growl" /&gt;
     &lt;/p:pieChart&gt;
 
     &lt;p:barChart value="\#{chartBean.categoryModel}" legendPosition="ne"
-            title="Interactive Bar Chart"&gt;
+            title="Interactive Bar Chart" style="height:300px"&gt;
         &lt;p:ajax event="itemSelect" listener="\#{chartBean.itemSelect}" update="growl" /&gt;
     &lt;/p:barChart&gt;
 

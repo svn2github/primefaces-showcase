@@ -12,12 +12,12 @@
             <p>BarChart displays a CartesianChartModel.</p>
 
             <p:barChart value="#{chartBean.categoryModel}" legendPosition="ne"
-                        title="Basic Bar Chart" min="0" max="200"/>
+                        title="Basic Bar Chart" min="0" max="200" style="height:300px"/>
 
-            <p:barChart value="#{chartBean.categoryModel}" legendPosition="se" style="margin-top:20px"
+            <p:barChart value="#{chartBean.categoryModel}" legendPosition="se" style="height:300px;margin-top:20px"
                         title="Horizontal Bar Chart" orientation="horizontal" min="0" max="200"/>
 
-            <p:barChart value="#{chartBean.categoryModel}" legendPosition="ne" style="margin-top:20px"
+            <p:barChart value="#{chartBean.categoryModel}" legendPosition="ne" style="height:300px;margin-top:20px"
                         title="Stacked Bar Chart" stacked="true" barMargin="50" min="0" max="300"/>
 
             <h3>Source</h3>
@@ -25,12 +25,12 @@
                 <p:tab title="barChart.xhtml">
                     <pre name="code" class="xml">
 &lt;p:barChart value="\#{chartBean.categoryModel}" legendPosition="ne"
-            title="Basic Bar Chart" min="0" max="200"/&gt;
+            title="Basic Bar Chart" min="0" max="200" style="height:300px"/&gt;
 
-&lt;p:barChart value="\#{chartBean.categoryModel}" legendPosition="se"
+&lt;p:barChart value="\#{chartBean.categoryModel}" legendPosition="se" style="height:300px"
             title="Horizontal Bar Chart" orientation="horizontal" min="0" max="200"/&gt;
 
-&lt;p:barChart value="\#{chartBean.categoryModel}" legendPosition="ne"
+&lt;p:barChart value="\#{chartBean.categoryModel}" legendPosition="ne" style="height:300px"
             title="Stacked Bar Chart" stacked="true" barMargin="50" min="0" max="300"/&gt;
                     </pre>
                 </p:tab>
