@@ -43,9 +43,10 @@
 	                next step is displayed if current step passes validations. Wizard flow is sequential by default and this can be managed using the optional ajax flowListeners, simply outcome of a flowListener defines the next
 	               step to display.
             </p>
-
-
+            
             <h:form>
+                
+                <p:growl id="growl" sticky="true" showDetail="true"/>
 
                 <p:wizard widgetVar="wiz" flowListener="#{userWizard.onFlowProcess}">
 
@@ -116,8 +117,6 @@
                     <p:tab id="confirm" title="Confirmation">
                         <p:panel header="Confirmation">
 
-                            <p:growl id="growl" sticky="true" showDetail="true"/>
-
                             <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
                                 <h:panelGrid columns="2" columnClasses="label, value">
                                     <h:outputText value="Firstname: " />
@@ -170,6 +169,8 @@
                 <p:tab title="wizard.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
+
+    &lt;p:growl id="growl" sticky="true" showDetail="true"/&gt;
 
 	&lt;p:wizard widgetVar="wiz"
 			flowListener="\#{userWizard.onFlowProcess}"&gt;
@@ -240,8 +241,6 @@
 			
 		&lt;p:tab id="confirm"&gt;
 			&lt;p:panel header="Confirmation"&gt;
-			
-				&lt;p:growl id="growl" sticky="true" showDetail="true"/&gt;
 			
 				&lt;h:panelGrid id="confirmation" columns="6"&gt;
 					&lt;h:outputText value="Firstname: " /&gt;
