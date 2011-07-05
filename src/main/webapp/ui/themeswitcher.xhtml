@@ -4,15 +4,45 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
-	
+
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">ThemeSwitcher</h1>
 		<div class="entry">
- 			<p>ThemeSwitcher enables applying new themes on-the-fly with no page refresh.</p>
-            
-            <p:themeSwitcher initialText="Change Skin" buttonPreText="Skin: "/> 
+ 			<p>ThemeSwitcher enables applying new themes on-the-fly without full page refresh.</p>
             
             <h:form>
+
+                <h:panelGrid columns="2" cellpadding="10">
+                    <h:outputText value="Default Switcher:" /> 
+                    <p:themeSwitcher value="" style="width:200px">
+                        <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                        <f:selectItems value="#{themeSwitcherBean.themes}" />
+                        <p:ajax listener="#{themeSwitcherBean.theme}" />
+                    </p:themeSwitcher>
+                    
+                    <h:outputText value="Stateful Switcher:" /> 
+                    <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:200px" effect="fade">
+                        <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                        <f:selectItems value="#{themeSwitcherBean.themes}" />
+                        <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
+                    </p:themeSwitcher>
+                    
+                    <h:outputText value="Theme Preview:" /> 
+                    <p:themeSwitcher style="width:200px" effect="fade" var="t">
+                        <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                        <f:selectItems value="#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme}"/>
+                        
+                        <p:column>
+                            <p:graphicImage value="/images/themes/#{t.image}" width="90" height="60"/>
+                        </p:column>
+                        
+                        <p:column>
+                            #{t.name}
+                        </p:column>
+                    </p:themeSwitcher>
+                </h:panelGrid>
+
+                <p:separator />
             
             	<br />
             	
@@ -23,8 +53,35 @@
        			<p:panel header="Panel">
        				Panel Content
        			</p:panel>
+                
+                <br />
+                
+                <p:toolbar>
+                    <p:toolbarGroup align="left">
+                        <p:commandButton type="button" value="New" image="ui-icon-document" />
+
+                        <p:commandButton type="button" value="Open" image="ui-icon-folder-open"/>
+
+                        <p:divider />
+
+                        <p:commandButton type="button" title="Save" image="ui-icon-disk"/>
+                        <p:commandButton type="button" title="Delete" image="ui-icon-trash"/>
+                        <p:commandButton type="button" title="Print" image="ui-icon-print"/>
+                    </p:toolbarGroup>
+
+                    <p:divider />
+
+                    <p:toolbarGroup align="right">
+                        <p:menuButton value="Navigate">
+                            <p:menuitem value="Home" url="http://www.primefaces.org" />
+                            <p:menuitem value="ShowCase" url="http://www.primefaces.org/showcase" />
+                            <p:menuitem value="TouchFaces" url="http://www.primefaces.org/showcase/touch" />
+                        </p:menuButton>
+                    </p:toolbarGroup>
+
+                </p:toolbar>
        			
-       			<br /><br />
+       			<br />
             	
             	<p:tabView>
             		<p:tab title="Tab1">Tab1 Content</p:tab>
@@ -35,25 +92,175 @@
             </h:form>
 				
 			<h3>Source</h3>
-			<pre name="code" class="xml">
-&lt;p:themeSwitcher initialText="Change Skin" buttonPreText="Skin: "/&gt; 
-            
+            <p:tabView>
+				<p:tab title="themeswitcher.xhtml">
+                    <pre name="code" class="xml">
 &lt;h:form&gt;
-  
-  	&lt;p:commandButton value="Button" /&gt;
-  	
-	&lt;p:panel header="Panel"&gt;
-		Panel Content
-	&lt;/p:panel&gt;
 
-  	&lt;p:tabView&gt;
-  		&lt;p:tab title="Tab1"&gt;Tab1 Content&lt;/p:tab&gt;
-  		&lt;p:tab title="Tab2"&gt;Tab2 Content&lt;/p:tab&gt;
-  		&lt;p:tab title="Tab3"&gt;Tab3 Content&lt;/p:tab&gt;
-  	&lt;/p:tabView&gt;
-  	
+    &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+        &lt;h:outputText value="Default Switcher:" /&gt; 
+        &lt;p:themeSwitcher value="" style="width:200px"&gt;
+            &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
+            &lt;f:selectItems value="\#{themeSwitcherBean.themes}" /&gt;
+            &lt;p:ajax listener="\#{themeSwitcherBean.theme}" /&gt;
+        &lt;/p:themeSwitcher&gt;
+
+        &lt;h:outputText value="Stateful Switcher:" /&gt; 
+        &lt;p:themeSwitcher value="\#{themeSwitcherBean.theme}" style="width:200px" effect="fade"&gt;
+            &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
+            &lt;f:selectItems value="\#{themeSwitcherBean.themes}" /&gt;
+            &lt;p:ajax listener="\#{themeSwitcherBean.saveTheme}" /&gt;
+        &lt;/p:themeSwitcher&gt;
+
+        &lt;h:outputText value="Theme Preview:" /&gt; 
+        &lt;p:themeSwitcher style="width:200px" effect="fade" var="t"&gt;
+            &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
+            &lt;f:selectItems value="\#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="\#{theme.name}" itemValue="\#{theme}"/&gt;
+
+            &lt;p:column&gt;
+                &lt;p:graphicImage value="/images/themes/\#{t.image}" width="90" height="60"/&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                \#{t.name}
+            &lt;/p:column&gt;
+        &lt;/p:themeSwitcher&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:separator /&gt;
+
+    &lt;p:commandButton value="Button" /&gt;
+
+    &lt;p:panel header="Panel"&gt;
+        Panel Content
+    &lt;/p:panel&gt;
+
+    &lt;p:toolbar&gt;
+        &lt;p:toolbarGroup align="left"&gt;
+            &lt;p:commandButton type="button" value="New" image="ui-icon-document" /&gt;
+
+            &lt;p:commandButton type="button" value="Open" image="ui-icon-folder-open"/&gt;
+
+            &lt;p:divider /&gt;
+
+            &lt;p:commandButton type="button" title="Save" image="ui-icon-disk"/&gt;
+            &lt;p:commandButton type="button" title="Delete" image="ui-icon-trash"/&gt;
+            &lt;p:commandButton type="button" title="Print" image="ui-icon-print"/&gt;
+        &lt;/p:toolbarGroup&gt;
+
+        &lt;p:divider /&gt;
+
+        &lt;p:toolbarGroup align="right"&gt;
+            &lt;p:menuButton value="Navigate"&gt;
+                &lt;p:menuitem value="Home" url="http://www.primefaces.org" /&gt;
+                &lt;p:menuitem value="ShowCase" url="http://www.primefaces.org/showcase" /&gt;
+                &lt;p:menuitem value="TouchFaces" url="http://www.primefaces.org/showcase/touch" /&gt;
+            &lt;/p:menuButton&gt;
+        &lt;/p:toolbarGroup&gt;
+
+    &lt;/p:toolbar&gt;
+
+    &lt;p:tabView&gt;
+        &lt;p:tab title="Tab1"&gt;Tab1 Content&lt;/p:tab&gt;
+        &lt;p:tab title="Tab2"&gt;Tab2 Content&lt;/p:tab&gt;
+        &lt;p:tab title="Tab3"&gt;Tab3 Content&lt;/p:tab&gt;
+    &lt;/p:tabView&gt;
+
 &lt;/h:form&gt;
-			</pre>
+                    </pre>
+				</p:tab>
+                
+                <p:tab title="ThemeSwitcherBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import javax.annotation.PostConstruct;
+import org.primefaces.examples.domain.Theme;
+
+public class ThemeSwitcherBean {
+        
+    private Map&lt;String, String&gt; themes;
+    
+    private List&lt;Theme&gt; advancedThemes;
+    
+    private String theme;
+    
+    private GuestPreferences gp;
+
+    public void setGp(GuestPreferences gp) {
+        this.gp = gp;
+    }
+    
+    public Map&lt;String, String&gt; getThemes() {
+        return themes;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+
+    @PostConstruct
+    public void init() {
+        theme = gp.getTheme();
+        
+        advancedThemes = new ArrayList&lt;Theme&gt;();
+        advancedThemes.add(new Theme("aristo", "aristo.png"));
+        advancedThemes.add(new Theme("cupertino", "cupertino.png"));
+        advancedThemes.add(new Theme("trontastic", "trontastic.png"));
+        
+        themes = new TreeMap&lt;String, String&gt;();
+        themes.put("Aristo", "aristo");
+        themes.put("Black-Tie", "black-tie");
+        themes.put("Blitzer", "blitzer");
+        themes.put("Bluesky", "bluesky");
+        themes.put("Casablanca", "casablanca");
+        themes.put("Cupertino", "cupertino");
+        themes.put("Dark-Hive", "dark-hive");
+        themes.put("Dot-Luv", "dot-luv");
+        themes.put("Eggplant", "eggplant");
+        themes.put("Excite-Bike", "excite-bike");
+        themes.put("Flick", "flick");
+        themes.put("Glass-X", "glass-x");
+        themes.put("Hot-Sneaks", "hot-sneaks");
+        themes.put("Humanity", "humanity");
+        themes.put("Le-Frog", "le-frog");
+        themes.put("Midnight", "midnight");
+        themes.put("Mint-Choc", "mint-choc");
+        themes.put("Overcast", "overcast");
+        themes.put("Pepper-Grinder", "pepper-grinder");
+        themes.put("Redmond", "redmond");
+        themes.put("Rocket", "rocket");
+        themes.put("Sam", "sam");
+        themes.put("Smoothness", "smoothness");
+        themes.put("South-Street", "south-street");
+        themes.put("Start", "start");
+        themes.put("Sunny", "sunny");
+        themes.put("Swanky-Purse", "swanky-purse");
+        themes.put("Trontastic", "trontastic");
+        themes.put("UI-Darkness", "ui-darkness");
+        themes.put("UI-Lightness", "ui-lightness");
+        themes.put("Vader", "vader");
+    }
+    
+    public void saveTheme() {
+        gp.setTheme(theme);
+    }
+
+    public List&lt;Theme&gt; getAdvancedThemes() {
+        return advancedThemes;
+    }
+}
+                    </pre>
+				</p:tab>
+			</p:tabView>
 		
 		</div>
 	</ui:define>
