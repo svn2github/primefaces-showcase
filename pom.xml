@@ -342,13 +342,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.1.1</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.0.M2-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.0.M3-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.0.M2-SNAPSHOT</version>
+                    <version>3.0.M3-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>com.sun.faces</groupId>
@@ -367,13 +367,13 @@
             <id>myfaces</id>
             <properties>
                 <jsfVersion>MyFaces-2.0.5</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.0.M2-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.0.M3-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.0.M2-SNAPSHOT</version>
+                    <version>3.0.M3-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.myfaces.core</groupId>
@@ -393,13 +393,13 @@
             <id>appserver-2.0</id>
              <properties>
                 <jsfVersion>Native JSF Implementation</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.0.M2-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.0.M3-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.0.M2-SNAPSHOT</version>
+                    <version>3.0.M3-SNAPSHOT</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -433,13 +433,13 @@
             <id>gae</id>
             <properties>
                 <jsfVersion>Mojarra-2.0.4</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.0.M2-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.0.M3-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.0.M2-SNAPSHOT</version>
+                    <version>3.0.M3-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>com.sun.faces</groupId>
