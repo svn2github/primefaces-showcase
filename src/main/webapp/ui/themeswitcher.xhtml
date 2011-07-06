@@ -14,10 +14,9 @@
 
                 <h:panelGrid columns="2" cellpadding="10">
                     <h:outputText value="Default Switcher:" /> 
-                    <p:themeSwitcher value="" style="width:200px">
+                    <p:themeSwitcher style="width:200px">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.themes}" />
-                        <p:ajax listener="#{themeSwitcherBean.theme}" />
                     </p:themeSwitcher>
                     
                     <h:outputText value="Stateful Switcher:" /> 
@@ -99,10 +98,9 @@
 
     &lt;h:panelGrid columns="2" cellpadding="10"&gt;
         &lt;h:outputText value="Default Switcher:" /&gt; 
-        &lt;p:themeSwitcher value="" style="width:200px"&gt;
+        &lt;p:themeSwitcher style="width:200px"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
             &lt;f:selectItems value="\#{themeSwitcherBean.themes}" /&gt;
-            &lt;p:ajax listener="\#{themeSwitcherBean.theme}" /&gt;
         &lt;/p:themeSwitcher&gt;
 
         &lt;h:outputText value="Stateful Switcher:" /&gt; 
