@@ -26,13 +26,13 @@
 						<p:autoComplete id="acSimple" value="#{autoCompleteBean.txt1}" completeMethod="#{autoCompleteBean.complete}" />
 						
 						<h:outputLabel value="Min Length (3) :" for="acMinLength" />
-						<p:autoComplete id="acMinLength" minQueryLength="3" value="#{autoCompleteBean.txt2}" completeMethod="#{autoCompleteBean.complete}"/>
+						<p:autoComplete id="acMinLength" minQueryLength="3" value="#{autoCompleteBean.txt2}" completeMethod="#{autoCompleteBean.complete}" effect="fade"/>
 						
 						<h:outputLabel value="Delay(1000) :" for="acDelay" />
-						<p:autoComplete id="acDelay" queryDelay="1000" value="#{autoCompleteBean.txt3}" completeMethod="#{autoCompleteBean.complete}"/>
+						<p:autoComplete id="acDelay" queryDelay="1000" value="#{autoCompleteBean.txt3}" completeMethod="#{autoCompleteBean.complete}" effect="blind"/>
 						
 						<h:outputLabel value="Max Results(5) :" for="acMaxResults" />
-						<p:autoComplete id="acMaxResults" maxResults="5" value="#{autoCompleteBean.txt4}" completeMethod="#{autoCompleteBean.complete}"/>
+						<p:autoComplete id="acMaxResults" maxResults="5" value="#{autoCompleteBean.txt4}" completeMethod="#{autoCompleteBean.complete}" />
 						
 						<h:outputLabel value="Force Selection :" for="acForce" />
 						<p:autoComplete id="acForce" forceSelection="true" value="#{autoCompleteBean.txt5}" completeMethod="#{autoCompleteBean.complete}"/>
@@ -82,12 +82,12 @@
 			
 			&lt;h:outputLabel value="Min Length (3) :" for="acMinLength" /&gt;
 			&lt;p:autoComplete id="acMinLength" minQueryLength="3" 
-					value="\#{autoCompleteBean.txt2}" 
+					value="\#{autoCompleteBean.txt2}" effect="fade"
 					completeMethod="\#{autoCompleteBean.complete}"/&gt;
 			
 			&lt;h:outputLabel value="Delay(1000) :" for="acDelay" /&gt;
 			&lt;p:autoComplete id="acDelay" queryDelay="1000" 
-					value="\#{autoCompleteBean.txt3}" 
+					value="\#{autoCompleteBean.txt3}" effect="blind"
 					completeMethod="\#{autoCompleteBean.complete}"/&gt;
 					
 			&lt;h:outputLabel value="Max Results(5) :" for="acMaxResults" /&gt;
