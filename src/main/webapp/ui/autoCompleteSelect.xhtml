@@ -22,7 +22,7 @@
                         </p:autoComplete>
 						
 						<h:outputLabel value="Pojo: " for="acPojo" />
-						<p:autoComplete id="acPojo" value="#{autoCompleteBean.selectedPlayer}" completeMethod="#{autoCompleteBean.completePlayer}"
+						<p:autoComplete id="acPojo" value="#{autoCompleteBean.selectedPlayer1}" completeMethod="#{autoCompleteBean.completePlayer}"
 										var="player" itemLabel="#{player.name}" itemValue="#{player}" converter="player">
                             <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="messages" />
                         </p:autoComplete>
@@ -40,7 +40,7 @@
 						<h:outputText value="#{autoCompleteBean.txt1}" /> 
 						
 						<h:outputText value="Pojo: " />
-						<h:outputText value="#{autoCompleteBean.selectedPlayer}" /> 
+						<h:outputText value="#{autoCompleteBean.selectedPlayer1}" /> 
 					</h:panelGrid>
 					
                 </p:dialog>
