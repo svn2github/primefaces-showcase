@@ -35,9 +35,13 @@ public class AutoCompleteBean {
 	private String txt4;
 	
 	private String txt5;
+    
+    private String txt6;
 
-	private Player selectedPlayer;
-	
+	private Player selectedPlayer1;
+    
+    private Player selectedPlayer2;
+
 	private List<Player> players;
 
     private List<Player> selectedPlayers;
@@ -46,14 +50,22 @@ public class AutoCompleteBean {
 		players = PlayerConverter.playerDB;
 	}
 
-	public Player getSelectedPlayer() {
-		return selectedPlayer;
-	}
-	public void setSelectedPlayer(Player selectedPlayer) {
-		this.selectedPlayer = selectedPlayer;
-	}
+    public Player getSelectedPlayer1() {
+        return selectedPlayer1;
+    }
 
-	
+    public void setSelectedPlayer1(Player selectedPlayer1) {
+        this.selectedPlayer1 = selectedPlayer1;
+    }
+
+    public Player getSelectedPlayer2() {
+        return selectedPlayer2;
+    }
+
+    public void setSelectedPlayer2(Player selectedPlayer2) {
+        this.selectedPlayer2 = selectedPlayer2;
+    }
+
 	public List<String> complete(String query) {
 		List<String> results = new ArrayList<String>();
 		
@@ -132,4 +144,12 @@ public class AutoCompleteBean {
 	public void setTxt5(String txt5) {
 		this.txt5 = txt5;
 	}
+
+    public String getTxt6() {
+        return txt6;
+    }
+
+    public void setTxt6(String txt6) {
+        this.txt6 = txt6;
+    }
 }

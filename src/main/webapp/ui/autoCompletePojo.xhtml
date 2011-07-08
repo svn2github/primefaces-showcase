@@ -14,17 +14,38 @@
 
             <h:form>
                 <p:growl id="messages" showDetail="true"/>
+                
+                <p:panel header="Players">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel value="Basic Pojo: " />
+                        <p:autoComplete value="#{autoCompleteBean.selectedPlayer1}" completeMethod="#{autoCompleteBean.completePlayer}"
+                                    var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player"/>
 
-                <p:autoComplete value="#{autoCompleteBean.selectedPlayer}" completeMethod="#{autoCompleteBean.completePlayer}"
-                                var="player" itemLabel="#{player.name}" itemValue="#{player}" converter="player"/>
+                        <h:outputLabel value="Custom Content: " />
+                        <p:autoComplete value="#{autoCompleteBean.selectedPlayer2}" completeMethod="#{autoCompleteBean.completePlayer}"
+                                    var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player">
+                            <p:column>
+                                <p:graphicImage value="/images/barca/#{p.photo}" width="40" height="50"/>
+                            </p:column>
 
-                <br/><br/>
+                            <p:column>
+                                #{p.name} - #{p.number}
+                            </p:column>
+                        </p:autoComplete>
+                    </h:panelGrid>
+                </p:panel>
 
-                <p:commandButton value="Submit" update="player messages" />
+                <br/>
 
-                <br/><br/>
+                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()"/>
 
-                <h:outputText id="player" value="Selected: #{autoCompleteBean.selectedPlayer.name}" />
+                <p:dialog header="Selected Players" widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true">
+                    <h:panelGrid columns="1" id="display">
+                        <h:outputText value="Player 1: #{autoCompleteBean.selectedPlayer1.name}" rendered="#{not empty autoCompleteBean.selectedPlayer1}"/>
+                        
+                        <h:outputText value="Player 2: #{autoCompleteBean.selectedPlayer2.name}" rendered="#{not empty autoCompleteBean.selectedPlayer2}"/>
+                    </h:panelGrid>
+                </p:dialog>
             </h:form>
 
             <h3>Source</h3>
@@ -34,14 +55,37 @@
 &lt;h:form&gt;
     &lt;p:growl id="messages" showDetail="true"/&gt;
 
-    &lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayer}"
-				completeMethod="\#{autoCompleteBean.completePlayer}"
-				var="player" itemLabel="\#{player.name}" 
-				itemValue="\#{player}" converter="player"/&gt;
-	
-    &lt;p:commandButton value="Submit" update="player messages" /&gt;
-	
-    &lt;h:outputText id="player" value="Selected: \#{autoCompleteBean.selectedPlayer.name}" /&gt;
+    &lt;p:panel header="Players"&gt;
+        &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+            &lt;h:outputLabel value="Basic Pojo: " /&gt;
+            &lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayer1}" completeMethod="\#{autoCompleteBean.completePlayer}"
+                        var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player"/&gt;
+
+            &lt;h:outputLabel value="Custom Content: " /&gt;
+            &lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayer2}" completeMethod="\#{autoCompleteBean.completePlayer}"
+                        var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player"&gt;
+                &lt;p:column&gt;
+                    &lt;p:graphicImage value="/images/barca/\#{p.photo}" width="40" height="50"/&gt;
+                &lt;/p:column&gt;
+
+                &lt;p:column&gt;
+                    \#{p.name} - \#{p.number}
+                &lt;/p:column&gt;
+            &lt;/p:autoComplete&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:panel&gt;
+
+    &lt;br/&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="dlg.show()"/&gt;
+
+    &lt;p:dialog header="Selected Players" widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true"&gt;
+        &lt;h:panelGrid columns="1" id="display"&gt;
+            &lt;h:outputText value="Player 1: \#{autoCompleteBean.selectedPlayer1.name}" rendered="\#{not empty autoCompleteBean.selectedPlayer1}"/&gt;
+
+            &lt;h:outputText value="Player 2: \#{autoCompleteBean.selectedPlayer2.name}" rendered="\#{not empty autoCompleteBean.selectedPlayer2}"/&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
 &lt;/h:form&gt;
                     </pre>
                 </p:tab>
@@ -53,25 +97,37 @@ package org.primefaces.examples.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.SelectEvent;
 import org.primefaces.examples.domain.Player;
-import org.primefaces.examples.view.PlayerConverter;
 
 public class AutoCompleteBean {
 
-	private Player selectedPlayer;
-	
-	private List&lt;Player&gt; players;
-	
+	private Player selectedPlayer1;
+    
+    private Player selectedPlayer2;
+
 	public AutoCompleteBean() {
 		players = PlayerConverter.playerDB;
 	}
 
-	public Player getSelectedPlayer() {
-		return selectedPlayer;
-	}
-	public void setSelectedPlayer(Player selectedPlayer) {
-		this.selectedPlayer = selectedPlayer;
-	}
+    public Player getSelectedPlayer1() {
+        return selectedPlayer1;
+    }
+
+    public void setSelectedPlayer1(Player selectedPlayer1) {
+        this.selectedPlayer1 = selectedPlayer1;
+    }
+
+    public Player getSelectedPlayer2() {
+        return selectedPlayer2;
+    }
+
+    public void setSelectedPlayer2(Player selectedPlayer2) {
+        this.selectedPlayer2 = selectedPlayer2;
+    }
 
 	public List&lt;Player&gt; completePlayer(String query) {
 		List&lt;Player&gt; suggestions = new ArrayList&lt;Player&gt;();
