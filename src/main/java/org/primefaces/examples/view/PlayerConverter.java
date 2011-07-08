@@ -42,7 +42,7 @@ public class PlayerConverter implements Converter {
         playerDB.add(new Player("Afellay", 20, "afellay.jpg", "AMC"));
         playerDB.add(new Player("Abidal", 22, "abidal.jpg", "LB"));
         playerDB.add(new Player("Alves", 2, "alves.jpg", "RB"));
-        playerDB.add(new Player("Pique", 3, "afellay.jpg", "AMC"));
+        playerDB.add(new Player("Pique", 3, "pique.jpg", "CB"));
         playerDB.add(new Player("Keita", 15, "keita.jpg", "DM"));
         playerDB.add(new Player("Adriano", 21, "adriano.jpg", "LB"));
         playerDB.add(new Player("Valdes", 1, "valdes.jpg", "GK"));
