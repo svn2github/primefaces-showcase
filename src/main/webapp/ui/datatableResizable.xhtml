@@ -8,23 +8,23 @@
 	<ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Resizable Columns</h1>
             <div class="entry">
-                <p>Basic usage is same as standard datatable.</p>
+                <p>DataTable columns can be resized by dragging.</p>
 
                 <h:form>
                     <p:dataTable var="car" value="#{tableBean.carsSmall}" resizableColumns="true">
-                        <p:column headerText="Model">
+                        <p:column headerText="Model" style="width:125px">
                             #{car.model}
                         </p:column>
 
-                        <p:column headerText="Year">
+                        <p:column headerText="Year" style="width:125px">
                             <h:outputText value="#{car.year}" />
                         </p:column>
 
-                        <p:column headerText="Manufacturer">
+                        <p:column headerText="Manufacturer" style="width:125px">
                             <h:outputText value="#{car.manufacturer}" />
                         </p:column>
 
-                        <p:column headerText="Color">
+                        <p:column headerText="Color" style="width:125px">
                             <h:outputText value="#{car.color}" />
                         </p:column>
                     </p:dataTable>
@@ -36,19 +36,19 @@
 <pre name="code" class="xml">
 &lt;h:form&gt;
     &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" resizableColumns="true"&gt;
-        &lt;p:column headerText="Model"&gt;
+        &lt;p:column headerText="Model" style="width:125px"&gt;
             \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year"&gt;
+        &lt;p:column headerText="Year" style="width:125px"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer"&gt;
+        &lt;p:column headerText="Manufacturer" style="width:125px"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color"&gt;
+        &lt;p:column headerText="Color" style="width:125px"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
