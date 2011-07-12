@@ -29,18 +29,22 @@
 			</h:form>
 						
 			<h3>Source</h3>
-			<pre name="code" class="xml">
+            <p:tabView>
+                <p:tab title="fileDownload.xhtml">
+                    <pre name="code" class="xml">
 &lt;p:commandButton value="Download" ajax="false"&gt;
-	&lt;p:fileDownload value="#{fileDownloadController.file}" /&gt;
+	&lt;p:fileDownload value="\#{fileDownloadController.file}" /&gt;
 &lt;/p:commandButton&gt;
 
 &lt;p:commandLink ajax="false" title="Download"&gt;
 	&lt;p:graphicImage value="/images/download.gif" /&gt;
-	&lt;p:fileDownload value="#{fileDownloadController.file}" /&gt;
+	&lt;p:fileDownload value="\#{fileDownloadController.file}" /&gt;
 &lt;/p:commandLink&gt;
-			</pre>
-						
-			<pre name="code" class="java">						
+                    </pre>  
+                </p:tab>
+                
+                <p:tab title="FileDownloadController.java">
+                    <pre name="code" class="java">						
 package org.primefaces.examples.view;
 
 import java.io.InputStream;
@@ -65,7 +69,10 @@ public class FileDownloadController {
 		this.file = file;
 	}
 }
-			</pre>
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
 		</div>
 
 	</ui:define>
