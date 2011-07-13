@@ -24,7 +24,9 @@
 			</h:form>
 	
 		<h3>Source</h3>
-		<pre name="code" class="xml">
+        <p:tabView>
+            <p:tab title="outputPanel.xhtml">
+                <pre name="code" class="xml">
 &lt;h:form&gt;
 	&lt;p:commandButton value="Show"&gt;
 		&lt;f:setPropertyActionListener value="\#{true}" target="\#{requestScope.renderCampNou}" /&gt;
@@ -34,7 +36,10 @@
 		&lt;p:graphicImage value="/images/barca/camp_nou.jpg" rendered="\#{requestScope.renderCampNou}"/&gt;
 	&lt;/p:outputPanel&gt;
 &lt;/h:form&gt;
-		</pre>
+                </pre>
+            </p:tab>
+        </p:tabView>
+
 		</div>
 
 	</ui:define>

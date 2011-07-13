@@ -45,7 +45,9 @@
             </h:form>
 
             <h3>Source</h3>
-            <pre name="code" class="xml">
+            <p:tabView>
+                <p:tab title="callbackParams.xhtml">
+                    <pre name="code" class="xml">
 &lt;h:form&gt;
 	&lt;p:panel id="panel" header="New User"&gt;
 		&lt;p:messages /&gt;
@@ -60,9 +62,24 @@
 
 	&lt;p:commandButton value="Save" actionListener="\#{userController.saveUser}" oncomplete="handleComplete(xhr, status, args)" /&gt;
 &lt;/h:form&gt;
-            </pre>
-
-            <pre name="code" class="java">
+                    </pre>
+                    
+                    <pre name="code" class="javascript">
+&lt;script type="text/javascript"&gt;
+function handleComplete(xhr, status, args) {
+	if(args.validationFailed) {
+		alert("Validation Failed");
+	} else {
+		alert("Save:" + args.saved);
+		alert("FirstName: " + args.user.firstname + ", Lastname: " + args.user.lastname); 
+	}
+}
+&lt;/script&gt;
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="UserController.java">
+                    <pre name="code" class="java">
 public class UserController {
 
 	private User user = new User();
@@ -81,20 +98,10 @@ public class UserController {
 		context.addCallbackParam("user", user);
 	}
 }
-            </pre>
-
-            <pre name="code" class="javascript">
-&lt;script type="text/javascript"&gt;
-function handleComplete(xhr, status, args) {
-	if(args.validationFailed) {
-		alert("Validation Failed");
-	} else {
-		alert("Save:" + args.saved);
-		alert("FirstName: " + args.user.firstname + ", Lastname: " + args.user.lastname); 
-	}
-}
-&lt;/script&gt;
-            </pre>
+                    </pre>
+                </p:tab>
+            </p:tabView>
+            
         </div>
 
     </ui:define>
