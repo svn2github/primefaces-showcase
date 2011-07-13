@@ -39,7 +39,7 @@
                     </p:selectOneMenu>
 
                     <h:outputText value="Custom Content:" />
-                    <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer}" converter="player"
+                    <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer1}" converter="player"
                                      effect="fade" var="p">
                         <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}"/>
@@ -63,7 +63,7 @@
 
                         <h:outputText value="Value 2: #{pprBean.city}" />
 
-                        <h:outputText value="Value 3: #{autoCompleteBean.selectedPlayer}" />
+                        <h:outputText value="Value 3: #{autoCompleteBean.selectedPlayer1.name}" rendered="#{not empty autoCompleteBean.selectedPlayer1}" />
                     </h:panelGrid>
                 </p:dialog>
                 
@@ -92,7 +92,7 @@
         &lt;/p:selectOneMenu&gt;
 
         &lt;h:outputText value="Custom Content:" /&gt;
-        &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer}"
+        &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer1}"
                          converter="player"
                          effect="fade" var="p"&gt;
 
@@ -121,7 +121,7 @@
 
             &lt;h:outputText value="Value 2: \#{pprBean.city}" /&gt;
 
-            &lt;h:outputText value="Value 3: \#{autoCompleteBean.selectedPlayer}" /&gt;
+            &lt;h:outputText value="Value 3: \#{autoCompleteBean.selectedPlayer}" rendered="\#{not empty autoCompleteBean.selectedPlayer1}"/&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
 
