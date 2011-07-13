@@ -14,20 +14,20 @@
 
                 <h:panelGrid columns="2" cellpadding="10">
                     <h:outputText value="Default Switcher:" /> 
-                    <p:themeSwitcher style="width:200px">
+                    <p:themeSwitcher style="width:150px">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.themes}" />
                     </p:themeSwitcher>
                     
                     <h:outputText value="Stateful Switcher:" /> 
-                    <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:200px" effect="fade">
+                    <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:150px" effect="fade">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.themes}" />
                         <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
                     </p:themeSwitcher>
                     
                     <h:outputText value="Theme Preview:" /> 
-                    <p:themeSwitcher style="width:200px" effect="fade" var="t">
+                    <p:themeSwitcher style="width:150px" effect="fade" var="t">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme}"/>
                         
@@ -98,20 +98,20 @@
 
     &lt;h:panelGrid columns="2" cellpadding="10"&gt;
         &lt;h:outputText value="Default Switcher:" /&gt; 
-        &lt;p:themeSwitcher style="width:200px"&gt;
+        &lt;p:themeSwitcher style="width:150px"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
             &lt;f:selectItems value="\#{themeSwitcherBean.themes}" /&gt;
         &lt;/p:themeSwitcher&gt;
 
         &lt;h:outputText value="Stateful Switcher:" /&gt; 
-        &lt;p:themeSwitcher value="\#{themeSwitcherBean.theme}" style="width:200px" effect="fade"&gt;
+        &lt;p:themeSwitcher value="\#{themeSwitcherBean.theme}" style="width:150px" effect="fade"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
             &lt;f:selectItems value="\#{themeSwitcherBean.themes}" /&gt;
             &lt;p:ajax listener="\#{themeSwitcherBean.saveTheme}" /&gt;
         &lt;/p:themeSwitcher&gt;
 
         &lt;h:outputText value="Theme Preview:" /&gt; 
-        &lt;p:themeSwitcher style="width:200px" effect="fade" var="t"&gt;
+        &lt;p:themeSwitcher style="width:150px" effect="fade" var="t"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
             &lt;f:selectItems value="\#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="\#{theme.name}" itemValue="\#{theme}"/&gt;
 
