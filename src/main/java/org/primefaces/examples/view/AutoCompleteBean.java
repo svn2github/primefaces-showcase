@@ -37,6 +37,8 @@ public class AutoCompleteBean {
 	private String txt5;
     
     private String txt6;
+    
+    private String txt7;
 
 	private Player selectedPlayer1;
     
@@ -69,7 +71,7 @@ public class AutoCompleteBean {
 	public List<String> complete(String query) {
 		List<String> results = new ArrayList<String>();
 		
-		for (int i = 0; i < 10; i++) {
+		for(int i = 0; i < 10; i++) {
 			results.add(query + i);
 		}
 		
@@ -151,5 +153,13 @@ public class AutoCompleteBean {
 
     public void setTxt6(String txt6) {
         this.txt6 = txt6;
+    }
+
+    public String getTxt7() {
+        return txt7;
+    }
+
+    public void setTxt7(String txt7) {
+        this.txt7 = txt7;
     }
 }

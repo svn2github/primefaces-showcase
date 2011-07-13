@@ -36,6 +36,9 @@
 						
 						<h:outputLabel value="Force Selection :" for="acForce" />
 						<p:autoComplete id="acForce" forceSelection="true" value="#{autoCompleteBean.txt5}" completeMethod="#{autoCompleteBean.complete}"/>
+                        
+                        <h:outputLabel value="DropDown :" for="dd" />
+						<p:autoComplete id="dd" dropdown="true" value="#{autoCompleteBean.txt6}" completeMethod="#{autoCompleteBean.complete}"/>
 					</h:panelGrid>
 				</p:panel>
 				
@@ -60,8 +63,10 @@
 						<h:outputText value="#{autoCompleteBean.txt4}" /> 
 						
 						<h:outputText value="Value 5: " />
-						<h:outputText value="#{autoCompleteBean.txt5}" /> 
-						
+						<h:outputText value="#{autoCompleteBean.txt5}" />
+                        
+                        <h:outputText value="Value 6: " />
+						<h:outputText value="#{autoCompleteBean.txt6}" /> 
 					</h:panelGrid>
 					
                 </p:dialog>
@@ -99,6 +104,10 @@
 			&lt;p:autoComplete id="acForce" forceSelection="true" 
 					value="\#{autoCompleteBean.txt5}" 
 					completeMethod="\#{autoCompleteBean.complete}"/&gt;
+
+            &lt;h:outputLabel value="DropDown :" for="dd" /&gt;
+            &lt;p:autoComplete id="dd" dropdown="true" value="\#{autoCompleteBean.txt6}" 
+                    completeMethod="\#{autoCompleteBean.complete}" /&gt;
 			
 		&lt;/h:panelGrid&gt;
 	&lt;/p:panel&gt;
@@ -123,6 +132,9 @@
 			
 			&lt;h:outputText value="Value 5: " /&gt;
 			&lt;h:outputText value="\#{autoCompleteBean.txt5}" /&gt; 
+
+            &lt;h:outputText value="Value 6: " /&gt;
+			&lt;h:outputText value="\#{autoCompleteBean.txt6}" /&gt; 
 		&lt;/h:panelGrid&gt;
 		
 	&lt;/p:dialog&gt;
@@ -138,18 +150,20 @@ package org.primefaces.examples.view;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class AutoCompleteBean {
 
-	private String text;
+	private String txt1;
 	
-	public String getText() {
-		return text;
-	}
-	public void setText(String text) {
-		this.text = text;
-	}
+	private String txt2;
 	
+	private String txt3;
+	
+	private String txt4;
+	
+	private String txt5;
+    
+    private String txt6;
+    
 	public List&lt;String&gt; complete(String query) {
 		List&lt;String&gt; results = new ArrayList&lt;String&gt;();
 		
@@ -158,7 +172,55 @@ public class AutoCompleteBean {
 		}
 		
 		return results;
-	}	
+	}
+
+	public String getTxt1() {
+		return txt1;
+	}
+
+	public void setTxt1(String txt1) {
+		this.txt1 = txt1;
+	}
+
+	public String getTxt2() {
+		return txt2;
+	}
+
+	public void setTxt2(String txt2) {
+		this.txt2 = txt2;
+	}
+
+	public String getTxt3() {
+		return txt3;
+	}
+
+	public void setTxt3(String txt3) {
+		this.txt3 = txt3;
+	}
+	
+	public String getTxt4() {
+		return txt4;
+	}
+
+	public void setTxt4(String txt4) {
+		this.txt4 = txt4;
+	}
+
+	public String getTxt5() {
+		return txt5;
+	}
+
+	public void setTxt5(String txt5) {
+		this.txt5 = txt5;
+	}
+
+    public String getTxt6() {
+        return txt6;
+    }
+
+    public void setTxt6(String txt6) {
+        this.txt6 = txt6;
+    }
 }
 			</pre>
 				</p:tab>
