@@ -8,14 +8,14 @@
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Tooltip - Configuration</h1>
 		<div class="entry">
-			<p>Tooltip has various customization options such as effects, events and custom content support.</p>
+			<p>Tooltip has various customization options such as effects, events and custom content support. If value of
+            tooltip is not provided, title of the target is used instead.</p>
 
             <h:panelGrid columns="3" cellpadding="5">
 
                 <h:outputText value="Focus/Blur: " />
-                <p:inputText id="focus" />
-                <p:tooltip for="focus" value="This tooltip is displayed when input gets the focus" 
-                           showEvent="focus" hideEvent="blur" />
+                <p:inputText id="focus" title="This tooltip is displayed when input gets the focus"/>
+                <p:tooltip for="focus" showEvent="focus" hideEvent="blur" />
 
                 <h:outputText value="Fade: " />
                 <h:outputLink id="fade" value="#">
@@ -55,30 +55,26 @@
 &lt;h:panelGrid columns="3" cellpadding="5"&gt;
 
     &lt;h:outputText value="Focus/Blur: " /&gt;
-    &lt;p:inputText id="focus" /&gt;
-    &lt;p:tooltip for="focus" value="This tooltip is displayed when input gets the focus" 
-               showEvent="focus" hideEvent="blur" /&gt;
+    &lt;p:inputText id="focus" title="This tooltip is displayed when input gets the focus"/&gt;
+    &lt;p:tooltip for="focus" showEvent="focus" hideEvent="blur" /&gt;
 
     &lt;h:outputText value="Fade: " /&gt;
     &lt;h:outputLink id="fade" value="\#"&gt;
         &lt;h:outputText value="Fade Effect" /&gt;
     &lt;/h:outputLink&gt;
-    &lt;p:tooltip for="fade" value="Fade effect is used by default" 
-               showEffect="fade" hideEffect="fade" /&gt;
+    &lt;p:tooltip for="fade" value="Fade effect is used by default" showEffect="fade" hideEffect="fade" /&gt;
 
     &lt;h:outputText value="Slide: " /&gt;
     &lt;h:outputLink id="slide" value="\#"&gt;
         &lt;h:outputText value="Slide Effect" /&gt;
     &lt;/h:outputLink&gt;
-    &lt;p:tooltip for="slide" value="This tooltip uses slide effect for the animation"
-                        showEffect="slide" hideEffect="slide" /&gt;
+    &lt;p:tooltip for="slide" value="This tooltip uses slide effect for the animation" showEffect="slide" hideEffect="slide" /&gt;
 
     &lt;h:outputText value="Clip/Explode: " /&gt;
     &lt;h:outputLink id="grow" value="\#"&gt;
         &lt;h:outputText value="Clip/Explode Effects" /&gt;
     &lt;/h:outputLink&gt;
-    &lt;p:tooltip for="grow" value="This tooltip uses clip/explode effects for the animation"
-            showEffect="clip" hideEffect="explode" /&gt;
+    &lt;p:tooltip for="grow" value="This tooltip uses clip/explode effects for the animation" showEffect="clip" hideEffect="explode" /&gt;
 
     &lt;h:outputText value="Content:  " /&gt;
     &lt;h:outputLink id="lnk" value="\#"&gt;
