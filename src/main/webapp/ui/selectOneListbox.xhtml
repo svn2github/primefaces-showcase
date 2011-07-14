@@ -32,7 +32,7 @@
                     </p:selectOneListbox>
 
                     <h:outputText value="Scrollbar: " />
-                    <p:selectOneListbox value="#{autoCompleteBean.selectedPlayer}" converter="player" style="height:100px">
+                    <p:selectOneListbox value="#{autoCompleteBean.selectedPlayer1}" converter="player" style="height:100px">
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}" />
                     </p:selectOneListbox>
 
@@ -46,7 +46,7 @@
                     <h:panelGrid columns="1" id="display">
                         <h:outputText value="Value 1: #{buttonBean.text}" />
 
-                        <h:outputText value="Value 2: #{autoCompleteBean.selectedPlayer}" />
+                        <h:outputText value="Value 2: #{autoCompleteBean.selectedPlayer1}" />
                     </h:panelGrid>
                 </p:dialog>
 
@@ -69,7 +69,7 @@
         &lt;/p:selectOneListbox&gt;
 
         &lt;h:outputText value="Scrollbar: " /&gt;
-        &lt;p:selectOneListbox value="\#{autoCompleteBean.selectedPlayer}"
+        &lt;p:selectOneListbox value="\#{autoCompleteBean.selectedPlayer1}"
             converter="player" style="height:100px"&gt;
             &lt;f:selectItems value="\#{autoCompleteBean.players}"
                 var="player" itemLabel="\#{player.name}" itemValue="\#{player}" /&gt;
@@ -85,7 +85,7 @@
         &lt;h:panelGrid columns="1" id="display"&gt;
             &lt;h:outputText value="Value 1: \#{buttonBean.text}" /&gt;
 
-            &lt;h:outputText value="Value 2: \#{autoCompleteBean.selectedPlayer}" /&gt;
+            &lt;h:outputText value="Value 2: \#{autoCompleteBean.selectedPlayer1}" /&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
 
