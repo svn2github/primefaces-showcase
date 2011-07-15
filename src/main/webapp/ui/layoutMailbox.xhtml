@@ -86,8 +86,9 @@
                             <h:form>
 
                                 <p:dataTable var="mail" value="#{mailbox.mails}"
-                                             selection="#{mailbox.mail}" selectionMode="single"
-                                             onRowSelectUpdate=":mailViewer">
+                                             selection="#{mailbox.mail}" selectionMode="single">
+                                    
+                                    <p:ajax event="rowSelect" update=":mailViewer" />
 
                                     <p:column headerText="From" sortBy="#{mail.from}">
                                         #{mail.from}
