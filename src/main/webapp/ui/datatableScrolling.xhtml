@@ -13,8 +13,50 @@
 
             <h:form>
 
-                <h3>Client Side Scrolling</h3>
-                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" height="150" resizableColumns="true">
+                <h3>Y Scrolling</h3>
+                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" scrollHeight="150" resizableColumns="true">
+
+                    <p:column headerText="Model" footerText="Model" style="width:125px">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column headerText="Year" footerText="Year" style="width:125px">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column headerText="Manufacturer" footerText="Year" style="width:125px">
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column headerText="Color" footerText="Year" style="width:125px">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+
+                </p:dataTable>
+                
+                <h3>X Scrolling</h3>
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" scrollable="true" scrollWidth="400" resizableColumns="true">
+
+                    <p:column headerText="Model" footerText="Model" style="width:125px">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column headerText="Year" footerText="Year" style="width:125px">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column headerText="Manufacturer" footerText="Year" style="width:125px">
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column headerText="Color" footerText="Year" style="width:125px">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+
+                </p:dataTable>
+                
+                <h3>XY Scrolling</h3>
+                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" scrollWidth="400" scrollHeight="150">
 
                     <p:column headerText="Model" footerText="Model" style="width:125px">
                         <h:outputText value="#{car.model}" />
@@ -36,7 +78,7 @@
 
                 <h3>Live Scrolling</h3>
                 <p:dataTable var="car" value="#{tableBean.carsLarge}" rows="20"
-                                scrollable="true" liveScroll="true" height="150">
+                                scrollable="true" liveScroll="true" scrollHeight="150">
                    
                     <p:column headerText="Model" style="width:125px">
                         <h:outputText value="#{car.model}" />
@@ -65,10 +107,50 @@
                 <pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;h3&gt;Client Side Scrolling&lt;/h3&gt;
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}"
-            scrollable="true" height="150"
-            resizableColumns="true"&gt;
+    &lt;h3&gt;Y Scrolling&lt;/h3&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" scrollable="true" scrollHeight="150" resizableColumns="true"&gt;
+
+        &lt;p:column headerText="Model" footerText="Model" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year" footerText="Year" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer" footerText="Year" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" footerText="Year" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+
+    &lt;h3&gt;X Scrolling&lt;/h3&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" scrollable="true" scrollWidth="400" resizableColumns="true"&gt;
+
+        &lt;p:column headerText="Model" footerText="Model" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year" footerText="Year" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer" footerText="Year" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" footerText="Year" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+
+    &lt;h3&gt;XY Scrolling&lt;/h3&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" scrollable="true" scrollWidth="400" scrollHeight="150"&gt;
 
         &lt;p:column headerText="Model" footerText="Model" style="width:125px"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
@@ -90,7 +172,7 @@
 
     &lt;h3&gt;Live Scrolling&lt;/h3&gt;
     &lt;p:dataTable var="car" value="\#{tableBean.carsLarge}" rows="20"
-                    scrollable="true" liveScroll="true" height="300"&gt;
+                    scrollable="true" liveScroll="true" scrollHeight="150"&gt;
 
         &lt;p:column headerText="Model" style="width:125px"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
@@ -109,7 +191,6 @@
         &lt;/p:column&gt;
 
     &lt;/p:dataTable&gt;
-
 
 &lt;/h:form&gt;
 				</pre>
