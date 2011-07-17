@@ -9,11 +9,11 @@
 		
 		<h1 class="title ui-widget-header ui-corner-all">Timeline</h1>
 		<div class="entry">
-            <p>Timeline visualizes temporal data.</p>
+            <p>Timeline visualizes temporal data. This example displays notable PrimeFaces releases.</p>
 		
 			<h:form prependId="false">
 
-                <p:timeline value="#{timelineBean.model}" />
+                <p:timeline value="#{timelineBean.model}" style="height:300px"/>
 
 			</h:form>
 			
@@ -22,13 +22,56 @@
 			<p:tabView>
 				<p:tab title="timeline.xhtml">
 <pre name="code" class="xml">
+    &lt;h:form prependId="false"&gt;
 
+        &lt;p:timeline value="\#{timelineBean.model}" style="height:300px"/&gt;
+
+    &lt;/h:form&gt;
 </pre>
 				</p:tab>
 				
 				<p:tab title="TimelineBean.java">
 <pre name="code" class="java">
+package org.primefaces.examples.view;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import org.primefaces.model.timeline.DefaultTimeLine;
+import org.primefaces.model.timeline.DefaultTimelineEvent;
+import org.primefaces.model.timeline.Timeline;
+
+public class TimelineBean implements Serializable {
+ 
+    private List&lt;Timeline&gt; model;
+    
+    public TimelineBean() {
+        model = new ArrayList&lt;Timeline&gt;();
+        Calendar calendar = Calendar.getInstance();
+        
+        DefaultTimeLine primefaces = new DefaultTimeLine("primefaces", "PrimeFaces History");
+        calendar.set(2008, 9, 29);
+        
+        primefaces.setFocusDate(calendar.getTime());
+        primefaces.setInitialZoom(37);
+        
+        calendar.set(2008, 9, 29);
+        primefaces.addEvent(new DefaultTimelineEvent("Start", "PrimeFaces begins", calendar.getTime(), null));
+        
+        calendar.set(2010, 1, 14);
+        primefaces.addEvent(new DefaultTimelineEvent("1.0/2.0 Milestone", "PrimeFaces 1.0/2.0 Released", calendar.getTime(), null));
+        
+        calendar.set(2011, 1, 15);
+        primefaces.addEvent(new DefaultTimelineEvent("2.2.1 Milestone", "PrimeFaces 2.2.1 Released", calendar.getTime(), null));
+        
+        model.add(primefaces);
+    }
+
+    public List&lt;Timeline&gt; getModel() {
+        return model;
+    }
+}
 </pre>
 				</p:tab>
 			</p:tabView>

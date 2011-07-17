@@ -31,7 +31,7 @@ public class TimelineBean implements Serializable {
         model = new ArrayList<Timeline>();
         Calendar calendar = Calendar.getInstance();
         
-        DefaultTimeLine primefaces = new DefaultTimeLine("primefaces", "PrimeFaces History", "History of PrimeFaces Project since the beginning");
+        DefaultTimeLine primefaces = new DefaultTimeLine("primefaces", "PrimeFaces History");
         calendar.set(2008, 9, 29);
         
         primefaces.setFocusDate(calendar.getTime());
