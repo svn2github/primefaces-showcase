@@ -17,7 +17,10 @@ package org.primefaces.examples.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import org.primefaces.model.timeline.DefaultTimeLine;
+import org.primefaces.model.timeline.DefaultTimelineEvent;
 import org.primefaces.model.timeline.Timeline;
 
 public class TimelineBean implements Serializable {
@@ -26,6 +29,24 @@ public class TimelineBean implements Serializable {
     
     public TimelineBean() {
         model = new ArrayList<Timeline>();
+        Calendar calendar = Calendar.getInstance();
+        
+        DefaultTimeLine primefaces = new DefaultTimeLine("primefaces", "PrimeFaces History", "History of PrimeFaces Project since the beginning");
+        calendar.set(2008, 9, 29);
+        
+        primefaces.setFocusDate(calendar.getTime());
+        primefaces.setInitialZoom(37);
+        
+        calendar.set(2008, 9, 29);
+        primefaces.addEvent(new DefaultTimelineEvent("Start", "PrimeFaces begins", calendar.getTime(), null, 40));
+        
+        calendar.set(2010, 1, 14);
+        primefaces.addEvent(new DefaultTimelineEvent("1.0/2.0 Milestone", "PrimeFaces 1.0/2.0 Released", calendar.getTime(), null, 40));
+        
+        calendar.set(2011, 1, 15);
+        primefaces.addEvent(new DefaultTimelineEvent("2.2.1 Milestone", "PrimeFaces 2.2.1 Released", calendar.getTime(), null, 40));
+        
+        model.add(primefaces);
     }
 
     public List<Timeline> getModel() {
