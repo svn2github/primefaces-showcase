@@ -38,16 +38,16 @@ public class TimelineBean implements Serializable {
         primefaces.setInitialZoom(37);
         
         calendar.set(2008, 9, 29);
-        primefaces.addEvent(new DefaultTimelineEvent("Project start", "PrimeFaces begins", calendar.getTime(), null));
+        primefaces.addEvent(new DefaultTimelineEvent("Project start", "PrimeFaces begins", calendar.getTime(), null, "images/timeline/blue.png"));
         
         calendar.set(2009, 1, 26);
-        primefaces.addEvent(new DefaultTimelineEvent("First Release", "PrimeFaces 0.8.0 Released", calendar.getTime(), null));
+        primefaces.addEvent(new DefaultTimelineEvent("First Release", "PrimeFaces 0.8.0 Released", calendar.getTime(), null, "images/timeline/orange.png"));
         
         calendar.set(2010, 1, 14);
-        primefaces.addEvent(new DefaultTimelineEvent("1.0/2.0 Milestone", "PrimeFaces 1.0/2.0 Released", calendar.getTime(), null));
+        primefaces.addEvent(new DefaultTimelineEvent("1.0/2.0 Milestone", "PrimeFaces 1.0/2.0 Released", calendar.getTime(), null, "images/timeline/green.png"));
         
         calendar.set(2011, 1, 15);
-        primefaces.addEvent(new DefaultTimelineEvent("2.2.1 Milestone", "PrimeFaces 2.2.1 Released", calendar.getTime(), null));
+        primefaces.addEvent(new DefaultTimelineEvent("2.2.1 Milestone", "PrimeFaces 2.2.1 Released", calendar.getTime(), null, "images/timeline/black.png"));
         
         model.add(primefaces);
     }
