@@ -20,9 +20,9 @@
 		<div class="entry">
 		<p>Carousel supports various slide effects out of the box.</p>
 
-			<h3>elasticIn</h3>
+			<h3>Custom Easing</h3>
 			<p:carousel value="#{tableBean.carsSmall}" var="car" itemStyleClass="carItem"
-						effect="elasticIn">
+						easing="easeOutBounce">
 				<h:panelGrid columns="1" style="width:100%" cellpadding="5">
 					<p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/> 
 					
@@ -34,9 +34,9 @@
 				</h:panelGrid>
 			</p:carousel>
 			
-			<h3>easeInStrong</h3>
+			<h3>Fade</h3>
 			<p:carousel value="#{tableBean.carsSmall}" var="car" itemStyleClass="carItem"
-						effect="easeInStrong">
+						effect="fade">
 				<h:panelGrid columns="1" style="width:100%" cellpadding="5">
 					<p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/> 
 					
@@ -52,9 +52,9 @@
 			<p:tabView>
 				<p:tab title="carouselEffects.xhtml">
 				<pre name="code" class="xml">
-&lt;h3&gt;elasticIn&lt;/h3&gt;
+&lt;h3&gt;Custom Easing&lt;/h3&gt;
 &lt;p:carousel value="\#{tableBean.carsSmall}" var="car" itemStyleClass="carItem"
-			effect="elasticIn"&gt;
+			easing="easeOutBounce"&gt;
 	&lt;h:panelGrid columns="1" style="width:100%" cellpadding="5"&gt;
 		&lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt; 
 		
@@ -66,9 +66,9 @@
 	&lt;/h:panelGrid&gt;
 &lt;/p:carousel&gt;
 
-&lt;h3&gt;easeInStrong&lt;/h3&gt;
+&lt;h3&gt;Fade&lt;/h3&gt;
 &lt;p:carousel value="\#{tableBean.carsSmall}" var="car" itemStyleClass="carItem"
-			effect="easeInStrong"&gt;
+			effect="fade"&gt;
 	&lt;h:panelGrid columns="1" style="width:100%" cellpadding="5"&gt;
 		&lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt; 
 		
