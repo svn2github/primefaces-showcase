@@ -8,9 +8,13 @@
 	<ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Resizable Columns</h1>
             <div class="entry">
-                <p>DataTable columns can be resized by dragging.</p>
+                <p>DataTable columns can be resized by dragging. Optional "colResize" ajax behavior can be used to get notified about new column widths.</p>
 
-                <h:form>
+                <h:form id="form">
+                    
+                    <p:growl id="growl" showDetail="true"/>
+                    
+                    <h3>Basic Resize</h3>
                     <p:dataTable var="car" value="#{tableBean.carsSmall}" resizableColumns="true">
                         <p:column headerText="Model" style="width:125px">
                             #{car.model}
@@ -28,13 +32,40 @@
                             <h:outputText value="#{car.color}" />
                         </p:column>
                     </p:dataTable>
+                    
+                    <h3>Ajax Resize</h3>
+                    <p:dataTable var="car" value="#{tableBean.carsSmall}" resizableColumns="true">
+                        
+                        <p:ajax event="colResize" update=":form:growl" listener="#{tableBean.onResize}" />
+                        
+                        <p:column headerText="Model" style="width:125px">
+                            #{car.model}
+                        </p:column>
+
+                        <p:column headerText="Year" style="width:125px">
+                            <h:outputText value="#{car.year}" />
+                        </p:column>
+
+                        <p:column headerText="Manufacturer" style="width:125px">
+                            <h:outputText value="#{car.manufacturer}" />
+                        </p:column>
+
+                        <p:column headerText="Color" style="width:125px">
+                            <h:outputText value="#{car.color}" />
+                        </p:column>
+                    </p:dataTable>
+                    
                 </h:form>
 
 		<h3>Source</h3>
 		<p:tabView>
 			<p:tab title="datatableBasic.xhtml">
-<pre name="code" class="xml">
-&lt;h:form&gt;
+                <pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+                    
+    &lt;p:growl id="growl" showDetail="true"/&gt;
+
+    &lt;h3&gt;Basic Resize&lt;/h3&gt;
     &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" resizableColumns="true"&gt;
         &lt;p:column headerText="Model" style="width:125px"&gt;
             \#{car.model}
@@ -52,6 +83,29 @@
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
+
+    &lt;h3&gt;Ajax Resize&lt;/h3&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" resizableColumns="true"&gt;
+
+        &lt;p:ajax event="colResize" update=":form:growl" listener="\#{tableBean.onResize}" /&gt;
+
+        &lt;p:column headerText="Model" style="width:125px"&gt;
+            \#{car.model}
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" style="width:125px"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
 &lt;/h:form&gt;
 				</pre>
 			</p:tab>
@@ -66,6 +120,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.primefaces.examples.domain.Car;
+import org.primefaces.event.ColumnResizeEvent;
 
 public class TableBean implements Serializable {
 
@@ -131,6 +186,12 @@ public class TableBean implements Serializable {
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
+
+    public void onResize(ColumnResizeEvent event) {
+        FacesMessage msg = new FacesMessage("Column " + event.getColumn().getClientId() + " resized", "W:" + event.getWidth() + ", H:" + event.getHeight());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
 				</pre>
 			</p:tab>

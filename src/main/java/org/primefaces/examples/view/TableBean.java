@@ -47,6 +47,7 @@ import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
 import java.util.Map;
 import javax.faces.model.SelectItem;
+import org.primefaces.event.ColumnResizeEvent;
 import org.primefaces.event.DragDropEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
@@ -490,6 +491,12 @@ public class TableBean implements Serializable {
     
     public void onEdit(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("Car Edited", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void onResize(ColumnResizeEvent event) {
+        FacesMessage msg = new FacesMessage("Column " + event.getColumn().getClientId() + " resized", "W:" + event.getWidth() + ", H:" + event.getHeight());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
