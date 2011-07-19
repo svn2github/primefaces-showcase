@@ -9,7 +9,8 @@
 		
 		<h1 class="title ui-widget-header ui-corner-all">Sheet</h1>
 		<div class="entry">
-            <p>Sheet is an excel-like component to do data manipulation featuring resizable columns, scrolling, frozen headers, keyboard navigation and more.</p>
+            <p>Sheet is an excel-like component to do data manipulation featuring resizable columns, ajax sorting, scrolling, frozen headers, 
+                keyboard navigation and more.</p>
 		
 			<h:form>
                 
@@ -18,19 +19,19 @@
                         List of Cars
                     </f:facet>
                         
-                    <p:column headerText="Model" style="width:125px">
+                    <p:column headerText="Model" style="width:125px" sortBy="#{car.model}">
                         <h:inputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column headerText="Year" style="width:125px">
+                    <p:column headerText="Year" style="width:125px" sortBy="#{car.year}">
                         <h:inputText value="#{car.year}" />
                     </p:column>
  
-                    <p:column headerText="Manufacturer" style="width:125px" >
+                    <p:column headerText="Manufacturer" style="width:125px" sortBy="#{car.manufacturer}">
                         <h:inputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column headerText="Color" style="width:125px">
+                    <p:column headerText="Color" style="width:125px" sortBy="#{car.color}">
                         <h:inputText value="#{car.color}" />
                     </p:column>
                 </p:sheet>
@@ -49,19 +50,19 @@
             List of Cars
         &lt;/f:facet&gt;
 
-        &lt;p:column headerText="Model" style="width:125px"&gt;
+        &lt;p:column headerText="Model" style="width:125px" sortBy="\#{car.model}"&gt;
             &lt;h:inputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" style="width:125px"&gt;
+        &lt;p:column headerText="Year" style="width:125px" sortBy="\#{car.year}"&gt;
             &lt;h:inputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" style="width:125px" &gt;
+        &lt;p:column headerText="Manufacturer" style="width:125px" sortBy="\#{car.manufacturer}"&gt;
             &lt;h:inputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" style="width:125px"&gt;
+        &lt;p:column headerText="Color" style="width:125px" sortBy="\#{car.color}"&gt;
             &lt;h:inputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:sheet&gt;
