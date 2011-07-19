@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+		
+		<h1 class="title ui-widget-header ui-corner-all">Sheet</h1>
+		<div class="entry">
+            <p>Sheet is an excel-like component to do data manipulation featuring resizable columns, scrolling and more.</p>
+		
+			<h:form>
+                
+                <p:sheet value="#{tableBean.cars}" var="car" scrollHeight="300">
+                    <p:column headerText="Model" style="width:125px">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column headerText="Year" style="width:125px">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+ 
+                    <p:column headerText="Manufacturer" style="width:125px" >
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column headerText="Color" style="width:125px">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+                </p:sheet>
+                    
+			</h:form>
+			
+			<h3>Source</h3>
+			
+			<p:tabView>
+				<p:tab title="sheet.xhtml">
+                    <pre name="code" class="xml">
+
+                    </pre>
+				</p:tab>
+				
+				<p:tab title="SheetBean.java">
+                    <pre name="code" class="java">
+
+                    </pre>
+				</p:tab>
+			</p:tabView>
+
+		</div>
+		
+	</ui:define>
+</ui:composition>
