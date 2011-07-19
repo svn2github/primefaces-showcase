@@ -5,12 +5,26 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="../templates/ui.xhtml">
     
+    <ui:define name="head">
+        <script type="text/javascript">
+            //<![CDATA[
+            function restrict(evt) {
+                 var charCode = (evt.which) ? evt.which : evt.keyCode
+                 if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return false;
+
+                 return true;
+              }
+              //]]>
+        </script>
+    </ui:define>
+    
 	<ui:define name="content">
 		
 		<h1 class="title ui-widget-header ui-corner-all">Sheet</h1>
 		<div class="entry">
             <p>Sheet is an excel-like component to do data manipulation featuring resizable columns, ajax sorting, scrolling, frozen headers, 
-                keyboard navigation and more.</p>
+                keyboard navigation, multi cell selection with meta key, bulk delete/update and more.</p>
 		
 			<h:form>
                 
@@ -24,7 +38,7 @@
                     </p:column>
 
                     <p:column headerText="Year" style="width:125px" sortBy="#{car.year}">
-                        <h:inputText value="#{car.year}" />
+                        <h:inputText value="#{car.year}" onkeypress="return restrict(event)"/>
                     </p:column>
  
                     <p:column headerText="Manufacturer" style="width:125px" sortBy="#{car.manufacturer}">
@@ -55,7 +69,7 @@
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Year" style="width:125px" sortBy="\#{car.year}"&gt;
-            &lt;h:inputText value="\#{car.year}" /&gt;
+            &lt;h:inputText value="\#{car.year}" onkeypress="return restrict(event)"/&gt;
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Manufacturer" style="width:125px" sortBy="\#{car.manufacturer}"&gt;
