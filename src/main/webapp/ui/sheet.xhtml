@@ -14,6 +14,10 @@
 			<h:form>
                 
                 <p:sheet value="#{tableBean.cars}" var="car" scrollHeight="300">
+                    <f:facet name="caption">
+                        List of Cars
+                    </f:facet>
+                        
                     <p:column headerText="Model" style="width:125px">
                         <h:inputText value="#{car.model}" />
                     </p:column>
@@ -41,6 +45,10 @@
 &lt;h:form&gt;
                 
     &lt;p:sheet value="\#{tableBean.cars}" var="car" scrollHeight="300"&gt;
+        &lt;f:facet name="caption"&gt;
+            List of Cars
+        &lt;/f:facet&gt;
+
         &lt;p:column headerText="Model" style="width:125px"&gt;
             &lt;h:inputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
