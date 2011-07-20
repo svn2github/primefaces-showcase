@@ -27,7 +27,6 @@ import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.servlet.ServletContext;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -37,7 +36,6 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.primefaces.examples.domain.Car;
-import org.primefaces.model.Cell;
 import org.primefaces.model.LazyDataModel;
 
 import com.lowagie.text.BadElementException;
@@ -102,10 +100,6 @@ public class TableBean implements Serializable {
 	private Car selectedCar;
 
 	private Car[] selectedCars;
-	
-	private Cell selectedCell;
-	
-	private Cell[] selectedCells;
 
 	private LazyDataModel<Car> lazyModel;
 
@@ -238,22 +232,6 @@ public class TableBean implements Serializable {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
 	
-	public Cell getSelectedCell() {
-		return selectedCell;
-	}
-
-	public void setSelectedCell(Cell selectedCell) {
-		this.selectedCell = selectedCell;
-	}
-
-	public Cell[] getSelectedCells() {
-		return selectedCells;
-	}
-
-	public void setSelectedCells(Cell[] selectedCells) {
-		this.selectedCells = selectedCells;
-	}
-	
 	public void postProcessXLS(Object document) {
 		HSSFWorkbook wb = (HSSFWorkbook) document;
 		HSSFSheet sheet = wb.getSheetAt(0);
@@ -280,13 +258,7 @@ public class TableBean implements Serializable {
 		
 		pdf.add(Image.getInstance(logo));
 	}
-	
-	public void displaySelectedCells(ActionEvent actionEvent) {
-		System.out.println(selectedCell.getColumnId());
-		Car car = (Car) selectedCell.getRowData();
-		System.out.println(car.getModel());
-	}
-	
+		
 	public String getTheme() {
 		return theme;
 	}
