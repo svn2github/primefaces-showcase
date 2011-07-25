@@ -10,32 +10,30 @@
         <div class="entry">
             <p>Tabview can display dynamic number of tabs backed by a model.</p>
 
-            <h:form>
+            <p:tabView var="player" value="#{tabBean.players}">
 
-                <p:tabView var="player" value="#{tabBean.players}">
-                    
-                    <p:tab title="#{player.name}">
+                <p:tab title="#{player.name}">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage value="/images/barca/#{player.photo}" />
+
                         <h:panelGrid columns="2" cellpadding="10">
-                            <p:graphicImage value="/images/barca/#{player.photo}" />
-                            
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText value="Name: " />
-                                <h:outputText value="#{player.name}" style="font-weight: bold"/>
+                            <h:outputText value="Name: " />
+                            <h:outputText value="#{player.name}" style="font-weight: bold"/>
 
-                                <h:outputText value="Number: " />
-                                <h:outputText value="#{player.number}" style="font-weight: bold"/>
+                            <h:outputText value="Number: " />
+                            <h:outputText value="#{player.number}" style="font-weight: bold"/>
 
-                                <h:outputText value="Position: " />
-                                <h:outputText value="#{player.position}" style="font-weight: bold"/>
-                            </h:panelGrid>
-                            
+                            <h:outputText value="Position: " />
+                            <h:outputText value="#{player.position}" style="font-weight: bold"/>
                         </h:panelGrid>
-                        
-                    </p:tab>
 
-                </p:tabView>
+                    </h:panelGrid>
 
-            </h:form>
+                </p:tab>
+
+            </p:tabView>
+
+
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="tabviewModel.xhtml">

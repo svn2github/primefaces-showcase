@@ -45,4 +45,10 @@ public class TabBean {
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
+    
+    public void onPlayerChange(TabChangeEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Player: " + ((Player) event.getData()).getName());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
