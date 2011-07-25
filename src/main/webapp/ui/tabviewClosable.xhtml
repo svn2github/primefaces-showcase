@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">TabView - Closable</h1>
+		<div class="entry">
+		<p>Enabling closable option to true displays a close icon in tab header. There is also an optional ajax behavior called
+        "tabClose" provided to receive callbacks when a tab is closed.</p>
+			
+        <h:form id="form">
+
+            <p:growl id="growl" showDetail="true" />
+
+            <p:tabView>
+
+                <p:ajax event="tabClose" listener="#{tabBean.onTabClose}" update=":form:growl"/>
+
+                <p:tab title="Godfather Part I" closable="true">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage value="/images/godfather/godfather1.jpg" />
+                        <h:outputText
+                            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
+                            hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                            but given to ruthless violence whenever anything stands against the good of the family." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part II" closable="true">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage value="/images/godfather/godfather2.jpg" />
+                        <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
+                        In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
+                        killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows."></h:outputText>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part III" closable="true">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage value="/images/godfather/godfather3.jpg" />
+                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+                            Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate."></h:outputText>
+                    </h:panelGrid>
+                </p:tab>
+
+            </p:tabView>
+
+        </h:form>
+			
+			<h3>Source</h3>
+            <p:tabView>
+                <p:tab title="tabviewClosable.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+
+    &lt;p:growl id="growl" showDetail="true" /&gt;
+
+    &lt;p:tabView&gt;
+
+        &lt;p:ajax event="tabClose" listener="\#{tabBean.onTabClose}" update=":form:growl"/&gt;
+
+        &lt;p:tab title="Godfather Part I" closable="true"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage value="/images/godfather/godfather1.jpg" /&gt;
+                &lt;h:outputText
+                    value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
+                    hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                    but given to ruthless violence whenever anything stands against the good of the family." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part II" closable="true"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage value="/images/godfather/godfather2.jpg" /&gt;
+                &lt;h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
+                In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
+                killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows."&gt;&lt;/h:outputText&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part III" closable="true"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage value="/images/godfather/godfather3.jpg" /&gt;
+                &lt;h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+                    Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate."&gt;&lt;/h:outputText&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+
+    &lt;/p:tabView&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="TabBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.TabCloseEvent;
+
+public class TabBean {
+
+    public void onTabChange(TabCloseEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Closed", "Closed Tab: " + event.getTab().getTitle());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+      </div>
+                    
+
+	</ui:define>
+</ui:composition>

@@ -105,7 +105,7 @@ import org.primefaces.event.TabChangeEvent;
 public class TabBean {
 
     public void onTabChange(TabChangeEvent event) {
-        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getId());
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }

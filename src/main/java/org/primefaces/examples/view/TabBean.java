@@ -20,6 +20,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.TabChangeEvent;
+import org.primefaces.event.TabCloseEvent;
 import org.primefaces.examples.domain.Player;
 
 public class TabBean {
@@ -41,13 +42,19 @@ public class TabBean {
     }
     
     public void onTabChange(TabChangeEvent event) {
-        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getId());
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
     public void onPlayerChange(TabChangeEvent event) {
         FacesMessage msg = new FacesMessage("Tab Changed", "Active Player: " + ((Player) event.getData()).getName());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void onTabClose(TabCloseEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
