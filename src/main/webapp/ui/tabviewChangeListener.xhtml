@@ -11,13 +11,13 @@
             <p>Tab change event can be listened both on client and server side. onTabChange is a client side callback that is invoked
                 when active tab changed and there is also an ajax behavior provided.</p>
 
-            <h:form>
+            <h:form id="form">
 
                 <p:growl id="growl" showDetail="true" />
 
                 <p:tabView>
                     
-                    <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" update="growl"/>
+                    <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" update=":form:growl"/>
 
                     <p:tab title="Godfather Part I" id="Godfather1">
                         <h:panelGrid columns="2" cellpadding="10">
@@ -52,13 +52,13 @@
             <p:tabView>
                 <p:tab title="tabviewChangeListener.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id=form&gt;
 
     &lt;p:growl id="growl" showDetail="true" /&gt;
     
     &lt;p:tabView&gt;
 
-        &lt;p:ajax event="tabChange" listener="\#{tabBean.onTabChange}" update="growl"/&gt;
+        &lt;p:ajax event="tabChange" listener="\#{tabBean.onTabChange}" update=":form:growl"/&gt;
 
         &lt;p:tab title="Godfather Part I" id="Godfather1"&gt;
             &lt;h:panelGrid columns="2" cellpadding="10"&gt;
@@ -105,7 +105,7 @@ import org.primefaces.event.TabChangeEvent;
 public class TabBean {
 
     public void onTabChange(TabChangeEvent event) {
-        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab" + event.getTab.getId());
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getId());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }

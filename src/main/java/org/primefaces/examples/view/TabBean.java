@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Prime Technology.
+ * Copyright 2009-2011 Prime Technology.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,33 @@
  */
 package org.primefaces.examples.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.TabChangeEvent;
+import org.primefaces.examples.domain.Player;
 
 public class TabBean {
+    
+    private List<Player> players;
 
+    public TabBean() {
+        players = new ArrayList<Player>();
+        
+        players.add(new Player("Messi", 10, "messi.jpg", "CF"));
+        players.add(new Player("Iniesta", 8, "iniesta.jpg", "CM"));
+        players.add(new Player("Villa", 7, "villa.jpg", "CF"));
+        players.add(new Player("Xavi", 6, "xavi.jpg", "CM"));
+        players.add(new Player("Puyol", 5, "puyol.jpg", "CB"));
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+    
     public void onTabChange(TabChangeEvent event) {
-        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab:" + event.getTab().getId());
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getId());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }

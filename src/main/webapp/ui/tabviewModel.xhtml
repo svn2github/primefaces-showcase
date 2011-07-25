@@ -1,0 +1,101 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">TabView - Model</h1>
+        <div class="entry">
+            <p>Tabview can display dynamic number of tabs backed by a model.</p>
+
+            <h:form>
+
+                <p:tabView var="player" value="#{tabBean.players}">
+                    
+                    <p:tab title="#{player.name}">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:graphicImage value="/images/barca/#{player.photo}" />
+                            
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputText value="Name: " />
+                                <h:outputText value="#{player.name}" style="font-weight: bold"/>
+
+                                <h:outputText value="Number: " />
+                                <h:outputText value="#{player.number}" style="font-weight: bold"/>
+
+                                <h:outputText value="Position: " />
+                                <h:outputText value="#{player.position}" style="font-weight: bold"/>
+                            </h:panelGrid>
+                            
+                        </h:panelGrid>
+                        
+                    </p:tab>
+
+                </p:tabView>
+
+            </h:form>
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="tabviewModel.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:tabView var="player" value="\#{tabBean.players}"&gt;
+
+    &lt;p:tab title="\#{player.name}"&gt;
+        &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+            &lt;p:graphicImage value="/images/barca/\#{player.photo}" /&gt;
+
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;h:outputText value="Name: " /&gt;
+                &lt;h:outputText value="\#{player.name}" style="font-weight: bold"/&gt;
+
+                &lt;h:outputText value="Number: " /&gt;
+                &lt;h:outputText value="\#{player.number}" style="font-weight: bold"/&gt;
+
+                &lt;h:outputText value="Position: " /&gt;
+                &lt;h:outputText value="\#{player.position}" style="font-weight: bold"/&gt;
+            &lt;/h:panelGrid&gt;
+
+        &lt;/h:panelGrid&gt;
+
+    &lt;/p:tab&gt;
+
+&lt;/p:tabView&gt;
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="TabBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.examples.domain.Player;
+
+public class TabBean {
+    
+    private List&lt;Player&gt; players;
+
+    public TabBean() {
+        players = new ArrayList&lt;Player&gt;();
+        
+        players.add(new Player("Messi", 10, "messi.jpg", "CF"));
+        players.add(new Player("Iniesta", 8, "iniesta.jpg", "CM"));
+        players.add(new Player("Villa", 7, "villa.jpg", "CF"));
+        players.add(new Player("Xavi", 6, "xavi.jpg", "CM"));
+        players.add(new Player("Puyol", 5, "puyol.jpg", "CB"));
+    }
+
+    public List&lt;Player&gt; getPlayers() {
+        return players;
+    }
+}
+
+                    </pre>
+                </p:tab>
+            </p:tabView>
+        </div>
+
+    </ui:define>
+</ui:composition>
