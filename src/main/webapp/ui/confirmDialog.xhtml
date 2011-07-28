@@ -18,7 +18,6 @@
 					<p:commandButton value="Destroy the World" onclick="confirmation.show()" type="button"/>
 					
 					<p:confirmDialog message="Are you sure about destroying the world?"
-								showEffect="bounce" hideEffect="explode"
 								header="Initiating destroy process" severity="alert" widgetVar="confirmation">
 								
 						<p:commandButton value="Yes Sure" actionListener="#{buttonBean.destroyWorld}" update="messages" oncomplete="confirmation.hide()"/>
@@ -43,7 +42,6 @@
 	&lt;/h:panelGrid&gt;
 	
 	&lt;p:confirmDialog message="Are you sure about destroying the world?"
-				showEffect="bounce" hideEffect="explode"
 				header="Initiating destroy process" severity="alert" widgetVar="confirmation"&gt;
 				
 		&lt;p:commandButton value="Yes Sure" update="messages" oncomplete="confirmation.hide()"
