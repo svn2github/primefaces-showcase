@@ -7,9 +7,10 @@
 
 	<ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">FileUpload - Single</h1>
+		<h1 class="title ui-widget-header ui-corner-all">FileUpload - Drag and Drop</h1>
 		<div class="entry">
-            <p>Select a single file from file browser and click upload button.</p>
+            <p>In supported browsers, a file can be selected by dragdrop from filesystem. FileUpload component itself
+            is the drop zone.</p>
 		
             <h:form enctype="multipart/form-data">
 
@@ -22,7 +23,7 @@
 
 			<h3>Source</h3>
             <p:tabView>
-                <p:tab title="fileUploadSingle.xhtml">
+                <p:tab title="fileUploadDnd.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form enctype="multipart/form-data"&gt;
 
