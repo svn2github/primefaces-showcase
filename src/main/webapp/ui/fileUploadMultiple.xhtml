@@ -16,7 +16,7 @@
                 <p:growl id="messages" showDetail="true"/>
 
 				<p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced"
-						update="messages" multiple="true" sizeLimit="1000000" allowTypes="png,gif,jpg" />
+						update="messages" multiple="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 
 			</h:form>
 
@@ -32,8 +32,8 @@
             mode="advanced"
             update="messages" 
             multiple="true"
-            sizeLimit="1000000"
-            allowTypes="png,gif,jpg"/&gt;
+            sizeLimit="100000" 
+            allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/&gt;
 
 &lt;/h:form&gt;
                     </pre>
