@@ -30,9 +30,9 @@
 			
 				<p:growl id="growl" showDetail="true" />
 		
-				<p:dashboard id="board" model="#{dashboardBean.model}" 
-					reorderListener="#{dashboardBean.handleReorder}" onReorderUpdate="growl">
-			
+				<p:dashboard id="board" model="#{dashboardBean.model}">
+                    <p:ajax event="reorder" listener="#{dashboardBean.handleReorder}" update="growl" />
+                    
 					<p:panel id="sports" header="Sports">
 						<h:outputText value="Sports Content" />
 					</p:panel>
@@ -84,9 +84,8 @@
 
     &lt;p:growl id="growl" showDetail="true" /&gt;
 
-    &lt;p:dashboard id="board" model="\#{dashboardBean.model}"
-        reorderListener="\#{dashboardBean.handleReorder}"
-        onReorderUpdate="growl"&gt;
+    &lt;p:dashboard id="board" model="\#{dashboardBean.model}"&gt;
+        &lt;p:ajax event="reorder" listener="\#{dashboardBean.handleReorder}" update="growl" /&gt;
 
         &lt;p:panel id="sports" header="Sports"&gt;
             &lt;h:outputText value="Sports Content" /&gt;
@@ -108,8 +107,6 @@
             &lt;h:outputText value="Politics Content" /&gt;
         &lt;/p:panel&gt;
     &lt;/p:dashboard&gt;
-
-    &lt;div style="clear:both" /&gt;
 
     &lt;p:separator /&gt;
 
