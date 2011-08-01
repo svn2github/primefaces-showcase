@@ -22,12 +22,12 @@
     <ui:define name="content">
 
 
-        <h1 class="title ui-widget-header ui-corner-all">Callback Parameters</h1>
+        <h1 class="title ui-widget-header ui-corner-all">Request Context</h1>
         <div class="entry">
-            <p>RequestContext provides a useful API to pass parameters from JSF backing beans in json format to ajax callbacks like oncomplete.
-			As it is a common case validationFailed parameter is passed by default.</p>
+            <p>RequestContext provides a useful API to pass parameters from JSF backing beans in json format to ajax callbacks like oncomplete,
+                execute javascript from server side and add components to update programmatically.</p>
 
-            <h:form>
+            <h:form id="form">
 
                 <p:panel id="panel" header="New User" style="margin-bottom:10px;">
                     <p:messages />
@@ -80,6 +80,15 @@ function handleComplete(xhr, status, args) {
                 
                 <p:tab title="UserController.java">
                     <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.primefaces.context.RequestContext;
+import org.primefaces.examples.domain.User;
+
 public class UserController {
 
 	private User user = new User();
@@ -92,10 +101,18 @@ public class UserController {
 	}
 	
 	public void saveUser(ActionEvent actionEvent) {
-		//save user
 		RequestContext context = RequestContext.getCurrentInstance();
-		context.addCallbackParam("saved", true);
-		context.addCallbackParam("user", user);
+		context.addCallbackParam("saved", true);    //basic parameter
+		context.addCallbackParam("user", user);     //pojo as json
+        
+        //execute javascript oncomplete
+        context.execute("alert('Hello from the Backing Bean');");
+        
+        //update panel
+        context.addPartialUpdateTarget("form:panel");
+        
+        //add facesmessage
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success", "Success"));
 	}
 }
                     </pre>
