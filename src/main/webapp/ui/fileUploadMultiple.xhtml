@@ -9,15 +9,15 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">FileUpload - Multiple</h1>
 		<div class="entry">
-            <p>Multiple fileUpload is supported on all major browsers.</p>
+            <p>Multiple fileUpload is available on supported browsers.</p>
 
             <h:form enctype="multipart/form-data">
-
-                <p:growl id="messages" showDetail="true"/>
 
 				<p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced"
 						update="messages" multiple="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 
+                <p:growl id="messages" showDetail="true"/>
+                
 			</h:form>
 
 			<h3>Source</h3>
@@ -26,14 +26,14 @@
                     <pre name="code" class="xml">
 &lt;h:form enctype="multipart/form-data"&gt;
 
-    &lt;p:growl id="messages" showDetail="true"/&gt;
-
     &lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}"
             mode="advanced"
             update="messages" 
             multiple="true"
             sizeLimit="100000" 
             allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/&gt;
+
+    &lt;p:growl id="messages" showDetail="true"/&gt;
 
 &lt;/h:form&gt;
                     </pre>

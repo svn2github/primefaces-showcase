@@ -13,10 +13,10 @@
 		
             <h:form enctype="multipart/form-data">
 
-                <p:growl id="messages" showDetail="true"/>
-   
 				<p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced"
 						update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                
+                <p:growl id="messages" showDetail="true"/>
 
 			</h:form>
 
@@ -26,13 +26,13 @@
                     <pre name="code" class="xml">
 &lt;h:form enctype="multipart/form-data"&gt;
 
-    &lt;p:growl id="messages" showDetail="true"/&gt;
-
     &lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}"
             mode="advanced" 
             update="messages"
             sizeLimit="100000" 
             allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/&gt;
+
+    &lt;p:growl id="messages" showDetail="true"/&gt;
 
 &lt;/h:form&gt;
                     </pre>
