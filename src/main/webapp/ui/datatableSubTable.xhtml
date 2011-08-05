@@ -46,11 +46,11 @@
                             #{stats.assists}
                         </p:column>
                         
-                        <p:columnGroup type="header">
+                        <p:columnGroup type="footer">
                             <p:row>
-                                <p:column footerText="Totals: " />
-                                <p:column footerText="#{stats.allGoals}" />
-                                <p:column footerText="#{stats.allAssists}" />
+                                <p:column footerText="Totals: " style="text-align:right"/>
+                                <p:column footerText="#{player.allGoals}" />
+                                <p:column footerText="#{player.allAssists}" />
                             </p:row>
                         </p:columnGroup>
                     </p:subTable>

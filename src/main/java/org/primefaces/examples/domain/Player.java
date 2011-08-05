@@ -141,7 +141,7 @@ public class Player implements Serializable {
         return sum;
     }
     
-    public int getAssists() {
+    public int getAllAssists() {
         int sum = 0;
         
         for(Stats s : stats) {
