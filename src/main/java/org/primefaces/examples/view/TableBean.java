@@ -513,4 +513,8 @@ public class TableBean implements Serializable {
     public List<Player> getPlayers() {
         return players;
     }
+    
+    public void deleteCar() {
+        carsSmall.remove(selectedCar);
+    }
 }
