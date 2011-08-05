@@ -500,7 +500,7 @@ public class TableBean implements Serializable {
         xavi.getStats().add(new Stats("2010-2011", 10, 25));
         players.add(xavi);
         
-        Player iniesta = new Player("Messi", 10);
+        Player iniesta = new Player("Iniesta", 10);
         iniesta.getStats().add(new Stats("2005-2006", 4, 12));
         iniesta.getStats().add(new Stats("2006-2007", 7, 9));
         iniesta.getStats().add(new Stats("2007-2008", 10, 14));
