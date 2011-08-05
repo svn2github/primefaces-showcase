@@ -1,0 +1,77 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - SubTable</h1>
+		<div class="entry">
+			<p>SubTable is a helper component of datatable used for grouping.</p>
+
+            <h:form>
+                <p:dataTable var="player" value="#{tableBean.players}">
+
+                    <f:facet name="header">
+                        FCB Statistics
+                    </f:facet>
+
+                    <p:columnGroup type="header">
+                        <p:row>
+                            <p:column rowspan="2" headerText="Player/Season" />
+                            <p:column colspan="2" headerText="Stats" />
+                        </p:row>
+                        
+                        <p:row>
+                            <p:column headerText="Goals" />
+                            <p:column headerText="Assists" />
+                        </p:row>
+                    </p:columnGroup>
+
+                    <p:subTable var="stats" value="#{player.stats}">
+                        <f:facet name="header">
+                          #{player.name} 
+                        </f:facet>
+                        
+                        <p:column>
+                            #{stats.season}
+                        </p:column>
+                        
+                        <p:column>
+                            #{stats.goals}
+                        </p:column>
+                        
+                        <p:column>
+                            #{stats.assists}
+                        </p:column>
+                        
+                        <p:columnGroup type="header">
+                            <p:row>
+                                <p:column footerText="Totals: " />
+                                <p:column footerText="#{stats.allGoals}" />
+                                <p:column footerText="#{stats.allAssists}" />
+                            </p:row>
+                        </p:columnGroup>
+                    </p:subTable>
+                </p:dataTable>
+            </h:form>
+
+		<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="datatableSubTable.xhtml">
+                <pre name="code" class="xml">
+
+				</pre>
+			</p:tab>
+
+			<p:tab title="TableBean.java">
+			<pre name="code" class="java">
+
+				</pre>
+			</p:tab>
+		</p:tabView>
+	       </div>
+
+	</ui:define>
+</ui:composition>

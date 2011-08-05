@@ -51,6 +51,8 @@ import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
+import org.primefaces.examples.domain.Player;
+import org.primefaces.examples.domain.Stats;
 import org.primefaces.model.SortOrder;
 
 public class TableBean implements Serializable {
@@ -118,6 +120,8 @@ public class TableBean implements Serializable {
     private List<ColumnModel> simpleColumns;
 
     private boolean editMode;
+    
+    private List<Player> players;
 
 	public TableBean() {
 		cars = new ArrayList<Car>();
@@ -133,6 +137,8 @@ public class TableBean implements Serializable {
         createDynamicColumns();
         populateDynamicCars();
         manufacturerOptions = createFilterOptions(manufacturers);
+        
+        populatePlayers();
         	
 		lazyModel = new LazyDataModel<Car>() {
 
@@ -471,5 +477,40 @@ public class TableBean implements Serializable {
         FacesMessage msg = new FacesMessage("Column " + event.getColumn().getClientId() + " resized", "W:" + event.getWidth() + ", H:" + event.getHeight());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void populatePlayers() {
+        players = new ArrayList<Player>();
+        
+        Player messi = new Player("Messi", 10);
+        messi.getStats().add(new Stats("2005-2006", 4, 2));
+        messi.getStats().add(new Stats("2006-2007", 10, 7));
+        messi.getStats().add(new Stats("2007-2008", 16, 10));
+        messi.getStats().add(new Stats("2008-2009", 32, 15));
+        messi.getStats().add(new Stats("2009-2010", 51, 22));
+        messi.getStats().add(new Stats("2010-2011", 55, 30));
+        players.add(messi);
+        
+        Player xavi = new Player("Xavi", 6);
+        xavi.getStats().add(new Stats("2005-2006", 6, 15));
+        xavi.getStats().add(new Stats("2006-2007", 10, 20));
+        xavi.getStats().add(new Stats("2007-2008", 12, 22));
+        xavi.getStats().add(new Stats("2008-2009", 9, 24));
+        xavi.getStats().add(new Stats("2009-2010", 8, 21));
+        xavi.getStats().add(new Stats("2010-2011", 10, 25));
+        players.add(xavi);
+        
+        Player iniesta = new Player("Messi", 10);
+        iniesta.getStats().add(new Stats("2005-2006", 4, 12));
+        iniesta.getStats().add(new Stats("2006-2007", 7, 9));
+        iniesta.getStats().add(new Stats("2007-2008", 10, 14));
+        iniesta.getStats().add(new Stats("2008-2009", 15, 17));
+        iniesta.getStats().add(new Stats("2009-2010", 14, 16));
+        iniesta.getStats().add(new Stats("2010-2011", 17, 22));
+        players.add(iniesta);
+    }
+
+    public List<Player> getPlayers() {
+        return players;
     }
 }

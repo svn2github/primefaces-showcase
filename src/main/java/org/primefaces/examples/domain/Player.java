@@ -16,7 +16,9 @@
 package org.primefaces.examples.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Player implements Serializable {
 
@@ -35,10 +37,10 @@ public class Player implements Serializable {
 	private String weight;
 	
 	private Date birth;
+    
+    private List<Stats> stats = new ArrayList<Stats>();
 	
-	public Player() {
-		
-	}
+	public Player() {}
 	
 	public Player(String name) {
 		this.name = name;
@@ -120,6 +122,34 @@ public class Player implements Serializable {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+
+    public List<Stats> getStats() {
+        return stats;
+    }
+
+    public void setStats(List<Stats> stats) {
+        this.stats = stats;
+    }
+    
+    public int getAllGoals() {
+        int sum = 0;
+        
+        for(Stats s : stats) {
+            sum += s.getGoals();
+        }
+        
+        return sum;
+    }
+    
+    public int getAssists() {
+        int sum = 0;
+        
+        for(Stats s : stats) {
+            sum += s.getAssists();
+        }
+        
+        return sum;
+    }
 
 	@Override
 	public boolean equals(Object obj) {
