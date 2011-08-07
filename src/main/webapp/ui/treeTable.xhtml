@@ -3,15 +3,17 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
-	
-	<ui:define name="head">
-		<style type="text/css">
-			.ui-treetable {
-				width:600px;
-			}
-		</style>
-	</ui:define>
+    template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <script type="text/javascript">
+            PrimeFaces.widget.TreeTable.prototype.collapseNode = function(node) {
+                node.siblings('[id^="' + node.attr('id') + '"]').remove();
+
+                node.find('.ui-treetable-toggler:first').addClass('ui-icon-triangle-1-e').removeClass('ui-icon-triangle-1-s');
+            }
+        </script>
+    </ui:define>
 
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">TreeTable</h1>
@@ -19,47 +21,45 @@
 		<div class="entry">
 			<p>TreeTable usage is similar to dataTable except data provided must be a root TreeNode instance referring to the root node.</p>
 			
-			<h:form prependId="false">
+			<h:form>
 	
 				<p:treeTable value="#{documentsController.root}" var="document">
-					<p:column>
+                    <f:facet name="header">
+                        Document Viewer
+                    </f:facet>
+                    
+					<p:column style="width:150px">
 						<f:facet name="header">
 							Name
 						</f:facet>
 						<h:outputText value="#{document.name}" />
 					</p:column>
 					
-					<p:column>
+					<p:column style="width:100px">
 						<f:facet name="header">
 							Size
 						</f:facet>
 						<h:outputText value="#{document.size}" />
 					</p:column>
 					
-					<p:column>
+					<p:column style="width:100px">
 						<f:facet name="header">
 							Type
 						</f:facet>
 						<h:outputText value="#{document.type}" />
 					</p:column>
 					
-					<p:column>
-						<f:facet name="header">
-							Options
-						</f:facet>
-						<p:commandLink update="documentPanel" oncomplete="documentDialog.show()" title="View Detail">
-							<p:graphicImage value="/images/search.png"/> 
-							<f:setPropertyActionListener value="#{document}" target="#{documentsController.selectedDocument}" />
-						</p:commandLink>
-					</p:column>
-					
+					<p:column style="width:25px">
+                        <p:commandLink update="documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon ui-icon-search">
+                            <f:setPropertyActionListener value="#{document}" 
+                                target="#{documentsController.selectedDocument}" />
+                        </p:commandLink>
+                    </p:column>
 				</p:treeTable>
 				
-				<p:dialog header="Document Detail" fixedCenter="true" effect="FADE" effectDuration="0.3"
-					widgetVar="documentDialog" modal="true">
-				
+				<p:dialog header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true">
 					<p:outputPanel id="documentPanel">
-						<h:panelGrid  columns="2" cellpadding="5">
+                        <h:panelGrid  columns="2" cellpadding="5" rendered="#{not empty documentsController.selectedDocument}">
 							<h:outputLabel for="name" value="Name: " />
 							<h:outputText id="name" value="#{documentsController.selectedDocument.name}" style="font-weight:bold" />
 							
@@ -78,63 +78,57 @@
 			<p:tabView>
 				<p:tab title="treeTable.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form prependId="false"&gt;
+&lt;h:form&gt;
+	
+    &lt;p:treeTable value="\#{documentsController.root}" var="document"&gt;
+        &lt;f:facet name="header"&gt;
+            Document Viewer
+        &lt;/f:facet&gt;
 
-	&lt;p:treeTable value="\#{documentsController.root}" var="document"&gt;
-		&lt;p:column&gt;
-			&lt;f:facet name="header"&gt;
-				Name
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{document.name}" /&gt;
-		&lt;/p:column&gt;
-		
-		&lt;p:column&gt;
-			&lt;f:facet name="header"&gt;
-				Size
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{document.size}" /&gt;
-		&lt;/p:column&gt;
-		
-		&lt;p:column&gt;
-			&lt;f:facet name="header"&gt;
-				Type
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="\#{document.type}" /&gt;
-		&lt;/p:column&gt;
-		
-		&lt;p:column&gt;
-			&lt;f:facet name="header"&gt;
-				Options
-			&lt;/f:facet&gt;
-			&lt;p:commandLink update="documentPanel" oncomplete="documentDialog.show()" title="View Detail"&gt;
-				&lt;p:graphicImage value="/images/search.png"/&gt; 
-				&lt;f:setPropertyActionListener value="\#{document}" 
-					target="\#{documentsController.selectedDocument}" /&gt;
-			&lt;/p:commandLink&gt;
-		&lt;/p:column&gt;
-		
-	&lt;/p:treeTable&gt;
-	
-	&lt;p:dialog header="Document Detail" fixedCenter="true" effect="FADE" effectDuration="0.3"
-		widgetVar="documentDialog" modal="true"&gt;
-	
-		&lt;p:outputPanel id="documentPanel"&gt;
-			&lt;h:panelGrid  columns="2" cellpadding="5"&gt;
-				&lt;h:outputLabel for="name" value="Name: " /&gt;
-				&lt;h:outputText id="name" style="font-weight:bold"
-					value="\#{documentsController.selectedDocument.name}"  /&gt;
-				
-				&lt;h:outputLabel for="size" value="Size: " /&gt;
-				&lt;h:outputText id="size" style="font-weight:bold" 
-					value="\#{documentsController.selectedDocument.size}"  /&gt;
-				
-				&lt;h:outputLabel for="type" value="Type " /&gt;
-				&lt;h:outputText id="type" style="font-weight:bold"
-					value="\#{documentsController.selectedDocument.type}"  /&gt;
-			&lt;/h:panelGrid&gt;
-		&lt;/p:outputPanel&gt;
-	&lt;/p:dialog&gt;
-	
+        &lt;p:column style="width:150px"&gt;
+            &lt;f:facet name="header"&gt;
+                Name
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{document.name}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column style="width:100px"&gt;
+            &lt;f:facet name="header"&gt;
+                Size
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{document.size}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column style="width:100px"&gt;
+            &lt;f:facet name="header"&gt;
+                Type
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{document.type}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column style="width:25px"&gt;
+            &lt;p:commandLink update="documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon ui-icon-search"&gt;
+                &lt;f:setPropertyActionListener value="\#{document}" 
+                    target="\#{documentsController.selectedDocument}" /&gt;
+            &lt;/p:commandLink&gt;
+        &lt;/p:column&gt;
+    &lt;/p:treeTable&gt;
+
+    &lt;p:dialog header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true"&gt;
+        &lt;p:outputPanel id="documentPanel"&gt;
+            &lt;h:panelGrid  columns="2" cellpadding="5" rendered="\#{not empty documentsController.selectedDocument}"&gt;
+                &lt;h:outputLabel for="name" value="Name: " /&gt;
+                &lt;h:outputText id="name" value="\#{documentsController.selectedDocument.name}" style="font-weight:bold" /&gt;
+
+                &lt;h:outputLabel for="size" value="Size: " /&gt;
+                &lt;h:outputText id="size" value="\#{documentsController.selectedDocument.size}" style="font-weight:bold" /&gt;
+
+                &lt;h:outputLabel for="type" value="Type " /&gt;
+                &lt;h:outputText id="type" value="\#{documentsController.selectedDocument.type}" style="font-weight:bold" /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:dialog&gt;
+
 &lt;/h:form&gt;
 					</pre> 
 				</p:tab>
