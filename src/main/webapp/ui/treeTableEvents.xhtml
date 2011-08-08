@@ -15,10 +15,13 @@
                 
                 <p:growl id="messages" showDetail="true" />
 	
-				<p:treeTable value="#{documentsController.root}" var="document">
+				<p:treeTable value="#{documentsController.root}" var="document" 
+                             selectionMode="single" selection="#{documentsController.selectedNode}">
                     
                     <p:ajax event="expand" listener="#{documentsController.onNodeExpand}" update=":form:messages" />
                     <p:ajax event="collapse" listener="#{documentsController.onNodeCollapse}" update=":form:messages" />
+                    <p:ajax event="select" listener="#{documentsController.onNodeSelect}" update=":form:messages" />
+                    <p:ajax event="unselect" listener="#{documentsController.onNodeUnselect}" update=":form:messages" />
                     
                     <f:facet name="header">
                         Document Viewer
@@ -60,6 +63,8 @@
 
         &lt;p:ajax event="expand" listener="\#{documentsController.onNodeExpand}" update=":form:messages" /&gt;
         &lt;p:ajax event="collapse" listener="\#{documentsController.onNodeCollapse}" update=":form:messages" /&gt;
+        &lt;p:ajax event="select" listener="\#{documentsController.onNodeSelect}" update=":form:messages" /&gt;
+        &lt;p:ajax event="unselect" listener="\#{documentsController.onNodeUnselect}" update=":form:messages" /&gt;
 
         &lt;f:facet name="header"&gt;
             Document Viewer
@@ -100,6 +105,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.NodeCollapseEvent;
 import org.primefaces.event.NodeExpandEvent;
+import org.primefaces.event.NodeSelectEvent;
+import org.primefaces.event.NodeUnselectEvent;
 
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
@@ -159,6 +166,18 @@ public class DocumentsController implements Serializable {
 	
 	public void onNodeCollapse(NodeCollapseEvent event) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Collapsed", event.getTreeNode().toString());
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+
+    public void onNodeSelect(NodeSelectEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
+		
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+
+    public void onNodeUnselect(NodeUnselectEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unselected", event.getTreeNode().toString());
 
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
