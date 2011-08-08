@@ -2,6 +2,10 @@ package org.primefaces.examples.view;
 
 import java.io.Serializable;
 import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.NodeCollapseEvent;
+import org.primefaces.event.NodeExpandEvent;
 
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
@@ -13,6 +17,10 @@ public class DocumentsController implements Serializable {
 	private static final Logger logger = Logger.getLogger(DocumentsController.class.getName());
 
 	private TreeNode root;
+    
+    private TreeNode selectedNode;
+    
+    private TreeNode[] selectedNodes;
 
 	private Document selectedDocument;
 	
@@ -61,5 +69,33 @@ public class DocumentsController implements Serializable {
 
 	public void setSelectedDocument(Document selectedDocument) {
 		this.selectedDocument = selectedDocument;
+	}
+
+    public TreeNode getSelectedNode() {
+        return selectedNode;
+    }
+
+    public void setSelectedNode(TreeNode selectedNode) {
+        this.selectedNode = selectedNode;
+    }
+
+    public TreeNode[] getSelectedNodes() {
+        return selectedNodes;
+    }
+
+    public void setSelectedNodes(TreeNode[] selectedNodes) {
+        this.selectedNodes = selectedNodes;
+    }
+    
+    public void onNodeExpand(NodeExpandEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Expanded", event.getTreeNode().toString());
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+	
+	public void onNodeCollapse(NodeCollapseEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Collapsed", event.getTreeNode().toString());
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 }
