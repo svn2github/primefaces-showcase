@@ -4,16 +4,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
     template="../templates/ui.xhtml">
-    
-    <ui:define name="head">
-        <script type="text/javascript">
-            PrimeFaces.widget.TreeTable.prototype.collapseNode = function(node) {
-                node.siblings('[id^="' + node.attr('id') + '"]').remove();
-
-                node.find('.ui-treetable-toggler:first').addClass('ui-icon-triangle-1-e').removeClass('ui-icon-triangle-1-s');
-            }
-        </script>
-    </ui:define>
 
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">TreeTable</h1>
@@ -21,7 +11,7 @@
 		<div class="entry">
 			<p>TreeTable usage is similar to dataTable except data provided must be a root TreeNode instance referring to the root node.</p>
 			
-			<h:form>
+			<h:form id="form">
 	
 				<p:treeTable value="#{documentsController.root}" var="document">
                     <f:facet name="header">
@@ -50,7 +40,7 @@
 					</p:column>
 					
 					<p:column style="width:25px">
-                        <p:commandLink update="documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon ui-icon-search">
+                        <p:commandLink update=":form:documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon ui-icon-search">
                             <f:setPropertyActionListener value="#{document}" 
                                 target="#{documentsController.selectedDocument}" />
                         </p:commandLink>
