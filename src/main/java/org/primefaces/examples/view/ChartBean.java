@@ -16,12 +16,15 @@
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.DonutChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 import org.primefaces.model.chart.PieChartModel;
 
@@ -32,6 +35,8 @@ public class ChartBean implements Serializable {
     private CartesianChartModel linearModel;
 
     private PieChartModel pieModel;
+    
+    private DonutChartModel donutModel;
 
     private PieChartModel livePieModel;
 
@@ -40,6 +45,7 @@ public class ChartBean implements Serializable {
         createLinearModel();
         createPieModel();
         createLivePieModel();
+        createDonutModel();
 	}
 
 	public void itemSelect(ItemSelectEvent event) {
@@ -55,6 +61,10 @@ public class ChartBean implements Serializable {
 
     public PieChartModel getPieModel() {
         return pieModel;
+    }
+    
+    public DonutChartModel getDonutModel() {
+        return donutModel;
     }
 
     public CartesianChartModel getLinearModel() {
@@ -130,6 +140,32 @@ public class ChartBean implements Serializable {
         pieModel.set("Brand 3", 702);
         pieModel.set("Brand 4", 421);
     }
+    
+    private void createDonutModel() {
+        donutModel = new DonutChartModel();
+        
+        Map<String, Number> circle = new LinkedHashMap<String, Number>();
+        circle.put("Brand 1", 150);
+        circle.put("Brand 2", 400);
+        circle.put("Brand 3", 200);
+        circle.put("Brand 4", 600);
+        donutModel.addCircle(circle);
+        
+        circle = new LinkedHashMap<String, Number>();
+        circle.put("Brand 1", 540);
+        circle.put("Brand 2", 325);
+        circle.put("Brand 3", 702);
+        circle.put("Brand 4", 421);
+        donutModel.addCircle(circle);
+        
+        circle = new LinkedHashMap<String, Number>();
+        circle.put("Brand 1", 540);
+        circle.put("Brand 2", 325);
+        circle.put("Brand 3", 702);
+        circle.put("Brand 4", 421);
+        donutModel.addCircle(circle);
+    }
+
 
     private void createLivePieModel() {
         livePieModel = new PieChartModel();
