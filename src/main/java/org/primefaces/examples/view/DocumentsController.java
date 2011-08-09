@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.ColumnResizeEvent;
 import org.primefaces.event.NodeCollapseEvent;
 import org.primefaces.event.NodeExpandEvent;
 import org.primefaces.event.NodeSelectEvent;
@@ -112,4 +113,15 @@ public class DocumentsController implements Serializable {
 
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
+    
+    public void onResize(ColumnResizeEvent event) {
+        FacesMessage msg = new FacesMessage("Column " + event.getColumn().getId() + " resized", "W:" + event.getWidth() + ", H:" + event.getHeight());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void deleteNode() {
+        selectedNode.remove();
+        selectedNode = null;
+    }
 }

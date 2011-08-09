@@ -4,145 +4,127 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
     template="../templates/ui.xhtml">
-
+    
 	<ui:define name="content">
-		<h1 class="title ui-widget-header ui-corner-all">TreeTable - Scrolling</h1>
+		<h1 class="title ui-widget-header ui-corner-all">TreeTable - Resizable Columns</h1>
 
 		<div class="entry">
-			<p>TreeTable can fix the header/footer and display the data in scrollable format.</p>
+			<p>TreeTable columns can be resized by dragging. Optional "colResize" ajax behavior can be used to get notified about new column widths.</p>
 			
-			<h:form>
-	
-                <p:treeTable value="#{documentsController.root}" var="document" scrollable="true" scrollHeight="100" resizableColumns="true">
+			<h:form id="form">
+                
+                <p:growl id="growl" showDetail="true"/>
                     
-                    <f:facet name="header">
-                        Y Scrolling
-                    </f:facet>
-                    
-					<p:column style="width:150px" headerText="Name" footerText="Name">
+                <h3>Basic Resize</h3>
+                <p:treeTable value="#{documentsController.root}" var="document" resizableColumns="true">                    
+					<p:column style="width:150px">
+						<f:facet name="header">
+							Name
+						</f:facet>
 						<h:outputText value="#{document.name}" />
 					</p:column>
 					
-					<p:column style="width:100px" headerText="Size" footerText="Size" >
+					<p:column style="width:100px">
+						<f:facet name="header">
+							Size
+						</f:facet>
 						<h:outputText value="#{document.size}" />
 					</p:column>
 					
-					<p:column style="width:100px" headerText="Type" footerText="Type">
+					<p:column style="width:100px">
+						<f:facet name="header">
+							Type
+						</f:facet>
 						<h:outputText value="#{document.type}" />
 					</p:column>
 				</p:treeTable>
-                
-                <br /><br />
-                
-                <p:treeTable value="#{documentsController.root}" var="document"
-                                scrollable="true" scrollWidth="350" style="width:350px">
+				
+                <h3>Ajax Resize</h3>
+                <p:treeTable value="#{documentsController.root}" var="document" resizableColumns="true">   
                     
-                    <f:facet name="header">
-                        X Scrolling
-                    </f:facet>
+                    <p:ajax event="colResize" update=":form:growl" listener="#{documentsController.onResize}" />
                     
-					<p:column style="width:150px" headerText="Name" footerText="Name">
+					<p:column style="width:150px" id="name">
+						<f:facet name="header">
+							Name
+						</f:facet>
 						<h:outputText value="#{document.name}" />
 					</p:column>
 					
-					<p:column style="width:100px" headerText="Size" footerText="Size" >
+					<p:column style="width:100px" id="size">
+						<f:facet name="header">
+							Size
+						</f:facet>
 						<h:outputText value="#{document.size}" />
 					</p:column>
 					
-					<p:column style="width:100px" headerText="Type" footerText="Type">
+					<p:column style="width:100px" id="type">
+						<f:facet name="header">
+							Type
+						</f:facet>
 						<h:outputText value="#{document.type}" />
 					</p:column>
 				</p:treeTable>
-                
-                <br /><br />
-                
-                <p:treeTable value="#{documentsController.root}" var="document" scrollable="true" 
-                             scrollHeight="150" scrollWidth="350" style="width:350px">
-                    
-                    <f:facet name="header">
-                        X-Y Scrolling
-                    </f:facet>
-                    
-					<p:column style="width:150px" headerText="Name" footerText="Name">
-						<h:outputText value="#{document.name}" />
-					</p:column>
-					
-					<p:column style="width:100px" headerText="Size" footerText="Size" >
-						<h:outputText value="#{document.size}" />
-					</p:column>
-					
-					<p:column style="width:100px" headerText="Type" footerText="Type">
-						<h:outputText value="#{document.type}" />
-					</p:column>
-				</p:treeTable>
-
 			</h:form>
 			
 			<h3>Source</h3>
 			<p:tabView>
-				<p:tab title="treeTableScrolling.xhtml">
+				<p:tab title="treeTableResizable.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
-	
-    &lt;p:treeTable value="\#{documentsController.root}" var="document" scrollable="true" scrollHeight="100"&gt;
+&lt;h:form id="form"&gt;
+                
+    &lt;p:growl id="growl" showDetail="true"/&gt;
 
-        &lt;f:facet name="header"&gt;
-            Y Scrolling
-        &lt;/f:facet&gt;
-
-        &lt;p:column style="width:150px" headerText="Name" footerText="Name"&gt;
+    &lt;h3&gt;Basic Resize&lt;/h3&gt;
+    &lt;p:treeTable value="\#{documentsController.root}" var="document" resizableColumns="true"&gt;                    
+        &lt;p:column style="width:150px"&gt;
+            &lt;f:facet name="header"&gt;
+                Name
+            &lt;/f:facet&gt;
             &lt;h:outputText value="\#{document.name}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:100px" headerText="Size" footerText="Size" &gt;
+        &lt;p:column style="width:100px"&gt;
+            &lt;f:facet name="header"&gt;
+                Size
+            &lt;/f:facet&gt;
             &lt;h:outputText value="\#{document.size}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:100px" headerText="Type" footerText="Type"&gt;
+        &lt;p:column style="width:100px"&gt;
+            &lt;f:facet name="header"&gt;
+                Type
+            &lt;/f:facet&gt;
             &lt;h:outputText value="\#{document.type}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:treeTable&gt;
 
-    &lt;p:treeTable value="\#{documentsController.root}" var="document"
-                    scrollable="true" scrollWidth="350" style="width:350px"&gt;
+    &lt;h3&gt;Ajax Resize&lt;/h3&gt;
+    &lt;p:treeTable value="\#{documentsController.root}" var="document" resizableColumns="true"&gt;   
 
-        &lt;f:facet name="header"&gt;
-            X Scrolling
-        &lt;/f:facet&gt;
+        &lt;p:ajax event="colResize" update=":form:growl" listener="\#{documentsController.onResize}" /&gt;
 
-        &lt;p:column style="width:150px" headerText="Name" footerText="Name"&gt;
+        &lt;p:column style="width:150px"&gt;
+            &lt;f:facet name="header"&gt;
+                Name
+            &lt;/f:facet&gt;
             &lt;h:outputText value="\#{document.name}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:100px" headerText="Size" footerText="Size" &gt;
+        &lt;p:column style="width:100px"&gt;
+            &lt;f:facet name="header"&gt;
+                Size
+            &lt;/f:facet&gt;
             &lt;h:outputText value="\#{document.size}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:100px" headerText="Type" footerText="Type"&gt;
+        &lt;p:column style="width:100px"&gt;
+            &lt;f:facet name="header"&gt;
+                Type
+            &lt;/f:facet&gt;
             &lt;h:outputText value="\#{document.type}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:treeTable&gt;
-
-    &lt;p:treeTable value="\#{documentsController.root}" var="document" scrollable="true" 
-                 scrollHeight="150" scrollWidth="350" style="width:350px"&gt;
-
-        &lt;f:facet name="header"&gt;
-            X-Y Scrolling
-        &lt;/f:facet&gt;
-
-        &lt;p:column style="width:150px" headerText="Name" footerText="Name"&gt;
-            &lt;h:outputText value="\#{document.name}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column style="width:100px" headerText="Size" footerText="Size" &gt;
-            &lt;h:outputText value="\#{document.size}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column style="width:100px" headerText="Type" footerText="Type"&gt;
-            &lt;h:outputText value="\#{document.type}" /&gt;
-        &lt;/p:column&gt;
-    &lt;/p:treeTable&gt;
-
 &lt;/h:form&gt;
 					</pre> 
 				</p:tab>
@@ -155,6 +137,7 @@ import java.io.Serializable;
 
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
+import org.primefaces.event.ColumnResizeEvent;
 
 import org.primefaces.examples.domain.Document;
 
@@ -202,6 +185,12 @@ public class DocumentsController implements Serializable {
 	public TreeNode getRoot() {
 		return root;
 	}
+
+    public void onResize(ColumnResizeEvent event) {
+        FacesMessage msg = new FacesMessage("Column " + event.getColumn().getClientId() + " resized", "W:" + event.getWidth() + ", H:" + event.getHeight());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
 					</pre>
 				</p:tab>
