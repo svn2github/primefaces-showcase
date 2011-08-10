@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import org.primefaces.event.DragDropEvent;
 
 import org.primefaces.event.NodeCollapseEvent;
@@ -110,7 +109,7 @@ public class TreeBean implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 	
-	public void displaySelectedMultiple(ActionEvent event) {
+	public void displaySelectedMultiple() {
         if(selectedNodes != null && selectedNodes.length > 0) {
             StringBuilder builder = new StringBuilder();
 
@@ -125,11 +124,19 @@ public class TreeBean implements Serializable {
         }
 	}
 	
-	public void displaySelectedSingle(ActionEvent event) {
+	public void displaySelectedSingle() {
         if(selectedNode != null) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", selectedNode.getData().toString());
 
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
 	}
+    
+    public void deleteNode() {
+        selectedNode.getChildren().clear();
+        selectedNode.getParent().getChildren().remove(selectedNode);
+        selectedNode.setParent(null);
+        
+        selectedNode = null;
+    }
 }
