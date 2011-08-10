@@ -68,7 +68,58 @@
 			<p:tabView>
 				<p:tab title="treeTableContextMenu.xhtml">
 					<pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+                
+    &lt;p:contextMenu for="docs"&gt;
+        &lt;p:menuitem value="View" update="documentPanel" icon="ui-icon ui-icon-search" oncomplete="documentDialog.show()"/&gt;
+        &lt;p:menuitem value="Delete" actionListener="\#{documentsController.deleteNode}" update="docs" icon="ui-icon ui-icon-close"/&gt;
+    &lt;/p:contextMenu&gt;
 
+    &lt;p:treeTable value="\#{documentsController.root}" var="document" id="docs" 
+                 selectionMode="single" selection="\#{documentsController.selectedNode}"&gt;
+
+        &lt;f:facet name="header"&gt;
+            Right-Click to See Options
+        &lt;/f:facet&gt;
+
+        &lt;p:column style="width:150px"&gt;
+            &lt;f:facet name="header"&gt;
+                Name
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{document.name}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column style="width:100px"&gt;
+            &lt;f:facet name="header"&gt;
+                Size
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{document.size}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column style="width:100px"&gt;
+            &lt;f:facet name="header"&gt;
+                Type
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{document.type}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:treeTable&gt;
+
+    &lt;p:dialog header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true"&gt;
+        &lt;p:outputPanel id="documentPanel"&gt;
+            &lt;h:panelGrid  columns="2" cellpadding="5" rendered="\#{not empty documentsController.selectedNode}"&gt;
+                &lt;h:outputLabel for="name" value="Name: " /&gt;
+                &lt;h:outputText id="name" value="\#{documentsController.selectedNode.data.name}" style="font-weight:bold" /&gt;
+
+                &lt;h:outputLabel for="size" value="Size: " /&gt;
+                &lt;h:outputText id="size" value="\#{documentsController.selectedNode.data.size}" style="font-weight:bold" /&gt;
+
+                &lt;h:outputLabel for="type" value="Type " /&gt;
+                &lt;h:outputText id="type" value="\#{documentsController.selectedNode.data.type}" style="font-weight:bold" /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
 					</pre> 
 				</p:tab>
 				
@@ -86,6 +137,8 @@ import org.primefaces.examples.domain.Document;
 public class DocumentsController implements Serializable {
 	
 	private TreeNode root;
+
+    private TreeNode selectedNode;
 	
 	public DocumentsController() {
 		root = new DefaultTreeNode("root", null);
@@ -127,6 +180,22 @@ public class DocumentsController implements Serializable {
 	public TreeNode getRoot() {
 		return root;
 	}
+
+    public TreeNode getSelectedNode() {
+        return selectedNode;
+    }
+
+    public void setSelectedNode(TreeNode selectedNode) {
+        this.selectedNode = selectedNode;
+    }
+
+    public void deleteNode() {
+        selectedNode.getChildren().clear();
+        selectedNode.getParent().getChildren().remove(selectedNode);
+        selectedNode.setParent(null);
+        
+        selectedNode = null;
+    }
 }
 					</pre>
 				</p:tab>

@@ -121,7 +121,10 @@ public class DocumentsController implements Serializable {
     }
     
     public void deleteNode() {
-        selectedNode.remove();
+        selectedNode.getChildren().clear();
+        selectedNode.getParent().getChildren().remove(selectedNode);
+        selectedNode.setParent(null);
+        
         selectedNode = null;
     }
 }
