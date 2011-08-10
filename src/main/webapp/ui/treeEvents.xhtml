@@ -10,17 +10,17 @@
 		<div class="entry">
 			<p>Tree provides flexible callbacks for expand, collapse and selection events.</p>
 
-			<h:form>
+			<h:form id="form">
 
                 <p:growl id="messages" showDetail="true" />
 
 				<p:tree value="#{treeBean.root}" var="node" dynamic="true" cache="false"
 						selectionMode="single"  selection="#{treeBean.selectedNode}">
                         
-                    <p:ajax event="expand" update="messages" listener="#{treeBean.onNodeExpand}" />
-                    <p:ajax event="collapse" update="messages" listener="#{treeBean.onNodeCollapse}" />
-                    <p:ajax event="select" update="messages" listener="#{treeBean.onNodeSelect}" />
-                    <p:ajax event="unselect" update="messages" listener="#{treeBean.onNodeUnselect}" />
+                    <p:ajax event="expand" update=":form:messages" listener="#{treeBean.onNodeExpand}" />
+                    <p:ajax event="collapse" update=":form:messages" listener="#{treeBean.onNodeCollapse}" />
+                    <p:ajax event="select" update=":form:messages" listener="#{treeBean.onNodeSelect}" />
+                    <p:ajax event="unselect" update=":form:messages" listener="#{treeBean.onNodeUnselect}" />
 
 					<p:treeNode>
 						<h:outputText value="#{node}" />
@@ -33,17 +33,17 @@
 			<p:tabView>
 				<p:tab title="treeEvents.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:growl id="messages" showDetail="true" /&gt;
 
     &lt;p:tree value="\#{treeBean.root}" var="node" dynamic="true" cache="false"
             selectionMode="single"  selection="\#{treeBean.selectedNode}"
 
-        &lt;p:ajax event="expand" update="messages" listener="\#{treeBean.onNodeExpand}" /&gt;
-        &lt;p:ajax event="collapse" update="messages" listener="\#{treeBean.onNodeCollapse}" /&gt;
-        &lt;p:ajax event="select" update="messages" listener="\#{treeBean.onNodeSelect}" /&gt;
-        &lt;p:ajax event="unselect" update="messages" listener="\#{treeBean.onNodeUnselect}" /&gt;
+        &lt;p:ajax event="expand" update=":form:messages" listener="\#{treeBean.onNodeExpand}" /&gt;
+        &lt;p:ajax event="collapse" update=":form:messages" listener="\#{treeBean.onNodeCollapse}" /&gt;
+        &lt;p:ajax event="select" update=":form:messages" listener="\#{treeBean.onNodeSelect}" /&gt;
+        &lt;p:ajax event="unselect" update=":form:messages" listener="\#{treeBean.onNodeUnselect}" /&gt;
 
         &lt;p:treeNode&gt;
             &lt;h:outputText value="\#{node}" /&gt;
