@@ -22,10 +22,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.ItemSelectEvent;
+import org.primefaces.model.chart.BubbleChartModel;
+import org.primefaces.model.chart.BubbleChartSeries;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.DonutChartModel;
 import org.primefaces.model.chart.LineChartSeries;
+import org.primefaces.model.chart.OhlcChartModel;
+import org.primefaces.model.chart.OhlcChartSeries;
 import org.primefaces.model.chart.PieChartModel;
 
 public class ChartBean implements Serializable {
@@ -33,10 +37,16 @@ public class ChartBean implements Serializable {
     private CartesianChartModel categoryModel;
 
     private CartesianChartModel linearModel;
+    
+    private CartesianChartModel fillToZero;
 
     private PieChartModel pieModel;
     
     private DonutChartModel donutModel;
+    
+    private BubbleChartModel bubbleModel;
+    
+    private OhlcChartModel ohlcModel;
 
     private PieChartModel livePieModel;
 
@@ -46,6 +56,9 @@ public class ChartBean implements Serializable {
         createPieModel();
         createLivePieModel();
         createDonutModel();
+        createBubbleModel();
+        createOhlcModel();
+        createFillToZero();
 	}
 
 	public void itemSelect(ItemSelectEvent event) {
@@ -65,6 +78,18 @@ public class ChartBean implements Serializable {
     
     public DonutChartModel getDonutModel() {
         return donutModel;
+    }
+    
+    public CartesianChartModel getFillToZero() {
+        return fillToZero;
+    }
+    
+    public BubbleChartModel getBubbleModel() {
+        return bubbleModel;
+    }
+    
+    public OhlcChartModel getOhlcModel() {
+        return ohlcModel;
     }
 
     public CartesianChartModel getLinearModel() {
@@ -104,6 +129,42 @@ public class ChartBean implements Serializable {
 
         categoryModel.addSeries(boys);
         categoryModel.addSeries(girls);
+    }
+    
+    private void createOhlcModel(){
+        ohlcModel = new OhlcChartModel();
+        
+        OhlcChartSeries ohlc1 = new OhlcChartSeries(2007, 138, 142, 135, 14);
+        OhlcChartSeries ohlc2 = new OhlcChartSeries(2008, 138, 142, 135, 14);
+        OhlcChartSeries ohlc3 = new OhlcChartSeries(2009, 138, 142, 135, 14);
+        OhlcChartSeries ohlc4 = new OhlcChartSeries(2010, 138, 142, 135, 14);
+        OhlcChartSeries ohlc5 = new OhlcChartSeries(2011, 138, 142, 135, 14);
+        OhlcChartSeries ohlc6 = new OhlcChartSeries(2012, 138, 142, 135, 14);
+        
+        ohlcModel.addRecord(ohlc1);
+        ohlcModel.addRecord(ohlc2);
+        ohlcModel.addRecord(ohlc3);
+        ohlcModel.addRecord(ohlc4);
+        ohlcModel.addRecord(ohlc5);
+        ohlcModel.addRecord(ohlc6);
+    }
+    
+    private void createBubbleModel(){
+        bubbleModel = new BubbleChartModel();
+        
+        BubbleChartSeries bubble1 = new BubbleChartSeries("Acura", 11, 123, 1236);
+        BubbleChartSeries bubble2 = new BubbleChartSeries("Alfa Romeo", 5, 92, 1067);
+        BubbleChartSeries bubble3 = new BubbleChartSeries("AM General", 24, 104, 1176);
+        BubbleChartSeries bubble4 = new BubbleChartSeries("Bugatti", 2, 13, 1026);
+        BubbleChartSeries bubble5 = new BubbleChartSeries("BMW", 7, 89, 864);
+        BubbleChartSeries bubble6 = new BubbleChartSeries("Aston Martin", 50, 23, 610);
+        
+        bubbleModel.addBubble(bubble1);
+        bubbleModel.addBubble(bubble2);
+        bubbleModel.addBubble(bubble3);
+        bubbleModel.addBubble(bubble4);
+        bubbleModel.addBubble(bubble5);
+        bubbleModel.addBubble(bubble6);
     }
 
     private void createLinearModel() {
@@ -172,5 +233,16 @@ public class ChartBean implements Serializable {
 
         livePieModel.set("Candidate 1", 540);
         livePieModel.set("Candidate 2", 325);
+    }
+
+    private void createFillToZero() {
+        fillToZero = new CartesianChartModel();
+
+        LineChartSeries series1 = new LineChartSeries();
+        series1.setLabel("Series 1");
+
+        series1.set("4, -3, 3, 6, 2, -2", 0);
+
+        fillToZero.addSeries(series1);
     }
 }
