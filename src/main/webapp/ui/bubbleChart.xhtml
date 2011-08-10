@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
+    
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">Area Chart</h1>
+        <div class="entry">
+            <p>BubbleChart is created with a BubbleChartModel.</p>
+            <p:growl id="growl" showDetail="true" />
+
+            <p:bubbleChart value="#{chartBean.bubbleModel}"
+                        title="Sample Bubble Chart" style="width:400px;height:300px" />
+            
+            <p:bubbleChart value="#{chartBean.bubbleModel}"  bubbleGradients="true" shadow="false" showLabels="false" bubbleAlpha="100"
+                        title="Custom Bubble Chart" style="width:400px;height:300px" />
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="bubbleChart.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:bubbleChart value="\#{chartBean.bubbleModel}"
+                title="Sample Bubble Chart" style="width:400px;height:300px" /&gt;
+
+&lt;p:bubbleChart value="\#{chartBean.bubbleModel}" shadow="false" bubbleGradients="true" showLabels="false" bubbleAlpha="100"
+                title="Custom Options" style="width:400px;height:300px" /&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="ChartBean.java">
+            <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import org.primefaces.model.chart.BubbleChartModel;
+
+private void createBubbleModel() {
+    bubbleModel = new BubbleChartModel();
+
+    BubbleChartSeries bubble1 = new BubbleChartSeries("Acura", 11, 123, 1236);
+    BubbleChartSeries bubble2 = new BubbleChartSeries("Alfa Romeo", 45, 92, 1067);
+    BubbleChartSeries bubble3 = new BubbleChartSeries("AM General", 24, 104, 1176);
+    BubbleChartSeries bubble4 = new BubbleChartSeries("Bugatti", 50, 23, 610);
+    BubbleChartSeries bubble5 = new BubbleChartSeries("BMW", 7, 89, 864);
+    BubbleChartSeries bubble6 = new BubbleChartSeries("Audi", 18, 17, 539);
+    BubbleChartSeries bubble7 = new BubbleChartSeries("Aston Martin", 2, 13, 1026);
+
+    bubbleModel.addBubble(bubble1);
+    bubbleModel.addBubble(bubble2);
+    bubbleModel.addBubble(bubble3);
+    bubbleModel.addBubble(bubble4);
+    bubbleModel.addBubble(bubble5);
+    bubbleModel.addBubble(bubble6);
+    bubbleModel.addBubble(bubble7);
+
+}
+            </pre>
+                </p:tab>
+            </p:tabView>
+           
+
+        </div>
+
+
+
+    </ui:define>
+</ui:composition>

@@ -15,7 +15,7 @@
             <p:donutChart value="#{chartBean.donutModel}" legendPosition="w"
                         title="Sample Donut Chart" style="width:400px;height:300px" />
             
-            <p:donutChart value="#{chartBean.donutModel}" legendPosition="e" sliceMargin="5" showDataLabels="true" dataFormat="%d" shadow="false"
+            <p:donutChart value="#{chartBean.donutModel}" legendPosition="e" sliceMargin="5" showDataLabels="true" shadow="false"
                         title="Custom Options and ItemSelectEvent" style="width:400px;height:300px">
                 <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
             </p:donutChart>
@@ -48,20 +48,20 @@ private void createDonutModel() {
     circle.put("Brand 1", 150);
     circle.put("Brand 2", 400);
     circle.put("Brand 3", 200);
-    circle.put("Brand 4", 600);
+    circle.put("Brand 4", 10);
     donutModel.addCircle(circle);
 
     circle = new LinkedHashMap&lt;String, Number&gt;();
     circle.put("Brand 1", 540);
-    circle.put("Brand 2", 325);
+    circle.put("Brand 2", 125);
     circle.put("Brand 3", 702);
     circle.put("Brand 4", 421);
     donutModel.addCircle(circle);
 
     circle = new LinkedHashMap&lt;String, Number&gt;();
-    circle.put("Brand 1", 540);
+    circle.put("Brand 1", 40);
     circle.put("Brand 2", 325);
-    circle.put("Brand 3", 702);
+    circle.put("Brand 3", 402);
     circle.put("Brand 4", 421);
     donutModel.addCircle(circle);
 }
