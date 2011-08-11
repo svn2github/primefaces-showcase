@@ -214,13 +214,13 @@ public class ChartBean implements Serializable {
     private void createBubbleModel(){
         bubbleModel = new BubbleChartModel();
         
-        BubbleChartSeries bubble1 = new BubbleChartSeries("Acura", 70, 183, 1236);
-        BubbleChartSeries bubble2 = new BubbleChartSeries("Alfa Romeo", 45, 92, 1067);
-        BubbleChartSeries bubble3 = new BubbleChartSeries("AM General", 24, 104, 1176);
-        BubbleChartSeries bubble4 = new BubbleChartSeries("Bugatti", 50, 123, 610);
-        BubbleChartSeries bubble5 = new BubbleChartSeries("BMW", 15, 89, 864);
-        BubbleChartSeries bubble6 = new BubbleChartSeries("Audi", 40, 180, 539);
-        BubbleChartSeries bubble7 = new BubbleChartSeries("Aston Martin", 70, 70, 1026);
+        BubbleChartSeries bubble1 = new BubbleChartSeries("Acura", 70, 183,55);
+        BubbleChartSeries bubble2 = new BubbleChartSeries("Alfa Romeo", 45, 92, 36);
+        BubbleChartSeries bubble3 = new BubbleChartSeries("AM General", 24, 104, 40);
+        BubbleChartSeries bubble4 = new BubbleChartSeries("Bugatti", 50, 123, 60);
+        BubbleChartSeries bubble5 = new BubbleChartSeries("BMW", 15, 89, 25);
+        BubbleChartSeries bubble6 = new BubbleChartSeries("Audi", 40, 180, 80);
+        BubbleChartSeries bubble7 = new BubbleChartSeries("Aston Martin", 70, 70, 48);
         
         bubbleModel.addBubble(bubble1);
         bubbleModel.addBubble(bubble2);
