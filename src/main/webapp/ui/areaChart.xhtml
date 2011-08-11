@@ -10,14 +10,14 @@
 		<div class="entry">
             <p>LineChart Customization</p>
 
-            <p:lineChart value="#{chartBean.linearModel}" legendPosition="e" stacked="true"
-                         title="Stacked Linear Chart"  style="height:300px;"/>
+            <p:lineChart value="#{chartBean.linearModel}"  stacked="true"
+                         title="Stacked Linear Chart"  style="height:300px;" />
 
             <p:lineChart value="#{chartBean.categoryModel}" legendPosition="e" fill="true"
-                         title="Filled Category / Area Chart" style="height:300px;margin-top:20px"/>
+                         title="Filled Category / Area Chart" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Income ($K)"/>
             
             <p:lineChart value="#{chartBean.categoryModel}" legendPosition="e" stacked="true" fill="true"
-                         title="Stacked and Filled Category / Area Chart" style="height:300px;margin-top:20px"/>
+                         title="Stacked and Filled Category / Area Chart" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Expense ($K)"/>
             
             <h3>Source</h3>
             <p:tabView>
@@ -26,10 +26,10 @@
 &lt;p:lineChart value="\#{chartBean.linearModel}" legendPosition="e" stacked="true"
      title="Stacked Linear Chart" minY="0" maxY="10" style="height:300px"/&gt;
 
-&lt;p:lineChart value="\#{chartBean.categoryModel}" legendPosition="e" fill="true"
+&lt;p:lineChart value="\#{chartBean.categoryModel}" legendPosition="e" fill="true" xaxisLabel="Year" yaxisLabel="Income (K$)"
      title="Filled Category Chart" minY="0" maxY="200" style="height:300px;margin-top:20px"/&gt;
 
-&lt;p:lineChart value="\#{chartBean.categoryModel}" legendPosition="e" stacked="true" fill="true"
+&lt;p:lineChart value="\#{chartBean.categoryModel}" legendPosition="e" stacked="true" fill="true" xaxisLabel="Year" yaxisLabel="Expense (K$)"
      title="Stacked and Filled Category Chart" minY="0" maxY="200" style="height:300px;margin-top:20px"/&gt;
                     </pre>
                 </p:tab>

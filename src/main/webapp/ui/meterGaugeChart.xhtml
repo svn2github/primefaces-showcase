@@ -19,8 +19,6 @@
             <p:meterGaugeChart value="#{chartBean.meterGaugeModel}" showTickLabels="false" labelHeightAdjust="110" intervalOuterRadius="130" 
                                seriesColors="66cc66, 93b75f, E7E658, cc6666" style="width:400px;height:200px" />
             
-           
-
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="meterGaugeChart.xhtml">
@@ -50,16 +48,10 @@ private void createMeterGaugeModel() {
     }};
 
     meterGaugeModel = new MeterGaugeChartModel("km/h", 140, intervals);
-
 }
             </pre>
                 </p:tab>
             </p:tabView>
-           
-
         </div>
-
-
-
     </ui:define>
 </ui:composition>
