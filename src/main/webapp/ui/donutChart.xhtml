@@ -15,7 +15,7 @@
             <p:donutChart value="#{chartBean.donutModel}" legendPosition="w"
                         title="Sample Donut Chart" style="width:400px;height:300px" />
             
-            <p:donutChart value="#{chartBean.donutModel}" legendPosition="e" sliceMargin="5" showDataLabels="true" shadow="false"
+            <p:donutChart value="#{chartBean.donutModel}" legendPosition="e" sliceMargin="5" showDataLabels="true" dataFormat="value" shadow="false"
                         title="Custom Options and ItemSelectEvent" style="width:400px;height:300px">
                 <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
             </p:donutChart>
@@ -28,7 +28,7 @@
 &lt;p:donutChart value="\#{chartBean.donutModel}" legendPosition="w"
                 title="Sample Donut Chart" style="width:400px;height:300px" /&gt;
 
-&lt;p:donutChart value="\#{chartBean.donutModel}" legendPosition="e" sliceMargin="5" showDataLabels="true" dataFormat="%d" shadow="false"
+&lt;p:donutChart value="\#{chartBean.donutModel}" legendPosition="e" sliceMargin="5" showDataLabels="true" dataFormat="value" shadow="false"
                 title="Custom Options" style="width:400px;height:300px" /&gt;
                     </pre>
                 </p:tab>
