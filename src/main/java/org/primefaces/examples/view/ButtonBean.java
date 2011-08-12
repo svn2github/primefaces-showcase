@@ -15,6 +15,9 @@
  */
 package org.primefaces.examples.view;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -24,6 +27,8 @@ public class ButtonBean {
 	private String text;
 
     private boolean toggled;
+    
+    private Integer number;
 
 	public String getText() {
 		return text;
@@ -33,6 +38,14 @@ public class ButtonBean {
 		this.text = text;
 	}
 
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+    
 	public String submitButtonAction(){
 		text = "Command clicked";
 
