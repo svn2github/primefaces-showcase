@@ -38,26 +38,30 @@ package org.primefaces.examples.view;
 import java.io.Serializable;
 
 import org.primefaces.model.chart.BubbleChartModel;
+import org.primefaces.model.chart.BubbleCharSeries;
 
-private void createBubbleModel() {
-    bubbleModel = new BubbleChartModel();
+public class ChartBean implements Serializable { 
 
-    BubbleChartSeries bubble1 = new BubbleChartSeries("Acura", 70, 183, 1236);
-    BubbleChartSeries bubble2 = new BubbleChartSeries("Alfa Romeo", 45, 92, 1067);
-    BubbleChartSeries bubble3 = new BubbleChartSeries("AM General", 24, 104, 1176);
-    BubbleChartSeries bubble4 = new BubbleChartSeries("Bugatti", 50, 123, 610);
-    BubbleChartSeries bubble5 = new BubbleChartSeries("BMW", 15, 89, 864);
-    BubbleChartSeries bubble6 = new BubbleChartSeries("Audi", 40, 180, 539);
-    BubbleChartSeries bubble7 = new BubbleChartSeries("Aston Martin", 70, 70, 1026);
+    private void createBubbleModel() {
+        bubbleModel = new BubbleChartModel();
 
-    bubbleModel.addBubble(bubble1);
-    bubbleModel.addBubble(bubble2);
-    bubbleModel.addBubble(bubble3);
-    bubbleModel.addBubble(bubble4);
-    bubbleModel.addBubble(bubble5);
-    bubbleModel.addBubble(bubble6);
-    bubbleModel.addBubble(bubble7);
+        BubbleChartSeries bubble1 = new BubbleChartSeries("Acura", 70, 183, 1236);
+        BubbleChartSeries bubble2 = new BubbleChartSeries("Alfa Romeo", 45, 92, 1067);
+        BubbleChartSeries bubble3 = new BubbleChartSeries("AM General", 24, 104, 1176);
+        BubbleChartSeries bubble4 = new BubbleChartSeries("Bugatti", 50, 123, 610);
+        BubbleChartSeries bubble5 = new BubbleChartSeries("BMW", 15, 89, 864);
+        BubbleChartSeries bubble6 = new BubbleChartSeries("Audi", 40, 180, 539);
+        BubbleChartSeries bubble7 = new BubbleChartSeries("Aston Martin", 70, 70, 1026);
 
+        bubbleModel.addBubble(bubble1);
+        bubbleModel.addBubble(bubble2);
+        bubbleModel.addBubble(bubble3);
+        bubbleModel.addBubble(bubble4);
+        bubbleModel.addBubble(bubble5);
+        bubbleModel.addBubble(bubble6);
+        bubbleModel.addBubble(bubble7);
+
+    }
 }
             </pre>
                 </p:tab>

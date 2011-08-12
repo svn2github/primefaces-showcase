@@ -40,69 +40,39 @@ package org.primefaces.examples.view;
 import java.io.Serializable;
 
 import org.primefaces.model.chart.OhlcChartModel;
+import org.primefaces.model.chart.OhlcCharSeries;
 
-private void createOhlcModel(){
-    ohlcModel = new OhlcChartModel();
+public class ChartBean implements Serializable { 
 
-    OhlcChartSeries ohlc1 = new OhlcChartSeries(2007, 143.82, 144.56, 136.04, 136.97);
-    OhlcChartSeries ohlc2 = new OhlcChartSeries(2008, 138.7, 139.68, 135.18, 135.4);
-    OhlcChartSeries ohlc3 = new OhlcChartSeries(2009, 143.46, 144.66, 139.79, 140.02);
-    OhlcChartSeries ohlc4 = new OhlcChartSeries(2010, 140.67, 143.56, 132.88, 142.44);
-    OhlcChartSeries ohlc5 = new OhlcChartSeries(2011, 136.01, 139.5, 134.53, 139.48);
-    OhlcChartSeries ohlc6 = new OhlcChartSeries(2012, 124.76, 135.9, 124.55, 135.81);
-    OhlcChartSeries ohlc7 = new OhlcChartSeries(2012, 123.73, 129.31, 121.57, 122.5);
+    private void createOhlcModel(){
+        ohlcModel = new OhlcChartModel();
 
-    ohlcModel.addRecord(ohlc1);
-    ohlcModel.addRecord(ohlc2);
-    ohlcModel.addRecord(ohlc3);
-    ohlcModel.addRecord(ohlc4);
-    ohlcModel.addRecord(ohlc5);
-    ohlcModel.addRecord(ohlc6);
-    ohlcModel.addRecord(ohlc7);
-}
+        OhlcChartSeries ohlc1 = new OhlcChartSeries(2007, 143.82, 144.56, 136.04, 136.97);
+        OhlcChartSeries ohlc2 = new OhlcChartSeries(2008, 138.7, 139.68, 135.18, 135.4);
+        OhlcChartSeries ohlc3 = new OhlcChartSeries(2009, 143.46, 144.66, 139.79, 140.02);
+        OhlcChartSeries ohlc4 = new OhlcChartSeries(2010, 140.67, 143.56, 132.88, 142.44);
+        OhlcChartSeries ohlc5 = new OhlcChartSeries(2011, 136.01, 139.5, 134.53, 139.48);
+        OhlcChartSeries ohlc6 = new OhlcChartSeries(2012, 124.76, 135.9, 124.55, 135.81);
+        OhlcChartSeries ohlc7 = new OhlcChartSeries(2012, 123.73, 129.31, 121.57, 122.5);
 
-private void createOhlcModel2() {
-    ohlcModel2 = new OhlcChartModel();
-    ohlcModel2.addRecord( new OhlcChartSeries(1, 138.7, 139.68, 135.18, 135.4));
-    ohlcModel2.addRecord( new OhlcChartSeries(2, 140.67, 143.56, 132.88, 142.44));
-    ohlcModel2.addRecord( new OhlcChartSeries(3, 140.67, 143.56, 132.88, 142.44));
-    ohlcModel2.addRecord( new OhlcChartSeries(4, 136.01, 139.5, 134.53, 139.48));
-    ohlcModel2.addRecord( new OhlcChartSeries(5, 143.82, 144.56, 136.04, 136.97));
-    ohlcModel2.addRecord( new OhlcChartSeries(6, 136.47, 146.4, 136, 144.67));
-    ohlcModel2.addRecord( new OhlcChartSeries(7, 124.76, 135.9, 124.55, 135.81));
-    ohlcModel2.addRecord( new OhlcChartSeries(8, 123.73, 129.31, 121.57, 122.5));
-    ohlcModel2.addRecord( new OhlcChartSeries(9, 127.37, 130.96, 119.38, 122.42));
-    ohlcModel2.addRecord( new OhlcChartSeries(10, 128.24, 133.5, 126.26, 129.19));
-    ohlcModel2.addRecord( new OhlcChartSeries(11, 122.9, 127.95, 122.66, 127.24));
-    ohlcModel2.addRecord( new OhlcChartSeries(12, 121.73, 127.2, 118.6, 123.9));
-    ohlcModel2.addRecord( new OhlcChartSeries(13, 120.01, 124.25, 115.76, 123.42));
-    ohlcModel2.addRecord( new OhlcChartSeries(14, 114.94, 120, 113.28, 119.57));
-    ohlcModel2.addRecord( new OhlcChartSeries(15, 104.51, 116.13, 102.61, 115.99));
-    ohlcModel2.addRecord( new OhlcChartSeries(16, 102.71, 109.98, 101.75, 106.85));
-    ohlcModel2.addRecord( new OhlcChartSeries(17, 96.53, 103.48, 94.18, 101.59));
-    ohlcModel2.addRecord( new OhlcChartSeries(18, 84.18, 97.2, 82.57, 95.93));
-    ohlcModel2.addRecord( new OhlcChartSeries(19, 88.12, 92.77, 82.33, 85.3));
-    ohlcModel2.addRecord( new OhlcChartSeries(20, 91.65, 92.92, 86.51, 89.31));
-    ohlcModel2.addRecord( new OhlcChartSeries(21, 96.87, 97.04, 89, 91.2));
-    ohlcModel2.addRecord( new OhlcChartSeries(22, 100, 103, 95.77, 99.16));
-    ohlcModel2.addRecord( new OhlcChartSeries(23, 89.1, 100, 88.9, 99.72));
-    ohlcModel2.addRecord( new OhlcChartSeries(24, 88.86, 95, 88.3, 90.13));
-    ohlcModel2.addRecord( new OhlcChartSeries(25, 81.93, 90, 78.2, 88.36));
-    ohlcModel2.addRecord( new OhlcChartSeries(26, 90.46, 90.99, 80.05, 82.33));
-    ohlcModel2.addRecord( new OhlcChartSeries(27, 93.17, 97.17, 90.04, 90.58));
-    ohlcModel2.addRecord( new OhlcChartSeries(28, 86.52, 91.04, 84.72, 90.75));
-    ohlcModel2.addRecord( new OhlcChartSeries(29, 90.02, 90.03, 84.55, 85.81));
-    ohlcModel2.addRecord( new OhlcChartSeries(30, 95.99, 96.48, 88.02, 90));
-    ohlcModel2.addRecord( new OhlcChartSeries(31, 97.28, 103.6, 92.53, 98.27));
-    ohlcModel2.addRecord( new OhlcChartSeries(32, 91.3, 96.23, 86.5, 94));
-    ohlcModel2.addRecord( new OhlcChartSeries(33, 85.21, 95.25, 84.84, 92.67));
-    ohlcModel2.addRecord( new OhlcChartSeries(34, 88.48, 91.58, 79.14, 82.58));
-    ohlcModel2.addRecord( new OhlcChartSeries(35, 100.17, 100.4, 86.02, 90.24));
-    ohlcModel2.addRecord( new OhlcChartSeries(36, 105.93, 111.79, 95.72, 98.24));
-    ohlcModel2.addRecord( new OhlcChartSeries(37, 95.07, 112.19, 91.86, 107.59));
-    ohlcModel2.addRecord( new OhlcChartSeries(38, 99.78, 101.25, 90.11, 96.38));
-    ohlcModel2.addRecord( new OhlcChartSeries(39, 104.55, 116.4, 85.89, 97.4));
+        ohlcModel.addRecord(ohlc1);
+        ohlcModel.addRecord(ohlc2);
+        ohlcModel.addRecord(ohlc3);
+        ohlcModel.addRecord(ohlc4);
+        ohlcModel.addRecord(ohlc5);
+        ohlcModel.addRecord(ohlc6);
+        ohlcModel.addRecord(ohlc7);
+    }
 
+    private void createOhlcModel2() {
+        ohlcModel2 = new OhlcChartModel();
+        for( int i=1 ; i < 41 ; i++)
+            ohlcModel2.addRecord(new OhlcChartSeries(i, 
+                                    Math.random() * 80 + 80, 
+                                    Math.random() * 50 + 110, 
+                                    Math.random() * 20 + 80, 
+                                    Math.random() * 80 + 80));
+    }
 }
             </pre>
                 </p:tab>

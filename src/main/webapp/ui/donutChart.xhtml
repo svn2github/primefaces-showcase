@@ -41,29 +41,31 @@ import java.io.Serializable;
 
 import org.primefaces.model.chart.DonutChartModel;
 
-private void createDonutModel() {
-    donutModel = new DonutChartModel();
+public class ChartBean implements Serializable { 
+    private void createDonutModel() {
+        donutModel = new DonutChartModel();
 
-    Map&lt;String, Number&gt; circle = new LinkedHashMap&lt;String, Number&gt;();
-    circle.put("Brand 1", 150);
-    circle.put("Brand 2", 400);
-    circle.put("Brand 3", 200);
-    circle.put("Brand 4", 10);
-    donutModel.addCircle(circle);
+        Map&lt;String, Number&gt; circle = new LinkedHashMap&lt;String, Number&gt;();
+        circle.put("Brand 1", 150);
+        circle.put("Brand 2", 400);
+        circle.put("Brand 3", 200);
+        circle.put("Brand 4", 10);
+        donutModel.addCircle(circle);
 
-    circle = new LinkedHashMap&lt;String, Number&gt;();
-    circle.put("Brand 1", 540);
-    circle.put("Brand 2", 125);
-    circle.put("Brand 3", 702);
-    circle.put("Brand 4", 421);
-    donutModel.addCircle(circle);
+        circle = new LinkedHashMap&lt;String, Number&gt;();
+        circle.put("Brand 1", 540);
+        circle.put("Brand 2", 125);
+        circle.put("Brand 3", 702);
+        circle.put("Brand 4", 421);
+        donutModel.addCircle(circle);
 
-    circle = new LinkedHashMap&lt;String, Number&gt;();
-    circle.put("Brand 1", 40);
-    circle.put("Brand 2", 325);
-    circle.put("Brand 3", 402);
-    circle.put("Brand 4", 421);
-    donutModel.addCircle(circle);
+        circle = new LinkedHashMap&lt;String, Number&gt;();
+        circle.put("Brand 1", 40);
+        circle.put("Brand 2", 325);
+        circle.put("Brand 3", 402);
+        circle.put("Brand 4", 421);
+        donutModel.addCircle(circle);
+    }
 }
             </pre>
                 </p:tab>

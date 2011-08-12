@@ -38,16 +38,19 @@ import java.io.Serializable;
 
 import org.primefaces.model.chart.MeterGaugeChartModel;
 
-private void createMeterGaugeModel() {
+public class ChartBean implements Serializable { 
 
-    List&lt;Number&gt; intervals = new ArrayList&lt;Number&gt;(){{
-        add(20);
-        add(50);
-        add(120);
-        add(220);
-    }};
+    private void createMeterGaugeModel() {
 
-    meterGaugeModel = new MeterGaugeChartModel("km/h", 140, intervals);
+        List&lt;Number&gt; intervals = new ArrayList&lt;Number&gt;(){{
+            add(20);
+            add(50);
+            add(120);
+            add(220);
+        }};
+
+        meterGaugeModel = new MeterGaugeChartModel("km/h", 140, intervals);
+    }
 }
             </pre>
                 </p:tab>
