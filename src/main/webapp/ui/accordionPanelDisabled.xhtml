@@ -6,11 +6,10 @@
 	template="../templates/ui.xhtml">
 
 	<ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">Accordion Panel - Disabled</h1>
+        <div class="entry">
+			<p>A tab can be disabled by setting disabled option to true.</p>
 
-			<h1 class="title ui-widget-header ui-corner-all">Accordion Panel - Simple</h1>
-			<div class="entry">
-			<p>AccordionPanel groups multiple tabs. Options like transition effect and toggle event can be customized.</p>
-			
 			<p:accordionPanel>
 				<p:tab title="Godfather Part I">
 					<h:panelGrid columns="2" cellpadding="10">
@@ -22,7 +21,7 @@
 							but given to ruthless violence whenever anything stands against the good of the family." />
 					</h:panelGrid>
 				</p:tab>
-				<p:tab title="Godfather Part II">
+				<p:tab title="Godfather Part II" disabled="true">
 					<h:panelGrid columns="2" cellpadding="10">
 						<p:graphicImage value="/images/godfather/godfather2.jpg" />
 						<h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
@@ -41,7 +40,7 @@
 			
 		<h3>Source</h3>
 		<p:tabView>
-			<p:tab title="accordionPanel.xhtml">
+			<p:tab title="accordionPanelDisabled.xhtml">
 				<pre name="code" class="xml">
 &lt;p:accordionPanel&gt;
 	&lt;p:tab title="Godfather Part I"&gt;
@@ -54,7 +53,7 @@
 				but given to ruthless violence whenever anything stands against the good of the family." /&gt;
 		&lt;/h:panelGrid&gt;
 	&lt;/p:tab&gt;
-	&lt;p:tab title="Godfather Part II"&gt;
+	&lt;p:tab title="Godfather Part II" disabled="true"&gt;
 		&lt;h:panelGrid columns="2" cellpadding="10"&gt;
 			&lt;p:graphicImage value="/images/godfather/godfather2.jpg" /&gt;
 			&lt;h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
