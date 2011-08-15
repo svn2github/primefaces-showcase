@@ -16,7 +16,7 @@
 
                 <p:growl id="growl" showDetail="true" />
 
-                <p:accordionPanel autoHeight="false">
+                <p:accordionPanel>
                     
                     <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" update="growl"/>
                     
@@ -57,7 +57,7 @@
 
     &lt;p:growl id="growl" showDetail="true" /&gt;
 
-    &lt;p:accordionPanel autoHeight="false"&gt;
+    &lt;p:accordionPanel&gt;
 
         &lt;p:ajax event="tabChange" listener="\#{tabBean.onTabChange}" update="growl"/&gt;
 

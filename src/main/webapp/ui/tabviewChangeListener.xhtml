@@ -15,7 +15,7 @@
 
                 <p:growl id="growl" showDetail="true" />
 
-                <p:tabView>
+                <p:tabView dynamic="true">
                     
                     <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" update=":form:growl"/>
 
