@@ -26,6 +26,8 @@ import org.primefaces.examples.domain.Player;
 public class TabBean {
     
     private List<Player> players;
+    
+    private String effect = "fade";
 
     public TabBean() {
         players = new ArrayList<Player>();
@@ -57,5 +59,13 @@ public class TabBean {
         FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public String getEffect() {
+        return effect;
+    }
+
+    public void setEffect(String effect) {
+        this.effect = effect;
     }
 }
