@@ -12,13 +12,13 @@
             <p>Tab change event can be listened both on client and server side. onTabChange is a client side callback that is invoked
                 when active tab changed and and there is also an ajax behavior provided.</p>
 
-            <h:form>
+            <h:form id="form">
 
                 <p:growl id="growl" showDetail="true" />
 
                 <p:accordionPanel>
                     
-                    <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" update="growl"/>
+                    <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" update=":form:growl"/>
                     
                     <p:tab title="Godfather Part I" id="Godfather1">
                         <h:panelGrid columns="2" cellpadding="10">
@@ -59,7 +59,7 @@
 
     &lt;p:accordionPanel&gt;
 
-        &lt;p:ajax event="tabChange" listener="\#{tabBean.onTabChange}" update="growl"/&gt;
+        &lt;p:ajax event="tabChange" listener="\#{tabBean.onTabChange}" update=":form:growl"/&gt;
 
         &lt;p:tab title="Godfather Part I" id="Godfather1"&gt;
             &lt;h:panelGrid columns="2" cellpadding="10"&gt;
