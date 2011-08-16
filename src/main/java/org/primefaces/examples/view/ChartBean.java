@@ -151,21 +151,13 @@ public class ChartBean implements Serializable {
     private void createOhlcModel(){
         ohlcModel = new OhlcChartModel();
 
-        OhlcChartSeries ohlc1 = new OhlcChartSeries(2007, 143.82, 144.56, 136.04, 136.97);
-        OhlcChartSeries ohlc2 = new OhlcChartSeries(2008, 138.7, 139.68, 135.18, 135.4);
-        OhlcChartSeries ohlc3 = new OhlcChartSeries(2009, 143.46, 144.66, 139.79, 140.02);
-        OhlcChartSeries ohlc4 = new OhlcChartSeries(2010, 140.67, 143.56, 132.88, 142.44);
-        OhlcChartSeries ohlc5 = new OhlcChartSeries(2011, 136.01, 139.5, 134.53, 139.48);
-        OhlcChartSeries ohlc6 = new OhlcChartSeries(2012, 124.76, 135.9, 124.55, 135.81);
-        OhlcChartSeries ohlc7 = new OhlcChartSeries(2012, 123.73, 129.31, 121.57, 122.5);
-        
-        ohlcModel.addRecord(ohlc1);
-        ohlcModel.addRecord(ohlc2);
-        ohlcModel.addRecord(ohlc3);
-        ohlcModel.addRecord(ohlc4);
-        ohlcModel.addRecord(ohlc5);
-        ohlcModel.addRecord(ohlc6);
-        ohlcModel.addRecord(ohlc7);
+        ohlcModel.addRecord(new OhlcChartSeries(2007, 143.82, 144.56, 136.04, 136.97));
+        ohlcModel.addRecord(new OhlcChartSeries(2008, 138.7, 139.68, 135.18, 135.4));
+        ohlcModel.addRecord(new OhlcChartSeries(2009, 143.46, 144.66, 139.79, 140.02));
+        ohlcModel.addRecord(new OhlcChartSeries(2010, 140.67, 143.56, 132.88, 142.44));
+        ohlcModel.addRecord(new OhlcChartSeries(2011, 136.01, 139.5, 134.53, 139.48));
+        ohlcModel.addRecord(new OhlcChartSeries(2012, 124.76, 135.9, 124.55, 135.81));
+        ohlcModel.addRecord(new OhlcChartSeries(2012, 123.73, 129.31, 121.57, 122.5));
     }
     
     private void createOhlcModel2(){
@@ -177,21 +169,13 @@ public class ChartBean implements Serializable {
     private void createBubbleModel(){
         bubbleModel = new BubbleChartModel();
         
-        BubbleChartSeries bubble1 = new BubbleChartSeries("Acura", 70, 183,55);
-        BubbleChartSeries bubble2 = new BubbleChartSeries("Alfa Romeo", 45, 92, 36);
-        BubbleChartSeries bubble3 = new BubbleChartSeries("AM General", 24, 104, 40);
-        BubbleChartSeries bubble4 = new BubbleChartSeries("Bugatti", 50, 123, 60);
-        BubbleChartSeries bubble5 = new BubbleChartSeries("BMW", 15, 89, 25);
-        BubbleChartSeries bubble6 = new BubbleChartSeries("Audi", 40, 180, 80);
-        BubbleChartSeries bubble7 = new BubbleChartSeries("Aston Martin", 70, 70, 48);
-        
-        bubbleModel.addBubble(bubble1);
-        bubbleModel.addBubble(bubble2);
-        bubbleModel.addBubble(bubble3);
-        bubbleModel.addBubble(bubble4);
-        bubbleModel.addBubble(bubble5);
-        bubbleModel.addBubble(bubble6);
-        bubbleModel.addBubble(bubble7);
+        bubbleModel.addBubble(new BubbleChartSeries("Acura", 70, 183,55));
+        bubbleModel.addBubble(new BubbleChartSeries("Alfa Romeo", 45, 92, 36));
+        bubbleModel.addBubble(new BubbleChartSeries("AM General", 24, 104, 40));
+        bubbleModel.addBubble(new BubbleChartSeries("Bugatti", 50, 123, 60));
+        bubbleModel.addBubble(new BubbleChartSeries("BMW", 15, 89, 25));
+        bubbleModel.addBubble(new BubbleChartSeries("Audi", 40, 180, 80));
+        bubbleModel.addBubble(new BubbleChartSeries("Aston Martin", 70, 70, 48));
     }
 
     private void createLinearModel() {
@@ -232,28 +216,27 @@ public class ChartBean implements Serializable {
     private void createDonutModel() {
         donutModel = new DonutChartModel();
         
-        Map<String, Number> circle = new LinkedHashMap<String, Number>();
-        circle.put("Brand 1", 150);
-        circle.put("Brand 2", 400);
-        circle.put("Brand 3", 200);
-        circle.put("Brand 4", 10);
-        donutModel.addCircle(circle);
+        Map<String, Number> circle1 = new LinkedHashMap<String, Number>();
+        circle1.put("Brand 1", 150);
+        circle1.put("Brand 2", 400);
+        circle1.put("Brand 3", 200);
+        circle1.put("Brand 4", 10);
+        donutModel.addCircle(circle1);
         
-        circle = new LinkedHashMap<String, Number>();
-        circle.put("Brand 1", 540);
-        circle.put("Brand 2", 125);
-        circle.put("Brand 3", 702);
-        circle.put("Brand 4", 421);
-        donutModel.addCircle(circle);
+        Map<String, Number> circle2 = new LinkedHashMap<String, Number>();
+        circle2.put("Brand 1", 540);
+        circle2.put("Brand 2", 125);
+        circle2.put("Brand 3", 702);
+        circle2.put("Brand 4", 421);
+        donutModel.addCircle(circle2);
         
-        circle = new LinkedHashMap<String, Number>();
-        circle.put("Brand 1", 40);
-        circle.put("Brand 2", 325);
-        circle.put("Brand 3", 402);
-        circle.put("Brand 4", 421);
-        donutModel.addCircle(circle);
+        Map<String, Number> circle3 = new LinkedHashMap<String, Number>();
+        circle3.put("Brand 1", 40);
+        circle3.put("Brand 2", 325);
+        circle3.put("Brand 3", 402);
+        circle3.put("Brand 4", 421);
+        donutModel.addCircle(circle3);
     }
-
 
     private void createLivePieModel() {
         livePieModel = new PieChartModel();

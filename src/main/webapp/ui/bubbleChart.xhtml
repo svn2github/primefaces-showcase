@@ -10,9 +10,8 @@
         <h1 class="title ui-widget-header ui-corner-all">Area Chart</h1>
         <div class="entry">
             <p>BubbleChart is created with a BubbleChartModel.</p>
-            <p:growl id="growl" showDetail="true" />
 
-            <p:bubbleChart value="#{chartBean.bubbleModel}" xaxisLabel="Old Car Market ($K)" yaxisLabel="New Car Market ($K)"
+            <p:bubbleChart value="#{chartBean.bubbleModel}" xaxisLabel="Price" yaxisLabel="Sales"
                         title="Sample Bubble Chart" style="width:400px;height:300px" />
             <br/>
             <br/>
@@ -23,7 +22,7 @@
             <p:tabView>
                 <p:tab title="bubbleChart.xhtml">
                     <pre name="code" class="xml">
-&lt;p:bubbleChart value="\#{chartBean.bubbleModel}" xaxisLabel="Old Car Market ($K)" yaxisLabel="New Car Market ($K)"
+&lt;p:bubbleChart value="\#{chartBean.bubbleModel}" xaxisLabel="Price" yaxisLabel="Labels"
                 title="Sample Bubble Chart" style="width:400px;height:300px" /&gt;
 
 &lt;p:bubbleChart value="\#{chartBean.bubbleModel}" shadow="false" bubbleGradients="true" showLabels="false" bubbleAlpha="100"
@@ -42,25 +41,22 @@ import org.primefaces.model.chart.BubbleCharSeries;
 
 public class ChartBean implements Serializable { 
 
+    private BubbleChartModel bubbleModel;
+
+    public ChartBean() {
+        createBubbleModel();
+    }
+
     private void createBubbleModel() {
         bubbleModel = new BubbleChartModel();
 
-        BubbleChartSeries bubble1 = new BubbleChartSeries("Acura", 70, 183, 1236);
-        BubbleChartSeries bubble2 = new BubbleChartSeries("Alfa Romeo", 45, 92, 1067);
-        BubbleChartSeries bubble3 = new BubbleChartSeries("AM General", 24, 104, 1176);
-        BubbleChartSeries bubble4 = new BubbleChartSeries("Bugatti", 50, 123, 610);
-        BubbleChartSeries bubble5 = new BubbleChartSeries("BMW", 15, 89, 864);
-        BubbleChartSeries bubble6 = new BubbleChartSeries("Audi", 40, 180, 539);
-        BubbleChartSeries bubble7 = new BubbleChartSeries("Aston Martin", 70, 70, 1026);
-
-        bubbleModel.addBubble(bubble1);
-        bubbleModel.addBubble(bubble2);
-        bubbleModel.addBubble(bubble3);
-        bubbleModel.addBubble(bubble4);
-        bubbleModel.addBubble(bubble5);
-        bubbleModel.addBubble(bubble6);
-        bubbleModel.addBubble(bubble7);
-
+        bubbleModel.addBubble(new BubbleChartSeries("Acura", 70, 183,55));
+        bubbleModel.addBubble(new BubbleChartSeries("Alfa Romeo", 45, 92, 36));
+        bubbleModel.addBubble(new BubbleChartSeries("AM General", 24, 104, 40));
+        bubbleModel.addBubble(new BubbleChartSeries("Bugatti", 50, 123, 60));
+        bubbleModel.addBubble(new BubbleChartSeries("BMW", 15, 89, 25));
+        bubbleModel.addBubble(new BubbleChartSeries("Audi", 40, 180, 80));
+        bubbleModel.addBubble(new BubbleChartSeries("Aston Martin", 70, 70, 48));
     }
 }
             </pre>

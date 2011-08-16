@@ -10,26 +10,23 @@
         <h1 class="title ui-widget-header ui-corner-all">Donut Chart</h1>
         <div class="entry">
             <p>DonutChart is created with a DonutChartModel.</p>
-            <p:growl id="growl" showDetail="true" />
 
             <p:donutChart value="#{chartBean.donutModel}" legendPosition="w"
                         title="Sample Donut Chart" style="width:400px;height:300px" />
-            
+
             <p:donutChart value="#{chartBean.donutModel}" legendPosition="e" sliceMargin="5" showDataLabels="true" dataFormat="value" shadow="false"
-                        title="Custom Options and ItemSelectEvent" style="width:400px;height:300px">
-                <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
-            </p:donutChart>
-
-
+                        title="Custom Options" style="width:400px;height:300px" />
+                
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="donutChart.xhtml">
                     <pre name="code" class="xml">
 &lt;p:donutChart value="\#{chartBean.donutModel}" legendPosition="w"
-                title="Sample Donut Chart" style="width:400px;height:300px" /&gt;
+            title="Sample Donut Chart" style="width:400px;height:300px" /&gt;
 
-&lt;p:donutChart value="\#{chartBean.donutModel}" legendPosition="e" sliceMargin="5" showDataLabels="true" dataFormat="value" shadow="false"
-                title="Custom Options" style="width:400px;height:300px" /&gt;
+&lt;p:donutChart value="\#{chartBean.donutModel}" 
+            legendPosition="e" sliceMargin="5" showDataLabels="true" dataFormat="value" shadow="false"
+            title="Custom Options" style="width:400px;height:300px" /&gt;
                     </pre>
                 </p:tab>
 
@@ -41,30 +38,41 @@ import java.io.Serializable;
 
 import org.primefaces.model.chart.DonutChartModel;
 
-public class ChartBean implements Serializable { 
+public class ChartBean implements Serializable {
+
+    private DonutChartModel donutModel;
+    
+    public ChartBean() {
+        createDonutModel();
+    }
+    
+    public DonutChartModel getDonutModel() {
+        return donutModel;
+    }
+ 
     private void createDonutModel() {
         donutModel = new DonutChartModel();
-
-        Map&lt;String, Number&gt; circle = new LinkedHashMap&lt;String, Number&gt;();
-        circle.put("Brand 1", 150);
-        circle.put("Brand 2", 400);
-        circle.put("Brand 3", 200);
-        circle.put("Brand 4", 10);
-        donutModel.addCircle(circle);
-
-        circle = new LinkedHashMap&lt;String, Number&gt;();
-        circle.put("Brand 1", 540);
-        circle.put("Brand 2", 125);
-        circle.put("Brand 3", 702);
-        circle.put("Brand 4", 421);
-        donutModel.addCircle(circle);
-
-        circle = new LinkedHashMap&lt;String, Number&gt;();
-        circle.put("Brand 1", 40);
-        circle.put("Brand 2", 325);
-        circle.put("Brand 3", 402);
-        circle.put("Brand 4", 421);
-        donutModel.addCircle(circle);
+        
+        Map&lt;String, Number&gt; circle1 = new LinkedHashMap&lt;String, Number&gt;();
+        circle1.put("Brand 1", 150);
+        circle1.put("Brand 2", 400);
+        circle1.put("Brand 3", 200);
+        circle1.put("Brand 4", 10);
+        donutModel.addCircle(circle1);
+        
+        Map&lt;String, Number&gt; circle2 = new LinkedHashMap&lt;String, Number&gt;();
+        circle2.put("Brand 1", 540);
+        circle2.put("Brand 2", 125);
+        circle2.put("Brand 3", 702);
+        circle2.put("Brand 4", 421);
+        donutModel.addCircle(circle2);
+        
+        Map&lt;String, Number&gt; circle3 = new LinkedHashMap&lt;String, Number&gt;();
+        circle3.put("Brand 1", 40);
+        circle3.put("Brand 2", 325);
+        circle3.put("Brand 3", 402);
+        circle3.put("Brand 4", 421);
+        donutModel.addCircle(circle3);
     }
 }
             </pre>

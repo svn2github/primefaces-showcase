@@ -42,26 +42,27 @@ import java.io.Serializable;
 import org.primefaces.model.chart.OhlcChartModel;
 import org.primefaces.model.chart.OhlcCharSeries;
 
-public class ChartBean implements Serializable { 
+public class ChartBean implements Serializable {
 
+    private OhlcChartModel ohlcModel;
+    
+    private OhlcChartModel ohlcModel2;
+
+    public ChartBean() {
+        createOhlcModel();
+        createOhlcModel2();
+    }
+ 
     private void createOhlcModel(){
         ohlcModel = new OhlcChartModel();
 
-        OhlcChartSeries ohlc1 = new OhlcChartSeries(2007, 143.82, 144.56, 136.04, 136.97);
-        OhlcChartSeries ohlc2 = new OhlcChartSeries(2008, 138.7, 139.68, 135.18, 135.4);
-        OhlcChartSeries ohlc3 = new OhlcChartSeries(2009, 143.46, 144.66, 139.79, 140.02);
-        OhlcChartSeries ohlc4 = new OhlcChartSeries(2010, 140.67, 143.56, 132.88, 142.44);
-        OhlcChartSeries ohlc5 = new OhlcChartSeries(2011, 136.01, 139.5, 134.53, 139.48);
-        OhlcChartSeries ohlc6 = new OhlcChartSeries(2012, 124.76, 135.9, 124.55, 135.81);
-        OhlcChartSeries ohlc7 = new OhlcChartSeries(2012, 123.73, 129.31, 121.57, 122.5);
-
-        ohlcModel.addRecord(ohlc1);
-        ohlcModel.addRecord(ohlc2);
-        ohlcModel.addRecord(ohlc3);
-        ohlcModel.addRecord(ohlc4);
-        ohlcModel.addRecord(ohlc5);
-        ohlcModel.addRecord(ohlc6);
-        ohlcModel.addRecord(ohlc7);
+        ohlcModel.addRecord(new OhlcChartSeries(2007, 143.82, 144.56, 136.04, 136.97));
+        ohlcModel.addRecord(new OhlcChartSeries(2008, 138.7, 139.68, 135.18, 135.4));
+        ohlcModel.addRecord(new OhlcChartSeries(2009, 143.46, 144.66, 139.79, 140.02));
+        ohlcModel.addRecord(new OhlcChartSeries(2010, 140.67, 143.56, 132.88, 142.44));
+        ohlcModel.addRecord(new OhlcChartSeries(2011, 136.01, 139.5, 134.53, 139.48));
+        ohlcModel.addRecord(new OhlcChartSeries(2012, 124.76, 135.9, 124.55, 135.81));
+        ohlcModel.addRecord(new OhlcChartSeries(2012, 123.73, 129.31, 121.57, 122.5));
     }
 
     private void createOhlcModel2() {

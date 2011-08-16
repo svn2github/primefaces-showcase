@@ -6,31 +6,27 @@
 	template="../templates/ui.xhtml">
 	
 	<ui:define name="content">
-        <h1 class="title ui-widget-header ui-corner-all">Charts - LineChart Options</h1>
+        <h1 class="title ui-widget-header ui-corner-all">Charts - Area</h1>
 		<div class="entry">
-            <p>LineChart Customization</p>
+            <p>AreaChart is implemented by enabling stacked and fill options of lineChart.</p>
 
-            <p:lineChart value="#{chartBean.linearModel}"  stacked="true"
-                         title="Stacked Linear Chart"  style="height:300px;" />
+            <p:lineChart value="#{chartBean.categoryModel}" legendPosition="ne" fill="true"
+                         title="Filled" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Births" />
 
-            <p:lineChart value="#{chartBean.categoryModel}" legendPosition="e" fill="true"
-                         title="Filled Category / Area Chart" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Income ($K)"/>
-            
-            <p:lineChart value="#{chartBean.categoryModel}" legendPosition="e" stacked="true" fill="true"
-                         title="Stacked and Filled Category / Area Chart" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Expense ($K)"/>
+            <p:lineChart value="#{chartBean.categoryModel}" legendPosition="ne" stacked="true" fill="true"
+                         title="Stacked and Filled" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Births" />
             
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="areaChart.xhtml">
                     <pre name="code" class="xml">
-&lt;p:lineChart value="\#{chartBean.linearModel}" legendPosition="e" stacked="true"
-     title="Stacked Linear Chart" minY="0" maxY="10" style="height:300px"/&gt;
+&lt;p:lineChart value="\#{chartBean.categoryModel}" 
+                legendPosition="ne" fill="true" xaxisLabel="Year" yaxisLabel="Income (K$)"
+                title="Filled Category Chart" minY="0" maxY="200" style="height:300px;margin-top:20px"/&gt;
 
-&lt;p:lineChart value="\#{chartBean.categoryModel}" legendPosition="e" fill="true" xaxisLabel="Year" yaxisLabel="Income (K$)"
-     title="Filled Category Chart" minY="0" maxY="200" style="height:300px;margin-top:20px"/&gt;
-
-&lt;p:lineChart value="\#{chartBean.categoryModel}" legendPosition="e" stacked="true" fill="true" xaxisLabel="Year" yaxisLabel="Expense (K$)"
-     title="Stacked and Filled Category Chart" minY="0" maxY="200" style="height:300px;margin-top:20px"/&gt;
+&lt;p:lineChart value="\#{chartBean.categoryModel}" 
+                legendPosition="ne" stacked="true" fill="true" xaxisLabel="Year" yaxisLabel="Expense (K$)"
+                title="Stacked and Filled Category Chart" minY="0" maxY="200" style="height:300px;margin-top:20px"/&gt;
                     </pre>
                 </p:tab>
 
@@ -42,25 +38,17 @@ import java.io.Serializable;
 
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.ChartSeries;
-import org.primefaces.model.chart.LineChartSeries;
 
 public class ChartBean implements Serializable {
 
     private CartesianChartModel categoryModel;
 
-    private CartesianChartModel linearModel;
-
 	public ChartBean() {
         createCategoryModel();
-        createLinearModel();
 	}
 
     public CartesianChartModel getCategoryModel() {
         return categoryModel;
-    }
-
-    public CartesianChartModel getLinearModel() {
-        return linearModel;
     }
 
     private void createCategoryModel() {
@@ -86,32 +74,6 @@ public class ChartBean implements Serializable {
 
         categoryModel.addSeries(boys);
         categoryModel.addSeries(girls);
-    }
-
-    private void createLinearModel() {
-        linearModel = new CartesianChartModel();
-
-        LineChartSeries series1 = new LineChartSeries();
-        series1.setLabel("Series 1");
-
-        series1.set(1, 2);
-        series1.set(2, 1);
-        series1.set(3, 3);
-        series1.set(4, 6);
-        series1.set(5, 8);
-
-        LineChartSeries series2 = new LineChartSeries();
-        series2.setLabel("Series 2");
-        series2.setMarkerStyle("diamond");
-
-        series2.set(1, 6);
-        series2.set(2, 3);
-        series2.set(3, 2);
-        series2.set(4, 7);
-        series2.set(5, 9);
-
-        linearModel.addSeries(series1);
-        linearModel.addSeries(series2);
     }
 }
                     </pre>
