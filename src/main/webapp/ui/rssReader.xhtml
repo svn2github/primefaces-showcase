@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+            .entry a img {
+                margin-right: 10px;
+            }
+        </style>
+    </ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">RSSReader</h1>
+		<div class="entry">
+			<p>RSSReader is used to display content from a feed.</p>
+            
+            <p:separator />
+
+            <p:rssReader value="http://rss.news.yahoo.com/rss/sports" var="feed">
+                <h:outputText value="#{feed.title}" style="font-weight: bold"/>
+                <br />
+                <h:outputText value="#{feed.description.value}" escape="false"/>
+                <p:separator />
+            </p:rssReader>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="rssReader.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:rssReader value="http://rss.news.yahoo.com/rss/sports" var="feed"&gt;
+    &lt;h:outputText value="\#{feed.title}" style="font-weight: bold"/&gt;
+    &lt;br /&gt;
+    &lt;h:outputText value="\#{feed.description.value}" escape="false"/&gt;
+    &lt;p:separator /&gt;
+&lt;/p:rssReader&gt;
+                    </pre>
+				</p:tab>
+			</p:tabView>
+
+
+		</div>
+
+	</ui:define>
+</ui:composition>
