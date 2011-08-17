@@ -38,7 +38,7 @@
             <p:tabView>
                 <p:tab title="accordionModel.xhtml">
                     <pre name="code" class="xml">
-&lt;p:accordionPanel value="#{tabBean.players}" var="player"&gt;
+&lt;p:accordionPanel value="\#{tabBean.players}" var="player"&gt;
     &lt;p:tab title="\#{player.name}"&gt;
         &lt;h:panelGrid columns="2" cellpadding="10"&gt;
             &lt;p:graphicImage value="/images/barca/\#{player.photo}" /&gt;
