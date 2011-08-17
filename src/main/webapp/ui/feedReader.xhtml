@@ -15,29 +15,29 @@
 
 	<ui:define name="content">
 
-		<h1 class="title ui-widget-header ui-corner-all">RSSReader</h1>
+		<h1 class="title ui-widget-header ui-corner-all">FeedReader</h1>
 		<div class="entry">
-			<p>RSSReader is used to display content from a feed.</p>
+			<p>FeedReader is used to display content from a feed.</p>
             
             <p:separator />
 
-            <p:rssReader value="http://rss.news.yahoo.com/rss/sports" var="feed">
+            <p:feedReader value="http://rss.news.yahoo.com/rss/sports" var="feed">
                 <h:outputText value="#{feed.title}" style="font-weight: bold"/>
                 <br />
                 <h:outputText value="#{feed.description.value}" escape="false"/>
                 <p:separator />
-            </p:rssReader>
+            </p:feedReader>
 
 			<h3>Source</h3>
 			<p:tabView>
-				<p:tab title="rssReader.xhtml">
+				<p:tab title="feedReader.xhtml">
                     <pre name="code" class="xml">
-&lt;p:rssReader value="http://rss.news.yahoo.com/rss/sports" var="feed"&gt;
+&lt;p:feedReader value="http://rss.news.yahoo.com/rss/sports" var="feed"&gt;
     &lt;h:outputText value="\#{feed.title}" style="font-weight: bold"/&gt;
     &lt;br /&gt;
     &lt;h:outputText value="\#{feed.description.value}" escape="false"/&gt;
     &lt;p:separator /&gt;
-&lt;/p:rssReader&gt;
+&lt;/p:feedReader&gt;
                     </pre>
 				</p:tab>
 			</p:tabView>
