@@ -21,7 +21,7 @@
             
               <h:form id="form">
 
-				<p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
+				<p:dataTable var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                             selection="#{tableBean.selectedCar}" selectionMode="single">
                     
                     <p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" />
@@ -30,32 +30,20 @@
                         List of Cars
                     </f:facet>
 					
-					<p:column sortBy="#{car.model}" filterBy="#{car.model}">
-						<f:facet name="header">
-							<h:outputText value="Model" />
-						</f:facet>
-						<h:outputText value="#{car.model}" />
+					<p:column headerText="Model" sortBy="#{car.model}" filterBy="#{car.model}">
+						#{car.model}
 					</p:column>
 	
-					<p:column sortBy="#{car.year}" filterBy="#{car.year}">
-						<f:facet name="header">
-							<h:outputText value="Year" />
-						</f:facet>
-						<h:outputText value="#{car.year}" />
+					<p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
+						#{car.year}
 					</p:column>
 	
-					<p:column sortBy="#{car.manufacturer}" filterBy="#{car.manufacturer}">
-						<f:facet name="header">
-							<h:outputText value="Manufacturer" />
-						</f:facet>
-						<h:outputText value="#{car.manufacturer}" />
+					<p:column headerText="Manufacturer" sortBy="#{car.manufacturer}" filterBy="#{car.manufacturer}">
+						#{car.manufacturer}
 					</p:column>
 	
-					<p:column sortBy="#{car.color}" filterBy="#{car.color}">
-						<f:facet name="header">
-							<h:outputText value="Color" />
-						</f:facet>
-						<h:outputText value="#{car.color}" />
+					<p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
+						#{car.color}
 					</p:column>
 
 				</p:dataTable>
@@ -100,32 +88,20 @@
             List of Cars
         &lt;/f:facet&gt;
 
-        &lt;p:column sortBy="\#{car.model}" filterBy="\#{car.model}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Model" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;p:column headerText="Model" sortBy="\#{car.model}" filterBy="\#{car.model}"&gt;
+            \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column sortBy="\#{car.year}" filterBy="\#{car.year}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Year" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;p:column headerText="Year" sortBy="\#{car.year}" filterBy="\#{car.year}"&gt;
+            \#{car.year}
         &lt;/p:column&gt;
 
-        &lt;p:column sortBy="\#{car.manufacturer}" filterBy="\#{car.manufacturer}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Manufacturer" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;p:column headerText="Manufacturer" sortBy="\#{car.manufacturer}" filterBy="\#{car.manufacturer}"&gt;
+            \#{car.manufacturer}
         &lt;/p:column&gt;
 
-        &lt;p:column sortBy="\#{car.color}" filterBy="\#{car.color}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Color" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;p:column headerText="Color" sortBy="\#{car.color}" filterBy="\#{car.color}"&gt;
+            \#{car.color}"
         &lt;/p:column&gt;
 
     &lt;/p:dataTable&gt;
@@ -157,21 +133,25 @@
                     </pre>
 				</p:tab>
 				
-				<p:tab title="TableBean.java">
-					<pre name="code" class="java">
+<p:tab title="TableBean.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import org.primefaces.examples.domain.Car;
+import org.primefaces.model.PrimeDataModel;
 
-public class TableBean {
+public class TableBean implements Serializable {
 
-    static {
+	private final static String[] colors;
+
+	private final static String[] manufacturers;
+
+	static {
 		colors = new String[10];
 		colors[0] = "Black";
 		colors[1] = "White";
@@ -197,39 +177,96 @@ public class TableBean {
 		manufacturers[9] = "Ford";
 	}
 
-    private final static String[] colors;
-
-	private final static String[] manufacturers;
-
 	private List&lt;Car&gt; cars;
 
 	private Car selectedCar;
 
+	private Car[] selectedCars;
+
+    private PrimeDataModel mediumCarsModel;
+
 	public TableBean() {
 		cars = new ArrayList&lt;Car&gt;();
+		
+		populateRandomCars(cars, 50);
 
-		populateRandomCars(carsSmall, 50);
-	}
-
-    private void populateRandomCars(List&lt;Car&gt; list, int size) {
-		for(int i = 0 ; i &lt; size ; i++)
-			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+        mediumCarsModel = new CarDataModel(cars);
 	}
 
 	public Car getSelectedCar() {
 		return selectedCar;
 	}
+
 	public void setSelectedCar(Car selectedCar) {
 		this.selectedCar = selectedCar;
 	}
 
-	public List&lt;Car&gt; getCars() {
-		return cars;
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+
+    public PrimeDataModel getMediumCarsModel() {
+        return mediumCarsModel;
+    }
 }
-	
-					</pre>
-				</p:tab>
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="CarDataModel.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.List;
+import org.primefaces.examples.domain.Car;
+import org.primefaces.model.PrimeDataModel;
+
+public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
+
+    public CarDataModel() {
+    }
+
+    public CarDataModel(Object data) {
+        super(data);
+    }
+    
+    @Override
+    public Car getRowData(String rowKey) {
+        //In a real app, a more efficient way like a query by rowKey should be implemented to deal with huge data
+        
+        List&lt;Car&gt; cars = (List&lt;Car&gt;) getWrappedData();
+        
+        for(Car car : cars) {
+            if(car.getModel().equals(rowKey))
+                return car;
+        }
+        
+        return null;
+    }
+
+    @Override
+    public String getRowKey(Car car) {
+        return car.getModel();
+    }
+}
+                    </pre>
+                </p:tab>
 			</p:tabView>
 </div>
 

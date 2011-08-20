@@ -25,35 +25,23 @@
                     <p:menuitem value="Delete" actionListener="#{tableBean.deleteCar}" update="cars" icon="ui-icon ui-icon-close"/>
 				</p:contextMenu>
 
-                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}"
+                <p:dataTable id="cars" var="car" value="#{tableBean.smallCarsModel}"
                              selection="#{tableBean.selectedCar}" selectionMode="single">
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Model" />
-                        </f:facet>
-                        <h:outputText value="#{car.model}" />
+                    <p:column headerText="Model">
+                        #{car.model}
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Year" />
-                        </f:facet>
-                        <h:outputText value="#{car.year}" />
+                    <p:column headerText="Year">
+                        #{car.year}
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Manufacturer" />
-                        </f:facet>
-                        <h:outputText value="#{car.manufacturer}" />
+                    <p:column headerText="Manufacturer" >
+                        #{car.manufacturer}
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Color" />
-                        </f:facet>
-                        <h:outputText value="#{car.color}" />
+                    <p:column headerText="Color">
+                        #{car.color}
                     </p:column>
                     
                 </p:dataTable> 
@@ -85,7 +73,7 @@
 
             <h3>Source</h3>
             <p:tabView>
-                <p:tab title="datatableRowSelection.xhtml">
+                <p:tab title="datatableContextMenu.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form id="form"&gt;
                 
@@ -97,32 +85,20 @@
     &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}"
                  selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Model" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;p:column headerText="Model"&gt;
+            \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Year" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;p:column headerText="Year"&gt;
+            \#{car.year}
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Manufacturer" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;p:column headerText="Manufacturer" &gt;
+            \#{car.manufacturer}
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Color" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;p:column headerText="Color"&gt;
+            \#{car.color}
         &lt;/p:column&gt;
 
     &lt;/p:dataTable&gt; 
@@ -165,6 +141,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.primefaces.examples.domain.Car;
+import org.primefaces.model.PrimeDataModel;
 
 public class TableBean {
 
@@ -202,10 +179,14 @@ public class TableBean {
 	
 	private Car selectedCar;
 
+    private PrimeDataModel smallCarsModel;
+
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();
 		
 		populateRandomCars(carsSmall, 9);
+
+        smallCarsModel = new CarDataModel(carsSmall);
 	}
 
     private void populateRandomCars(List&lt;Car&gt; list, int size) {
@@ -220,12 +201,59 @@ public class TableBean {
 		this.selectedCar = selectedCar;
 	}
 
-	public List&lt;Car&gt; getCarsSmall() {
-		return carsSmall;
-	}
+    public PrimeDataModel getSmallCarsModel() {
+        return smallCarsModel;
+    }
 
-    public void deleteCar() {
-        carsSmall.remove(selectedCar);
+    public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Selected", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onRowUnselect(UnselectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Unselected", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="CarDataModel.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.List;
+import org.primefaces.examples.domain.Car;
+import org.primefaces.model.PrimeDataModel;
+
+public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
+
+    public CarDataModel() {
+    }
+
+    public CarDataModel(Object data) {
+        super(data);
+    }
+    
+    @Override
+    public Car getRowData(String rowKey) {
+        //In a real app, a more efficient way like a query by rowKey should be implemented to deal with huge data
+        
+        List&lt;Car&gt; cars = (List&lt;Car&gt;) getWrappedData();
+        
+        for(Car car : cars) {
+            if(car.getModel().equals(rowKey))
+                return car;
+        }
+        
+        return null;
+    }
+
+    @Override
+    public String getRowKey(Car car) {
+        return car.getModel();
     }
 }
                     </pre>
