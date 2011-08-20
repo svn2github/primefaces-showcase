@@ -16,7 +16,7 @@
 
                 <p:dataTable var="car" value="#{tableBean.lazyModel}" paginator="true" rows="10" lazy="true"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                             rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{tableBean.selectedCar}">
+                             rowsPerPageTemplate="5,10,15">
                     
                     <p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" />
 
@@ -74,7 +74,7 @@
 
     &lt;p:dataTable var="car" value="\#{tableBean.lazyModel}" paginator="true" rows="10" lazy="true"
                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 rowsPerPageTemplate="5,10,15" selectionMode="single" selection="\#{tableBean.selectedCar}"&gt;
+                 rowsPerPageTemplate="5,10,15"&gt;
 
         &lt;p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" /&gt;
 
