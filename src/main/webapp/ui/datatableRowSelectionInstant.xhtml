@@ -14,7 +14,7 @@
 
                 <p:growl id="growl" showDetail="true"/>
 
-                <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
+                <p:dataTable var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCar}" selectionMode="single">
                     
                     <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" />
@@ -24,37 +24,25 @@
                         Select a row to display a message
                     </f:facet>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Model" />
-                        </f:facet>
-                        <h:outputText value="#{car.model}" />
+                    <p:column headerText="Model">
+                        #{car.model}
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Year" />
-                        </f:facet>
-                        <h:outputText value="#{car.year}" />
+                    <p:column headerText="Year">
+                        #{car.year}
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Manufacturer" />
-                        </f:facet>
-                        <h:outputText value="#{car.manufacturer}" />
+                    <p:column headerText="Manufacturer" >
+                        #{car.manufacturer}
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Color" />
-                        </f:facet>
-                        <h:outputText value="#{car.color}" />
+                    <p:column headerText="Color">
+                        #{car.color}
                     </p:column>
                 </p:dataTable>
 
                 <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
-                          width="200" showEffect="explode" hideEffect="explode">
+                          showEffect="explode" hideEffect="explode">
 
                     <h:panelGrid id="display" columns="2" cellpadding="4">
 
@@ -82,51 +70,40 @@
             <p:tabView>
                 <p:tab title="datatableRowSelectionInstant.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:growl id="growl" showDetail="true"/&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+    &lt;p:dataTable var="car" value="\#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                  selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
 
-        &lt;p:ajax event="rowSelect" listener="\#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" /&gt;
+        &lt;p:ajax event="rowSelect" listener="\#{tableBean.onRowSelect}" 
+                    update=":form:display :form:growl" oncomplete="carDialog.show()" /&gt;
         &lt;p:ajax event="rowUnselect" listener="\#{tableBean.onRowUnselect}" update=":form:growl"/&gt;
 
         &lt;f:facet name="header"&gt;
             Select a row to display a message
         &lt;/f:facet&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Model" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;p:column headerText="Model"&gt;
+            \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Year" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;p:column headerText="Year"&gt;
+            \#{car.year}
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Manufacturer" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;p:column headerText="Manufacturer" &gt;
+            \#{car.manufacturer}
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Color" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;p:column headerText="Color"&gt;
+            \#{car.color}
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
 
     &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
-              width="200" showEffect="explode" hideEffect="explode"&gt;
+                showEffect="explode" hideEffect="explode"&gt;
 
         &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;
 
@@ -158,12 +135,15 @@ package org.primefaces.examples.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.primefaces.examples.domain.Car;
-
 import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
+
+import org.primefaces.examples.domain.Car;
+import org.primefaces.model.PrimeDataModel;
 
 public class TableBean {
 
@@ -197,14 +177,18 @@ public class TableBean {
 
 	private final static String[] manufacturers;
 
-	private List&lt;Car&gt; cars;
-
+	private List&lt;Car&gt; carsSmall;
+	
 	private Car selectedCar;
+
+    private PrimeDataModel mediumCarsModel;
 
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();
-
+		
 		populateRandomCars(carsSmall, 9);
+
+        mediumCarsModel = new CarDataModel(carsSmall);
 	}
 
     private void populateRandomCars(List&lt;Car&gt; list, int size) {
@@ -219,26 +203,47 @@ public class TableBean {
 		this.selectedCar = selectedCar;
 	}
 
-	public List&lt;Car&gt; getCars() {
-		return cars;
-	}
+    public PrimeDataModel getMediumCarsModel() {
+        return mediumCarsModel;
+    }
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="CarDataModel.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
 
-    public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Car Selected", ((Car) event.getObject()).getModel());
+import java.util.List;
+import org.primefaces.examples.domain.Car;
+import org.primefaces.model.PrimeDataModel;
 
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
+
+    public CarDataModel() {
     }
 
-    public void onRowUnselect(UnselectEvent event) {
-        FacesMessage msg = new FacesMessage("Car Unselected", ((Car) event.getObject()).getModel());
-
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+    public CarDataModel(Object data) {
+        super(data);
+    }
+    
+    @Override
+    public Car getRowData(String rowKey) {
+        //In a real app, a more efficient way like a query by rowKey should be implemented to deal with huge data
+        
+        List&lt;Car&gt; cars = (List&lt;Car&gt;) getWrappedData();
+        
+        for(Car car : cars) {
+            if(car.getModel().equals(rowKey))
+                return car;
+        }
+        
+        return null;
     }
 
-    public String onRowSelectNavigate(SelectEvent event) {
-        FacesContext.getCurrentInstance().getExternalContext().getFlash().put("selectedCar", event.getObject());
-
-        return "carDetail?faces-redirect=true";
+    @Override
+    public String getRowKey(Car car) {
+        return car.getModel();
     }
 }
                     </pre>

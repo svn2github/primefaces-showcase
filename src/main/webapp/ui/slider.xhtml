@@ -46,7 +46,9 @@
                 <h3>Ajax Slider</h3>
                 <h:panelGrid columns="1" style="margin-bottom:10px">
 					<p:inputText id="txt5" value="#{sliderBean.number5}" />
-                    <p:slider for="txt5" slideEndListener="#{sliderBean.onSlideEnd}" onSlideEndUpdate="growl"/>
+                    <p:slider for="txt5">
+                        <p:ajax event="slideEnd" listener="#{sliderBean.onSlideEnd}" update="growl" />
+                    </p:slider>
 				</h:panelGrid>
 
                 <p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
@@ -110,8 +112,9 @@
     &lt;h3&gt;Ajax Slider&lt;/h3&gt;
     &lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
         &lt;p:inputText id="txt5" value="\#{sliderBean.number5}" /&gt;
-        &lt;p:slider for="txt5" onSlideEndUpdate="growl"
-            slideEndListener="\#{sliderBean.onSlideEnd}" /&gt;
+        &lt;p:slider for="txt5"&gt;
+            &lt;p:ajax event="slideEnd" listener="\#{sliderBean.onSlideEnd}" update="growl" /&gt;
+        &lt;/p:slider&gt;
     &lt;/h:panelGrid&gt;
 
     &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;

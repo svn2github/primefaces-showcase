@@ -16,54 +16,40 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Row Selection</h1>
         <div class="entry">
-            <p>Datatable makes it very easy to select rows. Selection value reference is populated automatically with selected rows by
-                dataTable. Use metaKey to unselect a row.</p>
+            <p>Datatable makes it easy to select rows by using a SelectableDataModel instance. 
+                Selection value reference is populated automatically with selected rows. Use metaKey to unselect a row.</p>
 
             <h:form id="form">
 
-                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}"
+                <p:dataTable id="cars" var="car" value="#{tableBean.smallCarsModel}"
                              selection="#{tableBean.selectedCar}" selectionMode="single">
 
                     <f:facet name="header">
                         Click "View" button after selecting a row to see details
                     </f:facet>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Model" />
-                        </f:facet>
-                        <h:outputText value="#{car.model}" />
+                    <p:column headerText="Model">
+                        #{car.model}
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Year" />
-                        </f:facet>
-                        <h:outputText value="#{car.year}" />
+                    <p:column headerText="Year">
+                        #{car.year}
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Manufacturer" />
-                        </f:facet>
-                        <h:outputText value="#{car.manufacturer}" />
+                    <p:column headerText="Manufacturer" >
+                        #{car.manufacturer}
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Color" />
-                        </f:facet>
-                        <h:outputText value="#{car.color}" />
+                    <p:column headerText="Color">
+                        #{car.color}
                     </p:column>
 
                     <f:facet name="footer">
                         <p:commandButton value="View" image="ui-icon ui-icon-search"
                                 update="form:display" oncomplete="carDialog.show()"/>
-                        
-                        <p:commandButton value="Clear" image="ui-icon ui-icon-close" process="@this" update="cars" />
                     </f:facet>
                     
-                </p:dataTable>   
+                </p:dataTable> 
 
                 <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
                           width="200" showEffect="clip" hideEffect="fold">
@@ -96,47 +82,32 @@
                     <pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
-    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}"
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.smallCarsModel}"
                  selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
 
         &lt;f:facet name="header"&gt;
             Click "View" button after selecting a row to see details
         &lt;/f:facet&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Model" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;p:column headerText="Model"&gt;
+            \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Year" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;p:column headerText="Year"&gt;
+            \#{car.year}
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Manufacturer" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;p:column headerText="Manufacturer" &gt;
+            \#{car.manufacturer}
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Color" /&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;p:column headerText="Color"&gt;
+            \#{car.color}
         &lt;/p:column&gt;
 
         &lt;f:facet name="footer"&gt;
             &lt;p:commandButton value="View" image="ui-icon ui-icon-search"
                     update="form:display" oncomplete="carDialog.show()"/&gt;
-
-            &lt;p:commandButton value="Clear" image="ui-icon ui-icon-close" process="@this" 
-                    update="cars"/&gt;
         &lt;/f:facet&gt;
 
     &lt;/p:dataTable&gt;
@@ -179,6 +150,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.primefaces.examples.domain.Car;
+import org.primefaces.model.PrimeDataModel;
 
 public class TableBean {
 
@@ -216,10 +188,14 @@ public class TableBean {
 	
 	private Car selectedCar;
 
+    private PrimeDataModel smallCarsModel;
+
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();
 		
 		populateRandomCars(carsSmall, 9);
+
+        smallCarsModel = new CarDataModel(carsSmall);
 	}
 
     private void populateRandomCars(List&lt;Car&gt; list, int size) {
@@ -234,9 +210,60 @@ public class TableBean {
 		this.selectedCar = selectedCar;
 	}
 
-	public List&lt;Car&gt; getCarsSmall() {
-		return carsSmall;
-	}
+    public PrimeDataModel getSmallCarsModel() {
+        return smallCarsModel;
+    }
+
+    public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Selected", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onRowUnselect(UnselectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Unselected", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="CarDataModel.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.List;
+import org.primefaces.examples.domain.Car;
+import org.primefaces.model.PrimeDataModel;
+
+public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
+
+    public CarDataModel() {
+    }
+
+    public CarDataModel(Object data) {
+        super(data);
+    }
+    
+    @Override
+    public Car getRowData(String rowKey) {
+        //In a real app, a more efficient way like a query by rowKey should be implemented to deal with huge data
+        
+        List&lt;Car&gt; cars = (List&lt;Car&gt;) getWrappedData();
+        
+        for(Car car : cars) {
+            if(car.getModel().equals(rowKey))
+                return car;
+        }
+        
+        return null;
+    }
+
+    @Override
+    public String getRowKey(Car car) {
+        return car.getModel();
+    }
 }
                     </pre>
                 </p:tab>

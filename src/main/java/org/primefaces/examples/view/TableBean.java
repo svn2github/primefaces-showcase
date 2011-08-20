@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Prime Technology.
+ * Copyright 2009-2011 Prime Technology.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@ import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
 import org.primefaces.examples.domain.Player;
 import org.primefaces.examples.domain.Stats;
+import org.primefaces.model.PrimeDataModel;
 import org.primefaces.model.SortOrder;
 
 public class TableBean implements Serializable {
@@ -122,6 +123,10 @@ public class TableBean implements Serializable {
     private boolean editMode;
     
     private List<Player> players;
+    
+    private PrimeDataModel smallCarsModel;
+    
+    private PrimeDataModel mediumCarsModel;
 
 	public TableBean() {
 		cars = new ArrayList<Car>();
@@ -139,6 +144,9 @@ public class TableBean implements Serializable {
         manufacturerOptions = createFilterOptions(manufacturers);
         
         populatePlayers();
+        
+        smallCarsModel = new CarDataModel(carsSmall);
+        mediumCarsModel = new CarDataModel(cars);
         	
 		lazyModel = new LazyDataModel<Car>() {
 
@@ -516,5 +524,13 @@ public class TableBean implements Serializable {
     
     public void deleteCar() {
         carsSmall.remove(selectedCar);
+    }
+
+    public PrimeDataModel getMediumCarsModel() {
+        return mediumCarsModel;
+    }
+
+    public PrimeDataModel getSmallCarsModel() {
+        return smallCarsModel;
     }
 }

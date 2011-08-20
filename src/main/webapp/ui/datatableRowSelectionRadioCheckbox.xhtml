@@ -21,9 +21,9 @@
             <p>RadioButton/Checkbox based row selection is a common use case and DataTable provides a solution for this
                 with column selection mode feature.</p>
 
-            <h:form prependId="false">
+            <h:form id="form">
 
-                <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
+                <p:dataTable var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCar}">
 
                     <f:facet name="header">
@@ -33,30 +33,30 @@
                     <p:column selectionMode="single" />
 
                     <p:column headerText="Model">
-                        <h:outputText value="#{car.model}" />
+                        #{car.model}
                     </p:column>
 
                     <p:column headerText="Year">
-                        <h:outputText value="#{car.year}" />
+                        #{car.year}
                     </p:column>
 
-                    <p:column headerText="Manufacturer">
-                        <h:outputText value="#{car.manufacturer}" />
+                    <p:column headerText="Manufacturer" >
+                        #{car.manufacturer}
                     </p:column>
 
                     <p:column headerText="Color">
-                        <h:outputText value="#{car.color}" />
+                        #{car.color}
                     </p:column>
 
                     <f:facet name="footer">
                         <p:commandButton value="View" image="ui-icon ui-icon-search"
-                                         update="displaySingle" oncomplete="singleCarDialog.show()"/>
+                                         update=":form:displaySingle" oncomplete="singleCarDialog.show()"/>
                     </f:facet>
                 </p:dataTable>
 
                 <br />
 
-                <p:dataTable var="car" value="#{tableBean.cars}" paginator="true" rows="10"
+                <p:dataTable var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCars}">
 
                     <f:facet name="header">
@@ -66,24 +66,24 @@
                     <p:column selectionMode="multiple" />
 
                     <p:column headerText="Model">
-                        <h:outputText value="#{car.model}" />
+                        #{car.model}
                     </p:column>
 
                     <p:column headerText="Year">
-                        <h:outputText value="#{car.year}" />
+                        #{car.year}
                     </p:column>
 
-                    <p:column headerText="Manufacturer">
-                        <h:outputText value="#{car.manufacturer}" />
+                    <p:column headerText="Manufacturer" >
+                        #{car.manufacturer}
                     </p:column>
 
                     <p:column headerText="Color">
-                        <h:outputText value="#{car.color}" />
+                        #{car.color}
                     </p:column>
 
                     <f:facet name="footer">
                         <p:commandButton value="View" image="ui-icon ui-icon-search"
-                                         update="displayMulti" oncomplete="multiCarDialog.show()"/>
+                                         update=":form:displayMulti" oncomplete="multiCarDialog.show()"/>
                     </f:facet>
                 </p:dataTable>
 
@@ -125,9 +125,9 @@
             <p:tabView>
                 <p:tab title="datatableRowSelectionRadioCheckbox.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form prependId="false"&gt;
+&lt;h:form id="form"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+    &lt;p:dataTable var="car" value="\#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                  selection="\#{tableBean.selectedCar}"&gt;
 
         &lt;f:facet name="header"&gt;
@@ -137,28 +137,28 @@
         &lt;p:column selectionMode="single" /&gt;
 
         &lt;p:column headerText="Model"&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
+            \#{car.model}
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Year"&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
+            \#{car.year}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer"&gt;
-            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;p:column headerText="Manufacturer" &gt;
+            \#{car.manufacturer}
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Color"&gt;
-            &lt;h:outputText value="\#{car.color}" /&gt;
+            \#{car.color}
         &lt;/p:column&gt;
 
         &lt;f:facet name="footer"&gt;
             &lt;p:commandButton value="View" image="ui-icon ui-icon-search"
-                             update="displaySingle" oncomplete="singleCarDialog.show()"/&gt;
+                             update=":form:displaySingle" oncomplete="singleCarDialog.show()"/&gt;
         &lt;/f:facet&gt;
     &lt;/p:dataTable&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+    &lt;p:dataTable var="car" value="\#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                  selection="\#{tableBean.selectedCars}"&gt;
 
         &lt;f:facet name="header"&gt;
@@ -168,24 +168,24 @@
         &lt;p:column selectionMode="multiple" /&gt;
 
         &lt;p:column headerText="Model"&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
+            \#{car.model}
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Year"&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
+            \#{car.year}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer"&gt;
-            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;p:column headerText="Manufacturer" &gt;
+            \#{car.manufacturer}
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Color"&gt;
-            &lt;h:outputText value="\#{car.color}" /&gt;
+            \#{car.color}
         &lt;/p:column&gt;
 
         &lt;f:facet name="footer"&gt;
             &lt;p:commandButton value="View" image="ui-icon ui-icon-search"
-                             update="displayMulti" oncomplete="multiCarDialog.show()"/&gt;
+                             update=":form:displayMulti" oncomplete="multiCarDialog.show()"/&gt;
         &lt;/f:facet&gt;
     &lt;/p:dataTable&gt;
 
@@ -235,6 +235,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.primefaces.examples.domain.Car;
+import org.primefaces.model.PrimeDataModel;
 
 public class TableBean implements Serializable {
 
@@ -274,10 +275,14 @@ public class TableBean implements Serializable {
 
 	private Car[] selectedCars;
 
+    private PrimeDataModel mediumCarsModel;
+
 	public TableBean() {
 		cars = new ArrayList&lt;Car&gt;();
 		
 		populateRandomCars(cars, 50);
+
+        mediumCarsModel = new CarDataModel(cars);
 	}
 
 	public Car[] getSelectedCars() {
@@ -300,10 +305,6 @@ public class TableBean implements Serializable {
 			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 	}
 
-	public List&lt;Car&gt; getCars() {
-		return cars;
-	}
-
 	private int getRandomYear() {
 		return (int) (Math.random() * 50 + 1960);
 	}
@@ -319,6 +320,49 @@ public class TableBean implements Serializable {
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
+
+    public PrimeDataModel getMediumCarsModel() {
+        return mediumCarsModel;
+    }
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="CarDataModel.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.List;
+import org.primefaces.examples.domain.Car;
+import org.primefaces.model.PrimeDataModel;
+
+public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
+
+    public CarDataModel() {
+    }
+
+    public CarDataModel(Object data) {
+        super(data);
+    }
+    
+    @Override
+    public Car getRowData(String rowKey) {
+        //In a real app, a more efficient way like a query by rowKey should be implemented to deal with huge data
+        
+        List&lt;Car&gt; cars = (List&lt;Car&gt;) getWrappedData();
+        
+        for(Car car : cars) {
+            if(car.getModel().equals(rowKey))
+                return car;
+        }
+        
+        return null;
+    }
+
+    @Override
+    public String getRowKey(Car car) {
+        return car.getModel();
+    }
 }
                     </pre>
                 </p:tab>
