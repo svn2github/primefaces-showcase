@@ -7,12 +7,8 @@
 
     <ui:define name="head">
         <style type="text/css">
-            .label, .value {
-                border-right:0px none !important;
-            }
-
-            .value {
-                font-weight: bold;
+            .grid td {
+                border: 0px none !important;
             }
         </style>
         
@@ -51,7 +47,7 @@
 
                     <p:rowExpansion>
                         <h:panelGrid id="display" columns="2" cellpadding="4" style="width:300px;"
-                                     styleClass="ui-widget-content" columnClasses="label, value">
+                                     styleClass=" ui-widget-content grid">
 
                             <f:facet name="header">
                                 <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/>
