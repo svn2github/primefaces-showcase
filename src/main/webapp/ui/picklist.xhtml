@@ -19,12 +19,20 @@
 
                 <p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px"/>
 
-                <h3>Pojo Support with Blind Effect, Captions and Reorder Controls</h3>
+                <h3>Pojo Support with Blind Effect, Captions, Custom Content and Reorder Controls</h3>
                 <p:pickList value="#{pickListBean.players}" var="player" iconOnly="true" effect="blind"
 								itemLabel="#{player.name}" itemValue="#{player}" converter="player"
                                 showSourceControls="true" showTargetControls="true">
                     <f:facet name="sourceCaption">Available</f:facet>
                     <f:facet name="targetCaption">Starting</f:facet>
+                    
+                    <p:column style="width:25%">
+                        <p:graphicImage value="/images/barca/#{player.photo}" width="30" height="40" />
+                    </p:column>
+                    
+                     <p:column style="width:75%;">
+                        #{player.name} - #{player.number}
+                    </p:column>
                 </p:pickList>
 
                 <p:commandButton value="Submit" update="displayPlayers" oncomplete="playerDialog.show()" style="margin-top:5px"/>
@@ -74,7 +82,7 @@
 
     &lt;p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()"/&gt;
 
-    &lt;h3&gt;Pojo Support with blind Effect, Captions and Reorder Controls&lt;/h3&gt;
+    &lt;h3&gt;Pojo Support with blind Effect, Captions, Custom Content and Reorder Controls&lt;/h3&gt;
     &lt;p:pickList value="\#{pickListBean.players}"
                     var="player" iconOnly="true" effect="blind"
                     itemLabel="\#{player.name}"
@@ -82,6 +90,14 @@
                     showSourceControls="true" showTargetControls="true"&gt;
         &lt;f:facet name="sourceCaption"&gt;Available&lt;/f:facet&gt;
         &lt;f:facet name="targetCaption"&gt;Starting&lt;/f:facet&gt;
+
+        &lt;p:column style="width:25%"&gt;
+            &lt;p:graphicImage value="/images/barca/\#{player.photo}" width="30" height="40" /&gt;
+        &lt;/p:column&gt;
+
+         &lt;p:column style="width:75%";&gt;
+            \#{player.name} - \#{player.number}
+        &lt;/p:column&gt;
     &lt;/p:pickList&gt;
 
     &lt;p:commandButton value="Submit" update="displayPlayers" oncomplete="playerDialog.show()"/&gt;
@@ -139,12 +155,12 @@ public class PickListBean {
 		List&lt;Player&gt; source = new ArrayList&lt;Player&gt;();
 		List&lt;Player&gt; target = new ArrayList&lt;Player&gt;();
 
-		source.add(new Player("Messi", 10));
-		source.add(new Player("Ibrahimovic", 9));
-		source.add(new Player("Henry", 14));
-		source.add(new Player("Iniesta", 8));
-		source.add(new Player("Xavi", 6));
-		source.add(new Player("Puyol", 5));
+        source.add(new Player("Messi", 10, "messi.jpg"));
+		source.add(new Player("Iniesta", 8, "iniesta.jpg"));
+		source.add(new Player("Villa", 7, "villa.jpg"));
+		source.add(new Player("Alves", 2, "alves.jpg"));
+		source.add(new Player("Xavi", 6, "xavi.jpg"));
+		source.add(new Player("Puyol", 5, "puyol.jpg"));	
 
 		players = new DualListModel&lt;Player&gt;(source, target);
 

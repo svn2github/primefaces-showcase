@@ -32,12 +32,12 @@ public class PickListBean {
 		List<Player> source = new ArrayList<Player>();
 		List<Player> target = new ArrayList<Player>();
 		
-		source.add(new Player("Messi", 10));
-		source.add(new Player("Ibrahimovic", 9));
-		source.add(new Player("Henry", 14));
-		source.add(new Player("Iniesta", 8));
-		source.add(new Player("Xavi", 6));
-		source.add(new Player("Puyol", 5));	
+		source.add(new Player("Messi", 10, "messi.jpg"));
+		source.add(new Player("Iniesta", 8, "iniesta.jpg"));
+		source.add(new Player("Villa", 7, "villa.jpg"));
+		source.add(new Player("Alves", 2, "alves.jpg"));
+		source.add(new Player("Xavi", 6, "xavi.jpg"));
+		source.add(new Player("Puyol", 5, "puyol.jpg"));	
 		
 		players = new DualListModel<Player>(source, target);
 		

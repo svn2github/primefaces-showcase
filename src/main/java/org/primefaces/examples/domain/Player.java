@@ -46,6 +46,12 @@ public class Player implements Serializable {
 		this.name = name;
 	}
 
+    public Player(String name, int number, String photo) {
+		this.name = name;
+        this.number = number;
+		this.photo = photo;
+	}
+    
     public Player(String name, int number, String photo, String position) {
 		this.name = name;
         this.number = number;
