@@ -19,8 +19,8 @@
 
                 <p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px"/>
 
-                <h3>Pojo Support with Bounce Effect, Captions and Reorder Controls</h3>
-                <p:pickList value="#{pickListBean.players}" var="player" iconOnly="true" effect="bounce"
+                <h3>Pojo Support with Blind Effect, Captions and Reorder Controls</h3>
+                <p:pickList value="#{pickListBean.players}" var="player" iconOnly="true" effect="blind"
 								itemLabel="#{player.name}" itemValue="#{player}" converter="player"
                                 showSourceControls="true" showTargetControls="true">
                     <f:facet name="sourceCaption">Available</f:facet>
@@ -74,9 +74,9 @@
 
     &lt;p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()"/&gt;
 
-    &lt;h3&gt;Pojo Support with Bounce Effect, Captions and Reorder Controls&lt;/h3&gt;
+    &lt;h3&gt;Pojo Support with blind Effect, Captions and Reorder Controls&lt;/h3&gt;
     &lt;p:pickList value="\#{pickListBean.players}"
-                    var="player" iconOnly="true" effect="bounce"
+                    var="player" iconOnly="true" effect="blind"
                     itemLabel="\#{player.name}"
                     itemValue="\#{player}" converter="player"
                     showSourceControls="true" showTargetControls="true"&gt;
