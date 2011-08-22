@@ -167,7 +167,7 @@ public class MapBean implements Serializable {
 		int zoomLevel = event.getZoomLevel();
 		
 		addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "Zoom Level", String.valueOf(zoomLevel)));
-		addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "Center", bounds.getCenter().toString()));
+		addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "Center", event.getCenter().toString()));
 		addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "NorthEast", bounds.getNorthEast().toString()));
 		addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "SouthWest", bounds.getSouthWest().toString()));
 	}
