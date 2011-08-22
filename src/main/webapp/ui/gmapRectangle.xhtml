@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">GMap - Rectangle</h1>
+		<div class="entry">
+			<p>Any number of rectangles can be displayed on map. Rectangles can respond to selection by invoking a server side
+			overlaySelectListener with ajax, passing an overlaySelectEvent that contains a reference to the selected rectangle. Optionally other components can be updated with ajax response
+			using onOverlaySelectUpdate attribute. onOverlaySelectStart and onOverlaySelectComplete are optional javascript callbacks.</p>
+			
+			<h:form>
+				<p:growl id="growl" life="3000"/>
+				
+				<p:gmap center="36.880257,30.687417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="#{mapBean.rectangleModel}" >
+                                    <p:ajax event="overlaySelect" listener="#{mapBean.onRectangleSelect}" update="growl"/>
+                                </p:gmap>
+			</h:form>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="gmapRectangle.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+	&lt;p:growl id="growl" life="3000"/&gt;
+	
+	&lt;p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="\#{mapBean.rectangleModel}" &gt;
+            &lt;p:ajax event="overlaySelect" listener="\#{mapBean.onRectangleSelect}" update="growl"/&gt;
+    &lt;/p:gmap&gt;
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="MapBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.primefaces.event.map.OverlaySelectEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.LatLngBounds;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Rectangle;
+
+public class MapBean implements Serializable {
+
+	private MapModel rectangleModel;
+	
+	public MapBean() {
+            rectangleModel = new DefaultMapModel();
+		
+            //Shared coordinates
+            LatLng coord1 = new LatLng(36.879466, 30.667648);
+            LatLng coord4 = new LatLng(36.885233, 30.702323);
+
+            //Rectangle
+            Rectangle rect = new Rectangle(new LatLngBounds(coord1, coord4));
+            rect.setStrokeColor("#d93c3c");
+            rect.setFillColor("#d93c3c");
+            rect.setFillOpacity(0.5);
+            rectangleModel.addOverlay(rect);
+	}
+
+	public MapModel getRectangleModel() {
+            return rectangleModel;
+	}
+
+	public void onRectangleSelect(OverlaySelectEvent event) {
+            addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "Rectangle Selected", null));
+	}
+
+	public void addMessage(FacesMessage message) {
+            FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+					</pre>
+				</p:tab>
+			</p:tabView>									
+		</div>
+	</ui:define>
+</ui:composition>

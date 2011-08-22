@@ -25,6 +25,7 @@ import org.primefaces.event.map.MarkerDragEvent;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.event.map.PointSelectEvent;
 import org.primefaces.event.map.StateChangeEvent;
+import org.primefaces.model.map.Circle;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.LatLngBounds;
@@ -32,6 +33,7 @@ import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
 import org.primefaces.model.map.Polygon;
 import org.primefaces.model.map.Polyline;
+import org.primefaces.model.map.Rectangle;
 
 public class MapBean implements Serializable {
 
@@ -44,6 +46,10 @@ public class MapBean implements Serializable {
 	private MapModel polylineModel;
 	
 	private MapModel polygonModel;
+        
+	private MapModel circleModel;
+	
+        private MapModel rectangleModel;
 	
 	private MapModel draggableModel;
 
@@ -61,6 +67,8 @@ public class MapBean implements Serializable {
 		advancedModel = new DefaultMapModel();
 		polylineModel = new DefaultMapModel();
 		polygonModel = new DefaultMapModel();
+		circleModel = new DefaultMapModel();
+		rectangleModel = new DefaultMapModel();
 		draggableModel = new DefaultMapModel();
 		
 		//Shared coordinates
@@ -116,6 +124,28 @@ public class MapBean implements Serializable {
 		polygon.setFillOpacity(0.7);
 		
 		polygonModel.addOverlay(polygon);
+                
+                //Circle
+                Circle circle1 = new Circle(coord1, 500);
+                circle1.setStrokeColor("#d93c3c");
+		circle1.setFillColor("#d93c3c");
+		circle1.setFillOpacity(0.5);
+                
+                Circle circle2 = new Circle(coord4, 300);
+                circle2.setStrokeColor("#00ff00");
+		circle2.setFillColor("#00ff00");
+		circle2.setStrokeOpacity(0.7);
+		circle2.setFillOpacity(0.7);
+                
+                circleModel.addOverlay(circle1);
+                circleModel.addOverlay(circle2);
+                
+                //Rectangle
+                Rectangle rect = new Rectangle(new LatLngBounds(coord1, coord4));
+                rect.setStrokeColor("#d93c3c");
+		rect.setFillColor("#d93c3c");
+		rect.setFillOpacity(0.5);
+                rectangleModel.addOverlay(rect);
 	}
 
 	public MapModel getAdvancedModel() {
@@ -132,6 +162,14 @@ public class MapBean implements Serializable {
 	
 	public MapModel getPolygonModel() {
 		return polygonModel;
+	}
+	
+        public MapModel getCircleModel() {
+		return circleModel;
+	}
+	
+        public MapModel getRectangleModel() {
+		return rectangleModel;
 	}
 	
 	public MapModel getEmptyModel() {
@@ -154,6 +192,14 @@ public class MapBean implements Serializable {
 	
 	public void onPolygonSelect(OverlaySelectEvent event) {
 		addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "Polygon Selected", null));
+	}
+	
+        public void onCircleSelect(OverlaySelectEvent event) {
+		addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "Circle Selected", null));
+	}
+	
+        public void onRectangleSelect(OverlaySelectEvent event) {
+		addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "Rectangle Selected", null));
 	}
 	
 	public void onMarkerDrag(MarkerDragEvent event) {
