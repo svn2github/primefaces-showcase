@@ -85,11 +85,8 @@
 
                             <h:form>
 
-                                <p:dataTable var="mail" value="#{mailbox.mails}"
-                                             selection="#{mailbox.mail}" selectionMode="single">
+                                <p:dataTable var="mail" value="#{mailbox.mails}">
                                     
-                                    <p:ajax event="rowSelect" update=":mailViewer" />
-
                                     <p:column headerText="From" sortBy="#{mail.from}">
                                         #{mail.from}
                                     </p:column>
@@ -100,6 +97,12 @@
 
                                     <p:column headerText="Date" sortBy="#{mail.date}">
                                         #{mail.date}
+                                    </p:column>
+                                    
+                                    <p:column>
+                                        <p:commandButton update=":mailViewer" image="ui-icon ui-icon-search" title="View">
+                                             <f:setPropertyActionListener value="#{mail }" target="#{mailbox.mail}" />
+                                        </p:commandButton>
                                     </p:column>
 
                                 </p:dataTable>
