@@ -98,5 +98,10 @@ public class Car implements Serializable {
 		int hash = 1;
 		
 	    return hash * 31 + model.hashCode();
-	}	
+	}
+
+    @Override
+    public String toString() {
+        return "Car{" + "model=" + model + ", year=" + year + ", manufacturer=" + manufacturer + ", color=" + color + ", price=" + price + '}';
+    }
 }

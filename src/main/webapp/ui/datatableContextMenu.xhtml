@@ -25,7 +25,7 @@
                     <p:menuitem value="Delete" actionListener="#{tableBean.deleteCar}" update="cars" icon="ui-icon ui-icon-close"/>
 				</p:contextMenu>
 
-                <p:dataTable id="cars" var="car" value="#{tableBean.smallCarsModel}"
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" rowKey="#{car.model}"
                              selection="#{tableBean.selectedCar}" selectionMode="single">
 
                     <p:column headerText="Model">
@@ -82,7 +82,7 @@
         &lt;p:menuitem value="Delete" actionListener="\#{tableBean.deleteCar}" update="cars" icon="ui-icon ui-icon-close"/&gt;
     &lt;/p:contextMenu&gt;
 
-    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}"
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" rowKey="\#{car.model}"
                  selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
 
         &lt;p:column headerText="Model"&gt;
@@ -185,8 +185,6 @@ public class TableBean {
 		carsSmall = new ArrayList&lt;Car&gt;();
 		
 		populateRandomCars(carsSmall, 9);
-
-        smallCarsModel = new CarDataModel(carsSmall);
 	}
 
     private void populateRandomCars(List&lt;Car&gt; list, int size) {
@@ -201,63 +199,13 @@ public class TableBean {
 		this.selectedCar = selectedCar;
 	}
 
-    public PrimeDataModel getSmallCarsModel() {
-        return smallCarsModel;
-    }
-
-    public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Car Selected", ((Car) event.getObject()).getModel());
-
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
-    public void onRowUnselect(UnselectEvent event) {
-        FacesMessage msg = new FacesMessage("Car Unselected", ((Car) event.getObject()).getModel());
-
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+    public List&lt;Car&gt; getCarsSmall() {
+        return carsSmall;
     }
 }
                     </pre>
                 </p:tab>
                 
-                <p:tab title="CarDataModel.java">
-                    <pre name="code" class="java">
-package org.primefaces.examples.view;
-
-import java.util.List;
-import org.primefaces.examples.domain.Car;
-import org.primefaces.model.PrimeDataModel;
-
-public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
-
-    public CarDataModel() {
-    }
-
-    public CarDataModel(Object data) {
-        super(data);
-    }
-    
-    @Override
-    public Car getRowData(String rowKey) {
-        //In a real app, a more efficient way like a query by rowKey should be implemented to deal with huge data
-        
-        List&lt;Car&gt; cars = (List&lt;Car&gt;) getWrappedData();
-        
-        for(Car car : cars) {
-            if(car.getModel().equals(rowKey))
-                return car;
-        }
-        
-        return null;
-    }
-
-    @Override
-    public String getRowKey(Car car) {
-        return car.getModel();
-    }
-}
-                    </pre>
-                </p:tab>
             </p:tabView>
 
         </div>

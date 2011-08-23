@@ -8,7 +8,8 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Instant Row Selection</h1>
         <div class="entry">
-            <p>Instant row selection-unselection is implemented using ajax behaviors.</p>
+            <p>Instant row selection-unselection is implemented using ajax behaviors. Note that this sample uses a SelectableDataModel
+                instead of defining rowKey attribute.</p>
 
             <h:form id="form">
 
@@ -143,7 +144,6 @@ import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 
 import org.primefaces.examples.domain.Car;
-import org.primefaces.model.PrimeDataModel;
 
 public class TableBean {
 
@@ -186,7 +186,7 @@ public class TableBean {
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();
 		
-		populateRandomCars(carsSmall, 9);
+		populateRandomCars(carsSmall, 50);
 
         mediumCarsModel = new CarDataModel(carsSmall);
 	}
@@ -242,7 +242,7 @@ public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
     }
 
     @Override
-    public String getRowKey(Car car) {
+    public Object getRowKey(Car car) {
         return car.getModel();
     }
 }

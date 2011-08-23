@@ -20,7 +20,7 @@
 
             <h:form id="form">
 
-                <p:dataTable var="car" value="#{tableBean.smallCarsModel}"
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" rowKey="#{car.model}"
                              selection="#{tableBean.selectedCars}" selectionMode="multiple">
 
                     <f:facet name="header">
@@ -47,7 +47,7 @@
                         <p:commandButton value="View" image="ui-icon ui-icon-search" update="form:display" oncomplete="carDialog.show()"/>
                     </f:facet>
                 </p:dataTable>
- 
+
                 <p:dialog header="Car Detail" widgetVar="carDialog"
                           width="250" showEffect="explode" hideEffect="explode">
 
@@ -68,7 +68,7 @@
 <pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.smallCarsModel}"
+    &lt;p:dataTable var="car" value="\#{tableBean.smallCarsModel}" rowKey="\#{car.model}"
                  selection="\#{tableBean.selectedCars}" selectionMode="multiple"&gt;
 
         &lt;f:facet name="header"&gt;
@@ -127,7 +127,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.primefaces.examples.domain.Car;
-import org.primefaces.model.PrimeDataModel;
 
 public class TableBean {
 
@@ -165,14 +164,10 @@ public class TableBean {
 
 	private Car[] selectedCars;
 
-    private PrimeDataModel smallCarsModel;
-
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();
 
 		populateRandomCars(carsSmall, 9);
-
-        smallCarsModel = new CarDataModel(carsSmall);
 	}
 
     private void populateRandomCars(List&lt;Car&gt; list, int size) {
@@ -187,52 +182,13 @@ public class TableBean {
 		this.selectedCar = selectedCars;
 	}
 
-    public PrimeDataModel getSmallCarsModel() {
-        return smallCarsModel;
+    public List&lt;Car&gt; getCarsSmall() {
+        return this.carsSmall;
     }
 }
                     </pre>
                 </p:tab>
-                
-                              
-                <p:tab title="CarDataModel.java">
-                    <pre name="code" class="java">
-package org.primefaces.examples.view;
 
-import java.util.List;
-import org.primefaces.examples.domain.Car;
-import org.primefaces.model.PrimeDataModel;
-
-public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
-
-    public CarDataModel() {
-    }
-
-    public CarDataModel(Object data) {
-        super(data);
-    }
-    
-    @Override
-    public Car getRowData(String rowKey) {
-        //In a real app, a more efficient way like a query by rowKey should be implemented to deal with huge data
-        
-        List&lt;Car&gt; cars = (List&lt;Car&gt;) getWrappedData();
-        
-        for(Car car : cars) {
-            if(car.getModel().equals(rowKey))
-                return car;
-        }
-        
-        return null;
-    }
-
-    @Override
-    public String getRowKey(Car car) {
-        return car.getModel();
-    }
-}
-                    </pre>
-                </p:tab>
             </p:tabView>
 
         </div>

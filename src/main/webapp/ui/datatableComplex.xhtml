@@ -21,7 +21,7 @@
             
               <h:form id="form">
 
-				<p:dataTable var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
+				<p:dataTable var="car" value="#{tableBean.cars}" rowKey="#{car.model}" paginator="true" rows="10"
                             selection="#{tableBean.selectedCar}" selectionMode="single">
                     
                     <p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" />
@@ -79,7 +79,7 @@
 					<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}" paginator="true" rows="10"
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" rowKey="\#{car.model}" paginator="true" rows="10"
                 selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
 
         &lt;p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" /&gt;
@@ -183,14 +183,10 @@ public class TableBean implements Serializable {
 
 	private Car[] selectedCars;
 
-    private PrimeDataModel mediumCarsModel;
-
 	public TableBean() {
 		cars = new ArrayList&lt;Car&gt;();
 		
 		populateRandomCars(cars, 50);
-
-        mediumCarsModel = new CarDataModel(cars);
 	}
 
 	public Car getSelectedCar() {
@@ -222,8 +218,8 @@ public class TableBean implements Serializable {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
 
-    public PrimeDataModel getMediumCarsModel() {
-        return mediumCarsModel;
+    public List&lt;Car&gt; getCars() {
+        return cars;
     }
 }
                     </pre>

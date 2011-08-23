@@ -43,7 +43,7 @@ public class CarDataModel extends PrimeDataModel<Car> {
     }
 
     @Override
-    public String getRowKey(Car car) {
+    public Object getRowKey(Car car) {
         return car.getModel();
     }
 }
