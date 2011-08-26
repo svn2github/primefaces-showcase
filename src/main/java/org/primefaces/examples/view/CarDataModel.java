@@ -16,15 +16,16 @@
 package org.primefaces.examples.view;
 
 import java.util.List;
+import javax.faces.model.ListDataModel;
 import org.primefaces.examples.domain.Car;
-import org.primefaces.model.PrimeDataModel;
+import org.primefaces.model.SelectableDataModel;
 
-public class CarDataModel extends PrimeDataModel<Car> {
+public class CarDataModel extends ListDataModel<Car> implements SelectableDataModel<Car> {  
 
     public CarDataModel() {
     }
 
-    public CarDataModel(Object data) {
+    public CarDataModel(List<Car> data) {
         super(data);
     }
     

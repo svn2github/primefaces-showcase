@@ -144,6 +144,7 @@ import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 
 import org.primefaces.examples.domain.Car;
+import org.primefaces.examples.view.CarDataModel;
 
 public class TableBean {
 
@@ -181,7 +182,7 @@ public class TableBean {
 	
 	private Car selectedCar;
 
-    private PrimeDataModel mediumCarsModel;
+    private CarDataModel mediumCarsModel;
 
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();
@@ -203,7 +204,7 @@ public class TableBean {
 		this.selectedCar = selectedCar;
 	}
 
-    public PrimeDataModel getMediumCarsModel() {
+    public CarDataModel getMediumCarsModel() {
         return mediumCarsModel;
     }
 }
@@ -215,15 +216,16 @@ public class TableBean {
 package org.primefaces.examples.view;
 
 import java.util.List;
+import javax.faces.model.ListDataModel;
 import org.primefaces.examples.domain.Car;
-import org.primefaces.model.PrimeDataModel;
+import org.primefaces.model.SelectableDataModel;
 
-public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
+public class CarDataModel extends ListDataModel&lt;Car&gt; implements SelectableDataModel&lt;Car&gt; {  
 
     public CarDataModel() {
     }
 
-    public CarDataModel(Object data) {
+    public CarDataModel(List&lt;Car&gt; data) {
         super(data);
     }
     

@@ -53,7 +53,6 @@ import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
 import org.primefaces.examples.domain.Player;
 import org.primefaces.examples.domain.Stats;
-import org.primefaces.model.PrimeDataModel;
 import org.primefaces.model.SortOrder;
 
 public class TableBean implements Serializable {
@@ -124,9 +123,9 @@ public class TableBean implements Serializable {
     
     private List<Player> players;
     
-    private PrimeDataModel smallCarsModel;
+    private CarDataModel smallCarsModel;
     
-    private PrimeDataModel mediumCarsModel;
+    private CarDataModel mediumCarsModel;
 
 	public TableBean() {
 		cars = new ArrayList<Car>();
@@ -526,11 +525,11 @@ public class TableBean implements Serializable {
         carsSmall.remove(selectedCar);
     }
 
-    public PrimeDataModel getMediumCarsModel() {
+    public CarDataModel getMediumCarsModel() {
         return mediumCarsModel;
     }
 
-    public PrimeDataModel getSmallCarsModel() {
+    public CarDataModel getSmallCarsModel() {
         return smallCarsModel;
     }
 }
