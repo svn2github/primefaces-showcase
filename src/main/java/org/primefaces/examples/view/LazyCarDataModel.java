@@ -97,7 +97,7 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
                 return data.subList(first, first + pageSize);
             }
             catch(IndexOutOfBoundsException e) {
-                return data.subList(first, first + (dataSize - pageSize));
+                return data.subList(first, first + (dataSize % pageSize));
             }
         }
         else {
