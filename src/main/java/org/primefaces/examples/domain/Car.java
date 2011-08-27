@@ -19,11 +19,11 @@ import java.io.Serializable;
 
 public class Car implements Serializable {
 
-	private String model;
-	private int year;
-	private String manufacturer;
-	private String color;
-    private int price;
+	public String model;
+	public int year;
+	public String manufacturer;
+	public String color;
+    public int price;
 
     public Car(String model, int year, String manufacturer, String color) {
 		this.model = model;

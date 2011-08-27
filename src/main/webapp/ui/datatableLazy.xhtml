@@ -10,39 +10,35 @@
         <div class="entry">
             <p>DataTable has built-in support to deal with huge datasets. In order to enable lazy loading, a LazyDataModel needs to be implemented
                 to query the datasource when pagination, sorting, filtering or live scrolling happens.
-                This example demonstrates how to display one hundred million(100000000) records efficiently.</p>
+                This example demonstrates uses an in-memory list to mimic a real datasource like a database.</p>
 
             <h:form id="form">
 
                 <p:dataTable var="car" value="#{tableBean.lazyModel}" paginator="true" rows="10" lazy="true"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                             rowsPerPageTemplate="5,10,15">
+                             rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{tableBean.selectedCar}">
+
+                    <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display" oncomplete="carDialog.show()" />
                     
-                    <p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" />
-
-                    <f:facet name="header">
-                        Displaying 100,000,000 Cars
-                    </f:facet>
-
-                    <p:column headerText="Model">
+                    <p:column headerText="Model" sortBy="#{car.model}" filterBy="#{car.model}">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column headerText="Year">
+                    <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column headerText="Manufacturer">
+                    <p:column headerText="Manufacturer" sortBy="#{car.manufacturer}" filterBy="#{car.manufacturer}">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column headerText="Color">
+                    <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
                         <h:outputText value="#{car.color}" />
                     </p:column>
                 </p:dataTable>
 
                 <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
-                          width="200" showEffect="explode" hideEffect="explode">
+                          showEffect="explode" hideEffect="explode">
 
                     <h:panelGrid id="display" columns="2" cellpadding="4">
 
@@ -70,37 +66,33 @@
             <p:tabView>
                 <p:tab title="datatableLazy.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:dataTable var="car" value="\#{tableBean.lazyModel}" paginator="true" rows="10" lazy="true"
                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 rowsPerPageTemplate="5,10,15"&gt;
+                 rowsPerPageTemplate="5,10,15" selectionMode="single" selection="\#{tableBean.selectedCar}"&gt;
 
-        &lt;p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" /&gt;
+        &lt;p:ajax event="rowSelect" listener="\#{tableBean.onRowSelect}" update=":form:display" oncomplete="carDialog.show()" /&gt;
 
-        &lt;f:facet name="header"&gt;
-            Displaying 100,000,000 Cars
-        &lt;/f:facet&gt;
-
-        &lt;p:column headerText="Model"&gt;
+        &lt;p:column headerText="Model" sortBy="\#{car.model}" filterBy="\#{car.model}"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year"&gt;
+        &lt;p:column headerText="Year" sortBy="\#{car.year}" filterBy="\#{car.year}"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer"&gt;
+        &lt;p:column headerText="Manufacturer" sortBy="\#{car.manufacturer}" filterBy="\#{car.manufacturer}"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color"&gt;
+        &lt;p:column headerText="Color" sortBy="\#{car.color}" filterBy="\#{car.color}"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
 
     &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
-              width="200" showEffect="explode" hideEffect="explode"&gt;
+              showEffect="explode" hideEffect="explode"&gt;
 
         &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;
 
@@ -109,16 +101,16 @@
             &lt;/f:facet&gt;
 
             &lt;h:outputText value="Model:" /&gt;
-            &lt;h:outputText value="\#{tableBean.selectedCar.model}"/&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.model}" style="font-weight:bold"/&gt;
 
             &lt;h:outputText value="Year:" /&gt;
-            &lt;h:outputText value="\#{tableBean.selectedCar.year}"/&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.year}" style="font-weight:bold"/&gt;
 
             &lt;h:outputText value="Manufacturer:" /&gt;
-            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}"/&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/&gt;
 
             &lt;h:outputText value="Color:" /&gt;
-            &lt;h:outputText value="\#{tableBean.selectedCar.color}"/&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.color}" style="font-weight:bold"/&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
 
@@ -140,7 +132,6 @@ import javax.servlet.ServletContext;
 
 import org.primefaces.examples.domain.Car;
 import org.primefaces.model.LazyDataModel;
-import org.primefaces.model.SortOrder;
 
 public class TableBean {
 	
@@ -148,32 +139,37 @@ public class TableBean {
 
     private Car selectedCar;
 
+    private List&lt;Car&gt; cars;
+
+    static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+		
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
 	public TableBean() {
-
-        lazyModel = new LazyDataModel&lt;Car&gt;() {
-
-			/**
-			 * Dummy implementation of loading a certain segment of data.
-			 * In a real application, this method should load data from a datasource
-			 */
-			@Override
-			public List&lt;Car&gt; load(int first, int pageSize, String sortField, SortOrder sortOrder, Map&lt;String,String&gt; filters) {
-				logger.log(Level.INFO, "Loading the lazy car data between {0} and {1}", new Object[]{first, (first+pageSize)});
-
-                //Sorting and Filtering information are not used for demo purposes just random dummy data is returned
-
-				List&lt;Car&gt; lazyCars = new ArrayList&lt;Car&gt;();
-				populateLazyRandomCars(lazyCars, pageSize);
-
-				return lazyCars;
-			}
-		};
-
-        /**
-         * In a real application, this number should be resolved by a projection query
-         */
-        lazyModel.setRowCount(100000000);
-
+        populateRandomCars(cars, 50);
+        lazyModel = new LazyCarDataModel(cars);
 	}
 
     public Car getSelectedCar() {
@@ -188,7 +184,7 @@ public class TableBean {
 		return lazyModel;
 	}
 
-	private void populateLazyRandomCars(List&lt;Car&gt; list, int size) {
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
 		for(int i = 0 ; i &lt; size ; i++) {
 			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 		}
@@ -205,6 +201,103 @@ public class TableBean {
 	private int getRandomYear() {
 		return (int) (Math.random() * 50 + 1960);
 	}
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="LazyCarDataModel.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.primefaces.examples.domain.Car;
+import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortOrder;
+
+/**
+ * Dummy implementation of LazyDataModel that uses a list to mimic a real datasource like a database.
+ */
+public class LazyCarDataModel extends LazyDataModel&lt;Car&gt; {
+    
+    private List&lt;Car&gt; datasource;
+    
+    public LazyCarDataModel(List&lt;Car&gt; datasource) {
+        this.datasource = datasource;
+        setRowCount(this.datasource.size());
+    }
+    
+    @Override
+    public Car getRowData(String rowKey) {
+        for(Car car : datasource) {
+            if(car.getModel().equals(rowKey))
+                return car;
+        }
+
+        return null;
+    }
+
+    @Override
+    public Object getRowKey(Car car) {
+        return car.getModel();
+    }
+
+    @Override
+    public List&lt;Car&gt; load(int first, int pageSize, String sortField, SortOrder sortOrder, Map&lt;String,String&gt; filters) {
+        List&lt;Car&gt; data = new ArrayList&lt;Car&gt;();
+
+        //filter
+        for(Car car : datasource) {
+            boolean match = true;
+
+            for(Iterator&lt;String&gt; it = filters.keySet().iterator(); it.hasNext();) {
+                try {
+                    String filterProperty = it.next();
+                    String filterValue = filters.get(filterProperty);
+                    String fieldValue = String.valueOf(car.getClass().getField(filterProperty).get(car));
+
+                    if(filterValue == null || fieldValue.startsWith(filterValue)) {
+                        match = true;
+                    }
+                    else {
+                        match = false;
+                        break;
+                    }
+                } catch(Exception e) {
+                    match = false;
+                } 
+            }
+
+            if(match) {
+                data.add(car);
+            }
+        }
+
+        //sort
+        if(sortField != null) {
+            Collections.sort(data, new LazySorter(sortField, sortOrder));
+        }
+
+        //rowCount
+        int dataSize = data.size();
+        this.setRowCount(dataSize);
+
+        //paginate
+        if(dataSize &gt; pageSize) {
+            try {
+                return data.subList(first, first + pageSize);
+            }
+            catch(IndexOutOfBoundsException e) {
+                return data.subList(first, first + (dataSize - pageSize));
+            }
+        }
+        else {
+            return data;
+        }
+    }
 }
                     </pre>
                 </p:tab>

@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
@@ -43,7 +42,6 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
-import java.util.Map;
 import javax.faces.model.SelectItem;
 import org.primefaces.event.ColumnResizeEvent;
 import org.primefaces.event.DragDropEvent;
@@ -53,7 +51,6 @@ import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
 import org.primefaces.examples.domain.Player;
 import org.primefaces.examples.domain.Stats;
-import org.primefaces.model.SortOrder;
 
 public class TableBean implements Serializable {
 	
@@ -147,29 +144,7 @@ public class TableBean implements Serializable {
         smallCarsModel = new CarDataModel(carsSmall);
         mediumCarsModel = new CarDataModel(cars);
         	
-		lazyModel = new LazyDataModel<Car>() {
-
-			/**
-			 * Dummy implementation of loading a certain segment of data.
-			 * In a real application, this method should load data from a datasource
-			 */
-			@Override
-			public List<Car> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,String> filters) {
-				logger.log(Level.INFO, "Loading the lazy car data between {0} and {1}", new Object[]{first, (first+pageSize)});
-
-                //Sorting and Filtering information are not used for demo purposes just random dummy data is returned
-				
-				List<Car> lazyCars = new ArrayList<Car>();
-				populateLazyRandomCars(lazyCars, pageSize);
-				
-				return lazyCars;
-			}
-		};
-
-        /**
-         * In a real application, this number should be resolved by a projection query
-         */
-        lazyModel.setRowCount(100000000);
+		lazyModel = new LazyCarDataModel(cars);
 	}
 	
 	public LazyDataModel<Car> getLazyModel() {
