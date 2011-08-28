@@ -88,7 +88,7 @@
                 </p:dataTable>
 
                 <p:dialog header="Car Detail" widgetVar="singleCarDialog" resizable="false"
-                          width="250" showEffect="explode" hideEffect="explode">
+                          showEffect="fade" hideEffect="explode">
 
                     <h:panelGrid id="displaySingle" columns="2" cellpadding="4">
 
@@ -111,7 +111,7 @@
                 </p:dialog>
 
                 <p:dialog header="Car Detail" widgetVar="multiCarDialog"
-                          width="250" height="300" showEffect="explode" hideEffect="explode">
+                          height="300" showEffect="fade" hideEffect="explode">
 
                     <p:dataList id="displayMulti" value="#{tableBean.selectedCars}" var="selectedCar">
                         Model: #{selectedCar.model}, Year: #{selectedCar.year}
@@ -190,7 +190,7 @@
     &lt;/p:dataTable&gt;
 
     &lt;p:dialog header="Car Detail" widgetVar="singleCarDialog" resizable="false"
-              width="250" showEffect="explode" hideEffect="explode"&gt;
+              showEffect="fade" hideEffect="explode"&gt;
 
         &lt;h:panelGrid id="displaySingle" columns="2" cellpadding="4"&gt;
 
@@ -213,7 +213,7 @@
     &lt;/p:dialog&gt;
 
     &lt;p:dialog header="Car Detail" widgetVar="multiCarDialog"
-              width="250" height="300" showEffect="explode" hideEffect="explode"&gt;
+              height="300" showEffect="fade" hideEffect="explode"&gt;
 
         &lt;p:dataList id="displayMulti"
                 value="\#{tableBean.selectedCars}" var="selectedCar"&gt;
