@@ -24,7 +24,7 @@
 		
 		<p>Dashboard is a layout component featuring dragdrop based content reordering similar to portals. As a stateful component, dashboard is backed
 		by a DashboardModel API which is used to save the state of the UI. Additionally, reorder events can be intervened using ajax reorderListeners and
-		optional onReorderUpdate feature brings even more flexibility. Content toggling and closing features are provided by panels.</p>
+		optional onReorderUpdate feature brings even more flexibility. Content toggling and closing features can be provided by panels.</p>
 		
 			<h:form>
 			
@@ -56,23 +56,6 @@
 				
 				<div style="clear:both" />
 				
-				<p:separator />
-				
-				<h3>More widgets to add</h3>
-				<p>Draggable component has exclusive support to connect with dashboards</p>
-				
-				<h:panelGrid columns="3">
-					<p:panel id="travel" header="Travel">
-						<h:outputText value="Travel Content" />
-					</p:panel>
-					<p:draggable for="travel" dashboard="board" ghost="true"/>
-					
-					<p:panel id="tv" header="TV">
-						<h:outputText value="TV Content" />
-					</p:panel>
-					<p:draggable for="tv" dashboard="board" ghost="true"/>
-				</h:panelGrid>
-			
 			</h:form>
 			
 			<h3 style="clear:both;">Source</h3>
@@ -107,23 +90,6 @@
             &lt;h:outputText value="Politics Content" /&gt;
         &lt;/p:panel&gt;
     &lt;/p:dashboard&gt;
-
-    &lt;p:separator /&gt;
-
-    &lt;h3&gt;More widgets to add&lt;/h3&gt;
-    &lt;p&gt;Draggable component has exclusive support to connect with dashboards&lt;/p&gt;
-
-    &lt;h:panelGrid columns="3"&gt;
-        &lt;p:panel id="travel" header="Travel"&gt;
-            &lt;h:outputText value="Travel Content" /&gt;
-        &lt;/p:panel&gt;
-        &lt;p:draggable for="travel" dashboard="board" ghost="true"/&gt;
-
-        &lt;p:panel id="tv" header="TV"&gt;
-            &lt;h:outputText value="TV Content" /&gt;
-        &lt;/p:panel&gt;
-        &lt;p:draggable for="tv" dashboard="board" ghost="true"/&gt;
-    &lt;/h:panelGrid&gt;
 
 &lt;/h:form&gt;
 			</pre>
@@ -163,17 +129,6 @@ public class DashboardBean implements Serializable {
 		addMessage(message);
 	}
 	
-	public void handleClose(CloseEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Panel Closed", "Closed panel id:'" + event.getComponent().getId() + "'");
-		
-		addMessage(message);
-	}
-	
-	public void handleToggle(ToggleEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, event.getComponent().getId() + " toggled", "Status:" + event.getVisibility().name());
-		
-		addMessage(message);
-	}
 	
 	private void addMessage(FacesMessage message) {
 		FacesContext.getCurrentInstance().addMessage(null, message);
