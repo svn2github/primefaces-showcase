@@ -23,7 +23,7 @@
 						
 						<h:outputLabel value="Pojo: " for="acPojo" />
 						<p:autoComplete id="acPojo" value="#{autoCompleteBean.selectedPlayer1}" completeMethod="#{autoCompleteBean.completePlayer}"
-										var="player" itemLabel="#{player.name}" itemValue="#{player}" converter="player">
+										var="player" itemLabel="#{player.name}" itemValue="#{player}" converter="player" forceSelection="true">
                             <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="messages" />
                         </p:autoComplete>
 					
@@ -64,7 +64,7 @@
 
             &lt;h:outputLabel value="Pojo: " for="acPojo" /&gt;
             &lt;p:autoComplete id="acPojo" value="\#{autoCompleteBean.selectedPlayer}" completeMethod="\#{autoCompleteBean.completePlayer}"
-                            var="player" itemLabel="\#{player.name}" itemValue="\#{player}" converter="player"&gt;
+                            var="player" itemLabel="\#{player.name}" itemValue="\#{player}" converter="player" forceSelection="true"&gt;
                 &lt;p:ajax event="itemSelect" listener="\#{autoCompleteBean.handleSelect}" update="messages" /&gt;
             &lt;/p:autoComplete&gt;
 

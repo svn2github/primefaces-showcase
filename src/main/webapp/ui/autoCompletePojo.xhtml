@@ -19,11 +19,11 @@
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel value="Basic Pojo: " />
                         <p:autoComplete value="#{autoCompleteBean.selectedPlayer1}" completeMethod="#{autoCompleteBean.completePlayer}"
-                                    var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player"/>
+                                    var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player" forceSelection="true"/>
 
                         <h:outputLabel value="Custom Content: " />
                         <p:autoComplete value="#{autoCompleteBean.selectedPlayer2}" completeMethod="#{autoCompleteBean.completePlayer}"
-                                    var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player">
+                                        var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player" forceSelection="true">
                             <p:column>
                                 <p:graphicImage value="/images/barca/#{p.photo}" width="40" height="50"/>
                             </p:column>
@@ -59,11 +59,11 @@
         &lt;h:panelGrid columns="2" cellpadding="5"&gt;
             &lt;h:outputLabel value="Basic Pojo: " /&gt;
             &lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayer1}" completeMethod="\#{autoCompleteBean.completePlayer}"
-                        var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player"/&gt;
+                        var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player" forceSelection="true"/&gt;
 
             &lt;h:outputLabel value="Custom Content: " /&gt;
             &lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayer2}" completeMethod="\#{autoCompleteBean.completePlayer}"
-                        var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player"&gt;
+                        var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player" forceSelection="true"&gt;
                 &lt;p:column&gt;
                     &lt;p:graphicImage value="/images/barca/\#{p.photo}" width="40" height="50"/&gt;
                 &lt;/p:column&gt;
