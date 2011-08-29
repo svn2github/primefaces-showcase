@@ -1,76 +1,78 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
-		<h1 class="title ui-widget-header ui-corner-all">LightBox</h1>
-		<div class="entry">
-            	<p>LightBox provides an elegant way to display images.</p>    	
-            	
-        		<h3>Elastic Effect</h3>
-       			<p:lightBox>
-       				<h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1">
-       					<h:graphicImage value="sopranos/sopranos1_small.jpg"/>
-       				</h:outputLink>
-       				
-       				<h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2">
-       					<h:graphicImage value="sopranos/sopranos2_small.jpg" />
-       				</h:outputLink>
-       				
-       				<h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3">
-       					<h:graphicImage value="sopranos/sopranos3_small.jpg"/>
-       				</h:outputLink>
-       				
-       				<h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4">
-       					<h:graphicImage value="sopranos/sopranos4_small.jpg"/>
-       				</h:outputLink>
-       			</p:lightBox>
-       			
-       			<h3>Fade Effect</h3>
-       			<p:lightBox transition="fade" overlayClose="false">
-       				<h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1">
-       					<h:graphicImage value="sopranos/sopranos1_small.jpg"/>
-       				</h:outputLink>
-       				
-       				<h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2">
-       					<h:graphicImage value="sopranos/sopranos2_small.jpg" />
-       				</h:outputLink>
-       				
-       				<h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3">
-       					<h:graphicImage value="sopranos/sopranos3_small.jpg"/>
-       				</h:outputLink>
-       				
-       				<h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4">
-       					<h:graphicImage value="sopranos/sopranos4_small.jpg"/>
-       				</h:outputLink>
-       			</p:lightBox>
-       			
-       			<h3>SlideShow</h3>
-       			<p:lightBox slideshow="true" slideshowSpeed="2000"
-       				slideshowStartText="Start SlideShow" slideshowStopText="Stop SlideShow" slideshowAuto="false">
-       				<h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1">
-       					<h:graphicImage value="sopranos/sopranos1_small.jpg"/>
-       				</h:outputLink>
-       				
-       				<h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2">
-       					<h:graphicImage value="sopranos/sopranos2_small.jpg" />
-       				</h:outputLink>
-       				
-       				<h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3">
-       					<h:graphicImage value="sopranos/sopranos3_small.jpg"/>
-       				</h:outputLink>
-       				
-       				<h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4">
-       					<h:graphicImage value="sopranos/sopranos4_small.jpg"/>
-       				</h:outputLink>
-       			</p:lightBox>
-				
-				<h3>Source</h3>
-<pre name="code" class="xml">
-<h3>Elastic Effect</h3>
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">LightBox</h1>
+        <div class="entry">
+            <p>LightBox provides an elegant way to display images.</p>    	
+
+            <h3>Elastic Effect</h3>
+            <p:lightBox>
+                <h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1">
+                    <h:graphicImage value="sopranos/sopranos1_small.jpg"/>
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2">
+                    <h:graphicImage value="sopranos/sopranos2_small.jpg" />
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3">
+                    <h:graphicImage value="sopranos/sopranos3_small.jpg"/>
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4">
+                    <h:graphicImage value="sopranos/sopranos4_small.jpg"/>
+                </h:outputLink>
+            </p:lightBox>
+
+            <h3>Fade Effect</h3>
+            <p:lightBox transition="fade" overlayClose="false">
+                <h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1">
+                    <h:graphicImage value="sopranos/sopranos1_small.jpg"/>
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2">
+                    <h:graphicImage value="sopranos/sopranos2_small.jpg" />
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3">
+                    <h:graphicImage value="sopranos/sopranos3_small.jpg"/>
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4">
+                    <h:graphicImage value="sopranos/sopranos4_small.jpg"/>
+                </h:outputLink>
+            </p:lightBox>
+
+            <h3>SlideShow</h3>
+            <p:lightBox slideshow="true" slideshowSpeed="2000"
+                        slideshowStartText="Start SlideShow" slideshowStopText="Stop SlideShow" slideshowAuto="false">
+                <h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1">
+                    <h:graphicImage value="sopranos/sopranos1_small.jpg"/>
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2">
+                    <h:graphicImage value="sopranos/sopranos2_small.jpg" />
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3">
+                    <h:graphicImage value="sopranos/sopranos3_small.jpg"/>
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4">
+                    <h:graphicImage value="sopranos/sopranos4_small.jpg"/>
+                </h:outputLink>
+            </p:lightBox>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="lightBox.xhtml">
+                    <pre name="code" class="xml">
+&lt;h3&gt;Elastic Effect&lt;/h3&gt;
 &lt;p:lightBox&gt;
 	&lt;h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1"&gt;
 		&lt;h:graphicImage value="sopranos/sopranos1_small.jpg"/&gt;
@@ -127,9 +129,10 @@
 		&lt;h:graphicImage value="sopranos/sopranos4_small.jpg"/&gt;
 	&lt;/h:outputLink&gt;
 &lt;/p:lightBox&gt;
-</pre>
-      </div>
- 
-</ui:define>
+                    </pre>
+                </p:tab>
+            </p:tabView>
+        </div>
+
+    </ui:define>
 </ui:composition>
-				
