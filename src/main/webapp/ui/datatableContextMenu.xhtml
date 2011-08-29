@@ -22,6 +22,7 @@
                 
                 <p:contextMenu for="cars">
                     <p:menuitem value="View" update="display" icon="ui-icon ui-icon-search" oncomplete="carDialog.show()"/>
+                    <p:menuitem value="Delete" update="cars" icon="ui-icon ui-icon-close" actionListener="#{tableBean.deleteCar}"/>
 				</p:contextMenu>
 
                 <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" rowKey="#{car.model}"
@@ -78,6 +79,7 @@
                 
     &lt;p:contextMenu for="cars"&gt;
         &lt;p:menuitem value="View" update="display" icon="ui-icon ui-icon-search" oncomplete="carDialog.show()"/&gt;
+        &lt;p:menuitem value="Delete" update="cars" icon="ui-icon ui-icon-close" actionListener="#{tableBean.deleteCar}"/&gt;
     &lt;/p:contextMenu&gt;
 
     &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" rowKey="\#{car.model}"
@@ -196,6 +198,10 @@ public class TableBean {
 
     public List&lt;Car&gt; getCarsSmall() {
         return carsSmall;
+    }
+
+    public void deleteCar() {
+        carsSmall.remove(selectedCar);
     }
 }
                     </pre>

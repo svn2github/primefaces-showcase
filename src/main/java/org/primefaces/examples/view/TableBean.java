@@ -503,4 +503,8 @@ public class TableBean implements Serializable {
     public CarDataModel getSmallCarsModel() {
         return smallCarsModel;
     }
+    
+    public void deleteCar() {
+        carsSmall.remove(selectedCar);
+    }
 }

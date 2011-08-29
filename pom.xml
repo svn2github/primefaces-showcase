@@ -342,13 +342,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.1.2</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.0.M3-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.0.M4-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.0.M3-SNAPSHOT</version>
+                    <version>3.0.M3</version>
                 </dependency>
                 <dependency>
                     <groupId>com.sun.faces</groupId>
