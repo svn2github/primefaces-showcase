@@ -22,7 +22,6 @@
                 
                 <p:contextMenu for="cars">
                     <p:menuitem value="View" update="display" icon="ui-icon ui-icon-search" oncomplete="carDialog.show()"/>
-                    <p:menuitem value="Delete" actionListener="#{tableBean.deleteCar}" update="cars" icon="ui-icon ui-icon-close"/>
 				</p:contextMenu>
 
                 <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" rowKey="#{car.model}"
@@ -79,7 +78,6 @@
                 
     &lt;p:contextMenu for="cars"&gt;
         &lt;p:menuitem value="View" update="display" icon="ui-icon ui-icon-search" oncomplete="carDialog.show()"/&gt;
-        &lt;p:menuitem value="Delete" actionListener="\#{tableBean.deleteCar}" update="cars" icon="ui-icon ui-icon-close"/&gt;
     &lt;/p:contextMenu&gt;
 
     &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" rowKey="\#{car.model}"
@@ -141,7 +139,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.primefaces.examples.domain.Car;
-import org.primefaces.model.PrimeDataModel;
 
 public class TableBean {
 
@@ -178,8 +175,6 @@ public class TableBean {
 	private List&lt;Car&gt; carsSmall;
 	
 	private Car selectedCar;
-
-    private PrimeDataModel smallCarsModel;
 
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();

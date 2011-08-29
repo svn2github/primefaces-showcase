@@ -496,10 +496,6 @@ public class TableBean implements Serializable {
         return players;
     }
     
-    public void deleteCar() {
-        carsSmall.remove(selectedCar);
-    }
-
     public CarDataModel getMediumCarsModel() {
         return mediumCarsModel;
     }
