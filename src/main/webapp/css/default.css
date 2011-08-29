@@ -392,7 +392,7 @@ img.right {
 }
 
 .ui-growl {
-    top:115px;
+    top:115px !important;
 }
 
 .themeMenu {
