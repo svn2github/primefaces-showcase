@@ -11,29 +11,20 @@
 		<ui:insert name="title">PrimeFaces ShowCase</ui:insert>
 	</title>
 	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/#{guestPreferences.theme}/skin.css" />
-	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/roller/ui-darkness/theme.css" />
-	<style type="text/css">
-		.ui-widget {
-			font-size: 75%;
-		}
-		
-		.themeMenu {
-			overflow: auto;
-			height:300px;
-			width:200px;
-		}
-
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/default.css" />
+	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css"></link>
+    <style type="text/css">
         .ui-layout-north {
             z-index:20 !important;
-            overflow:visible;
+            overflow:visible !important;;
         }
 
         .ui-layout-north .ui-layout-unit-content {
-            overflow:visible;
+            overflow:visible !important;
         }
 	</style>
 </h:head>
+	
 
 <h:body>
 		

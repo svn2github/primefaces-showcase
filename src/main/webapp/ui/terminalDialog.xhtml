@@ -25,7 +25,7 @@
             <h:form>
                 <p:graphicImage value="/images/terminal.png" onclick="dlg.show();term.focus();" style="cursor:pointer"/>
 
-                <p:dialog widgetVar="dlg" width="600" height="400" header="Terminal" resizable="false" modal="true">
+                <p:dialog widgetVar="dlg" height="400" header="Terminal" resizable="false" modal="true">
                     <p:terminal widgetVar="term" commandHandler="#{terminalController.handleCommand}" width="590px"
                                 welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>
                 </p:dialog>
@@ -36,17 +36,11 @@
                 <p:tab title="terminal.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
-    &lt;p:graphicImage value="/images/terminal.png"
-            onclick="dlg.show();term.focus();"
-            style="cursor:pointer"/&gt;
+    &lt;p:graphicImage value="/images/terminal.png" onclick="dlg.show();term.focus();" style="cursor:pointer"/&gt;
 
-    &lt;p:dialog widgetVar="dlg" width="600" height="400" header="Terminal" 
-        resizable="false" modal="true"&gt;
-
-        &lt;p:terminal width="100%" height="100%"
-                    commandHandler="\#{terminalController.handleCommand}"
+    &lt;p:dialog widgetVar="dlg" height="400" header="Terminal" resizable="false" modal="true"&gt;
+        &lt;p:terminal widgetVar="term" commandHandler="\#{terminalController.handleCommand}" width="590px"
                     welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/&gt;
-
     &lt;/p:dialog&gt;
 &lt;/h:form&gt;
                     </pre>
