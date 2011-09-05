@@ -342,7 +342,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.0.M3</version>
+                    <version>3.0.RC1-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>com.sun.faces</groupId>
