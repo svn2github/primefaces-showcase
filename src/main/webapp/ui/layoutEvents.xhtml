@@ -1,53 +1,55 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
-<f:view contentType="text/html">
-<h:head>
-	<title>
-		<ui:insert name="title">PrimeFaces ShowCase</ui:insert>
-	</title>
-	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/default.css" />
-	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css"></link>
-</h:head>
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces - ShowCase</title>
+            </f:facet>
 
-<h:body>
+            <h:outputStylesheet name="css/default.css"  />
+            <h:outputStylesheet name="css/syntaxhighlighter/syntaxhighlighter.css"  />
+        </h:head>
 
-    <p:growl id="msg" showDetail="true"/>
+        <h:body>
 
-	<p:layout fullPage="true">
+            <p:growl id="msg" showDetail="true"/>
 
-        <p:ajax event="toggle" listener="#{layoutBean.handleToggle}" update="msg" />
-        <p:ajax event="close" listener="#{layoutBean.handleClose}" update="msg" />
+            <p:layout fullPage="true">
 
-		<p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">
-                <h:outputText value="Top unit content." />
-		</p:layoutUnit>
+                <p:ajax event="toggle" listener="#{layoutBean.handleToggle}" update="msg" />
+                <p:ajax event="close" listener="#{layoutBean.handleClose}" update="msg" />
 
-		<p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
-			<h:outputText value="South unit content." />
-		</p:layoutUnit>
+                <p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">
+                    <h:outputText value="Top unit content." />
+                </p:layoutUnit>
 
-        <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">
-            <h:form style="text-align: center">
-                <ui:include src="../templates/themeMenu.xhtml" />
-			</h:form>
-		</p:layoutUnit>
+                <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
+                    <h:outputText value="South unit content." />
+                </p:layoutUnit>
 
-		<p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true">
-			<h:outputText value="Right unit content." />
-		</p:layoutUnit>
+                <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">
+                    <h:form style="text-align: center">
+                        <ui:include src="../templates/themeMenu.xhtml" />
+                    </h:form>
+                </p:layoutUnit>
 
-        <p:layoutUnit position="center">
-            Layout responds to toggle, close and resize events by invoking server side listeners.
+                <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true">
+                    <h:outputText value="Right unit content." />
+                </p:layoutUnit>
 
-            <p:tabView style="margin-top:10px">
-                <p:tab title="layoutElement.xhtml">
-                    <pre name="code" class="xml">
+                <p:layoutUnit position="center">
+                    Layout responds to toggle, close and resize events by invoking server side listeners.
+
+                    <p:tabView style="margin-top:10px">
+                        <p:tab title="layoutElement.xhtml">
+                            <pre name="code" class="xml">
 &lt;p:layout fullPage="true"&gt;
 
     &lt;p:ajax event="toggle" listener="\#{layoutBean.handleToggle}" update="msg" /&gt;
@@ -76,11 +78,11 @@
     &lt;/p:layoutUnit&gt;
 
 &lt;/p:layout&gt;
-                    </pre>
-                </p:tab>
+                            </pre>
+                        </p:tab>
 
-                <p:tab title="LayoutBean.java">
-                    <pre name="code" class="java">
+                        <p:tab title="LayoutBean.java">
+                            <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import javax.faces.application.FacesMessage;
@@ -108,23 +110,23 @@ public class LayoutBean {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 }
-                    </pre>
-                </p:tab>
-            </p:tabView>
-		</p:layoutUnit>
+                            </pre>
+                        </p:tab>
+                    </p:tabView>
+                </p:layoutUnit>
 
-	</p:layout>
+            </p:layout>
 
-</h:body>
+        </h:body>
 
-</f:view>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJava.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushCss.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-<script language="javascript">
+    </f:view>
+    <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
+    <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJava.js"></script>
+    <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushCss.js"></script>
+    <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+    <script language="javascript">
 	dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
 	dp.SyntaxHighlighter.HighlightAll('code');
-</script>
+    </script>
 </html>

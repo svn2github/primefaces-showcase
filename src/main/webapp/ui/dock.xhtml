@@ -1,40 +1,41 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:p="http://primefaces.org/ui">
-<f:view contentType="text/html">
-<h:head>
-	<title>
-		PrimeFaces ShowCase
-	</title>
-	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css" />
-    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/#{guestPreferences.theme}/skin.css" />
-	<style type="text/css">
-		body {
-			margin:0;
-			padding: 0;
-			background-color: #CEE3F6;
-		}
-	</style>
-</h:head>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces - ShowCase</title>
+            </f:facet>
 
-<h:body>
+            <h:outputStylesheet name="css/syntaxhighlighter/syntaxhighlighter.css"  />
+            <style type="text/css">
+                body {
+                    margin:0;
+                    padding: 0;
+                    background-color: #CEE3F6;
+                }
+            </style>
+        </h:head>
 
-	<p:dock position="top">
-		<p:menuitem value="Home" icon="/images/dock/home.png" url="#"/>
-		<p:menuitem value="Music" icon="/images/dock/music.png" url="#"/>
-		<p:menuitem value="Video" icon="/images/dock/video.png" url="#"/>
-		<p:menuitem value="Email" icon="/images/dock/email.png" url="#"/>
-		<p:menuitem value="Portfolio" icon="/images/dock/portfolio.png" url="#"/>
-		<p:menuitem value="Link" icon="/images/dock/link.png" url="#"/>
-		<p:menuitem value="RSS" icon="/images/dock/rss.png" url="#"/>
-		<p:menuitem value="History" icon="/images/dock/history.png" url="#"/>
-	</p:dock>
+        <h:body>
 
-	<pre name="code" class="xml">
+            <p:dock position="top">
+                <p:menuitem value="Home" icon="/images/dock/home.png" url="#"/>
+                <p:menuitem value="Music" icon="/images/dock/music.png" url="#"/>
+                <p:menuitem value="Video" icon="/images/dock/video.png" url="#"/>
+                <p:menuitem value="Email" icon="/images/dock/email.png" url="#"/>
+                <p:menuitem value="Portfolio" icon="/images/dock/portfolio.png" url="#"/>
+                <p:menuitem value="Link" icon="/images/dock/link.png" url="#"/>
+                <p:menuitem value="RSS" icon="/images/dock/rss.png" url="#"/>
+                <p:menuitem value="History" icon="/images/dock/history.png" url="#"/>
+            </p:dock>
+
+            <pre name="code" class="xml">
 &lt;p:dock position="top"&gt;
 	&lt;p:menuitem value="Home" icon="/images/dock/home.png" url="#"/&gt;
 	&lt;p:menuitem value="Music" icon="/images/dock/music.png" url="#"/&gt;
@@ -56,30 +57,30 @@
 	&lt;p:menuitem value="RSS" icon="/images/dock/rss.png" url="#"/&gt;
 	&lt;p:menuitem value="History" icon="/images/dock/history.png" url="#"/&gt;
 &lt;/p:dock&gt;
-	</pre>
-	
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJava.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushCss.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-<script language="javascript">
+            </pre>
+
+            <p:dock>
+                <p:menuitem value="Home" icon="/images/dock/home.png" url="#" />
+                <p:menuitem value="Music" icon="/images/dock/music.png" url="#" />
+                <p:menuitem value="Video" icon="/images/dock/video.png" url="#"/>
+                <p:menuitem value="Email" icon="/images/dock/email.png" url="#"/>
+                <p:menuitem value="Portfolio" icon="/images/dock/portfolio.png" url="#"/>
+                <p:menuitem value="Link" icon="/images/dock/link.png" url="#"/>
+                <p:menuitem value="RSS" icon="/images/dock/rss.png" url="#"/>
+                <p:menuitem value="History" icon="/images/dock/history.png" url="#"/>
+            </p:dock>
+
+        </h:body>
+        
+        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
+            <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
+            <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJava.js"></script>
+            <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushCss.js"></script>
+            <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+            <script language="javascript">
 	dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
 	dp.SyntaxHighlighter.HighlightAll('code');
-</script>
-	
-	<p:dock>
-		<p:menuitem value="Home" icon="/images/dock/home.png" url="#" />
-		<p:menuitem value="Music" icon="/images/dock/music.png" url="#" />
-		<p:menuitem value="Video" icon="/images/dock/video.png" url="#"/>
-		<p:menuitem value="Email" icon="/images/dock/email.png" url="#"/>
-		<p:menuitem value="Portfolio" icon="/images/dock/portfolio.png" url="#"/>
-		<p:menuitem value="Link" icon="/images/dock/link.png" url="#"/>
-		<p:menuitem value="RSS" icon="/images/dock/rss.png" url="#"/>
-		<p:menuitem value="History" icon="/images/dock/history.png" url="#"/>
-	</p:dock>
-	
-</h:body>
+            </script>
 
-</f:view>
+    </f:view>
 </html>

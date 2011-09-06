@@ -1,27 +1,30 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:p="http://primefaces.org/ui">
-<f:view contentType="text/html">
-<h:head>
-	<title>
-		PrimeFaces ShowCase
-	</title>
-	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css"></link>
-	<style type="text/css">
-		body {
-			background-color: #CEE3F6;
-		}
-	</style>
-   
-</h:head>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces - ShowCase</title>
+            </f:facet>
 
-<h:body>
+            <h:outputStylesheet name="css/syntaxhighlighter/syntaxhighlighter.css"  />
+            <style type="text/css">
+                body {
+                    margin:0;
+                    padding: 0;
+                    background-color: #CEE3F6;
+                }
+            </style>
+        </h:head>
 
-	<pre name="code" class="xml">
+        <h:body>
+
+            <pre name="code" class="xml">
 &lt;p:stack icon="/images/stack/stack.png"&gt;
 	&lt;p:menuitem value="Aperture" icon="/images/stack/aperture.png" url="#"/&gt;
 	&lt;p:menuitem value="Photoshop" icon="/images/stack/photoshop.png" url="#"/&gt;
@@ -29,27 +32,27 @@
 	&lt;p:menuitem value="Safari" icon="/images/stack/safari.png" url="#" /&gt;
 	&lt;p:menuitem value="Finder" icon="/images/stack/finder.png" url="#" /&gt;
 &lt;/p:stack&gt;
-	</pre>
-	
-	<p:stack icon="/images/stack/stack.png">
-		<p:menuitem value="Aperture" icon="/images/stack/aperture.png" url="#" />
-		<p:menuitem value="Photoshop" icon="/images/stack/photoshop.png" url="#"/>
-		<p:menuitem value="Coda" icon="/images/stack/coda.png" url="#"/>
-		<p:menuitem value="Safari" icon="/images/stack/safari.png" url="#" />
-		<p:menuitem value="Finder" icon="/images/stack/finder.png" url="#" />
-	</p:stack>
-	
-</h:body>
+            </pre>
 
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJava.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushCss.js"></script>
-<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-<script language="javascript">
+            <p:stack icon="/images/stack/stack.png">
+                <p:menuitem value="Aperture" icon="/images/stack/aperture.png" url="#" />
+                <p:menuitem value="Photoshop" icon="/images/stack/photoshop.png" url="#"/>
+                <p:menuitem value="Coda" icon="/images/stack/coda.png" url="#"/>
+                <p:menuitem value="Safari" icon="/images/stack/safari.png" url="#" />
+                <p:menuitem value="Finder" icon="/images/stack/finder.png" url="#" />
+            </p:stack>
+
+        </h:body>
+
+        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
+        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
+        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJava.js"></script>
+        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushCss.js"></script>
+        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+        <script language="javascript">
 	dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
 	dp.SyntaxHighlighter.HighlightAll('code');
-</script>	
+        </script>	
 
-</f:view>
+    </f:view>
 </html>
