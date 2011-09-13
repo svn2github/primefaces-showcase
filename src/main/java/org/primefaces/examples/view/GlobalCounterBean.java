@@ -16,8 +16,9 @@
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
+import org.primefaces.context.RequestContext;
 
-public class CounterBean implements Serializable{
+public class GlobalCounterBean implements Serializable{
 
 	private int count;
 
@@ -29,7 +30,8 @@ public class CounterBean implements Serializable{
 		this.count = count;
 	}
 	
-	public void increment() {
+	public synchronized void increment() {
 		count++;
+        RequestContext.getCurrentInstance().push("counter", count);
 	}
 }

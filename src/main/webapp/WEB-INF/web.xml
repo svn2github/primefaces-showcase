@@ -64,16 +64,20 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
-	<!--
+    
     <servlet>
-        <servlet-name>Comet Servlet</servlet-name>
-        <servlet-class>org.primefaces.comet.PrimeFacesCometServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
+        <servlet-name>Push Servlet</servlet-name>
+        <servlet-class>org.primefaces.examples.PushServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        <init-param>
+            <param-name>channels</param-name>
+            <param-value>chat,counter</param-value>
+        </init-param>
     </servlet>
+    
     <servlet-mapping>
-        <servlet-name>Comet Servlet</servlet-name>
-        <url-pattern>/primefaces_comet/*</url-pattern>
+        <servlet-name>Push Servlet</servlet-name>
+        <url-pattern>/prime-push/*</url-pattern>
     </servlet-mapping>
-    -->
-	
+
 </web-app>

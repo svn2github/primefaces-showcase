@@ -65,6 +65,11 @@
         <managed-bean-class>org.primefaces.examples.view.CounterBean</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
+        <managed-bean>
+        <managed-bean-name>globalCounter</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.GlobalCounterBean</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>createBookBean</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.view.CreateBookBean</managed-bean-class>

@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+            .display {
+                font-size: 36px !important;
+            }
+        </style>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+                function handleMessage(evt, data) {
+                    $('.display').html(data);
+                }
+            //]]> 
+        </script>
+    </ui:define>
+
+	<ui:define name="content">
+
+			<h1 class="title ui-widget-header ui-corner-all">PrimePush - Counter</h1>
+			<div class="entry">
+			<p>Counter is an instant global click counter. When you click the button,
+            updated count value is updated on all connected clients.</p>
+           
+            <h:form>
+                <h:outputText value="#{globalCounter.count}" styleClass="ui-widget display" />
+                
+                <br />
+                
+                <p:commandButton value="Click" actionListener="#{globalCounter.increment}" />
+            </h:form>
+            
+            <p:push onmessage="handleMessage" channel="counter" />
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="chat.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+    &lt;h:outputText value="\#{globalCounter.count}" styleClass="ui-widget display" /&gt;
+
+    &lt;br /&gt;
+
+    &lt;p:commandButton value="Click" actionListener="\#{globalCounter.increment}" /&gt;
+&lt;/h:form&gt;
+            
+&lt;p:push onmessage="handleMessage" channel="counter" /&gt;
+
+&lt;script type="text/javascript"&gt;
+    function handleMessage(evt, data) {
+        $('.display').html(data);
+    }
+&lt;/script&gt;
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="GlobalCounterBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import org.primefaces.context.RequestContext;
+
+public class GlobalCounterBean implements Serializable{
+
+	private int count;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	public synchronized void increment() {
+		count++;
+        RequestContext.getCurrentInstance().push("counter", count);
+	}
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+		
+		</div>
+	</ui:define>
+</ui:composition>

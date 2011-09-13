@@ -1,0 +1,206 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+            .messageInput {
+                width:400px;
+            }
+        </style>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+            function handleMessage(evt, data) {
+                $('.chatroom').append(data + '<br />');
+            }
+            //]]>
+        </script>
+    </ui:define>
+
+	<ui:define name="content">
+
+			<h1 class="title ui-widget-header ui-corner-all">PrimePush - Chat</h1>
+			<div class="entry">
+			<p>Chat is a simple push based application created with PrimePush.</p>
+            
+            <p:growl id="growl" showDetail="true" />
+            
+            <h:form>
+                
+                <p:fieldset id="container" legend="PrimeChat">
+                    
+                    <h:panelGroup rendered="#{chatController.loggedIn}" >
+                        <p:outputPanel layout="block" style="width:600px;height:200px;overflow:auto" 
+                                   styleClass="chatroom" />
+                        
+                        <p:separator />
+                        
+                        <p:inputText value="#{chatController.message}" styleClass="messageInput" />
+                        <p:spacer width="5" />
+                        <p:commandButton value="Send" actionListener="#{chatController.send}" global="false" oncomplete="$('.messageInput').val('')"/>
+                        <p:spacer width="5" />
+                        <p:commandButton value="Disconnect" actionListener="#{chatController.disconnect}" global="false" 
+                                            oncomplete="chatAgent.close()" update="container" />
+                    </h:panelGroup>
+                    
+                    <h:panelGroup rendered="#{not chatController.loggedIn}" >
+                        Username: <p:inputText value="#{chatController.username}" />
+                
+                        <p:spacer width="5" />
+                        <p:commandButton value="Login" actionListener="#{chatController.login}" update="container" 
+                                         image="ui-icon ui-icon-person"/>
+                    </h:panelGroup>
+                    
+                </p:fieldset>
+                             
+            </h:form>
+            
+            <p:push onmessage="handleMessage" channel="chat" widgetVar="chatAgent" />
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="chat.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:growl id="growl" showDetail="true" /&gt;
+            
+&lt;h:form&gt;
+
+    &lt;p:fieldset id="container" legend="PrimeChat"&gt;
+
+        &lt;h:panelGroup rendered="\#{chatController.loggedIn}" &gt;
+            &lt;p:outputPanel layout="block" style="width:600px;height:200px;overflow:auto" 
+                       styleClass="chatroom" /&gt;
+
+            &lt;p:separator /&gt;
+
+            &lt;p:inputText value="\#{chatController.message}" styleClass="messageInput" /&gt;
+            &lt;p:spacer width="5" /&gt;
+            &lt;p:commandButton value="Send" actionListener="\#{chatController.send}" global="false" oncomplete="$('.messageInput').val('')"/&gt;
+            &lt;p:spacer width="5" /&gt;
+            &lt;p:commandButton value="Disconnect" actionListener="\#{chatController.disconnect}" global="false" 
+                                oncomplete="chatAgent.close()" update="container" /&gt;
+        &lt;/h:panelGroup&gt;
+
+        &lt;h:panelGroup rendered="\#{not chatController.loggedIn}" &gt;
+            Username: &lt;p:inputText value="\#{chatController.username}" /&gt;
+
+            &lt;p:spacer width="5" /&gt;
+            &lt;p:commandButton value="Login" actionListener="\#{chatController.login}" update="container" 
+                             image="ui-icon ui-icon-person"/&gt;
+        &lt;/h:panelGroup&gt;
+
+    &lt;/p:fieldset&gt;
+
+&lt;/h:form&gt;
+
+&lt;p:push onmessage="handleMessage" channel="chat" widgetVar="chatAgent" /&gt;
+
+&lt;script type="text/javascript"&gt;
+    function handleMessage(evt, data) {
+        $('.chatroom').append(data + '&lt;br /&gt;');
+    }
+&lt;/script&gt;
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="ChatController.java">
+                    <pre name="code" class="java">
+/*
+ * Copyright 2009-2011 Prime Technology.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.context.RequestContext;
+
+public class ChatController implements Serializable {
+    
+    private final static String CHANNEL = "chat";
+
+	private String message;
+	
+	private String username;
+	
+	private boolean loggedIn;
+    
+    private Set&lt;String&gt; users = new HashSet&lt;String&gt;();
+
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
+
+	public void send() {
+		RequestContext.getCurrentInstance().push(CHANNEL, username + ": "+  message);
+		
+		message = null;
+	}
+	
+	public void login() {
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        
+		if(users.contains(username)) {
+            loggedIn = false;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username taken", "Try with another username."));
+            
+            requestContext.addPartialUpdateTarget("growl");
+        }
+        else {
+            users.add(username);
+            loggedIn = true;
+            
+            requestContext.push(CHANNEL, username + " joined the channel.");
+        }
+	}
+    
+    public void disconnect() {
+        RequestContext.getCurrentInstance().push(CHANNEL, username + " has left the channel.");
+        loggedIn = false;
+        username = null;
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+		
+		</div>
+	</ui:define>
+</ui:composition>

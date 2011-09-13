@@ -30,8 +30,9 @@
 
 		<div id="menu" class="ui-widget ui-widget-content ui-corner-all">
 			<ul id="main">
-				<li class="current_page_item"><a href="#{request.contextPath}/ui/home.jsf" style="background:url('../design/ui.png') no-repeat center left;">UI Components</a></li>
-				<li><a href="#{request.contextPath}/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;color:#FF9900;">Mobile</a></li>
+				<li class="current_page_item"><a href="#{request.contextPath}/ui/home.jsf" style="background:url('../design/ui.png') no-repeat center left;">PrimeUI</a></li>
+				<li><a href="#{request.contextPath}/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;color:#FF9900;">PrimeMobile</a></li>
+                <li><a href="#{request.contextPath}/ui/pushHome.jsf" style="background:url('../design/push.png') no-repeat center left;color:#FF9900;">PrimePush</a></li>
 			</ul>
 		</div>
 
@@ -49,10 +50,14 @@
 										</h:form>
 									</td>
 								</tr>
+                                <tr>
+                                    <td colspan="2" style="text-align:center">
+                                        <a href="#{request.contextPath}/ui/macosx.jsf" >MOCK OS X</a>
+                                    </td>
+                                </tr>
 								<tr>
 									<td>
 										<ul>
-                                            <li><a href="#{request.contextPath}/ui/macosx.jsf">MOCK OS X</a></li>
 											<li><a href="#{request.contextPath}/ui/ajaxHome.jsf">Ajax Engine</a></li>
 											<li><a href="#{request.contextPath}/ui/ajaxPollHome.jsf">Ajax Poll</a></li>
                                             <li><a href="#{request.contextPath}/ui/ajaxStatusHome.jsf">Ajax Status</a></li>
@@ -98,11 +103,12 @@
                                             <li><a href="#{request.contextPath}/ui/inputText.jsf">InputText</a></li>
                                             <li><a href="#{request.contextPath}/ui/inputTextarea.jsf">InputTextarea</a></li>
                                             <li><a href="#{request.contextPath}/ui/keyboard.jsf">Keyboard</a></li>
+                                            <li><a href="#{request.contextPath}/ui/layoutHome.jsf" class="new">Layout</a></li>
 										</ul>
 									</td>
 									<td>
 										<ul>
-                                            <li><a href="#{request.contextPath}/ui/layoutHome.jsf" class="new">Layout</a></li>
+                                            
 											<li><a href="#{request.contextPath}/ui/lightboxHome.jsf">LightBox</a></li>
                                             <li><a href="#{request.contextPath}/ui/log.jsf" class="new">Log</a></li>
 											<li><a href="#{request.contextPath}/ui/inputMask.jsf">Masked Input</a></li>
@@ -118,6 +124,7 @@
 											<li><a href="#{request.contextPath}/ui/picklist.jsf" class="new">PickList</a></li>
 											<li><a href="#{request.contextPath}/ui/printer.jsf">Printer</a></li>
 											<li><a href="#{request.contextPath}/ui/progressBar.jsf">ProgressBar</a></li>
+                                            <li><a href="#{request.contextPath}/ui/pushHome.jsf" class="new">Push</a></li>
 											<li><a href="#{request.contextPath}/ui/requestContext.jsf" class="new">RequestContext</a></li>
 											<li><a href="#{request.contextPath}/ui/resizableHome.jsf">Resizable</a></li>
 											<li><a href="#{request.contextPath}/ui/remoteCommand.jsf">RemoteCommand</a></li>
