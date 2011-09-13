@@ -76,7 +76,7 @@
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-ftp</artifactId>
-                <version>1.0-alpha-6</version>
+                <version>1.0</version>
             </extension>
         </extensions>
 
