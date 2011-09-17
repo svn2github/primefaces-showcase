@@ -79,7 +79,7 @@
                 
     &lt;p:contextMenu for="cars"&gt;
         &lt;p:menuitem value="View" update="display" icon="ui-icon ui-icon-search" oncomplete="carDialog.show()"/&gt;
-        &lt;p:menuitem value="Delete" update="cars" icon="ui-icon ui-icon-close" actionListener="#{tableBean.deleteCar}"/&gt;
+        &lt;p:menuitem value="Delete" update="cars" icon="ui-icon ui-icon-close" actionListener="\#{tableBean.deleteCar}"/&gt;
     &lt;/p:contextMenu&gt;
 
     &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" rowKey="\#{car.model}"
