@@ -1,0 +1,167 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - SummaryRow</h1>
+		<div class="entry">
+			<p>SummaryRow is a helper component of datatable used for dynamic grouping.</p>
+
+            <h:form>
+                <p:dataTable var="car" value="#{tableBean.cars}" sortBy="#{car.manufacturer}" sortOrder="descending">
+
+                    <p:column headerText="Model" sortBy="#{car.model}">
+                        #{car.model}
+                    </p:column>
+
+                    <p:column headerText="Year" sortBy="#{car.year}">
+                        #{car.year}
+                    </p:column>
+
+                    <p:column headerText="Manufacturer" sortBy="#{car.manufacturer}">
+                        #{car.manufacturer}
+                    </p:column>
+
+                    <p:column headerText="Color" sortBy="#{car.color}">
+                        #{car.color}
+                    </p:column>
+                    
+                    <p:summaryRow>
+                        <p:column colspan="3" style="text-align:right">
+                            Total:
+                        </p:column>
+                        
+                        <p:column>
+                            #{tableBean.randomPrice}$
+                        </p:column>
+                    </p:summaryRow>
+                </p:dataTable>
+            </h:form>
+
+		<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="datatableSummaryRow.xhtml">
+                <pre name="code" class="xml">
+&lt;h:form&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" sortBy="\#{car.manufacturer}" sortOrder="descending"&gt;
+
+        &lt;p:column headerText="Model" sortBy="\#{car.model}"&gt;
+            \#{car.model}
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year" sortBy="\#{car.year}"&gt;
+            \#{car.year}
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer" sortBy="\#{car.manufacturer}"&gt;
+            \#{car.manufacturer}
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" sortBy="\#{car.color}"&gt;
+            \#{car.color}
+        &lt;/p:column&gt;
+
+        &lt;p:summaryRow&gt;
+            &lt;p:column colspan="3" style="text-align:right"&gt;
+                Total:
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                \#{tableBean.randomPrice}$
+            &lt;/p:column&gt;
+        &lt;/p:summaryRow&gt;
+    &lt;/p:dataTable&gt;
+&lt;/h:form&gt;
+				</pre>
+			</p:tab>
+
+			<p:tab title="TableBean.java">
+                <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+	
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+		
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+	
+	private List&lt;Car&gt; cars;
+	
+	public TableBean() {
+		carsSmall = new ArrayList&lt;Car&gt;();
+		
+		populateRandomCars(cars, 50);
+	}
+	
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+	
+	public List&lt;Car&gt; getCars() {
+		return cars;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+	
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+
+    public int getRandomPrice() {
+		return (int) (Math.random() * 100000);
+	}
+}
+				</pre>
+			</p:tab>
+		</p:tabView>
+	       </div>
+
+	</ui:define>
+</ui:composition>

@@ -207,6 +207,10 @@ public class TableBean implements Serializable {
 	private String getRandomManufacturer() {
 		return manufacturers[(int) (Math.random() * 10)];
 	}
+    
+    public int getRandomPrice() {
+		return (int) (Math.random() * 100000);
+	}
 
     private int getRandomSale() {
 		return (int) (Math.random() * 100000);
