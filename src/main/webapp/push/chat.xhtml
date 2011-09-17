@@ -15,7 +15,11 @@
         <script type="text/javascript">
             //<![CDATA[
             function handleMessage(evt, data) {
-                $('.chatroom').append(data + '<br />');
+                var chatContent = $('.chatContent'),
+                chatContent.append(data + '<br />');
+                
+                //keep scroll
+                chatContent.scrollTop(chatContent.height());
             }
             //]]>
         </script>
@@ -35,13 +39,13 @@
                     
                     <h:panelGroup rendered="#{chatController.loggedIn}" >
                         <p:outputPanel layout="block" style="width:600px;height:200px;overflow:auto" 
-                                   styleClass="chatroom" />
+                                   styleClass="chatContent" />
                         
                         <p:separator />
                         
                         <p:inputText value="#{chatController.message}" styleClass="messageInput" />
                         <p:spacer width="5" />
-                        <p:commandButton value="Send" actionListener="#{chatController.send}" global="false" oncomplete="$('.messageInput').val('')"/>
+                        <p:commandButton value="Send" actionListener="#{chatController.send}" global="false" oncomplete="$('.messageInput').val('').focus()"/>
                         <p:spacer width="5" />
                         <p:commandButton value="Disconnect" actionListener="#{chatController.disconnect}" global="false" 
                                             oncomplete="chatAgent.close()" update="container" />
@@ -79,7 +83,7 @@
 
             &lt;p:inputText value="\#{chatController.message}" styleClass="messageInput" /&gt;
             &lt;p:spacer width="5" /&gt;
-            &lt;p:commandButton value="Send" actionListener="\#{chatController.send}" global="false" oncomplete="$('.messageInput').val('')"/&gt;
+            &lt;p:commandButton value="Send" actionListener="\#{chatController.send}" global="false" oncomplete="$('.messageInput').val('').focus()"/&gt;
             &lt;p:spacer width="5" /&gt;
             &lt;p:commandButton value="Disconnect" actionListener="\#{chatController.disconnect}" global="false" 
                                 oncomplete="chatAgent.close()" update="container" /&gt;
@@ -101,7 +105,11 @@
 
 &lt;script type="text/javascript"&gt;
     function handleMessage(evt, data) {
-        $('.chatroom').append(data + '&lt;br /&gt;');
+        var chatContent = $('.chatContent'),
+        chatContent.append(data + '&lt;br /&gt;');
+
+        //keep scroll
+        chatContent.scrollTop(chatContent.height());
     }
 &lt;/script&gt;
                     </pre>
