@@ -21,7 +21,7 @@
 
                 <h3>Pojo Support with Bounce Effect, Captions, Custom Content and Reorder Controls</h3>
                 <p:pickList value="#{pickListBean.players}" var="player" iconOnly="true" effect="bounce"
-								itemLabel="#{player.name}" itemValue="#{player}" converter="player"
+								itemValue="#{player}" converter="player"
                                 showSourceControls="true" showTargetControls="true">
                     <f:facet name="sourceCaption">Available</f:facet>
                     <f:facet name="targetCaption">Starting</f:facet>
@@ -85,7 +85,6 @@
     &lt;h3&gt;Pojo Support with Bounce Effect, Captions, Custom Content and Reorder Controls&lt;/h3&gt;
     &lt;p:pickList value="\#{pickListBean.players}"
                     var="player" iconOnly="true" effect="bounce"
-                    itemLabel="\#{player.name}"
                     itemValue="\#{player}" converter="player"
                     showSourceControls="true" showTargetControls="true"&gt;
         &lt;f:facet name="sourceCaption"&gt;Available&lt;/f:facet&gt;
