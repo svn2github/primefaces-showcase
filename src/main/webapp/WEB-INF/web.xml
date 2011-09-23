@@ -31,7 +31,7 @@
     
     <context-param>
         <param-name>primefaces.PUSH_SERVER_URL</param-name>
-        <param-value>ws://localhost:9090/prime-pushserver</param-value>
+        <param-value>ws://www.primefaces.org:9090/prime-pushserver</param-value>
     </context-param>
 
     <!--
