@@ -24,9 +24,7 @@
                         <p:spinner id="minmax" value="#{spinnerController.number3}" min="0" max="100"/>
 
                         <h:outputLabel for="prefix" value="Prefix: " />
-                        <p:spinner id="prefix" value="#{spinnerController.number4}" prefix="$" min="0">
-                            <f:convertNumber currencySymbol="$" type="currency" minFractionDigits="5"/>
-                        </p:spinner>
+                        <p:spinner id="prefix" value="#{spinnerController.number4}" prefix="$" min="0" />
 
                         <h:outputLabel for="ajaxspinner" value="Ajax Spinner: " />
                         <p:outputPanel>
@@ -84,10 +82,7 @@
     				value="\#{spinnerController.number3}" min="0" max="100"/&gt;
     		
     		&lt;h:outputLabel for="prefix" value="Prefix: " /&gt;
-    		&lt;p:spinner id="prefix" 
-    				value="\#{spinnerController.number4}" prefix="$" min="0"&gt;
-    			&lt;f:convertNumber currencySymbol="$" type="currency" minFractionDigits="0"/&gt;
-    		&lt;/p:spinner&gt;
+    		&lt;p:spinner id="prefix" value="#{spinnerController.number4}" prefix="$" min="0" /&gt;
 
             &lt;h:outputLabel for="ajaxspinner" value="Ajax Spinner: " /&gt;
             &lt;p:outputPanel&gt;
