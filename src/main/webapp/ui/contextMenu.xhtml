@@ -15,7 +15,7 @@
 				
 				<p:growl id="messages"/>
 
-                <p:contextMenu effect="fade">
+                <p:contextMenu>
 					<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk"/>
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w"/>
 						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false" icon="ui-icon ui-icon-close"/>
@@ -32,7 +32,7 @@
 				
 	&lt;p:growl id="messages" /&gt;
 
-	&lt;p:contextMenu effect="fade"&gt;
+	&lt;p:contextMenu&gt;
 		&lt;p:menuitem value="Save" update="messages"
 			actionListener="\#{buttonBean.save}" icon="ui-icon ui-icon-disk"/&gt;
 		&lt;p:menuitem value="Update" update="messages"
