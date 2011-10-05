@@ -18,11 +18,11 @@
 				<h3 class="lab">Tiered Menu</h3>
 				<p:menu type="tiered" style="width:180px">
 					<p:submenu label="Ajax Menuitems" icon="ui-icon ui-icon-refresh">
-						<p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk" />
-						<p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w" />
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk" />
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w" />
 					</p:submenu>
 					<p:submenu label="Non-Ajax Menuitem" icon="ui-icon ui-icon-newwin">
-						<p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon ui-icon-close"/>
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon ui-icon-close"/>
 					</p:submenu>
 					<p:submenu label="Navigations" icon="ui-icon ui-icon-extlink">
 						<p:submenu label="Prime Links">
@@ -58,11 +58,11 @@
 				<p:commandButton id="dynaButton" value="Show" type="button"/>
                 <p:menu position="dynamic" trigger="dynaButton" my="left top" at="left bottom" style="z-index:10">
 					<p:submenu label="Ajax Menuitems">
-						<p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk"/>
-						<p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w"/>
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk"/>
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w"/>
 					</p:submenu>
 					<p:submenu label="Non-Ajax Menuitem">
-						<p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon ui-icon-close"/>
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon ui-icon-close"/>
 					</p:submenu>
 					<p:submenu label="Navigations">
 						<p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon ui-icon-home"/>
