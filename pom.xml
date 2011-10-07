@@ -146,11 +146,6 @@
         <!-- Themes -->
         <dependency>
             <groupId>org.primefaces.themes</groupId>
-            <artifactId>aristo</artifactId>
-            <version>${theme.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.primefaces.themes</groupId>
             <artifactId>black-tie</artifactId>
             <version>${theme.version}</version>
         </dependency>
@@ -247,6 +242,11 @@
         <dependency>
             <groupId>org.primefaces.themes</groupId>
             <artifactId>rocket</artifactId>
+            <version>${theme.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>sam</artifactId>
             <version>${theme.version}</version>
         </dependency>
         <dependency>
