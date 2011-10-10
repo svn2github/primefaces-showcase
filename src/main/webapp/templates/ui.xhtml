@@ -191,11 +191,7 @@
 	</h:body>
 
 	<ui:insert name="highlight">
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJava.js"></script>
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushCss.js"></script>
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
 		<script language="javascript">
 			dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
 			dp.SyntaxHighlighter.HighlightAll('code');
