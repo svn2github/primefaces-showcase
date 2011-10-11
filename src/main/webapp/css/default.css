@@ -267,6 +267,10 @@ img.right {
 	text-decoration: underline;
 }
 
+.sidebar a.ui-menuitem-link:hover {
+	text-decoration: none;
+}
+
 /* Search */
 
 #searchform {
