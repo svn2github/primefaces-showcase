@@ -16,7 +16,7 @@
 				<p:growl id="messages"/>
                 
 				<h3 class="lab">Tiered Menu</h3>
-				<p:menu type="tiered" style="width:180px">
+                <p:menu type="tiered" style="width:180px">
 					<p:submenu label="Ajax Menuitems" icon="ui-icon ui-icon-refresh">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk" />
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w" />
@@ -35,7 +35,28 @@
 						</p:submenu>
 					</p:submenu>
 				</p:menu>
-
+                
+                <h3 class="lab">Sliding Menu</h3>
+                <p:menu type="sliding" style="width:200px; height: 130px;">
+					<p:submenu label="Ajax Menuitems" icon="ui-icon ui-icon-refresh">
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk" />
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+					<p:submenu label="Non-Ajax Menuitem" icon="ui-icon ui-icon-newwin">
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon ui-icon-close"/>
+					</p:submenu>
+					<p:submenu label="Navigations" icon="ui-icon ui-icon-extlink">
+						<p:submenu label="Prime Links">
+							<p:menuitem value="Prime" url="http://www.prime.com.tr" />
+							<p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+						</p:submenu>
+                        <p:submenu label="Touch">
+							<p:menuitem value="Prime 2"  url="http://www.prime.com.tr" />
+							<p:menuitem value="PrimeFaces 2" url="http://www.primefaces.org" />
+						</p:submenu>
+					</p:submenu>
+				</p:menu>
+                
 				<h3>Regular Menu</h3>
 				<p:menu>
 					<p:submenu label="Ajax Menuitems">
