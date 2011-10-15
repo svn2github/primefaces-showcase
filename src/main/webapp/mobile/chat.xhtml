@@ -1,0 +1,66 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile"
+	contentType="text/html">
+
+    <pm:page title="Chat">
+        
+        <f:facet name="postinit">
+            <script type="text/javascript">
+                //<![CDATA[
+                    function handleMessage(evt, data) {
+                        var chatContent = $('.chatContent');
+                        chatContent.append(data + '<br />');
+
+                        //keep scroll
+                        chatContent.scrollTop(chatContent.height());
+                    }
+                //]]>
+            </script>
+        </f:facet>
+
+        <!-- Main View -->
+        <pm:view id="main" swatch="a">
+            <pm:header title="Chat">
+            </pm:header>
+
+            <pm:content>
+                <h:form id="chatForm">
+                    
+                    <p:outputPanel id="container">
+                        <h:panelGroup rendered="#{chatController.loggedIn}" >
+                            <p:outputPanel layout="block" style="width:100%;height:200px;overflow:auto" 
+                                       styleClass="chatContent" />
+
+                            <p:separator />
+
+                            <h:inputText value="#{chatController.message}" styleClass="messageInput" />
+                            <pm:commandButton value="Send" actionListener="#{chatController.send}" 
+                                     oncomplete="$('.messageInput').val('')"/>
+                        </h:panelGroup>
+                    
+                        <h:panelGroup rendered="#{not chatController.loggedIn}" >
+                            <h:inputText id="username" value="#{chatController.username}" />
+                            <p:watermark for="username" value="Username" />
+                            
+                            <p:separator />
+
+                            <pm:commandButton value="Login" icon="refresh" update="container"
+                                              actionListener="#{chatController.login}" />
+                        </h:panelGroup>
+                    </p:outputPanel>
+                            
+                </h:form>
+                
+                <p:push onmessage="handleMessage" channel="chat" widgetVar="chatAgent" />
+                
+            </pm:content>
+
+        </pm:view>
+
+    </pm:page>
+    
+</f:view>
