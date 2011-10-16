@@ -46,7 +46,7 @@
 			<p:tabView>
 				<p:tab title="scrollPanel.xhtml">
 					<pre name="code" class="xml">
-&lt;h3&gt;Basic ScrollPanel&lt;/h3&gt;
+&lt;h3&gt;Default ScrollPanel&lt;/h3&gt;
 &lt;p:scrollPanel style="width:250px;height:200px"&gt;
     &lt;p:dataGrid var="car" value="\#{tableBean.carsSmall}" columns="3"&gt;
         &lt;p:panel header="\#{car.model}" style="text-align:center"&gt;
@@ -62,7 +62,16 @@
 
 &lt;h3&gt;Native ScrollPanel&lt;/h3&gt;
 &lt;p:scrollPanel style="width:250px;height:200px" scrollMode="native"&gt;
-    //same datagrid as in basic example
+    &lt;p:dataGrid var="car" value="\#{tableBean.carsSmall}" columns="3"&gt;
+        &lt;p:panel header="\#{car.model}" style="text-align:center"&gt;
+            &lt;h:panelGrid columns="1" style="width:100%"&gt;
+                &lt;h:outputText value="\#{car.model}" /&gt;
+                &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+                &lt;h:outputText value="\#{car.year}" /&gt;
+                &lt;h:outputText value="\#{car.color}" /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:panel&gt;
+    &lt;/p:dataGrid&gt;
 &lt;/p:scrollPanel&gt;
 					</pre>
 				</p:tab>
