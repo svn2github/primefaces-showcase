@@ -24,6 +24,7 @@
 					<p:submenu label="Non-Ajax Menuitem" icon="ui-icon ui-icon-newwin">
 						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon ui-icon-close"/>
 					</p:submenu>
+                    <p:separator />
 					<p:submenu label="Navigations" icon="ui-icon ui-icon-extlink">
 						<p:submenu label="Prime Links">
 							<p:menuitem value="Prime" url="http://www.prime.com.tr" />
@@ -104,6 +105,7 @@
         &lt;p:submenu label="Non-Ajax Menuitem" icon="ui-icon ui-icon-newwin"&gt;
             &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon ui-icon-close"/&gt;
         &lt;/p:submenu&gt;
+        &lt;p:separator /&gt;
         &lt;p:submenu label="Navigations" icon="ui-icon ui-icon-extlink"&gt;
             &lt;p:submenu label="Prime Links"&gt;
                 &lt;p:menuitem value="Prime" url="http://www.prime.com.tr" /&gt;

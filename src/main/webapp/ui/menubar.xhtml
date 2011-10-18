@@ -23,6 +23,7 @@
 							<p:menuitem value="Other" url="#" helpText="CTRL+O"/>
 						</p:submenu>
 						<p:menuitem value="Open" url="#" />
+                        <p:separator />
 						<p:menuitem value="Quit" url="#" />
 					</p:submenu>
 					
@@ -64,13 +65,14 @@
 
     &lt;p:growl id="messages"/&gt;
 
-    &lt;p:menubar autoSubmenuDisplay="true"&gt;
+    &lt;p:menubar&gt;
         &lt;p:submenu label="File" icon="ui-icon ui-icon-document"&gt;
             &lt;p:submenu label="New" icon="ui-icon ui-icon-contact"&gt;
                 &lt;p:menuitem value="Project" url="\#" helpText="CTRL+N" /&gt;
                 &lt;p:menuitem value="Other" url="\#" helpText="CTRL+O"/&gt;
             &lt;/p:submenu&gt;
             &lt;p:menuitem value="Open" url="\#" /&gt;
+            &lt;p:separator /&gt;
             &lt;p:menuitem value="Quit" url="\#" /&gt;
         &lt;/p:submenu&gt;
 
