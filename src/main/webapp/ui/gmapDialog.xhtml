@@ -13,12 +13,11 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">GMap - Dialog</h1>
 		<div class="entry">
-			<p>Special care needs to be taken when gmap is place inside containers that are initially hidden.
-            In this example, dialog's onShow event is use to calculate the actual dimensions of map.</p>
+			<p>This sample demonstrates using map inside a dialog.</p>
 			
 			<p:commandButton type="button" image="ui-icon ui-icon-pin-s" value="Show Map" onclick="dlg.show()" />
 			
-			<p:dialog widgetVar="dlg" width="625" height="400" modal="true" onShow="mymap.checkResize()">
+			<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
        			<p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" widgetVar="mymap"/>
        		</p:dialog>
 			
