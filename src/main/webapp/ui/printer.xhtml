@@ -11,25 +11,27 @@
                 <p>Printer is used to print only a certain JSF component, not the whole page. A printer is very
                 flexible and can be attached to any command trigger like buttons and links.</p>
                 
-                <h:outputLink id="lnk" value="#">
-                	<p:printer target="image" />
-                	<p:graphicImage value="/images/print.png" />
-                </h:outputLink>
-                
-                <br /><br />
-	                
-	         	<p:graphicImage id="image" value="/images/nature1.jpg" />
+                <h:form>
+                    <h:commandButton value="Print" type="button">
+                        <p:printer target="image" />
+                    </h:commandButton>
+
+                    <br /><br />
+
+                    <p:graphicImage id="image" value="/images/nature1.jpg" />
+                </h:form>
 				
 				<h3>Source</h3>
 				<p:tabView>
 					<p:tab title="printer.xhtml">
 					<pre name="code" class="xml">
-&lt;h:outputLink id="lnk" value="\#"&gt;
-	&lt;p:printer target="image" /&gt;
-	&lt;p:graphicImage value="/images/print.png" /&gt;
-&lt;/h:outputLink&gt;
-  
-&lt;p:graphicImage id="image" value="/images/nature1.jpg" /&gt;
+&lt;h:form&gt;
+    &lt;h:commandButton value="Print" type="button"&gt;
+        &lt;p:printer target="image" /&gt;
+    &lt;/h:commandButton&gt;
+
+    &lt;p:graphicImage id="image" value="/images/nature1.jpg" /&gt;
+&lt;/h:form&gt;
 					</pre>
 					</p:tab>
 				</p:tabView>
