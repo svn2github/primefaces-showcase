@@ -11,8 +11,7 @@
 		<title>PrimeFaces - ShowCase</title>
 		<meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
 		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/default.css" />
-		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/#{guestPreferences.theme}/skin.css" />
-		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css"></link>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
 		<ui:insert name="head"></ui:insert>
 	</h:head>
 
@@ -29,7 +28,7 @@
 			<ul id="main">
 				<li class="current_page_item"><a href="#{request.contextPath}/ui/home.jsf" style="background:url('../design/ui.png') no-repeat center left;">PrimeUI</a></li>
 				<li><a href="#{request.contextPath}/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;color:#FF9900;">PrimeMobile</a></li>
-                <li><a href="#{request.contextPath}/ui/pushHome.jsf" style="background:url('../design/push.png') no-repeat center left;color:#FF9900;">PrimePush</a></li>
+                <li><a href="#{request.contextPath}/push/index.jsf" style="background:url('../design/push.png') no-repeat center left;color:#FF9900;">PrimePush</a></li>
 			</ul>
 		</div>
 
@@ -176,11 +175,7 @@
 	</h:body>
 
 	<ui:insert name="highlight">
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shCore.js"></script>
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushXml.js"></script>
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJava.js"></script>
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushCss.js"></script>
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
 		<script language="javascript">
 			dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
 			dp.SyntaxHighlighter.HighlightAll('code');
