@@ -15,14 +15,7 @@
 			
 			<h:form>
 			
-				<p:commandButton value="Download" ajax="false">
-					<p:fileDownload value="#{fileDownloadController.file}" />
-				</p:commandButton>
-				
-				<br /><br />Or<br /><br />
-				
-				<p:commandLink ajax="false" title="Download">
-					<p:graphicImage value="/images/download.gif" />
+				<p:commandLink value="Download" ajax="false">
 					<p:fileDownload value="#{fileDownloadController.file}" />
 				</p:commandLink>
 			
@@ -35,11 +28,6 @@
 &lt;p:commandButton value="Download" ajax="false"&gt;
 	&lt;p:fileDownload value="\#{fileDownloadController.file}" /&gt;
 &lt;/p:commandButton&gt;
-
-&lt;p:commandLink ajax="false" title="Download"&gt;
-	&lt;p:graphicImage value="/images/download.gif" /&gt;
-	&lt;p:fileDownload value="\#{fileDownloadController.file}" /&gt;
-&lt;/p:commandLink&gt;
                     </pre>  
                 </p:tab>
                 
@@ -48,26 +36,24 @@
 package org.primefaces.examples.view;
 
 import java.io.InputStream;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 
-import org.primefaces.ui.model.io.DefaultStreamedContent;
-import org.primefaces.ui.model.io.StreamedContent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 public class FileDownloadController {
 
 	private StreamedContent file;
 	
-	public FileDownloadController() {
-		InputStream stream = this.getClass().getResourceAsStream("primefaces.pdf");
-		file = new DefaultStreamedContent(stream, "application/pdf", "downloaded_primefaces.pdf");
-	}
-	
-	public StreamedContent getFile() {
-		return file;
+	public FileDownloadController() {        
+        InputStream stream = ((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/images/optimusprime.jpg");
+		file = new DefaultStreamedContent(stream, "image/jpg", "downloaded_optimus.jpg");
 	}
 
-	public void setFile(StreamedContent file) {
-		this.file = file;
-	}
+    public StreamedContent getFile() {
+        return file;
+    }  
 }
                     </pre>
                 </p:tab>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Prime Technology.
+ * Copyright 2009-2011 Prime Technology.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 package org.primefaces.examples.view;
 
 import java.io.InputStream;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -24,16 +26,12 @@ public class FileDownloadController {
 
 	private StreamedContent file;
 	
-	public FileDownloadController() {
-		InputStream stream = this.getClass().getResourceAsStream("primefaces.pdf");
-		file = new DefaultStreamedContent(stream, "application/pdf", "downloaded_primefaces.pdf");
-	}
-	
-	public StreamedContent getFile() {
-		return file;
+	public FileDownloadController() {        
+        InputStream stream = ((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/images/optimusprime.jpg");
+		file = new DefaultStreamedContent(stream, "image/jpg", "downloaded_optimus.jpg");
 	}
 
-	public void setFile(StreamedContent file) {
-		this.file = file;
-	}
+    public StreamedContent getFile() {
+        return file;
+    }  
 }
