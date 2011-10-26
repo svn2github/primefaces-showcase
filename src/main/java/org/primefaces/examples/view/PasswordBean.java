@@ -22,6 +22,8 @@ public class PasswordBean {
 	private String password3;
 	private String password4;
     private String password5;
+    private String password6;
+    private String password7;
 
 	public String getPassword1() {
 		return password1;
@@ -61,5 +63,21 @@ public class PasswordBean {
 
     public void setPassword5(String password5) {
         this.password5 = password5;
+    }
+
+    public String getPassword6() {
+        return password6;
+    }
+
+    public void setPassword6(String password6) {
+        this.password6 = password6;
+    }
+
+    public String getPassword7() {
+        return password7;
+    }
+
+    public void setPassword7(String password7) {
+        this.password7 = password7;
     }
 }
