@@ -18,7 +18,7 @@
                 <h:form id="listNotesForm">
                     <pm:listView id="notesList" value="#{notesView.notes}" var="note" swatch="e" inset="true">
                         <p:column>
-                            <p:commandLink value="#{note.shortText}" oncomplete="PrimeFaces.navigate('#new', 'pop')" update="newNoteForm:noteText">
+                            <p:commandLink value="#{note.shortText}" oncomplete="PrimeFaces.navigate('new')" update="newNoteForm:noteText">
                                 <f:setPropertyActionListener value="#{note}" target="#{notesView.note}" />
                             </p:commandLink>
                         </p:column>
