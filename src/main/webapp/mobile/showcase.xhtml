@@ -105,25 +105,25 @@
             <pm:content>
 
                 <h3>Basic</h3>
-                <pm:commandButton value="Default" type="button"/>
-                <pm:commandButton value="With Icon" type="button" icon="check"/>
-                <pm:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right"/>
-                <pm:commandButton value="Inline" type="button" icon="delete" inline="true" />
+                <p:commandButton value="Default" type="button"/>
+                <p:commandButton value="With Icon" type="button" icon="check"/>
+                <p:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right"/>
+                <p:commandButton value="Inline" type="button" icon="delete" inline="true" />
 
                 <h3>Themes</h3>
-                <pm:commandButton value="Default" type="button" swatch="a"/>
-                <pm:commandButton value="With Icon" type="button" icon="check" swatch="b"/>
-                <pm:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right" swatch="e"/>
+                <p:commandButton value="Default" type="button" swatch="a"/>
+                <p:commandButton value="With Icon" type="button" icon="check" swatch="b"/>
+                <p:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right" swatch="e"/>
 
                 <h3>Grouping</h3>
                 <pm:buttonGroup>
-                    <pm:commandButton value="Yes" type="button" icon="check"/>
-                    <pm:commandButton value="No" type="button" icon="delete"/>
+                    <p:commandButton value="Yes" type="button" icon="check"/>
+                    <p:commandButton value="No" type="button" icon="delete"/>
                 </pm:buttonGroup>
                 
                 <pm:buttonGroup orientation="horizontal">
-                    <pm:commandButton value="Yes" type="button" icon="check" />
-                    <pm:commandButton value="No" type="button" icon="delete" />
+                    <p:commandButton value="Yes" type="button" icon="check" />
+                    <p:commandButton value="No" type="button" icon="delete" />
                 </pm:buttonGroup>
 
             </pm:content>
@@ -317,7 +317,7 @@
 
                 <h:form>
                     
-                    <pm:commandButton value="Count" actionListener="#{counterBean.increment}" update="txt_count" process="@this"/>
+                    <p:commandButton value="Count" actionListener="#{counterBean.increment}" update="txt_count" process="@this"/>
                     <h3><h:outputText id="txt_count" value="Counter: #{counterBean.count}" /></h3>
                     
                 </h:form>
@@ -344,7 +344,7 @@
                     </pm:field>
 
                     <pm:panelGrid columns="2">
-                        <pm:commandButton value="PrimeFaces" actionListener="#{showcaseView.add}" update="txt txts" process="@form"/>
+                        <p:commandButton value="PrimeFaces" actionListener="#{showcaseView.add}" update="txt txts" process="@form"/>
                         <h:commandButton value="JSF Impl" actionListener="#{showcaseView.add}">
                             <f:ajax render="txt txts" execute="@form"/>
                         </h:commandButton>
@@ -368,11 +368,11 @@
                 jQuery Mobile's theme features are integrated with PrimeFaces. Mobile components are equipped with swatch options.
                 Also each PrimeFaces Mobile sample application demonstrates a different swatch.
 
-                <pm:commandButton value="A Swatch" type="button" icon="check" swatch="a"/>
-                <pm:commandButton value="B Swatch" type="button" icon="check" swatch="b"/>
-                <pm:commandButton value="C Swatch" type="button" icon="check" swatch="c"/>
-                <pm:commandButton value="D Swatch" type="button" icon="check" swatch="d"/>
-                <pm:commandButton value="E Swatch" type="button" icon="check" swatch="e"/>
+                <p:commandButton value="A Swatch" type="button" icon="check" swatch="a"/>
+                <p:commandButton value="B Swatch" type="button" icon="check" swatch="b"/>
+                <p:commandButton value="C Swatch" type="button" icon="check" swatch="c"/>
+                <p:commandButton value="D Swatch" type="button" icon="check" swatch="d"/>
+                <p:commandButton value="E Swatch" type="button" icon="check" swatch="e"/>
 
             </pm:content>
         </pm:view>

@@ -38,7 +38,7 @@
                             <p:separator />
 
                             <h:inputText value="#{chatController.message}" styleClass="messageInput" />
-                            <pm:commandButton value="Send" actionListener="#{chatController.send}" 
+                            <p:commandButton value="Send" actionListener="#{chatController.send}" 
                                      oncomplete="$('.messageInput').val('')"/>
                         </h:panelGroup>
                     
@@ -48,7 +48,7 @@
                             
                             <p:separator />
 
-                            <pm:commandButton value="Login" icon="refresh" update="container"
+                            <p:commandButton value="Login" icon="refresh" update="container"
                                               actionListener="#{chatController.login}" />
                         </h:panelGroup>
                     </p:outputPanel>

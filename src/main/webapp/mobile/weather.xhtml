@@ -22,7 +22,7 @@
                    
                     <p:separator />
 
-                    <pm:commandButton value="Get Forecast" update="display" actionListener="#{weatherController.retrieveConditions}"/>
+                    <p:commandButton value="Get Forecast" update="display" actionListener="#{weatherController.retrieveConditions}"/>
 
                     <p:outputPanel layout="block" style="text-align:center">
                         <h:outputText id="display" value="#{weatherController.conditions}" escape="false" />
@@ -48,7 +48,7 @@
 
                     <p:separator />
 
-                    <pm:commandButton value="Save" actionListener="#{weatherController.saveSettings}" update=":mainForm:display"
+                    <p:commandButton value="Save" actionListener="#{weatherController.saveSettings}" update=":mainForm:display"
                                       action="pm:main"/>
                     
                 </h:form>
