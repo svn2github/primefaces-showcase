@@ -1,0 +1,74 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile"
+	contentType="text/html">
+
+    <pm:page title="Contacts">
+
+        <!-- Main View -->
+        <pm:view id="main" swatch="a">
+            <pm:header title="Contacts">
+                <f:facet name="right"><pm:button value="New" icon="plus" href="new" transition="slide"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                <h:form id="listContactsForm">
+                    <pm:listView id="contactsList" value="#{contactsView.contacts}" var="contact" swatch="a" inset="true">
+                        <p:column>
+                            <p:commandLink value="#{contact.display}" action="pm:new" update="newContactForm">
+                                <f:setPropertyActionListener value="#{contact}" target="#{contactsView.newContact}" />
+                            </p:commandLink>
+                        </p:column>
+                    </pm:listView>
+                </h:form>
+            </pm:content>
+        </pm:view>
+
+        <!-- New Contact -->
+        <pm:view id="new" swatch="a">
+            <pm:header title="New Contact">
+                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                <h:form id="newContactForm">
+                    <pm:field>
+                        <h:outputLabel for="name" value="Name : " />
+                        <h:inputText id="name" value="#{contactsView.newContact.name}" />
+                    </pm:field>
+                    
+                    <pm:field>
+                        <h:outputLabel for="surname" value="Surname : " />
+                        <h:inputText id="surname" value="#{contactsView.newContact.sName}" />
+                    </pm:field>
+                    
+                    <pm:field>
+                        <h:outputLabel for="phone" value="Phone : " />
+                        <h:inputText id="phone" value="#{contactsView.newContact.phone}" />
+                    </pm:field>
+                    
+                    <pm:field>
+                        <h:outputLabel for="mail" value="Email : " />
+                        <h:inputText id="mail" value="#{contactsView.newContact.mail}" />
+                    </pm:field>
+                    
+                    <pm:field>
+                        <h:outputLabel for="address" value="Address :  " />
+                        <h:inputTextarea id="address" value="#{contactsView.newContact.address}" />
+                    </pm:field>
+               
+                    <pm:buttonGroup>
+                        <p:commandButton value="Save" action="#{contactsView.saveContact}" update="newContactForm listContactsForm" icon="check" />
+                    </pm:buttonGroup>
+                    <p:separator />
+                </h:form>
+            </pm:content>
+
+        </pm:view>
+
+    </pm:page>
+
+</f:view>
