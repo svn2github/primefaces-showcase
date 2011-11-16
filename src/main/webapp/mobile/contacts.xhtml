@@ -35,35 +35,22 @@
 
             <pm:content>
                 <h:form id="newContactForm">
-                    <pm:field>
-                        <h:outputLabel for="name" value="Name : " />
-                        <h:inputText id="name" value="#{contactsView.newContact.name}" />
-                    </pm:field>
+                    <h:outputLabel for="name" value="Name : " />
+                    <h:inputText id="name" value="#{contactsView.newContact.name}" />
                     
-                    <pm:field>
-                        <h:outputLabel for="surname" value="Surname : " />
-                        <h:inputText id="surname" value="#{contactsView.newContact.sName}" />
-                    </pm:field>
+                    <h:outputLabel for="surname" value="Surname : " />
+                    <h:inputText id="surname" value="#{contactsView.newContact.sName}" />
+
+                    <h:outputLabel for="phone" value="Phone : " />
+                    <h:inputText id="phone" value="#{contactsView.newContact.phone}" />
+
+                    <h:outputLabel for="mail" value="Email : " />
+                    <h:inputText id="mail" value="#{contactsView.newContact.mail}" />
+
+                    <h:outputLabel for="address" value="Address :  " />
+                    <h:inputTextarea id="address" value="#{contactsView.newContact.address}" />
                     
-                    <pm:field>
-                        <h:outputLabel for="phone" value="Phone : " />
-                        <h:inputText id="phone" value="#{contactsView.newContact.phone}" />
-                    </pm:field>
-                    
-                    <pm:field>
-                        <h:outputLabel for="mail" value="Email : " />
-                        <h:inputText id="mail" value="#{contactsView.newContact.mail}" />
-                    </pm:field>
-                    
-                    <pm:field>
-                        <h:outputLabel for="address" value="Address :  " />
-                        <h:inputTextarea id="address" value="#{contactsView.newContact.address}" />
-                    </pm:field>
-               
-                    <pm:buttonGroup>
-                        <p:commandButton value="Save" action="#{contactsView.saveContact}" update="newContactForm listContactsForm" icon="check" />
-                    </pm:buttonGroup>
-                    <p:separator />
+                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update="newContactForm listContactsForm" icon="check" />
                 </h:form>
             </pm:content>
 
