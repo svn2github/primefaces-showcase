@@ -16,13 +16,13 @@
 
             <pm:content>
                 <h:form id="listContactsForm">
-                    <pm:listView id="contactsList" value="#{contactsView.contacts}" var="contact" swatch="a" inset="true">
+                    <p:dataList id="contactsList" value="#{contactsView.contacts}" var="contact">
                         <p:column>
                             <p:commandLink value="#{contact.display}" action="pm:new" update="newContactForm">
                                 <f:setPropertyActionListener value="#{contact}" target="#{contactsView.newContact}" />
                             </p:commandLink>
                         </p:column>
-                    </pm:listView>
+                    </p:dataList>
                 </h:form>
             </pm:content>
         </pm:view>

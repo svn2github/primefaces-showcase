@@ -23,9 +23,9 @@
                     <p:commandButton value="Get Tweets" icon="refresh" update="tweetList"
                                       actionListener="#{twitterController.loadTweets}" />
 
-                    <pm:listView id="tweetList" value="#{twitterController.tweets}" var="tweet" style="margin-top:1em">
+                    <p:dataList id="tweetList" value="#{twitterController.tweets}" var="tweet" style="margin-top:1em">
                         #{tweet}
-                    </pm:listView>
+                    </p:dataList>
                 </h:form>
             </pm:content>
 

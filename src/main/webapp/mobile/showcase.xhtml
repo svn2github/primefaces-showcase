@@ -15,21 +15,21 @@
 
             <pm:content>
 
-                <pm:listView inset="true" title="Components" titleSwatch="a">
+                <p:dataList type="inset" title="Components">
                     <h:outputLink value="#forms">Forms</h:outputLink>
                     <h:outputLink value="#buttons">Buttons</h:outputLink>
                     <h:outputLink value="#lists">Lists</h:outputLink>
                     <h:outputLink value="#dialog">Dialog</h:outputLink>
                     <h:outputLink value="#navbar">NavBar</h:outputLink>
                     <h:outputLink value="#panels">Panels</h:outputLink>
-                </pm:listView>
+                </p:dataList>
 
-                <pm:listView inset="true" title="Framework" titleSwatch="a">
+                <p:dataList type="inset" title="Framework">
                     <h:outputLink value="#transitions">Transitions</h:outputLink>
                     <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
                     <h:outputLink value="#ajaxUpdate">Ajax Updates</h:outputLink>
                     <h:outputLink value="#theming">Theming</h:outputLink>
-                </pm:listView>
+                </p:dataList>
 
             </pm:content>
 
@@ -139,49 +139,39 @@
             <pm:content>
 
                 <h3>Read-Only</h3>
-                <pm:listView>
+                <<p:dataList>
                     <h:outputText value="Item 1" />
                     <h:outputText value="Item 2" />
                     <h:outputText value="Item 3" />
-                </pm:listView>
+                </p:dataList>
 
                 <p:spacer height="10em" />
 
                 <h3>Links</h3>
-                <pm:listView>
+                <p:dataList>
                     <h:outputLink value="#main">Item 1</h:outputLink>
                     <h:outputLink value="#main">Item 2</h:outputLink>
                     <h:outputLink value="#main">Item 3</h:outputLink>
-                </pm:listView>
+                </p:dataList>
 
                 <p:spacer height="10em" />
 
                 <h3>Inset</h3>
-                <pm:listView inset="true">
+                <p:dataList type="inset">
                     <h:outputLink value="#main">Item 1</h:outputLink>
                     <h:outputLink value="#main">Item 2</h:outputLink>
                     <h:outputLink value="#main">Item 3</h:outputLink>
-                </pm:listView>
+                </p:dataList>
 
                 <p:spacer height="10em" />
 
                 <h3>Custom Content</h3>
-                <pm:listView value="#{ringBean.players}" var="player">
+                <p:dataList value="#{ringBean.players}" var="player">
                     <p:graphicImage value="/images/barca/#{player.photo}" />
                     <h3><h:outputLink value="#main">#{player.name}</h:outputLink></h3>
                     <p>#{player.position}</p>
                     <h:outputText styleClass="ui-li-count" value="#{player.number}" />
-                </pm:listView>
-
-                <p:spacer height="10em" />
-
-                <h3>Theming</h3>
-                <pm:listView swatch="e">
-                    <h:outputLink value="#main">Item 1</h:outputLink>
-                    <h:outputLink value="#main">Item 2</h:outputLink>
-                    <h:outputLink value="#main">Item 3</h:outputLink>
-                </pm:listView>
-
+                </p:dataList>
             </pm:content>
 
         </pm:view>
@@ -350,9 +340,9 @@
                         </h:commandButton>
                     </pm:panelGrid>
 
-                    <pm:listView id="txts" var="text" value="#{showcaseView.texts}" inset="true" title="Values" titleSwatch="a">
+                    <p:dataList id="txts" var="text" value="#{showcaseView.texts}" type="inset" title="Values">
                         #{text}
-                    </pm:listView>
+                    </p:dataList>
 
                 </h:form>
             </pm:content>

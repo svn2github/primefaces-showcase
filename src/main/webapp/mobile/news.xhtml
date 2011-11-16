@@ -16,13 +16,13 @@
             <pm:content>
                 <h:form id="groupsForm">
 
-                    <pm:listView  value="#{newsController.groups}" var="group">
+                    <p:dataList  value="#{newsController.groups}" var="group">
                         <p:column>
                             <p:commandLink value="#{group.title}" update="entriesForm:entries" action="pm:summaries">
                                 <f:setPropertyActionListener value="#{group}" target="#{newsController.selectedGroup}" />
                             </p:commandLink>
                         </p:column>
-                    </pm:listView>
+                    </p:dataList>
 
                 </h:form>
 
@@ -39,14 +39,14 @@
             <pm:content>
                 <h:form id="entriesForm">
 
-                    <pm:listView id="entries" value="#{newsController.selectedGroup.entries}" var="entry">
+                    <p:dataList id="entries" value="#{newsController.selectedGroup.entries}" var="entry">
                         <p:column>
                             <p:commandLink value="#{entry.title}" update="content" action="pm:details">
                                 <f:setPropertyActionListener value="#{entry}" target="#{newsController.selectedEntry}" />
                             </p:commandLink>
                         </p:column>
-
-                    </pm:listView>
+                    </p:dataList>
+                    
                 </h:form>
             </pm:content>
         </pm:view>
