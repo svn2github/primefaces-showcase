@@ -41,7 +41,7 @@
 					</p:column>
 				</p:dataList>
 				
-				<p:dialog header="Car Detail" widgetVar="carDialog" width="200" height="175" modal="true">
+				<p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade">
 					<p:outputPanel id="carDetail" style="text-align:center;" layout="block">
 					
 						<p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>
@@ -83,7 +83,7 @@
 		&lt;/p:column&gt;
 	&lt;/p:dataList&gt;
 	
-	&lt;p:dialog header="Car Detail" widgetVar="carDialog" width="200" height="175" modal="true"&gt;
+	&lt;p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade"&gt;
 		&lt;p:outputPanel id="carDetail" style="text-align:center;" layout="block"&gt;
 		
 			&lt;p:graphicImage value="/images/cars/\#{tableBean.selectedCar.manufacturer}.jpg"/&gt;
