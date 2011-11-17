@@ -10,12 +10,13 @@
 
         <!-- Main View -->
         <pm:view id="main">
-            <pm:header title="Mobile">
+            <pm:header title="Mobile" swatch="b">
             </pm:header>
 
             <pm:content>
 
-                <p:dataList type="inset" title="Components">
+                <p:dataList type="inset">
+                    <f:facet name="header">Components</f:facet>
                     <h:outputLink value="#forms">Forms</h:outputLink>
                     <h:outputLink value="#buttons">Buttons</h:outputLink>
                     <h:outputLink value="#lists">Lists</h:outputLink>
@@ -24,7 +25,8 @@
                     <h:outputLink value="#panels">Panels</h:outputLink>
                 </p:dataList>
 
-                <p:dataList type="inset" title="Framework">
+                <p:dataList type="inset">
+                    <f:facet name="header">Framework</f:facet>
                     <h:outputLink value="#transitions">Transitions</h:outputLink>
                     <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
                     <h:outputLink value="#ajaxUpdate">Ajax Updates</h:outputLink>
@@ -139,7 +141,7 @@
             <pm:content>
 
                 <h3>Read-Only</h3>
-                <<p:dataList>
+                <p:dataList>
                     <h:outputText value="Item 1" />
                     <h:outputText value="Item 2" />
                     <h:outputText value="Item 3" />
@@ -340,7 +342,8 @@
                         </h:commandButton>
                     </pm:panelGrid>
 
-                    <p:dataList id="txts" var="text" value="#{showcaseView.texts}" type="inset" title="Values">
+                    <p:dataList id="txts" var="text" value="#{showcaseView.texts}" type="inset">
+                        <f:facet name="header">Values</f:facet>
                         #{text}
                     </p:dataList>
 

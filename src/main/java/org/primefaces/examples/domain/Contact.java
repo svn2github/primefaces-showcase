@@ -73,6 +73,6 @@ public class Contact implements Serializable{
     }
     
     public String getDisplay(){
-        return getName() + " " + getsName() + " - " + getPhone();
+        return getName() + " " + getsName();
     }
 }
