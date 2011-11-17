@@ -22,7 +22,7 @@ import org.primefaces.examples.domain.Contact;
 
 public class ContactsView implements Serializable{
     
-    private Contact newContact = new Contact();
+    private Contact contact = new Contact();
     
     private List<Contact> contacts;
 
@@ -30,12 +30,12 @@ public class ContactsView implements Serializable{
         contacts = new ArrayList<Contact>();
     }
     
-    public Contact getNewContact() {
-        return newContact;
+    public Contact getContact() {
+        return contact;
     }
 
-    public void setNewContact(Contact newContact) {
-        this.newContact = newContact;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
     
     public List<Contact> getContacts() {
@@ -43,12 +43,17 @@ public class ContactsView implements Serializable{
     }
     
     public String saveContact(){
-        if(!contacts.contains(newContact)) {
-            contacts.add(newContact);
+        if(!contacts.contains(contact)) {
+            contacts.add(contact);
         }
-
-        newContact = new Contact();
+        
         return "pm:main";
+    }
+    
+    public String prepareNewContact() {
+        contact = new Contact();
+        
+        return "pm:new";
     }
 
 }

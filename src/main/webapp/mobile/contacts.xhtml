@@ -9,18 +9,25 @@
     <pm:page title="Contacts">
 
         <!-- Main View -->
-        <pm:view id="main" swatch="a">
+        <pm:view id="main">
             <pm:header title="Contacts">
-                <f:facet name="right"><pm:button value="New" icon="plus" href="new" transition="slide"/></f:facet>
+                <f:facet name="right">
+                    <h:form>
+                        <p:commandButton value="New" icon="plus" action="#{contactsView.prepareNewContact}" update="newContactForm"/>
+                    </h:form>
+                </f:facet>
             </pm:header>
 
             <pm:content>
                 <h:form id="listContactsForm">
                     <p:dataList id="contactsList" value="#{contactsView.contacts}" var="contact">
                         <p:column>
-                            <p:commandLink value="#{contact.display}" action="pm:new" update="newContactForm">
-                                <f:setPropertyActionListener value="#{contact}" target="#{contactsView.newContact}" />
-                            </p:commandLink>
+                            <h3>
+                                <p:commandLink value="#{contact.display}" action="pm:new" update="newContactForm">
+                                    <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
+                                </p:commandLink>
+                                <p>Call</p>
+                            </h3>
                         </p:column>
                     </p:dataList>
                 </h:form>
@@ -28,29 +35,29 @@
         </pm:view>
 
         <!-- New Contact -->
-        <pm:view id="new" swatch="a">
+        <pm:view id="new">
             <pm:header title="New Contact">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
                 <h:form id="newContactForm">
                     <h:outputLabel for="name" value="Name : " />
-                    <h:inputText id="name" value="#{contactsView.newContact.name}" />
+                    <h:inputText id="name" value="#{contactsView.contact.name}" />
                     
                     <h:outputLabel for="surname" value="Surname : " />
-                    <h:inputText id="surname" value="#{contactsView.newContact.sName}" />
+                    <h:inputText id="surname" value="#{contactsView.contact.sName}" />
 
                     <h:outputLabel for="phone" value="Phone : " />
-                    <h:inputText id="phone" value="#{contactsView.newContact.phone}" />
+                    <h:inputText id="phone" value="#{contactsView.contact.phone}" />
 
                     <h:outputLabel for="mail" value="Email : " />
-                    <h:inputText id="mail" value="#{contactsView.newContact.mail}" />
+                    <h:inputText id="mail" value="#{contactsView.contact.mail}" />
 
                     <h:outputLabel for="address" value="Address :  " />
-                    <h:inputTextarea id="address" value="#{contactsView.newContact.address}" />
+                    <h:inputTextarea id="address" value="#{contactsView.contact.address}" />
                     
-                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update="newContactForm listContactsForm" icon="check" />
+                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update="listContactsForm" icon="check" />
                 </h:form>
             </pm:content>
 

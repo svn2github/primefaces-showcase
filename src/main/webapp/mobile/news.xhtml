@@ -10,7 +10,7 @@
         <!-- Groups -->
         <pm:view id="groups" swatch="c">
             <pm:header title="News">
-                <f:facet name="right"><pm:button value="About" icon="info" href="about" transition="slideup"/></f:facet>
+                <f:facet name="right"><p:button value="About" icon="info" href="#about" /></f:facet>
             </pm:header>
 
             <pm:content>
@@ -32,8 +32,7 @@
         <!-- Summaries -->
         <pm:view id="summaries" swatch="c">
             <pm:header title="News">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
-                <f:facet name="right"><pm:button value="About" icon="info" href="about" transition="slideup"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#groups?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -54,23 +53,11 @@
         <!-- Details -->
         <pm:view id="details" swatch="c">
             <pm:header title="News">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
-                <f:facet name="right"><pm:button value="About" icon="info" href="about" transition="slideup"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#summaries?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
                 <h:outputText id="content" value="#{newsController.selectedEntry.content}" escape="false" />
-            </pm:content>
-        </pm:view>
-
-        <!-- About -->
-        <pm:view id="about" swatch="c">
-            <pm:header title="About">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
-            </pm:header>
-
-            <pm:content>
-                <h:outputText value="Brought to you by PrimeFaces Mobile and Yahoo News Service" />
             </pm:content>
         </pm:view>
 

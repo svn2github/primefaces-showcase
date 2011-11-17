@@ -20,17 +20,14 @@
                     <h:outputLink value="#forms">Forms</h:outputLink>
                     <h:outputLink value="#buttons">Buttons</h:outputLink>
                     <h:outputLink value="#lists">Lists</h:outputLink>
-                    <h:outputLink value="#dialog">Dialog</h:outputLink>
                     <h:outputLink value="#navbar">NavBar</h:outputLink>
                     <h:outputLink value="#panels">Panels</h:outputLink>
                 </p:dataList>
 
                 <p:dataList type="inset">
                     <f:facet name="header">Framework</f:facet>
-                    <h:outputLink value="#transitions">Transitions</h:outputLink>
                     <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
                     <h:outputLink value="#ajaxUpdate">Ajax Updates</h:outputLink>
-                    <h:outputLink value="#theming">Theming</h:outputLink>
                 </p:dataList>
 
             </pm:content>
@@ -40,7 +37,7 @@
         <!-- Forms -->
         <pm:view id="forms">
             <pm:header title="Forms">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back" swatch="b"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -101,7 +98,7 @@
         <!-- Buttons -->
         <pm:view id="buttons">
             <pm:header title="Buttons">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -135,7 +132,7 @@
         <!-- Lists -->
         <pm:view id="lists">
             <pm:header title="Lists">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -178,43 +175,24 @@
 
         </pm:view>
 
-        <!-- Dialog -->
-        <pm:view id="dialog">
-            <pm:header title="TODO">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
-            </pm:header>
-
-            <pm:content>
-                <pm:button href="#dialogContent" value="Show Dialog" role="dialog" transition="pop"/>
-            </pm:content>
-        </pm:view>
-
-        <pm:view id="dialogContent">
-            <pm:header title="Header" />
-
-            <pm:content>
-                Content
-            </pm:content>
-        </pm:view>
-
         <!-- NavBar -->
         <pm:view id="navbar">
             <pm:header title="NavBar">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
                 <pm:navBar>
-                    <pm:button value="Home" icon="home" role="back" styleClass="ui-btn-active"/>
-                    <pm:button value="Info" icon="info" role="back" />
-                    <pm:button value="Search" icon="search" role="back" />
+                    <p:button value="Home" icon="home" href="#main?reverse=true" styleClass="ui-btn-active"/>
+                    <p:button value="Info" icon="info" href="#main?reverse=true" />
+                    <p:button value="Search" icon="search" href="#main?reverse=true" />
                 </pm:navBar>
             </pm:header>
 
             <pm:content>
                 <pm:navBar>
-                    <pm:button value="Home" icon="home" role="back" styleClass="ui-btn-active"/>
-                    <pm:button value="Info" icon="info" role="back" />
-                    <pm:button value="Search" icon="search" role="back" />
-                    <pm:button value="Favs" icon="star" role="back" />
-                    <pm:button value="Setup" icon="gear" role="back" />
+                    <p:button value="Home" icon="home" href="#main?reverse=true" styleClass="ui-btn-active"/>
+                    <p:button value="Info" icon="info" href="#main?reverse=true" />
+                    <p:button value="Search" icon="search" href="#main?reverse=true" />
+                    <p:button value="Favs" icon="star" href="#main?reverse=true" />
+                    <p:button value="Setup" icon="gear" href="#main?reverse=true" />
                 </pm:navBar>
             </pm:content>
         </pm:view>
@@ -222,7 +200,7 @@
         <!-- Panels -->
         <pm:view id="panels">
             <pm:header title="Panels">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -245,9 +223,9 @@
 
                 <h4>3 Column</h4>
                 <h:panelGrid columns="3">
-                    <pm:button value="Home" icon="home" role="back" />
-                    <pm:button value="Info" icon="info" role="back" />
-                    <pm:button value="Search" icon="search" role="back" />
+                    <p:button value="Home" icon="home" href="#main?reverse=true" />
+                    <p:button value="Info" icon="info" href="#main?reverse=true" />
+                    <p:button value="Search" icon="search" href="#main?reverse=true" />
                 </h:panelGrid>
 
                 <h4>4 Column</h4>
@@ -266,29 +244,29 @@
             </pm:content>
         </pm:view>
 
-        <!-- Ajax Status -->
+        <!-- Ajax Status 
         <pm:view id="transitions">
             <pm:header title="Transitions">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
                 There are 6 types of view transition effects.
 
-                <pm:button href="#transition" value="Slide" transition="slide" />
-                <pm:button href="#transition" value="Slide Up" transition="slideup" />
-                <pm:button href="#transition" value="Slide Down" transition="slidedown" />
-                <pm:button href="#transition" value="Pop" transition="pop" />
-                <pm:button href="#transition" value="Fade" transition="fade" />
-                <pm:button href="#transition" value="Flip" transition="flip" />
+                <p:button href="#transition" value="Slide" transition="slide" />
+                <p:button href="#transition" value="Slide Up" transition="slideup" />
+                <p:button href="#transition" value="Slide Down" transition="slidedown" />
+                <p:button href="#transition" value="Pop" transition="pop" />
+                <p:button href="#transition" value="Fade" transition="fade" />
+                <p:button href="#transition" value="Flip" transition="flip" />
 
 
             </pm:content>
-        </pm:view>
+        </pm:view>-->
 
         <pm:view id="transition">
             <pm:header title="Transition">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#transitions?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -301,7 +279,7 @@
         <!-- Ajax Status -->
         <pm:view id="ajaxStatus">
             <pm:header title="Ajax Status">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -320,7 +298,7 @@
         <!-- Ajax Update -->
         <pm:view id="ajaxUpdate">
             <pm:header title="TODO">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -348,25 +326,6 @@
                     </p:dataList>
 
                 </h:form>
-            </pm:content>
-        </pm:view>
-
-        <!-- Ajax Grid -->
-        <pm:view id="theming" >
-            <pm:header title="TODO">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
-            </pm:header>
-
-            <pm:content>
-                jQuery Mobile's theme features are integrated with PrimeFaces. Mobile components are equipped with swatch options.
-                Also each PrimeFaces Mobile sample application demonstrates a different swatch.
-
-                <p:commandButton value="A Swatch" type="button" icon="check" swatch="a"/>
-                <p:commandButton value="B Swatch" type="button" icon="check" swatch="b"/>
-                <p:commandButton value="C Swatch" type="button" icon="check" swatch="c"/>
-                <p:commandButton value="D Swatch" type="button" icon="check" swatch="d"/>
-                <p:commandButton value="E Swatch" type="button" icon="check" swatch="e"/>
-
             </pm:content>
         </pm:view>
 

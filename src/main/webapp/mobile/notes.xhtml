@@ -11,7 +11,7 @@
         <!-- Main View -->
         <pm:view id="main" swatch="e">
             <pm:header title="Notes">
-                <f:facet name="right"><pm:button value="New" icon="plus" href="new" role="dialog" transition="pop"/></f:facet>
+                <f:facet name="right"><p:button value="New" icon="plus" href="#new" /></f:facet>
             </pm:header>
 
             <pm:content>
@@ -31,6 +31,7 @@
         <!-- New Notes -->
         <pm:view id="new" swatch="e">
             <pm:header title="New Note">
+                <f:facet name="right"><p:button value="New" icon="plus" href="#main?reverse=true" /></f:facet>
             </pm:header>
 
             <pm:content>
@@ -39,7 +40,7 @@
 
                     <p:separator />
 
-                    <p:commandButton value="Save" actionListener="#{notesView.save}" update="noteText listNotesForm:notesList"
+                    <p:commandButton value="Save" action="#{notesView.save}" update="noteText listNotesForm:notesList"
                                       oncomplete="$('.ui-dialog').dialog('close')" icon="check" />
 
                 </h:form>

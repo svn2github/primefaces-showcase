@@ -10,7 +10,9 @@
         <!-- Main View -->
         <pm:view id="main">
             <pm:header title="Weather">
-                <f:facet name="right"><pm:button value="Settings" icon="gear" href="settings"/></f:facet>
+                <f:facet name="right">
+                    <p:button value="Settings" icon="gear" href="#settings" />
+                </f:facet>
             </pm:header>
 
             <pm:content>
@@ -34,7 +36,7 @@
         <!-- Settings View -->
         <pm:view id="settings">
             <pm:header title="Weather">
-                <f:facet name="left"><pm:button value="Back" icon="back" role="back"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
