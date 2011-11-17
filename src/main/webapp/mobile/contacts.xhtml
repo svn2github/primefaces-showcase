@@ -22,12 +22,9 @@
                 <h:form id="listContactsForm">
                     <p:dataList id="contactsList" value="#{contactsView.contacts}" var="contact">
                         <p:column>
-                            <h3>
-                                <p:commandLink value="#{contact.display}" action="pm:new" update="newContactForm">
-                                    <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
-                                </p:commandLink>
-                                <p>Call</p>
-                            </h3>
+                            <p:commandLink value="#{contact.firstname} #{contact.surname}" action="pm:new" update="newContactForm">
+                                <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
+                            </p:commandLink>
                         </p:column>
                     </p:dataList>
                 </h:form>
@@ -43,19 +40,22 @@
             <pm:content>
                 <h:form id="newContactForm">
                     <h:outputLabel for="name" value="Name : " />
-                    <h:inputText id="name" value="#{contactsView.contact.name}" />
+                    <p:inputText id="name" value="#{contactsView.contact.firstname}" />
                     
                     <h:outputLabel for="surname" value="Surname : " />
-                    <h:inputText id="surname" value="#{contactsView.contact.sName}" />
+                    <p:inputText id="surname" value="#{contactsView.contact.surname}" />
+
+                    <h:outputLabel for="age" value="Age : " />
+                    <p:inputText id="age" value="#{contactsView.contact.age}" type="number" />
 
                     <h:outputLabel for="phone" value="Phone : " />
-                    <h:inputText id="phone" value="#{contactsView.contact.phone}" />
+                    <p:inputText id="phone" value="#{contactsView.contact.phone}" />
 
                     <h:outputLabel for="mail" value="Email : " />
-                    <h:inputText id="mail" value="#{contactsView.contact.mail}" />
+                    <p:inputText id="mail" value="#{contactsView.contact.mail}" />
 
                     <h:outputLabel for="address" value="Address :  " />
-                    <h:inputTextarea id="address" value="#{contactsView.contact.address}" />
+                    <p:inputTextarea id="address" value="#{contactsView.contact.address}" />
                     
                     <p:commandButton value="Save" action="#{contactsView.saveContact}" update="listContactsForm" icon="check" />
                 </h:form>

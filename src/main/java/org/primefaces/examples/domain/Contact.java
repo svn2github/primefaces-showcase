@@ -19,13 +19,29 @@ import java.io.Serializable;
 
 public class Contact implements Serializable{
 
-    private String name;
-    private String sName;
+    private String firstname;
+    private String surname;
     private String phone;
     private String address;
     private String mail;
-    private int age;
+    private Integer age;
     private String gender;
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
     public String getGender() {
         return gender;
@@ -35,11 +51,11 @@ public class Contact implements Serializable{
         this.gender = gender;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -49,14 +65,6 @@ public class Contact implements Serializable{
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPhone() {
@@ -71,19 +79,7 @@ public class Contact implements Serializable{
         return address;
     }
     
-    public String getsName() {
-        return sName;
-    }
-
-    public void setsName(String sName) {
-        this.sName = sName;
-    }
-
     public void setAddress(String address) {
         this.address = address;
-    }
-    
-    public String getDisplay(){
-        return getName() + " " + getsName();
     }
 }
