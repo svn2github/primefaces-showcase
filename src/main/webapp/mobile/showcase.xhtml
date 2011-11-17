@@ -238,20 +238,20 @@
                 <h3>Grid Layout</h3>
 
                 <h4>2 Column</h4>
-                <pm:panelGrid column="2">
+                <h:panelGrid columns="2">
                     <h:outputText value="Cell 1" />
                     <h:outputText value="Cell 2" />
-                </pm:panelGrid>
+                </h:panelGrid>
 
                 <h4>3 Column</h4>
-                <pm:panelGrid columns="3">
+                <h:panelGrid columns="3">
                     <pm:button value="Home" icon="home" role="back" />
                     <pm:button value="Info" icon="info" role="back" />
                     <pm:button value="Search" icon="search" role="back" />
-                </pm:panelGrid>
+                </h:panelGrid>
 
                 <h4>4 Column</h4>
-                <pm:panelGrid column="4">
+                <h:panelGrid columns="4">
                     <h:outputText value="Cell 1" />
                     <h:outputText value="Cell 2" />
                     <h:outputText value="Cell 3" />
@@ -261,7 +261,7 @@
                     <h:outputText value="Cell 6" />
                     <h:outputText value="Cell 7" />
                     <h:outputText value="Cell 8" />
-                </pm:panelGrid>
+                </h:panelGrid>
                 
             </pm:content>
         </pm:view>
@@ -335,12 +335,12 @@
                         <h:inputText id="txt" value="#{showcaseView.text}" />
                     </pm:field>
 
-                    <pm:panelGrid columns="2">
+                    <h:panelGrid columns="2">
                         <p:commandButton value="PrimeFaces" actionListener="#{showcaseView.add}" update="txt txts" process="@form"/>
                         <h:commandButton value="JSF Impl" actionListener="#{showcaseView.add}">
                             <f:ajax render="txt txts" execute="@form"/>
                         </h:commandButton>
-                    </pm:panelGrid>
+                    </h:panelGrid>
 
                     <p:dataList id="txts" var="text" value="#{showcaseView.texts}" type="inset">
                         <f:facet name="header">Values</f:facet>
