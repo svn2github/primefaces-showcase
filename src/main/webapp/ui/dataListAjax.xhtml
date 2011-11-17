@@ -23,15 +23,19 @@
 			<p>Ajax Pagination is a built-in feature and paginator UI is fully customizable via various options like paginatorTemplate, rowsPerPageOptions, 
 		pageLinks and more.</p>
 		
-			<h:form prependId="false">
+			<h:form id="form">
 			
 				<p:dataList value="#{tableBean.cars}" var="car"
 					paginator="true" rows="5" effectSpeed="fast"
 					paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15">
+                    
+                    <f:facet name="header">
+                        Cars
+                    </f:facet>
 					
 					<p:column>
-						<p:commandLink update="carDetail" oncomplete="carDialog.show()" title="View Detail">
+						<p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">
 						<p:graphicImage value="/images/search.png"/> 
 						<f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
 					</p:commandLink>
@@ -65,20 +69,24 @@
 			<p:tabView>
 				<p:tab title="datagrid.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form prependId="false"&gt;
+&lt;h:form id="form"&gt;
 			
 	&lt;p:dataList value="\#{tableBean.cars}" var="car"
 		paginator="true" rows="5" effectSpeed="fast"
 		paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
 		rowsPerPageTemplate="5,10,15"&gt;
+
+        &lt;f:facet name="header"&gt;
+            Cars
+        &lt;/f:facet&gt;
 		
 		&lt;p:column&gt;
-			&lt;p:commandLink update="carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
-			&lt;p:graphicImage value="/images/search.png"/&gt; 
-			&lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
-		&lt;/p:commandLink&gt;
-		
-		&lt;h:outputText value="\#{car.manufacturer}, \#{car.year}" style="margin-left:10px" /&gt;
+            &lt;p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
+                &lt;p:graphicImage value="/images/search.png"/&gt; 
+                &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
+            &lt;/p:commandLink&gt;
+
+            &lt;h:outputText value="\#{car.manufacturer}, \#{car.year}" style="margin-left:10px" /&gt;
 		
 		&lt;/p:column&gt;
 	&lt;/p:dataList&gt;
