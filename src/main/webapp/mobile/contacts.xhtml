@@ -39,23 +39,17 @@
 
             <pm:content>
                 <h:form id="newContactForm">
-                    <h:outputLabel for="name" value="Name : " />
-                    <p:inputText id="name" value="#{contactsView.contact.firstname}" />
-                    
-                    <h:outputLabel for="surname" value="Surname : " />
-                    <p:inputText id="surname" value="#{contactsView.contact.surname}" />
+                    <p:inputText id="name" value="#{contactsView.contact.firstname}" label="Name:"/>
 
-                    <h:outputLabel for="age" value="Age : " />
-                    <p:inputText id="age" value="#{contactsView.contact.age}" type="number" />
+                    <p:inputText id="surname" value="#{contactsView.contact.surname}" label="Surname:"/>
 
-                    <h:outputLabel for="phone" value="Phone : " />
-                    <p:inputText id="phone" value="#{contactsView.contact.phone}" />
+                    <p:inputText id="age" value="#{contactsView.contact.age}" type="number" label="Age:"/>
 
-                    <h:outputLabel for="mail" value="Email : " />
-                    <p:inputText id="mail" value="#{contactsView.contact.mail}" />
+                    <p:inputText id="phone" value="#{contactsView.contact.phone}" label="Phone:"/>
 
-                    <h:outputLabel for="address" value="Address :  " />
-                    <p:inputTextarea id="address" value="#{contactsView.contact.address}" />
+                    <p:inputText id="mail" value="#{contactsView.contact.mail}" label="Email:"/>
+
+                    <p:inputTextarea id="address" value="#{contactsView.contact.address}" label="Address:"/>
                     
                     <p:commandButton value="Save" action="#{contactsView.saveContact}" update="listContactsForm" icon="check" />
                 </h:form>

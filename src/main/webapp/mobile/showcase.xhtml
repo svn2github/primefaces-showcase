@@ -56,15 +56,9 @@
                     </h:selectOneMenu>
                 </pm:field>
 
-                <pm:field>
-                    <h:outputLabel for="range" value="Range: "/>
-                    <pm:inputRange id="range" minValue="0" maxValue="100" />
-                </pm:field>
+                <pm:inputRange id="range" minValue="0" maxValue="100" label="Range:" />
 
-                <pm:field>
-                    <h:outputLabel for="switch" value="Switch: "/>
-                    <pm:switch id="switch" onLabel="yes" offLabel="no"/>
-                </pm:field>
+                <pm:switch id="switch" onLabel="yes" offLabel="no" label="Switch:" />
                 
                 <p:selectBooleanCheckbox id="booleanCheckbox" value="false" itemLabel="I agree" label="Checkbox"/>
                
