@@ -36,12 +36,11 @@
 
             <pm:content>
                 <h:form id="newNoteForm">
-                    <h:inputTextarea id="noteText" value="#{notesView.note.text}" />
+                    <p:inputTextarea id="noteText" value="#{notesView.note.text}" />
 
                     <p:separator />
 
-                    <p:commandButton value="Save" action="#{notesView.save}" update="noteText listNotesForm:notesList"
-                                      oncomplete="$('.ui-dialog').dialog('close')" icon="check" />
+                    <p:commandButton value="Save" action="#{notesView.save}" update="noteText listNotesForm:notesList" icon="check" />
 
                 </h:form>
             </pm:content>
