@@ -343,7 +343,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>mobile</artifactId>
-                    <version>0.9.0-SNAPSHOT</version>
+                    <version>1.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>com.sun.faces</groupId>
@@ -373,7 +373,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>mobile</artifactId>
-                    <version>0.9.0-SNAPSHOT</version>
+                    <version>1.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.myfaces.core</groupId>
@@ -404,7 +404,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>mobile</artifactId>
-                    <version>0.9.0-SNAPSHOT</version>
+                    <version>1.0-SNAPSHOT</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -424,7 +424,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>mobile</artifactId>
-                    <version>0.9.0-SNAPSHOT</version>
+                    <version>1.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>com.sun.faces</groupId>
