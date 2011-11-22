@@ -63,15 +63,17 @@
                 </pm:field>
 
                 <pm:field>
-                    <h:outputLabel for="slider" value="Slider: "/>
-                    <p:slider id="slider" minValue="0" maxValue="100" />
+                    <h:outputLabel for="range" value="Range: "/>
+                    <pm:inputRange id="range" minValue="0" maxValue="100" />
                 </pm:field>
 
                 <pm:field>
                     <h:outputLabel for="switch" value="Switch: "/>
                     <pm:switch id="switch" onLabel="yes" offLabel="no"/>
                 </pm:field>
-
+                
+                <p:selectBooleanCheckbox id="booleanCheckbox" value="false" itemLabel="I agree"/>
+               
                 <pm:field>
                     <h:outputLabel for="checkbox" value="Checkbox: "/>
                     <h:selectManyCheckbox id="checkbox">
