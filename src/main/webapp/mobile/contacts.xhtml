@@ -22,9 +22,12 @@
                 <h:form id="listContactsForm">
                     <p:dataList id="contactsList" value="#{contactsView.contacts}" var="contact">
                         <p:column>
+                            <p:graphicImage value="/images/pf-logo.png" />
+                            <h3>
                             <p:commandLink value="#{contact.firstname} #{contact.surname}" action="pm:new" update="newContactForm">
                                 <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
                             </p:commandLink>
+                            </h3>
                         </p:column>
                     </p:dataList>
                 </h:form>
