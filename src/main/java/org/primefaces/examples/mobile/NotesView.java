@@ -44,6 +44,6 @@ public class NotesView implements Serializable {
 
 		note = new Note();
         
-        return "pm:main";
+        return "pm:main?reverse=true";
 	}
 }
