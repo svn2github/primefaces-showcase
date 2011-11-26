@@ -1,0 +1,134 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <script type="text/javascript">
+            PrimeFaces.locales['tr'] = {
+                closeText: 'kapat',
+                prevText: 'geri',
+                nextText: 'ileri',
+                currentText: 'bugün',
+                monthNames: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
+                monthNamesShort: ['Oca','Şub','Mar','Nis','May','Haz', 'Tem','Ağu','Eyl','Eki','Kas','Ara'],
+                dayNames: ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],
+                dayNamesShort: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+                dayNamesMin: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+                weekHeader: 'Hf',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Zaman Seçiniz',
+                timeText: 'Zaman',
+                hourText: 'Saat',
+                minuteText: 'Dakika',
+                secondText: 'Saniye',
+                ampm: false,
+                month: 'Ay',
+                week: 'Hafta',
+                day: 'Gün',
+                allDayText : 'Tüm Gün'
+            };
+            
+            PrimeFaces.locales['de'] = {
+                closeText: 'Schließen',
+                prevText: 'Zurück',
+                nextText: 'Weiter',
+                monthNames: ['Januar', 'Februar', 'MÃ¤rz', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                monthNamesShort: ['Jan', 'Feb', 'MÃ¤r', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+                dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+                dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+                weekHeader: 'Woche',
+                FirstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Nur Zeit',
+                timeText: 'Zeit',
+                hourText: 'Stunde',
+                minuteText: 'Minute',
+                secondText: 'Sekunde',
+                currentText: 'Aktuelles Datum',
+                ampm: false,
+                month: 'Monat',
+                week: 'Woche',
+                day: 'Tag',
+                allDayText: 'Ganzer Tag'
+            };
+            
+            PrimeFaces.locales['pt'] = {
+                closeText: 'Fechar',
+                prevText: 'Anterior',
+                nextText: 'Próximo',
+                currentText: 'Começo',
+                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Des'],
+                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+                dayNamesMin: ['D','S','T','Q','Q','S','S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Só Horas',
+                timeText: 'Tempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                ampm: false,
+                month: 'Mês',
+                week: 'Semana',
+                day: 'Dia',
+                allDayText : 'Todo Dia'
+            };
+        </script>
+    </ui:define>
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Calendar - Localization</h1>
+		<div class="entry">
+			<p>Calendar provides flexible Localization support. Default date pattern is retrieved from calendar locale and custom patterns can be applied using the pattern attribute.</p>
+			
+			<h:panelGrid columns="4" cellpadding="5">
+				<h:outputText value="Turkish:" />
+				<h:outputText value="German:" />
+				<h:outputText value="Portugese:" />
+                <h:outputText value="Custom Pattern:" />
+				
+				<p:calendar locale="tr" showButtonPanel="true" navigator="true"/>
+				<p:calendar locale="de" showButtonPanel="true" navigator="true"/>
+				<p:calendar locale="pt" showButtonPanel="true" navigator="true"/>
+                <p:calendar pattern="EEE, dd MMM, yyyy" showButtonPanel="true" navigator="true"/>
+			</h:panelGrid>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="calendarI18N.xhtml">
+					<pre name="code" class="xml">
+&lt;h:panelGrid columns="4" cellpadding="5"&gt;
+    &lt;h:outputText value="Turkish:" /&gt;
+    &lt;h:outputText value="German:" /&gt;
+    &lt;h:outputText value="Portugese:" /&gt;
+    &lt;h:outputText value="Custom Pattern:" /&gt;
+
+    &lt;p:calendar locale="tr" showButtonPanel="true" navigator="true"/&gt;
+    &lt;p:calendar locale="de" showButtonPanel="true" navigator="true"/&gt;
+    &lt;p:calendar locale="pt" showButtonPanel="true" navigator="true"/&gt;
+    &lt;p:calendar pattern="EEE, dd MMM, yyyy" showButtonPanel="true" navigator="true"/&gt;
+&lt;/h:panelGrid&gt;
+					</pre>
+				</p:tab>
+			</p:tabView>
+			
+         </div>
+        
+        <h:outputScript name="js/i18n.js" />
+        
+	</ui:define>
+</ui:composition>
