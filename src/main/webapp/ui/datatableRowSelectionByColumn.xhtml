@@ -20,7 +20,7 @@
         <script type="text/javascript">
             function onEditComplete(xhr, status, args) {
                 if(args.validationFailed) {
-					$(PrimeFaces.escapeClientId('form:carDlg')).parent().effect("shake", { times:5 }, 100);
+					$(PrimeFaces.escapeClientId('form:carDlg')).effect("shake", { times:5 }, 100);
 				} else {
 					carDialog.hide();
 				}
@@ -37,35 +37,27 @@
 
                 <p:growl id="msgs" showDetail="true" />
 
-                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}">
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" tableStyle="width:auto">
 
-                    <p:column headerText="Model">
+                    <p:column headerText="Model" style="width:100px">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column headerText="Year">
+                    <p:column headerText="Year" style="width:100px">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column headerText="Manufacturer">
+                    <p:column headerText="Manufacturer" style="width:100px">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column headerText="Color">
+                    <p:column headerText="Color" style="width:100px">
                         <h:outputText value="#{car.color}" />
                     </p:column>
 
-                    <p:column style="width:100px">
+                    <p:column style="width:40px">
                          <h:panelGrid columns="3" styleClass="actions" cellpadding="2">
                              <p:commandButton update=":form:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="View">
-                                 <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
-                                 <f:setPropertyActionListener value="#{false}" target="#{tableBean.editMode}" />
-                             </p:commandButton>
-                             <p:commandButton update=":form:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Edit">
-                                 <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
-                                 <f:setPropertyActionListener value="#{true}" target="#{tableBean.editMode}" />
-                             </p:commandButton>
-                             <p:commandButton update=":form:display" oncomplete="confirmation.show()" image="ui-icon ui-icon-close" title="Delete">
                                  <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
                              </p:commandButton>
                          </h:panelGrid>
@@ -83,53 +75,21 @@
                         </f:facet>
                         
                         <h:outputText value="Model:" />
-                        <h:panelGroup>
-                            <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold" rendered="#{!tableBean.editMode}"/>
-                            <p:inputText value="#{tableBean.selectedCar.model}" rendered="#{tableBean.editMode}" required="true" label="Model"/>
-                        </h:panelGroup>
-
+                        <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>
+                        
                         <h:outputText value="Year:" />
-                        <h:panelGroup>
-                            <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold" rendered="#{!tableBean.editMode}"/>
-                            <p:inputText value="#{tableBean.selectedCar.year}" rendered="#{tableBean.editMode}" required="true" label="Year"/>
-                        </h:panelGroup>
+                        <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>
+                        
 
                         <h:outputText value="Manufacturer:" />
-                        <h:panelGroup>
-                            <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold" rendered="#{!tableBean.editMode}"/>
-                            <h:selectOneMenu value="#{tableBean.selectedCar.manufacturer}" rendered="#{tableBean.editMode}">
-                                <f:selectItems value="#{tableBean.manufacturers}" var="man" itemLabel="#{man}" itemValue="#{man}" />
-                            </h:selectOneMenu>
-                        </h:panelGroup>
-
+                        <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>
+                        
                         <h:outputText value="Color:" />
-                        <h:panelGroup>
-                            <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold" rendered="#{!tableBean.editMode}"/>
-                            <h:selectOneMenu value="#{tableBean.selectedCar.color}" rendered="#{tableBean.editMode}">
-                                <f:selectItems value="#{tableBean.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />
-                            </h:selectOneMenu>
-                        </h:panelGroup>
+                        <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>
 
-                        <f:facet name="footer">
-                            <p:outputPanel rendered="#{tableBean.editMode}" layout="block" style="text-align:right">
-                                <p:commandButton value="Save" update="cars msgs" actionListener="#{tableBean.save}" oncomplete="onEditComplete(xhr,status,args)"
-                                                 image="ui-icon ui-icon-check"/>
-                                <p:commandButton value="Cancel" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
-                                
-                            </p:outputPanel>
-                        </f:facet>
                     </h:panelGrid>
 
                 </p:dialog>
-
-                <p:confirmDialog message="Are you sure?" width="200"
-								showEffect="explode" hideEffect="explode"
-								header="Confirm" severity="alert" widgetVar="confirmation">
-
-                    <p:commandButton value="Yes sure" update="cars" actionListener="#{tableBean.delete}" oncomplete="confirmation.hide()"/>
-                    <p:commandButton value="Not yet" onclick="confirmation.hide()" type="button" />
-
-                </p:confirmDialog>
 
             </h:form>
 
@@ -141,35 +101,27 @@
 
     &lt;p:growl id="msgs" showDetail="true" /&gt;
 
-    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}"&gt;
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" tableStyle="width:auto"&gt;
 
-        &lt;p:column headerText="Model"&gt;
+        &lt;p:column headerText="Model" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year"&gt;
+        &lt;p:column headerText="Year" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer"&gt;
+        &lt;p:column headerText="Manufacturer" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color"&gt;
+        &lt;p:column headerText="Color" style="width:100px"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:100px"&gt;
+        &lt;p:column style="width:40px"&gt;
              &lt;h:panelGrid columns="3" styleClass="actions" cellpadding="2"&gt;
                  &lt;p:commandButton update=":form:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="View"&gt;
-                     &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
-                     &lt;f:setPropertyActionListener value="\#{false}" target="\#{tableBean.editMode}" /&gt;
-                 &lt;/p:commandButton&gt;
-                 &lt;p:commandButton update=":form:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Edit"&gt;
-                     &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
-                     &lt;f:setPropertyActionListener value="\#{true}" target="\#{tableBean.editMode}" /&gt;
-                 &lt;/p:commandButton&gt;
-                 &lt;p:commandButton update=":form:display" oncomplete="confirmation.show()" image="ui-icon ui-icon-close" title="Delete"&gt;
                      &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
                  &lt;/p:commandButton&gt;
              &lt;/h:panelGrid&gt;
@@ -187,55 +139,23 @@
             &lt;/f:facet&gt;
 
             &lt;h:outputText value="Model:" /&gt;
-            &lt;h:panelGroup&gt;
-                &lt;h:outputText value="\#{tableBean.selectedCar.model}" style="font-weight:bold" rendered="\#{!tableBean.editMode}"/&gt;
-                &lt;p:inputText value="\#{tableBean.selectedCar.model}" rendered="\#{tableBean.editMode}" required="true" label="Model"/&gt;
-            &lt;/h:panelGroup&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.model}" style="font-weight:bold"/&gt;
 
             &lt;h:outputText value="Year:" /&gt;
-            &lt;h:panelGroup&gt;
-                &lt;h:outputText value="\#{tableBean.selectedCar.year}" style="font-weight:bold" rendered="\#{!tableBean.editMode}"/&gt;
-                &lt;p:inputText value="\#{tableBean.selectedCar.year}" rendered="\#{tableBean.editMode}" required="true" label="Year"/&gt;
-            &lt;/h:panelGroup&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.year}" style="font-weight:bold"/&gt;
+
 
             &lt;h:outputText value="Manufacturer:" /&gt;
-            &lt;h:panelGroup&gt;
-                &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" style="font-weight:bold" rendered="\#{!tableBean.editMode}"/&gt;
-                &lt;h:selectOneMenu value="\#{tableBean.selectedCar.manufacturer}" rendered="\#{tableBean.editMode}"&gt;
-                    &lt;f:selectItems value="\#{tableBean.manufacturers}" var="man" itemLabel="\#{man}" itemValue="\#{man}" /&gt;
-                &lt;/h:selectOneMenu&gt;
-            &lt;/h:panelGroup&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/&gt;
 
             &lt;h:outputText value="Color:" /&gt;
-            &lt;h:panelGroup&gt;
-                &lt;h:outputText value="\#{tableBean.selectedCar.color}" style="font-weight:bold" rendered="\#{!tableBean.editMode}"/&gt;
-                &lt;h:selectOneMenu value="\#{tableBean.selectedCar.color}" rendered="\#{tableBean.editMode}"&gt;
-                    &lt;f:selectItems value="\#{tableBean.colors}" var="color" itemLabel="\#{color}" itemValue="\#{color}" /&gt;
-                &lt;/h:selectOneMenu&gt;
-            &lt;/h:panelGroup&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.color}" style="font-weight:bold"/&gt;
 
-            &lt;f:facet name="footer"&gt;
-                &lt;p:outputPanel rendered="\#{tableBean.editMode}" layout="block" style="text-align:right"&gt;
-                    &lt;p:commandButton value="Save" update="cars msgs" actionListener="\#{tableBean.save}" 
-                                    oncomplete="onEditComplete(xhr,status,args)" image="ui-icon ui-icon-check"/&gt;
-                    &lt;p:commandButton value="Cancel" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/&gt;
-
-                &lt;/p:outputPanel&gt;
-            &lt;/f:facet&gt;
         &lt;/h:panelGrid&gt;
 
     &lt;/p:dialog&gt;
 
-    &lt;p:confirmDialog message="Are you sure?" width="200"
-                    showEffect="explode" hideEffect="explode"
-                    header="Confirm" severity="alert" widgetVar="confirmation"&gt;
-
-        &lt;p:commandButton value="Yes sure" update="cars" actionListener="\#{tableBean.delete}" oncomplete="confirmation.hide()"/&gt;
-        &lt;p:commandButton value="Not yet" onclick="confirmation.hide()" type="button" /&gt;
-
-    &lt;/p:confirmDialog&gt;
-
-    &lt;/h:form&gt;
+&lt;/h:form&gt;
                     </pre>
                 </p:tab>
 
@@ -287,8 +207,6 @@ public class TableBean {
 
 	private Car selectedCar;
 
-    private boolean editMode;
-
 	public TableBean() {
         cars = new ArrayList&lt;Car&gt;();
 
@@ -326,18 +244,6 @@ public class TableBean {
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
-
-    public void delete() {
-        carsSmall.remove(selectedCar);
-    }
-
-    public boolean isEditMode() {
-        return editMode;
-    }
-
-    public void setEditMode(boolean editMode) {
-        this.editMode = editMode;
-    }
 }
                     </pre>
                 </p:tab>
