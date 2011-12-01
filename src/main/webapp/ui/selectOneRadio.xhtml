@@ -24,11 +24,11 @@
 
                 </h:panelGrid>
 
-                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+                <p:commandButton value="Submit" update="display"/>
 
-                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
-                    <h:outputText value="Value 1: #{buttonBean.number}" />
-                </p:dialog>
+                <br /><br />
+                
+                <h:outputText id="display" value="Selected: #{buttonBean.number}" />
 
 			</h:form>
 
@@ -49,12 +49,9 @@
 
     &lt;/h:panelGrid&gt;
 
-    &lt;p:commandButton value="Submit" update="display" oncomplete="dlg.show()" /&gt;
+    &lt;p:commandButton value="Submit" update="display"/&gt;
 
-    &lt;p:dialog header="Selected Values" modal="true"
-            showEffect="fade" hideEffect="fade" widgetVar="dlg"&gt;
-            &lt;h:outputText value="Value 1: \#{buttonBean.number}" /&gt;
-    &lt;/p:dialog&gt;
+    &lt;h:outputText id="display" value="Selected: \#{buttonBean.number}" /&gt;
 
 &lt;/h:form&gt;
 					</pre>
