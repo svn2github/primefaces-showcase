@@ -14,7 +14,7 @@
 
             <h:form id="form">
 
-                <p:dataTable var="car" value="#{tableBean.lazyModel}" paginator="true" rows="10" lazy="true"
+                <p:dataTable var="car" value="#{tableBean.lazyModel}" paginator="true" rows="10"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                              rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{tableBean.selectedCar}">
 
@@ -68,7 +68,7 @@
                     <pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.lazyModel}" paginator="true" rows="10" lazy="true"
+    &lt;p:dataTable var="car" value="\#{tableBean.lazyModel}" paginator="true" rows="10"
                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  rowsPerPageTemplate="5,10,15" selectionMode="single" selection="\#{tableBean.selectedCar}"&gt;
 
