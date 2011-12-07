@@ -44,7 +44,7 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="40">
-                    <p:commandButton value="Compose" onclick="composeDlg.show()" type="button" image="ui-icon ui-icon-document"/>
+                    <p:commandButton value="Compose" onclick="composeDlg.show()" type="button" icon="ui-icon ui-icon-document"/>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="200" resizable="true" collapsible="true" header="MAILBOXES">
@@ -100,7 +100,7 @@
                                             </p:column>
 
                                             <p:column>
-                                                <p:commandButton update=":mailViewer" image="ui-icon ui-icon-search" title="View">
+                                                <p:commandButton update=":mailViewer" icon="ui-icon ui-icon-search" title="View">
                                                     <f:setPropertyActionListener value="#{mail }" target="#{mailbox.mail}" />
                                                 </p:commandButton>
                                             </p:column>

@@ -42,14 +42,14 @@
                 <p:dataTable var="cars" value="#{tableBean.dynamicCars}" id="carsTable">
 
                     <f:facet name="header">
-                        <p:commandButton type="button" onclick="carDialog.show()" value="Add a New Column" image="add"/>
+                        <p:commandButton type="button" onclick="carDialog.show()" value="Add a New Column" icon="add"/>
                     </f:facet>
 
                     <p:columns value="#{tableBean.columns}" var="column" columnIndexVar="colIndex">
                         <f:facet name="header">
                             <p:outputPanel>
                                 
-                                <p:commandButton image="remove" actionListener="#{tableBean.removeColumn}" 
+                                <p:commandButton icon="remove" actionListener="#{tableBean.removeColumn}" 
                                                  update="carsTable" title="Remove Column" style="float:right">
                                     <f:param name="columnToRemove" value="#{column}" />
                                 </p:commandButton>
@@ -102,7 +102,7 @@
     &lt;p:dataTable var="cars" value="\#{tableBean.dynamicCars}" id="carsTable"&gt;
 
         &lt;f:facet name="header"&gt;
-            &lt;p:commandButton type="button" onclick="carDialog.show()" value="Add a New Column" image="add"/&gt;
+            &lt;p:commandButton type="button" onclick="carDialog.show()" value="Add a New Column" icon="add"/&gt;
         &lt;/f:facet&gt;
 
         &lt;p:columns value="\#{tableBean.columns}"
@@ -110,7 +110,7 @@
             &lt;f:facet name="header"&gt;
                 &lt;p:outputPanel&gt;
 
-                    &lt;p:commandButton image="remove"
+                    &lt;p:commandButton icon="remove"
                                 actionListener="\#{tableBean.removeColumn}"
                                 update="carsTable" title="Remove Column" style="float:right"&gt;
                         &lt;f:param name="columnToRemove" value="\#{column}" /&gt;
