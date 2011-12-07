@@ -33,7 +33,6 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
     
     public LazyCarDataModel(List<Car> datasource) {
         this.datasource = datasource;
-        setRowCount(this.datasource.size());
     }
     
     @Override
