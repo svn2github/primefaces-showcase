@@ -25,8 +25,8 @@
 
                 <p:fieldset legend="Available Cars">
                     <p:dataTable id="availableCars" var="car" value="#{tableBean.carsSmall}">
-                        <p:column style="width:24px">
-                            <h:outputText id="dragIcon" styleClass="ui-icon-arrow-4" />
+                        <p:column style="width:20px">
+                            <h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
                             <p:draggable for="dragIcon" revert="true" />
                         </p:column>
 
@@ -119,9 +119,9 @@
 
     &lt;p:fieldset legend="Available Cars"&gt;
         &lt;p:dataTable id="availableCars" var="car" value="\#{tableBean.carsSmall}"&gt;
-            &lt;p:column style="width:24px"&gt;
+            &lt;p:column style="width:20px"&gt;
                 &lt;h:outputText id="dragIcon"
-                    styleClass="ui-icon-arrow-4" /&gt;
+                    styleClass="ui-icon ui-icon-arrow-4" /&gt;
                 &lt;p:draggable for="dragIcon" revert="true" /&gt;
             &lt;/p:column&gt;
 
