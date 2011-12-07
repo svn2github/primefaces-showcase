@@ -44,29 +44,29 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="40">
-                    <p:commandButton value="Compose" onclick="composeDlg.show()" type="button" icon="ui-icon ui-icon-document"/>
+                    <p:commandButton value="Compose" onclick="composeDlg.show()" type="button" icon="ui-icon-document"/>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="200" resizable="true" collapsible="true" header="MAILBOXES">
                     <h:form>
                         <p:tree value="#{mailbox.mailboxes}" var="box" selectionMode="single" selection="#{mailbox.mailbox}" style="width:170px">
-                            <p:treeNode icon="ui-icon ui-icon-mail-closed">
+                            <p:treeNode icon="ui-icon-mail-closed">
                                 <h:outputText value="#{box}"/>
                             </p:treeNode>
 
-                            <p:treeNode type="i" icon="ui-icon ui-icon-mail-closed">
+                            <p:treeNode type="i" icon="ui-icon-mail-closed">
                                 <h:outputText value="#{box}"/>
                             </p:treeNode>
 
-                            <p:treeNode type="s" icon="ui-icon ui-icon-transfer-e-w">
+                            <p:treeNode type="s" icon="ui-icon-transfer-e-w">
                                 <h:outputText value="#{box}"/>
                             </p:treeNode>
 
-                            <p:treeNode type="t" icon="ui-icon ui-icon-trash">
+                            <p:treeNode type="t" icon="ui-icon-trash">
                                 <h:outputText value="#{box}"/>
                             </p:treeNode>
 
-                            <p:treeNode type="j" icon="ui-icon ui-icon-alert">
+                            <p:treeNode type="j" icon="ui-icon-alert">
                                 <h:outputText value="#{box}"/>
                             </p:treeNode>
                         </p:tree>
@@ -100,7 +100,7 @@
                                             </p:column>
 
                                             <p:column>
-                                                <p:commandButton update=":mailViewer" icon="ui-icon ui-icon-search" title="View">
+                                                <p:commandButton update=":mailViewer" icon="ui-icon-search" title="View">
                                                     <f:setPropertyActionListener value="#{mail }" target="#{mailbox.mail}" />
                                                 </p:commandButton>
                                             </p:column>

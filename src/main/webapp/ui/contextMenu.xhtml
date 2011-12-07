@@ -16,10 +16,10 @@
 				<p:growl id="messages"/>
 
                 <p:contextMenu>
-					<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon ui-icon-disk"/>
-                    <p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon ui-icon-arrowrefresh-1-w"/>
-                    <p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false" icon="ui-icon ui-icon-close"/>
-                    <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon ui-icon-extlink"/>
+					<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk"/>
+                    <p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                    <p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false" icon="ui-icon-close"/>
+                    <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink"/>
 				</p:contextMenu>
                 
 			</h:form>
@@ -34,14 +34,14 @@
 
 	&lt;p:contextMenu&gt;
 		&lt;p:menuitem value="Save" update="messages"
-			actionListener="\#{buttonBean.save}" icon="ui-icon ui-icon-disk"/&gt;
+			actionListener="\#{buttonBean.save}" icon="ui-icon-disk"/&gt;
 		&lt;p:menuitem value="Update" update="messages"
 			actionListener="\#{buttonBean.update}"
-            icon="ui-icon ui-icon-arrowrefresh-1-w"/&gt;
-		&lt;p:menuitem value="Delete" icon="ui-icon ui-icon-close"
+            icon="ui-icon-arrowrefresh-1-w"/&gt;
+		&lt;p:menuitem value="Delete" icon="ui-icon-close"
 			actionListener="\#{buttonBean.delete}" ajax="false"/&gt;
 		&lt;p:menuitem value="Homepage" url="http://www.primefaces.org"
-            icon="ui-icon ui-icon-extlink"/&gt;
+            icon="ui-icon-extlink"/&gt;
 	&lt;/p:contextMenu&gt;
 
 &lt;/h:form&gt;

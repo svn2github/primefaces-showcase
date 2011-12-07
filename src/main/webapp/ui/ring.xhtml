@@ -31,7 +31,7 @@
                         <p:outputPanel style="text-align:center;" layout="block">
                             #{player.name}
                             <br />
-                            <p:commandButton update=":form:detail" icon="ui-icon ui-icon-search" title="View" oncomplete="dlg.show()">
+                            <p:commandButton update=":form:detail" icon="ui-icon-search" title="View" oncomplete="dlg.show()">
                                 <f:setPropertyActionListener value="#{player}" target="#{ringBean.selectedPlayer}" />
                             </p:commandButton>
                         </p:outputPanel>
@@ -81,7 +81,7 @@
             &lt;p:outputPanel style="text-align:center;" layout="block"&gt;
                 \#{player.name}
                 &lt;p:commandButton update=":form:detail"
-                            icon="ui-icon ui-icon-search"
+                            icon="ui-icon-search"
                             title="View" oncomplete="dlg.show()"&gt;
                     &lt;f:setPropertyActionListener value="\#{player}"
                         target="\#{ringBean.selectedPlayer}" /&gt;

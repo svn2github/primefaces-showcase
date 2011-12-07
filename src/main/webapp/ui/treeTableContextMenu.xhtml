@@ -14,8 +14,8 @@
 			<h:form id="form">
                 
                 <p:contextMenu for="docs">
-                    <p:menuitem value="View" update="documentPanel" icon="ui-icon ui-icon-search" oncomplete="documentDialog.show()"/>
-                    <p:menuitem value="Delete" actionListener="#{documentsController.deleteNode}" update="docs" icon="ui-icon ui-icon-close"/>
+                    <p:menuitem value="View" update="documentPanel" icon="ui-icon-search" oncomplete="documentDialog.show()"/>
+                    <p:menuitem value="Delete" actionListener="#{documentsController.deleteNode}" update="docs" icon="ui-icon-close"/>
 				</p:contextMenu>
 
                 <p:treeTable value="#{documentsController.root}" var="document" id="docs" 
@@ -71,8 +71,8 @@
 &lt;h:form id="form"&gt;
                 
     &lt;p:contextMenu for="docs"&gt;
-        &lt;p:menuitem value="View" update="documentPanel" icon="ui-icon ui-icon-search" oncomplete="documentDialog.show()"/&gt;
-        &lt;p:menuitem value="Delete" actionListener="\#{documentsController.deleteNode}" update="docs" icon="ui-icon ui-icon-close"/&gt;
+        &lt;p:menuitem value="View" update="documentPanel" icon="ui-icon-search" oncomplete="documentDialog.show()"/&gt;
+        &lt;p:menuitem value="Delete" actionListener="\#{documentsController.deleteNode}" update="docs" icon="ui-icon-close"/&gt;
     &lt;/p:contextMenu&gt;
 
     &lt;p:treeTable value="\#{documentsController.root}" var="document" id="docs" 

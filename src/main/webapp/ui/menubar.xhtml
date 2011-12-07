@@ -17,8 +17,8 @@
 				<p:growl id="messages"/>
 				
                 <p:menubar>
-					<p:submenu label="File" icon="ui-icon ui-icon-document">
-						<p:submenu label="New" icon="ui-icon ui-icon-contact">
+					<p:submenu label="File" icon="ui-icon-document">
+						<p:submenu label="New" icon="ui-icon-contact">
 							<p:menuitem value="Project" url="#" helpText="CTRL+N" />
 							<p:menuitem value="Other" url="#" helpText="CTRL+O"/>
 						</p:submenu>
@@ -27,14 +27,14 @@
 						<p:menuitem value="Quit" url="#" />
 					</p:submenu>
 					
-					<p:submenu label="Edit" icon="ui-icon ui-icon-pencil">
-						<p:menuitem value="Undo" url="#" icon="ui-icon ui-icon-arrowreturnthick-1-w" helpText="CTRL+Z"></p:menuitem>
-						<p:menuitem value="Redo" url="#" icon="ui-icon ui-icon-arrowreturnthick-1-e" helpText="CTRL+Y"></p:menuitem>
+					<p:submenu label="Edit" icon="ui-icon-pencil">
+						<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" helpText="CTRL+Z"></p:menuitem>
+						<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" helpText="CTRL+Y"></p:menuitem>
 					</p:submenu>
 					
-					<p:submenu label="Help" icon="ui-icon ui-icon-help">
+					<p:submenu label="Help" icon="ui-icon-help">
 						<p:menuitem value="Contents" url="#" />
-						<p:submenu label="Search" icon="ui-icon ui-icon-search">
+						<p:submenu label="Search" icon="ui-icon-search">
 							<p:submenu label="Text">
 								<p:menuitem value="Workspace" url="#" />
 							</p:submenu>
@@ -42,17 +42,17 @@
 						</p:submenu>
 					</p:submenu>
 					
-					<p:submenu label="Actions" icon="ui-icon ui-icon-gear">
-						<p:submenu label="Ajax" icon="ui-icon ui-icon-refresh">
-							<p:menuitem value="Save" actionListener="#{buttonBean.save}" icon="ui-icon ui-icon-disk" update="messages"/>
-							<p:menuitem value="Update" actionListener="#{buttonBean.update}" icon="ui-icon ui-icon-arrowrefresh-1-w" update="messages"/>
+					<p:submenu label="Actions" icon="ui-icon-gear">
+						<p:submenu label="Ajax" icon="ui-icon-refresh">
+							<p:menuitem value="Save" actionListener="#{buttonBean.save}" icon="ui-icon-disk" update="messages"/>
+							<p:menuitem value="Update" actionListener="#{buttonBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
 						</p:submenu>
-						<p:submenu label="Non-Ajax" icon="ui-icon ui-icon-newwin">
-							<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" icon="ui-icon ui-icon-close" update="messages" ajax="false"/>
+						<p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+							<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
 						</p:submenu>
 					</p:submenu>
 
-                    <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon ui-icon-close" />
+                    <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
 				</p:menubar>
 				
 			</h:form>
@@ -66,8 +66,8 @@
     &lt;p:growl id="messages"/&gt;
 
     &lt;p:menubar&gt;
-        &lt;p:submenu label="File" icon="ui-icon ui-icon-document"&gt;
-            &lt;p:submenu label="New" icon="ui-icon ui-icon-contact"&gt;
+        &lt;p:submenu label="File" icon="ui-icon-document"&gt;
+            &lt;p:submenu label="New" icon="ui-icon-contact"&gt;
                 &lt;p:menuitem value="Project" url="\#" helpText="CTRL+N" /&gt;
                 &lt;p:menuitem value="Other" url="\#" helpText="CTRL+O"/&gt;
             &lt;/p:submenu&gt;
@@ -76,14 +76,14 @@
             &lt;p:menuitem value="Quit" url="\#" /&gt;
         &lt;/p:submenu&gt;
 
-        &lt;p:submenu label="Edit" icon="ui-icon ui-icon-pencil"&gt;
-            &lt;p:menuitem value="Undo" url="\#" icon="ui-icon ui-icon-arrowreturnthick-1-w" helpText="CTRL+Z"&gt;&lt;/p:menuitem&gt;
-            &lt;p:menuitem value="Redo" url="\#" icon="ui-icon ui-icon-arrowreturnthick-1-e" helpText="CTRL+Y"&gt;&lt;/p:menuitem&gt;
+        &lt;p:submenu label="Edit" icon="ui-icon-pencil"&gt;
+            &lt;p:menuitem value="Undo" url="\#" icon="ui-icon-arrowreturnthick-1-w" helpText="CTRL+Z"&gt;&lt;/p:menuitem&gt;
+            &lt;p:menuitem value="Redo" url="\#" icon="ui-icon-arrowreturnthick-1-e" helpText="CTRL+Y"&gt;&lt;/p:menuitem&gt;
         &lt;/p:submenu&gt;
 
-        &lt;p:submenu label="Help" icon="ui-icon ui-icon-help"&gt;
+        &lt;p:submenu label="Help" icon="ui-icon-help"&gt;
             &lt;p:menuitem value="Contents" url="\#" /&gt;
-            &lt;p:submenu label="Search" icon="ui-icon ui-icon-search"&gt;
+            &lt;p:submenu label="Search" icon="ui-icon-search"&gt;
                 &lt;p:submenu label="Text"&gt;
                     &lt;p:menuitem value="Workspace" url="\#" /&gt;
                 &lt;/p:submenu&gt;
@@ -91,17 +91,17 @@
             &lt;/p:submenu&gt;
         &lt;/p:submenu&gt;
 
-        &lt;p:submenu label="Actions" icon="ui-icon ui-icon-gear"&gt;
-            &lt;p:submenu label="Ajax" icon="ui-icon ui-icon-refresh"&gt;
-                &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" icon="ui-icon ui-icon-disk" update="messages"/&gt;
-                &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" icon="ui-icon ui-icon-arrowrefresh-1-w" update="messages"/&gt;
+        &lt;p:submenu label="Actions" icon="ui-icon-gear"&gt;
+            &lt;p:submenu label="Ajax" icon="ui-icon-refresh"&gt;
+                &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" icon="ui-icon-disk" update="messages"/&gt;
+                &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/&gt;
             &lt;/p:submenu&gt;
-            &lt;p:submenu label="Non-Ajax" icon="ui-icon ui-icon-newwin"&gt;
-                &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" icon="ui-icon ui-icon-close" update="messages" ajax="false"/&gt;
+            &lt;p:submenu label="Non-Ajax" icon="ui-icon-newwin"&gt;
+                &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" icon="ui-icon-close" update="messages" ajax="false"/&gt;
             &lt;/p:submenu&gt;
         &lt;/p:submenu&gt;
 
-        &lt;p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon ui-icon-close" /&gt;
+        &lt;p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" /&gt;
     &lt;/p:menubar&gt;
 
 &lt;/h:form&gt;

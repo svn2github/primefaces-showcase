@@ -16,8 +16,8 @@
 				<p:growl id="messages" showDetail="true" />
                 
                 <p:contextMenu for="treeSingle">
-                    <p:menuitem value="View" update="messages" actionListener="#{treeBean.displaySelectedSingle}" icon="ui-icon ui-icon-search" />
-                    <p:menuitem value="Delete" update="treeSingle" actionListener="#{treeBean.deleteNode}" icon="ui-icon ui-icon-close"/>
+                    <p:menuitem value="View" update="messages" actionListener="#{treeBean.displaySelectedSingle}" icon="ui-icon-search" />
+                    <p:menuitem value="Delete" update="treeSingle" actionListener="#{treeBean.deleteNode}" icon="ui-icon-close"/>
                 </p:contextMenu>
 
 				<p:tree id="treeSingle" value="#{treeBean.root}" var="node"
@@ -40,8 +40,8 @@
     &lt;p:growl id="messages" showDetail="true" /&gt;
 
     &lt;p:contextMenu for="treeSingle"&gt;
-        &lt;p:menuitem value="View" update="messages" actionListener="\#{treeBean.displaySelectedSingle}" icon="ui-icon ui-icon-search" /&gt;
-        &lt;p:menuitem value="Delete" update="treeSingle" actionListener="\#{treeBean.deleteNode}" icon="ui-icon ui-icon-close"/&gt;
+        &lt;p:menuitem value="View" update="messages" actionListener="\#{treeBean.displaySelectedSingle}" icon="ui-icon-search" /&gt;
+        &lt;p:menuitem value="Delete" update="treeSingle" actionListener="\#{treeBean.deleteNode}" icon="ui-icon-close"/&gt;
     &lt;/p:contextMenu&gt;
 
     &lt;p:tree id="treeSingle" value="\#{treeBean.root}" var="node"

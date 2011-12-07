@@ -26,7 +26,7 @@
                 <p:fieldset legend="Available Cars">
                     <p:dataTable id="availableCars" var="car" value="#{tableBean.carsSmall}">
                         <p:column style="width:24px">
-                            <h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
+                            <h:outputText id="dragIcon" styleClass="ui-icon-arrow-4" />
                             <p:draggable for="dragIcon" revert="true" />
                         </p:column>
 
@@ -72,7 +72,7 @@
                             </p:column>
 
                             <p:column style="width:32px">
-                                <p:commandButton update="carForm:display" oncomplete="carDialog.show()" icon="ui-icon ui-icon-search">
+                                <p:commandButton update="carForm:display" oncomplete="carDialog.show()" icon="ui-icon-search">
                                     <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
                                 </p:commandButton>
                             </p:column>
@@ -121,7 +121,7 @@
         &lt;p:dataTable id="availableCars" var="car" value="\#{tableBean.carsSmall}"&gt;
             &lt;p:column style="width:24px"&gt;
                 &lt;h:outputText id="dragIcon"
-                    styleClass="ui-icon ui-icon-arrow-4" /&gt;
+                    styleClass="ui-icon-arrow-4" /&gt;
                 &lt;p:draggable for="dragIcon" revert="true" /&gt;
             &lt;/p:column&gt;
 
@@ -171,7 +171,7 @@
                 &lt;p:column style="width:32px"&gt;
                     &lt;p:commandButton update="carForm:display"
                             oncomplete="carDialog.show()"
-                            icon="ui-icon ui-icon-search"&gt;
+                            icon="ui-icon-search"&gt;
                         &lt;f:setPropertyActionListener value="\#{car}"
                             target="\#{tableBean.selectedCar}" /&gt;
                     &lt;/p:commandButton&gt;
