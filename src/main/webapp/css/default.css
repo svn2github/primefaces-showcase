@@ -412,3 +412,7 @@ img.right {
 .dp-xml {
     width:1000px;
 }
+
+.ui-themeswitcher a.ui-selectonemenu-label-container {
+    text-decoration: none !important;
+}

@@ -20,7 +20,7 @@
                     </p:themeSwitcher>
                     
                     <h:outputText value="Stateful Switcher:" /> 
-                    <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:150px" effect="fade">
+                    <p:themeSwitcher value="#{guestPreferences.theme}" style="width:150px" effect="fade">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.themes}" />
                         <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
