@@ -14,7 +14,7 @@
 				
 				<h:form>
 					<h:panelGrid columns="2">
-						<p:imageCropper value="#{imageCropperBean.croppedImage}" icon="/images/barca/camp_nou.jpg" initialCoords="225,75,300,125"/>
+						<p:imageCropper value="#{imageCropperBean.croppedImage}" image="/images/barca/camp_nou.jpg" initialCoords="225,75,300,125"/>
 						
 						<p:graphicImage id="localCroppedImage" value="/images/barca/#{imageCropperBean.newImageName}.jpg" />
 					</h:panelGrid>
@@ -29,7 +29,7 @@
 &lt;h:form&gt;
 	&lt;h:panelGrid columns="2"&gt;
 		&lt;p:imageCropper value="\#{imageCropperBean.croppedImage}"
-                    icon="/images/barca/camp_nou.jpg"
+                    image="/images/barca/camp_nou.jpg"
                     initialCoords="225,75,300,125"/&gt;
 		
 		&lt;p:graphicImage id="localCroppedImage"
