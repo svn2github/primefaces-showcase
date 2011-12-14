@@ -9,7 +9,7 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">SelectOneRadio</h1>
 		<div class="entry">
-			<p>SelectOneRadio extends standard SelectOneRadio with skinning capabilities.</p>
+			<p>SelectOneRadio extends standard SelectOneRadio with skinning capabilities and custom layout feature.</p>
 
 			<h:form>
 
@@ -23,12 +23,38 @@
                     </p:selectOneRadio>
 
                 </h:panelGrid>
+                
+                <h3>Custom Layout</h3>
+                <p:selectOneRadio value="#{formBean.option}" layout="custom">
+                    <f:selectItem itemLabel="Option 1" itemValue="1" />
+                    <f:selectItem itemLabel="Option 2" itemValue="2" />
+                    <f:selectItem itemLabel="Option 3" itemValue="3" />
+                        
+                    <h:panelGrid columns="3">
+                        <p:radioButton id="opt1" itemIndex="0" for="option1"/>
+                        <h:outputLabel for="opt1" value="Option 1" />
+                        <p:spinner />
+                        
+                        <p:radioButton id="opt2" itemIndex="1"/>
+                        <h:outputLabel for="opt2" value="Option 2" />
+                        <p:inputText />
+                        
+                        <p:radioButton id="opt3" itemIndex="2"/>
+                        <h:outputLabel for="opt3" value="Option 3" />
+                        <p:calendar />
+                    </h:panelGrid>
+                </p:selectOneRadio>
 
+                <br/><br/>
+                
                 <p:commandButton value="Submit" update="display"/>
 
                 <br /><br />
                 
-                <h:outputText id="display" value="Selected: #{buttonBean.number}" />
+                <h:panelGrid columns="1" id="display">
+                    <h:outputText value="Value1:  #{buttonBean.number}" />
+                    <h:outputText value="Value2:  #{formBean.option}" />
+                </h:panelGrid>
 
 			</h:form>
 
@@ -49,9 +75,33 @@
 
     &lt;/h:panelGrid&gt;
 
+    &lt;h3&gt;Custom Layout&lt;/h3&gt;
+    &lt;p:selectOneRadio value="\#{formBean.option}" layout="custom"&gt;
+        &lt;f:selectItem itemLabel="Option 1" itemValue="1" /&gt;
+        &lt;f:selectItem itemLabel="Option 2" itemValue="2" /&gt;
+        &lt;f:selectItem itemLabel="Option 3" itemValue="3" /&gt;
+
+        &lt;h:panelGrid columns="3"&gt;
+            &lt;p:radioButton id="opt1" itemIndex="0" for="option1"/&gt;
+            &lt;h:outputLabel for="opt1" value="Option 1" /&gt;
+            &lt;p:spinner /&gt;
+
+            &lt;p:radioButton id="opt2" itemIndex="1"/&gt;
+            &lt;h:outputLabel for="opt2" value="Option 2" /&gt;
+            &lt;p:inputText /&gt;
+
+            &lt;p:radioButton id="opt3" itemIndex="2"/&gt;
+            &lt;h:outputLabel for="opt3" value="Option 3" /&gt;
+            &lt;p:calendar /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:selectOneRadio&gt;
+
     &lt;p:commandButton value="Submit" update="display"/&gt;
 
-    &lt;h:outputText id="display" value="Selected: \#{buttonBean.number}" /&gt;
+    &lt;h:panelGrid columns="1" id="display"&gt;
+        &lt;h:outputText value="Value1:  \#{buttonBean.number}" /&gt;
+        &lt;h:outputText value="Value2:  \#{formBean.option}" /&gt;
+    &lt;/h:panelGrid&gt;
 
 &lt;/h:form&gt;
 					</pre>

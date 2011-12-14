@@ -33,6 +33,8 @@ public class FormBean implements Serializable {
     private List<String> selectedOptions;
 
     private Map<String,String> movies;
+    
+    private Integer option;
 
     public FormBean() {
         movies = new HashMap<String, String>();
@@ -74,6 +76,14 @@ public class FormBean implements Serializable {
 
     public Map<String, String> getMovies() {
         return movies;
+    }
+
+    public Integer getOption() {
+        return option;
+    }
+
+    public void setOption(Integer option) {
+        this.option = option;
     }
 
     public void addMessage() {
