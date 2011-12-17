@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-
+    
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">SelectOneRadio</h1>
@@ -25,25 +25,25 @@
                 </h:panelGrid>
                 
                 <h3>Custom Layout</h3>
-                <p:selectOneRadio value="#{formBean.option}" layout="custom">
+                <p:selectOneRadio id="customRadio" value="#{formBean.option}" layout="custom">
                     <f:selectItem itemLabel="Option 1" itemValue="1" />
                     <f:selectItem itemLabel="Option 2" itemValue="2" />
                     <f:selectItem itemLabel="Option 3" itemValue="3" />
-                        
-                    <h:panelGrid columns="3">
-                        <p:radioButton id="opt1" itemIndex="0" for="option1"/>
-                        <h:outputLabel for="opt1" value="Option 1" />
-                        <p:spinner />
-                        
-                        <p:radioButton id="opt2" itemIndex="1"/>
-                        <h:outputLabel for="opt2" value="Option 2" />
-                        <p:inputText />
-                        
-                        <p:radioButton id="opt3" itemIndex="2"/>
-                        <h:outputLabel for="opt3" value="Option 3" />
-                        <p:calendar />
-                    </h:panelGrid>
                 </p:selectOneRadio>
+                        
+                <h:panelGrid columns="3">
+                    <p:radioButton id="opt1" for="customRadio" itemIndex="0"/>
+                    <h:outputLabel for="opt1" value="Option 1" />
+                    <p:spinner />
+
+                    <p:radioButton id="opt2" for="customRadio" itemIndex="1"/>
+                    <h:outputLabel for="opt2" value="Option 2" />
+                    <p:inputText />
+
+                    <p:radioButton id="opt3" for="customRadio" itemIndex="2"/>
+                    <h:outputLabel for="opt3" value="Option 3" />
+                    <p:calendar />
+                </h:panelGrid>
 
                 <br/><br/>
                 
@@ -76,25 +76,25 @@
     &lt;/h:panelGrid&gt;
 
     &lt;h3&gt;Custom Layout&lt;/h3&gt;
-    &lt;p:selectOneRadio value="\#{formBean.option}" layout="custom"&gt;
+    &lt;p:selectOneRadio id="customRadio" value="\#{formBean.option}" layout="custom"&gt;
         &lt;f:selectItem itemLabel="Option 1" itemValue="1" /&gt;
         &lt;f:selectItem itemLabel="Option 2" itemValue="2" /&gt;
         &lt;f:selectItem itemLabel="Option 3" itemValue="3" /&gt;
-
-        &lt;h:panelGrid columns="3"&gt;
-            &lt;p:radioButton id="opt1" itemIndex="0" for="option1"/&gt;
-            &lt;h:outputLabel for="opt1" value="Option 1" /&gt;
-            &lt;p:spinner /&gt;
-
-            &lt;p:radioButton id="opt2" itemIndex="1"/&gt;
-            &lt;h:outputLabel for="opt2" value="Option 2" /&gt;
-            &lt;p:inputText /&gt;
-
-            &lt;p:radioButton id="opt3" itemIndex="2"/&gt;
-            &lt;h:outputLabel for="opt3" value="Option 3" /&gt;
-            &lt;p:calendar /&gt;
-        &lt;/h:panelGrid&gt;
     &lt;/p:selectOneRadio&gt;
+
+    &lt;h:panelGrid columns="3"&gt;
+        &lt;p:radioButton id="opt1" for="customRadio" itemIndex="0"/&gt;
+        &lt;h:outputLabel for="opt1" value="Option 1" /&gt;
+        &lt;p:spinner /&gt;
+
+        &lt;p:radioButton id="opt2" for="customRadio" itemIndex="1"/&gt;
+        &lt;h:outputLabel for="opt2" value="Option 2" /&gt;
+        &lt;p:inputText /&gt;
+
+        &lt;p:radioButton id="opt3" for="customRadio" itemIndex="2"/&gt;
+        &lt;h:outputLabel for="opt3" value="Option 3" /&gt;
+        &lt;p:calendar /&gt;
+    &lt;/h:panelGrid&gt;
 
     &lt;p:commandButton value="Submit" update="display"/&gt;
 
