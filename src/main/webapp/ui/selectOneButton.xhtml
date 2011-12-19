@@ -1,0 +1,118 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+PrimeFaces.widget.SelectOneButton = function(cfg) {
+    this.cfg = cfg;
+    this.id = this.cfg.id;
+    this.jqId = PrimeFaces.escapeClientId(this.id);
+    this.jq = $(this.jqId);
+    this.buttons = this.jq.children('button:not(:disabled)');
+    this.inputs = this.jq.find(':radio:not(:disabled)');
+    var _self = this;
+    
+    this.buttons.mouseover(function() {
+        var button = $(this);
+        if(!button.hasClass('ui-state-active'))
+            button.addClass('ui-state-hover'); 
+    }).mouseout(function() {
+        $(this).removeClass('ui-state-hover'); 
+    }).click(function() {
+        var button = $(this);
+        
+        if(!button.hasClass('ui-state-active')) {
+            _self.select(button);
+        }
+    });
+    
+    //Client behaviors
+    if(this.cfg.behaviors) {
+        PrimeFaces.attachBehaviors(this.inputs, this.cfg.behaviors);
+    }
+}
+
+PrimeFaces.widget.SelectOneButton.prototype.select = function(button) {
+    this.unselect(this.buttons.filter('.ui-state-active'));
+    
+    button.removeClass('ui-state-hover').addClass('ui-state-active')
+                            .children(':radio').attr('checked','checked').change();
+}
+
+PrimeFaces.widget.SelectOneButton.prototype.unselect = function(button) {
+    button.removeClass('ui-state-active').children(':radio').removeAttr('checked').change()
+}
+            //]]>
+        </script>
+    </ui:define>
+    
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">SelectOneButton</h1>
+		<div class="entry">
+			<p>SelectOneButton is an input component to select options using buttons instead of radio buttons.</p>
+
+			<h:form>
+
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+                    <h:outputText value="Options: " />
+                    <p:selectOneButton value="#{buttonBean.number}">
+                        <f:selectItem itemLabel="Option 1" itemValue="1" />
+                        <f:selectItem itemLabel="Option 2" itemValue="2" />
+                        <f:selectItem itemLabel="Option 3" itemValue="3" />
+                    </p:selectOneButton>
+
+                </h:panelGrid>
+
+                <p:separator style="margin-bottom:20px"/>
+                
+                <p:commandButton value="Submit" update="display"/>
+                
+                <br /><br />
+                
+                <h:outputText id="display" value="Value:  #{buttonBean.number}" />
+
+			</h:form>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="selectOneButton.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
+
+        &lt;h:outputText value="Options: " /&gt;
+        &lt;p:selectOneButton value="\#{buttonBean.number}"&gt;
+            &lt;f:selectItem itemLabel="Option 1" itemValue="1" /&gt;
+            &lt;f:selectItem itemLabel="Option 2" itemValue="2" /&gt;
+            &lt;f:selectItem itemLabel="Option 3" itemValue="3" /&gt;
+        &lt;/p:selectOneButton&gt;
+
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:separator /&gt;
+
+    &lt;p:commandButton value="Submit" update="display"/&gt;
+
+    &lt;h:outputText id="display" value="Value:  \#{buttonBean.number}" /&gt;
+
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+			</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>
