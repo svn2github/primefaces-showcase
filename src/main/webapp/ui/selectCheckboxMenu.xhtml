@@ -1,0 +1,110 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+
+            //]]>
+        </script>
+    </ui:define>
+
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">SelectManyCheckbox</h1>
+		<div class="entry">
+			<p>SelectCheckboxMenu is an input component based on checkboxes in an overlay menu.</p>
+
+			<h:form>
+
+                <p:selectCheckboxMenu value="#{formBean.selectedMovies}" label="Movies">
+                    <f:selectItems value="#{formBean.movies}" />
+                </p:selectCheckboxMenu>
+
+                <p:separator style="margin-bottom:10px"/>
+                
+                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+
+                <p:dialog header="Selected Movies" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg" resizabled="false">
+                    <p:dataList id="display" value="#{formBean.selectedMovies}" var="movie">
+                        #{movie}
+                    </p:dataList>
+                </p:dialog>
+
+			</h:form>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="selectCheckboxMenu.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;p:selectCheckboxMenu value="\#{formBean.selectedMovies}" label="Movies"&gt;
+        &lt;f:selectItems value="\#{formBean.movies}" /&gt;
+    &lt;/p:selectCheckboxMenu&gt;
+
+    &lt;p:separator style="margin-bottom:10px"/&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="dlg.show()" /&gt;
+
+    &lt;p:dialog header="Selected Movies" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg" resizabled="false"&gt;
+        &lt;p:dataList id="display" value="\#{formBean.selectedMovies}" var="movie"&gt;
+            \#{movie}
+        &lt;/p:dataList&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+					</pre>
+
+                    </p:tab>
+
+                    <p:tab title="FormBean.java">
+                        <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class FormBean implements Serializable {
+
+    private List&lt;String&gt; selectedMovies;
+
+    private Map&lt;String,String&gt; movies;
+
+    public FormBean() {
+        movies = new HashMap&lt;String, String&gt;();
+        movies.put("Scarface", "Scarface");
+        movies.put("Goodfellas", "Goodfellas");
+        movies.put("Godfather", "Godfather");
+        movies.put("Carlito's Way", "Carlito's Way");
+    }
+
+    public List&lt;String&gt; getSelectedMovies() {
+        return selectedMovies;
+    }
+    public void setSelectedMovies(List&lt;String&gt; selectedMovies) {
+        this.selectedMovies = selectedMovies;
+    }
+
+    public Map&lt;String, String&gt; getMovies() {
+        return movies;
+    }
+}
+                        </pre>
+                    </p:tab>
+			</p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>
