@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Overlay Panel</h1>
+		<div class="entry">
+			<p>OverlayPanel is a generic container component that can overlay other components on page.</p>
+
+			<h:form>
+                
+                <p:commandButton id="carBtn" value="Cars" type="button" />
+
+                <p:overlayPanel for="carBtn" hideEffect="fade">
+                    <p:dataTable var="car" value="#{tableBean.cars}" rows="10" paginator="true">
+                        <p:column headerText="Model">
+                            <h:outputText value="#{car.model}" />
+                        </p:column>
+
+                        <p:column headerText="Year">
+                            <h:outputText value="#{car.year}" />
+                        </p:column>
+
+                        <p:column headerText="Manufacturer">
+                            <h:outputText value="#{car.manufacturer}" />
+                        </p:column>
+
+                        <p:column headerText="Color">
+                            <h:outputText value="#{car.color}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:overlayPanel>
+
+                <br /><br />
+				
+                <p:commandButton id="chartBtn" value="Chart" type="button" />
+                
+                <p:overlayPanel for="chartBtn" hideEffect="fade">
+                    <p:pieChart value="#{chartBean.pieModel}" legendPosition="w"
+                        title="Sample Pie Chart" style="width:400px;height:300px" />
+                </p:overlayPanel>
+                
+                <br /><br />
+                
+                <p:commandButton id="imgBtn" value="Images" type="button" />
+                
+                <p:overlayPanel for="imgBtn" showEffect="blind" hideEffect="explode">
+                    <p:imageSwitch effect="fade">
+                        <ui:repeat value="#{imageSwitchBean.images}" var="image">
+                            <p:graphicImage value="/images/#{image}" />
+                        </ui:repeat>
+                    </p:imageSwitch>
+                </p:overlayPanel>
+			</h:form>
+	
+		<h3>Source</h3>
+        <p:tabView>
+            <p:tab title="overlayPanel.xhtml">
+                <pre name="code" class="xml">
+&lt;h:form&gt;
+                
+    &lt;p:commandButton id="carBtn" value="Cars" type="button" /&gt;
+
+    &lt;p:overlayPanel for="carBtn" hideEffect="fade"&gt;
+        &lt;p:dataTable var="car" value="\#{tableBean.cars}" rows="10" paginator="true"&gt;
+            &lt;p:column headerText="Model"&gt;
+                &lt;h:outputText value="\#{car.model}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column headerText="Year"&gt;
+                &lt;h:outputText value="\#{car.year}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column headerText="Manufacturer"&gt;
+                &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column headerText="Color"&gt;
+                &lt;h:outputText value="\#{car.color}" /&gt;
+            &lt;/p:column&gt;
+        &lt;/p:dataTable&gt;
+    &lt;/p:overlayPanel&gt;
+
+    &lt;p:commandButton id="chartBtn" value="Chart" type="button" /&gt;
+
+    &lt;p:overlayPanel for="chartBtn" hideEffect="fade"&gt;
+        &lt;p:pieChart value="\#{chartBean.pieModel}" legendPosition="w"
+            title="Sample Pie Chart" style="width:400px;height:300px" /&gt;
+    &lt;/p:overlayPanel&gt;
+
+    &lt;p:commandButton id="imgBtn" value="Images" type="button" /&gt;
+
+    &lt;p:overlayPanel for="imgBtn" showEffect="blind" hideEffect="explode"&gt;
+        &lt;p:imageSwitch effect="fade"&gt;
+            &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+                &lt;p:graphicImage value="/images/\#{image}" /&gt;
+            &lt;/ui:repeat&gt;
+        &lt;/p:imageSwitch&gt;
+    &lt;/p:overlayPanel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>
