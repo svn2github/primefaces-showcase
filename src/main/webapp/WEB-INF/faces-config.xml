@@ -384,4 +384,9 @@
         <managed-bean-class>org.primefaces.examples.view.OrderListBean</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
+        <managed-bean>
+        <managed-bean-name>photoCamBean</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.PhotoCamBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>

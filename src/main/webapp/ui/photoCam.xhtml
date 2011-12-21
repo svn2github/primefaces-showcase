@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+        
+        <h1 class="title ui-widget-header ui-corner-all">PhotoCam</h1>
+		<div class="entry">
+			<p>PhotoCam is an input component to take photos with the webcam and send them to the backend model.</p>
+            
+            <h:form>
+                
+                <h:panelGrid columns="3">
+                    <p:photoCam widgetVar="pc" listener="#{photoCamBean.oncapture}" update="photos"/>
+                    
+                    <p:commandButton type="button" value="Capture" onclick="pc.capture()"/>
+                    
+                    <p:imageSwitch effect="zoom" id="photos">
+                        <ui:repeat value="#{photoCamBean.photos}" var="photo">
+                            <p:graphicImage value="/photocam/#{photo}.png" />
+                        </ui:repeat>
+                    </p:imageSwitch>
+                </h:panelGrid>
+                
+            </h:form>
+            
+            <h3>Source</h3>
+			<p:tabView>
+				<p:tab title="photoCam.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;h:panelGrid columns="3"&gt;
+        &lt;p:photoCam widgetVar="pc" listener="\#{photoCamBean.oncapture}" update="photos"/&gt;
+
+        &lt;p:commandButton type="button" value="Capture" onclick="pc.capture()"/&gt;
+
+        &lt;p:imageSwitch effect="zoom" id="photos"&gt;
+            &lt;ui:repeat value="\#{photoCamBean.photos}" var="photo"&gt;
+                &lt;p:graphicImage value="/photocam/\#{photo}.png" /&gt;
+            &lt;/ui:repeat&gt;
+        &lt;/p:imageSwitch&gt;
+    &lt;/h:panelGrid&gt;
+
+&lt;/h:form&gt;
+					</pre>
+
+                    </p:tab>
+
+                    <p:tab title="PhotoCamBean.java">
+                        <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.FacesException;
+import javax.faces.context.FacesContext;
+import javax.imageio.stream.FileImageOutputStream;
+import javax.servlet.ServletContext;
+import org.primefaces.event.CaptureEvent;
+
+public class PhotoCamBean {
+   
+    private List&lt;String> photos = new ArrayList&lt;String&gt;();
+    
+    private String getRandomImageName() {
+		int i = (int) (Math.random() * 10000000);
+		
+		return String.valueOf(i);
+	}
+
+    public List&lt;String&gt; getPhotos() {
+        return photos;
+    }    
+    
+    public void oncapture(CaptureEvent captureEvent) {
+        String photo = getRandomImageName();
+        this.photos.add(0,photo);
+        byte[] data = captureEvent.getData();
+        
+		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+		String newFileName = servletContext.getRealPath("") + File.separator + "photocam" + File.separator + photo + ".png";
+		
+		FileImageOutputStream imageOutput;
+		try {
+			imageOutput = new FileImageOutputStream(new File(newFileName));
+			imageOutput.write(data, 0, data.length);
+			imageOutput.close();
+		}
+        catch(Exception e) {
+			throw new FacesException("Error in writing captured image.");
+		}
+    }
+}
+                        </pre>
+                    </p:tab>
+			</p:tabView>
+
+        </div>
+
+	</ui:define>
+</ui:composition>
