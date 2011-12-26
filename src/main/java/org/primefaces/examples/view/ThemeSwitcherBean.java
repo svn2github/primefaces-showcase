@@ -70,6 +70,7 @@ public class ThemeSwitcherBean {
         themes.put("Excite-Bike", "excite-bike");
         themes.put("Flick", "flick");
         themes.put("Glass-X", "glass-x");
+        themes.put("Home", "home");
         themes.put("Hot-Sneaks", "hot-sneaks");
         themes.put("Humanity", "humanity");
         themes.put("Le-Frog", "le-frog");

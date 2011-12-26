@@ -201,6 +201,11 @@
         </dependency>
         <dependency>
             <groupId>org.primefaces.themes</groupId>
+            <artifactId>home</artifactId>
+            <version>${theme.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
             <artifactId>hot-sneaks</artifactId>
             <version>${theme.version}</version>
         </dependency>
