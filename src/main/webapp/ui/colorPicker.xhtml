@@ -55,9 +55,6 @@
 
                         <h:outputText value="Popup: " />
 						<p:colorPicker value="#{colorBean.color3}" widgetVar="picker"/>
-
-                        <h:outputText value="Effect: " />
-						<p:colorPicker value="#{colorBean.color4}" effect="fold" />
 					</h:panelGrid>
 
                     <p:separator />
@@ -75,9 +72,6 @@
 
                         <h:outputText value="Color 3: " />
                         <h:outputText value="#{colorBean.color3}" style="background-color:\##{colorBean.color3}"/>
-
-                        <h:outputText value="Color 4: " />
-                        <h:outputText value="#{colorBean.color4}" style="background-color:\##{colorBean.color4}"/>
                     </h:panelGrid>
                 </p:dialog>
 				
@@ -99,9 +93,6 @@
 
             &lt;h:outputText value="Popup: " /&gt;
             &lt;p:colorPicker value="\#{colorBean.color3}" widgetVar="picker"/&gt;
-
-            &lt;h:outputText value="Effect: " /&gt;
-            &lt;p:colorPicker value="\#{colorBean.color4}" effect="fold" /&gt;
         &lt;/h:panelGrid&gt;
 
         &lt;p:separator /&gt;
@@ -119,9 +110,6 @@
 
             &lt;h:outputText value="Color 3: " /&gt;
             &lt;h:outputText value="\#{colorBean.color3}" style="background-color:\\#\#{colorBean.color3}"/&gt;
-
-            &lt;h:outputText value="Color 4: " /&gt;
-            &lt;h:outputText value="\#{colorBean.color4}" style="background-color:\\#\#{colorBean.color4}"/&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
 
@@ -140,8 +128,6 @@ public class ColorBean {
     private String color2;
 
     private String color3;
-
-    private String color4;
 
     public String getColor1() {
         return color1;
@@ -165,14 +151,6 @@ public class ColorBean {
 
     public void setColor3(String color3) {
         this.color3 = color3;
-    }
-
-    public String getColor4() {
-        return color4;
-    }
-
-    public void setColor4(String color4) {
-        this.color4 = color4;
     }
 }
                     </pre>
