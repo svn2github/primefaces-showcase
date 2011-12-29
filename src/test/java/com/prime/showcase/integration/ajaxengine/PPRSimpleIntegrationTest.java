@@ -25,20 +25,20 @@ public class PPRSimpleIntegrationTest extends AbstractIntegrationTest {
 		// driver.navigate().to(""); 
 
 		// Find the text input element by its name
-		WebElement inputField = findElementById("j_idt14:name");
+		WebElement inputField = findElementById("form:name");
 
 		// Enter something to search for
 		inputField.sendKeys(nameToTest);
 		// Now submit the form. WebDriver will find the form for us from the
 		// element
-		WebElement button = findElementById("j_idt14:j_idt17");
+		WebElement button = findElementById("form:btn");
 		button.submit();
 
 		boolean nameTextUpdated = false;
 		
-		waitUntilElementGetsValue("j_idt14:display", nameToTest);
+		waitUntilElementGetsValue("form:display", nameToTest);
 		
-		WebElement nameField = findElementById("j_idt14:display");
+		WebElement nameField = findElementById("form:display");
 		nameTextUpdated = nameToTest.equals(nameField.getText());
 		assertTrue(nameTextUpdated);
 	}

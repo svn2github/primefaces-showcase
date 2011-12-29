@@ -11,14 +11,14 @@
 		<div class="entry">
 			<p>This examples demonstrates the basic ajax update feature.</p>
 
-			<h:form>
+			<h:form id="form">
 				
 				<h:panelGrid columns="3" cellpadding="5">
 					<h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
 					
 					<p:inputText id="name" value="#{pprBean.firstname}" />
 					
-					<p:commandButton value="Submit" update="display"/>
+					<p:commandButton id="btn" value="Submit" update="display"/>
 				</h:panelGrid>
 				
 				<h:outputText value="#{pprBean.firstname}" id="display" />

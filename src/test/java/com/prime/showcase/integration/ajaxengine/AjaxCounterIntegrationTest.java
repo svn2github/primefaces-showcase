@@ -17,21 +17,21 @@ public class AjaxCounterIntegrationTest extends AbstractIntegrationTest {
 
 		driver.get(testUrl);
 
-		WebElement button = findElementById("j_idt14:j_idt17");
+		WebElement button = findElementById("form:btn");
 
 		button.click();
 
 		waitUntilAjaxRequestCompletes();
 		
-		WebElement numberText = findElementById("j_idt14:txt_count");
+		WebElement numberText = findElementById("form:txt_count");
 
 		assertThat(numberText.getText(), equalTo("1"));
 		
 		button.click();
 		
-		waitUntilElementExistsAndGetsValue("j_idt14:txt_count", "2");
+		waitUntilElementExistsAndGetsValue("form:txt_count", "2");
 		
-		numberText = findElementById("j_idt14:txt_count");
+		numberText = findElementById("form:txt_count");
 
 		assertThat(numberText.getText(), equalTo("2"));
 

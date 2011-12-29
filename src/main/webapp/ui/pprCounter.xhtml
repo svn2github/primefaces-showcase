@@ -10,13 +10,13 @@
 		<div class="entry">
 			<p>An integer variable(count) in counterBean is incremented each time the button is clicked.</p>
 			
-			<h:form>
+			<h:form id="form">
 				<h:panelGrid columns="2" cellpadding="5">
 					<h:outputText value="Counter: " />
 					<h:outputText id="txt_count" value="#{counterBean.count}" />
 				</h:panelGrid>
 
-                <p:commandButton value="Count" actionListener="#{counterBean.increment}" update="txt_count"/>
+                <p:commandButton id="btn" value="Count" actionListener="#{counterBean.increment}" update="txt_count"/>
 			</h:form>
 			
 			<h3>Source</h3>
