@@ -10,11 +10,11 @@
 		<div class="entry">
             <p>When a date is selected, a server side listener can be invoked using dateSelect event.</p>
             
-			<h:form>
+			<h:form id="form">
 				
-				<p:growl id="growl" showDetail="true"/>
+				<p:growl id="growl" showDetail="true" />
 				
-				<p:calendar value="#{calendarBean.date1}" mode="inline">
+				<p:calendar value="#{calendarBean.date1}" mode="inline" id="inlineCal">
                     <p:ajax event="dateSelect" listener="#{calendarBean.handleDateSelect}" update="growl" />
                 </p:calendar>
 			

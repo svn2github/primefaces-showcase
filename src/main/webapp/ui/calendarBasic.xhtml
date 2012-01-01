@@ -10,20 +10,20 @@
 		<div class="entry">
 			<p>Calendar supports two types of display modes; "inline" or "popup".</p>
 			
-			<h:form>
+			<h:form id="form">
 			
 				<h3>Inline</h3>
-				<p:calendar value="#{calendarBean.date1}" mode="inline" />	
+				<p:calendar value="#{calendarBean.date1}" mode="inline" id="inlineCal"/>	
 				
 				<h3>Popup</h3>
-				<p:calendar value="#{calendarBean.date2}" />
+				<p:calendar value="#{calendarBean.date2}" id="popupCal" />
 				
 				<h3>Popup Button</h3>
-				<p:calendar value="#{calendarBean.date3}" showOn="button" />
+				<p:calendar value="#{calendarBean.date3}" showOn="button" id="popupButtonCal" />
 
                 <br />
 				
-                <p:commandButton value="Submit" update="display" oncomplete="dialog.show()" style="margin-top:10px"/>
+                <p:commandButton value="Submit" id="submitButton" update="display" oncomplete="dialog.show()" style="margin-top:10px"/>
 				
 				<p:dialog header="Selected Dates" widgetVar="dialog" 
 							showEffect="fade" hideEffect="fade">
@@ -31,18 +31,18 @@
                 	<h:panelGrid id="display" columns="2" cellpadding="5">
                 	
 						<h:outputText value="Inline Date: " />
-						<h:outputText value="#{calendarBean.date1}">
-							<f:convertDateTime pattern="MM/dd/yyyy" timeZone="#{calendarBean.timeZone}"/>
+						<h:outputText value="#{calendarBean.date1}" id="inlineDate">
+							<f:convertDateTime pattern="d/M/yyyy" timeZone="#{calendarBean.timeZone}"/>
 						</h:outputText>
 						
 						<h:outputText value="Popup Date: " />
-						<h:outputText value="#{calendarBean.date2}">
-							<f:convertDateTime pattern="MM/dd/yyyy" timeZone="#{calendarBean.timeZone}"/>
+						<h:outputText value="#{calendarBean.date2}" id="popupDate">
+							<f:convertDateTime pattern="d/M/yyyy" timeZone="#{calendarBean.timeZone}"/>
 						</h:outputText>
 						
 						<h:outputText value="Popup Button: " />
-						<h:outputText value="#{calendarBean.date3}">
-							<f:convertDateTime pattern="MM/dd/yyyy" timeZone="#{calendarBean.timeZone}"/>
+						<h:outputText value="#{calendarBean.date3}" id="popupButtonDate">
+							<f:convertDateTime pattern="d/M/yyyy" timeZone="#{calendarBean.timeZone}"/>
 						</h:outputText>
 						
 					</h:panelGrid>

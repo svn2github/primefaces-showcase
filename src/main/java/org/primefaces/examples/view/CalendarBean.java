@@ -108,7 +108,7 @@ public class CalendarBean {
 	
 	public void handleDateSelect(DateSelectEvent event) {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat format = new SimpleDateFormat("d/M/yyyy");
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getDate())));
 	}
 	
