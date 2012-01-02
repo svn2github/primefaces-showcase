@@ -15,7 +15,13 @@
  */
 package org.primefaces.examples.view;
 
-//import org.primefaces.event.CaptureEvent;
+import java.io.File;
+import javax.faces.FacesException;
+import javax.faces.context.FacesContext;
+import javax.imageio.stream.FileImageOutputStream;
+import javax.servlet.ServletContext;
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.CaptureEvent;
 
 public class PhotoShare {
         
@@ -24,7 +30,7 @@ public class PhotoShare {
 		
 		return String.valueOf(i);
 	}
-    /*
+    
     public void share(CaptureEvent captureEvent) {
         String photo = getRandomImageName();
         byte[] data = captureEvent.getData();
@@ -43,5 +49,5 @@ public class PhotoShare {
         catch(Exception e) {
 			throw new FacesException("Error in writing captured image.");
 		}
-    }*/
+    }
 }
