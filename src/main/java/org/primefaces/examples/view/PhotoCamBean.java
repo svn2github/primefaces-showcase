@@ -22,7 +22,7 @@ import javax.faces.FacesException;
 import javax.faces.context.FacesContext;
 import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletContext;
-//import org.primefaces.event.CaptureEvent;
+import org.primefaces.event.CaptureEvent;
 
 public class PhotoCamBean {
    
@@ -38,7 +38,7 @@ public class PhotoCamBean {
         return photos;
     }    
     
-    /*public void oncapture(CaptureEvent captureEvent) {
+    public void oncapture(CaptureEvent captureEvent) {
         String photo = getRandomImageName();
         this.photos.add(0,photo);
         byte[] data = captureEvent.getData();
@@ -55,5 +55,5 @@ public class PhotoCamBean {
         catch(Exception e) {
 			throw new FacesException("Error in writing captured image.");
 		}
-    }*/
+    }
 }
