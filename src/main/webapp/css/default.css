@@ -213,6 +213,8 @@ img.right {
 	float: left;
 	margin-top: -81px;
 	margin-left: -1px;
+    font-family: Arial,sans-serif;
+    font-size:11px !important;
 }
 
 #sidebar2 {
