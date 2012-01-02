@@ -11,11 +11,11 @@
 			<div class="entry">
 			<p>Right click anywhere on this page to view the context-menu options.</p>
 			
-			<h:form>
+			<h:form id="form">
 				
 				<p:growl id="messages"/>
 
-                <p:contextMenu>
+                <p:contextMenu id="contextMenuId">
 					<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk"/>
                     <p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
                     <p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false" icon="ui-icon-close"/>

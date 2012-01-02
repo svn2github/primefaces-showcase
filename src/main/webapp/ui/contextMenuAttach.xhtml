@@ -21,7 +21,7 @@
 				<p:graphicImage value="/images/nature4.jpg" />
 			</p:imageSwitch>
 		
-			<p:contextMenu for="images" style="z-index:50">
+			<p:contextMenu id="contextMenuId" for="images" style="z-index:50">
 				<p:menuitem value="Previous" url="javascript:void(0)" onclick="gallery.previous()" icon="ui-icon-triangle-1-w" />
 				<p:menuitem value="Next" url="javascript:void(0)" onclick="gallery.next()" icon="ui-icon-triangle-1-e" />
 				<p:menuitem value="Remove All" url="javascript:void(0)" onclick="$('#images').fadeOut()" icon="ui-icon-close"/>

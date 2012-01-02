@@ -20,7 +20,7 @@
 
             <h:form id="form">
                 
-                <p:contextMenu for="cars">
+                <p:contextMenu id="contextMenuId" for="cars">
                     <p:menuitem value="View" update="display" icon="ui-icon-search" oncomplete="carDialog.show()"/>
                     <p:menuitem value="Delete" update="cars" icon="ui-icon-close" actionListener="#{tableBean.deleteCar}"/>
 				</p:contextMenu>

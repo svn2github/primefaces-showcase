@@ -11,11 +11,11 @@
 			<p>Tree has exclusive support for context menu. Different menus can be attached to particular tree nodes by matching nodeType option
             to treeNode type.</p>
 			
-			<h:form>
+			<h:form id="form">
 			
 				<p:growl id="messages" showDetail="true" />
                 
-                <p:contextMenu for="treeSingle">
+                <p:contextMenu id="contextMenuId" for="treeSingle">
                     <p:menuitem value="View" update="messages" actionListener="#{treeBean.displaySelectedSingle}" icon="ui-icon-search" />
                     <p:menuitem value="Delete" update="treeSingle" actionListener="#{treeBean.deleteNode}" icon="ui-icon-close"/>
                 </p:contextMenu>

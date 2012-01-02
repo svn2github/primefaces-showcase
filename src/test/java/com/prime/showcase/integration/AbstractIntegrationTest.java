@@ -11,6 +11,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 
@@ -84,6 +86,14 @@ public abstract class AbstractIntegrationTest {
 	protected List<WebElement> findElementsById(String elementId) {
 		return driver.findElements(By.id(elementId));
 	}
+	
+	protected WebElement findElementByTag(String tagName) {
+		return driver.findElement(By.tagName(tagName));
+	}
+	
+	protected List<WebElement> findElementsByTag(String tagName) {
+		return driver.findElements(By.tagName(tagName));
+	}
 
 	protected WebElement findElementByName(String elementName) {
 		return driver.findElement(By.name(elementName));
@@ -93,8 +103,22 @@ public abstract class AbstractIntegrationTest {
 		return driver.findElements(By.name(elementName));
 	}
 	
+	protected WebElement findElementByClass(String className) {
+		return driver.findElement(By.className(className));
+	}
+
+	protected List<WebElement> findElementsByClass(String className) {
+		return driver.findElements(By.className(className));
+	}
+	
 	protected String toShowcaseUrl(String relativeUrl) {
 		return PRIME_SHOWCASE_UI + relativeUrl;
+	}
+	
+	protected void rightClick(WebElement body) {
+		Actions builder = new Actions(driver);
+		Action rClick = builder.contextClick(body).build();
+		rClick.perform();
 	}
 
 }

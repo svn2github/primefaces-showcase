@@ -13,7 +13,7 @@
 			
 			<h:form id="form">
                 
-                <p:contextMenu for="docs">
+                <p:contextMenu id="contextMenuId" for="docs">
                     <p:menuitem value="View" update="documentPanel" icon="ui-icon-search" oncomplete="documentDialog.show()"/>
                     <p:menuitem value="Delete" actionListener="#{documentsController.deleteNode}" update="docs" icon="ui-icon-close"/>
 				</p:contextMenu>
