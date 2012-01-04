@@ -4,19 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-    
-    <ui:define name="head">
-        <style type="text/css">
-
-        </style>
-        
-        <script type="text/javascript">
-            //<![CDATA[
-
-            //]]>
-        </script>
-    </ui:define>
-	
+    	
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">AutoComplete - Multiple Selection</h1>
@@ -24,14 +12,43 @@
 			<p>AutoComplete supports multiple selection as well.</p>
 		
 			<h:form>
+                <h3>Basic Complete</h3>
                 <p:autoComplete value="#{autoCompleteBean.selectedTexts}" completeMethod="#{autoCompleteBean.complete}" multiple="true"/>
-				
-                <p:commandButton value="Submit" update="texts" style="margin:10px 0" oncomplete="textDialog.show()"/>
                 
-                <p:dialog modal="true" widgetVar="textDialog" showEffect="fade" width="200" resizable="false" header="Selected Text">
-                    <p:dataList id="texts" value="#{autoCompleteBean.selectedTexts}" var="text">
-                        #{text}
-                    </p:dataList>
+                <h3>Advanced Complete</h3>
+                <p:autoComplete value="#{autoCompleteBean.selectedPlayers1}" completeMethod="#{autoCompleteBean.completePlayer}"
+                    var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player" multiple="true">
+                    <p:column>
+                        <p:graphicImage value="/images/barca/#{p.photo}" width="40" height="50"/>
+                    </p:column>
+
+                    <p:column>
+                        #{p.name} - #{p.number}
+                    </p:column>
+                </p:autoComplete>
+				
+                <p:separator style="margin-top:20px"/>
+                
+                <p:commandButton value="Submit" update="display" style="margin:10px 0" oncomplete="textDialog.show()" />
+                
+                <p:dialog modal="true" widgetVar="textDialog" showEffect="fade" width="200" resizable="false" header="Selected Values">
+                    <p:outputPanel id="display">
+                        <p:dataList value="#{autoCompleteBean.selectedTexts}" var="text">
+                            <f:facet name="header">
+                                Texts
+                            </f:facet>
+                            #{text}
+                        </p:dataList>
+                        
+                        <p:separator style="margin:20px"/>
+
+                        <p:dataList value="#{autoCompleteBean.selectedPlayers1}" var="player">
+                            <f:facet name="header">
+                                Players
+                            </f:facet>
+                            #{player}
+                        </p:dataList>
+                    </p:outputPanel>
                 </p:dialog>
 			</h:form>
 
@@ -40,7 +57,46 @@
             <p:tabView>
                 <p:tab title="autoCompleteMultiple.xhtml">
                     <pre name="code" class="xml">
+&lt;h:form&gt;
+    &lt;h3&gt;Basic Complete&lt;/h3&gt;
+    &lt;p:autoComplete value="\#{autoCompleteBean.selectedTexts}" completeMethod="\#{autoCompleteBean.complete}" multiple="true"/&gt;
 
+    &lt;h3&gt;Advanced Complete&lt;/h3&gt;
+    &lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayers1}" completeMethod="\#{autoCompleteBean.completePlayer}"
+        var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player" multiple="true"&gt;
+        &lt;p:column&gt;
+            &lt;p:graphicImage value="/images/barca/\#{p.photo}" width="40" height="50"/&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            \#{p.name} - \#{p.number}
+        &lt;/p:column&gt;
+    &lt;/p:autoComplete&gt;
+
+    &lt;p:separator style="margin-top:20px"/&gt;
+
+    &lt;p:commandButton value="Submit" update="display" style="margin:10px 0" oncomplete="textDialog.show()" /&gt;
+
+    &lt;p:dialog modal="true" widgetVar="textDialog" showEffect="fade" width="200" resizable="false" header="Selected Values"&gt;
+        &lt;p:outputPanel id="display"&gt;
+            &lt;p:dataList value="\#{autoCompleteBean.selectedTexts}" var="text"&gt;
+                &lt;f:facet name="header"&gt;
+                    Texts
+                &lt;/f:facet&gt;
+                \#{text}
+            &lt;/p:dataList&gt;
+
+            &lt;p:separator style="margin:20px"/&gt;
+
+            &lt;p:dataList value="\#{autoCompleteBean.selectedPlayers1}" var="player"&gt;
+                &lt;f:facet name="header"&gt;
+                    Players
+                &lt;/f:facet&gt;
+                \#{player}
+            &lt;/p:dataList&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
                     </pre>
                 </p:tab>
 
