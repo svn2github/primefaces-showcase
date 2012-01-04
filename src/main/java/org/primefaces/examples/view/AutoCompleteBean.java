@@ -48,10 +48,6 @@ public class AutoCompleteBean {
 
     private List<Player> selectedPlayers;
     
-    private List<Player> selectedPlayers1;
-        
-    private List<Player> selectedPlayers2;
-    
     private List<String> selectedTexts;
 	
 	public AutoCompleteBean() {
@@ -175,19 +171,5 @@ public class AutoCompleteBean {
     }
     public void setSelectedTexts(List<String> selectedTexts) {
         this.selectedTexts = selectedTexts;
-    }
-
-    public List<Player> getSelectedPlayers1() {
-        return selectedPlayers1;
-    }
-    public void setSelectedPlayers1(List<Player> selectedPlayers1) {
-        this.selectedPlayers1 = selectedPlayers1;
-    }
-
-    public List<Player> getSelectedPlayers2() {
-        return selectedPlayers2;
-    }
-    public void setSelectedPlayers2(List<Player> selectedPlayers2) {
-        this.selectedPlayers2 = selectedPlayers2;
     }
 }
