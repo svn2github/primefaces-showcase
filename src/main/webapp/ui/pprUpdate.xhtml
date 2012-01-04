@@ -13,16 +13,16 @@
 
 			<h:form id="form">
 				
-				<h:panelGrid columns="3" cellpadding="5">
+				<h:panelGrid columns="4" cellpadding="5">
 					<h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
 					
 					<p:inputText id="name" value="#{pprBean.firstname}" />
 					
 					<p:commandButton id="btn" value="Submit" update="display"/>
+                    
+                    <h:outputText value="#{pprBean.firstname}" id="display" />
 				</h:panelGrid>
-				
-				<h:outputText value="#{pprBean.firstname}" id="display" />
-				
+
 			</h:form>
 			
 			<h3>Source</h3>
@@ -31,15 +31,15 @@
 <pre name="code" class="xml">
 &lt;h:form&gt;
 							
-	&lt;h:panelGrid columns="3" cellpadding="5"&gt;
+	&lt;h:panelGrid columns="4" cellpadding="5"&gt;
 		&lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
 		
 		&lt;p:inputText id="name" value="\#{pprBean.firstname}" /&gt;
 		
 		&lt;p:commandButton value="Submit" update="display"/&gt;
+
+        &lt;h:outputText value="\#{pprBean.firstname}" id="display" /&gt;
 	&lt;/h:panelGrid&gt;
-	
-	&lt;h:outputText value="\#{pprBean.firstname}" id="display" /&gt;
 	
 &lt;/h:form&gt;
 						</pre>
