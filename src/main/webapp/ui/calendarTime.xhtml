@@ -13,22 +13,22 @@
 			<h:form>
  
 				<h3>DateTime</h3>
-				<p:calendar value="#{calendarBean.date1}" pattern="MM/dd/yyyy HH:mm" />
+				<p:calendar value="#{calendarBean.date1}" pattern="MM/dd/yyyy HH:mm" id="dateTimeCal"/>
 
                 <h3>TimeOnly</h3>
-				<p:calendar value="#{calendarBean.date2}" pattern="HH:mm" timeOnly="true" />
+				<p:calendar value="#{calendarBean.date2}" pattern="HH:mm" timeOnly="true" id="timeOnlyCal" />
 
 				<h3>AM/PM</h3>
-				<p:calendar value="#{calendarBean.date3}" pattern="MM/dd/yyyy hh:mm a"/>
+				<p:calendar value="#{calendarBean.date3}" pattern="MM/dd/yyyy hh:mm a" id="amPmCal"/>
 
 				<h3>Seconds</h3>
-				<p:calendar value="#{calendarBean.date4}" pattern="MM/dd/yyyy HH:mm:ss" />
+				<p:calendar value="#{calendarBean.date4}" pattern="MM/dd/yyyy HH:mm:ss" id="secondsCal"/>
 
                 <h3>Steps</h3>
-				<p:calendar value="#{calendarBean.date5}" pattern="MM/dd/yyyy HH:mm:ss" stepHour="2" stepMinute="10" stepSecond="10"/>
+				<p:calendar value="#{calendarBean.date5}" pattern="MM/dd/yyyy HH:mm:ss" stepHour="2" stepMinute="10" stepSecond="10" id="stepsCal"/>
 
                 <h3>Min/Max</h3>
-				<p:calendar value="#{calendarBean.date6}" pattern="MM/dd/yyyy HH:mm" minHour="9" maxHour="18"/>
+				<p:calendar value="#{calendarBean.date6}" pattern="MM/dd/yyyy HH:mm" minHour="9" maxHour="18" id="minMaxCal"/>
 
                 <br />
 

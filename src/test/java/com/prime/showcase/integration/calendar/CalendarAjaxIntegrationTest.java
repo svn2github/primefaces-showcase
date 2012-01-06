@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import java.util.Date;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,12 +16,14 @@ public class CalendarAjaxIntegrationTest extends AbstractIntegrationTest {
 	
 	private CalendarTestingHelper calendarTestingHelper = new CalendarTestingHelper();
 
-	private String testUrl = toShowcaseUrl("calendarAjax.jsf");
-
+	@Before
+	public void before() {
+		String testUrl = toShowcaseUrl("calendarAjax.jsf");
+		driver.get(testUrl);
+	}
+	
 	@Test
 	public void shouldCalendarMakeAjaxCallback()  {
-		
-		driver.get(testUrl);
 		
 		WebElement inlineCalendar = findElementById("form:inlineCal_inline");
 

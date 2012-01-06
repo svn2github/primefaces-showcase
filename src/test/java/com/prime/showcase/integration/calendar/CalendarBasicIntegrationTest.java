@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import java.util.Date;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,18 +16,19 @@ public class CalendarBasicIntegrationTest extends AbstractIntegrationTest {
 
 	private CalendarTestingHelper calendarTestingHelper = new CalendarTestingHelper();
 
-	private String testUrl = toShowcaseUrl("calendarBasic.jsf");
+	@Before
+	public void before() {
+		String testUrl = toShowcaseUrl("calendarBasic.jsf");
+		driver.get(testUrl);
+	}
 
 	@Test
 	public void shouldTestInlineCalendar() {
-		driver.get(testUrl);
-		
 		testCalendarBehavior("form:inlineCal_inline", "form:inlineDate");
 	}
 
 	@Test
 	public void shouldTestPopupCalendar() {
-		driver.get(testUrl);
 		WebElement inputText = findElementById("form:popupCal_input");
 		inputText.click();
 		
@@ -35,7 +37,6 @@ public class CalendarBasicIntegrationTest extends AbstractIntegrationTest {
 
 	@Test
 	public void shouldTestPopUpButtonCalendar() {
-		driver.get(testUrl);
 		WebElement calendar = findElementById("form:popupButtonCal");
 		WebElement popupButton = calendar.findElement(By.tagName("button"));
 		popupButton.click();

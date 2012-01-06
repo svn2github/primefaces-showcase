@@ -2,6 +2,7 @@ package com.prime.showcase.integration.calendar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.StringTokenizer;
 
@@ -35,6 +36,10 @@ public class CalendarTestingHelper {
 		}
 	}
 	
+	public Date getDateOnCell(WebElement element) {
+		return getClickedDate(getCell(element));
+	}
+	
 	public String toFormattedDateString(String dayString, String monthString, String yearString) {
 		return dayString + "/" + (Integer.valueOf(monthString) + 1) + "/" + yearString;
  	}
@@ -45,5 +50,11 @@ public class CalendarTestingHelper {
 		} catch (ParseException e) {
 			throw new RuntimeException("date parsing failed " + dateAsString);
 		}
+	}
+	
+	public Calendar toCalendar(Date date) {
+		Calendar selected = Calendar.getInstance();
+		selected.setTime(date);
+		return selected;
 	}
 }

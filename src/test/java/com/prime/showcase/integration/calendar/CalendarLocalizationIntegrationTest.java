@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
@@ -18,7 +19,11 @@ public class CalendarLocalizationIntegrationTest extends AbstractIntegrationTest
 
 	private CalendarTestingHelper calendarTestingHelper = new CalendarTestingHelper();
 
-	private String testUrl = toShowcaseUrl("calendarLocalization.jsf");
+	@Before
+	public void before() {
+		String testUrl = toShowcaseUrl("calendarLocalization.jsf");
+		driver.get(testUrl);
+	}
 
 	@Test
 	public void shouldLocalizeToTurkish() {
@@ -45,8 +50,6 @@ public class CalendarLocalizationIntegrationTest extends AbstractIntegrationTest
 	}
 
 	private void testOn(String inputFieldName, DateFormat dateFormat) {
-		driver.get(testUrl);
-
 		WebElement trInput = findElementById(inputFieldName);
 
 		trInput.click();
