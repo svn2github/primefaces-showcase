@@ -15,35 +15,35 @@
 
                 <h:outputText value="Focus/Blur: " />
                 <p:inputText id="focus" title="This tooltip is displayed when input gets the focus"/>
-                <p:tooltip for="focus" showEvent="focus" hideEvent="blur" />
+                <p:tooltip id="toolTipFocus" for="focus" showEvent="focus" hideEvent="blur" />
 
                 <h:outputText value="Fade: " />
                 <h:outputLink id="fade" value="#">
                     <h:outputText value="Fade Effect" />
                 </h:outputLink>
-                <p:tooltip for="fade" value="Fade effect is used by default" 
+                <p:tooltip id="toolTipFade" for="fade" value="Fade effect is used by default" 
                            showEffect="fade" hideEffect="fade" />
 
                 <h:outputText value="Slide: " />
                 <h:outputLink id="slide" value="#">
                     <h:outputText value="Slide Effect" />
                 </h:outputLink>
-                <p:tooltip for="slide" value="This tooltip uses slide effect for the animation"
+                <p:tooltip id="toolTipSlide" for="slide" value="This tooltip uses slide effect for the animation"
                                     showEffect="slide" hideEffect="slide" />
 
                 <h:outputText value="Clip/Explode: " />
                 <h:outputLink id="grow" value="#">
                     <h:outputText value="Clip/Explode Effects" />
                 </h:outputLink>
-                <p:tooltip for="grow" value="This tooltip uses clip/explode effects for the animation"
+                <p:tooltip id="toolTipGrow" for="grow" value="This tooltip uses clip/explode effects for the animation"
                         showEffect="clip" hideEffect="explode" />
 
                 <h:outputText value="Content:  " />
                 <h:outputLink id="lnk" value="#">
                     <h:outputText value="PrimeFaces" />
                 </h:outputLink>
-                <p:tooltip for="lnk">
-                    <p:graphicImage value="/images/prime_logo.png" />
+                <p:tooltip id="toolTipLnk" for="lnk">
+                    <p:graphicImage id="primeLogo" value="/images/prime_logo.png" />
                 </p:tooltip>
 
             </h:panelGrid>

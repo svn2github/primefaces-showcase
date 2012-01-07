@@ -27,10 +27,12 @@ public abstract class AbstractIntegrationTest {
 	private static final int DEFAULT_TIMEOUT_IN_SECONDS = 10;
 
 	protected static WebDriver driver;
+	private static Actions builder;
 
 	@BeforeClass
 	public static void beforeClass() {
 		driver = new FirefoxDriver();
+		builder = new Actions(driver);
 	}
 
 	@AfterClass
@@ -116,9 +118,13 @@ public abstract class AbstractIntegrationTest {
 	}
 	
 	protected void rightClick(WebElement body) {
-		Actions builder = new Actions(driver);
 		Action rClick = builder.contextClick(body).build();
 		rClick.perform();
+	}
+	
+	protected void mouseHover(WebElement element) {
+		Action action = builder.moveToElement(element).build();
+		action.perform();
 	}
 
 }
