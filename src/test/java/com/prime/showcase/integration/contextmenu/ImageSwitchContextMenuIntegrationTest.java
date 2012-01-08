@@ -11,16 +11,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import com.prime.showcase.integration.SeleniumActionHelper;
 
 public class ImageSwitchContextMenuIntegrationTest extends AbstractIntegrationTest{
 
+	private SeleniumActionHelper action;
+	
 	@Before
 	public void init(){
 		String testUrl = toShowcaseUrl("contextMenuAttach.jsf");
 		driver.get(testUrl);
+		action = new SeleniumActionHelper(driver);
 		
 		WebElement images = findElementById("images");
-		rightClick(images);
+		action.rightClick(images);
 	}
 	
 	@Test

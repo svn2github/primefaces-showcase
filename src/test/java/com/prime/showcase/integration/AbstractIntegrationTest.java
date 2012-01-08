@@ -11,8 +11,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 
@@ -27,12 +25,10 @@ public abstract class AbstractIntegrationTest {
 	private static final int DEFAULT_TIMEOUT_IN_SECONDS = 10;
 
 	protected static WebDriver driver;
-	private static Actions builder;
 
 	@BeforeClass
 	public static void beforeClass() {
 		driver = new FirefoxDriver();
-		builder = new Actions(driver);
 	}
 
 	@AfterClass
@@ -117,14 +113,4 @@ public abstract class AbstractIntegrationTest {
 		return PRIME_SHOWCASE_UI + relativeUrl;
 	}
 	
-	protected void rightClick(WebElement body) {
-		Action rClick = builder.contextClick(body).build();
-		rClick.perform();
-	}
-	
-	protected void mouseHover(WebElement element) {
-		Action action = builder.moveToElement(element).build();
-		action.perform();
-	}
-
 }

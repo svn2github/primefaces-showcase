@@ -8,13 +8,17 @@ import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import com.prime.showcase.integration.SeleniumActionHelper;
 
 public class TooltipIntegrationTest extends AbstractIntegrationTest {
 
+	private SeleniumActionHelper action;
+	
 	@Before
 	public void init(){
 		String testUrl = toShowcaseUrl("tooltip.jsf");
 		driver.get(testUrl);
+		action = new SeleniumActionHelper(driver);
 	}
 	
 	
@@ -34,7 +38,7 @@ public class TooltipIntegrationTest extends AbstractIntegrationTest {
 		WebElement toolTipFocus = findElementById("toolTipFade");
 		WebElement fade = findElementById("fade");
 		
-		mouseHover(fade);
+		action.mouseHover(fade);
 		Thread.sleep(1000);
 		
 		assertThat(toolTipFocus.isDisplayed(), equalTo(true));
@@ -46,7 +50,7 @@ public class TooltipIntegrationTest extends AbstractIntegrationTest {
 		WebElement toolTipFocus = findElementById("toolTipSlide");
 		WebElement slide = findElementById("slide");
 		
-		mouseHover(slide);
+		action.mouseHover(slide);
 		Thread.sleep(1000);
 		
 		assertThat(toolTipFocus.isDisplayed(), equalTo(true));
@@ -58,7 +62,7 @@ public class TooltipIntegrationTest extends AbstractIntegrationTest {
 		WebElement toolTipFocus = findElementById("toolTipGrow");
 		WebElement grow = findElementById("grow");
 		
-		mouseHover(grow);
+		action.mouseHover(grow);
 		Thread.sleep(1000);
 		
 		assertThat(toolTipFocus.isDisplayed(), equalTo(true));
@@ -70,7 +74,7 @@ public class TooltipIntegrationTest extends AbstractIntegrationTest {
 		WebElement toolTipFocus = findElementById("primeLogo");
 		WebElement lnk = findElementById("lnk");
 
-		mouseHover(lnk);
+		action.mouseHover(lnk);
 		Thread.sleep(1000);
 		
 		assertThat(toolTipFocus.isDisplayed(), equalTo(true));

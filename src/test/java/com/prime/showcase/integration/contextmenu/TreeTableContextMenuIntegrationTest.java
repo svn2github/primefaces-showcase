@@ -11,17 +11,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import com.prime.showcase.integration.SeleniumActionHelper;
 
 public class TreeTableContextMenuIntegrationTest extends
 		AbstractIntegrationTest {
 
+	private SeleniumActionHelper action;
+	
 	@Before
 	public void init(){
 		String testUrl = toShowcaseUrl("treeTableContextMenu.jsf");
 		driver.get(testUrl);
+		action = new SeleniumActionHelper(driver);
 		
 		WebElement firstRow = findElementById("form:docs_node_0");
-		rightClick(firstRow);
+		action.rightClick(firstRow);
 	}
 	
 	@Test

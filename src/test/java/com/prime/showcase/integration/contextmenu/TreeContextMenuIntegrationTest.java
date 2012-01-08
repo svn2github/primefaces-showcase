@@ -11,16 +11,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import com.prime.showcase.integration.SeleniumActionHelper;
 
 public class TreeContextMenuIntegrationTest extends AbstractIntegrationTest {
 
+	private SeleniumActionHelper action;
+	
 	@Before
 	public void init(){
 		String testUrl = toShowcaseUrl("treeContextMenu.jsf");
 		driver.get(testUrl);
+		action = new SeleniumActionHelper(driver);
 		
 		WebElement firstRow = findElementByClass("ui-tree-selectable-node");
-		rightClick(firstRow);
+		action.rightClick(firstRow);
 	}
 	
 	@Test
