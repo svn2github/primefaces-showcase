@@ -13,7 +13,7 @@
 
             <p:growl id="growl" showDetail="true" />
 
-            <p:fieldset legend="Simple FieldSet">
+            <p:fieldset id="simpleFieldSet" legend="Simple FieldSet">
                 <h:panelGrid columns="2" cellpadding="10">
                     <p:graphicImage value="/images/godfather/godfather1.jpg" />
                     <h:outputText
@@ -25,9 +25,9 @@
             </p:fieldset>
 
             <br /><br />
-            <h:form>
+            <h:form id="form">
 
-                <p:fieldset legend="Toggleable Fieldset" toggleable="true" toggleSpeed="500">
+                <p:fieldset id="toggleFieldSet" legend="Toggleable Fieldset" toggleable="true" toggleSpeed="500">
                     <p:ajax event="toggle" listener="#{fieldsetBean.handleToggle}" update="growl" />
                     <h:panelGrid columns="2" cellpadding="10">
                         <p:graphicImage value="/images/godfather/godfather2.jpg" />
