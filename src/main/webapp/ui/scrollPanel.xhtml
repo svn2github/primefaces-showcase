@@ -12,9 +12,9 @@
 		<div class="entry">
 			<p>ScrollPanel is used to display overflowed content with theme aware scrollbars instead of browser scrollbars.</p>
 
-			<h:form>
+			<h:form id="form">
                 <h3>Basic ScrollPanel</h3>
-                <p:scrollPanel style="width:250px;height:200px">
+                <p:scrollPanel id="basicScroll" style="width:250px;height:200px">
                     <p:dataGrid var="car" value="#{tableBean.carsSmall}" columns="3">
                         <p:panel header="#{car.model}" style="text-align:center">
                             <h:panelGrid columns="1" style="width:100%">
@@ -28,7 +28,7 @@
                 </p:scrollPanel>
                 
                 <h3>Native ScrollPanel</h3>
-                <p:scrollPanel mode="native" style="width:250px;height:200px">
+                <p:scrollPanel id="nativeScroll" mode="native" style="width:250px;height:200px">
                     <p:dataGrid var="car" value="#{tableBean.carsSmall}" columns="3">
                         <p:panel header="#{car.model}" style="text-align:center">
                             <h:panelGrid columns="1" style="width:100%">
