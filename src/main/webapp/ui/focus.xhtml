@@ -14,7 +14,7 @@
 			
 			<p>Focus is also aware of failed validations, first invalid input component receives a focus automatically.</p>
 				
-			<h:form>
+			<h:form id="form">
 			
 				<p:panel id="panel" header="Register">
 				
@@ -34,7 +34,7 @@
 						<p:message for="surname" />
 					</h:panelGrid>
 					
-					<p:commandButton value="Submit" update="panel" actionListener="#{personBean.savePerson}" />
+					<p:commandButton id="submitButton" value="Submit" update="panel" actionListener="#{personBean.savePerson}" />
 				</p:panel>
 
 			</h:form>
