@@ -10,9 +10,9 @@
         <div class="entry">
            	<p>In this example, datatable is updated with ajax.</p>
 
-            <h:form>
+            <h:form prependId="false" id="form">
 
-                <p:growl showDetail="true" />
+                <p:growl showDetail="true" id="msgs" />
 
                 <p:panel header="New Book">
                     <h:panelGrid columns="2">
@@ -24,22 +24,22 @@
                     </h:panelGrid>
                 </p:panel>
 
-                <p:commandButton value="Add" action="#{createBookBean.createNew}" update="@form" style="margin:10px 0"/>
+                <p:commandButton value="Add" action="#{createBookBean.createNew}" update="@form" style="margin:10px 0" id="btnAdd"/>
 
-                <p:dataTable value="#{createBookBean.books}" var="book">
+                <p:dataTable value="#{createBookBean.books}" var="book" id="bookTable">
 
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Title" />
                         </f:facet>
-                        <h:outputText value="#{book.title}" />
+                        <h:outputText value="#{book.title}" id="lblTitle" />
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Author" />
                         </f:facet>
-                        <h:outputText value="#{book.author}" />
+                        <h:outputText value="#{book.author}" id="lblAuthor" />
                     </p:column>
 
                 </p:dataTable>
@@ -65,7 +65,7 @@
 
     &lt;p:commandButton value="Add" action="\#{createBookBean.createNew}" update="@form" style="margin:10px 0"/&gt;
 
-    &lt;p:dataTable value="\#{createBookBean.books}" var="book"&gt;
+    &lt;p:dataTable value="\#{createBookBean.books}" var="book" id="bookTable"&gt;
 
         &lt;p:column&gt;
             &lt;f:facet name="header"&gt;
