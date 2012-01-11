@@ -10,7 +10,7 @@
         <div class="entry">
            	<p>In this example, datatable is updated with ajax.</p>
 
-            <h:form prependId="false" id="form">
+            <h:form id="form">
 
                 <p:growl showDetail="true" id="msgs" />
 
@@ -49,7 +49,7 @@
             <p:tabView>
                 <p:tab title="pprDataTable.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:growl showDetail="true" /&gt;
 
@@ -63,7 +63,7 @@
         &lt;/h:panelGrid&gt;
     &lt;/p:panel&gt;
 
-    &lt;p:commandButton value="Add" action="\#{createBookBean.createNew}" update="@form" style="margin:10px 0"/&gt;
+    &lt;p:commandButton value="Add" action="\#{createBookBean.createNew}" update="@form" style="margin:10px 0" id="btnAdd"/&gt;
 
     &lt;p:dataTable value="\#{createBookBean.books}" var="book" id="bookTable"&gt;
 

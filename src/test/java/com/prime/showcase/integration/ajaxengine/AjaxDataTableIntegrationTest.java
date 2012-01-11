@@ -24,20 +24,20 @@ public class AjaxDataTableIntegrationTest extends AbstractIntegrationTest {
 	@Test
 	public void shouldUpdateDataTable() {
 
-		WebElement txtTitle = findElementById("txt_title");
-		WebElement txtAuthor = findElementById("txt_author");
-		WebElement btnAdd = findElementById("btnAdd");
+		WebElement txtTitle = findElementById("form:txt_title");
+		WebElement txtAuthor = findElementById("form:txt_author");
+		WebElement btnAdd = findElementById("form:btnAdd");
 
 		txtTitle.sendKeys(title);
 		txtAuthor.sendKeys(author);
 
 		btnAdd.click();
 
-		waitUntilElementExistsAndGetsValue("bookTable:0:lblTitle", title);
-		waitUntilElementExistsAndGetsValue("bookTable:0:lblAuthor", author);
+		waitUntilElementExistsAndGetsValue("form:bookTable:0:lblTitle", title);
+		waitUntilElementExistsAndGetsValue("form:bookTable:0:lblAuthor", author);
 
-		WebElement lblTitle = findElementById("bookTable:0:lblTitle");
-		WebElement lblAuthor = findElementById("bookTable:0:lblAuthor");
+		WebElement lblTitle = findElementById("form:bookTable:0:lblTitle");
+		WebElement lblAuthor = findElementById("form:bookTable:0:lblAuthor");
 
 		assertTrue(title.equals(lblTitle.getText()));
 		assertTrue(author.equals(lblAuthor.getText()));
@@ -46,9 +46,20 @@ public class AjaxDataTableIntegrationTest extends AbstractIntegrationTest {
 
 	@Test
 	public void shouldShowErrorMessageForDuplicateRecord() {
-		WebElement txtTitle = findElementById("txt_title");
-		WebElement txtAuthor = findElementById("txt_author");
-		WebElement btnAdd = findElementById("btnAdd");
+		WebElement txtTitle = findElementById("form:txt_title");
+		WebElement txtAuthor = findElementById("form:txt_author");
+		WebElement btnAdd = findElementById("form:btnAdd");
+
+		txtTitle.sendKeys(title);
+		txtAuthor.sendKeys(author);
+
+		btnAdd.click();
+
+		waitUntilAjaxRequestCompletes();
+
+		txtTitle = findElementById("form:txt_title");
+		txtAuthor = findElementById("form:txt_author");
+		btnAdd = findElementById("form:btnAdd");
 
 		txtTitle.sendKeys(title);
 		txtAuthor.sendKeys(author);
