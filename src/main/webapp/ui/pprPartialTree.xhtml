@@ -46,7 +46,7 @@
 			<p:tabView>
 				<p:tab title="pprPartialTree.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 	
 	&lt;p:panel header="Partial Process"&gt;
 		
@@ -61,23 +61,24 @@
 					
 			&lt;h:outputLabel for="surname" value="Surname: *" /&gt;
 			&lt;p:inputText id="surname" 
-						value="\#{personBean.surname}" required="true"/&gt;
+						value="\#{personBean.surname}" required="true" 
+						requiredMessage="Surname is required."/&gt;
 		&lt;/h:panelGrid&gt;
 		
 	&lt;/p:panel&gt;
 	
 	&lt;h:panelGrid columns="6" cellpadding="5"&gt;
-		&lt;p:commandButton value="All" process="@all" update="grid" 
+		&lt;p:commandButton value="All" id="btnAll" process="@all" update="grid" 
 					actionListener="\#{personBean.savePerson}"/&gt;
-		&lt;p:commandButton value="Form" process="@form" update="grid" 
+		&lt;p:commandButton value="Form" id="btnForm" process="@form" update="grid" 
 					actionListener="\#{personBean.savePerson}"/&gt;
-		&lt;p:commandButton value="This" process="@this" update="grid" 
+		&lt;p:commandButton value="This" id="btnThis" process="@this" update="grid" 
 					actionListener="\#{personBean.savePerson}"/&gt;
-		&lt;p:commandButton value="None" process="@none" update="grid" 
+		&lt;p:commandButton value="None" id="btnNone" process="@none" update="grid" 
 					actionListener="\#{personBean.savePerson}"/&gt;
-		&lt;p:commandButton value="Parent" process="@parent" update="grid" 
+		&lt;p:commandButton value="Parent" id="btnParent" process="@parent" update="grid" 
 					actionListener="\#{personBean.savePerson}"/&gt;
-		&lt;p:commandButton value="This Surname" process="@this,surname" update="grid" 
+		&lt;p:commandButton value="This Surname" id="btnSurname" process="@this,surname" update="grid" 
 					actionListener="\#{personBean.savePerson}"/&gt;
 	&lt;/h:panelGrid&gt;
 
