@@ -28,14 +28,14 @@ public class PPRPartialTreeProcessIntegrationTest extends
 	@Before
 	public void init() {
 		driver.get(testUrl);
-		txtFirstName = findElementById("firstname");
-		txtSurname = findElementById("surname");
-		btnAll = findElementById("btnAll");
-		btnForm = findElementById("btnForm");
-		btnThis = findElementById("btnThis");
-		btnNone = findElementById("btnNone");
-		btnParent = findElementById("btnParent");
-		btnSurname = findElementById("btnSurname");
+		txtFirstName = findElementById("form:firstname");
+		txtSurname = findElementById("form:surname");
+		btnAll = findElementById("form:btnAll");
+		btnForm = findElementById("form:btnForm");
+		btnThis = findElementById("form:btnThis");
+		btnNone = findElementById("form:btnNone");
+		btnParent = findElementById("form:btnParent");
+		btnSurname = findElementById("form:btnSurname");
 		emptyMsg = String.format(msgFormat, null, null);
 	}
 
@@ -55,7 +55,7 @@ public class PPRPartialTreeProcessIntegrationTest extends
 
 		btnNone.click();
 		waitUntilAjaxRequestCompletes();
-		assertTrue(findElementById("msgs").getText().equals(""));
+		assertTrue(findElementById("form:msgs").getText().equals(""));
 
 		btnParent.click();
 		waitUntilAjaxRequestCompletes();
@@ -91,7 +91,7 @@ public class PPRPartialTreeProcessIntegrationTest extends
 		fillInputs(firstname, surname);
 		btnNone.click();
 		waitUntilAjaxRequestCompletes();
-		assertTrue(findElementById("msgs").getText().equals(""));
+		assertTrue(findElementById("form:msgs").getText().equals(""));
 
 		fillInputs(firstname, surname);
 		btnParent.click();
@@ -105,8 +105,8 @@ public class PPRPartialTreeProcessIntegrationTest extends
 	}
 
 	private void fillInputs(String firstname, String surname) {
-		txtFirstName = findElementById("firstname");
-		txtSurname = findElementById("surname");
+		txtFirstName = findElementById("form:firstname");
+		txtSurname = findElementById("form:surname");
 		txtFirstName.clear();
 		txtSurname.clear();
 		txtFirstName.sendKeys(firstname);
@@ -114,7 +114,7 @@ public class PPRPartialTreeProcessIntegrationTest extends
 	}
 
 	private String getMessage() {
-		return findElementById("msgs").findElement(By.tagName("div"))
+		return findElementById("form:msgs").findElement(By.tagName("div"))
 				.findElement(By.tagName("ul")).findElements(By.tagName("li"))
 				.get(0).getText();
 	}
