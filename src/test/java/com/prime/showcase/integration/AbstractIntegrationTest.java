@@ -51,8 +51,7 @@ public abstract class AbstractIntegrationTest {
 				});
 	}
 
-	
-	/**
+    /**
 	 * Use when element is already precisely on the page. Throws NoSuchElementException when element is not found
 	 * @param elementId
 	 * @param value
@@ -104,13 +103,33 @@ public abstract class AbstractIntegrationTest {
 	protected WebElement findElementByClass(String className) {
 		return driver.findElement(By.className(className));
 	}
-
+    
 	protected List<WebElement> findElementsByClass(String className) {
 		return driver.findElements(By.className(className));
 	}
+    
+    protected WebElement findElementByXpath(String path){
+        return driver.findElement(By.xpath(path));
+    }
+    
+    protected List<WebElement> findElementsByXpath(String path){
+        return driver.findElements(By.xpath(path));
+    }
+    
+    protected WebElement findElementBySelector(String selector){
+        return driver.findElement(By.cssSelector(selector));
+    }
+    
+    protected List<WebElement> findElementsBySelector(String selector){
+        return driver.findElements(By.cssSelector(selector));
+    }
 	
 	protected String toShowcaseUrl(String relativeUrl) {
 		return PRIME_SHOWCASE_UI + relativeUrl;
 	}
+    
+    protected String escapeClientId(String id){
+        return "#" + id.replaceAll(":", "\\\\:");
+    }
 	
 }
