@@ -11,22 +11,22 @@
 		<div class="entry">
 			<p>Validations are executed on the server side and page is updated with the response.</p>
 						
-			<h:form>
+			<h:form id="form">
 
 				<p:panel id="panel" header="New Person">
 				
-					<p:messages />
+					<p:messages id="msgs"/>
 					
 					<h:panelGrid columns="3">
 						<h:outputLabel for="firstname" value="Firstname: *" />
 						<p:inputText id="firstname" value="#{personBean.firstname}" required="true" label="Firstname">
 							<f:validateLength minimum="2" />
 						</p:inputText>
-						<p:message for="firstname" />
+						<p:message for="firstname" id="msgFirstname"/>
 						
 						<h:outputLabel for="surname" value="Surname: *" />
 						<p:inputText id="surname" value="#{personBean.surname}" required="true" label="Surname"/>
-						<p:message for="surname" />
+						<p:message for="surname" id="msgSurname" />
 
 					</h:panelGrid>
 					
@@ -39,10 +39,10 @@
 			<p:tabView>
 				<p:tab title="pprAjaxValidations.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
 	&lt;p:panel id="panel" header="New Person"&gt;
-		&lt;p:messages /&gt;
+		&lt;p:messages id="msgs"/&gt;
 		&lt;h:panelGrid columns="3"&gt;
 			&lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
 			&lt;p:inputText id="firstname" 
@@ -50,13 +50,13 @@
 					required="true" label="Firstname"&gt;
 				&lt;f:validateLength minimum="2" /&gt;
 			&lt;/p:inputText&gt;
-			&lt;p:message for="firstname" /&gt;
+			&lt;p:message for="firstname" id="msgFirstname" /&gt;
 			
 			&lt;h:outputLabel for="surname" value="Surname: *" /&gt;
 			&lt;p:inputText id="surname" 
 					value="\#{personBean.surname}"
 					required="true" label="Surname"/&gt;
-			&lt;p:message for="surname" /&gt;
+			&lt;p:message for="surname" id="msgSurname" /&gt;
 
 		&lt;/h:panelGrid&gt;
 		
