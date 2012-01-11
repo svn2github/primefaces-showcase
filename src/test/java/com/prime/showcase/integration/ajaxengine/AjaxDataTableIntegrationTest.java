@@ -2,6 +2,7 @@ package com.prime.showcase.integration.ajaxengine;
 
 import static junit.framework.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,9 +16,13 @@ public class AjaxDataTableIntegrationTest extends AbstractIntegrationTest {
 	private final String author = "author";
 	private final String errMsg = "This book has already been added";
 
+	@Before
+	public void init() {
+		driver.get(testUrl);
+	}
+
 	@Test
 	public void shouldUpdateDataTable() {
-		driver.get(testUrl);
 
 		WebElement txtTitle = findElementById("txt_title");
 		WebElement txtAuthor = findElementById("txt_author");
