@@ -22,4 +22,14 @@ public class SeleniumActionHelper {
 		Action action = builder.moveToElement(element).build();
 		action.perform();
 	}
+	
+    public void dndByOffset(WebElement element, int x, int y) {
+		Action action = builder.dragAndDropBy(element, x, y).build();
+		action.perform();
+	}
+    
+    public void dndToElement(WebElement source, WebElement target) {
+		Action action = builder.dragAndDrop(source, target).build();
+		action.perform();
+	}
 }
