@@ -11,7 +11,7 @@
 		<div class="entry">
 			<p>Captcha is based on reCAPTCHA API.</p>
 			
-			<h:form>
+			<h:form id="form">
 				
                 <p:messages showDetail="true"/>
 
@@ -19,7 +19,7 @@
 
 				<br />
 				
-				<p:commandButton value="Check" actionListener="#{captchaBean.submit}" ajax="false"/>
+				<p:commandButton id="btn" value="Check" actionListener="#{captchaBean.submit}" ajax="false"/>
 			</h:form>
 			
 			<h3>Source</h3>
