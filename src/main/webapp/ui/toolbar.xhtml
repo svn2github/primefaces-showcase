@@ -12,6 +12,8 @@
 			<p>Toolbar is a grouping component for buttons and other content.</p>
 
             <h:form>
+                <p:growl id="messages" />
+                
                 <p:toolbar>
                     <p:toolbarGroup align="left">
                         <p:commandButton type="button" value="New" icon="ui-icon-document" />
@@ -26,7 +28,7 @@
                     </p:toolbarGroup>
 
                     <p:toolbarGroup align="right">
-                        <p:menuButton value="Options" zindex="10">
+                        <p:menuButton value="Options">
                             <p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk"/>
                             <p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
                             <p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false" icon="ui-icon-close"/>
@@ -42,6 +44,9 @@
 				<p:tab title="toolbar.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
+
+  &lt;p:growl id="messages" &gt;
+
   &lt;p:toolbar&gt;
     &lt;p:toolbarGroup align="left"&gt;
         &lt;p:commandButton type="button" value="New" icon="ui-icon-document" /&gt;
