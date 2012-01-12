@@ -35,14 +35,14 @@
 					<h:form>
 					
 						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputLabel for="username" value="Username: *" />
+							<h:outputLabel for="username" value="Username:" />
 							<p:inputText id="username" value="#{loginBean.username}" required="true" label="username" />
 							
-							<h:outputLabel for="password" value="Password: * " />
+							<h:outputLabel for="password" value="Password:" />
 							<p:password id="password" value="#{loginBean.password}" required="true" label="password" feedback="false"/>
 							
 							<f:facet name="footer">
-								<p:commandButton value="Login" update="growl" 
+								<p:commandButton value="Login" update=":growl" 
 									actionListener="#{loginBean.login}" oncomplete="handleLoginRequest(xhr, status, args)"/>
 							</f:facet>
 						</h:panelGrid>
@@ -64,16 +64,16 @@
 	&lt;h:form&gt;
 
 		&lt;h:panelGrid columns="2" cellpadding="5"&gt;
-			&lt;h:outputLabel for="username" value="Username: *" /&gt;
+			&lt;h:outputLabel for="username" value="Username:" /&gt;
 			&lt;p:inputText value="\#{loginBean.username}" 
 					id="username" required="true" label="username" /&gt;
 			
-			&lt;h:outputLabel for="password" value="Password: * " /&gt;
+			&lt;h:outputLabel for="password" value="Password:" /&gt;
 			&lt;h:inputSecret value="\#{loginBean.password}" 
 					id="password" required="true" label="password" /&gt;
 			
 			&lt;f:facet name="footer"&gt;
-				&lt;p:commandButton value="Login" update="growl" 
+				&lt;p:commandButton value="Login" update=":growl" 
 					actionListener="\#{loginBean.login}" 
 					oncomplete="handleLoginRequest(xhr, status, args)"/&gt;
 			&lt;/f:facet&gt;
