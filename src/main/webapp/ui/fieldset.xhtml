@@ -11,7 +11,7 @@
         <div class="entry">
             <p>Fieldset is a pre-skinned grouping component which also provides content toggling and ajax toggleListener as advanced features.</p>
 
-            <p:growl id="growl" showDetail="true" />
+            
 
             <p:fieldset id="simpleFieldSet" legend="Simple FieldSet">
                 <h:panelGrid columns="2" cellpadding="10">
@@ -27,6 +27,8 @@
             <br /><br />
             <h:form id="form">
 
+                <p:growl id="growl" showDetail="true" />
+                
                 <p:fieldset id="toggleFieldSet" legend="Toggleable Fieldset" toggleable="true" toggleSpeed="500">
                     <p:ajax event="toggle" listener="#{fieldsetBean.handleToggle}" update="growl" />
                     <h:panelGrid columns="2" cellpadding="10">
@@ -42,7 +44,6 @@
             <p:tabView>
                 <p:tab title="fieldset.xhtml">
                     <pre name="code" class="xml">
-&lt;p:growl id="growl" showDetail="true" /&gt;
 
 &lt;p:fieldset legend="Simple FieldSet"&gt;
     &lt;h:panelGrid columns="2" cellpadding="10"&gt;
@@ -57,6 +58,8 @@
 
 
 &lt;h:form&gt;
+
+    &lt;p:growl id="growl" showDetail="true" /&gt;
 
     &lt;p:fieldset legend="Toggleable Fieldset" toggleable="true" toggleSpeed="500"&gt;
         &lt;p:ajax event="toggle" listener="\#{fieldsetBean.handleToggle}" update="growl" /&gt;
