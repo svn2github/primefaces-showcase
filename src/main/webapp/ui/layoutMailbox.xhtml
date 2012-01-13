@@ -160,7 +160,7 @@
 
                     <p:separator />
 
-                    <p:commandButton value="Send" onclick="composeDlg.hide()" actionListener="#{mailbox.send}" update="msg" process="@this"/>
+                    <p:commandButton value="Send" onclick="composeDlg.hide()" actionListener="#{mailbox.send}" update=":msg" process="@this"/>
                     <p:commandButton value="Cancel" onclick="composeDlg.hide()" type="button"/>
 
                 </h:form>
