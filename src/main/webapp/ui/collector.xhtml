@@ -52,7 +52,7 @@
 							<f:facet name="header">
 								<h:outputText value="Operation" />
 							</f:facet>
-							<p:commandLink value="Remove" update="form:books" process="@this">
+							<p:commandLink value="Remove" update=":form:books" process=":form:books">
 								<p:collector value="#{book}" removeFrom="#{createBookBean.books}" />
 							</p:commandLink>
 						</p:column>
@@ -110,7 +110,7 @@
 				&lt;f:facet name="header"&gt;
 					&lt;h:outputText value="Operation" /&gt;
 				&lt;/f:facet&gt;
-				&lt;p:commandLink value="Remove" update="form:books" process="@this"&gt;
+				&lt;p:commandLink value="Remove" update=":form:books" process=":form:books"&gt;
 					&lt;p:collector value="\#{book}"
 								 removeFrom="\#{createBookBean.books}" /&gt;
 				&lt;/p:commandLink&gt;
