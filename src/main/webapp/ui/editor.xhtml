@@ -11,13 +11,13 @@
 		<div class="entry">
         <p>Editor is an input component with rich text editing features. Toolbar can be configured with custom controls.</p>
 
-			<h:form>
+			<h:form id="form">
                 
-                <p:editor widgetVar="editor" value="#{editorBean.value}" width="600"/>
+                <p:editor id="editor" widgetVar="editor" value="#{editorBean.value}" width="600"/>
 
                 <h:panelGrid columns="2" style="margin-top:10px">
-                    <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" icon="ui-icon-disk" />
-                    <p:commandButton type="button" value="Clear" onclick="editor.clear()" icon="ui-icon-close" />
+                    <p:commandButton id="submitButton" value="Submit" update="display" oncomplete="dlg.show()" icon="ui-icon-disk" />
+                    <p:commandButton id="clearButton" type="button" value="Clear" onclick="editor.clear()" icon="ui-icon-close" />
                 </h:panelGrid>
 
                 <p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true">
@@ -30,14 +30,14 @@
             <p:tabView>
                 <p:tab title="editor.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
-    &lt;p:editor value="\#{editorBean.value}" width="600"/&gt;
+    &lt;p:editor id="editor" value="\#{editorBean.value}" width="600"/&gt;
 
     &lt;h:panelGrid columns="2" style="margin-top:10px"&gt;
-        &lt;p:commandButton value="Submit" update="display" oncomplete="dlg.show()"
+        &lt;p:commandButton id="submitButton" value="Submit" update="display" oncomplete="dlg.show()"
                         icon="ui-icon-disk" /&gt;
-        &lt;p:commandButton type="button" value="Clear" onclick="editor.clear()"
+        &lt;p:commandButton id="clearButton" type="button" value="Clear" onclick="editor.clear()"
                         icon="ui-icon-close" /&gt;
     &lt;/h:panelGrid&gt;
 
