@@ -11,6 +11,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 
@@ -28,7 +29,12 @@ public abstract class AbstractIntegrationTest {
 
 	@BeforeClass
 	public static void beforeClass() {
-		driver = new FirefoxDriver();
+		FirefoxProfile profile = new FirefoxProfile();
+		profile.setPreference("browser.download.folderList", 2);
+		profile.setPreference("browser.download.manager.showWhenStarting", false);
+		profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "image/jpg");
+		profile.setPreference("browser.download.dir", System.getProperty("user.home"));
+		driver = new FirefoxDriver(profile);
 	}
 
 	@AfterClass

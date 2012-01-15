@@ -13,9 +13,9 @@
 			is used by attaching it to any JSF command component like button or a link. Additionally presentation
 			of download can be configured with the contentDisposition attribute that takes either "attachment" or "inline" as a value.</p>
 			
-			<h:form>
+			<h:form id="form">
 			
-				<p:commandLink value="Download" ajax="false">
+				<p:commandLink id="downloadLink" value="Download" ajax="false">
 					<p:fileDownload value="#{fileDownloadController.file}" />
 				</p:commandLink>
 			
@@ -25,9 +25,9 @@
             <p:tabView>
                 <p:tab title="fileDownload.xhtml">
                     <pre name="code" class="xml">
-&lt;p:commandButton value="Download" ajax="false"&gt;
+&lt;p:commandLink id="downloadLink" value="Download" ajax="false"&gt;
 	&lt;p:fileDownload value="\#{fileDownloadController.file}" /&gt;
-&lt;/p:commandButton&gt;
+&lt;/p:commandLink&gt;
                     </pre>  
                 </p:tab>
                 
