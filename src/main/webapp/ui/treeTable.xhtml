@@ -39,8 +39,8 @@
 						<h:outputText value="#{document.type}" />
 					</p:column>
 					
-					<p:column style="width:25px">
-                        <p:commandLink update=":form:documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon-search">
+					<p:column style="width:20px">
+                        <p:commandLink update=":form:documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon ui-icon-search">
                             <f:setPropertyActionListener value="#{document}" 
                                 target="#{documentsController.selectedDocument}" />
                         </p:commandLink>
@@ -96,8 +96,8 @@
             &lt;h:outputText value="\#{document.type}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:25px"&gt;
-            &lt;p:commandLink update="documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon-search"&gt;
+        &lt;p:column style="width:20px"&gt;
+            &lt;p:commandLink update="documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon ui-icon-search"&gt;
                 &lt;f:setPropertyActionListener value="\#{document}" 
                     target="\#{documentsController.selectedDocument}" /&gt;
             &lt;/p:commandLink&gt;
