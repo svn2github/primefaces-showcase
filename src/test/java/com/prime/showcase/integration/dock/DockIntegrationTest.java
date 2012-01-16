@@ -1,14 +1,16 @@
 package com.prime.showcase.integration.dock;
 
 import static org.junit.Assert.assertTrue;
-import com.prime.showcase.integration.AbstractIntegrationTest;
-import com.prime.showcase.integration.SeleniumActionHelper;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.BeforeClass;
+
 import org.junit.Test;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+
+import com.prime.showcase.integration.AbstractIntegrationTest;
+import com.prime.showcase.integration.SeleniumActionHelper;
 
 public class DockIntegrationTest extends AbstractIntegrationTest {
     

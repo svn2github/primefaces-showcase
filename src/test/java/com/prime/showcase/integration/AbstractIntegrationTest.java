@@ -29,12 +29,17 @@ public abstract class AbstractIntegrationTest {
 
 	@BeforeClass
 	public static void beforeClass() {
+		FirefoxProfile profile = prepareProfileForFileDownload();
+		driver = new FirefoxDriver(profile);
+	}
+
+	private static FirefoxProfile prepareProfileForFileDownload() {
 		FirefoxProfile profile = new FirefoxProfile();
 		profile.setPreference("browser.download.folderList", 2);
 		profile.setPreference("browser.download.manager.showWhenStarting", false);
 		profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "image/jpg");
 		profile.setPreference("browser.download.dir", System.getProperty("user.home"));
-		driver = new FirefoxDriver(profile);
+		return profile;
 	}
 
 	@AfterClass

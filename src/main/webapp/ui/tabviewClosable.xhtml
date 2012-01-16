@@ -15,7 +15,7 @@
 
             <p:growl id="growl" showDetail="true" />
 
-            <p:tabView>
+            <p:tabView id="tabView">
 
                 <p:ajax event="tabClose" listener="#{tabBean.onTabClose}" update=":form:growl"/>
 
@@ -57,7 +57,7 @@
 
     &lt;p:growl id="growl" showDetail="true" /&gt;
 
-    &lt;p:tabView&gt;
+    &lt;p:tabView id="tabView"&gt;
 
         &lt;p:ajax event="tabClose" listener="\#{tabBean.onTabClose}" update=":form:growl"/&gt;
 
