@@ -22,6 +22,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.Player;
 
 public class AutoCompleteBean {
@@ -94,6 +95,12 @@ public class AutoCompleteBean {
 	
 	public void handleSelect(SelectEvent event) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected:" + event.getObject().toString(), null);
+		
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+    
+    public void handleUnselect(UnselectEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unselected:" + event.getObject().toString(), null);
 		
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}

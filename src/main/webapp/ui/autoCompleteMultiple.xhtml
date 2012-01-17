@@ -4,6 +4,18 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
+    
+        <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+
+            //]]>
+        </script>
+    </ui:define>
     	
 	<ui:define name="content">
 
@@ -12,12 +24,18 @@
 			<p>AutoComplete supports multiple selection as well.</p>
 		
 			<h:form>
+                
+                <p:growl id="growl" />
+                
                 <h3>Basic Complete</h3>
                 <p:autoComplete value="#{autoCompleteBean.selectedTexts}" completeMethod="#{autoCompleteBean.complete}" multiple="true"/>
                 
                 <h3>Advanced Complete</h3>
                 <p:autoComplete value="#{autoCompleteBean.selectedPlayers}" completeMethod="#{autoCompleteBean.completePlayer}"
                     var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player" multiple="true">
+                    
+                    <p:ajax event="itemUnselect" listener="#{autoCompleteBean.handleUnselect}" update="growl" />
+                    
                     <p:column style="width:20%;text-align:center">
                         <p:graphicImage value="/images/barca/#{p.photo}" width="40" height="50"/>
                     </p:column>
@@ -58,12 +76,18 @@
                 <p:tab title="autoCompleteMultiple.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
+                
+    &lt;p:growl id="growl" /&gt;
+
     &lt;h3&gt;Basic Complete&lt;/h3&gt;
     &lt;p:autoComplete value="\#{autoCompleteBean.selectedTexts}" completeMethod="\#{autoCompleteBean.complete}" multiple="true"/&gt;
 
     &lt;h3&gt;Advanced Complete&lt;/h3&gt;
-    &lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayers1}" completeMethod="\#{autoCompleteBean.completePlayer}"
+    &lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayers}" completeMethod="\#{autoCompleteBean.completePlayer}"
         var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player" multiple="true"&gt;
+
+        &lt;p:ajax event="itemUnselect" listener="\#{autoCompleteBean.handleUnselect}" update="growl" /&gt;
+
         &lt;p:column style="width:20%;text-align:center"&gt;
             &lt;p:graphicImage value="/images/barca/\#{p.photo}" width="40" height="50"/&gt;
         &lt;/p:column&gt;
@@ -88,7 +112,7 @@
 
             &lt;p:separator style="margin:20px"/&gt;
 
-            &lt;p:dataList value="\#{autoCompleteBean.selectedPlayers1}" var="player"&gt;
+            &lt;p:dataList value="\#{autoCompleteBean.selectedPlayers}" var="player"&gt;
                 &lt;f:facet name="header"&gt;
                     Players
                 &lt;/f:facet&gt;
@@ -110,7 +134,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.Player;
 
 public class AutoCompleteBean {
@@ -164,6 +188,12 @@ public class AutoCompleteBean {
     public void setSelectedTexts(List&lt;String&gt; selectedTexts) {
         this.selectedTexts = selectedTexts;
     }
+
+    public void handleUnselect(UnselectEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unselected:" + event.getObject().toString(), null);
+		
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
 }
 			</pre>
                 </p:tab>
