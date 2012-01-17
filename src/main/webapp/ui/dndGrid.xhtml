@@ -67,7 +67,7 @@
                             </p:column>
 
                              <p:column style="width:32px">
-                                <p:commandButton update="carForm:display" oncomplete="carDialog.show()" icon="ui-icon-search">
+                                <p:commandButton update=":carForm:display" oncomplete="carDialog.show()" icon="ui-icon-search">
                                     <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
                                 </p:commandButton>
                             </p:column>
@@ -163,7 +163,7 @@
                 &lt;/p:column&gt;
 
                  &lt;p:column style="width:32px"&gt;
-                    &lt;p:commandButton update="carForm:display"
+                    &lt;p:commandButton update=":carForm:display"
                         oncomplete="carDialog.show()"
                         icon="ui-icon-search"&gt;
                         &lt;f:setPropertyActionListener value="\#{car}"
