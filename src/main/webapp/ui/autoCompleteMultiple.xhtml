@@ -18,11 +18,11 @@
                 <h3>Advanced Complete</h3>
                 <p:autoComplete value="#{autoCompleteBean.selectedPlayers}" completeMethod="#{autoCompleteBean.completePlayer}"
                     var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player" multiple="true">
-                    <p:column>
+                    <p:column style="width:20%;text-align:center">
                         <p:graphicImage value="/images/barca/#{p.photo}" width="40" height="50"/>
                     </p:column>
 
-                    <p:column>
+                    <p:column style="width:80%">
                         #{p.name} - #{p.number}
                     </p:column>
                 </p:autoComplete>
@@ -64,11 +64,11 @@
     &lt;h3&gt;Advanced Complete&lt;/h3&gt;
     &lt;p:autoComplete value="\#{autoCompleteBean.selectedPlayers1}" completeMethod="\#{autoCompleteBean.completePlayer}"
         var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player" multiple="true"&gt;
-        &lt;p:column&gt;
+        &lt;p:column style="width:20%;text-align:center"&gt;
             &lt;p:graphicImage value="/images/barca/\#{p.photo}" width="40" height="50"/&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
+        &lt;p:column style="width:80%"&gt;
             \#{p.name} - \#{p.number}
         &lt;/p:column&gt;
     &lt;/p:autoComplete&gt;
