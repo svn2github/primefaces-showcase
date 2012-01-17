@@ -20,9 +20,9 @@
         <div class="entry">
             <p>Galleria can also display custom content not just images.</p>
 
-            <p:galleria value="#{galleriaBean.players}" var="player" frameWidth="64" frameHeight="87"
+            <p:galleria id="contentGalleria" value="#{galleriaBean.players}" var="player" frameWidth="64" frameHeight="87"
                         panelWidth="300" panelHeight="200" transitionInterval="0" styleClass="ui-widget-content ui-corner-all">
-                <p:graphicImage value="/images/barca/#{player.photo}"/>
+                <p:graphicImage id="playerImage" value="/images/barca/#{player.photo}"/>
                 <p:galleriaContent>
                     <h:panelGrid  columns="2" cellpadding="5">
                         <f:facet name="header">
@@ -30,13 +30,13 @@
                         </f:facet>
 
                         <h:outputText value="Name: " />
-                        <h:outputText id="modelNo" value="#{player.name}" style="font-weight:bold" />
+                        <h:outputText id="name" value="#{player.name}" style="font-weight:bold" />
 
                         <h:outputText value="Number " />
-                        <h:outputText id="year" value="#{player.number}" style="font-weight:bold"/>
+                        <h:outputText id="number" value="#{player.number}" style="font-weight:bold"/>
 
                         <h:outputText value="Position " />
-                        <h:outputText value="#{player.position}" style="font-weight:bold"/>
+                        <h:outputText id="position" value="#{player.position}" style="font-weight:bold"/>
                     </h:panelGrid>
                 </p:galleriaContent>
             </p:galleria>
@@ -45,12 +45,12 @@
             <p:tabView>
                 <p:tab title="galleriaContent.xhtml">
                     <pre name="code" class="xml">
-&lt;p:galleria value="\#{galleriaBean.players}"
+&lt;p:galleria id="contentGalleria" value="\#{galleriaBean.players}"
             var="player" frameWidth="64" frameHeight="87"
             panelWidth="300" panelHeight="200" transitionInterval="0"
             styleClass="ui-widget-content ui-corner-all"&gt;
 
-    &lt;p:graphicImage value="/images/barca/\#{player.photo}"/&gt;
+    &lt;p:graphicImage id="playerImage" value="/images/barca/\#{player.photo}"/&gt;
     &lt;p:galleriaContent&gt;
         &lt;h:panelGrid  columns="2" cellpadding="5"&gt;
             &lt;f:facet name="header"&gt;
@@ -58,13 +58,13 @@
             &lt;/f:facet&gt;
 
             &lt;h:outputText value="Name: " /&gt;
-            &lt;h:outputText id="modelNo" value="\#{player.name}"/&gt;
+            &lt;h:outputText id="name" value="\#{player.name}"/&gt;
 
             &lt;h:outputText value="Number " /&gt;
-            &lt;h:outputText id="year" value="\#{player.number}"/&gt;
+            &lt;h:outputText id="number" value="\#{player.number}"/&gt;
 
             &lt;h:outputText value="Position " /&gt;
-            &lt;h:outputText value="\#{player.position}"/&gt;
+            &lt;h:outputText id="position" value="\#{player.position}"/&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:galleriaContent&gt;
 
