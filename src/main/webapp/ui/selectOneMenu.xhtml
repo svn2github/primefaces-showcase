@@ -4,15 +4,17 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-
+    
 	<ui:define name="content">
 
 
 		<h1 class="title ui-widget-header ui-corner-all">SelectOneMenu</h1>
 		<div class="entry">
-			<p>SelectOneMenu extends standard SelectOneMenu with skinning capabilities, effects and custom content display.</p>
+			<p>SelectOneMenu extends standard SelectOneMenu with skinning capabilities, editing, effects and custom content display.</p>
 
             <h:form>
+                
+                <p:messages />
 
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
@@ -24,8 +26,8 @@
                         <f:selectItem itemLabel="Option 3" itemValue="3" />
                     </p:selectOneMenu>
 
-                    <h:outputText value="Custom Effect: " />
-                    <p:selectOneMenu value="#{pprBean.city}" effect="drop">
+                    <h:outputText value="Editable: " />
+                    <p:selectOneMenu value="#{pprBean.city}" effect="fold" editable="true">
                         <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItems value="#{pprBean.cities}" />
                     </p:selectOneMenu>
@@ -53,9 +55,9 @@
 
                 </h:panelGrid>
 
-                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" ajax="false"/>
 
-                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                
                     <h:panelGrid columns="1" id="display">
                         <h:outputText value="Value 1: #{buttonBean.number}" />
 
@@ -65,7 +67,7 @@
 
                         <h:outputText value="Value 4: #{autoCompleteBean.selectedPlayer2.name}" rendered="#{not empty autoCompleteBean.selectedPlayer2}" />
                     </h:panelGrid>
-                </p:dialog>
+               
 
             </h:form>
 
@@ -85,8 +87,8 @@
             &lt;f:selectItem itemLabel="Option 3" itemValue="3" /&gt;
         &lt;/p:selectOneMenu&gt;
 
-        &lt;h:outputText value="Custom Effect: " /&gt;
-        &lt;p:selectOneMenu value="\#{pprBean.city}" effect="drop"&gt;
+        &lt;h:outputText value="Editable: " /&gt;
+        &lt;p:selectOneMenu value="\#{pprBean.city}" effect="fold" editable="true"&gt;
             &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
             &lt;f:selectItems value="\#{pprBean.cities}" /&gt;
         &lt;/p:selectOneMenu&gt;
