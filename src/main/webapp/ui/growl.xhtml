@@ -12,17 +12,17 @@
 				<p>Growl brings the Mac's growl widget to JSF with the ability of displaying FacesMessages. Growl simply
 				replaces h:messages component.</p>
 					
-				<h:form>
+                <h:form id="form">
 				
 					<p:growl id="growl" showDetail="true" sticky="true" />
 					
 					<p:panel header="Growl">
 						<h:panelGrid columns="2">
 							<h:outputText value="Your Name: *" /> 
-							<p:inputText value="#{growlBean.text}" required="true" label="Name"/>
+							<p:inputText id="name" value="#{growlBean.text}" required="true" label="Name"/>
 						</h:panelGrid>
 
-                        <p:commandButton value="Save" actionListener="#{growlBean.save}" update="growl"/>
+                        <p:commandButton id="btn" value="Save" actionListener="#{growlBean.save}" update="growl"/>
 					</p:panel>
 					
 				</h:form>
