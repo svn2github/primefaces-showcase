@@ -11,9 +11,9 @@
 			<p>RemoteCommand enables executing backing bean methods and do partial update triggered by custom client side script.
                This example demonstrates a use case where a certain part of a page can be lazily loaded on demand.</p>
                 
-                <h:form>
+                <h:form id="form">
                 	
-                	<p:commandButton value="Load" type="button" onclick="lazyload()" />
+                	<p:commandButton value="Load" type="button" onclick="lazyload()" id="btnLoad" />
                 	                	
                 	<p:outputPanel id="lazypanel" layout="block">
                 		<h:outputText value="This part of page is lazily loaded on demand using a RemoteCommand" 
@@ -31,9 +31,9 @@
 				<p:tabView>
 					<p:tab title="remoteCommand.xhtml">
 <pre name="code" class="xml">
- &lt;h:form&gt;
+ &lt;h:form id="form"&gt;
                 	
-	&lt;p:commandButton value="Load" type="button" onclick="lazyload()" /&gt;
+	&lt;p:commandButton value="Load" type="button" onclick="lazyload()" id="btnLoad" /&gt;
         	                	
     &lt;p:outputPanel id="lazypanel" layout="block"&gt;
     	&lt;h:outputText value="This part of page is lazily loaded on demand using a RemoteCommand" 
