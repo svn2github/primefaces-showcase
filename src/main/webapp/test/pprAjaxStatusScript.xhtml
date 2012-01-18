@@ -1,0 +1,130 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+
+		<h1 class="title ui-widget-header ui-corner-all">AJAX - Custom Status</h1>
+		<div class="entry">
+			<p>Ajax Status can also be customized to execute custom javascript.</p>
+
+			<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>
+			
+			<p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" id="dlgStatus">
+				<p:graphicImage value="/design/ajaxloadingbar.gif" />
+			</p:dialog>
+			
+			<h:form id="form">
+
+				<p:panel id="panel" header="Ajax Status">
+	
+					<p:messages id="msgs" />
+					
+					<h:panelGrid columns="3" cellpadding="5">
+						<h:outputLabel for="firstname" value="Firstname: *" />
+						<p:inputText id="firstname" value="#{personTestBean.firstname}" required="true" label="Firstname">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<p:message for="firstname" id="lblErrFirstName"/>
+						
+						<h:outputLabel for="surname" value="Surname: *" />
+						<p:inputText id="surname" value="#{personTestBean.surname}" required="true" label="Surname"/>
+						<p:message for="surname" id="lblErrSurname" />
+
+					</h:panelGrid>
+					
+					<p:commandButton value="Submit" update="panel" id="btnSubmit" actionListener="#{personTestBean.savePerson}" />
+
+				</p:panel>
+				
+			</h:form>
+						
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="pprAjaxStatusScript.xhtml">
+					<pre name="code" class="xml">
+&lt;p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/&gt;
+			
+&lt;p:dialog modal="true" widgetVar="statusDialog" header="Status" 
+        draggable="false" closable="false"&gt;
+	&lt;p:graphicImage value="/design/ajaxloadingbar.gif" /&gt;
+&lt;/p:dialog&gt;
+
+&lt;h:form&gt;
+
+	&lt;p:panel id="panel" header="Ajax Status"&gt;
+
+		&lt;p:messages /&gt;
+		
+		&lt;h:panelGrid columns="3" cellpadding="5"&gt;
+			&lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
+			&lt;p:inputText id="firstname" 
+					value="\#{personTestBean.firstname}" 
+					required="true" label="Firstname"&gt;
+				&lt;f:validateLength minimum="2" /&gt;
+			&lt;/p:inputText&gt;
+			&lt;p:message for="firstname" /&gt;
+			
+			&lt;h:outputLabel for="surname" value="Surname: *" /&gt;
+			&lt;p:inputText id="surname" 
+					value="\#{personTestBean.surname}" 
+					required="true" label="Surname"/&gt;
+			&lt;p:message for="surname" /&gt;
+
+		&lt;/h:panelGrid&gt;
+		
+		&lt;p:commandButton value="Submit" update="panel" 
+				actionListener="\#{personTestBean.savePerson}" /&gt;
+
+	&lt;/p:panel&gt;
+	
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="PersonBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+public class PersonBean {
+
+	private String firstname;
+	
+	private String surname;
+
+	public String getFirstname() {
+		return firstname;
+	}
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+	
+	public void savePerson(ActionEvent actionEvent) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome " + firstname + " " + surname + "!"));
+	}
+}
+					</pre>
+				</p:tab>
+			</p:tabView>
+			
+						
+					</div>
+			
+	</ui:define>
+
+    <ui:define name="status" />
+</ui:composition>
