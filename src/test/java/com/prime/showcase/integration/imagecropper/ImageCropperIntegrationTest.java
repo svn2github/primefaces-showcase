@@ -30,16 +30,14 @@ public class ImageCropperIntegrationTest extends AbstractIntegrationTest {
             findElementBySelector("form#form " + escapeClientId("form:imageCropper") + " " + escapeClientId("form:imageCropper_coords"));
             
             //handles
-            if(findElementsBySelector("form#form " + escapeClientId("form:imageCropper") + " .jcrop-holder .jcrop-handle").size() != 8){
-                throw new NoSuchElementException("ImageCropperIntegrationTest : Invalid number of cropper handles.");
-            }
+            assertTrue("Should find cropper handles.", findElementsBySelector("form#form " + escapeClientId("form:imageCropper") + " .jcrop-holder .jcrop-handle").size() == 8);
 
             //crop button
             findElementBySelector("form#form " + escapeClientId("form:btn"));
             
         }
         catch(NoSuchElementException e){
-            assertTrue(false);
+            assertTrue("ImageCropper showcase DOM not verified.", false);
         }
     }
     
@@ -75,18 +73,14 @@ public class ImageCropperIntegrationTest extends AbstractIntegrationTest {
         try {
             
             //check value handler
-            if(x1 == x2 || y1 == y2) {
-                throw new NoSuchElementException("ImageCropperIntegrationTest : Invalid value handling.");
-            }
+            assertTrue("Cropper value handler should changed.", x1 != x2 && y1 != y2);
             
             Dimension croppedSize = findElementById("form:localCroppedImage").getSize();
             
-            if(h2 != croppedSize.height || w2 != croppedSize.width){
-                throw new NoSuchElementException("ImageCropperIntegrationTest : Invalid cropped sizes.");
-            }
+            assertTrue("Should crop valid dimensions.", h2 == croppedSize.height && w2 == croppedSize.width);
             
         } catch (NoSuchElementException e) {
-            assertTrue(false);
+            assertTrue("Should render cropped image.", false);
         }
     }
 }
