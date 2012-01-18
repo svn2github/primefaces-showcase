@@ -11,16 +11,19 @@ import org.openqa.selenium.WebElement;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
 import com.prime.showcase.integration.SeleniumActionHelper;
+import org.junit.BeforeClass;
 
 public class DockIntegrationTest extends AbstractIntegrationTest {
     
+    protected static final String TEST_URL = PRIME_SHOWCASE_UI + "dock.jsf";
+
     protected static SeleniumActionHelper action;
     
     protected static List<WebElement> items;
     
-    @Test
-    public void shouldInit(){
-        driver.get(toShowcaseUrl("dock.jsf"));
+    @BeforeClass
+    public static void shouldInit(){
+        driver.get(TEST_URL);
         action = new SeleniumActionHelper(driver);
         items = new ArrayList<WebElement>();
     }
