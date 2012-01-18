@@ -375,11 +375,6 @@
         </managed-property>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>timelineBean</managed-bean-name>
-        <managed-bean-class>org.primefaces.examples.view.TimelineBean</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>orderListBean</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.view.OrderListBean</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
