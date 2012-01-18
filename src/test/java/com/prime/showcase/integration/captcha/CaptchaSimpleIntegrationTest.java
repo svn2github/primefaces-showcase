@@ -1,6 +1,7 @@
 package com.prime.showcase.integration.captcha;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import org.junit.BeforeClass;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.openqa.selenium.NoSuchElementException;
@@ -8,9 +9,11 @@ import org.openqa.selenium.WebElement;
 
 public class CaptchaSimpleIntegrationTest extends AbstractIntegrationTest {
     
-    @Test
-    public void shouldInit(){
-        driver.get(toShowcaseUrl("captcha.jsf"));
+    protected static final String TEST_URL = PRIME_SHOWCASE_UI + "captchaCustom.jsf";
+    
+    @BeforeClass
+    public static void shouldInit(){
+        driver.get(TEST_URL);
     }
     
     @Test
