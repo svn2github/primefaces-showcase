@@ -22,7 +22,7 @@ public class DockIntegrationTest extends AbstractIntegrationTest {
     protected static List<WebElement> items;
     
     @BeforeClass
-    public static void shouldInit(){
+    public static void init(){
         driver.get(TEST_URL);
         action = new SeleniumActionHelper(driver);
         items = new ArrayList<WebElement>();
@@ -55,7 +55,7 @@ public class DockIntegrationTest extends AbstractIntegrationTest {
            
         }
         catch(NoSuchElementException e){
-            assertTrue(false);
+            assertTrue("Should render dock items.", false);
         }
     }
     
