@@ -22,6 +22,8 @@ public abstract class AbstractIntegrationTest {
 	private static final String JQUERY_ACTIVE_CONNECTIONS_QUERY = "return $.active == 0;";
 
 	private static final int DEFAULT_SLEEP_TIME_IN_SECONDS = 2;
+	
+    private static final int DEFAULT_ANIMATED_INTERVAL_IN_SECONDS = 1;
 
 	private static final int DEFAULT_TIMEOUT_IN_SECONDS = 10;
 
@@ -83,6 +85,26 @@ public abstract class AbstractIntegrationTest {
 					public Boolean apply(WebDriver d) {
 						JavascriptExecutor jsExec = (JavascriptExecutor) d;
 						return (Boolean) jsExec.executeScript(JQUERY_ACTIVE_CONNECTIONS_QUERY);
+					}
+				});
+	}
+    
+    /**
+	 * Waits until body elements animated with JS.
+	 */
+    protected void waitUntilAllAnimationsComplete() {
+        waitUntilAnimationCompletes("body *");
+    }
+    
+    /**
+	 * Waits until given selector elements animated with JS.
+	 * @param selector : jQuery element selector
+	 */
+    protected void waitUntilAnimationCompletes(final String selector) {
+		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS).pollingEvery(DEFAULT_ANIMATED_INTERVAL_IN_SECONDS, TimeUnit.SECONDS)
+				.until(new ExpectedCondition<Boolean>() {
+					public Boolean apply(WebDriver d) {
+						return (Boolean) ((JavascriptExecutor)d).executeScript("return ! $('" + selector + "').is(':animated');");
 					}
 				});
 	}
@@ -149,6 +171,14 @@ public abstract class AbstractIntegrationTest {
     
     protected String escapeClientId(String id){
         return "#" + id.replaceAll(":", "\\\\:");
+    }
+    
+    protected String escapeJSId(String id){
+        return "#" + id.replaceAll(":", "\\\\\\\\:");
+    }
+    
+    protected boolean hasClass(WebElement e, String c){
+        return e.getAttribute("class").contains(c);
     }
     
     protected Object executeJS( String js, Object... os){
