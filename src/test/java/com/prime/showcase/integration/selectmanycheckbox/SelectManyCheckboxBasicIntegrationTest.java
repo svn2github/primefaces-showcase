@@ -2,6 +2,7 @@ package com.prime.showcase.integration.selectmanycheckbox;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
 import java.util.List;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,9 +12,11 @@ import org.openqa.selenium.WebElement;
 
 public class SelectManyCheckboxBasicIntegrationTest extends AbstractIntegrationTest {
 
-    @Test
-    public void shouldInit(){
-        driver.get(toShowcaseUrl("selectManyCheckbox.jsf"));
+    protected static final String TEST_URL = PRIME_SHOWCASE_UI + "selectManyCheckbox.jsf";
+    
+    @BeforeClass
+    public static void init(){
+        driver.get(TEST_URL);
     }
     
     @Test
