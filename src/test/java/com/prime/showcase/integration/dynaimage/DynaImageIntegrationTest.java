@@ -25,18 +25,18 @@ public class DynaImageIntegrationTest extends AbstractIntegrationTest {
             String barcode = findElementBySelector("img#barcode").getAttribute("src");
             String text = findElementBySelector("img#text").getAttribute("src");
 
-            if (chart == null   || 
-                barcode == null || 
-                text == null    || 
-                chart.trim().isEmpty()  || 
-                barcode.trim().isEmpty()|| 
-                text.trim().isEmpty()) {
-                throw new NoSuchElementException("Image Not Sourced.");
-            }
+            assertTrue("Images should be sourced.",
+                    chart != null
+                    && barcode != null
+                    && text != null
+                    && !chart.trim().isEmpty()
+                    && !barcode.trim().isEmpty()
+                    && !text.trim().isEmpty());
+            
 
 
         } catch (NoSuchElementException e) {
-            assertTrue(false);
+            assertTrue("Should render images.", false);
         }
     }
 }
