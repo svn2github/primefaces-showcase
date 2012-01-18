@@ -1,5 +1,6 @@
 package com.prime.showcase.integration;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -14,23 +15,35 @@ public class SeleniumActionHelper {
 	}
 
 	public void rightClick(WebElement body) {
-		Action rClick = builder.contextClick(body).build();
-		rClick.perform();
+		builder.contextClick(body).build().perform();
 	}
 
 	public void mouseHover(WebElement element) {
-		Action action = builder.moveToElement(element).build();
-		action.perform();
+		builder.moveToElement(element).build().perform();
 	}
 
 	public void dndByOffset(WebElement element, int x, int y) {
-		Action action = builder.dragAndDropBy(element, x, y).build();
-		action.perform();
+		builder.dragAndDropBy(element, x, y).build().perform();
 	}
 
 	public void dndToElement(WebElement source, WebElement target) {
-		Action action = builder.dragAndDrop(source, target).build();
-		action.perform();
+		builder.dragAndDrop(source, target).build().perform();
+	}
+    
+    public void keyDown(WebElement e, Keys keys) {
+		builder.keyDown(e, keys).build().perform();
+	}
+    
+    public void keyDown(Keys keys) {
+		builder.keyDown(keys).build().perform();
+	}
+    
+    public void keyUp(WebElement e, Keys keys) {
+		builder.keyUp(e, keys).build().perform();
+	}
+    
+    public void keyUp(Keys keys) {
+		builder.keyUp(keys).build().perform();
 	}
 
 	public void clickOnCurrentPosition() {
