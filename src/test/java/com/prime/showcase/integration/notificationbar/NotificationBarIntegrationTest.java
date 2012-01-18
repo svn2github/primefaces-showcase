@@ -39,14 +39,14 @@ public class NotificationBarIntegrationTest extends AbstractIntegrationTest {
         findElementById("showbtn").click();
         Thread.sleep(1000);
         if(!findElementById("notification").isDisplayed()){
-            throw new NoSuchElementException("NotificationBarIntegrationTest : Notification panel should display on show click.");
+            assertTrue(false);
         }
         
         
         findElementById("hidebtn").click();
         Thread.sleep(1000);
         if(findElementById("notification").isDisplayed()){
-            throw new NoSuchElementException("NotificationBarIntegrationTest : Notification panel should hide on hide click.");
+            assertTrue(false);
         }
     }
 }
