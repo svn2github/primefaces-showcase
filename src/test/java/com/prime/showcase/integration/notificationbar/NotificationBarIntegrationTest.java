@@ -2,15 +2,17 @@ package com.prime.showcase.integration.notificationbar;
 
 import org.openqa.selenium.NoSuchElementException;
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 public class NotificationBarIntegrationTest extends AbstractIntegrationTest {
  
+    protected static final String TEST_URL = PRIME_SHOWCASE_UI + "notificationBar.jsf";
     
-    @Test
-    public void shouldInit(){
-        driver.get(toShowcaseUrl("notificationBar.jsf"));
+    @BeforeClass
+    public static void init(){
+        driver.get(TEST_URL);
     }
     
     @Test
