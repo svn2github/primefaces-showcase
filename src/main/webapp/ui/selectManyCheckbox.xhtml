@@ -11,19 +11,19 @@
 		<div class="entry">
 			<p>SelectManyCheckbox extends standard SelectManyCheckbox with skinning capabilities.</p>
 
-			<h:form>
+			<h:form id="form">
 
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
                     <h:outputText value="Horizontal: " />
-                    <p:selectManyCheckbox value="#{formBean.selectedOptions}">
+                    <p:selectManyCheckbox id="horizontal" value="#{formBean.selectedOptions}">
                         <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
                         <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
                         <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
                     </p:selectManyCheckbox>
 
                     <h:outputText value="Vertical: " />
-                    <p:selectManyCheckbox value="#{formBean.selectedMovies}" layout="pageDirection">
+                    <p:selectManyCheckbox id="vertical" value="#{formBean.selectedMovies}" layout="pageDirection">
                         <f:selectItems value="#{formBean.movies}" />
                     </p:selectManyCheckbox>
 
@@ -31,15 +31,15 @@
 
                 <p:separator />
 
-                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+                <p:commandButton id="submit" value="Submit" update="display" oncomplete="dlg.show()" />
 
-                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                <p:dialog id="dialog" header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
                     <p:outputPanel id="display">
-                        <p:dataList value="#{formBean.selectedOptions}" var="option">
+                        <p:dataList id="selectedOptions" value="#{formBean.selectedOptions}" var="option">
                             #{option}
                         </p:dataList>
 
-                        <p:dataList value="#{formBean.selectedMovies}" var="movie">
+                        <p:dataList id="selectedMovies" value="#{formBean.selectedMovies}" var="movie">
                             #{movie}
                         </p:dataList>
                     </p:outputPanel>
