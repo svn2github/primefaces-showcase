@@ -28,12 +28,12 @@
 			<p>NotificationBar displays a multipurpose fixed positioned panel for notification either on top or bottom of the page. Any group of JSF components
 			can be placed inside notification bar.</p>
             
-            <p:notificationBar position="top" effect="slide" widgetVar="bar" styleClass="top">
+            <p:notificationBar id="notification" position="top" effect="slide" widgetVar="bar" styleClass="top">
                 <h:outputText value="What PrimeFaces has so far is just the beginning!" style="font-size:36px;" />
             </p:notificationBar>
             
-            <p:commandButton value="Show" onclick="bar.show()" type="button" />
-            <p:commandButton value="Hide" onclick="bar.hide()" type="button" />
+            <p:commandButton id="showbtn" value="Show" onclick="bar.show()" type="button" />
+            <p:commandButton id="hidebtn" value="Hide" onclick="bar.hide()" type="button" />
 
 			<h3>Source</h3>
             <p:tabView>
