@@ -389,4 +389,9 @@
         <managed-bean-class>org.primefaces.examples.view.PhotoShare</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>personTestBean</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.test.view.PersonBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

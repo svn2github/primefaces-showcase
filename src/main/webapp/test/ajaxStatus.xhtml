@@ -30,19 +30,19 @@
 
                     <h:panelGrid columns="3" cellpadding="5">
                         <h:outputLabel for="firstname" value="Firstname: *" />
-                        <p:inputText id="firstname" value="#{personBean.firstname}" required="true" label="Firstname">
+                        <p:inputText id="firstname" value="#{personTestBean.firstname}" required="true" label="Firstname">
                             <f:validateLength minimum="2" />
                         </p:inputText>
                         <p:message for="firstname" id="lblErrFirstName" />
 
                         <h:outputLabel for="surname" value="Surname: *" />
-                        <p:inputText id="surname" value="#{personBean.surname}" required="true" label="Surname"/>
+                        <p:inputText id="surname" value="#{personTestBean.surname}" required="true" label="Surname"/>
                         <p:message for="surname" id="lblErrSurname" />
 
                     </h:panelGrid>
 
-                    <p:commandButton value="Global" update="panel" actionListener="#{personBean.savePerson}" id="btnGlobal" />
-                    <p:commandButton value="Non-Global" update="panel" actionListener="#{personBean.savePerson}" id="btnNonGlobal" global="false" style="margin-left:5px"/>
+                    <p:commandButton value="Global" update="panel" actionListener="#{personTestBean.savePerson}" id="btnGlobal" />
+                    <p:commandButton value="Non-Global" update="panel" actionListener="#{personTestBean.savePerson}" id="btnNonGlobal" global="false" style="margin-left:5px"/>
 
                 </p:panel>
 
@@ -71,7 +71,7 @@
 		&lt;h:panelGrid columns="3" cellpadding="5"&gt;
 			&lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
 			&lt;p:inputText id="firstname" 
-					value="\#{personBean.firstname}" 
+					value="\#{personTestBean.firstname}" 
 					required="true" label="Firstname"&gt;
 				&lt;f:validateLength minimum="2" /&gt;
 			&lt;/p:inputText&gt;
@@ -79,17 +79,17 @@
 			
 			&lt;h:outputLabel for="surname" value="Surname: *" /&gt;
 			&lt;p:inputText id="surname" 
-					value="\#{personBean.surname}" 
+					value="\#{personTestBean.surname}" 
 					required="true" label="Surname"/&gt;
 			&lt;p:message for="surname" /&gt;
 
 		&lt;/h:panelGrid&gt;
 		
 		&lt;p:commandButton value="Global" update="panel" 
-				actionListener="\#{personBean.savePerson}" 
+				actionListener="\#{personTestBean.savePerson}" 
 				id="btnGlobal" /&gt;
 		&lt;p:commandButton value="Non-Global" update="panel" 
-				actionListener="\#{personBean.savePerson}" 
+				actionListener="\#{personTestBean.savePerson}" 
 				id="btnNonGlobal" 
 				global="false" style="margin-left:5px"/&gt;
 
