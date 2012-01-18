@@ -21,23 +21,17 @@ public class OverlayPanelBasicIntegrationTest extends AbstractIntegrationTest{
         try{
             
             findElementById("form:carBtn");
-            if(findElementById("form:carPanel").isDisplayed()){
-                throw new NoSuchElementException("OverlayPanelBasicIntegrationTest : Car panel should not display on startup.");
-            }
+            assertTrue("Car panel should be hidden on startup.", !findElementById("form:carPanel").isDisplayed());
             
             findElementById("form:chartBtn");
-            if(findElementById("form:chartPanel").isDisplayed()){
-                throw new NoSuchElementException("OverlayPanelBasicIntegrationTest : Chart panel should not display on startup.");
-            }
+            assertTrue("Chart panel should be hidden on startup.", !findElementById("form:chartPanel").isDisplayed());
             
             findElementById("form:imgBtn");
-            if(findElementById("form:imgPanel").isDisplayed()){
-                throw new NoSuchElementException("OverlayPanelBasicIntegrationTest : Image panel should not display on startup.");
-            }
+            assertTrue("Image panel should be hidden on startup.", !findElementById("form:imgPanel").isDisplayed());
             
         }
         catch(NoSuchElementException e){
-            assertTrue(false);
+            assertTrue("OverlayPanel showcase DOM not verified.", false);
         }
     }
    
@@ -50,20 +44,14 @@ public class OverlayPanelBasicIntegrationTest extends AbstractIntegrationTest{
         
         findElementById("form:carBtn").click();
         Thread.sleep(500);
-        if(!car.isDisplayed() && (chart.isDisplayed() || image.isDisplayed())){
-            assertTrue(false);
-        }
+        assertTrue("Should only display car panel.", car.isDisplayed() && !chart.isDisplayed() && !image.isDisplayed());
 
         findElementById("form:chartBtn").click();
         Thread.sleep(500);
-        if(!chart.isDisplayed() && (car.isDisplayed() || image.isDisplayed())){
-            assertTrue(false);
-        }
+        assertTrue("Should only display chart panel.", chart.isDisplayed() && !car.isDisplayed() && !image.isDisplayed());
 
         findElementById("form:imgBtn").click();
         Thread.sleep(500);
-        if(!image.isDisplayed() && (car.isDisplayed() || chart.isDisplayed())){
-            assertTrue(false);
-        }
+        assertTrue("Should only display image panel.", image.isDisplayed() && !car.isDisplayed() && !chart.isDisplayed());
     }
 }
