@@ -10,7 +10,7 @@
         <div class="entry">
             <p>Poll component make ajax calls in a specified interval.</p>
 
-            <h:form>
+            <h:form id="form">
                 <h:outputText id="txt_count" value="#{counterBean.count}" />
 
                 <p:poll interval="3" listener="#{counterBean.increment}" update="txt_count" />
@@ -20,7 +20,7 @@
             <p:tabView>
                 <p:tab title="poll.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 	&lt;h:outputText id="txt_count" value="\#{counterBean.count}" /&gt;
 	
 	&lt;p:poll interval="3" 
