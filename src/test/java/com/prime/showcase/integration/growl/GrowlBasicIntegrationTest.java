@@ -30,13 +30,10 @@ public class GrowlBasicIntegrationTest extends AbstractIntegrationTest {
             
             waitUntilAjaxRequestCompletes();
             
-            //growl layers displayed ?
-            if(findElementsBySelector(".ui-growl .ui-growl-item").size() != 2){
-                throw new NoSuchElementException("Invalid growl messages. Expected two items.");
-            }
+            assertTrue("Should display growls.", findElementsBySelector(".ui-growl .ui-growl-item").size() == 2);
         }
         catch(NoSuchElementException e){
-            assertTrue(false);
+            assertTrue("Growl showcase DOM not verified.", false);
         }
     }
 }
