@@ -33,13 +33,12 @@ public class KeyboardCompleteIntegrationTest extends AbstractIntegrationTest {
             findElementById("form:buttonmode");
             findElementById("form:image");
             findElementById("form:password");
-            if(findElementById("keypad-div").isDisplayed()){
-                throw new NoSuchElementException("KeyboardCompleteIntegrationTest : Keypad division must be hidden on startup.");
-            }
+            
+            assertTrue("Keypad should be hidden on startup.", !findElementById("keypad-div").isDisplayed());
             
         }
         catch(NoSuchElementException e){
-            assertTrue(false);
+            assertTrue("Keyboard showcase DOM not verified.", false);
         }
     }
     
@@ -50,56 +49,56 @@ public class KeyboardCompleteIntegrationTest extends AbstractIntegrationTest {
 
         findElementBySelector(escapeClientId("form:default") + "[type='text']").click();
         Thread.sleep(1000);
-        if(!panel.isDisplayed() && findElementsBySelector(panel, ".keypad-row .keypad-key").size() != 74){
-            assertTrue(false);
-        }
+        assertTrue("Should display default keyboard panel.", panel.isDisplayed());
+        assertTrue("Should render valid default keyboard keys.", findElementsBySelector(panel, ".keypad-row .keypad-key").size() == 74);
 
+        
         findElementBySelector(escapeClientId("form:qwerty") + "[type='text']").click();
         Thread.sleep(1000);
-        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 30){
-            assertTrue(false);
-        }
+        assertTrue("Should display qwerty keyboard panel.", panel.isDisplayed());
+        assertTrue("Should render valid qwerty keyboard keys.", findElementsBySelector(panel, ".keypad-row .keypad-key").size() == 30);
 
+        
         findElementBySelector(escapeClientId("form:alphabetic") + "[type='text']").click();
         Thread.sleep(1000);
-        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 30){
-            assertTrue(false);
-        }
+        assertTrue("Should display alphabetic keyboard panel.", panel.isDisplayed());
+        assertTrue("Should render valid alphabetic keyboard keys.", findElementsBySelector(panel, ".keypad-row .keypad-key").size() == 30);
 
+        
         findElementBySelector(escapeClientId("form:custom1") + "[type='text']").click();
         Thread.sleep(1000);
-        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 18){
-            assertTrue(false);
-        }
+        assertTrue("Should display custom1 keyboard panel.", panel.isDisplayed());
+        assertTrue("Should render valid custom1 keyboard keys.", findElementsBySelector(panel, ".keypad-row .keypad-key").size() == 18);
+
 
         findElementBySelector(escapeClientId("form:custom2") + "[type='text']").click();
         Thread.sleep(1000);
-        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 30){
-            assertTrue(false);
-        }
+        assertTrue("Should display custom2 keyboard panel.", panel.isDisplayed());
+        assertTrue("Should render valid custom2 keyboard keys.", findElementsBySelector(panel, ".keypad-row .keypad-key").size() == 30);
+
 
         findElementBySelector(escapeClientId("form:keypad") + "[type='text'][readonly='readonly']").click();
         Thread.sleep(1000);
-        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
-            assertTrue(false);
-        }
+        assertTrue("Should display keypad keyboard panel.", panel.isDisplayed());
+        assertTrue("Should render valid keypad keyboard keys.", findElementsBySelector(panel, ".keypad-row .keypad-key").size() == 13);
+
 
         findElementBySelector(escapeClientId("form:buttonmode") + "[type='text'][readonly='readonly'] + button").click();
         Thread.sleep(1000);
-        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
-            assertTrue(false);
-        }
+        assertTrue("Should display buttonmode keyboard panel.", panel.isDisplayed());
+        assertTrue("Should render valid buttonmode keyboard keys.", findElementsBySelector(panel, ".keypad-row .keypad-key").size() == 13);
+
 
         findElementBySelector(escapeClientId("form:image") + "[type='text'][readonly='readonly'] + img").click();
         Thread.sleep(1000);
-        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
-            assertTrue(false);
-        }
+        assertTrue("Should display image keyboard panel.", panel.isDisplayed());
+        assertTrue("Should render valid image keyboard keys.", findElementsBySelector(panel, ".keypad-row .keypad-key").size() == 13);
+
 
         findElementBySelector(escapeClientId("form:password") + "[type='password'][readonly='readonly']").click();
         Thread.sleep(1000);
-        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
-            assertTrue(false);
-        }
+        assertTrue("Should display password keyboard panel.", panel.isDisplayed());
+        assertTrue("Should render valid password keyboard keys.", findElementsBySelector(panel, ".keypad-row .keypad-key").size() == 13);
+
     }
 }
