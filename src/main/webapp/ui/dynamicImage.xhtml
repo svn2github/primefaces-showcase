@@ -12,13 +12,13 @@
             <p>DynamicImage is used to present images that are created programatically at runtime or images stored in database.</p>
 
             <h3>JFreeChart on-the-fly</h3>
-            <p:graphicImage value="#{dynamicImageController.chart}" />
+            <p:graphicImage id="chart" value="#{dynamicImageController.chart}" />
 
             <h3>Barcode on-the-fly</h3>
-            <p:graphicImage value="#{dynamicImageController.barcode}" />
+            <p:graphicImage id="barcode" value="#{dynamicImageController.barcode}" />
             
             <h3>GraphicText on-the-fly</h3>
-            <p:graphicImage value="#{dynamicImageController.graphicText}" />
+            <p:graphicImage id="text" value="#{dynamicImageController.graphicText}" />
 
             <h3>Source</h3>
             <p:tabView>
