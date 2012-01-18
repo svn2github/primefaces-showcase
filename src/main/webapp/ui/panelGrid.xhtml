@@ -9,11 +9,11 @@
 
         <h1 class="title ui-widget-header ui-corner-all">PanelGrid</h1>
         <div class="entry">
-            <p>PanelGrid is an extension to the standard panelGrid with theme integration.</p>
+            <p>PanelGrid is an extension to the standard panelGrid with theme integration and colspan-rowspan support.</p>
 
             <p:panelGrid columns="2">
                 <f:facet name="header">
-                    PanelGrid
+                    Basic PanelGrid
                 </f:facet>
                 
                 <h:outputLabel for="firstname2" value="Firstname: *" />
@@ -26,6 +26,33 @@
                     <p:commandButton type="button" value="Save" icon="ui-icon-check" style="margin:0"/>
                 </f:facet>
             </p:panelGrid>
+            
+            <p:panelGrid style="margin-top:20px">
+                <f:facet name="header">
+                    Colspan-Rowspan
+                </f:facet>
+                
+                <p:row>
+                    <p:column rowspan="3">AAA</p:column>
+                    <p:column colspan="4">BBB</p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2">CCC</p:column>
+                    <p:column colspan="2">DDD</p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column>EEE</p:column>
+                    <p:column>FFF</p:column>
+                    <p:column>GGG</p:column>
+                    <p:column>HHH</p:column>
+                </p:row>
+                
+                <f:facet name="footer">
+                    <p:spacer height="10"/>
+                </f:facet>
+            </p:panelGrid>
 
             <h3>Source</h3>
             <p:tabView>
@@ -33,17 +60,44 @@
                     <pre name="code" class="xml">
 &lt;p:panelGrid columns="2"&gt;
     &lt;f:facet name="header"&gt;
-        PanelGrid
+        Basic PanelGrid
     &lt;/f:facet&gt;
 
     &lt;h:outputLabel for="firstname2" value="Firstname: *" /&gt;
-    &lt;p:inputText id="firstname2" value="\#{pprBean.firstname}" label="Firstname" /&gt;
+    &lt;p:inputText id="firstname2" value="#{pprBean.firstname}" label="Firstname" /&gt;
 
     &lt;h:outputLabel for="surname2" value="Surname: *" /&gt;
-    &lt;p:inputText id="surname2" value="\#{pprBean.surname}" required="true" label="Surname"/&gt;
+    &lt;p:inputText id="surname2" value="#{pprBean.surname}" required="true" label="Surname"/&gt;
 
     &lt;f:facet name="footer"&gt;
         &lt;p:commandButton type="button" value="Save" icon="ui-icon-check" style="margin:0"/&gt;
+    &lt;/f:facet&gt;
+&lt;/p:panelGrid&gt;
+
+&lt;p:panelGrid style="margin-top:20px"&gt;
+    &lt;f:facet name="header"&gt;
+        Colspan-Rowspan
+    &lt;/f:facet&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column rowspan="3"&gt;AAA&lt;/p:column&gt;
+        &lt;p:column colspan="4"&gt;BBB&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column colspan="2"&gt;CCC&lt;/p:column&gt;
+        &lt;p:column colspan="2"&gt;DDD&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column&gt;EEE&lt;/p:column&gt;
+        &lt;p:column&gt;FFF&lt;/p:column&gt;
+        &lt;p:column&gt;GGG&lt;/p:column&gt;
+        &lt;p:column&gt;HHH&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;f:facet name="footer"&gt;
+        &lt;p:spacer height="10"/&gt;
     &lt;/f:facet&gt;
 &lt;/p:panelGrid&gt;
                     </pre>
