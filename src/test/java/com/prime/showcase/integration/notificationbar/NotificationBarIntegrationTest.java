@@ -23,13 +23,11 @@ public class NotificationBarIntegrationTest extends AbstractIntegrationTest {
             findElementById("showbtn");
             findElementById("hidebtn");
             
-            if(findElementById("notification").isDisplayed()){
-                throw new NoSuchElementException("NotificationBarIntegrationTest : Notification panel should not visible on startup.");
-            }
+            assertTrue("Notification bar should be hidden on startup.", !findElementById("notification").isDisplayed());
             
         }
         catch(NoSuchElementException e){
-            assertTrue(false);
+            assertTrue("NotificationBar showcase DOM not verified.", false);
         }
     }
     
@@ -38,15 +36,11 @@ public class NotificationBarIntegrationTest extends AbstractIntegrationTest {
         
         findElementById("showbtn").click();
         Thread.sleep(1000);
-        if(!findElementById("notification").isDisplayed()){
-            assertTrue(false);
-        }
+        assertTrue("Should show notification bar on command.", findElementById("notification").isDisplayed());
         
         
         findElementById("hidebtn").click();
         Thread.sleep(1000);
-        if(findElementById("notification").isDisplayed()){
-            assertTrue(false);
-        }
+        assertTrue("Should hide notification bar on command.", !findElementById("notification").isDisplayed());
     }
 }
