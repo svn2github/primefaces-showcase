@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 
 public abstract class AbstractIntegrationTest {
 
-	private static final String PRIME_SHOWCASE_UI = "http://localhost:8080/prime-showcase/ui/";
+	protected static final String PRIME_SHOWCASE_UI = "http://localhost:8080/prime-showcase/ui/";
 
 	private static final String JQUERY_ACTIVE_CONNECTIONS_QUERY = "return $.active == 0;";
 
@@ -134,6 +134,14 @@ public abstract class AbstractIntegrationTest {
     protected List<WebElement> findElementsBySelector(String selector){
         return driver.findElements(By.cssSelector(selector));
     }
+   
+    protected WebElement findElementBySelector(WebElement parent, String selector){
+        return parent.findElement(By.cssSelector(selector));
+    }
+    
+    protected List<WebElement> findElementsBySelector(WebElement parent, String selector){
+        return parent.findElements(By.cssSelector(selector));
+    }
 	
 	protected String toShowcaseUrl(String relativeUrl) {
 		return PRIME_SHOWCASE_UI + relativeUrl;
@@ -142,5 +150,8 @@ public abstract class AbstractIntegrationTest {
     protected String escapeClientId(String id){
         return "#" + id.replaceAll(":", "\\\\:");
     }
-	
+    
+    protected Object executeJS( String js, Object... os){
+        return ((JavascriptExecutor) driver).executeScript(js, os);
+    }
 }
