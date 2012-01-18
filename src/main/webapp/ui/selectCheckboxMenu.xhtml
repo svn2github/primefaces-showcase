@@ -11,17 +11,17 @@
 		<div class="entry">
 			<p>SelectCheckboxMenu is an input component based on checkboxes in an overlay menu.</p>
 
-			<h:form>
+			<h:form id="form">
 
-                <p:selectCheckboxMenu value="#{formBean.selectedMovies}" label="Movies">
+                <p:selectCheckboxMenu id="menu" value="#{formBean.selectedMovies}" label="Movies">
                     <f:selectItems value="#{formBean.movies}" />
                 </p:selectCheckboxMenu>
 
                 <p:separator style="margin-bottom:10px"/>
                 
-                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+                <p:commandButton id="submit" value="Submit" update="display" oncomplete="dlg.show()" />
 
-                <p:dialog header="Selected Movies" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg" resizabled="false">
+                <p:dialog id="dialog" header="Selected Movies" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg" resizabled="false">
                     <p:dataList id="display" value="#{formBean.selectedMovies}" var="movie">
                         #{movie}
                     </p:dataList>
