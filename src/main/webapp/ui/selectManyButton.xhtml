@@ -11,9 +11,9 @@
 		<div class="entry">
 			<p>SelectManyButton is an input component to select options using buttons instead of checkboxes.</p>
 
-			<h:form>
+			<h:form id="form">
 
-                <p:selectManyButton value="#{formBean.selectedOptions}">
+                <p:selectManyButton id="menu" value="#{formBean.selectedOptions}">
                     <f:selectItem itemLabel="B" itemValue="Bold" />
                     <f:selectItem itemLabel="I" itemValue="Italic" />
                     <f:selectItem itemLabel="U" itemValue="Underline" />
@@ -21,9 +21,9 @@
                 
                 <p:separator style="margin-bottom:20px"/>
 
-                <p:commandButton value="Submit" oncomplete="dlg.show()" update="display" />
+                <p:commandButton id="submit" value="Submit" oncomplete="dlg.show()" update="display" />
 
-                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                <p:dialog id="dialog" header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
                     <p:dataList id="display" value="#{formBean.selectedOptions}" var="option">
                         #{option}
                     </p:dataList>
