@@ -9,37 +9,37 @@
 	
 		<h1 class="title ui-widget-header ui-corner-all">Keyboard</h1>
 		<div class="entry">
-			<h:form>
+			<h:form id="form">
                 
 				<p:panel header="Keyboard Demo">
 					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputText value="Default Layout: " />
-						<p:keyboard value="#{keyboardBean.value1}"/>
+						<p:keyboard id="default" value="#{keyboardBean.value1}"/>
 						
 						<h:outputText value="Basic QWERTY: " />
-						<p:keyboard value="#{keyboardBean.value2}" layout="qwertyBasic"/>
+						<p:keyboard id="qwerty" value="#{keyboardBean.value2}" layout="qwertyBasic"/>
 						
 						<h:outputText value="Alphabetic Layout: " />
-						<p:keyboard value="#{keyboardBean.value3}" layout="alphabetic"/>
+						<p:keyboard id="alphabetic" value="#{keyboardBean.value3}" layout="alphabetic"/>
 						
 						<h:outputText value="Custom Layout 1: " />
-						<p:keyboard value="#{keyboardBean.value4}" layout="custom" layoutTemplate="prime-back,faces-clear,rocks-close"/>
+						<p:keyboard id="custom1" value="#{keyboardBean.value4}" layout="custom" layoutTemplate="prime-back,faces-clear,rocks-close"/>
 						
 						<h:outputText value="Custom Layout 2: " />
-						<p:keyboard value="#{keyboardBean.value5}" layout="custom" layoutTemplate="create-space-your-close,owntemplate-shift,easily-space-spacebar"/>
+						<p:keyboard id="custom2" value="#{keyboardBean.value5}" layout="custom" layoutTemplate="create-space-your-close,owntemplate-shift,easily-space-spacebar"/>
 
                         <h:outputText value="Default Keypad: " />
-                        <p:keyboard value="#{keyboardBean.value6}" keypadOnly="true"/>
+                        <p:keyboard id="keypad" value="#{keyboardBean.value6}" keypadOnly="true"/>
 
                         <h:outputText value="Button Mode: " />
-                        <p:keyboard value="#{keyboardBean.value7}" showMode="button"  keypadOnly="true"/>
+                        <p:keyboard id="buttonmode" value="#{keyboardBean.value7}" showMode="button"  keypadOnly="true"/>
 
                         <h:outputText value="Image Mode: " />
-                        <p:keyboard value="#{keyboardBean.value8}" showMode="button" buttonImageOnly="true"
+                        <p:keyboard id="image" value="#{keyboardBean.value8}" showMode="button" buttonImageOnly="true"
                                         buttonImage="/images/keyboardpencil.png" keypadOnly="true"/>
 
                         <h:outputText value="Password Mode: " />
-                        <p:keyboard value="#{keyboardBean.value9}" password="true" keypadOnly="true"/>
+                        <p:keyboard id="password" value="#{keyboardBean.value9}" password="true" keypadOnly="true"/>
 						
 					</h:panelGrid>
 				</p:panel>
