@@ -10,12 +10,12 @@
 		<div class="entry">
 			<p>OverlayPanel is a generic container component that can overlay other components on page.</p>
 
-			<h:form>
+			<h:form id="form">
                 
                 <p:commandButton id="carBtn" value="Cars" type="button" />
 
-                <p:overlayPanel for="carBtn" hideEffect="fade">
-                    <p:dataTable var="car" value="#{tableBean.cars}" rows="10" paginator="true">
+                <p:overlayPanel id="carPanel" for="carBtn" hideEffect="fade">
+                    <p:dataTable id="table" var="car" value="#{tableBean.cars}" rows="10" paginator="true">
                         <p:column headerText="Model">
                             <h:outputText value="#{car.model}" />
                         </p:column>
@@ -38,8 +38,8 @@
 				
                 <p:commandButton id="chartBtn" value="Chart" type="button" />
                 
-                <p:overlayPanel for="chartBtn" hideEffect="fade">
-                    <p:pieChart value="#{chartBean.pieModel}" legendPosition="w"
+                <p:overlayPanel id="chartPanel" for="chartBtn" hideEffect="fade">
+                    <p:pieChart id="chart" value="#{chartBean.pieModel}" legendPosition="w"
                         title="Sample Pie Chart" style="width:400px;height:300px" />
                 </p:overlayPanel>
                 
@@ -47,8 +47,8 @@
                 
                 <p:commandButton id="imgBtn" value="Images" type="button" />
                 
-                <p:overlayPanel for="imgBtn" showEffect="blind" hideEffect="explode">
-                    <p:imageSwitch effect="fade">
+                <p:overlayPanel id="imgPanel" for="imgBtn" showEffect="blind" hideEffect="explode">
+                    <p:imageSwitch id="img" effect="fade">
                         <ui:repeat value="#{imageSwitchBean.images}" var="image">
                             <p:graphicImage value="/images/#{image}" />
                         </ui:repeat>
