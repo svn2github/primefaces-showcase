@@ -12,14 +12,14 @@
 			<p>ImageCropper is used to extract a certain part of an image and assign it to a new image value. ImageCropper is capable
 				of both cropping local or external images.</p>
 				
-				<h:form>
-					<h:panelGrid columns="2">
-						<p:imageCropper value="#{imageCropperBean.croppedImage}" image="/images/barca/camp_nou.jpg" initialCoords="225,75,300,125"/>
+				<h:form id="form">
+					<h:panelGrid id="cropperPanel" columns="2">
+						<p:imageCropper id="imageCropper" value="#{imageCropperBean.croppedImage}" image="/images/barca/camp_nou.jpg" initialCoords="225,75,300,125"/>
 						
 						<p:graphicImage id="localCroppedImage" value="/images/barca/#{imageCropperBean.newImageName}.jpg" />
 					</h:panelGrid>
 				
-                    <p:commandButton value="Crop" action="#{imageCropperBean.crop}" update="localCroppedImage"/>
+                    <p:commandButton id="btn" value="Crop" action="#{imageCropperBean.crop}" update="localCroppedImage"/>
 				</h:form>
 				
 				<h3>Source</h3>
