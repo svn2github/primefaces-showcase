@@ -46,64 +46,59 @@ public class KeyboardCompleteIntegrationTest extends AbstractIntegrationTest {
     @Test
     public void shouldUseDefaultKeyboard() throws InterruptedException{
         
-        try{
-            WebElement panel = findElementById("keypad-div");
-            
-            findElementBySelector(escapeClientId("form:default") + "[type='text']").click();
-            Thread.sleep(1000);
-            if(!panel.isDisplayed() && findElementsBySelector(panel, ".keypad-row .keypad-key").size() != 74){
-                throw new NoSuchElementException("KeyboardCompleteIntegrationTest : Invalid default keyboard keys.");
-            }
-            
-            findElementBySelector(escapeClientId("form:qwerty") + "[type='text']").click();
-            Thread.sleep(1000);
-            if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 30){
-                throw new NoSuchElementException("KeyboardCompleteIntegrationTest : Invalid qwerty keyboard keys.");
-            }
-            
-            findElementBySelector(escapeClientId("form:alphabetic") + "[type='text']").click();
-            Thread.sleep(1000);
-            if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 30){
-                throw new NoSuchElementException("KeyboardCompleteIntegrationTest : Invalid alphabetic keyboard keys.");
-            }
-            
-            findElementBySelector(escapeClientId("form:custom1") + "[type='text']").click();
-            Thread.sleep(1000);
-            if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 18){
-                throw new NoSuchElementException("KeyboardCompleteIntegrationTest : Invalid custom1 keyboard keys.");
-            }
-            
-            findElementBySelector(escapeClientId("form:custom2") + "[type='text']").click();
-            Thread.sleep(1000);
-            if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 30){
-                throw new NoSuchElementException("KeyboardCompleteIntegrationTest : Invalid custom2 keyboard keys.");
-            }
-            
-            findElementBySelector(escapeClientId("form:keypad") + "[type='text'][readonly='readonly']").click();
-            Thread.sleep(1000);
-            if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
-                throw new NoSuchElementException("KeyboardCompleteIntegrationTest : Invalid keypad keyboard keys.");
-            }
-            
-            findElementBySelector(escapeClientId("form:buttonmode") + "[type='text'][readonly='readonly'] + button").click();
-            Thread.sleep(1000);
-            if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
-                throw new NoSuchElementException("KeyboardCompleteIntegrationTest : Invalid button keyboard keys.");
-            }
-            
-            findElementBySelector(escapeClientId("form:image") + "[type='text'][readonly='readonly'] + img").click();
-            Thread.sleep(1000);
-            if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
-                throw new NoSuchElementException("KeyboardCompleteIntegrationTest : Invalid image keyboard keys.");
-            }
-            
-            findElementBySelector(escapeClientId("form:password") + "[type='password'][readonly='readonly']").click();
-            Thread.sleep(1000);
-            if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
-                throw new NoSuchElementException("KeyboardCompleteIntegrationTest : Invalid password keyboard keys.");
-            }
+        WebElement panel = findElementById("keypad-div");
+
+        findElementBySelector(escapeClientId("form:default") + "[type='text']").click();
+        Thread.sleep(1000);
+        if(!panel.isDisplayed() && findElementsBySelector(panel, ".keypad-row .keypad-key").size() != 74){
+            assertTrue(false);
         }
-        catch(NoSuchElementException e){
+
+        findElementBySelector(escapeClientId("form:qwerty") + "[type='text']").click();
+        Thread.sleep(1000);
+        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 30){
+            assertTrue(false);
+        }
+
+        findElementBySelector(escapeClientId("form:alphabetic") + "[type='text']").click();
+        Thread.sleep(1000);
+        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 30){
+            assertTrue(false);
+        }
+
+        findElementBySelector(escapeClientId("form:custom1") + "[type='text']").click();
+        Thread.sleep(1000);
+        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 18){
+            assertTrue(false);
+        }
+
+        findElementBySelector(escapeClientId("form:custom2") + "[type='text']").click();
+        Thread.sleep(1000);
+        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 30){
+            assertTrue(false);
+        }
+
+        findElementBySelector(escapeClientId("form:keypad") + "[type='text'][readonly='readonly']").click();
+        Thread.sleep(1000);
+        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
+            assertTrue(false);
+        }
+
+        findElementBySelector(escapeClientId("form:buttonmode") + "[type='text'][readonly='readonly'] + button").click();
+        Thread.sleep(1000);
+        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
+            assertTrue(false);
+        }
+
+        findElementBySelector(escapeClientId("form:image") + "[type='text'][readonly='readonly'] + img").click();
+        Thread.sleep(1000);
+        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
+            assertTrue(false);
+        }
+
+        findElementBySelector(escapeClientId("form:password") + "[type='password'][readonly='readonly']").click();
+        Thread.sleep(1000);
+        if(!panel.isDisplayed() && findElementsBySelector("#keypad-div .keypad-row .keypad-key").size() != 13){
             assertTrue(false);
         }
     }
