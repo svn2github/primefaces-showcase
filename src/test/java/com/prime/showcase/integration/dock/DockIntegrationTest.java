@@ -73,9 +73,7 @@ public class DockIntegrationTest extends AbstractIntegrationTest {
             double hoverWidth = Double.parseDouble(e.getCssValue("width").replaceAll("px", "")),
             hoverLeft = Double.parseDouble(e.getCssValue("left").replaceAll("px", ""));
             
-            if(hoverWidth <= baseWidth || hoverLeft > baseLeft){
-                assertTrue(false);
-            }
+            assertTrue("Should hover dock items.", hoverWidth > baseWidth && hoverLeft <= baseLeft);
         }
     }
     
