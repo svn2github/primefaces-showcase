@@ -11,25 +11,25 @@
 		<div class="entry">
 			<p>SelectButtonCheckbox is used to provide binary selection with a button UI instead of a checkbox.</p>
 
-			<h:form>
+			<h:form id="form">
 
                 <p:growl id="msg" />
 
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
                     <h:outputText value="I accept terms and conditions: " />
-                    <p:selectBooleanButton value="#{formBean.value1}" onLabel="Yes" offLabel="No" style="width:60px" />
+                    <p:selectBooleanButton id="value1" value="#{formBean.value1}" onLabel="Yes" offLabel="No" style="width:60px" />
 
                     <h:outputText value="Subscribe me to newsletter: " />
-                    <p:selectBooleanButton value="#{formBean.value2}" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:60px">
+                    <p:selectBooleanButton id="value2" value="#{formBean.value2}" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:60px">
                         <p:ajax update="msg" listener="#{formBean.addMessage}"/>
                     </p:selectBooleanButton>
 
                 </h:panelGrid>
 
-                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+                <p:commandButton id="submit" value="Submit" update="display" oncomplete="dlg.show()" />
 
-                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                <p:dialog id="dialog" header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
                     <h:panelGrid columns="1" id="display">
                         <h:outputText value="Value 1: #{formBean.value1}" />
 
