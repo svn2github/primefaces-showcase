@@ -5,6 +5,8 @@ import java.util.List;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
@@ -50,7 +52,9 @@ public class SelectCheckboxMenuBasicIntegrationTest extends AbstractIntegrationT
     @Test
     public void shouldManageMenuPanel() {
         
-        findElementBySelector(escapeClientId("form:menu") + " .ui-selectcheckboxmenu-trigger").click();
+        WebElement menu = findElementById("form:menu");
+        
+        findElementBySelector(menu, ".ui-selectcheckboxmenu-trigger").click();
         
         waitUntilAnimationCompletes(escapeJSId("form:menu_panel"));
         
@@ -58,7 +62,14 @@ public class SelectCheckboxMenuBasicIntegrationTest extends AbstractIntegrationT
         
         assertTrue(panel.isDisplayed());
         
-        for (WebElement e : findElementsBySelector(panel, ".ui-selectcheckboxmenu-item")) {
+        List<WebElement> items = findElementsBySelector(panel, ".ui-selectcheckboxmenu-item");
+        List<WebElement> hiddens = findElementsBySelector(menu, "input[type='checkbox']");
+        
+        for (int i = 0; i < items.size(); i++) {
+            
+            WebElement e = items.get(i);
+            
+            WebElement h = hiddens.get(i);
             
             WebElement box = findElementBySelector(e, ".ui-chkbox-box");
             
@@ -73,7 +84,11 @@ public class SelectCheckboxMenuBasicIntegrationTest extends AbstractIntegrationT
             
             assertTrue("Icon should be displayed on true.", icon.isDisplayed());
             
-            findElementBySelector(e, "label").click();
+            WebElement label = findElementBySelector(e, "label");
+
+            assertThat("Labels should match.", label.getText(), equalTo(h.getAttribute("value")));
+            
+            label.click();
             
             assertTrue("Should remove active class on checkbox.", !hasClass(box, "ui-state-active"));
             assertTrue("Icon should be hidden on false.", !icon.isDisplayed());
