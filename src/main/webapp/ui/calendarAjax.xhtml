@@ -24,11 +24,11 @@
 			<p:tabView>
 				<p:tab title="calendarAjax.html">
 <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form" &gt;
 
     &lt;p:growl id="growl" showDetail="true"/&gt;
 
-    &lt;p:calendar value="\#{calendarBean.date1}" mode="inline"&gt;
+    &lt;p:calendar value="\#{calendarBean.date1}" mode="inline" id="inlineCal"&gt;
         &lt;p:ajax event="dateSelect" listener="\#{calendarBean.handleDateSelect}" update="growl" /&gt;
     &lt;/p:calendar&gt;
 
@@ -61,9 +61,8 @@ public class CalendarBean {
 	}
 
 	public void handleDateSelect(DateSelectEvent event) {
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-	
 		FacesContext facesContext = FacesContext.getCurrentInstance();
+		SimpleDateFormat format = new SimpleDateFormat("d/M/yyyy");
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getDate())));
 	}
 }

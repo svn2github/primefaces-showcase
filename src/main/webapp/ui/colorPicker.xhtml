@@ -43,35 +43,35 @@
 		<div class="entry">
 			<p>Gone are the days to manually enter in hex codes to select colors.</p>
 		
-			<h:form>
+			<h:form id="form">
 			
 				<p:panel header="Colors">
 					<h:panelGrid columns="2" cellpadding="10">
 						<h:outputText value="Inline: " />
-						<p:colorPicker value="#{colorBean.color1}" mode="inline" />
+						<p:colorPicker id="inlineCP" value="#{colorBean.color1}" mode="inline" />
 
                         <h:outputText value="Styled: " />
 						<p:colorPicker value="#{colorBean.color2}" styleClass="silver" mode="inline" />
 
                         <h:outputText value="Popup: " />
-						<p:colorPicker value="#{colorBean.color3}" widgetVar="picker"/>
+						<p:colorPicker id="popupCP" value="#{colorBean.color3}" widgetVar="picker"/>
 					</h:panelGrid>
 
                     <p:separator />
 
-                    <p:commandButton value="Submit" oncomplete="dlg.show()" update="grid" />
+                    <p:commandButton id="btn" value="Submit" oncomplete="dlg.show()" update="grid" />
 				</p:panel>
 
                 <p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors">
                     <h:panelGrid columns="2" id="grid">
                         <h:outputText value="Color 1: " />
-                        <h:outputText value="#{colorBean.color1}" style="background-color:\##{colorBean.color1}"/>
+                        <h:outputText id="inlineCPColor" value="#{colorBean.color1}" style="background-color:\##{colorBean.color1}"/>
 
                         <h:outputText value="Color 2: " />
                         <h:outputText value="#{colorBean.color2}" style="background-color:\##{colorBean.color2}"/>
 
                         <h:outputText value="Color 3: " />
-                        <h:outputText value="#{colorBean.color3}" style="background-color:\##{colorBean.color3}"/>
+                        <h:outputText id="popupCPColor" value="#{colorBean.color3}" style="background-color:\##{colorBean.color3}"/>
                     </h:panelGrid>
                 </p:dialog>
 				
@@ -81,18 +81,18 @@
             <p:tabView>
                 <p:tab title="colorPicker.xhtml">
                 <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:panel header="Colors"&gt;
         &lt;h:panelGrid columns="2" cellpadding="10"&gt;
             &lt;h:outputText value="Inline: " /&gt;
-            &lt;p:colorPicker value="\#{colorBean.color1}" mode="inline" /&gt;
+            &lt;p:colorPicker id="inlineCP" value="\#{colorBean.color1}" mode="inline" /&gt;
 
             &lt;h:outputText value="Styled: " /&gt;
             &lt;p:colorPicker value="\#{colorBean.color2}" styleClass="silver" mode="inline" /&gt;
 
             &lt;h:outputText value="Popup: " /&gt;
-            &lt;p:colorPicker value="\#{colorBean.color3}" widgetVar="picker"/&gt;
+            &lt;p:colorPicker id="popupCP" value="\#{colorBean.color3}" widgetVar="picker"/&gt;
         &lt;/h:panelGrid&gt;
 
         &lt;p:separator /&gt;

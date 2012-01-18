@@ -14,7 +14,7 @@
 				
 				<p:commandButton id="basic" value="Show Dialog" onclick="dlg.show();" type="button" />
 							
-                <p:dialog header="Dynamic Dialog" widgetVar="dlg" dynamic="true">
+                <p:dialog id="dialog" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">
 					<h:outputText value="This content is loaded lazy." />
 				</p:dialog>	
 				
@@ -24,7 +24,7 @@
 				<pre name="code" class="xml">	
 &lt;p:commandButton id="basic" value="Show Dialog" onclick="dlg.show();" type="button" /&gt;
 							
-&lt;p:dialog header="Dynamic Dialog" widgetVar="dlg" dynamic="true"&gt;
+&lt;p:dialog id="dialog" header="Dynamic Dialog" widgetVar="dlg" dynamic="true"&gt;
     &lt;h:outputText value="This content is loaded lazy." /&gt;
 &lt;/p:dialog&gt;
 				</pre>

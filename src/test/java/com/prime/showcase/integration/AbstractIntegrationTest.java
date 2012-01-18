@@ -22,8 +22,8 @@ public abstract class AbstractIntegrationTest {
 	private static final String JQUERY_ACTIVE_CONNECTIONS_QUERY = "return $.active == 0;";
 
 	private static final int DEFAULT_SLEEP_TIME_IN_SECONDS = 2;
-	
-    private static final int DEFAULT_ANIMATED_INTERVAL_IN_SECONDS = 1;
+
+	private static final int DEFAULT_ANIMATED_INTERVAL_IN_SECONDS = 1;
 
 	private static final int DEFAULT_TIMEOUT_IN_SECONDS = 10;
 
@@ -50,7 +50,10 @@ public abstract class AbstractIntegrationTest {
 	}
 
 	/**
-	 * Use when element is on the page or will be on the page. Can be used element is not on the page before the ajax call and will be on the page after the ajax call
+	 * Use when element is on the page or will be on the page. Can be used
+	 * element is not on the page before the ajax call and will be on the page
+	 * after the ajax call
+	 * 
 	 * @param elementId
 	 * @param value
 	 */
@@ -64,8 +67,10 @@ public abstract class AbstractIntegrationTest {
 				});
 	}
 
-    /**
-	 * Use when element is already precisely on the page. Throws NoSuchElementException when element is not found
+	/**
+	 * Use when element is already precisely on the page. Throws
+	 * NoSuchElementException when element is not found
+	 * 
 	 * @param elementId
 	 * @param value
 	 */
@@ -80,31 +85,33 @@ public abstract class AbstractIntegrationTest {
 	}
 
 	protected void waitUntilAjaxRequestCompletes() {
-		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS).pollingEvery(DEFAULT_SLEEP_TIME_IN_SECONDS, TimeUnit.SECONDS)
-				.until(new ExpectedCondition<Boolean>() {
+		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+				.pollingEvery(DEFAULT_SLEEP_TIME_IN_SECONDS, TimeUnit.SECONDS).until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
 						JavascriptExecutor jsExec = (JavascriptExecutor) d;
 						return (Boolean) jsExec.executeScript(JQUERY_ACTIVE_CONNECTIONS_QUERY);
 					}
 				});
 	}
-    
-    /**
+
+	/**
 	 * Waits until body elements animated with JS.
 	 */
-    protected void waitUntilAllAnimationsComplete() {
-        waitUntilAnimationCompletes("body *");
-    }
-    
-    /**
+	protected void waitUntilAllAnimationsComplete() {
+		waitUntilAnimationCompletes("body *");
+	}
+
+	/**
 	 * Waits until given selector elements animated with JS.
-	 * @param selector : jQuery element selector
+	 * 
+	 * @param selector
+	 *            : jQuery element selector
 	 */
-    protected void waitUntilAnimationCompletes(final String selector) {
-		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS).pollingEvery(DEFAULT_ANIMATED_INTERVAL_IN_SECONDS, TimeUnit.SECONDS)
-				.until(new ExpectedCondition<Boolean>() {
+	protected void waitUntilAnimationCompletes(final String selector) {
+		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+				.pollingEvery(DEFAULT_ANIMATED_INTERVAL_IN_SECONDS, TimeUnit.SECONDS).until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
-						return (Boolean) ((JavascriptExecutor)d).executeScript("return ! $('" + selector + "').is(':animated');");
+						return (Boolean) ((JavascriptExecutor) d).executeScript("return ! $('" + selector + "').is(':animated');");
 					}
 				});
 	}
@@ -116,11 +123,11 @@ public abstract class AbstractIntegrationTest {
 	protected List<WebElement> findElementsById(String elementId) {
 		return driver.findElements(By.id(elementId));
 	}
-	
+
 	protected WebElement findElementByTag(String tagName) {
 		return driver.findElement(By.tagName(tagName));
 	}
-	
+
 	protected List<WebElement> findElementsByTag(String tagName) {
 		return driver.findElements(By.tagName(tagName));
 	}
@@ -132,56 +139,71 @@ public abstract class AbstractIntegrationTest {
 	protected List<WebElement> findElementsByName(String elementName) {
 		return driver.findElements(By.name(elementName));
 	}
-	
+
 	protected WebElement findElementByClass(String className) {
 		return driver.findElement(By.className(className));
 	}
-    
+
 	protected List<WebElement> findElementsByClass(String className) {
 		return driver.findElements(By.className(className));
 	}
-    
-    protected WebElement findElementByXpath(String path){
-        return driver.findElement(By.xpath(path));
-    }
-    
-    protected List<WebElement> findElementsByXpath(String path){
-        return driver.findElements(By.xpath(path));
-    }
-    
-    protected WebElement findElementBySelector(String selector){
-        return driver.findElement(By.cssSelector(selector));
-    }
-    
-    protected List<WebElement> findElementsBySelector(String selector){
-        return driver.findElements(By.cssSelector(selector));
-    }
-   
-    protected WebElement findElementBySelector(WebElement parent, String selector){
-        return parent.findElement(By.cssSelector(selector));
-    }
-    
-    protected List<WebElement> findElementsBySelector(WebElement parent, String selector){
-        return parent.findElements(By.cssSelector(selector));
-    }
-	
+
+	protected WebElement findElementByXpath(String path) {
+		return driver.findElement(By.xpath(path));
+	}
+
+	protected List<WebElement> findElementsByXpath(String path) {
+		return driver.findElements(By.xpath(path));
+	}
+
+	protected WebElement findElementBySelector(String selector) {
+		return driver.findElement(By.cssSelector(selector));
+	}
+
+	protected List<WebElement> findElementsBySelector(String selector) {
+		return driver.findElements(By.cssSelector(selector));
+	}
+
+	protected WebElement findElementBySelector(WebElement parent, String selector) {
+		return parent.findElement(By.cssSelector(selector));
+	}
+
+	protected List<WebElement> findElementsBySelector(WebElement parent, String selector) {
+		return parent.findElements(By.cssSelector(selector));
+	}
+
 	protected String toShowcaseUrl(String relativeUrl) {
 		return PRIME_SHOWCASE_UI + relativeUrl;
 	}
-    
-    protected String escapeClientId(String id){
-        return "#" + id.replaceAll(":", "\\\\:");
-    }
-    
-    protected String escapeJSId(String id){
-        return "#" + id.replaceAll(":", "\\\\\\\\:");
-    }
-    
-    protected boolean hasClass(WebElement e, String c){
-        return e.getAttribute("class").contains(c);
-    }
-    
-    protected Object executeJS( String js, Object... os){
-        return ((JavascriptExecutor) driver).executeScript(js, os);
-    }
+
+	protected String escapeClientId(String id) {
+		return "#" + id.replaceAll(":", "\\\\:");
+	}
+
+	protected String escapeJSId(String id) {
+		return "#" + id.replaceAll(":", "\\\\\\\\:");
+	}
+
+	protected boolean hasClass(WebElement e, String c) {
+		return e.getAttribute("class").contains(c);
+	}
+
+	protected Object executeJS(String js, Object... os) {
+		return ((JavascriptExecutor) driver).executeScript(js, os);
+	}
+
+	protected void waitForCondition(ExpectedCondition<Boolean> condition) {
+		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+				.pollingEvery(DEFAULT_SLEEP_TIME_IN_SECONDS, TimeUnit.SECONDS).until(condition);
+	}
+
+	protected void waitUntilElementExists(final By by) {
+		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+				.pollingEvery(DEFAULT_SLEEP_TIME_IN_SECONDS, TimeUnit.SECONDS).ignoring(NoSuchElementException.class).until(new ExpectedCondition<Boolean>() {
+					public Boolean apply(WebDriver wd) {
+						wd.findElement(by);
+						return true;
+					}
+				});
+	}
 }

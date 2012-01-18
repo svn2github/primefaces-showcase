@@ -6,25 +6,25 @@
 	template="../templates/ui.xhtml">
 
 	<ui:define name="content">
-
 		<h1 class="title ui-widget-header ui-corner-all">Dialog - Basic</h1>
 		<div class="entry">
+		
 			<p>Dialog visibility is managed by using show() and hide() methods of the client side api.</p>
 				
 				<h:panelGrid columns="1" cellpadding="5">
 					<p:commandButton id="basic" value="Basic" onclick="dlg1.show();" type="button" />
 					
-					<p:commandButton value="Modal" onclick="dlg2.show();" type="button"/>
+					<p:commandButton id="modalDialogButton" value="Modal" onclick="dlg2.show();" type="button"/>
 
-                    <p:commandButton value="Effects" onclick="dlg3.show();" type="button" />
+                    <p:commandButton id="effectsDialogButton" value="Effects" onclick="dlg3.show();" type="button" />
 				</h:panelGrid>
 				
 								
-				<p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+				<p:dialog id="basicDialog" header="Basic Dialog" widgetVar="dlg1" minHeight="40">
 					<h:outputText value="Resistance to PrimeFaces is futile!" />
 				</p:dialog>	
 				
-				<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+				<p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
 					<h:outputText value="This is a Modal Dialog." />
 				</p:dialog>	
 				
@@ -39,16 +39,16 @@
 &lt;h:panelGrid columns="1" cellpadding="5"&gt;
     &lt;p:commandButton id="basic" value="Basic" onclick="dlg1.show();" type="button" /&gt;
 
-    &lt;p:commandButton value="Modal" onclick="dlg2.show();" type="button"/&gt;
+    &lt;p:commandButton id="modalDialogButton" value="Modal" onclick="dlg2.show();" type="button"/&gt;
 
-    &lt;p:commandButton value="Effects" onclick="dlg3.show();" type="button" /&gt;
+    &lt;p:commandButton id="effectsDialogButton" value="Effects" onclick="dlg3.show();" type="button" /&gt;
 &lt;/h:panelGrid&gt;
 
-&lt;p:dialog header="Basic Dialog" widgetVar="dlg1"&gt;
+&lt;p:dialog id="basicDialog" header="Basic Dialog" widgetVar="dlg1"&gt;
     &lt;h:outputText value="Resistance to PrimeFaces is futile!" /&gt;
 &lt;/p:dialog&gt;
 
-&lt;p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100"&gt;
+&lt;p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="true" height="100"&gt;
     &lt;h:outputText value="This is a Modal Dialog." /&gt;
 &lt;/p:dialog&gt;
 

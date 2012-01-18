@@ -54,16 +54,16 @@
 			<p:tabView>
 				<p:tab title="calendarBasic.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 			
 	&lt;h3&gt;Inline&lt;/h3&gt;
-	&lt;p:calendar value="\#{calendarBean.date1}" mode="inline"/&gt;	
+	&lt;p:calendar value="\#{calendarBean.date1}" mode="inline" id="inlineCal"/&gt;	
 	
 	&lt;h3&gt;Popup&lt;/h3&gt;
-	&lt;p:calendar value="\#{calendarBean.date2}" /&gt;
+	&lt;p:calendar value="\#{calendarBean.date2}" id="popupCal" /&gt;
 	
 	&lt;h3&gt;Popup Button&lt;/h3&gt;
-	&lt;p:calendar value="\#{calendarBean.date3}" showOn="button" /&gt;
+	&lt;p:calendar value="\#{calendarBean.date3}" id="popupButtonCal" showOn="button" /&gt;
 
     &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
 	
@@ -73,18 +73,18 @@
 		&lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
 		
 			&lt;h:outputText value="Inline Date:" /&gt;
-			&lt;h:outputText value="\#{calendarBean.date1}"&gt;
-				&lt;f:convertDateTime pattern="MM/dd/yyyy"/&gt;
+			&lt;h:outputText value="\#{calendarBean.date1}" id="inlineDate"&gt;
+				&lt;f:convertDateTime pattern="d/M/yyyy"/&gt;
 			&lt;/h:outputText&gt;
 			
 			&lt;h:outputText value="Popup Date:" /&gt;
-			&lt;h:outputText value="\#{calendarBean.date2}"&gt;
-				&lt;f:convertDateTime pattern="MM/dd/yyyy"/&gt;
+			&lt;h:outputText value="\#{calendarBean.date2}" id="popupDate"&gt;
+				&lt;f:convertDateTime pattern="d/M/yyyy"/&gt;
 			&lt;/h:outputText&gt;
 			
 			&lt;h:outputText value="Popup Button Date: " /&gt;
-			&lt;h:outputText value="\#{calendarBean.date3}"&gt;
-				&lt;f:convertDateTime pattern="MM/dd/yyyy"/&gt;
+			&lt;h:outputText value="\#{calendarBean.date3}" id="popupButtonDate"&gt;
+				&lt;f:convertDateTime pattern="d/M/yyyy"/&gt;
 			&lt;/h:outputText&gt;
 			
 		&lt;/h:panelGrid&gt;

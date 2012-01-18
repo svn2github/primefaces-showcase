@@ -22,8 +22,8 @@
 						<h:outputLabel value="Author : *" for="txt_author"></h:outputLabel>
 						<p:inputText id="txt_author" value="#{createBookBean.book.author}" required="true"/>
 						
-						<p:commandButton value="Reset" type="reset"/>
-						<p:commandButton value="Add" update="books msgs @parent" action="#{createBookBean.reinit}" >
+						<p:commandButton id="btn_reset" value="Reset" type="reset"/>
+						<p:commandButton id="btn_add" value="Add" update="books msgs @parent" action="#{createBookBean.reinit}" >
 							<p:collector value="#{createBookBean.book}" addTo="#{createBookBean.books}" />
 						</p:commandButton>
 					</h:panelGrid>
@@ -32,7 +32,7 @@
                 <br />
 				
 				<p:outputPanel id="books">
-					<p:dataTable value="#{createBookBean.books}" var="book">
+					<p:dataTable value="#{createBookBean.books}" var="book" id="booksTable">
 
 						<p:column>
 							<f:facet name="header">
@@ -81,7 +81,7 @@
 							value="\#{createBookBean.book.author}" /&gt;
 			
 			&lt;p:commandButton value="Reset" type="reset"/&gt;
-			&lt;p:commandButton value="Add" update="books msgs @parent"
+			&lt;p:commandButton id="btn_add" value="Add" update="books msgs @parent"
 							action="\#{createBookBean.reinit}" &gt;
 				&lt;p:collector value="\#{createBookBean.book}" 
 							addTo="\#{createBookBean.books}" /&gt;
@@ -90,7 +90,7 @@
 	&lt;/p:panel&gt;
 	
 	&lt;p:outputPanel id="books"&gt;
-		&lt;p:dataTable value="\#{createBookBean.books}" var="book"&gt;
+		&lt;p:dataTable id="booksTable" value="\#{createBookBean.books}" var="book"&gt;
 
 			&lt;p:column&gt;
 				&lt;f:facet name="header"&gt;

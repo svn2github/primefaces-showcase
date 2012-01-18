@@ -11,17 +11,17 @@
 		<div class="entry">
 				<p>Dialogs can contain forms to provide ajax interaction.</p>
 							
-					<p:commandButton type="button" value="Show" onclick="dlg.show()" />
+					<p:commandButton id="showDialogButton" type="button" value="Show" onclick="dlg.show()" />
 		
 					<p:dialog header="Enter FirstName" widgetVar="dlg" resizable="false">
-						<h:form>
+						<h:form id="form">
 
 							<h:panelGrid columns="2" style="margin-bottom:10px">
 								<h:outputLabel for="firstname" value="Firstname:" />
 								<p:inputText id="firstname" value="#{pprBean.firstname}" />
 							</h:panelGrid>
 
-							<p:commandButton value="Submit" update=":display" oncomplete="dlg.hide();"/>
+							<p:commandButton id="submitButton" value="Submit" update=":display" oncomplete="dlg.hide();"/>
 								
 						</h:form>
 					</p:dialog>
@@ -34,17 +34,17 @@
 					<p:tabView>
 						<p:tab title="dialogForm.xhtml">
 							<pre name="code" class="xml">
-&lt;p:commandButton type="button" value="Show" onclick="dlg.show()" /&gt;
+&lt;p:commandButton id="showDialogButton" type="button" value="Show" onclick="dlg.show()" /&gt;
 		
 &lt;p:dialog header="Enter FirstName" widgetVar="dlg" resizable="false"&gt;
-	&lt;h:form&gt;
+	&lt;h:form id="form"&gt;
 
 		&lt;h:panelGrid columns="2" style="margin-bottom:10px"&gt;
 			&lt;h:outputLabel for="firstname" value="Firstname:" /&gt;
 			&lt;p:inputText id="firstname" value="\#{pprBean.firstname}" /&gt;
 		&lt;/h:panelGrid&gt;
 
-		&lt;p:commandButton value="Submit" update=":display" oncomplete="dlg.hide();"/&gt;
+		&lt;p:commandButton id="submitButton" value="Submit" update=":display" oncomplete="dlg.hide();"/&gt;
 			
 	&lt;/h:form&gt;
 &lt;/p:dialog&gt;

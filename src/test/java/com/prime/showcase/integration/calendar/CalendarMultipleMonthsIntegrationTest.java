@@ -26,15 +26,23 @@ public class CalendarMultipleMonthsIntegrationTest extends AbstractIntegrationTe
 	public void shouldDisplayMultipleMonths() {
 
 		int firstDisplayedMonth = getMonth("ui-datepicker-group-first");
-
 		int secondDisplayedMonth = getMonth("ui-datepicker-group-middle");
-
 		int thirdDisplayedMonth = getMonth("ui-datepicker-group-last");
+		
+		assertThat((firstDisplayedMonth + 1) % 12, equalTo(secondDisplayedMonth));
+		assertThat((secondDisplayedMonth + 1) % 12, equalTo(thirdDisplayedMonth));
 
-		assertThat(firstDisplayedMonth + 1, equalTo(secondDisplayedMonth));
+		int first = firstDisplayedMonth;
+		WebElement next = findElementByClass("ui-datepicker-next");
+		next.click();
+		
+		firstDisplayedMonth = getMonth("ui-datepicker-group-first");
+		secondDisplayedMonth = getMonth("ui-datepicker-group-middle");
+		thirdDisplayedMonth = getMonth("ui-datepicker-group-last");
 
-		assertThat(secondDisplayedMonth + 1, equalTo(thirdDisplayedMonth));
-
+		assertThat((first + 1) % 12, equalTo(firstDisplayedMonth));
+		assertThat((first + 2) % 12, equalTo(secondDisplayedMonth));
+		assertThat((first + 3) % 12, equalTo(thirdDisplayedMonth));
 	}
 
 	private int getMonth(String calendarElementId) {
