@@ -4,130 +4,96 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+            .imagebox a{
+                margin-left:10px;
+            }
+        </style>
+    </ui:define>
 
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">LightBox</h1>
         <div class="entry">
-            <p>LightBox provides an elegant way to display images.</p>    	
+            <p>LightBox is a modal overlay component to display images, inline content and iframes.</p>    	
 
-            <h3>Elastic Effect</h3>
+            <h3>Images</h3>
+            <p:lightBox styleClass="imagebox">
+                <h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1">
+                    <h:graphicImage value="sopranos/sopranos1_small.jpg"/>
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2">
+                    <h:graphicImage value="sopranos/sopranos2_small.jpg" />
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3">
+                    <h:graphicImage value="sopranos/sopranos3_small.jpg"/>
+                </h:outputLink>
+
+                <h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4">
+                    <h:graphicImage value="sopranos/sopranos4_small.jpg"/>
+                </h:outputLink>
+            </p:lightBox>
+
+            <h3>Inline</h3>
             <p:lightBox>
-                <h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1">
-                    <h:graphicImage value="sopranos/sopranos1_small.jpg"/>
+                <h:outputLink value="#">
+                    <h:outputText value="Video Content"/>
                 </h:outputLink>
 
-                <h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2">
-                    <h:graphicImage value="sopranos/sopranos2_small.jpg" />
-                </h:outputLink>
-
-                <h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3">
-                    <h:graphicImage value="sopranos/sopranos3_small.jpg"/>
-                </h:outputLink>
-
-                <h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4">
-                    <h:graphicImage value="sopranos/sopranos4_small.jpg"/>
+                <f:facet name="inline">
+                    <p:media value="http://vimeo.com/moogaloop.swf?clip_id=18079550"  width="400" height="225" player="flash"/>
+                </f:facet>
+            </p:lightBox>
+            
+            <h3>IFrame</h3>
+            <p:lightBox iframe="true">
+                <h:outputLink value="http://www.primefaces.org" title="PrimeFaces HomePage">
+                    <h:outputText value="PrimeFaces HomePage"/>
                 </h:outputLink>
             </p:lightBox>
-
-            <h3>Fade Effect</h3>
-            <p:lightBox transition="fade" overlayClose="false">
-                <h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1">
-                    <h:graphicImage value="sopranos/sopranos1_small.jpg"/>
-                </h:outputLink>
-
-                <h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2">
-                    <h:graphicImage value="sopranos/sopranos2_small.jpg" />
-                </h:outputLink>
-
-                <h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3">
-                    <h:graphicImage value="sopranos/sopranos3_small.jpg"/>
-                </h:outputLink>
-
-                <h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4">
-                    <h:graphicImage value="sopranos/sopranos4_small.jpg"/>
-                </h:outputLink>
-            </p:lightBox>
-
-            <h3>SlideShow</h3>
-            <p:lightBox slideshow="true" slideshowSpeed="2000"
-                        slideshowStartText="Start SlideShow" slideshowStopText="Stop SlideShow" slideshowAuto="false">
-                <h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1">
-                    <h:graphicImage value="sopranos/sopranos1_small.jpg"/>
-                </h:outputLink>
-
-                <h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2">
-                    <h:graphicImage value="sopranos/sopranos2_small.jpg" />
-                </h:outputLink>
-
-                <h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3">
-                    <h:graphicImage value="sopranos/sopranos3_small.jpg"/>
-                </h:outputLink>
-
-                <h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4">
-                    <h:graphicImage value="sopranos/sopranos4_small.jpg"/>
-                </h:outputLink>
-            </p:lightBox>
-
+            
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="lightBox.xhtml">
                     <pre name="code" class="xml">
-&lt;h3&gt;Elastic Effect&lt;/h3&gt;
+&lt;h3&gt;Images&lt;/h3&gt;
+&lt;p:lightBox styleClass="imagebox"&gt;
+    &lt;h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1"&gt;
+        &lt;h:graphicImage value="sopranos/sopranos1_small.jpg"/&gt;
+    &lt;/h:outputLink&gt;
+
+    &lt;h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2"&gt;
+        &lt;h:graphicImage value="sopranos/sopranos2_small.jpg" /&gt;
+    &lt;/h:outputLink&gt;
+
+    &lt;h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3"&gt;
+        &lt;h:graphicImage value="sopranos/sopranos3_small.jpg"/&gt;
+    &lt;/h:outputLink&gt;
+
+    &lt;h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4"&gt;
+        &lt;h:graphicImage value="sopranos/sopranos4_small.jpg"/&gt;
+    &lt;/h:outputLink&gt;
+&lt;/p:lightBox&gt;
+
+&lt;h3&gt;Inline&lt;/h3&gt;
 &lt;p:lightBox&gt;
-	&lt;h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos1_small.jpg"/&gt;
-	&lt;/h:outputLink&gt;
-	
-	&lt;h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos2_small.jpg" /&gt;
-	&lt;/h:outputLink&gt;
-	
-	&lt;h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos3_small.jpg"/&gt;
-	&lt;/h:outputLink&gt;
-	
-	&lt;h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos4_small.jpg"/&gt;
-	&lt;/h:outputLink&gt;
+    &lt;h:outputLink value="#"&gt;
+        &lt;h:outputText value="Video Content"/&gt;
+    &lt;/h:outputLink&gt;
+
+    &lt;f:facet name="inline"&gt;
+        &lt;p:media value="http://vimeo.com/moogaloop.swf?clip_id=18079550"  width="400" height="225" player="flash"/&gt;
+    &lt;/f:facet&gt;
 &lt;/p:lightBox&gt;
 
-&lt;h3&gt;Fade Effect&lt;/h3&gt;
-&lt;p:lightBox transition="fade"&gt;
-	&lt;h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos1_small.jpg"/&gt;
-	&lt;/h:outputLink&gt;
-	
-	&lt;h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos2_small.jpg" /&gt;
-	&lt;/h:outputLink&gt;
-	
-	&lt;h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos3_small.jpg"/&gt;
-	&lt;/h:outputLink&gt;
-	
-	&lt;h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos4_small.jpg"/&gt;
-	&lt;/h:outputLink&gt;
-&lt;/p:lightBox&gt;
-
-&lt;h3&gt;SlideShow&lt;/h3&gt;
-&lt;p:lightBox slideshow="true" slideshowSpeed="2000"
-	slideshowStartText="Start SlideShow" slideshowStopText="Stop SlideShow" slideshowAuto="false"&gt;
-	&lt;h:outputLink value="sopranos/sopranos1.jpg" title="Sopranos 1"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos1_small.jpg"/&gt;
-	&lt;/h:outputLink&gt;
-	
-	&lt;h:outputLink value="sopranos/sopranos2.jpg" title="Sopranos 2"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos2_small.jpg" /&gt;
-	&lt;/h:outputLink&gt;
-	
-	&lt;h:outputLink value="sopranos/sopranos3.jpg" title="Sopranos 3"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos3_small.jpg"/&gt;
-	&lt;/h:outputLink&gt;
-	
-	&lt;h:outputLink value="sopranos/sopranos4.jpg" title="Sopranos 4"&gt;
-		&lt;h:graphicImage value="sopranos/sopranos4_small.jpg"/&gt;
-	&lt;/h:outputLink&gt;
+&lt;h3&gt;IFrame&lt;/h3&gt;
+&lt;p:lightBox iframe="true"&gt;
+    &lt;h:outputLink value="http://www.primefaces.org" title="PrimeFaces HomePage"&gt;
+        &lt;h:outputText value="PrimeFaces HomePage"/&gt;
+    &lt;/h:outputLink&gt;
 &lt;/p:lightBox&gt;
                     </pre>
                 </p:tab>
