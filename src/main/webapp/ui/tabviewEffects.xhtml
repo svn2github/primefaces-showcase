@@ -10,9 +10,9 @@
 		<div class="entry">
 		<p>Effects can be applied for content transition. Possible values are "fade", "slide", "blind", "clip", "drop", "explode", "fold", "puff", "scale".</p>
 		
-        <h:form>
+        <h:form id="tabform">
             
-            <p:selectOneMenu value="#{tabBean.effect}" onchange="submit()" style="margin-bottom:10px">
+            <p:selectOneMenu value="#{tabBean.effect}" onchange="$('#tabform').submit()" style="margin-bottom:10px">
                 <f:selectItem itemLabel="Fade" itemValue="fade" />
                 <f:selectItem itemLabel="Slide" itemValue="slide" />
                 <f:selectItem itemLabel="Blind" itemValue="blind" />
@@ -62,7 +62,7 @@
                     <pre name="code" class="xml">
 &lt;h:form&gt;
             
-    &lt;p:selectOneMenu value="\#{tabBean.effect}" onchange="submit()" style="margin-bottom:10px"&gt;
+    &lt;p:selectOneMenu value="\#{tabBean.effect}" onchange="$('#tabform').submit()" style="margin-bottom:10px"&gt;
         &lt;f:selectItem itemLabel="Fade" itemValue="fade" /&gt;
         &lt;f:selectItem itemLabel="Slide" itemValue="slide" /&gt;
         &lt;f:selectItem itemLabel="Blind" itemValue="blind" /&gt;

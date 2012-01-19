@@ -18,7 +18,7 @@
                 <h:form id="listNotesForm">
                     <p:dataList id="notesList" value="#{notesView.notes}" var="note" type="inset">
                         <p:column>
-                            <p:commandLink value="#{note.shortText}" update="newNoteForm:noteText" action="pm:new">
+                            <p:commandLink value="#{note.shortText}" update=":newNoteForm:noteText" action="pm:new">
                                 <f:setPropertyActionListener value="#{note}" target="#{notesView.note}" />
                             </p:commandLink>
                         </p:column>
@@ -40,7 +40,7 @@
 
                     <p:separator />
 
-                    <p:commandButton value="Save" action="#{notesView.save}" update="noteText listNotesForm:notesList" icon="check" />
+                    <p:commandButton value="Save" action="#{notesView.save}" update="noteText :listNotesForm:notesList" icon="check" />
 
                 </h:form>
             </pm:content>

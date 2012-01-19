@@ -13,7 +13,7 @@
             <pm:header title="Contacts">
                 <f:facet name="right">
                     <h:form>
-                        <p:commandButton value="New" icon="plus" action="#{contactsView.prepareNewContact}" update="newContactForm"/>
+                        <p:commandButton value="New" icon="plus" action="#{contactsView.prepareNewContact}" update=":newContactForm"/>
                     </h:form>
                 </f:facet>
             </pm:header>
@@ -24,7 +24,7 @@
                         <p:column>
                             <p:graphicImage value="/images/pf-logo.png" />
                             <h3>
-                                <p:commandLink value="#{contact.firstname} #{contact.surname}" action="pm:new" update="newContactForm">
+                                <p:commandLink value="#{contact.firstname} #{contact.surname}" action="pm:new" update=":newContactForm">
                                     <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
                                 </p:commandLink>
                             </h3>
@@ -55,7 +55,7 @@
 
                     <p:inputTextarea id="address" value="#{contactsView.contact.address}" label="Address:"/>
                     
-                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update="listContactsForm" icon="check" />
+                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update=":listContactsForm" icon="check" />
                 </h:form>
             </pm:content>
 
