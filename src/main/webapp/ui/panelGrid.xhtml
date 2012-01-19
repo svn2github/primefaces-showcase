@@ -29,7 +29,9 @@
             
             <p:panelGrid style="margin-top:20px">
                 <f:facet name="header">
-                    Colspan-Rowspan
+                    <p:row>
+                        <p:column colspan="5">Colspan-Rowspan</p:column>
+                    </p:row>
                 </f:facet>
                 
                 <p:row>
@@ -50,7 +52,11 @@
                 </p:row>
                 
                 <f:facet name="footer">
-                    <p:spacer height="10"/>
+                    <p:row>
+                        <p:column  colspan="5">
+                            <p:spacer height="10"/>
+                        </p:column>
+                    </p:row>
                 </f:facet>
             </p:panelGrid>
 
