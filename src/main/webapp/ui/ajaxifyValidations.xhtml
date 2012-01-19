@@ -12,12 +12,12 @@
 		<p>Validations are executed on the server side and page is updated with the response. In this example, ajax validations are
 		executed when input field loses focus(blur).</p>
 
-		<h:form>
+		<h:form id="form">
 
 			<p:panel header="New Person">
 			
 				<h:panelGrid columns="3">
-					<h:outputLabel for="firstname" value="Name: " />
+					<h:outputLabel for="firstname" value="Name: " id="lblFirstName" />
 					
 					<p:inputText id="firstname" value="#{pprBean.firstname}" label="Firstname">
 						<f:validateLength minimum="5" />
@@ -35,12 +35,12 @@
 			<p:tabView>
 				<p:tab title="ajaxifyValidations.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 		
 	&lt;p:panel header="New Person"&gt;
 	
 		&lt;h:panelGrid columns="3"&gt;
-			&lt;h:outputLabel for="firstname" value="Name: " /&gt;
+			&lt;h:outputLabel for="firstname" value="Name: " id="lblFirstName" /&gt;
 			
 			&lt;p:inputText id="firstname" 
 					value="\#{pprBean.firstname}" label="Firstname"&gt;
