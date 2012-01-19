@@ -11,14 +11,14 @@
 			<p>Output panel is a container element with several use cases, this example uses an autoUpdate outputPanel to update a component page 
                 which doesn't exist on page initially and rendered based on a condition.</p>
 
-			<h:form>
-				<p:commandButton value="Show">
+			<h:form id="form">
+				<p:commandButton id="showButton" value="Show">
 					<f:setPropertyActionListener value="true" target="#{requestScope.renderCampNou}" />
 				</p:commandButton>
 				
 				<br /><br />
 				
-                <p:outputPanel autoUpdate="true">
+                <p:outputPanel id="panel" autoUpdate="true">
 					<p:graphicImage value="/images/barca/camp_nou.jpg" rendered="#{requestScope.renderCampNou}"/>
 				</p:outputPanel>
 			</h:form>
@@ -28,11 +28,11 @@
             <p:tab title="outputPanel.xhtml">
                 <pre name="code" class="xml">
 &lt;h:form&gt;
-	&lt;p:commandButton value="Show"&gt;
+	&lt;p:commandButton id="showButton" value="Show"&gt;
 		&lt;f:setPropertyActionListener value="\#{true}" target="\#{requestScope.renderCampNou}" /&gt;
 	&lt;/p:commandButton&gt;
 	
-	&lt;p:outputPanel autoUpdate="true"&gt;
+	&lt;p:outputPanel id="panel" autoUpdate="true"&gt;
 		&lt;p:graphicImage value="/images/barca/camp_nou.jpg" rendered="\#{requestScope.renderCampNou}"/&gt;
 	&lt;/p:outputPanel&gt;
 &lt;/h:form&gt;

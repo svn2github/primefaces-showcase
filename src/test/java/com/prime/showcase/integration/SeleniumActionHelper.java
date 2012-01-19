@@ -3,7 +3,6 @@ package com.prime.showcase.integration;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
 public class SeleniumActionHelper {
@@ -48,6 +47,18 @@ public class SeleniumActionHelper {
 
 	public void clickOnCurrentPosition() {
 		builder.click().perform();
+	}
+	
+	public void clickAndHolOnElement(WebElement element) {
+		builder.clickAndHold(element).perform();
+	}
+	
+	public void moveByOffSet(int x, int y) {
+		builder.moveByOffset(x, y).perform();
+	}
+	
+	public void releaseMouse() {
+		builder.release().perform();
 	}
 	
 }

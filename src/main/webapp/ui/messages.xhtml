@@ -12,32 +12,32 @@
 			<p>Messages and Message components are highly customizable and pre-skinned versions of standard message components.</p>
 					
 			<h3>Messages</h3>	
-			<h:form>
-                <p:messages showDetail="true" autoUpdate="true"/>
+			<h:form id="form1">
+                <p:messages id="messages" showDetail="true" autoUpdate="true"/>
 				
-				<p:commandButton value="Info" actionListener="#{messagesController.addInfo}"/>
-				<p:commandButton value="Warn" actionListener="#{messagesController.addWarn}"/>
-				<p:commandButton value="Error" actionListener="#{messagesController.addError}"/>
-				<p:commandButton value="Fatal" actionListener="#{messagesController.addFatal}"/>
+				<p:commandButton id="infoButton" value="Info" actionListener="#{messagesController.addInfo}"/>
+				<p:commandButton id="warnButton" value="Warn" actionListener="#{messagesController.addWarn}"/>
+				<p:commandButton id="errorButton" value="Error" actionListener="#{messagesController.addError}"/>
+				<p:commandButton id="fatalButton" value="Fatal" actionListener="#{messagesController.addFatal}"/>
 			</h:form>
 			
 			<h3>Message</h3>
-			<h:form>
+			<h:form id="form2">
 				<h:panelGrid id="grid" columns="3">
 					<h:outputText value="Default: *" />
 					<p:inputText id="default" required="true" />
-					<p:message for="default" />
+					<p:message id="defaultMessage" for="default" />
 
                     <h:outputText value="Text Only: *" />
 					<p:inputText id="textOnly" required="true" />
-                    <p:message for="textOnly" display="text" />
+                    <p:message id="textOnlyMessage" for="textOnly" display="text" />
 
                     <h:outputText value="Icon Only: *" />
 					<p:inputText id="iconOnly" required="true" />
-					<p:message for="iconOnly" display="icon" />
+					<p:message id="iconOnlyMessage" for="iconOnly" display="icon" />
 				</h:panelGrid>
 				
-				<p:commandButton value="Submit" update="grid"/>
+				<p:commandButton id="submitButton" value="Submit" update="grid"/>
 			</h:form>
 
 			<h3>Source</h3>
@@ -45,32 +45,32 @@
                 <p:tab title="messages.xhtml">
 <pre name="code" class="xml">
 &lt;h3&gt;Messages&lt;/h3&gt;
-&lt;h:form&gt;
-    &lt;p:messages showDetail="true" autoUpdate="true"/&gt;
+&lt;h:form id="form1"&gt;
+    &lt;p:messages id="messages" showDetail="true" autoUpdate="true"/&gt;
 
-    &lt;p:commandButton value="Info" actionListener="\#{messagesController.addInfo}"/&gt;
-    &lt;p:commandButton value="Warn" actionListener="\#{messagesController.addWarn}"/&gt;
-    &lt;p:commandButton value="Error" actionListener="\#{messagesController.addError}"/&gt;
-    &lt;p:commandButton value="Fatal" actionListener="\#{messagesController.addFatal}"/&gt;
+    &lt;p:commandButton id="infoButton" value="Info" actionListener="\#{messagesController.addInfo}"/&gt;
+    &lt;p:commandButton id="warnButton" value="Warn" actionListener="\#{messagesController.addWarn}"/&gt;
+    &lt;p:commandButton id="errorButton" value="Error" actionListener="\#{messagesController.addError}"/&gt;
+    &lt;p:commandButton id="fatalButton" value="Fatal" actionListener="\#{messagesController.addFatal}"/&gt;
 &lt;/h:form&gt;
 
 &lt;h3&gt;Message&lt;/h3&gt;
-&lt;h:form&gt;
+&lt;h:form id="form2"&gt;
     &lt;h:panelGrid id="grid" columns="3"&gt;
         &lt;h:outputText value="Default: *" /&gt;
         &lt;p:inputText id="default" required="true" /&gt;
-        &lt;p:message for="default" /&gt;
+        &lt;p:message id="defaultMessage" for="default" /&gt;
 
         &lt;h:outputText value="Text Only: *" /&gt;
         &lt;p:inputText id="textOnly" required="true" /&gt;
-        &lt;p:message for="textOnly" display="text" /&gt;
+        &lt;p:message id="textOnlyMessage" for="textOnly" display="text" /&gt;
 
         &lt;h:outputText value="Icon Only: *" /&gt;
         &lt;p:inputText id="iconOnly" required="true" /&gt;
-        &lt;p:message for="iconOnly" display="icon" /&gt;
+        &lt;p:message id="iconMessage" for="iconOnly" display="icon" /&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:commandButton value="Submit" update="grid"/&gt;
+    &lt;p:commandButton id="submitButton" value="Submit" update="grid"/&gt;
 &lt;/h:form&gt;
 			</pre>
                 </p:tab>
