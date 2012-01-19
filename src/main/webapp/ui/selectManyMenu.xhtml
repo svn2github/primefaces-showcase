@@ -20,34 +20,34 @@
 		<div class="entry">
 			<p>SelectManyMenu extends standard SelectManyMenu with skinning capabilities.</p>
 
-			<h:form>
+			<h:form id="form">
 
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
                              columnClasses="label, column">
 
                     <h:outputText value="Basic Usage: " />
-                    <p:selectManyMenu value="#{formBean.selectedOptions}">
+                    <p:selectManyMenu id="basic" value="#{formBean.selectedOptions}">
                         <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
                         <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
                         <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
                     </p:selectManyMenu>
 
                     <h:outputText value="Scrollbar: " />
-                    <p:selectManyMenu value="#{autoCompleteBean.selectedPlayers}" converter="player" style="height:100px">
+                    <p:selectManyMenu id="scroll" value="#{autoCompleteBean.selectedPlayers}" converter="player" style="height:100px">
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}" />
                     </p:selectManyMenu>
 
                 </h:panelGrid>
 
-                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
+                <p:commandButton id="btn" value="Submit" update="display" oncomplete="dlg.show()" />
 
-                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
+                <p:dialog id="dialog" header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
                     <p:outputPanel id="display">
-                        <p:dataList value="#{formBean.selectedOptions}" var="option">
+                        <p:dataList id="selectedOptions" value="#{formBean.selectedOptions}" var="option">
                             #{option}
                         </p:dataList>
 
-                        <p:dataList value="#{autoCompleteBean.selectedPlayers}" var="player">
+                        <p:dataList id="selectedPlayers" value="#{autoCompleteBean.selectedPlayers}" var="player">
                             #{player.name}
                         </p:dataList>
                     </p:outputPanel>
