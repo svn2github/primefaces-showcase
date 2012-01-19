@@ -12,7 +12,7 @@
             <p>In the example below, although firstname is required, there won't be validation errors because of ajax requests caused by ajaxified surname
 			as only surname is processed.</p>
 
-            <h:form>
+            <h:form id="form">
 
                 <p:panel header="New Person">
                     <h:panelGrid columns="3">
@@ -34,7 +34,7 @@
             <p:tabView>
                 <p:tab title="ajaxifyPartialSubmit.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
 	&lt;p:panel header="New Person"&gt;
 		&lt;h:panelGrid columns="3"&gt;
