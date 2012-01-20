@@ -4,6 +4,7 @@ import java.util.List;
 import org.openqa.selenium.NoSuchElementException;
 import com.prime.showcase.integration.AbstractIntegrationTest;
 import com.prime.showcase.integration.SeleniumActionHelper;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -17,8 +18,8 @@ public class SelectManyMenuIntegrationTest extends AbstractIntegrationTest {
     
     protected static SeleniumActionHelper action;
     
-    @Test
-    public void init(){
+    @BeforeClass
+    public static void init(){
         driver.get(TEST_URL);
         action = new SeleniumActionHelper(driver);
     }
