@@ -12,7 +12,7 @@
             <p>Accordion can display dynamic number of tabs backed by a model. As tabs are generated on-the-fly it is easy
                 to implement adding/removing tabs as well.</p>
 
-            <p:accordionPanel value="#{tabBean.players}" var="player">
+            <p:accordionPanel id="accordion" value="#{tabBean.players}" var="player">
 
                 <p:tab title="#{player.name}">
                     <h:panelGrid columns="2" cellpadding="10">
