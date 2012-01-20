@@ -23,22 +23,22 @@
 			<p>This example presents data in ordered format.</p>
 		
 			<h3>Number</h3>
-			<p:dataList value="#{tableBean.carsSmall}" var="car" type="ordered">
+			<p:dataList id="ordered" value="#{tableBean.carsSmall}" var="car" type="ordered">
 				#{car.manufacturer}, #{car.year}
 			</p:dataList>
 			
 			<h3>Letter</h3>
-			<p:dataList value="#{tableBean.carsSmall}" var="car" type="ordered" itemType="A">
+			<p:dataList id="itemType_A" value="#{tableBean.carsSmall}" var="car" type="ordered" itemType="A">
 				#{car.manufacturer}, #{car.year}
 			</p:dataList>
 			
 			<h3>Lowercase Letter</h3>
-			<p:dataList value="#{tableBean.carsSmall}" var="car" type="ordered" itemType="a">
+			<p:dataList id="itemType_a" value="#{tableBean.carsSmall}" var="car" type="ordered" itemType="a">
 				#{car.manufacturer}, #{car.year}
 			</p:dataList>
 			
 			<h3>Roman Letter</h3>
-			<p:dataList value="#{tableBean.carsSmall}" var="car" type="ordered" itemType="i">
+			<p:dataList id="itemTypeI" value="#{tableBean.carsSmall}" var="car" type="ordered" itemType="i">
 				#{car.manufacturer}, #{car.year}
 			</p:dataList>
 		

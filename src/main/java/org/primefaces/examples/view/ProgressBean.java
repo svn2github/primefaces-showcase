@@ -7,6 +7,8 @@ import javax.faces.context.FacesContext;
 
 public class ProgressBean implements Serializable {
 
+	private static final long serialVersionUID = -5000470162366926811L;
+	
 	private Integer progress;
 
 	public Integer getProgress() {

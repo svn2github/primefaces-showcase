@@ -12,10 +12,10 @@
         <div class="entry">
             <p>CommandButton extends the standard h:commandButton with ajax, partial processing and skinning features.</p>
 
-            <h:form>
+            <h:form id="form">
 
                 <p:panel id="panel" header="New Person" style="margin-bottom:10px;">
-                    <p:messages />
+                    <p:messages id="messages" />
                     <h:panelGrid columns="3">
                         <h:outputLabel for="firstname" value="Firstname: *" />
                         <p:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
@@ -29,23 +29,23 @@
                     </h:panelGrid>
                 </p:panel>
 
-                <p:commandButton value="Ajax Submit" update="panel,display" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" />
+                <p:commandButton value="Ajax Submit" id="ajax" update="panel,display" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" />
 
-                <p:commandButton value="Non-Ajax Submit" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" ajax="false" />
+                <p:commandButton value="Non-Ajax Submit" id="nonAjax" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" ajax="false" />
 
-                <p:commandButton value="With Icon" actionListener="#{pprBean.savePerson}" update="panel,display" style="margin-right:20px;" icon="ui-icon-disk" />
+                <p:commandButton value="With Icon" id="withIcon" actionListener="#{pprBean.savePerson}" update="panel,display" style="margin-right:20px;" icon="ui-icon-disk" />
 
-                <p:commandButton actionListener="#{pprBean.savePerson}" update="panel,display" style="margin-right:20px;" icon="ui-icon-disk" title="Icon Only"/>
+                <p:commandButton actionListener="#{pprBean.savePerson}" id="iconOnly" update="panel,display" style="margin-right:20px;" icon="ui-icon-disk" title="Icon Only"/>
 
-                <p:commandButton value="Disabled" style="margin-right:20px;" disabled="true" />
+                <p:commandButton value="Disabled" id="disabled" style="margin-right:20px;" disabled="true" />
 
                 <p:panel id="display" header="Information" style="margin-top:10px;">
                     <h:panelGrid columns="2">
                         <h:outputText value="Firstname: " />
-                        <h:outputText value="#{pprBean.firstname}" />
+                        <h:outputText id="txt1" value="#{pprBean.firstname}" />
 
                         <h:outputText value="Surname: " />
-                        <h:outputText value="#{pprBean.surname}" />
+                        <h:outputText id="txt2" value="#{pprBean.surname}" />
                     </h:panelGrid>
                 </p:panel>
 
@@ -53,10 +53,10 @@
 
             <h3>Source</h3>
             <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
 	&lt;p:panel id="panel" header="New Person" style="margin-bottom:10px;"&gt;
-		&lt;p:messages /&gt;
+		&lt;p:messages id="messages" /&gt;
 		&lt;h:panelGrid columns="3"&gt;
 			&lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
 			&lt;p:inputText id="firstname" 
@@ -72,19 +72,19 @@
 		&lt;/h:panelGrid&gt;
 	&lt;/p:panel&gt;
 
-	&lt;p:commandButton value="Ajax Submit" update="panel,display"
+	&lt;p:commandButton value="Ajax Submit" update="panel,display" id="ajax"
 			 actionListener="\#{pprBean.savePerson}" /&gt;
 				
 	&lt;p:commandButton value="Non-Ajax Submit" actionListener="\#{pprBean.savePerson}" 
 			ajax="false" /&gt;
 	
-	&lt;p:commandButton value="With Icon" actionListener="\#{pprBean.savePerson}" 
+	&lt;p:commandButton value="With Icon" actionListener="\#{pprBean.savePerson}" id="withIcon" 
 			update="panel,display" icon="ui-icon-disk" /&gt;
 	
-	&lt;p:commandButton actionListener="\#{pprBean.savePerson}" update="panel,display" 
+	&lt;p:commandButton actionListener="\#{pprBean.savePerson}" update="panel,display" id="iconOnly"
 			icon="ui-icon-disk" title="Icon Only"/&gt;
 	
-	&lt;p:commandButton value="Disabled" disabled="true" /&gt;
+	&lt;p:commandButton value="Disabled" disabled="true" id="disabled" /&gt;
 	
 	&lt;p:panel id="display" header="Information" style="margin-top:10px;"&gt;
 		&lt;h:panelGrid columns="2"&gt;

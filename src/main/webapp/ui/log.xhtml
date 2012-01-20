@@ -12,13 +12,13 @@
             <p>Log component is a visual console to display logs of PrimeFaces. Using log client side API,
             you can also use the component.</p>
 
-            <p:log />
+            <p:log id="log" />
             
             <h3>Client Side API</h3>
-            <p:commandButton type="button" value="Info" onclick="PrimeFaces.info('This is an info message.')" />
-            <p:commandButton type="button" value="Warn" onclick="PrimeFaces.warn('This is a warn message.')" />
-            <p:commandButton type="button" value="Debug" onclick="PrimeFaces.debug('This is a debug message.')" />
-            <p:commandButton type="button" value="Error" onclick="PrimeFaces.error('This is an error message.')" />
+            <p:commandButton type="button" id="info" value="Info" onclick="PrimeFaces.info('This is an info message.')" />
+            <p:commandButton type="button" id="warn" value="Warn" onclick="PrimeFaces.warn('This is a warn message.')" />
+            <p:commandButton type="button" id="debug" value="Debug" onclick="PrimeFaces.debug('This is a debug message.')" />
+            <p:commandButton type="button" id="error" value="Error" onclick="PrimeFaces.error('This is an error message.')" />
             
             <h3>Ajax Request</h3>
             <h:form id="frm">
@@ -28,7 +28,7 @@
 					
 					<p:inputText id="name" value="#{pprBean.firstname}" />
 					
-					<p:commandButton value="Submit" update="display"/>
+					<p:commandButton value="Submit" id="submit" update="display"/>
                     
                     <h:outputText value="#{pprBean.firstname}" id="display" />
 				</h:panelGrid>

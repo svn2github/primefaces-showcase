@@ -11,29 +11,29 @@
                 <p>Rating component provides a star based rating input.</p>
                 	
                 <h3>Input Rating</h3>
-                <h:form>
+                <h:form id="form">
 
                     <p:growl id="messages" showDetail="true"/>
                 
                 	<h:panelGrid columns="2" cellpadding="5">
                 		<h:outputText value="Rating 1:" />
-                		<p:rating value="#{ratingController.rating1}" />
+                		<p:rating id="rating1" value="#{ratingController.rating1}" />
   
                 		<h:outputText value="Rating 2:" />
-                		<p:rating value="#{ratingController.rating2}" stars="10"/>
+                		<p:rating id="rating2" value="#{ratingController.rating2}" stars="10"/>
                 	</h:panelGrid>
                 	
-                	<p:commandButton value="Submit" update="displayRatings" style="margin:5px"/>
+                	<p:commandButton value="Submit" id="submit" update="displayRatings" style="margin:5px"/>
                 		
                 	<h:panelGrid id="displayRatings" columns="1" cellpadding="5">
-                		<h:outputText value="Rating 1: #{ratingController.rating1}" />
-                		<h:outputText value="Rating 2: #{ratingController.rating2}" />
+                		<h:outputText id="rating1value" value="Rating 1: #{ratingController.rating1}" />
+                		<h:outputText id="rating2value" value="Rating 2: #{ratingController.rating2}" />
                 	</h:panelGrid>
                 	
 				 	<h3>Instant Ajax Rating</h3>
 					<h:panelGrid columns="2" cellpadding="5">
                 		<h:outputText value="Rate Me" />
-                		<p:rating value="#{ratingController.rating3}">
+                		<p:rating id="ajaxRating" value="#{ratingController.rating3}">
                             <p:ajax event="rate" listener="#{ratingController.handleRate}" update="messages" />
                         </p:rating>
                 	</h:panelGrid>
@@ -41,7 +41,7 @@
                 	<h3>Display Value Only</h3>
                 	<h:panelGrid columns="2" cellpadding="5">
                 		<h:outputText value="A ReadOnly Rating:"/>
-						<p:rating value="#{ratingController.rating4}" disabled="true" />
+						<p:rating id="disabledRating" value="#{ratingController.rating4}" disabled="true" />
                 	</h:panelGrid>
 					
 				</h:form>

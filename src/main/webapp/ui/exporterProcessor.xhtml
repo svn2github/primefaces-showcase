@@ -10,7 +10,7 @@
         <div class="entry">
             <p>DataExporter provides easy customization options for the exported document using pre and post processors.</p>
 
-            <h:form>
+            <h:form id="form">
                 <p:dataTable id="tbl" var="car" value="#{tableBean.cars}" 
                              paginator="true" rows="10">
                     <p:column>
@@ -42,12 +42,12 @@
                     </p:column>
                 </p:dataTable>
 
-                <h:commandLink>
+                <h:commandLink id="excel">
                     <p:graphicImage value="/images/excel.png" />
                     <p:dataExporter type="xls" target="tbl" fileName="cars" postProcessor="#{tableBean.postProcessXLS}"/>
                 </h:commandLink>
 
-                <h:commandLink>
+                <h:commandLink id="pdf">
                     <p:graphicImage value="/images/pdf.png" />
                     <p:dataExporter type="pdf" target="tbl" fileName="cars" preProcessor="#{tableBean.preProcessPDF}"/>
                 </h:commandLink>

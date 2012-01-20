@@ -19,13 +19,12 @@ public class FileDownloadIntegrationTest extends AbstractIntegrationTest{
 	}
 	
 	@Test
-	public void shouldDownlaodFile(){
+	public void shouldDownlaodFile() throws InterruptedException{
 		WebElement downloadLink = findElementById("form:downloadLink");
 		downloadLink.click();
 		
 		File file = new File(System.getProperty("user.home")+File.separator+"downloaded_optimus.jpg");
 		assertTrue(file.exists());
-		
 		file.delete();
 	}
 }

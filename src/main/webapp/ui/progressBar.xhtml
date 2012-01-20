@@ -10,7 +10,7 @@
 			function start() {
 				this.progressInterval = setInterval(function(){
 					pbClient.setValue(pbClient.getValue() + 10);
-				}, 2000);
+				}, 1000);
 			}
 	
 			function cancel() {
@@ -27,15 +27,15 @@
 			<p>ProgressBar is a process status indicator that can either work purely on client side or interact with server side
 			via ajax.</p>
 		
-			<h:form>
+			<h:form id="form">
                 
                 <p:growl id="growl" />
 		
 				<h3>Client Side ProgressBar</h3>
-				<p:commandButton value="Start" type="button" onclick="start();startButton1.disable()" widgetVar="startButton1"/>
-				<p:commandButton value="Cancel" type="button" onclick="cancel();startButton1.enable()" />
+				<p:commandButton value="Start" id="start" type="button" onclick="start();startButton1.disable()" widgetVar="startButton1"/>
+				<p:commandButton value="Cancel" id="cancel" type="button" onclick="cancel();startButton1.enable()" />
 				<br /><br />
-				<p:progressBar widgetVar="pbClient" style="width:300px"/>
+				<p:progressBar id="progressBarClient" widgetVar="pbClient" style="width:300px"/>
 				 				 
 				<h3>Ajax ProgressBar with Growl Integration</h3>
 				<p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2" />

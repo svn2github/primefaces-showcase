@@ -12,10 +12,10 @@
         <div class="entry">
             <p>CommandLink extends the standard h:commandLink with ajax, partial processing and confirmation features.</p>
 
-            <h:form>
+            <h:form id="form">
 
                 <p:panel id="panel" header="New Person" style="margin-bottom:10px;">
-                    <p:messages />
+                    <p:messages id="messages" />
                     <h:panelGrid columns="3">
                         <h:outputLabel for="firstname" value="Firstname: *" />
                         <p:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
@@ -29,21 +29,21 @@
                     </h:panelGrid>
                 </p:panel>
 
-                <p:commandLink update="panel,display" actionListener="#{pprBean.savePerson}" style="margin-right:20px;">
+                <p:commandLink id="ajax" update="panel,display" actionListener="#{pprBean.savePerson}" style="margin-right:20px;">
                     <h:outputText value="Ajax Submit" />
                 </p:commandLink>
 
-                <p:commandLink actionListener="#{pprBean.savePerson}" style="margin-right:20px;" ajax="false">
+                <p:commandLink id="nonAjax" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" ajax="false">
                     <h:outputText value="Non-Ajax Submit" />
                 </p:commandLink>
 
                 <p:panel id="display" header="Information" style="margin-top:10px;">
                     <h:panelGrid columns="2">
                         <h:outputText value="Firstname: " />
-                        <h:outputText value="#{pprBean.firstname}" />
+                        <h:outputText id="txt1" value="#{pprBean.firstname}" />
 
                         <h:outputText value="Surname: " />
-                        <h:outputText value="#{pprBean.surname}" />
+                        <h:outputText id="txt2" value="#{pprBean.surname}" />
                     </h:panelGrid>
                 </p:panel>
 
@@ -54,7 +54,7 @@
 &lt;h:form&gt;
 
 	&lt;p:panel id="panel" header="New Person" style="margin-bottom:10px;"&gt;
-		&lt;p:messages /&gt;
+		&lt;p:messages id="messages"/&gt;
 		&lt;h:panelGrid columns="3"&gt;
 			&lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
 			&lt;p:inputText id="firstname" value="\#{pprBean.firstname}" required="true" label="Firstname"&gt;
@@ -68,21 +68,21 @@
 		&lt;/h:panelGrid&gt;
 	&lt;/p:panel&gt;
 
-	&lt;p:commandLink update="panel,display" actionListener="\#{pprBean.savePerson}" style="margin-right:20px;"&gt;
+	&lt;p:commandLink id="ajax" update="panel,display" actionListener="\#{pprBean.savePerson}" style="margin-right:20px;"&gt;
 		&lt;h:outputText value="Ajax Submit" /&gt;
 	&lt;/p:commandLink&gt;
 
-	&lt;p:commandLink actionListener="\#{pprBean.savePerson}" style="margin-right:20px;" ajax="false"&gt;
+	&lt;p:commandLink id="nonAjax" actionListener="\#{pprBean.savePerson}" style="margin-right:20px;" ajax="false"&gt;
 		&lt;h:outputText value="Non-Ajax Submit" /&gt;
 	&lt;/p:commandLink&gt;
 	
 	&lt;p:panel id="display" header="Information" style="margin-top:10px;"&gt;
 		&lt;h:panelGrid columns="2"&gt;
 			&lt;h:outputText value="Firstname: " /&gt;
-			&lt;h:outputText value="\#{pprBean.firstname}" /&gt;
+			&lt;h:outputText id="txt1" value="\#{pprBean.firstname}" /&gt;
 			
 			&lt;h:outputText value="Surname: " /&gt;
-			&lt;h:outputText value="\#{pprBean.surname}" /&gt;
+			&lt;h:outputText id="txt2" value="\#{pprBean.surname}" /&gt;
 		&lt;/h:panelGrid&gt;
 	&lt;/p:panel&gt;
 	

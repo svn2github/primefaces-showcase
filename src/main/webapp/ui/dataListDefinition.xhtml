@@ -22,7 +22,7 @@
 		<div class="entry">
 			<p>This example presents data in definition format.</p>
 
-			<p:dataList value="#{tableBean.carsSmall}" var="car" type="definition">
+			<p:dataList id="definition" value="#{tableBean.carsSmall}" var="car" type="definition">
 				Model: #{car.model}, Year: #{car.year}
 				<f:facet name="description">
 					<p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/> 

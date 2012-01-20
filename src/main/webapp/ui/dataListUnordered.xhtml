@@ -23,17 +23,17 @@
 			<p>This example presents data in unordered format.</p>
 		
 			<h3>Disc</h3>
-			<p:dataList value="#{tableBean.carsSmall}" var="car" itemType="disc">
+			<p:dataList id="disc" value="#{tableBean.carsSmall}" var="car" itemType="disc">
 				#{car.manufacturer}, #{car.year}
 			</p:dataList>
 			
 			<h3>Circle</h3>
-			<p:dataList value="#{tableBean.carsSmall}" var="car" itemType="circle">
+			<p:dataList id="circle" value="#{tableBean.carsSmall}" var="car" itemType="circle">
 				#{car.manufacturer}, #{car.year}
 			</p:dataList>
 			
 			<h3>Square</h3>
-			<p:dataList value="#{tableBean.carsSmall}" var="car" itemType="square">
+			<p:dataList id="square" value="#{tableBean.carsSmall}" var="car" itemType="square">
 				#{car.manufacturer}, #{car.year}
 			</p:dataList>
 		

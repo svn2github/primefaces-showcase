@@ -11,54 +11,54 @@
             <p>InputMask component forces input to be formatted in a specific way</p>
 
 
-            <h:form>
+            <h:form id="form">
 
-                <p:panel header="Masks">
+                <p:panel header="Masks" id="masks">
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputText value="Date: " />
-                        <p:inputMask value="#{maskController.date}" mask="99/99/9999"/>
+                        <p:inputMask id="date" value="#{maskController.date}" mask="99/99/9999"/>
 
                         <h:outputText value="Phone: " />
-                        <p:inputMask value="#{maskController.phone}" mask="(999) 999-9999"/>
+                        <p:inputMask id="phone" value="#{maskController.phone}" mask="(999) 999-9999"/>
 
                         <h:outputText value="Phone with Ext: " />
-                        <p:inputMask value="#{maskController.phoneExt}" mask="(999) 999-9999? x99999"/>
+                        <p:inputMask id="phoneWithExt" value="#{maskController.phoneExt}" mask="(999) 999-9999? x99999"/>
 
                         <h:outputText value="taxId: " />
-                        <p:inputMask value="#{maskController.taxId}" mask="99-9999999"/>
+                        <p:inputMask id="taxId" value="#{maskController.taxId}" mask="99-9999999"/>
 
                         <h:outputText value="SSN: " />
-                        <p:inputMask value="#{maskController.ssn}" mask="999-99-9999"/>
+                        <p:inputMask id="ssn" value="#{maskController.ssn}" mask="999-99-9999"/>
 
                         <h:outputText value="Product Key: " />
-                        <p:inputMask value="#{maskController.productKey}" mask="a*-999-a999"/>
+                        <p:inputMask id="key" value="#{maskController.productKey}" mask="a*-999-a999"/>
 
                         <p:commandButton value="Reset" type="reset" />
-                        <p:commandButton value="Submit" update="display" oncomplete="dialog.show()"/>
+                        <p:commandButton value="Submit" id="submit" update="display" oncomplete="dialog.show()"/>
 
                     </h:panelGrid>
                 </p:panel>
 
-                <p:dialog widgetVar="dialog" modal="true">
+                <p:dialog widgetVar="dialog" id="modalDialog" modal="true">
                     <h:panelGrid id="display" columns="2" cellpadding="5">
 
                         <h:outputText value="Date: " />
-                        <h:outputText value="#{maskController.date}" />
+                        <h:outputText id="dateValue" value="#{maskController.date}" />
 
                         <h:outputText value="Phone: " />
-                        <h:outputText value="#{maskController.phone}" />
+                        <h:outputText id="phoneValue" value="#{maskController.phone}" />
 
                         <h:outputText value="Phone with Ext: " />
-                        <h:outputText value="#{maskController.phoneExt}"/>
+                        <h:outputText id="phoneWithExtValue" value="#{maskController.phoneExt}"/>
 
                         <h:outputText value="taxId: " />
-                        <h:outputText value="#{maskController.taxId}" />
+                        <h:outputText id="taxValue" value="#{maskController.taxId}" />
 
                         <h:outputText value="SSN: " />
-                        <h:outputText value="#{maskController.ssn}" />
+                        <h:outputText id="ssnValue" value="#{maskController.ssn}" />
 
                         <h:outputText value="Product Key: " />
-                        <h:outputText value="#{maskController.productKey}" />
+                        <h:outputText id="keyValue" value="#{maskController.productKey}" />
 
                     </h:panelGrid>
                 </p:dialog>

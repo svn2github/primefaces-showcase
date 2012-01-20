@@ -9,7 +9,7 @@
         <h1 class="title ui-widget-header ui-corner-all">Data Exporter</h1>
         <div class="entry">
 
-            <h:form>
+            <h:form id="form">
                 <p:dataTable id="tbl" var="car" value="#{tableBean.cars}" 
                              paginator="true" rows="10">
                     <p:column>
@@ -46,22 +46,22 @@
 
                 <h:panelGrid columns="2">
                     <p:panel header="Export All Data">
-                        <h:commandLink>
+                        <h:commandLink id="excel">
                             <p:graphicImage value="/images/excel.png" />
                             <p:dataExporter type="xls" target="tbl" fileName="cars" />
                         </h:commandLink>
 
-                        <h:commandLink>
+                        <h:commandLink id="pdf">
                             <p:graphicImage value="/images/pdf.png" />
                             <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
                         </h:commandLink>
 
-                        <h:commandLink>
+                        <h:commandLink id="csv">
                             <p:graphicImage value="/images/csv.png" />
                             <p:dataExporter type="csv" target="tbl" fileName="cars" />
                         </h:commandLink>
 
-                        <h:commandLink>
+                        <h:commandLink id="xml">
                             <p:graphicImage value="/images/xml.png" />
                             <p:dataExporter type="xml" target="tbl" fileName="cars" />
                         </h:commandLink>

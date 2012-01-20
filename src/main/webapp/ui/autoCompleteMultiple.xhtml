@@ -23,15 +23,15 @@
 		<div class="entry">
 			<p>AutoComplete supports multiple selection as well.</p>
 		
-			<h:form>
+			<h:form id="form">
                 
                 <p:growl id="growl" />
                 
                 <h3>Basic Complete</h3>
-                <p:autoComplete value="#{autoCompleteBean.selectedTexts}" completeMethod="#{autoCompleteBean.complete}" multiple="true"/>
+                <p:autoComplete id="basic" value="#{autoCompleteBean.selectedTexts}" completeMethod="#{autoCompleteBean.complete}" multiple="true"/>
                 
                 <h3>Advanced Complete</h3>
-                <p:autoComplete value="#{autoCompleteBean.selectedPlayers}" completeMethod="#{autoCompleteBean.completePlayer}"
+                <p:autoComplete id="advanced" value="#{autoCompleteBean.selectedPlayers}" completeMethod="#{autoCompleteBean.completePlayer}"
                     var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player" multiple="true">
                     
                     <p:ajax event="itemUnselect" listener="#{autoCompleteBean.handleUnselect}" update="growl" />
@@ -47,24 +47,24 @@
 				
                 <p:separator style="margin-top:20px"/>
                 
-                <p:commandButton value="Submit" update="display" style="margin:10px 0" oncomplete="textDialog.show()" />
+                <p:commandButton value="Submit" id="submit" update="display" style="margin:10px 0" oncomplete="textDialog.show()" />
                 
                 <p:dialog modal="true" widgetVar="textDialog" showEffect="fade" width="200" resizable="false" header="Selected Values">
                     <p:outputPanel id="display">
-                        <p:dataList value="#{autoCompleteBean.selectedTexts}" var="text">
+                        <p:dataList value="#{autoCompleteBean.selectedTexts}"  var="text" id="texts">
                             <f:facet name="header">
                                 Texts
                             </f:facet>
-                            #{text}
+                           <h:outputText value="#{text}" id="text"/>
                         </p:dataList>
                         
                         <p:separator style="margin:20px"/>
 
-                        <p:dataList value="#{autoCompleteBean.selectedPlayers}" var="player">
+                        <p:dataList value="#{autoCompleteBean.selectedPlayers}" var="player" id="players">
                             <f:facet name="header">
                                 Players
                             </f:facet>
-                            #{player}
+                            <h:outputText value="#{player}" id="player"/>
                         </p:dataList>
                     </p:outputPanel>
                 </p:dialog>
@@ -75,7 +75,7 @@
             <p:tabView>
                 <p:tab title="autoCompleteMultiple.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
                 
     &lt;p:growl id="growl" /&gt;
 
@@ -99,24 +99,24 @@
 
     &lt;p:separator style="margin-top:20px"/&gt;
 
-    &lt;p:commandButton value="Submit" update="display" style="margin:10px 0" oncomplete="textDialog.show()" /&gt;
+    &lt;p:commandButton value="Submit" id="submit" update="display" style="margin:10px 0" oncomplete="textDialog.show()" /&gt;
 
     &lt;p:dialog modal="true" widgetVar="textDialog" showEffect="fade" width="200" resizable="false" header="Selected Values"&gt;
         &lt;p:outputPanel id="display"&gt;
-            &lt;p:dataList value="\#{autoCompleteBean.selectedTexts}" var="text"&gt;
+            &lt;p:dataList value="\#{autoCompleteBean.selectedTexts}" var="text"  id="texts"&gt;
                 &lt;f:facet name="header"&gt;
                     Texts
                 &lt;/f:facet&gt;
-                \#{text}
+                 &lt;h:outputText value="#{text}" id="text"/&gt;
             &lt;/p:dataList&gt;
 
             &lt;p:separator style="margin:20px"/&gt;
 
-            &lt;p:dataList value="\#{autoCompleteBean.selectedPlayers}" var="player"&gt;
+            &lt;p:dataList value="\#{autoCompleteBean.selectedPlayers1}" var="player" id="players"&gt;
                 &lt;f:facet name="header"&gt;
                     Players
                 &lt;/f:facet&gt;
-                \#{player}
+                &lt;h:outputText value="#{player}" id="player"/&gt;
             &lt;/p:dataList&gt;
         &lt;/p:outputPanel&gt;
     &lt;/p:dialog&gt;

@@ -12,7 +12,7 @@
 			<p>Watermark displays a hint about input fields by using native placeholder 
             in supported browsers and a javascript solution in others  browser compatibility.</p>
 	
-			<h:form>
+			<h:form id="form">
 			
 				<p:messages id="messages" showDetail="true"/>
 	
@@ -20,14 +20,14 @@
 	
 					<h:outputLabel value="Search: "/>
 					<p:inputText id="keyword" value="#{watermarkBean.keyword}" required="true" label="Keyword"/>
-					<p:watermark for="keyword" value="Search with a keyword" />
+					<p:watermark for="keyword" value="Search with a keyword" id="watermark" />
 				
 				</h:panelGrid>
 				
 				<br />
 				
-				<p:commandButton actionListener="#{watermarkBean.search}" value="Regular" ajax="false" /> 
-				<p:commandButton actionListener="#{watermarkBean.search}" value="Ajax" onclick="PrimeFaces.cleanWatermarks();" oncomplete="PrimeFaces.showWatermarks();" update="messages" />
+				<p:commandButton id="regular" actionListener="#{watermarkBean.search}" value="Regular" ajax="false" /> 
+				<p:commandButton id="ajax" actionListener="#{watermarkBean.search}" value="Ajax" onclick="PrimeFaces.cleanWatermarks();" oncomplete="PrimeFaces.showWatermarks();" update="messages" />
 	
 			</h:form>
 

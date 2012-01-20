@@ -19,27 +19,27 @@
             <p>LightBox is a modal overlay component to display images, inline content and iframes.</p>    	
 
             <h3>Images</h3>
-            <p:lightBox styleClass="imagebox">
+            <p:lightBox styleClass="imagebox" id="lighbox1">
                 <h:outputLink value="../images/sopranos/sopranos1.jpg" title="Sopranos 1">
-                    <h:graphicImage value="/images/sopranos/sopranos1_small.jpg"/>
+                    <h:graphicImage value="/images/sopranos/sopranos1_small.jpg" id="sopranos1_small"/>
                 </h:outputLink>
 
                 <h:outputLink value="../images/sopranos/sopranos2.jpg" title="Sopranos 2">
-                    <h:graphicImage value="/images/sopranos/sopranos2_small.jpg" />
+                    <h:graphicImage value="/images/sopranos/sopranos2_small.jpg" id="sopranos2_small"/>
                 </h:outputLink>
 
                 <h:outputLink value="../images/sopranos/sopranos3.jpg" title="Sopranos 3">
-                    <h:graphicImage value="/images/sopranos/sopranos3_small.jpg"/>
+                    <h:graphicImage value="/images/sopranos/sopranos3_small.jpg" id="sopranos3_small"/>
                 </h:outputLink>
 
                 <h:outputLink value="../images/sopranos/sopranos4.jpg" title="Sopranos 4">
-                    <h:graphicImage value="/images/sopranos/sopranos4_small.jpg"/>
+                    <h:graphicImage value="/images/sopranos/sopranos4_small.jpg" id="sopranos4_small"/>
                 </h:outputLink>
             </p:lightBox>
 
             <h3>Inline</h3>
-            <p:lightBox>
-                <h:outputLink value="#">
+            <p:lightBox id="lighbox2">
+                <h:outputLink value="#" id="lighbox2_link">
                     <h:outputText value="Video Content"/>
                 </h:outputLink>
 
@@ -49,8 +49,8 @@
             </p:lightBox>
             
             <h3>IFrame</h3>
-            <p:lightBox iframe="true">
-                <h:outputLink value="http://www.primefaces.org" title="PrimeFaces HomePage">
+            <p:lightBox iframe="true" id="lighbox3">
+                <h:outputLink value="http://www.primefaces.org" title="PrimeFaces HomePage" id="lightboxIframe_link">
                     <h:outputText value="PrimeFaces HomePage"/>
                 </h:outputLink>
             </p:lightBox>

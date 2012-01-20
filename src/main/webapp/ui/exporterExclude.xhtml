@@ -11,7 +11,7 @@
         <div class="entry">
             <p>excludeColumns property is used to specify columns to be excluded from the data export process</p>    	
 
-            <h:form>
+            <h:form id="form">
                 <p:dataTable id="tbl" var="car" value="#{tableBean.cars}" 
                              paginator="true" rows="10">
                     <p:column>
@@ -43,22 +43,22 @@
                     </p:column>
                 </p:dataTable>
 
-                <h:commandLink>
+                <h:commandLink id="excel">
                     <p:graphicImage value="/images/excel.png" />
                     <p:dataExporter type="xls" target="tbl" fileName="cars" excludeColumns="0"/>
                 </h:commandLink>
 
-                <h:commandLink>
+                <h:commandLink id="pdf">
                     <p:graphicImage value="/images/pdf.png" />
                     <p:dataExporter type="pdf" target="tbl" fileName="cars" excludeColumns="1"/>
                 </h:commandLink>
 
-                <h:commandLink>
+                <h:commandLink id="csv">
                     <p:graphicImage value="/images/csv.png" />
                     <p:dataExporter type="csv" target="tbl" fileName="cars" excludeColumns="0,1"/>
                 </h:commandLink>
 
-                <h:commandLink>
+                <h:commandLink id="xml">
                     <p:graphicImage value="/images/xml.png" />
                     <p:dataExporter type="xml" target="tbl" fileName="cars" excludeColumns="1,2"/>
                 </h:commandLink>

@@ -119,6 +119,10 @@ public abstract class AbstractIntegrationTest {
 	protected WebElement findElementById(String elementId) {
 		return driver.findElement(By.id(elementId));
 	}
+	
+	protected WebElement findElementByLinkText(String linkText) {
+		return driver.findElement(By.linkText(linkText));
+	}
 
 	protected List<WebElement> findElementsById(String elementId) {
 		return driver.findElements(By.id(elementId));
@@ -206,4 +210,22 @@ public abstract class AbstractIntegrationTest {
 					}
 				});
 	}
+	
+    protected WebElement waitUntilElementExistsAndGet(WebElement element, By by) {
+        return waitUntilElementExistsAndGet(element, by, 0);
+    }
+
+    protected WebElement waitUntilElementExistsAndGet(WebElement element, By by, int waitSecond){
+        WebElement item = null;
+        if (element != null && by != null) {
+            try {
+                Thread.sleep(waitSecond * 1000L);
+                item = element.findElement(by);
+            } catch (Exception e) {
+               return null;
+            }
+        }
+
+        return item;
+    }
 }
