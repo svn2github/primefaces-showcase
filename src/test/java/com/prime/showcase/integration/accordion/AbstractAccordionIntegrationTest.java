@@ -63,7 +63,7 @@ public abstract class AbstractAccordionIntegrationTest extends AbstractIntegrati
             
         }
         catch(NoSuchElementException e){
-            assertTrue(false);
+            assertTrue("Accordion showcase DOM not verified.", false);
         }
     }
 }
