@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-    
+        
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Overlay Panel</h1>
 		<div class="entry">
@@ -45,10 +45,10 @@
                 
                 <br /><br />
                 
-                <p:commandButton id="imgBtn" value="Images" type="button" />
+                <p:graphicImage id="img" value="../images/images.png" style="cursor:pointer"/>
                 
-                <p:overlayPanel id="imgPanel" for="imgBtn" showEffect="blind" hideEffect="explode">
-                    <p:imageSwitch id="img" effect="fade">
+                <p:overlayPanel id="imgPanel" for="img" showEffect="blind" hideEffect="explode" event="mouseover">
+                    <p:imageSwitch id="imgSwitch" effect="fade">
                         <ui:repeat value="#{imageSwitchBean.images}" var="image">
                             <p:graphicImage value="/images/#{image}" />
                         </ui:repeat>
@@ -60,12 +60,12 @@
         <p:tabView>
             <p:tab title="overlayPanel.xhtml">
                 <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
                 
     &lt;p:commandButton id="carBtn" value="Cars" type="button" /&gt;
 
-    &lt;p:overlayPanel for="carBtn" hideEffect="fade"&gt;
-        &lt;p:dataTable var="car" value="\#{tableBean.cars}" rows="10" paginator="true"&gt;
+    &lt;p:overlayPanel id="carPanel" for="carBtn" hideEffect="fade"&gt;
+        &lt;p:dataTable id="table" var="car" value="\#{tableBean.cars}" rows="10" paginator="true"&gt;
             &lt;p:column headerText="Model"&gt;
                 &lt;h:outputText value="\#{car.model}" /&gt;
             &lt;/p:column&gt;
@@ -86,15 +86,15 @@
 
     &lt;p:commandButton id="chartBtn" value="Chart" type="button" /&gt;
 
-    &lt;p:overlayPanel for="chartBtn" hideEffect="fade"&gt;
-        &lt;p:pieChart value="\#{chartBean.pieModel}" legendPosition="w"
+    &lt;p:overlayPanel id="chartPanel" for="chartBtn" hideEffect="fade"&gt;
+        &lt;p:pieChart id="chart" value="\#{chartBean.pieModel}" legendPosition="w"
             title="Sample Pie Chart" style="width:400px;height:300px" /&gt;
     &lt;/p:overlayPanel&gt;
 
-    &lt;p:commandButton id="imgBtn" value="Images" type="button" /&gt;
+    &lt;p:graphicImage id="img" value="../images/images.png" style="cursor:pointer"/&gt;
 
-    &lt;p:overlayPanel for="imgBtn" showEffect="blind" hideEffect="explode"&gt;
-        &lt;p:imageSwitch effect="fade"&gt;
+    &lt;p:overlayPanel id="imgPanel" for="img" showEffect="blind" hideEffect="explode" event="mouseover"&gt;
+        &lt;p:imageSwitch id="imgSwitch" effect="fade"&gt;
             &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
                 &lt;p:graphicImage value="/images/\#{image}" /&gt;
             &lt;/ui:repeat&gt;
