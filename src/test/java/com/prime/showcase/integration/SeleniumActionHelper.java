@@ -53,6 +53,10 @@ public class SeleniumActionHelper {
 		builder.clickAndHold(element).perform();
 	}
 	
+    public void dblClick(WebElement element) {
+		builder.doubleClick(element).perform();
+	}
+	
 	public void moveByOffSet(int x, int y) {
 		builder.moveByOffset(x, y).perform();
 	}
