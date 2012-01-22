@@ -49,7 +49,7 @@ public class SeleniumActionHelper {
 		builder.click().perform();
 	}
 	
-	public void clickAndHolOnElement(WebElement element) {
+	public void clickAndHoldOnElement(WebElement element) {
 		builder.clickAndHold(element).perform();
 	}
 	

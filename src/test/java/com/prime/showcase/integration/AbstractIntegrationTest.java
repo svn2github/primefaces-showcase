@@ -283,4 +283,19 @@ public abstract class AbstractIntegrationTest {
     protected void selectElementByValue(WebElement element, String value) {
     	new Select(element).selectByValue(value);
     }
+    
+    protected void clickToElementById(String elementId) {
+    	findElementById(elementId).click();
+    }
+    
+    protected void waitForOneSecond() {
+    	waitForSeconds(1);
+    }
+    
+    protected void waitForSeconds(int seconds) {
+    	try {
+			Thread.sleep(seconds * 1000);
+		} catch (InterruptedException e) {
+		}
+    }
 }

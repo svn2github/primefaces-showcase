@@ -12,11 +12,11 @@
             <p>Schedule is a Google Calendar, Outlook style event calendar backed by a ScheduleModel instance. Additionally
             schedule provides various event hooks.</p>
 		
-			<h:form>
+			<h:form id="form">
 
 				<p:growl id="messages" showDetail="true" />
 			
-				<p:schedule value="#{scheduleController.eventModel}" widgetVar="myschedule">
+				<p:schedule id="schedule" value="#{scheduleController.eventModel}" widgetVar="myschedule">
 
                     <p:ajax event="dateSelect" listener="#{scheduleController.onDateSelect}" update="eventDetails" oncomplete="eventDialog.show()" />
                     <p:ajax event="eventSelect" listener="#{scheduleController.onEventSelect}" update="eventDetails" oncomplete="eventDialog.show()" />
@@ -44,7 +44,7 @@
                         <h:selectBooleanCheckbox id="allDay" value="#{scheduleController.event.allDay}" />
 
                         <p:commandButton type="reset" value="Reset" />
-                        <p:commandButton value="Save" actionListener="#{scheduleController.addEvent}" oncomplete="myschedule.update();eventDialog.hide();"/>
+                        <p:commandButton id="addButton" value="Save" actionListener="#{scheduleController.addEvent}" oncomplete="myschedule.update();eventDialog.hide();"/>
                     </h:panelGrid>
                 </p:dialog>
 
