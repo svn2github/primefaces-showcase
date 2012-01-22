@@ -11,9 +11,9 @@
         <div class="entry">
             <p>DataTable has built-in support for ajax pagination.</p>
             
-            <h:form>
+            <h:form prependId="false">
 
-                <p:dataTable var="car" value="#{tableBean.cars}"
+                <p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
                              paginator="true" rows="10"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
@@ -56,9 +56,9 @@
             <p:tabView>
                 <p:tab title="datatablePagination.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form prependId="false"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}"
+    &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.cars}"
                  paginator="true" rows="10"
                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                  rowsPerPageTemplate="5,10,15"&gt;

@@ -14,6 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 
 public abstract class AbstractIntegrationTest {
 
@@ -227,5 +228,9 @@ public abstract class AbstractIntegrationTest {
         }
 
         return item;
+    }
+    
+    protected void selectElementByValue(WebElement element, String value) {
+    	new Select(element).selectByValue(value);
     }
 }
