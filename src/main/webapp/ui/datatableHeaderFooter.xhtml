@@ -12,9 +12,9 @@
 			<p>Any content can be placed inside header and footer using corresponding facets. For column header and footer facets, headerText
             and footerText can be used as shortcuts.</p>
 
-            <h:form>
+            <h:form prependId="false">
                 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}">
+                <p:dataTable id="dataTable" var="car" value="#{tableBean.carsSmall}">
 
                     <f:facet name="header">
                         List of Cars
@@ -56,9 +56,9 @@
 		<p:tabView>
 			<p:tab title="datatableHeaderFooter.xhtml">
                 <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form prependId="false"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
+    &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.carsSmall}"&gt;
 
         &lt;f:facet name="header"&gt;
             List of Cars
