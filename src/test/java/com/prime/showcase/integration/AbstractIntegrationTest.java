@@ -24,9 +24,13 @@ public abstract class AbstractIntegrationTest {
 
 	private static final int DEFAULT_SLEEP_TIME_IN_SECONDS = 2;
 
-	private static final int DEFAULT_ANIMATED_INTERVAL_IN_SECONDS = 1;
+	private static final int DEFAULT_ANIMATED_INTERVAL_IN_SECONDS = 400;
 
 	private static final int DEFAULT_TIMEOUT_IN_SECONDS = 10;
+    
+	protected static final boolean INCREASING = true;
+    
+	protected static final boolean DECREASING = false;
 
 	protected static WebDriver driver;
 
@@ -84,7 +88,7 @@ public abstract class AbstractIntegrationTest {
 					}
 				});
 	}
-
+	
 	protected void waitUntilAjaxRequestCompletes() {
 		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
 				.pollingEvery(DEFAULT_SLEEP_TIME_IN_SECONDS, TimeUnit.SECONDS).until(new ExpectedCondition<Boolean>() {
@@ -110,7 +114,7 @@ public abstract class AbstractIntegrationTest {
 	 */
 	protected void waitUntilAnimationCompletes(final String selector) {
 		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
-				.pollingEvery(DEFAULT_ANIMATED_INTERVAL_IN_SECONDS, TimeUnit.SECONDS).until(new ExpectedCondition<Boolean>() {
+				.pollingEvery(DEFAULT_ANIMATED_INTERVAL_IN_SECONDS, TimeUnit.MILLISECONDS).until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
 						return (Boolean) ((JavascriptExecutor) d).executeScript("return ! $('" + selector + "').is(':animated');");
 					}
@@ -190,7 +194,7 @@ public abstract class AbstractIntegrationTest {
 	}
 
 	protected boolean hasClass(WebElement e, String c) {
-		return e.getAttribute("class").contains(c);
+		return e.getAttribute("class") != null && e.getAttribute("class").contains(c);
 	}
 
 	protected Object executeJS(String js, Object... os) {
@@ -211,11 +215,45 @@ public abstract class AbstractIntegrationTest {
 					}
 				});
 	}
+    
+    protected Integer getAnimationQueueSizeBySelector(String selector, String queue) {
+        return (Integer) executeJS("return $('" + selector + "').queue('" + queue + "').length;");
+    }
+    
+    protected Boolean anyAnimationInProgress(String selector, String queue) {
+        return (Boolean) executeJS(" var q = $('" + selector + "').queue('" + queue + "'); return q.length && q[0] == 'inprogress';");
+    }
+    
+    protected Boolean anyAnimationInProgress(String selector) {
+        return (Boolean) executeJS(" var q = $('" + selector + "').queue(); return q.length != 0 && q[0] == 'inprogress';");
+    }
+
+    /**
+	 * Compares given css value before and after a delay time
+	 * 
+	 * @param WebElement e : UI element to look for
+	 * @param String cssValue : Style property to compare
+	 * @param boolean increasing : Should increase or decrease
+	 * @param long interval : Time in milliseconds to look before and after
+     * 
+	 */
+    protected Boolean shouldElementAnimating(WebElement e, String cssValue, boolean increasing, long interval) throws InterruptedException{
+        
+        String initial = e.getCssValue(cssValue);
+        
+        Thread.sleep(interval);
+        
+        String after = e.getCssValue(cssValue);
+        
+        int diff = initial.compareToIgnoreCase(after);
+        
+        return diff != 0 && ((diff > 0) ^ increasing) ;
+    }
 	
     protected WebElement waitUntilElementExistsAndGet(WebElement element, By by) {
         return waitUntilElementExistsAndGet(element, by, 0);
     }
-
+    
     protected WebElement waitUntilElementExistsAndGet(WebElement element, By by, int waitSecond){
         WebElement item = null;
         if (element != null && by != null) {
