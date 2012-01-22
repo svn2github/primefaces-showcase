@@ -245,6 +245,18 @@ public abstract class AbstractIntegrationTest {
         
         String after = e.getCssValue(cssValue);
         
+        try {
+            
+            double init = Double.parseDouble(initial.replaceAll("px", "")),
+            last = Double.parseDouble(after.replaceAll("px", "")),
+            dif = last - init;
+            
+            return dif != 0 && (dif < 0) ^ increasing;
+
+        } catch (NumberFormatException ex) {
+            //No action. Try with string compare.
+        }
+        
         int diff = initial.compareToIgnoreCase(after);
         
         return diff != 0 && ((diff > 0) ^ increasing) ;
