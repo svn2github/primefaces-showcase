@@ -217,7 +217,7 @@ public abstract class AbstractIntegrationTest {
 	}
     
     protected Integer getAnimationQueueSizeBySelector(String selector, String queue) {
-        return (Integer) executeJS("return $('" + selector + "').queue('" + queue + "').length;");
+        return ((Long) executeJS("return $('" + selector + "').queue('" + queue + "').length;")).intValue();
     }
     
     protected Boolean anyAnimationInProgress(String selector, String queue) {
