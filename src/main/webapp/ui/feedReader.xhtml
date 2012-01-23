@@ -19,12 +19,12 @@
 		<div class="entry">
 			<p>FeedReader is used to display content from a feed.</p>
             
-            <p:separator />
+            <p:separator id="separator"/>
 
-            <p:feedReader value="http://rss.news.yahoo.com/rss/sports" var="feed">
-                <h:outputText value="#{feed.title}" style="font-weight: bold"/>
+            <p:feedReader value="http://rss.news.yahoo.com/rss/sports" var="feed" id="reader">
+                <h:outputText value="#{feed.title}" style="font-weight: bold" id="title"/>
                 <br />
-                <h:outputText value="#{feed.description.value}" escape="false"/>
+                <h:outputText value="#{feed.description.value}" escape="false" id="value"/>
                 <p:separator />
             </p:feedReader>
 
