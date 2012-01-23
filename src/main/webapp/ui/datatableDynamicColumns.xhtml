@@ -23,7 +23,7 @@
 			<p>Columns of datatable can also be defined dynamically with p:columns component. Since columns are created
             on-the-fly it is easy to add/remove columns programmatically.</p>
 
-            <h:form prependId="false">
+            <h:form id="form" rependId="false">
 
                 <h3>Simple</h3>
                 <p:dataTable var="car" value="#{tableBean.carsSmall}">
@@ -42,7 +42,7 @@
                 <p:dataTable var="cars" value="#{tableBean.dynamicCars}" id="carsTable">
 
                     <f:facet name="header">
-                        <p:commandButton type="button" onclick="carDialog.show()" value="Add a New Column" icon="add"/>
+                        <p:commandButton id="addButton" type="button" onclick="carDialog.show()" value="Add a New Column" icon="add"/>
                     </f:facet>
 
                     <p:columns value="#{tableBean.columns}" var="column" columnIndexVar="colIndex">
@@ -71,10 +71,10 @@
                 <p:dialog widgetVar="carDialog" showEffect="explode" hideEffect="explode" header="New Column">
                     <h:panelGrid columns="3" id="newColumnGrid">
                         <h:outputText value="Column Name:" />
-                        <h:selectOneMenu value="#{tableBean.columnName}">
+                        <h:selectOneMenu id="selectCar" value="#{tableBean.columnName}">
                             <f:selectItems value="#{tableBean.availableManufacturers}" var="manufacturer" itemLabel="#{manufacturer}" itemValue="#{manufacturer}" />
                         </h:selectOneMenu>
-                        <p:commandButton value="Add" actionListener="#{tableBean.addColumn}" update="carsTable newColumnGrid" oncomplete="carDialog.hide()"/>
+                        <p:commandButton id="saveButton" value="Add" actionListener="#{tableBean.addColumn}" update="carsTable newColumnGrid" oncomplete="carDialog.hide()"/>
                     </h:panelGrid>
                 </p:dialog>
                 
@@ -84,7 +84,7 @@
 		<p:tabView>
 			<p:tab title="datatableDynamicColumns.xhtml">
                 <pre name="code" class="xml">
-&lt;h:form prependId="false"&gt;
+&lt;h:form id="form" prependId="false"&gt;
 
     &lt;h3&gt;Simple&lt;/h3&gt;
     &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
@@ -102,7 +102,7 @@
     &lt;p:dataTable var="cars" value="\#{tableBean.dynamicCars}" id="carsTable"&gt;
 
         &lt;f:facet name="header"&gt;
-            &lt;p:commandButton type="button" onclick="carDialog.show()" value="Add a New Column" icon="add"/&gt;
+            &lt;p:commandButton id="addButton" type="button" onclick="carDialog.show()" value="Add a New Column" icon="add"/&gt;
         &lt;/f:facet&gt;
 
         &lt;p:columns value="\#{tableBean.columns}"
@@ -136,12 +136,12 @@
         &lt;h:panelGrid columns="3" id="newColumnGrid"&gt;
 
             &lt;h:outputText value="Column Name:" /&gt;
-            &lt;h:selectOneMenu value="\#{tableBean.columnName}"&gt;
+            &lt;h:selectOneMenu id="selectCar" value="\#{tableBean.columnName}"&gt;
                 &lt;f:selectItems value="\#{tableBean.availableManufacturers}"
                     var="manufacturer" itemLabel="\#{manufacturer}"
                     itemValue="\#{manufacturer}" /&gt;
             &lt;/h:selectOneMenu&gt;
-            &lt;p:commandButton value="Add" actionListener="\#{tableBean.addColumn}"
+            &lt;p:commandButton id="saveButton" value="Add" actionListener="\#{tableBean.addColumn}"
                     update="carsTable newColumnGrid" oncomplete="carDialog.hide()"/&gt;
 
         &lt;/h:panelGrid&gt;

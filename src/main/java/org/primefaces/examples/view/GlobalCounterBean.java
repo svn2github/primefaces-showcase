@@ -16,8 +16,14 @@
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
 import org.primefaces.context.RequestContext;
 
+@ManagedBean(name = "globalCounter")
+@ApplicationScoped
 public class GlobalCounterBean implements Serializable{
 
 	private int count;

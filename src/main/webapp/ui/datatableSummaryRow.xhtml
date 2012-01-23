@@ -10,22 +10,22 @@
 		<div class="entry">
 			<p>SummaryRow is a helper component of datatable used for dynamic grouping.</p>
 
-            <h:form>
-                <p:dataTable var="car" value="#{tableBean.cars}" sortBy="#{car.manufacturer}" sortOrder="descending">
+            <h:form id="form">
+                <p:dataTable id="carsTable" var="car" value="#{tableBean.cars}" sortBy="#{car.manufacturer}" sortOrder="descending">
 
-                    <p:column headerText="Model" sortBy="#{car.model}">
+                    <p:column id="modelHeader" headerText="Model" sortBy="#{car.model}">
                         #{car.model}
                     </p:column>
 
-                    <p:column headerText="Year" sortBy="#{car.year}">
+                    <p:column id="yearHeader" headerText="Year" sortBy="#{car.year}">
                         #{car.year}
                     </p:column>
 
-                    <p:column headerText="Manufacturer" sortBy="#{car.manufacturer}">
+                    <p:column id="manufacturerHeader" headerText="Manufacturer" sortBy="#{car.manufacturer}">
                         #{car.manufacturer}
                     </p:column>
 
-                    <p:column headerText="Color" sortBy="#{car.color}">
+                    <p:column id="colorHeader" headerText="Color" sortBy="#{car.color}">
                         #{car.color}
                     </p:column>
                     
@@ -45,22 +45,22 @@
 		<p:tabView>
 			<p:tab title="datatableSummaryRow.xhtml">
                 <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
     &lt;p:dataTable var="car" value="\#{tableBean.cars}" sortBy="\#{car.manufacturer}" sortOrder="descending"&gt;
 
-        &lt;p:column headerText="Model" sortBy="\#{car.model}"&gt;
+        &lt;p:column id="modelHeader" headerText="Model" sortBy="\#{car.model}"&gt;
             \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" sortBy="\#{car.year}"&gt;
+        &lt;p:column id="yearHeader" headerText="Year" sortBy="\#{car.year}"&gt;
             \#{car.year}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" sortBy="\#{car.manufacturer}"&gt;
+        &lt;p:column id="manufacturerHeader" headerText="Manufacturer" sortBy="\#{car.manufacturer}"&gt;
             \#{car.manufacturer}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" sortBy="\#{car.color}"&gt;
+        &lt;p:column id="colorHeader" headerText="Color" sortBy="\#{car.color}"&gt;
             \#{car.color}
         &lt;/p:column&gt;
 

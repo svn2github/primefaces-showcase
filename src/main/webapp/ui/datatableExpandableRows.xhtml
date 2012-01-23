@@ -19,9 +19,9 @@
 		<div class="entry">
 			<p>A row can be expanded to display detail content using a row expansion column and expansion facet.</p>
 
-            <h:form>
+            <h:form id="form">
 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}">
+                <p:dataTable id="carsTable" var="car" value="#{tableBean.carsSmall}">
 
                     <f:facet name="header">
                         Expand rows to see detailed information
@@ -54,10 +54,10 @@
                             </f:facet>
 
                             <h:outputText value="Model:" />
-                            <h:outputText value="#{car.model}" />
+                            <h:outputText id="model" value="#{car.model}" />
 
                             <h:outputText value="Year:" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText id="year" value="#{car.year}" />
 
                             <h:outputText value="Manufacturer:" />
                             <h:outputText value="#{car.manufacturer}"/>
@@ -111,10 +111,10 @@
                 &lt;/f:facet&gt;
 
                 &lt;h:outputText value="Model:" /&gt;
-                &lt;h:outputText value="\#{car.model}" /&gt;
+                &lt;h:outputText id="model" value="\#{car.model}" /&gt;
 
                 &lt;h:outputText value="Year:" /&gt;
-                &lt;h:outputText value="\#{car.year}" /&gt;
+                &lt;h:outputText id="year" value="\#{car.year}" /&gt;
 
                 &lt;h:outputText value="Manufacturer:" /&gt;
                 &lt;h:outputText value="\#{car.manufacturer}"/&gt;

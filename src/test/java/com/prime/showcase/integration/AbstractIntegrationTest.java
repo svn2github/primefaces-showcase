@@ -296,6 +296,10 @@ public abstract class AbstractIntegrationTest {
     	findElementById(elementId).click();
     }
     
+    protected void clickToElementByClass(String elementClass) {
+    	findElementByClass(elementClass).click();
+    }
+    
     protected void waitForOneSecond() {
     	waitForSeconds(1);
     }
@@ -306,4 +310,8 @@ public abstract class AbstractIntegrationTest {
 		} catch (InterruptedException e) {
 		}
     }
+    
+    protected void scrollByOffset(int x, int y) {
+		executeJS("window.scrollBy(" + x + "," + y + ")");
+	}
 }
