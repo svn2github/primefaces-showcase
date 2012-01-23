@@ -22,9 +22,9 @@
         <div class="entry">
             <p>Polling can be started and stopped manually on demand.</p>
 
-            <h:form>
-                <p:commandButton type="button" value="Start" icon="ui-icon-play" onclick="poll.start()" />
-                <p:commandButton type="button" value="Stop" icon="ui-icon-pause" onclick="poll.stop()" />
+            <h:form id="form">
+                <p:commandButton type="button" value="Start" icon="ui-icon-play" onclick="poll.start()" id="btnStart" />
+                <p:commandButton type="button" value="Stop" icon="ui-icon-pause" onclick="poll.stop()" id="btnStop" />
 
                 <br /><br />
 
@@ -38,12 +38,12 @@
             <p:tabView>
                 <p:tab title="poll.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:commandButton type="button" value="Start"
-            icon="ui-icon-play" onclick="poll.start()" /&gt;
+            icon="ui-icon-play" onclick="poll.start()" id="btnStart" /&gt;
     &lt;p:commandButton type="button" value="Stop"
-            icon="ui-icon-pause" onclick="poll.stop()" /&gt;
+            icon="ui-icon-pause" onclick="poll.stop()" id="btnStop" /&gt;
 
     &lt;h:outputText id="txt_count" value="\#{counterBean.count}" /&gt;
 
