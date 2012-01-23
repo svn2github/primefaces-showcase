@@ -5,27 +5,19 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
 
-	<ui:define name="head">
-		<style type="text/css">
-			.column {
-				font-weight: bold;
-			}
-		</style>
-	</ui:define>
-
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">InputTextarea</h1>
 		<div class="entry">
-			<p>InputTextarea extends standard InputTextarea with skinning capabilities and auto growing feature.</p>
+			<p>InputTextarea extends standard InputTextarea with auto grow and theming features.</p>
 
-            <p:inputTextarea style="width:300px;height:100px;" effectDuration="400"/>
+            <p:inputTextarea rows="5" cols="30"/>
 
 			<h3>Source</h3>
 			<p:tabView>
-				<p:tab title="inputText.xhtml">
+				<p:tab title="inputTextarea.xhtml">
 					<pre name="code" class="xml">
-&lt;p:inputTextarea style="width:300px;height:100px;" effectDuration="400" /&gt;
+&lt;p:inputTextarea rows="5" cols="30"/&gt;
 					</pre>
 				</p:tab>
 			</p:tabView>
