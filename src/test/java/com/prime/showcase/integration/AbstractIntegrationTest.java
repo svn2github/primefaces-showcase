@@ -164,6 +164,14 @@ public abstract class AbstractIntegrationTest {
 	protected List<WebElement> findElementsByXpath(String path) {
 		return driver.findElements(By.xpath(path));
 	}
+	
+    protected WebElement findElementByXpath(WebElement parent, String path) {
+		return parent.findElement(By.xpath(path));
+	}
+
+	protected List<WebElement> findElementsByXpath(WebElement parent, String path) {
+		return parent.findElements(By.xpath(path));
+	}
 
 	protected WebElement findElementBySelector(String selector) {
 		return driver.findElement(By.cssSelector(selector));
