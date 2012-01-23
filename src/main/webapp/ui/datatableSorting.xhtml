@@ -11,14 +11,14 @@
         <div class="entry">
             <p>DataTable has built-in support for ajax sorting.</p>
 
-            <h:form>
+            <h:form prependId="false">
 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}">
+                <p:dataTable id="dataTable" var="car" value="#{tableBean.carsSmall}">
                     <f:facet name="header">
                         Ajax Sorting
                     </f:facet>
 
-                    <p:column sortBy="#{car.model}">
+                    <p:column id="modelHeader" sortBy="#{car.model}">
                         <f:facet name="header">
                             <h:outputText value="Model" />
                         </f:facet>
@@ -53,14 +53,14 @@
             <p:tabView>
                 <p:tab title="datatableSorting.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form prependId="false"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
+    &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.carsSmall}"&gt;
         &lt;f:facet name="header"&gt;
             Ajax Sorting
         &lt;/f:facet&gt;
 
-        &lt;p:column sortBy="\#{car.model}"&gt;
+        &lt;p:column id="modelHeader" sortBy="\#{car.model}"&gt;
             &lt;f:facet name="header"&gt;
                 &lt;h:outputText value="Model" /&gt;
             &lt;/f:facet&gt;
