@@ -11,8 +11,8 @@
             <p>Terminal commands are handled by a server side listener. See the TerminalController bean for
             sample commands.</p>
 
-            <h:form>
-                <p:terminal commandHandler="#{terminalController.handleCommand}" height="300px"
+            <h:form id="form">
+                <p:terminal id="terminal" commandHandler="#{terminalController.handleCommand}" height="300px"
                             welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?" />
             </h:form>
 

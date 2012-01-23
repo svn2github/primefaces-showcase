@@ -22,11 +22,11 @@
         <div class="entry">
             <p>This example demonstrates dialog integration.</p>
 
-            <h:form>
-                <p:graphicImage value="/images/terminal.png" onclick="dlg.show();term.focus();" style="cursor:pointer"/>
+            <h:form id="form">
+                <p:graphicImage id="terminalImage" value="/images/terminal.png" onclick="dlg.show();term.focus();" style="cursor:pointer"/>
 
-                <p:dialog widgetVar="dlg" height="400" header="Terminal" resizable="false" modal="true">
-                    <p:terminal widgetVar="term" commandHandler="#{terminalController.handleCommand}" width="590px"
+                <p:dialog id="terminalDialog" widgetVar="dlg" height="400" header="Terminal" resizable="false" modal="true">
+                    <p:terminal id="terminal" widgetVar="term" commandHandler="#{terminalController.handleCommand}" width="590px"
                                 welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>
                 </p:dialog>
             </h:form>
