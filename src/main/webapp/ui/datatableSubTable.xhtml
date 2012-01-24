@@ -10,8 +10,8 @@
 		<div class="entry">
 			<p>SubTable is a helper component of datatable used for grouping.</p>
 
-            <h:form>
-                <p:dataTable var="player" value="#{tableBean.players}">
+            <h:form id="form">
+                <p:dataTable id="playersTable" var="player" value="#{tableBean.players}">
 
                     <f:facet name="header">
                         FCB Statistics
@@ -61,8 +61,8 @@
 		<p:tabView>
 			<p:tab title="datatableSubTable.xhtml">
                 <pre name="code" class="xml">
-&lt;h:form&gt;
-    &lt;p:dataTable var="player" value="\#{tableBean.players}"&gt;
+&lt;h:form id="form"&gt;
+    &lt;p:dataTable id="playersTable" var="player" value="\#{tableBean.players}"&gt;
 
         &lt;f:facet name="header"&gt;
             FCB Statistics
