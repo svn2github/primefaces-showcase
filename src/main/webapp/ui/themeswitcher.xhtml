@@ -10,24 +10,24 @@
 		<div class="entry">
  			<p>ThemeSwitcher enables applying new themes on-the-fly without full page refresh.</p>
             
-            <h:form>
+            <h:form id="form">
 
                 <h:panelGrid columns="2" cellpadding="10">
                     <h:outputText value="Default Switcher:" /> 
-                    <p:themeSwitcher style="width:150px">
+                    <p:themeSwitcher style="width:150px" id="defaultSwitcher">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.themes}" />
                     </p:themeSwitcher>
                     
                     <h:outputText value="Stateful Switcher:" /> 
-                    <p:themeSwitcher value="#{guestPreferences.theme}" style="width:150px" effect="fade">
+                    <p:themeSwitcher value="#{guestPreferences.theme}" style="width:150px" effect="fade" id="statefulSwitcher">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.themes}" />
                         <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
                     </p:themeSwitcher>
                     
                     <h:outputText value="Theme Preview:" /> 
-                    <p:themeSwitcher style="width:150px" effect="fade" var="t">
+                    <p:themeSwitcher style="width:150px" effect="fade" var="t" id="themePreview">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme}"/>
                         
@@ -92,24 +92,24 @@
             <p:tabView>
 				<p:tab title="themeswitcher.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;h:panelGrid columns="2" cellpadding="10"&gt;
         &lt;h:outputText value="Default Switcher:" /&gt; 
-        &lt;p:themeSwitcher style="width:150px"&gt;
+        &lt;p:themeSwitcher style="width:150px" id="defaultSwitcher"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
             &lt;f:selectItems value="\#{themeSwitcherBean.themes}" /&gt;
         &lt;/p:themeSwitcher&gt;
 
         &lt;h:outputText value="Stateful Switcher:" /&gt; 
-        &lt;p:themeSwitcher value="\#{themeSwitcherBean.theme}" style="width:150px" effect="fade"&gt;
+        &lt;p:themeSwitcher value="\#{themeSwitcherBean.theme}" style="width:150px" effect="fade" id="statefulSwitcher"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
             &lt;f:selectItems value="\#{themeSwitcherBean.themes}" /&gt;
             &lt;p:ajax listener="\#{themeSwitcherBean.saveTheme}" /&gt;
         &lt;/p:themeSwitcher&gt;
 
         &lt;h:outputText value="Theme Preview:" /&gt; 
-        &lt;p:themeSwitcher style="width:150px" effect="fade" var="t"&gt;
+        &lt;p:themeSwitcher style="width:150px" effect="fade" var="t" id="themePreview"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
             &lt;f:selectItems value="\#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="\#{theme.name}" itemValue="\#{theme}"/&gt;
 
