@@ -12,9 +12,9 @@
             <p>Dynamic tree loads nodes on demand with ajax. This is especially useful when dealing with huge trees with many nodes.
             In addition when caching is enabled, expanding a previously loaded node will not result in an ajax request to load it's children again.</p>
 
-			<h:form>
+			<h:form id="form">
 
-				<p:tree value="#{treeBean.root}" var="node" dynamic="true" cache="true">
+				<p:tree value="#{treeBean.root}" var="node" dynamic="true" cache="true" id="tree">
 					<p:treeNode>
 						<h:outputText value="#{node}"/>
 					</p:treeNode>
@@ -26,9 +26,9 @@
 			<p:tabView>
 				<p:tab title="tree.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
-    &lt;p:tree value="#{treeBean.root}" var="node" dynamic="true" cache="true"&gt;
+    &lt;p:tree value="#{treeBean.root}" var="node" dynamic="true" cache="true" id="tree"&gt;
         &lt;p:treeNode&gt;
             &lt;h:outputText value="#{node}"/&gt;
         &lt;/p:treeNode&gt;
