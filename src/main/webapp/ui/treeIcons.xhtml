@@ -11,7 +11,7 @@
 		<div class="entry">
 			<p>Each node in a tree can have a specific icon.</p>
 
-			<h:form>
+			<h:form id="form">
 
 				<p:tree id="docTree" value="#{documentsController.root}" var="doc">
 					<p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed">
@@ -37,7 +37,7 @@
 			<p:tabView>
 				<p:tab title="treeIcons.xhtml">
 			<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:tree id="docTree" value="\#{documentsController.root}" var="doc"&gt;
         &lt;p:treeNode expandedIcon="ui-icon-folder-open"
