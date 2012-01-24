@@ -39,11 +39,11 @@
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column id="ManufacturerColumn" filterBy="#{car.manufacturer}" headerText="Manufacturer" footerText="exact" filterOptions="#{tableBean.manufacturerOptions}" filterMatchMode="exact">
+                    <p:column id="manufacturerColumn" filterBy="#{car.manufacturer}" headerText="Manufacturer" footerText="exact" filterOptions="#{tableBean.manufacturerOptions}" filterMatchMode="exact">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column filterBy="#{car.color}" headerText="Color" footerText="endsWith" >
+                    <p:column id="colorColumn" filterBy="#{car.color}" headerText="Color" footerText="endsWith" filterMatchMode="endsWith">
                         <h:outputText value="#{car.color}" />
                     </p:column>
 
@@ -77,14 +77,14 @@
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column id="ManufacturerColumn" filterBy="\#{car.manufacturer}" 
+        &lt;p:column id="manufacturerColumn" filterBy="\#{car.manufacturer}" 
                 headerText="Manufacturer" footerText="exact"
                 filterOptions="\#{tableBean.manufacturerOptions}"
                 filterMatchMode="exact"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column filterBy="\#{car.color}"
+        &lt;p:column id="colorColumn" filterBy="\#{car.color}"
                 headerText="Color" footerText="endsWith" filterMatchMode="endsWith"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
