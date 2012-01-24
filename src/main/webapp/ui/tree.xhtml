@@ -12,11 +12,11 @@
 			<p>In it's simplest form, tree displays a server side model on client side. A pure client side tree is useful
             to create tree based navigation menus.</p>
 
-			<h:form>
+			<h:form id="form">
 
-				<p:tree value="#{treeBean.root}" var="node">
-					<p:treeNode>
-						<h:outputText value="#{node}"/>
+				<p:tree value="#{treeBean.root}" var="node" id="tree">
+					<p:treeNode id="treeNode">
+						<h:outputText value="#{node}" id="lblNode"/>
 					</p:treeNode>
 				</p:tree>
 
@@ -26,11 +26,11 @@
 			<p:tabView>
 				<p:tab title="tree.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
-    &lt;p:tree value="\#{treeBean.root}" var="node"&gt;
-        &lt;p:treeNode&gt;
-            &lt;h:outputText value="\#{node}"/&gt;
+    &lt;p:tree value="\#{treeBean.root}" var="node" id="tree"&gt;
+        &lt;p:treeNode id="treeNode"&gt;
+            &lt;h:outputText value="\#{node}" id="lblNode"/&gt;
         &lt;/p:treeNode&gt;
     &lt;/p:tree&gt;
 
