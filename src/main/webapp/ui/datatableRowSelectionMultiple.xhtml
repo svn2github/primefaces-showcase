@@ -20,7 +20,7 @@
 
             <h:form id="form">
 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}" rowKey="#{car.model}"
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" rowKey="#{car.model}"
                              selection="#{tableBean.selectedCars}" selectionMode="multiple">
 
                     <f:facet name="header">
@@ -68,7 +68,7 @@
 <pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.smallCarsModel}" rowKey="\#{car.model}"
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.smallCarsModel}" rowKey="\#{car.model}"
                  selection="\#{tableBean.selectedCars}" selectionMode="multiple"&gt;
 
         &lt;f:facet name="header"&gt;

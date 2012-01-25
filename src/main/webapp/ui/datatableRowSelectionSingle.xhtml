@@ -44,13 +44,13 @@
                     </p:column>
 
                     <f:facet name="footer">
-                        <p:commandButton value="View" icon="ui-icon-search"
+                        <p:commandButton id="viewButton" value="View" icon="ui-icon-search"
                                 update=":form:display" oncomplete="carDialog.show()"/>
                     </f:facet>
                     
                 </p:dataTable>
                 
-                <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+                <p:dialog id="dialog" header="Car Detail" widgetVar="carDialog" resizable="false"
                           width="200" showEffect="clip" hideEffect="fold">
 
                     <h:panelGrid id="display" columns="2" cellpadding="4">
@@ -105,13 +105,13 @@
         &lt;/p:column&gt;
 
         &lt;f:facet name="footer"&gt;
-            &lt;p:commandButton value="View" icon="ui-icon-search"
+            &lt;p:commandButton id="viewButton" value="View" icon="ui-icon-search"
                     update=":form:display" oncomplete="carDialog.show()"/&gt;
         &lt;/f:facet&gt;
 
     &lt;/p:dataTable&gt;
 
-    &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+    &lt;p:dialog id="dialog" header="Car Detail" widgetVar="carDialog" resizable="false"
               width="200" showEffect="clip" hideEffect="fold"&gt;
 
         &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;

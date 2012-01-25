@@ -314,4 +314,18 @@ public abstract class AbstractIntegrationTest {
     protected void scrollByOffset(int x, int y) {
 		executeJS("window.scrollBy(" + x + "," + y + ")");
 	}
+    
+    protected Boolean isTextPresent(WebElement element, String text) {
+		return element.getText().contains(text);
+	}
+	
+	protected Boolean isTextsPresent(WebElement element, List<String> strings) {
+		String elementStr = element.getText();
+		for (String aStr : strings) {
+			if(!elementStr.contains(aStr)) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

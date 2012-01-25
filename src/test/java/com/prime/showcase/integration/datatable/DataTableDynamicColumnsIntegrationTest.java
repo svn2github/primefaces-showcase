@@ -1,8 +1,5 @@
 package com.prime.showcase.integration.datatable;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-
 import java.util.List;
 
 import org.junit.Before;
@@ -11,6 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 public class DataTableDynamicColumnsIntegrationTest extends AbstractIntegrationTest {
 	
@@ -26,6 +26,7 @@ public class DataTableDynamicColumnsIntegrationTest extends AbstractIntegrationT
 		verifyNumberOfColumns(0);
 		
 		addColumnAndVerify("Audi", 1);
+		scrollByOffset(0, -400);
 		addColumnAndVerify("Ferrari", 2);
 	}
 	

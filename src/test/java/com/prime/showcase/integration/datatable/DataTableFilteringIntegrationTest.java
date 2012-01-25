@@ -11,7 +11,6 @@ import static org.junit.Assert.assertTrue;
 
 public class DataTableFilteringIntegrationTest extends AbstractDataTableIntegrationTest {
 	private static final String DATA_TABLE_DATA = "dataTable_data";
-	private static final String ROW_CLASS = ".ui-widget-content";
 	@Before
 	public void init() {
 		String testUrl = toShowcaseUrl("datatableFiltering.jsf");

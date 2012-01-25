@@ -15,7 +15,7 @@
 
                 <p:growl id="growl" showDetail="true"/>
 
-                <p:dataTable var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
+                <p:dataTable id="cars" var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCar}" selectionMode="single">
                     
                     <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" />
@@ -42,7 +42,7 @@
                     </p:column>
                 </p:dataTable>
 
-                <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+                <p:dialog id="dialog" header="Car Detail" widgetVar="carDialog" resizable="false"
                           showEffect="explode" hideEffect="explode">
 
                     <h:panelGrid id="display" columns="2" cellpadding="4">
@@ -75,7 +75,7 @@
 
     &lt;p:growl id="growl" showDetail="true"/&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.mediumCarsModel}" paginator="true" rows="10"
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                  selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
 
         &lt;p:ajax event="rowSelect" listener="\#{tableBean.onRowSelect}" 
@@ -103,7 +103,7 @@
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
 
-    &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+    &lt;p:dialog id="dialog" header="Car Detail" widgetVar="carDialog" resizable="false"
                 showEffect="explode" hideEffect="explode"&gt;
 
         &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;

@@ -23,7 +23,7 @@
 
             <h:form id="form">
 
-                <p:dataTable var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
+                <p:dataTable id="cars" var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCar}">
 
                     <f:facet name="header">
@@ -49,14 +49,14 @@
                     </p:column>
 
                     <f:facet name="footer">
-                        <p:commandButton value="View" icon="ui-icon-search"
+                        <p:commandButton id="viewButton" value="View" icon="ui-icon-search"
                                          update=":form:displaySingle" oncomplete="singleCarDialog.show()"/>
                     </f:facet>
                 </p:dataTable>
 
                 <br />
 
-                <p:dataTable var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
+                <p:dataTable id="multiCars" var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCars}">
 
                     <f:facet name="header">
@@ -82,12 +82,12 @@
                     </p:column>
 
                     <f:facet name="footer">
-                        <p:commandButton value="View" icon="ui-icon-search"
+                        <p:commandButton id="multiViewButton" value="View" icon="ui-icon-search"
                                          update=":form:displayMulti" oncomplete="multiCarDialog.show()"/>
                     </f:facet>
                 </p:dataTable>
 
-                <p:dialog header="Car Detail" widgetVar="singleCarDialog" resizable="false"
+                <p:dialog id="dialog" header="Car Detail" widgetVar="singleCarDialog" resizable="false"
                           showEffect="fade" hideEffect="explode">
 
                     <h:panelGrid id="displaySingle" columns="2" cellpadding="4">
@@ -110,7 +110,7 @@
                     </h:panelGrid>
                 </p:dialog>
 
-                <p:dialog header="Car Detail" widgetVar="multiCarDialog"
+                <p:dialog id="multiDialog" header="Car Detail" widgetVar="multiCarDialog"
                           height="300" showEffect="fade" hideEffect="explode">
 
                     <p:dataList id="displayMulti" value="#{tableBean.selectedCars}" var="selectedCar">
@@ -127,7 +127,7 @@
                     <pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.mediumCarsModel}" paginator="true" rows="10"
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                  selection="\#{tableBean.selectedCar}"&gt;
 
         &lt;f:facet name="header"&gt;
@@ -153,12 +153,12 @@
         &lt;/p:column&gt;
 
         &lt;f:facet name="footer"&gt;
-            &lt;p:commandButton value="View" icon="ui-icon-search"
+            &lt;p:commandButton id="viewCommand" value="View" icon="ui-icon-search"
                              update=":form:displaySingle" oncomplete="singleCarDialog.show()"/&gt;
         &lt;/f:facet&gt;
     &lt;/p:dataTable&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.mediumCarsModel}" paginator="true" rows="10"
+    &lt;p:dataTable id="multiCars" var="car" value="\#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                  selection="\#{tableBean.selectedCars}"&gt;
 
         &lt;f:facet name="header"&gt;
@@ -184,12 +184,12 @@
         &lt;/p:column&gt;
 
         &lt;f:facet name="footer"&gt;
-            &lt;p:commandButton value="View" icon="ui-icon-search"
+            &lt;p:commandButton id="multiViewButton" value="View" icon="ui-icon-search"
                              update=":form:displayMulti" oncomplete="multiCarDialog.show()"/&gt;
         &lt;/f:facet&gt;
     &lt;/p:dataTable&gt;
 
-    &lt;p:dialog header="Car Detail" widgetVar="singleCarDialog" resizable="false"
+    &lt;p:dialog id="dialog" header="Car Detail" widgetVar="singleCarDialog" resizable="false"
               showEffect="fade" hideEffect="explode"&gt;
 
         &lt;h:panelGrid id="displaySingle" columns="2" cellpadding="4"&gt;
@@ -212,7 +212,7 @@
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
 
-    &lt;p:dialog header="Car Detail" widgetVar="multiCarDialog"
+    &lt;p:dialog id="multiDialog" header="Car Detail" widgetVar="multiCarDialog"
               height="300" showEffect="fade" hideEffect="explode"&gt;
 
         &lt;p:dataList id="displayMulti"

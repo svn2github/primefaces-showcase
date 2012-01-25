@@ -57,7 +57,7 @@
 
                     <p:column style="width:40px">
                          <h:panelGrid columns="3" styleClass="actions" cellpadding="2">
-                             <p:commandButton update=":form:display" oncomplete="carDialog.show()" icon="ui-icon-search" title="View">
+                             <p:commandButton id="selectButton" update=":form:display" oncomplete="carDialog.show()" icon="ui-icon-search" title="View">
                                  <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
                              </p:commandButton>
                          </h:panelGrid>
@@ -121,7 +121,7 @@
 
         &lt;p:column style="width:40px"&gt;
              &lt;h:panelGrid columns="3" styleClass="actions" cellpadding="2"&gt;
-                 &lt;p:commandButton update=":form:display" oncomplete="carDialog.show()" icon="ui-icon-search" title="View"&gt;
+                 &lt;p:commandButton id="selectButton" update=":form:display" oncomplete="carDialog.show()" icon="ui-icon-search" title="View"&gt;
                      &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
                  &lt;/p:commandButton&gt;
              &lt;/h:panelGrid&gt;
