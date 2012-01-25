@@ -39,9 +39,9 @@
 		<h1 class="title ui-widget-header ui-corner-all">Schedule</h1>
 		<div class="entry">
 		<p>Schedule has flexible locale support.</p>
-			<h:form>
+			<h:form id="form">
                 <h3>Turkish</h3>
-				<p:schedule value="#{scheduleController.eventModel}" locale="tr" />
+				<p:schedule id="schedule" value="#{scheduleController.eventModel}" locale="tr" />
 			</h:form>
 <h3>Source</h3>
 <p:tabView>
