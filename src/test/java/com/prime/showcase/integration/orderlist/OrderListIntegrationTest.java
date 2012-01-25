@@ -26,7 +26,6 @@ public class OrderListIntegrationTest extends AbstractIntegrationTest {
 		assertThat("Antalya",equalTo(findElementByXpath("//table[@id='form:basicList']/tbody/tr/td/ul/li[4]").getText()));
 		assertThat("Bursa",equalTo(findElementByXpath("//table[@id='form:basicList']/tbody/tr/td/ul/li[5]").getText()));
 		
-		
 		WebElement bursa = findElementByXpath("//table[@id='form:basicList']/tbody/tr/td/ul/li[5]");
 		
 		Actions action = new Actions(driver);
@@ -48,6 +47,8 @@ public class OrderListIntegrationTest extends AbstractIntegrationTest {
 	@Test
 	public void shouldBeAbleToMoveItemsToTop() throws InterruptedException {
 		
+		scrollByOffset(0,300);
+		
 		WebElement Xavi = findElementByXpath("//table[@id='form:customList']/tbody/tr/td[2]/ul/li[4]/table/tbody/tr/td[2]");
 		assertThat("Xavi - 6",equalTo(Xavi.getText()));
 		
@@ -64,6 +65,7 @@ public class OrderListIntegrationTest extends AbstractIntegrationTest {
 	
 	@Test
 	public void shouldBeAbleToMoveItemsToBottom() throws InterruptedException {
+		scrollByOffset(0,300);
 		
 		WebElement Messi = findElementByXpath("//table[@id='form:customList']/tbody/tr/td[2]/ul/li[1]/table/tbody/tr/td[2]");
 		assertThat("Messi - 10",equalTo(Messi.getText()));
@@ -81,6 +83,7 @@ public class OrderListIntegrationTest extends AbstractIntegrationTest {
 	
 	@Test
 	public void shouldBeAbleToMoveItemsToUp() throws InterruptedException {
+		scrollByOffset(0,300);
 		
 		WebElement Villa = findElementByXpath("//table[@id='form:customList']/tbody/tr/td[2]/ul/li[3]/table/tbody/tr/td[2]");
 		assertThat("Villa - 7",equalTo(Villa.getText()));
@@ -98,6 +101,7 @@ public class OrderListIntegrationTest extends AbstractIntegrationTest {
 	
 	@Test
 	public void shouldBeAbleToMoveItemsToDown() throws InterruptedException {
+		scrollByOffset(0,300);
 		
 		WebElement Iniesta = findElementByXpath("//table[@id='form:customList']/tbody/tr/td[2]/ul/li[2]/table/tbody/tr/td[2]");
 		assertThat("Iniesta - 8",equalTo(Iniesta.getText()));
