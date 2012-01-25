@@ -80,7 +80,6 @@ public class TreeSingleSelectionIntegrationTest extends AbstractIntegrationTest 
 		WebElement node = item.findElement(By.tagName("div")).findElement(
 				By.tagName("span"));
 		String strNode = node.getText();
-		System.out.println(strNode);
 		node.click();
 		btnDisplay.click();
 		waitUntilAjaxRequestCompletes();
