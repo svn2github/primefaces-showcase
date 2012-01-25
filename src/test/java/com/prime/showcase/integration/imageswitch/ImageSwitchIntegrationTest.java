@@ -23,83 +23,56 @@ public class ImageSwitchIntegrationTest extends AbstractIntegrationTest {
 
 	@Test
 	public void shouldSwitchImagesForFeedEffect() throws InterruptedException {
-		assertTrue(findElementById("form:fadeEffectImages:0:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:1:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:2:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:3:image").isDisplayed());
+		shouldRender("form:fadeEffectImages:", 0);
 
 		Thread.sleep(4000l);
 
-		assertTrue(!findElementById("form:fadeEffectImages:0:image").isDisplayed());
-		assertTrue(findElementById("form:fadeEffectImages:1:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:2:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:3:image").isDisplayed());
+		shouldRender("form:fadeEffectImages:", 1);
 
 		Thread.sleep(3000l);
-
-		assertTrue(!findElementById("form:fadeEffectImages:0:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:1:image").isDisplayed());
-		assertTrue(findElementById("form:fadeEffectImages:2:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:3:image").isDisplayed());
+		shouldRender("form:fadeEffectImages:", 2);
 
 		Thread.sleep(3000l);
-
-		assertTrue(!findElementById("form:fadeEffectImages:0:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:1:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:2:image").isDisplayed());
-		assertTrue(findElementById("form:fadeEffectImages:3:image").isDisplayed());
+		shouldRender("form:fadeEffectImages:", 3);
 
 		Thread.sleep(3000l);
-
-		assertTrue(findElementById("form:fadeEffectImages:0:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:1:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:2:image").isDisplayed());
-		assertTrue(!findElementById("form:fadeEffectImages:3:image").isDisplayed());
+		shouldRender("form:fadeEffectImages:", 0);
 	}
-	
+
+	private void shouldRender(String component, int render) {
+		for (int index = 0; index < 4; index++) {
+			if (index == render)
+				assertTrue(findElementById(component + index + ":image").isDisplayed());
+			else
+				assertTrue(!findElementById(component + index + ":image").isDisplayed());
+		}
+
+	}
+
 	@Test
 	public void shouldSwitchImagesWithManuelControl() throws InterruptedException {
-		
+
 		WebElement nextButton = findElementById("form:next");
 		WebElement prevButton = findElementById("form:prev");
 		
-		
-		assertTrue(findElementById("form:manuelSwitcherImages:0:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:1:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:2:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:3:image").isDisplayed());
-		
-		nextButton.click();
-		
-		Thread.sleep(2000l);
-		
-		assertTrue(! findElementById("form:manuelSwitcherImages:0:image").isDisplayed());
-		assertTrue( findElementById("form:manuelSwitcherImages:1:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:2:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:3:image").isDisplayed());
-		
+		shouldRender("form:manuelSwitcherImages:", 0);
+
 		nextButton.click();
 		Thread.sleep(2000l);
 		
-		assertTrue(! findElementById("form:manuelSwitcherImages:0:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:1:image").isDisplayed());
-		assertTrue(findElementById("form:manuelSwitcherImages:2:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:3:image").isDisplayed());
-		
+		shouldRender("form:manuelSwitcherImages:", 1);
+
+		nextButton.click();
+		Thread.sleep(2000l);
+		shouldRender("form:manuelSwitcherImages:", 2);
+
 		prevButton.click();
 		Thread.sleep(2000l);
-		
-		assertTrue(! findElementById("form:manuelSwitcherImages:0:image").isDisplayed());
-		assertTrue( findElementById("form:manuelSwitcherImages:1:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:2:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:3:image").isDisplayed());
-		
+		shouldRender("form:manuelSwitcherImages:", 1);
+	
+
 		nextButton.click();
 		Thread.sleep(2000l);
-		
-		assertTrue(! findElementById("form:manuelSwitcherImages:0:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:1:image").isDisplayed());
-		assertTrue(findElementById("form:manuelSwitcherImages:2:image").isDisplayed());
-		assertTrue(! findElementById("form:manuelSwitcherImages:3:image").isDisplayed());
+		shouldRender("form:manuelSwitcherImages:", 2);
 	}
 }

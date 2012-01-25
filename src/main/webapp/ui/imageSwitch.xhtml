@@ -71,6 +71,19 @@
 			<p:tabView>
 				<p:tab title="imageSwitchEffect.xhtml">
 					<pre name="code" class="xml">
+					
+&lt;h3&gt;Wipe with Manual Controls&lt;/h3&gt;
+&lt;p:commandButton type="button" onclick="switcher.previous();"
+                icon="ui-icon-circle-triangle-w"/&gt;
+&lt;p:commandButton type="button" onclick="switcher.next();"
+                icon="ui-icon-circle-triangle-e"/&gt;
+
+&lt;p:imageSwitch effect="wipe" widgetVar="switcher" slideshowAuto="false"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
+
 &lt;h3&gt;Fade&lt;/h3&gt;
 &lt;p:imageSwitch effect="fade"&gt;
     &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
@@ -94,18 +107,6 @@
 
 &lt;h3&gt;Shuffle&lt;/h3&gt;
 &lt;p:imageSwitch effect="shuffle"&gt;
-    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
-        &lt;p:graphicImage value="/images/\#{image}" /&gt;
-    &lt;/ui:repeat&gt;
-&lt;/p:imageSwitch&gt;
-
-&lt;h3&gt;Wipe with Manual Controls&lt;/h3&gt;
-&lt;p:commandButton type="button" onclick="switcher.previous();"
-                icon="ui-icon-circle-triangle-w"/&gt;
-&lt;p:commandButton type="button" onclick="switcher.next();"
-                icon="ui-icon-circle-triangle-e"/&gt;
-
-&lt;p:imageSwitch effect="wipe" widgetVar="switcher" slideshowAuto="false"&gt;
     &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
         &lt;p:graphicImage value="/images/\#{image}" /&gt;
     &lt;/ui:repeat&gt;
