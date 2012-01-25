@@ -10,13 +10,14 @@
 		<div class="entry">
 			<p>Node selection is a built-in feature and support three different modes, "single", "multiple" and "checkbox.</p>
 			
-			<h:form>
+			<h:form id="form">
 			
 				<p:growl id="messages" showDetail="true" />
 
 				<p:tree value="#{treeBean.root}" var="node"
 						selectionMode="multiple"
-						selection="#{treeBean.selectedNodes}">
+						selection="#{treeBean.selectedNodes}"
+						id="treeMultiple">
 
 					<p:treeNode>
 						<h:outputText value="#{node}" />
@@ -24,7 +25,7 @@
 				</p:tree>
 				
 				<p:commandButton value="Display Selected" update="messages" style="margin:20px 0 20px 0;"
-								actionListener="#{treeBean.displaySelectedMultiple}"/>
+								actionListener="#{treeBean.displaySelectedMultiple}" id="btnDisplay"/>
 				
 			</h:form>
 			
@@ -32,12 +33,12 @@
 			<p:tabView>
 				<p:tab title="treeSelectionMultiple.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
 	&lt;p:growl id="messages" showDetail="true" /&gt;
 
 	&lt;p:tree value="\#{treeBean.root}" var="node"
-		selectionMode="multiple" selection="\#{treeBean.selectedNodes}"&gt;
+		selectionMode="multiple" selection="\#{treeBean.selectedNodes}" id="treeMultiple"&gt;
 
 		&lt;p:treeNode&gt;
 			&lt;h:outputText value="\#{node}" /&gt;
@@ -45,7 +46,7 @@
 	&lt;/p:tree&gt;
 	
 	&lt;p:commandButton value="Display Selected" update="messages"
-		actionListener="\#{treeBean.displaySelectedMultiple}" /&gt;
+		actionListener="\#{treeBean.displaySelectedMultiple}" id="btnDisplay" /&gt;
 	
 &lt;/h:form&gt;
 					</pre>
