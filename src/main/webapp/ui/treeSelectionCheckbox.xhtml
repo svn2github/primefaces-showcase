@@ -10,7 +10,7 @@
 		<div class="entry">
 			<p>Node selection is a built-in feature and support three different modes, "single", "multiple" and "checkbox.</p>
 
-			<h:form>
+			<h:form id="form">
 
 				<p:growl id="messages" showDetail="true" />
 
@@ -24,7 +24,7 @@
 				</p:tree>
 
 				<p:commandButton value="Display Selected" update="messages" style="margin:20px 0 20px 0;"
-								actionListener="#{treeBean.displaySelectedMultiple}"/>
+								actionListener="#{treeBean.displaySelectedMultiple}" id="btnDisplay"/>
 
 			</h:form>
 
@@ -32,7 +32,7 @@
 			<p:tabView>
 				<p:tab title="treeSelectionCheckbox.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:growl id="messages" showDetail="true" /&gt;
 
@@ -46,7 +46,7 @@
     &lt;/p:tree&gt;
 
     &lt;p:commandButton value="Display Selected" update="messages"
-                    actionListener="\#{treeBean.displaySelectedMultiple}"/&gt;
+                    actionListener="\#{treeBean.displaySelectedMultiple}" id="btnDisplay"/&gt;
 
 &lt;/h:form&gt;
 					</pre>
