@@ -20,9 +20,9 @@
 		<div class="entry">
 			<p>Specific rows be can styled based on conditions. Table below highlights cars that are manufactured before 1980.</p>
 
-            <h:form>
+            <h:form id="form">
 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}" rowStyleClass="#{car.year le 1980 ? 'old' : null}">
+                <p:dataTable id="table" var="car" value="#{tableBean.carsSmall}" rowStyleClass="#{car.year le 1980 ? 'old' : null}">
                     <p:column>
                         <f:facet name="header">
 								Model
@@ -58,9 +58,9 @@
 		<p:tabView>
 			<p:tab title="datatableColoring.xhtml">
 <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"
+    &lt;p:dataTable id="table" var="car" value="\#{tableBean.carsSmall}"
                 rowStyleClass="\#{car.year le 1980 ? 'old' : null}"&gt;
         &lt;p:column&gt;
             &lt;f:facet name="header"&gt;
