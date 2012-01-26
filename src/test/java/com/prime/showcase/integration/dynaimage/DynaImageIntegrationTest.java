@@ -1,10 +1,11 @@
 package com.prime.showcase.integration.dynaimage;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.NoSuchElementException;
-import com.prime.showcase.integration.AbstractIntegrationTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.NoSuchElementException;
+
+import com.prime.showcase.integration.AbstractIntegrationTest;
+
 import static org.junit.Assert.assertTrue;
 
 public class DynaImageIntegrationTest extends AbstractIntegrationTest {

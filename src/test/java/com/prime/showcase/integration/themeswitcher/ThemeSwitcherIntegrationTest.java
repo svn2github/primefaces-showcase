@@ -1,16 +1,15 @@
 package com.prime.showcase.integration.themeswitcher;
 
-import static junit.framework.Assert.assertTrue;
-
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By.ByTagName;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+
+import static junit.framework.Assert.assertTrue;
 
 public class ThemeSwitcherIntegrationTest extends AbstractIntegrationTest {
 

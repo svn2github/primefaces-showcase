@@ -44,7 +44,7 @@ public abstract class AbstractIntegrationTest {
 		FirefoxProfile profile = new FirefoxProfile();
 		profile.setPreference("browser.download.folderList", 2);
 		profile.setPreference("browser.download.manager.showWhenStarting", false);
-		profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "image/jpg");
+		profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "image/jpg, text/csv,text/xml,application/xml,application/vnd.ms-excel,application/x-excel,application/x-msexcel,application/excel,application/pdf");
 		profile.setPreference("browser.download.dir", System.getProperty("user.home"));
 		return profile;
 	}

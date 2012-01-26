@@ -49,8 +49,6 @@ public class ImageCropperIntegrationTest extends AbstractIntegrationTest {
         
         int x1 = Integer.valueOf(coords[0]);
         int y1 = Integer.valueOf(coords[1]);
-        int w1 = Integer.valueOf(coords[2]);
-        int h1 = Integer.valueOf(coords[3]);
         
         //play with crop dimensions
         for (WebElement e : findElementsBySelector("form#form " + escapeClientId("form:imageCropper") + " .jcrop-holder .jcrop-handle")) {

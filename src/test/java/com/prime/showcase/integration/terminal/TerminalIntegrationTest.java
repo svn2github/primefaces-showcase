@@ -1,12 +1,12 @@
 package com.prime.showcase.integration.terminal;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.NoSuchElementException;
-import com.prime.showcase.integration.AbstractIntegrationTest;
-import com.prime.showcase.integration.SeleniumActionHelper;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+
+import com.prime.showcase.integration.AbstractIntegrationTest;
+
 import static org.junit.Assert.assertTrue;
 
 public class TerminalIntegrationTest extends AbstractIntegrationTest {

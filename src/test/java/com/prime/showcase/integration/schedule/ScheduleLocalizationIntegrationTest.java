@@ -2,7 +2,6 @@ package com.prime.showcase.integration.schedule;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
 
@@ -18,9 +17,14 @@ public class ScheduleLocalizationIntegrationTest extends AbstractIntegrationTest
 	@Test
 	public void shouldRenderInTurkish() {
 
-		assertEquals("BugŸn", driver.findElement(By.xpath("//div[@id='form:schedule_container']/table/tbody/tr/td/span[4]/span/span")).getText());
-		assertEquals("Ay", driver.findElement(By.xpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span/span/span")).getText());
-		assertEquals("GŸn", driver.findElement(By.xpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span[3]/span/span")).getText());
-		assertEquals("Hafta", driver.findElement(By.xpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span[2]/span/span")).getText());
+		assertEquals("bugŸn", findElementByXpath("//div[@id='form:schedule_container']/table/tbody/tr/td/span[4]/span/span").getText());
+		assertEquals("Ay", findElementByXpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span/span/span").getText());
+		assertEquals("GŸn", findElementByXpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span[3]/span/span").getText());
+		assertEquals("Hafta", findElementByXpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span[2]/span/span").getText());
+		
+		findElementByXpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span[2]/span/span").click();
+		assertEquals("TŸm GŸn", findElementBySelector("table.fc-agenda-allday > tbody > tr > th.ui-widget-header.fc-agenda-axis").getText());
+		
+		
 	}
 }
