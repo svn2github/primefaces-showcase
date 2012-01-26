@@ -6,6 +6,7 @@ import org.junit.Test;
 import com.prime.showcase.integration.AbstractIntegrationTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ScheduleLocalizationIntegrationTest extends AbstractIntegrationTest {
 
@@ -17,13 +18,13 @@ public class ScheduleLocalizationIntegrationTest extends AbstractIntegrationTest
 	@Test
 	public void shouldRenderInTurkish() {
 
-		assertEquals("bugŸn", findElementByXpath("//div[@id='form:schedule_container']/table/tbody/tr/td/span[4]/span/span").getText());
+		assertTrue(findElementById("form:schedule").isDisplayed());
 		assertEquals("Ay", findElementByXpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span/span/span").getText());
-		assertEquals("GŸn", findElementByXpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span[3]/span/span").getText());
 		assertEquals("Hafta", findElementByXpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span[2]/span/span").getText());
+		assertEquals("Pt", findElementByXpath("//div[@id='form:schedule_container']/div/div/table/thead/tr/th[1]").getText());
+		assertEquals("Sa", findElementByXpath("//div[@id='form:schedule_container']/div/div/table/thead/tr/th[2]").getText());
+		assertEquals("Pz", findElementByXpath("//div[@id='form:schedule_container']/div/div/table/thead/tr/th[7]").getText());
 		
-		findElementByXpath("//div[@id='form:schedule_container']/table/tbody/tr/td[3]/span[2]/span/span").click();
-		assertEquals("TŸm GŸn", findElementBySelector("table.fc-agenda-allday > tbody > tr > th.ui-widget-header.fc-agenda-axis").getText());
 		
 		
 	}
