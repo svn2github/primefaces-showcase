@@ -23,7 +23,7 @@
 			<p>Similar to a datatable, Carousel can be used to display a set of data.</p>
 		
 			<h3>Basic Carousel with Header/Footer</h3>
-			<p:carousel value="#{tableBean.carsSmall}" headerText="Cars" var="car" itemStyleClass="carItem">
+			<p:carousel id="basicCarousel" value="#{tableBean.carsSmall}" headerText="Cars" var="car" itemStyleClass="carItem">
 				<f:facet name="header">
                         Cars
                 </f:facet>
@@ -43,7 +43,7 @@
 			</p:carousel>
 		
 			<h3>Visible Items</h3>
-			<p:carousel value="#{tableBean.carsSmall}" var="car" rows="1" itemStyleClass="carItem">	
+			<p:carousel id="smallCarousel" value="#{tableBean.carsSmall}" var="car" rows="1" itemStyleClass="carItem">	
 				<h:panelGrid columns="1" style="width:100%" cellpadding="5">
 					<p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/> 
 					
@@ -60,7 +60,7 @@
 				<p:tab title="carousel.xhtml">
 				<pre name="code" class="xml">
 &lt;h3&gt;Basic Carousel with Header/Footer&lt;/h3&gt;
-&lt;p:carousel value="\#{tableBean.carsSmall}" var="car" itemStyleClass="carItem"&gt;
+&lt;p:carousel id="basicCarousel" value="\#{tableBean.carsSmall}" var="car" itemStyleClass="carItem"&gt;
     &lt;f:facet name="header"&gt;
             Cars
     &lt;/f:facet&gt;
@@ -79,7 +79,7 @@
 &lt;/p:carousel&gt;
 
 &lt;h3&gt;Visible Items&lt;/h3&gt;
-&lt;p:carousel value="\#{tableBean.carsSmall}" var="car" 
+&lt;p:carousel id="smallCarousel" value="\#{tableBean.carsSmall}" var="car" 
 		rows="1" itemStyleClass="carItem"&gt;	
 	&lt;h:panelGrid columns="1" style="width:100%" cellpadding="5" &gt;
 		&lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt; 
