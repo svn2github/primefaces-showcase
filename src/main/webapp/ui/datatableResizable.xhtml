@@ -15,42 +15,42 @@
                     <p:growl id="growl" showDetail="true"/>
                     
                     <h3>Basic Resize</h3>
-                    <p:dataTable var="car" value="#{tableBean.carsSmall}" resizableColumns="true">
-                        <p:column headerText="Model" style="width:125px">
+                    <p:dataTable var="car" value="#{tableBean.carsSmall}" resizableColumns="true" id="basicTable">
+                        <p:column headerText="Model" style="width:125px" id="model">
                             #{car.model}
                         </p:column>
 
-                        <p:column headerText="Year" style="width:125px">
+                        <p:column headerText="Year" style="width:125px" id="year">
                             <h:outputText value="#{car.year}" />
                         </p:column>
 
-                        <p:column headerText="Manufacturer" style="width:125px">
+                        <p:column headerText="Manufacturer" style="width:125px" id="manufacturer">
                             <h:outputText value="#{car.manufacturer}" />
                         </p:column>
 
-                        <p:column headerText="Color" style="width:125px">
+                        <p:column headerText="Color" style="width:125px" id="color">
                             <h:outputText value="#{car.color}" />
                         </p:column>
                     </p:dataTable>
                     
                     <h3>Ajax Resize</h3>
-                    <p:dataTable var="car" value="#{tableBean.carsSmall}" resizableColumns="true">
+                    <p:dataTable var="car" value="#{tableBean.carsSmall}" resizableColumns="true" id="ajaxTable">
                         
                         <p:ajax event="colResize" update=":form:growl" listener="#{tableBean.onResize}" />
                         
-                        <p:column headerText="Model" style="width:125px">
+                        <p:column headerText="Model" style="width:125px" id="model">
                             #{car.model}
                         </p:column>
 
-                        <p:column headerText="Year" style="width:125px">
+                        <p:column headerText="Year" style="width:125px" id="year">
                             <h:outputText value="#{car.year}" />
                         </p:column>
 
-                        <p:column headerText="Manufacturer" style="width:125px">
+                        <p:column headerText="Manufacturer" style="width:125px" id="manufacturer">
                             <h:outputText value="#{car.manufacturer}" />
                         </p:column>
 
-                        <p:column headerText="Color" style="width:125px">
+                        <p:column headerText="Color" style="width:125px" id="color">
                             <h:outputText value="#{car.color}" />
                         </p:column>
                     </p:dataTable>
@@ -66,42 +66,42 @@
     &lt;p:growl id="growl" showDetail="true"/&gt;
 
     &lt;h3&gt;Basic Resize&lt;/h3&gt;
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" resizableColumns="true"&gt;
-        &lt;p:column headerText="Model" style="width:125px"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" resizableColumns="true" id="basicTable"&gt;
+        &lt;p:column headerText="Model" style="width:125px" id="model"&gt;
             \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" style="width:125px"&gt;
+        &lt;p:column headerText="Year" style="width:125px" id="year"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" style="width:125px"&gt;
+        &lt;p:column headerText="Manufacturer" style="width:125px" id="manufacturer"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" style="width:125px"&gt;
+        &lt;p:column headerText="Color" style="width:125px" id="color"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
 
     &lt;h3&gt;Ajax Resize&lt;/h3&gt;
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" resizableColumns="true"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" resizableColumns="true" id="ajaxTable"&gt;
 
         &lt;p:ajax event="colResize" update=":form:growl" listener="\#{tableBean.onResize}" /&gt;
 
-        &lt;p:column headerText="Model" style="width:125px"&gt;
+        &lt;p:column headerText="Model" style="width:125px" id="model"&gt;
             \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" style="width:125px"&gt;
+        &lt;p:column headerText="Year" style="width:125px" id="year"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" style="width:125px"&gt;
+        &lt;p:column headerText="Manufacturer" style="width:125px" id="manufacturer"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" style="width:125px"&gt;
+        &lt;p:column headerText="Color" style="width:125px" id="color"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
