@@ -6,8 +6,10 @@ import java.util.concurrent.TimeUnit;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -27,9 +29,13 @@ public abstract class AbstractIntegrationTest {
 	private static final int DEFAULT_ANIMATED_INTERVAL_IN_SECONDS = 400;
 
 	private static final int DEFAULT_TIMEOUT_IN_SECONDS = 10;
-    
+
+	private static final int WIDTH = 1280;
+
+	private static final int HEIGHT = 800;
+
 	protected static final boolean INCREASING = true;
-    
+
 	protected static final boolean DECREASING = false;
 
 	protected static WebDriver driver;
@@ -38,6 +44,8 @@ public abstract class AbstractIntegrationTest {
 	public static void beforeClass() {
 		FirefoxProfile profile = prepareProfileForFileDownload();
 		driver = new FirefoxDriver(profile);
+		driver.manage().window().setPosition(new Point(0, 0));
+		driver.manage().window().setSize(new Dimension(WIDTH, HEIGHT));
 	}
 
 	private static FirefoxProfile prepareProfileForFileDownload() {
@@ -64,7 +72,8 @@ public abstract class AbstractIntegrationTest {
 	 */
 	protected void waitUntilElementGetsValue(final String elementId, final String value) {
 		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
-				.pollingEvery(DEFAULT_SLEEP_TIME_IN_SECONDS, TimeUnit.SECONDS).ignoring(NoSuchElementException.class).until(new ExpectedCondition<Boolean>() {
+				.pollingEvery(DEFAULT_SLEEP_TIME_IN_SECONDS, TimeUnit.SECONDS).ignoring(NoSuchElementException.class)
+				.until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver wd) {
 						WebElement element = wd.findElement(By.id(elementId));
 						return element.getText().equals(value);
@@ -88,7 +97,7 @@ public abstract class AbstractIntegrationTest {
 					}
 				});
 	}
-	
+
 	protected void waitUntilAjaxRequestCompletes() {
 		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
 				.pollingEvery(DEFAULT_SLEEP_TIME_IN_SECONDS, TimeUnit.SECONDS).until(new ExpectedCondition<Boolean>() {
@@ -114,9 +123,11 @@ public abstract class AbstractIntegrationTest {
 	 */
 	protected void waitUntilAnimationCompletes(final String selector) {
 		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
-				.pollingEvery(DEFAULT_ANIMATED_INTERVAL_IN_SECONDS, TimeUnit.MILLISECONDS).until(new ExpectedCondition<Boolean>() {
+				.pollingEvery(DEFAULT_ANIMATED_INTERVAL_IN_SECONDS, TimeUnit.MILLISECONDS)
+				.until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
-						return (Boolean) ((JavascriptExecutor) d).executeScript("return ! $('" + selector + "').is(':animated');");
+						return (Boolean) ((JavascriptExecutor) d).executeScript("return ! $('" + selector
+								+ "').is(':animated');");
 					}
 				});
 	}
@@ -124,7 +135,7 @@ public abstract class AbstractIntegrationTest {
 	protected WebElement findElementById(String elementId) {
 		return driver.findElement(By.id(elementId));
 	}
-	
+
 	protected WebElement findElementByLinkText(String linkText) {
 		return driver.findElement(By.linkText(linkText));
 	}
@@ -164,8 +175,8 @@ public abstract class AbstractIntegrationTest {
 	protected List<WebElement> findElementsByXpath(String path) {
 		return driver.findElements(By.xpath(path));
 	}
-	
-    protected WebElement findElementByXpath(WebElement parent, String path) {
+
+	protected WebElement findElementByXpath(WebElement parent, String path) {
 		return parent.findElement(By.xpath(path));
 	}
 
@@ -216,116 +227,135 @@ public abstract class AbstractIntegrationTest {
 
 	protected void waitUntilElementExists(final By by) {
 		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
-				.pollingEvery(DEFAULT_SLEEP_TIME_IN_SECONDS, TimeUnit.SECONDS).ignoring(NoSuchElementException.class).until(new ExpectedCondition<Boolean>() {
+				.pollingEvery(DEFAULT_SLEEP_TIME_IN_SECONDS, TimeUnit.SECONDS).ignoring(NoSuchElementException.class)
+				.until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver wd) {
 						wd.findElement(by);
 						return true;
 					}
 				});
 	}
-    
-    protected Integer getAnimationQueueSizeBySelector(String selector, String queue) {
-        return ((Long) executeJS("return $('" + selector + "').queue('" + queue + "').length;")).intValue();
-    }
-    
-    protected Boolean anyAnimationInProgress(String selector, String queue) {
-        return (Boolean) executeJS(" var q = $('" + selector + "').queue('" + queue + "'); return q.length && q[0] == 'inprogress';");
-    }
-    
-    protected Boolean anyAnimationInProgress(String selector) {
-        return (Boolean) executeJS(" var q = $('" + selector + "').queue(); return q.length != 0 && q[0] == 'inprogress';");
-    }
 
-    /**
+	protected Integer getAnimationQueueSizeBySelector(String selector, String queue) {
+		return ((Long) executeJS("return $('" + selector + "').queue('" + queue + "').length;")).intValue();
+	}
+
+	protected Boolean anyAnimationInProgress(String selector, String queue) {
+		return (Boolean) executeJS(" var q = $('" + selector + "').queue('" + queue
+				+ "'); return q.length && q[0] == 'inprogress';");
+	}
+
+	protected Boolean anyAnimationInProgress(String selector) {
+		return (Boolean) executeJS(" var q = $('" + selector
+				+ "').queue(); return q.length != 0 && q[0] == 'inprogress';");
+	}
+
+	/**
 	 * Compares given css value before and after a delay time
 	 * 
-	 * @param WebElement e : UI element to look for
-	 * @param String cssValue : Style property to compare
+	 * @param WebElement
+	 *            e : UI element to look for
+	 * @param String
+	 *            cssValue : Style property to compare
 	 * @param boolean increasing : Should increase or decrease
 	 * @param long interval : Time in milliseconds to look before and after
-     * 
+	 * 
 	 */
-    protected Boolean shouldElementAnimating(WebElement e, String cssValue, boolean increasing, long interval) throws InterruptedException{
-        
-        String initial = e.getCssValue(cssValue);
-        
-        Thread.sleep(interval);
-        
-        String after = e.getCssValue(cssValue);
-        
-        try {
-            
-            double init = Double.parseDouble(initial.replaceAll("px", "")),
-            last = Double.parseDouble(after.replaceAll("px", "")),
-            dif = last - init;
-            
-            return dif != 0 && (dif < 0) ^ increasing;
+	protected Boolean shouldElementAnimating(WebElement e, String cssValue, boolean increasing, long interval)
+			throws InterruptedException {
 
-        } catch (NumberFormatException ex) {
-            //No action. Try with string compare.
-        }
-        
-        int diff = initial.compareToIgnoreCase(after);
-        
-        return diff != 0 && ((diff > 0) ^ increasing) ;
-    }
-	
-    protected WebElement waitUntilElementExistsAndGet(WebElement element, By by) {
-        return waitUntilElementExistsAndGet(element, by, 0);
-    }
-    
-    protected WebElement waitUntilElementExistsAndGet(WebElement element, By by, int waitSecond){
-        WebElement item = null;
-        if (element != null && by != null) {
-            try {
-                Thread.sleep(waitSecond * 1000L);
-                item = element.findElement(by);
-            } catch (Exception e) {
-               return null;
-            }
-        }
+		String initial = e.getCssValue(cssValue);
 
-        return item;
-    }
-    
-    protected void selectElementByValue(WebElement element, String value) {
-    	new Select(element).selectByValue(value);
-    }
-    
-    protected void clickToElementById(String elementId) {
-    	findElementById(elementId).click();
-    }
-    
-    protected void clickToElementByClass(String elementClass) {
-    	findElementByClass(elementClass).click();
-    }
-    
-    protected void waitForOneSecond() {
-    	waitForSeconds(1);
-    }
-    
-    protected void waitForSeconds(int seconds) {
-    	try {
+		Thread.sleep(interval);
+
+		String after = e.getCssValue(cssValue);
+
+		try {
+
+			double init = Double.parseDouble(initial.replaceAll("px", "")), last = Double.parseDouble(after.replaceAll(
+					"px", "")), dif = last - init;
+
+			return dif != 0 && (dif < 0) ^ increasing;
+
+		} catch (NumberFormatException ex) {
+			// No action. Try with string compare.
+		}
+
+		int diff = initial.compareToIgnoreCase(after);
+
+		return diff != 0 && ((diff > 0) ^ increasing);
+	}
+
+	protected WebElement waitUntilElementExistsAndGet(WebElement element, By by) {
+		return waitUntilElementExistsAndGet(element, by, 0);
+	}
+
+	protected WebElement waitUntilElementExistsAndGet(WebElement element, By by, int waitSecond) {
+		WebElement item = null;
+		if (element != null && by != null) {
+			try {
+				Thread.sleep(waitSecond * 1000L);
+				item = element.findElement(by);
+			} catch (Exception e) {
+				return null;
+			}
+		}
+
+		return item;
+	}
+
+	protected void selectElementByValue(WebElement element, String value) {
+		new Select(element).selectByValue(value);
+	}
+
+	protected void clickToElementById(String elementId) {
+		clickWithScroll(findElementById(elementId));
+	}
+
+	protected void clickToElementByClass(String elementClass) {
+		clickWithScroll(findElementByClass(elementClass));
+	}
+
+	protected void waitForOneSecond() {
+		waitForSeconds(1);
+	}
+
+	protected void waitForSeconds(int seconds) {
+		try {
 			Thread.sleep(seconds * 1000);
 		} catch (InterruptedException e) {
 		}
-    }
-    
-    protected void scrollByOffset(int x, int y) {
+	}
+
+	protected void scrollByOffset(int x, int y) {
 		executeJS("window.scrollBy(" + x + "," + y + ")");
 	}
-    
-    protected Boolean isTextPresent(WebElement element, String text) {
+
+	protected Boolean isTextPresent(WebElement element, String text) {
 		return element.getText().contains(text);
 	}
-	
+
 	protected Boolean isTextsPresent(WebElement element, List<String> strings) {
 		String elementStr = element.getText();
 		for (String aStr : strings) {
-			if(!elementStr.contains(aStr)) {
+			if (!elementStr.contains(aStr)) {
 				return false;
 			}
 		}
 		return true;
+	}
+
+	protected void scrollToDefaults() {
+		int width = WIDTH * -1;
+		int height = HEIGHT * -1;
+		executeJS("window.scrollBy(" + width + "," + height + ")");
+	}
+
+	protected void clickWithScroll(final WebElement element) {
+		scrollToDefaults();
+		int x = element.getLocation().getX();
+		int y = element.getLocation().getY();
+		scrollByOffset(x / 2, y / 2);
+		element.click();
 	}
 }

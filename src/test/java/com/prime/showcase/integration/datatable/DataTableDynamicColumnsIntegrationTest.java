@@ -21,12 +21,10 @@ public class DataTableDynamicColumnsIntegrationTest extends AbstractIntegrationT
 
 	@Test
 	public void shouldRemoveAndAddColumns() {
-		scrollByOffset(0, 300);
 		removeAllColumns();
 		verifyNumberOfColumns(0);
 		
 		addColumnAndVerify("Audi", 1);
-		scrollByOffset(0, -400);
 		addColumnAndVerify("Ferrari", 2);
 	}
 	
@@ -50,7 +48,8 @@ public class DataTableDynamicColumnsIntegrationTest extends AbstractIntegrationT
 	private void removeAllColumns() {
 		int numberOfColumns = getNumberOfColumns();
 		while(numberOfColumns-- > 0) {
-			getRemoveColumnButton().click();
+			System.out.println(getRemoveColumnButton().getLocation());
+			clickWithScroll(getRemoveColumnButton());
 			waitUntilAjaxRequestCompletes();
 		}
 	}

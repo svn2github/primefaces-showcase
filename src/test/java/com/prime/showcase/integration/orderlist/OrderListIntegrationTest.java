@@ -46,13 +46,10 @@ public class OrderListIntegrationTest extends AbstractIntegrationTest {
 	
 	@Test
 	public void shouldBeAbleToMoveItemsToTop() throws InterruptedException {
-		
-		scrollByOffset(0,300);
-		
 		WebElement Xavi = findElementByXpath("//table[@id='form:customList']/tbody/tr/td[2]/ul/li[4]/table/tbody/tr/td[2]");
 		assertThat("Xavi - 6",equalTo(Xavi.getText()));
 		
-		Xavi.click();
+		clickWithScroll(Xavi);
 		findElementByXpath("//table[@id='form:customList']/tbody/tr/td/button[2]").click();;
 		
 		Thread.sleep(1000L);
@@ -65,12 +62,10 @@ public class OrderListIntegrationTest extends AbstractIntegrationTest {
 	
 	@Test
 	public void shouldBeAbleToMoveItemsToBottom() throws InterruptedException {
-		scrollByOffset(0,300);
-		
 		WebElement Messi = findElementByXpath("//table[@id='form:customList']/tbody/tr/td[2]/ul/li[1]/table/tbody/tr/td[2]");
 		assertThat("Messi - 10",equalTo(Messi.getText()));
 		
-		Messi.click();
+		clickWithScroll(Messi);
 		findElementByXpath("//table[@id='form:customList']/tbody/tr/td/button[4]").click();;
 		
 		Thread.sleep(1000L);
@@ -83,12 +78,10 @@ public class OrderListIntegrationTest extends AbstractIntegrationTest {
 	
 	@Test
 	public void shouldBeAbleToMoveItemsToUp() throws InterruptedException {
-		scrollByOffset(0,300);
-		
 		WebElement Villa = findElementByXpath("//table[@id='form:customList']/tbody/tr/td[2]/ul/li[3]/table/tbody/tr/td[2]");
 		assertThat("Villa - 7",equalTo(Villa.getText()));
 		
-		Villa.click();
+		clickWithScroll(Villa);
 		findElementByXpath("//table[@id='form:customList']/tbody/tr/td/button").click();;
 		
 		Thread.sleep(1000L);
@@ -101,12 +94,10 @@ public class OrderListIntegrationTest extends AbstractIntegrationTest {
 	
 	@Test
 	public void shouldBeAbleToMoveItemsToDown() throws InterruptedException {
-		scrollByOffset(0,300);
-		
 		WebElement Iniesta = findElementByXpath("//table[@id='form:customList']/tbody/tr/td[2]/ul/li[2]/table/tbody/tr/td[2]");
 		assertThat("Iniesta - 8",equalTo(Iniesta.getText()));
 		
-		Iniesta.click();
+		clickWithScroll(Iniesta);
 		findElementByXpath("//table[@id='form:customList']/tbody/tr/td/button[3]").click();;
 		
 		Thread.sleep(1000L);

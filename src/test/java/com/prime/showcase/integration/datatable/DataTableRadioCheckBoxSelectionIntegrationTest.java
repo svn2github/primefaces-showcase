@@ -30,18 +30,15 @@ public class DataTableRadioCheckBoxSelectionIntegrationTest extends AbstractData
 	
 	@Test
 	public void shouldDisplayCheckBoxSelectedRows() {
-		scrollByOffset(0, 700);
 		List<WebElement> rows = findElementById("form:multiCars_data").findElements(By.cssSelector(ROW_CLASS));
 		Integer rowIndex = new Random().nextInt(rows.size());
 		String model1 = getItemByColumnAndRow(rows, rowIndex, Columns.MODEL.ordinal() + 1);
-		rows.get(rowIndex).findElement(By.xpath("td/div/div/div")).click();
-		scrollByOffset(0, -300);
+		clickWithScroll(rows.get(rowIndex).findElement(By.xpath("td/div/div/div")));
 		
 		rowIndex = getAnotherRandomNumber(rowIndex, rows.size());
 		String model2 = getItemByColumnAndRow(rows, rowIndex, Columns.MODEL.ordinal() + 1);
-		rows.get(rowIndex).findElement(By.xpath("td/div/div/div")).click();
+		clickWithScroll(rows.get(rowIndex).findElement(By.xpath("td/div/div/div")));
 		clickToElementById("form:multiCars:multiViewButton");
-		scrollByOffset(0, -300);
 		
 		assertTrue(isTextPresent(findElementById("form:multiDialog"), model1));
 		assertTrue(isTextPresent(findElementById("form:multiDialog"), model2));
