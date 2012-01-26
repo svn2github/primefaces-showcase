@@ -11,10 +11,10 @@
 			<p>DataTable supports client and live scrolling. In client mode, whole data
             is rendered, by enabling liveScroll option data is loaded during scrolling.</p>
 
-            <h:form>
+            <h:form prependId="false">
 
                 <h3>Y Scrolling</h3>
-                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" scrollHeight="150" resizableColumns="true">
+                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" scrollHeight="150" resizableColumns="true" id="dataTable1">
 
                     <p:column headerText="Model" footerText="Model" style="width:125px">
                         <h:outputText value="#{car.model}" />
@@ -35,7 +35,7 @@
                 </p:dataTable>
                 
                 <h3>X Scrolling</h3>
-                <p:dataTable var="car" value="#{tableBean.carsSmall}" scrollable="true" scrollWidth="400" resizableColumns="true">
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" scrollable="true" scrollWidth="400" resizableColumns="true" id="dataTable2">
 
                     <p:column headerText="Model" footerText="Model" style="width:125px">
                         <h:outputText value="#{car.model}" />
@@ -56,7 +56,7 @@
                 </p:dataTable>
                 
                 <h3>XY Scrolling</h3>
-                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" scrollWidth="400" scrollHeight="150">
+                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" scrollWidth="400" scrollHeight="150" id="dataTable3">
 
                     <p:column headerText="Model" footerText="Model" style="width:125px">
                         <h:outputText value="#{car.model}" />
@@ -78,7 +78,7 @@
 
                 <h3>Live Scrolling</h3>
                 <p:dataTable var="car" value="#{tableBean.carsLarge}" scrollRows="20"
-                                scrollable="true" liveScroll="true" scrollHeight="150">
+                                scrollable="true" liveScroll="true" scrollHeight="150" id="dataTable4" >
                    
                     <p:column headerText="Model" style="width:125px">
                         <h:outputText value="#{car.model}" />
@@ -105,10 +105,10 @@
 		<p:tabView>
 			<p:tab title="datatableScrolling.xhtml">
                 <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form prependId="false"&gt;
 
     &lt;h3&gt;Y Scrolling&lt;/h3&gt;
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}" scrollable="true" scrollHeight="150" resizableColumns="true"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" scrollable="true" scrollHeight="150" resizableColumns="true" id="dataTable1"&gt;
 
         &lt;p:column headerText="Model" footerText="Model" style="width:125px"&gt;
             &lt;h:outputText value="#{car.model}" /&gt;
@@ -129,7 +129,7 @@
     &lt;/p:dataTable&gt;
 
     &lt;h3&gt;X Scrolling&lt;/h3&gt;
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" scrollable="true" scrollWidth="400" resizableColumns="true"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" scrollable="true" scrollWidth="400" resizableColumns="true" id="dataTable2"&gt;
 
         &lt;p:column headerText="Model" footerText="Model" style="width:125px"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
@@ -150,7 +150,7 @@
     &lt;/p:dataTable&gt;
 
     &lt;h3&gt;XY Scrolling&lt;/h3&gt;
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}" scrollable="true" scrollWidth="400" scrollHeight="150"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" scrollable="true" scrollWidth="400" scrollHeight="150" id="dataTable3"&gt;
 
         &lt;p:column headerText="Model" footerText="Model" style="width:125px"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
@@ -172,7 +172,7 @@
 
     &lt;h3&gt;Live Scrolling&lt;/h3&gt;
     &lt;p:dataTable var="car" value="\#{tableBean.carsLarge}" scrollRows="20"
-                    scrollable="true" liveScroll="true" scrollHeight="150"&gt;
+                    scrollable="true" liveScroll="true" scrollHeight="150" id="dataTable4"&gt;
 
         &lt;p:column headerText="Model" style="width:125px"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
