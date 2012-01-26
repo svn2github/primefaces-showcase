@@ -11,17 +11,17 @@
                 <p>ConfirmationDialog is a replacement for the javascript confirm function.
                 Skinning, customization, avoiding popup blockers are the notable features.</p>
 
-				<h:form>
+				<h:form prependId="false">
 					
 					<p:growl id="messages" showDetail="true" />
 				
-					<p:commandButton value="Destroy the World" onclick="confirmation.show()" type="button"/>
+					<p:commandButton id="showDialogButton" value="Destroy the World" onclick="confirmation.show()" type="button"/>
 					
-					<p:confirmDialog message="Are you sure about destroying the world?"
+					<p:confirmDialog id="confirmDialog" message="Are you sure about destroying the world?"
 								header="Initiating destroy process" severity="alert" widgetVar="confirmation">
 								
-						<p:commandButton value="Yes Sure" actionListener="#{buttonBean.destroyWorld}" update="messages" oncomplete="confirmation.hide()"/>
-						<p:commandButton value="Not Yet" onclick="confirmation.hide()" type="button" /> 
+						<p:commandButton id="confirm" value="Yes Sure" actionListener="#{buttonBean.destroyWorld}" update="messages" oncomplete="confirmation.hide()"/>
+						<p:commandButton id="decline" value="Not Yet" onclick="confirmation.hide()" type="button" /> 
 								
 					</p:confirmDialog>
 
@@ -31,22 +31,22 @@
 			<p:tabView>
 				<p:tab title="confirmDialog.xhtml">
 <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form prependId="false"&gt;
 					
 	&lt;p:growl id="messages" /&gt;
 
 	&lt;h:panelGrid columns="1" cellpadding="5"&gt;
 		&lt;h:outputText id="msg" value="\#{buttonBean.text}"/&gt;
 		
-		&lt;p:commandButton value="Destroy the World" onclick="confirmation.show()" type="button"/&gt;
+		&lt;p:commandButton id="showDialogButton" value="Destroy the World" onclick="confirmation.show()" type="button"/&gt;
 	&lt;/h:panelGrid&gt;
 	
-	&lt;p:confirmDialog message="Are you sure about destroying the world?"
+	&lt;p:confirmDialog id="confirmDialog message="Are you sure about destroying the world?"
 				header="Initiating destroy process" severity="alert" widgetVar="confirmation"&gt;
 				
-		&lt;p:commandButton value="Yes Sure" update="messages" oncomplete="confirmation.hide()"
+		&lt;p:commandButton id="confirm" value="Yes Sure" update="messages" oncomplete="confirmation.hide()"
 					actionListener="\#{buttonBean.destroyWorld}" /&gt;
-		&lt;p:commandButton value="Not Yet" onclick="confirmation.hide()" type="button" /&gt; 
+		&lt;p:commandButton id="decline" value="Not Yet" onclick="confirmation.hide()" type="button" /&gt; 
 				
 	&lt;/p:confirmDialog&gt;
 

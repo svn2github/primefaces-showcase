@@ -11,7 +11,7 @@
         <div class="entry">
             <p>This example displays an ongoing election between two candidates. Votes are updated live and displayed on a pie chart.</p>
 
-            <h:form>
+            <h:form id="form">
 
                 <p:poll interval="3" update="votes" />
                 
@@ -24,7 +24,7 @@
             <p:tabView>
                 <p:tab title="liveChart.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:poll interval="3" update="votes" /&gt;
 

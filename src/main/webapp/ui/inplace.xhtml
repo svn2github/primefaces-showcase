@@ -20,24 +20,24 @@
 			<p>Inplace provides easy inplace editing and inline content display. For inplace editing, "save" and "cancel" ajax
             behavior events are provided for customizing the use-case.</p>
 
-            <h:form>
+            <h:form prependId="false">
 
                 <p:growl id="msgs" />
 			
                 <p:panel header="Inplace Editor">
                     <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
                         <h:outputText value="Basic Input: " />
-                        <p:inplace>
+                        <p:inplace id="basic">
                             <p:inputText value="Edit Me" />
                         </p:inplace>
 
                         <h:outputText value="Ajax Inplace Editor: " />
-                        <p:inplace editor="true">
+                        <p:inplace id="ajaxInplace" editor="true">
                             <p:inputText value="#{inplaceBean.text}" required="true" label="text"/>
                         </p:inplace>
 
                         <h:outputText value="Select One (Dlbclick): "/>
-                        <p:inplace label="Cities" effectSpeed="fast" event="dblclick">
+                        <p:inplace id="selectableInplace" label="Cities" effectSpeed="fast" event="dblclick">
                             <h:selectOneMenu>
                                 <f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
                                 <f:selectItem itemLabel="Ankara" itemValue="Ankara" />
@@ -46,12 +46,12 @@
                         </p:inplace>
 
                         <h:outputText value="Checkbox: "/>
-                        <p:inplace label="Edit me" effect="none">
+                        <p:inplace id="checkboxInplace" label="Edit me" effect="none">
                             <h:selectBooleanCheckbox />
                         </p:inplace>
 
                         <h:outputText value="Sliding Image: " />
-                        <p:inplace label="Show" effect="slide">
+                        <p:inplace id="slidingInplace" label="Show" effect="slide">
                             <p:graphicImage value="/images/nature1.jpg" />
                         </p:inplace>
                     </h:panelGrid>
@@ -63,25 +63,25 @@
 			<p:tabView>
 				<p:tab title="inplace.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form prependId="false"&gt;
 
     &lt;p:growl id="msgs" /&gt;
 
     &lt;p:panel header="Inplace Editor"&gt;
         &lt;h:panelGrid columns="2" columnClasses="column" cellpadding="5"&gt;
             &lt;h:outputText value="Basic Input: " /&gt;
-            &lt;p:inplace&gt;
+            &lt;p:inplace id="basic"&gt;
                 &lt;p:inputText value="Edit Me" /&gt;
             &lt;/p:inplace&gt;
 
             &lt;h:outputText value="Ajax Inplace Editor: " /&gt;
-            &lt;p:inplace editor="true"&gt;
+            &lt;p:inplace id="ajaxInplace" editor="true"&gt;
                 &lt;p:inputText value="\#{inplaceBean.text}"
                             required="true" label="text"/&gt;
             &lt;/p:inplace&gt;
 
             &lt;h:outputText value="Select One (Dlbclick): "/&gt;
-            &lt;p:inplace label="Cities" effectSpeed="fast" event="dblclick"&gt;
+            &lt;p:inplace id="selectableInplace" label="Cities" effectSpeed="fast" event="dblclick"&gt;
                 &lt;h:selectOneMenu&gt;
                     &lt;f:selectItem itemLabel="Istanbul" itemValue="Istanbul" /&gt;
                     &lt;f:selectItem itemLabel="Ankara" itemValue="Ankara" /&gt;
@@ -90,12 +90,12 @@
             &lt;/p:inplace&gt;
 
             &lt;h:outputText value="Checkbox: "/&gt;
-            &lt;p:inplace label="Edit me" effect="none"&gt;
+            &lt;p:inplace id="checkboxInplace" label="Edit me" effect="none"&gt;
                 &lt;h:selectBooleanCheckbox /&gt;
             &lt;/p:inplace&gt;
 
             &lt;h:outputText value="Sliding Image: " /&gt;
-            &lt;p:inplace label="Show" effect="slide"&gt;
+            &lt;p:inplace id="slidingInplace" label="Show" effect="slide"&gt;
                 &lt;p:graphicImage value="/images/nature1.jpg" /&gt;
             &lt;/p:inplace&gt;
         &lt;/h:panelGrid&gt;

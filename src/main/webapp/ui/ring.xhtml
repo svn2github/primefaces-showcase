@@ -26,7 +26,7 @@
 			<h:form id="form">
 
                 <h3>Basic Ring</h3>
-                <p:ring value="#{ringBean.players}" var="player">
+                <p:ring id="basic" value="#{ringBean.players}" var="player">
                     <p:column>
                         <p:outputPanel style="text-align:center;" layout="block">
                             #{player.name}
@@ -39,13 +39,13 @@
                 </p:ring>
 
                 <h3>Images with Custom Easing</h3>
-                <p:ring value="#{ringBean.players}" var="player" styleClass="image-ring" easing="easeInOutBack">
-                    <p:graphicImage value="/images/barca/#{player.photo}"/>
+                <p:ring id="custom" value="#{ringBean.players}" var="player" styleClass="image-ring" easing="easeInOutBack">
+                    <p:graphicImage id="img" value="/images/barca/#{player.photo}"/>
                 </p:ring>
 
                 <br />
 
-                <p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true" width="125">
+                <p:dialog id="dialog" widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true" width="125">
 
                     <p:outputPanel id="detail" style="text-align:center;" layout="block">
 
@@ -76,7 +76,7 @@
 &lt;h:form id="form"&gt;
 
     &lt;h3&gt;Basic Ring&lt;/h3&gt;
-    &lt;p:ring value="\#{ringBean.players}" var="player"&gt;
+    &lt;p:ring id="basic" value="\#{ringBean.players}" var="player"&gt;
         &lt;p:column&gt;
             &lt;p:outputPanel style="text-align:center;" layout="block"&gt;
                 \#{player.name}
@@ -91,12 +91,12 @@
     &lt;/p:ring&gt;
 
     &lt;h3&gt;Images with Custom Easing&lt;/h3&gt;
-    &lt;p:ring value="\#{ringBean.players}" var="player"
+    &lt;p:ring id="custom" value="\#{ringBean.players}" var="player"
                 styleClass="image-ring" easing="easeInOutBack"&gt;
         &lt;p:graphicImage value="/images/barca/\#{player.photo}"/&gt;
     &lt;/p:ring&gt;
 
-    &lt;p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true" width="125"&gt;
+    &lt;p:dialog id="dialog" widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true" width="125"&gt;
 
         &lt;p:outputPanel id="detail" style="text-align:center;" layout="block"&gt;
 

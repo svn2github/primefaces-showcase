@@ -11,15 +11,15 @@
         <div class="entry">
             <p>Charts are interactive components, information about selected series and items can be passed via ajax to a JSF backing bean using ItemSelectEvent.</p>
 
-            <h:form>
+            <h:form prependId="false">
                 <p:growl id="growl" showDetail="true" />
 
-                <p:pieChart value="#{chartBean.pieModel}" legendPosition="w"
+                <p:pieChart id="pieChart" value="#{chartBean.pieModel}" legendPosition="w"
                         title="Interactive Pie Chart" style="width:400px;height:300px">
                     <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
                 </p:pieChart>
 
-                <p:barChart value="#{chartBean.categoryModel}" legendPosition="ne"
+                <p:barChart id="barChart" value="#{chartBean.categoryModel}" legendPosition="ne"
                         title="Interactive Bar Chart" style="height:300px">
                     <p:ajax event="itemSelect" listener="#{chartBean.itemSelect}" update="growl" />
                 </p:barChart>
@@ -30,15 +30,15 @@
             <p:tabView>
                 <p:tab title="interactiveCharts.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form prependId="false"&gt;
     &lt;p:growl id="growl" showDetail="true" /&gt;
 
-    &lt;p:pieChart value="\#{chartBean.pieModel}" legendPosition="w"
+    &lt;p:pieChart id="pieChart" value="\#{chartBean.pieModel}" legendPosition="w"
             title="Interactive Pie Chart" style="width:400px;height:300px"&gt;
         &lt;p:ajax event="itemSelect" listener="\#{chartBean.itemSelect}" update="growl" /&gt;
     &lt;/p:pieChart&gt;
 
-    &lt;p:barChart value="\#{chartBean.categoryModel}" legendPosition="ne"
+    &lt;p:barChart id="barChart" value="\#{chartBean.categoryModel}" legendPosition="ne"
             title="Interactive Bar Chart" style="height:300px"&gt;
         &lt;p:ajax event="itemSelect" listener="\#{chartBean.itemSelect}" update="growl" /&gt;
     &lt;/p:barChart&gt;

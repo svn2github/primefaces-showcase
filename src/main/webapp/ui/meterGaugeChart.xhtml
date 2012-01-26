@@ -13,19 +13,19 @@
             <p:growl id="growl" showDetail="true" />
 
             <h3>Sample Meter Gauge</h3>
-            <p:meterGaugeChart value="#{chartBean.meterGaugeModel}" style="width:400px;height:250px"/>
+            <p:meterGaugeChart id="sample" value="#{chartBean.meterGaugeModel}" style="width:400px;height:250px"/>
             
             <h3>Custom Meter Gauge</h3>
-            <p:meterGaugeChart value="#{chartBean.meterGaugeModel}" showTickLabels="false" labelHeightAdjust="110" intervalOuterRadius="130" 
+            <p:meterGaugeChart id="custom" value="#{chartBean.meterGaugeModel}" showTickLabels="false" labelHeightAdjust="110" intervalOuterRadius="130" 
                                seriesColors="66cc66, 93b75f, E7E658, cc6666" style="width:400px;height:250px" />
             
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="meterGaugeChart.xhtml">
                     <pre name="code" class="xml">
-&lt;p:meterGaugeChart value="\#{chartBean.meterGaugeModel}" style="width:400px;height:250px"/&gt;
+&lt;p:meterGaugeChart id="sample" value="\#{chartBean.meterGaugeModel}" style="width:400px;height:250px"/&gt;
 
-&lt;p:meterGaugeChart value="\#{chartBean.meterGaugeModel}" showTickLabels="false" labelHeightAdjust="110"
+&lt;p:meterGaugeChart id="custom" value="\#{chartBean.meterGaugeModel}" showTickLabels="false" labelHeightAdjust="110"
    intervalOuterRadius="130" seriesColors="66cc66, 93b75f, E7E658, cc6666" style="width:400px;height:250px" /&gt;
                     </pre>
                 </p:tab>

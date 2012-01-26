@@ -10,20 +10,20 @@
 		<div class="entry">
             <p>LineChart is created with a CartesianChartModel.</p>
 
-            <p:lineChart  value="#{chartBean.linearModel}" legendPosition="e"
+            <p:lineChart id="linear" value="#{chartBean.linearModel}" legendPosition="e"
                          title="Linear Chart" minY="0" maxY="10" style="height:300px;"/>
 
-            <p:lineChart id="linear" value="#{chartBean.categoryModel}" legendPosition="e"
+            <p:lineChart id="category" value="#{chartBean.categoryModel}" legendPosition="e"
                          title="Category Chart" minY="0" maxY="200" style="height:300px;margin-top:20px"/>
 
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="lineChart.xhtml">
                     <pre name="code" class="xml">
-&lt;p:lineChart value="\#{chartBean.linearModel}" legendPosition="e"
+&lt;p:lineChart id="linear" value="\#{chartBean.linearModel}" legendPosition="e"
      title="Linear Chart" minY="0" maxY="10" style="height:300px"/&gt;
 
-&lt;p:lineChart value="\#{chartBean.categoryModel}" legendPosition="e"
+&lt;p:lineChart id="category" value="\#{chartBean.categoryModel}" legendPosition="e"
      title="Category Chart" minY="0" maxY="200" style="height:300px;margin-top:20px"/&gt;
                     </pre>
                 </p:tab>

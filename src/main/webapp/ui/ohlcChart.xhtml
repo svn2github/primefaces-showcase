@@ -12,12 +12,12 @@
             <p>OhlcChart is created with a OhlcChartModel.</p>
             <p:growl id="growl" showDetail="true" />
 
-            <p:ohlcChart value="#{chartBean.ohlcModel}"
+            <p:ohlcChart id="sample" value="#{chartBean.ohlcModel}"
                         title="Sample Ohlc Chart" style="width:400px;height:300px" yaxisLabel="Price Change   $K / Unit" xaxisLabel="Year" />
             
             <br/><br/><br/>
             
-            <p:ohlcChart value="#{chartBean.ohlcModel2}" candleStick="true" yaxisLabel="Index Value" xaxisLabel="Sector"
+            <p:ohlcChart id="candleStick" value="#{chartBean.ohlcModel2}" candleStick="true" yaxisLabel="Index Value" xaxisLabel="Sector"
                         title="Ohlc Chart with Candle Stick" style="width:400px;height:300px" />
 
             
@@ -25,10 +25,10 @@
             <p:tabView>
                 <p:tab title="ohlcChart.xhtml">
                     <pre name="code" class="xml">
-&lt;p:ohlcChart value="\#{chartBean.ohlcModel}" yaxisLabel="Price Change   $K / Unit" xaxisLabel="Year"
+&lt;p:ohlcChart id="sample" value="\#{chartBean.ohlcModel}" yaxisLabel="Price Change   $K / Unit" xaxisLabel="Year"
                 title="Sample Ohlc Chart" style="width:400px;height:300px" /&gt;
 
-&lt;p:ohlcChart value="\#{chartBean.ohlcModel2}" candleStick="true" yaxisLabel="Index Value" xaxisLabel="Sector"
+&lt;p:ohlcChart id="candleStick" value="\#{chartBean.ohlcModel2}" candleStick="true" yaxisLabel="Index Value" xaxisLabel="Sector"
                 title="Custom Options" style="width:400px;height:300px" /&gt;
                     </pre>
                 </p:tab>
