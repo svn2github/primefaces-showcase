@@ -17,7 +17,6 @@ package org.primefaces.examples.application;
 
 import java.util.Iterator;
 import javax.faces.FacesException;
-import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.application.NavigationHandler;
 import javax.faces.application.ViewExpiredException;
 import javax.faces.context.ExceptionHandler;
