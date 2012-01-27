@@ -11,6 +11,11 @@
         </resource-bundle>
     </application>
 
+    <factory>
+        <exception-handler-factory>org.primefaces.examples.application.ShowcaseExceptionHandlerFactory</exception-handler-factory>
+    </factory>
+
+
     <converter>
         <converter-id>player</converter-id>
         <converter-class>org.primefaces.examples.view.PlayerConverter</converter-class>
@@ -19,7 +24,7 @@
         <converter-id>colorPickerConverter</converter-id>
         <converter-class>org.primefaces.examples.view.ColorPickerConverter</converter-class>
     </converter>
-	
+
     <managed-bean>
         <managed-bean-name>autoCompleteBean</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.view.AutoCompleteBean</managed-bean-class>
