@@ -138,7 +138,7 @@ public class EffectsCatalogIntegrationTest extends AbstractIntegrationTest {
         WebElement size = findElementById("size");
         size.click();
         assertTrue("Should start animation", anyAnimationInProgress("#size"));
-        assertTrue("Should animate correct.", shouldElementAnimating(size, "width", INCREASING, 300));
+        assertTrue("Should animate correct.", shouldElementAnimating(size, "width", INCREASING, 200));
         assertTrue("Should animate correct.", shouldElementAnimating(size, "height", INCREASING, 200));
         waitUntilAnimationCompletes("#size");
         assertTrue("Should animation completes.", size.isDisplayed());
