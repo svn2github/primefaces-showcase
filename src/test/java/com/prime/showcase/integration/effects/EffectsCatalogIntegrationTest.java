@@ -64,7 +64,7 @@ public class EffectsCatalogIntegrationTest extends AbstractIntegrationTest {
         WebElement drop = findElementById("drop");
         drop.click();
         assertTrue("Should start animation", anyAnimationInProgress("#drop"));
-        assertTrue("Should animate correct.", shouldElementAnimating(drop, "left", DECREASING, 500));
+        assertTrue("Should animate correct.", shouldElementAnimating(drop, "left", DECREASING, 300));
         waitUntilAnimationCompletes("#drop");
         assertTrue("Should animation completes.", !drop.isDisplayed());
         
@@ -139,7 +139,7 @@ public class EffectsCatalogIntegrationTest extends AbstractIntegrationTest {
         size.click();
         assertTrue("Should start animation", anyAnimationInProgress("#size"));
         assertTrue("Should animate correct.", shouldElementAnimating(size, "width", INCREASING, 300));
-        assertTrue("Should animate correct.", shouldElementAnimating(size, "height", INCREASING, 300));
+        assertTrue("Should animate correct.", shouldElementAnimating(size, "height", INCREASING, 200));
         waitUntilAnimationCompletes("#size");
         assertTrue("Should animation completes.", size.isDisplayed());
     }
