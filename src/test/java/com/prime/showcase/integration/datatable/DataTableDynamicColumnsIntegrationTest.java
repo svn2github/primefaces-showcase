@@ -48,7 +48,6 @@ public class DataTableDynamicColumnsIntegrationTest extends AbstractIntegrationT
 	private void removeAllColumns() {
 		int numberOfColumns = getNumberOfColumns();
 		while(numberOfColumns-- > 0) {
-			System.out.println(getRemoveColumnButton().getLocation());
 			clickWithScroll(getRemoveColumnButton());
 			waitUntilAjaxRequestCompletes();
 		}
