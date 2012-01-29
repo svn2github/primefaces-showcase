@@ -122,7 +122,7 @@ public abstract class AbstractIntegrationTest {
 	 *            : jQuery element selector
 	 */
 	protected void waitUntilAnimationCompletes(final String selector) {
-		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+		new FluentWait<WebDriver>(driver).withTimeout(DEFAULT_TIMEOUT_IN_SECONDS * 2, TimeUnit.SECONDS)
 				.pollingEvery(DEFAULT_ANIMATED_INTERVAL_IN_SECONDS, TimeUnit.MILLISECONDS)
 				.until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
@@ -330,7 +330,7 @@ public abstract class AbstractIntegrationTest {
 	protected void scrollByOffset(int x, int y) {
 		executeJS("window.scrollBy(" + x + "," + y + ")");
 	}
-
+    
 	protected Boolean isTextPresent(WebElement element, String text) {
 		return element.getText().contains(text);
 	}
