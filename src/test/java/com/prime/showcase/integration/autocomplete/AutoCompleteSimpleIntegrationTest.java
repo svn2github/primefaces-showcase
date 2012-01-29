@@ -35,6 +35,7 @@ public class AutoCompleteSimpleIntegrationTest extends AbstractAutoCompleteTest 
 		WebElement autocomplete = findElementById("form:acMinLength_input");
 		autocomplete.sendKeys(text);
 		waitUntilAjaxRequestCompletes();
+        waitUntilAllAnimationsComplete();
 		selectAutoCompleteListElement("form:acMinLength", 2, 1);
 		assertThat(autocomplete.getAttribute("value"), equalTo(text));
 
@@ -48,6 +49,7 @@ public class AutoCompleteSimpleIntegrationTest extends AbstractAutoCompleteTest 
 		WebElement autocomplete = findElementById("form:acDelay_input");
 		autocomplete.sendKeys(text);
 		waitUntilAjaxRequestCompletes();
+        waitUntilAllAnimationsComplete();
 		selectAutoCompleteListElement("form:acDelay", 5, 0);
 		assertThat(autocomplete.getAttribute("value"), equalTo(text));
 
@@ -61,6 +63,7 @@ public class AutoCompleteSimpleIntegrationTest extends AbstractAutoCompleteTest 
 		WebElement autocomplete = findElementById("form:acMaxResults_input");
 		autocomplete.sendKeys(text);
 		waitUntilAjaxRequestCompletes();
+        waitUntilAjaxRequestCompletes();
 		try {
 			selectAutoCompleteListElement("form:acMaxResults", 6, 1);
 			assertThat(autocomplete.getAttribute("value"), equalTo(text));
@@ -79,6 +82,7 @@ public class AutoCompleteSimpleIntegrationTest extends AbstractAutoCompleteTest 
 		WebElement autocomplete = findElementById("form:acForce_input");
 		autocomplete.sendKeys(text);
 		waitUntilAjaxRequestCompletes();
+        waitUntilAjaxRequestCompletes();
 		findElementById("form:panel_header").click();
 		assertThat(autocomplete.getAttribute("value"), equalTo(""));
 
@@ -90,6 +94,7 @@ public class AutoCompleteSimpleIntegrationTest extends AbstractAutoCompleteTest 
 		WebElement autocompleteButton = findElementByXpath("//button[@type='button']");
 		autocompleteButton.click();
 		waitUntilAjaxRequestCompletes();
+        waitUntilAjaxRequestCompletes();
 		selectAutoCompleteListElement("form:dd", 5, 1);
 		WebElement autocomplete = findElementById("form:dd_input");
 		assertThat(autocomplete.getAttribute("value"), equalTo("5"));
@@ -107,6 +112,7 @@ public class AutoCompleteSimpleIntegrationTest extends AbstractAutoCompleteTest 
 		WebElement submit = findElementById("form:submit");
 		submit.click();
 		waitUntilAjaxRequestCompletes();
+        waitUntilAllAnimationsComplete();
 		
 		assertThat(findElementById("form:txt1").getText(), equalTo("Prime2"));
 		assertThat(findElementById("form:txt2").getText(), equalTo("Prime2"));

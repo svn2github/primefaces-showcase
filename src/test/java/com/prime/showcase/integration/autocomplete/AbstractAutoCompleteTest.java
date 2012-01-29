@@ -25,6 +25,7 @@ public class AbstractAutoCompleteTest extends AbstractIntegrationTest {
 		autocomplete.clear();
 		autocomplete.sendKeys(value);
 		waitUntilAjaxRequestCompletes();
+        waitUntilAjaxRequestCompletes();
 		selectAutoCompleteListElement(id, 2, 1);
 		assertThat(autocomplete.getAttribute("value"), equalTo(value + "2"));
 	}
