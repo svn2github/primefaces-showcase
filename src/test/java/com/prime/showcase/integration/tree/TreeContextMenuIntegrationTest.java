@@ -29,6 +29,7 @@ public class TreeContextMenuIntegrationTest extends AbstractIntegrationTest {
 				.findElement(By.tagName("div")).findElement(By.tagName("span"));
 		action.rightClick(node0);
 		waitUntilAjaxRequestCompletes();
+        waitUntilAllAnimationsComplete();
 		WebElement contextMenu = findElementById("form:contextMenuId");
 		assertTrue(contextMenu.isDisplayed());
 		List<WebElement> menuItems = contextMenu.findElement(By.tagName("ul"))
@@ -36,6 +37,7 @@ public class TreeContextMenuIntegrationTest extends AbstractIntegrationTest {
 
 		menuItems.get(0).findElement(By.tagName("a")).click();
 		waitUntilAjaxRequestCompletes();
+        waitUntilAllAnimationsComplete();
 		assertTrue(findElementByClass("ui-growl-message")
 				.findElement(By.tagName("p")).getText().equals("Node 0"));
 
@@ -46,6 +48,7 @@ public class TreeContextMenuIntegrationTest extends AbstractIntegrationTest {
 
 		menuItems.get(1).findElement(By.tagName("a")).click();
 		waitUntilAjaxRequestCompletes();
+        waitUntilAllAnimationsComplete();
 		node0 = findElementById("form:treeSingle_node_0").findElement(
 				By.tagName("div")).findElement(By.tagName("span"));
 		assertTrue(!node0.findElements(By.tagName("span")).get(2).getText()
