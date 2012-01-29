@@ -15,7 +15,7 @@
                 
                 <p:growl id="messages" showDetail="true" />
 	
-				<p:treeTable value="#{documentsController.root}" var="document" 
+				<p:treeTable id="treetable" value="#{documentsController.root}" var="document" 
                              selectionMode="single" selection="#{documentsController.selectedNode}">
                     
                     <p:ajax event="expand" listener="#{documentsController.onNodeExpand}" update=":form:messages" />

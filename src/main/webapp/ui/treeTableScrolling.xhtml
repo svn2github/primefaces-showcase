@@ -11,9 +11,9 @@
 		<div class="entry">
 			<p>TreeTable can fix the header/footer and display the data in scrollable format.</p>
 			
-			<h:form>
+			<h:form id="form">
 	
-                <p:treeTable value="#{documentsController.root}" var="document" scrollable="true" scrollHeight="100">
+                <p:treeTable id="yscroll" value="#{documentsController.root}" var="document" scrollable="true" scrollHeight="100">
                     
                     <f:facet name="header">
                         Y Scrolling
@@ -34,7 +34,7 @@
                 
                 <br /><br />
                 
-                <p:treeTable value="#{documentsController.root}" var="document"
+                <p:treeTable id="xscroll" value="#{documentsController.root}" var="document"
                                 scrollable="true" scrollWidth="350">
                     
                     <f:facet name="header">
@@ -56,7 +56,7 @@
                 
                 <br /><br />
                 
-                <p:treeTable value="#{documentsController.root}" var="document" scrollable="true" 
+                <p:treeTable id="xyscroll" value="#{documentsController.root}" var="document" scrollable="true" 
                              scrollHeight="150" scrollWidth="350">
                     
                     <f:facet name="header">

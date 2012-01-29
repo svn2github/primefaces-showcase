@@ -13,7 +13,7 @@
 			
 			<h:form id="form">
 	
-				<p:treeTable value="#{documentsController.root}" var="document">
+				<p:treeTable id="treetable" value="#{documentsController.root}" var="document">
                     <f:facet name="header">
                         Document Viewer
                     </f:facet>
@@ -47,7 +47,7 @@
                     </p:column>
 				</p:treeTable>
 				
-				<p:dialog header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true">
+				<p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true">
 					<p:outputPanel id="documentPanel">
                         <h:panelGrid  columns="2" cellpadding="5" rendered="#{not empty documentsController.selectedDocument}">
 							<h:outputLabel for="name" value="Name: " />

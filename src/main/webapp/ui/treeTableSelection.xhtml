@@ -15,7 +15,7 @@
                 
                 <p:growl id="messages" showDetail="true" />
 	
-				<p:treeTable value="#{documentsController.root}" var="document"
+				<p:treeTable value="#{documentsController.root}" var="document" id="singleSelect"
                              selection="#{documentsController.selectedNode}" selectionMode="single">
 
                     <f:facet name="header">
@@ -44,14 +44,14 @@
 					</p:column>
                     
                     <f:facet name="footer">
-                        <p:commandButton value="View" icon="ui-icon-search"
+                        <p:commandButton id="singleBtn" value="View" icon="ui-icon-search"
                                 update=":form:documentPanel" oncomplete="documentDialog.show()"/>
                     </f:facet>
 				</p:treeTable>
                 
                 <br />
                 
-                <p:treeTable value="#{documentsController.root}" var="document"
+                <p:treeTable value="#{documentsController.root}" var="document" id="multiSelect"
                              selection="#{documentsController.selectedNodes}" selectionMode="multiple">
 
                     <f:facet name="header">
@@ -85,7 +85,7 @@
                     </f:facet>
 				</p:treeTable>
 				
-				<p:dialog header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true">
+				<p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true">
 					<p:outputPanel id="documentPanel">
                         <h:panelGrid  columns="2" cellpadding="5" rendered="#{not empty documentsController.selectedNode}">
 							<h:outputLabel for="name" value="Name: " />

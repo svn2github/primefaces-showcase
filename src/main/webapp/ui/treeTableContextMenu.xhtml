@@ -47,7 +47,7 @@
 					</p:column>
 				</p:treeTable>
                 
-                <p:dialog header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true">
+                <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true">
 					<p:outputPanel id="documentPanel">
                         <h:panelGrid  columns="2" cellpadding="5" rendered="#{not empty documentsController.selectedNode}">
 							<h:outputLabel for="name" value="Name: " />
