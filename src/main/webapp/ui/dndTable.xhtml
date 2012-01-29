@@ -23,7 +23,7 @@
 
 			<h:form id="carForm">
 
-                <p:fieldset legend="Available Cars">
+                <p:fieldset id="availableCarsField" legend="Available Cars">
                     <p:dataTable id="availableCars" var="car" value="#{tableBean.carsSmall}">
                         <p:column style="width:20px">
                             <h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
@@ -54,7 +54,7 @@
 
                         <h:outputText value="!!!Drop here!!!" rendered="#{empty tableBean.droppedCars}" style="font-size:24px;" />
 
-                        <p:dataTable var="car" value="#{tableBean.droppedCars}" rendered="#{not empty tableBean.droppedCars}">
+                        <p:dataTable id="selectedCarsTable" var="car" value="#{tableBean.droppedCars}" rendered="#{not empty tableBean.droppedCars}">
                             <p:column headerText="Model">
                                 <h:outputText value="#{car.model}" />
                             </p:column>

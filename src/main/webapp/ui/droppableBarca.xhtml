@@ -41,7 +41,7 @@
 		<div class="entry">
 			<p>This example demonstrates an advanced scenario with ajax enhanced draggables, droppables.</p>
 			
-			<h:form prependId="false">
+			<h:form id="fmForm" prependId="false">
 
                 <p:growl id="growl" showDetail="true"/>
                 
@@ -136,7 +136,7 @@
 
 				</h:panelGrid>
 
-                <p:panel header="Squad">
+                <p:panel id="selectedSquad" header="Squad">
                     <p:dataList value="#{barcelona.selectedPlayers}" var="player" id="selectedPlayers">
                         #{player.number} - #{player.name}
                     </p:dataList>
