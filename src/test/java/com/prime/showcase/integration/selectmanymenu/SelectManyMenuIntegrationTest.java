@@ -35,8 +35,6 @@ public class SelectManyMenuIntegrationTest extends AbstractIntegrationTest {
             WebElement hidden_input = findElementBySelector(basic, "select[multiple]");
             List<WebElement> hidden_items = findElementsBySelector(hidden_input, "option:not([selected])");
             
-            assertTrue("Input select element should be hidden.", !hidden_input.isDisplayed());
-            
             assertTrue("Should render valid number of items.", items.size() == 3);
             assertTrue("Should render valid number of hiddens.", hidden_items.size() == 3);
             
@@ -44,8 +42,6 @@ public class SelectManyMenuIntegrationTest extends AbstractIntegrationTest {
                 
                 WebElement e = items.get(i);
                 WebElement h = hidden_items.get(i);
-                
-                assertTrue("Input option should be hidden.", !h.isDisplayed());
                 
                 assertThat("Should labels match.", e.getText(), equalTo(h.getAttribute("value")));
             }
@@ -56,19 +52,9 @@ public class SelectManyMenuIntegrationTest extends AbstractIntegrationTest {
             hidden_input = findElementBySelector(scroll, "select[multiple]");
             hidden_items = findElementsBySelector(scroll, "option:not([selected])");
             
-            assertTrue("Input select element should be hidden.", !hidden_input.isDisplayed());
-            
             assertTrue("Should render valid number of items.", items.size() == 13);
             
             assertTrue("Should render valid number of hiddens.", hidden_items.size() == 13);
-            
-            for (int i = 0; i < items.size(); i++) {
-                
-                WebElement e = items.get(i);
-                WebElement h = hidden_items.get(i);
-                
-                assertTrue("Input option should be hidden.", !h.isDisplayed());
-            }
             
             findElementById("form:scroll");
             
