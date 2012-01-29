@@ -15,10 +15,10 @@
 		<div class="entry">
 			<p>This sample demonstrates using map inside a dialog.</p>
 			
-			<p:commandButton type="button" icon="ui-icon-pin-s" value="Show Map" onclick="dlg.show()" />
+			<p:commandButton id="btn" type="button" icon="ui-icon-pin-s" value="Show Map" onclick="dlg.show()" />
 			
-			<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
-       			<p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" widgetVar="mymap"/>
+			<p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
+       			<p:gmap id="gmap" center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" widgetVar="mymap"/>
        		</p:dialog>
 			
 			<h3>Source</h3>

@@ -91,7 +91,7 @@
 						<p:inputText id="title" value="#{mapBean.title}" />
 						
 						<f:facet name="footer">
-							<p:commandButton value="Add" actionListener="#{mapBean.addMarker}" update="messages" oncomplete="markerAddComplete()"/>
+							<p:commandButton value="Add" actionListener="#{mapBean.addMarker}" update=":messages" oncomplete="markerAddComplete()"/>
 							<p:commandButton value="Cancel" onclick="return cancel()"/>
 						</f:facet>
 					</h:panelGrid>

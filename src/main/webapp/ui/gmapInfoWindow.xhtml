@@ -15,13 +15,13 @@
 		<div class="entry">
 			<p>When a marker is selected, an info window can be displayed to provide detailed information.</p>
 			
-			<h:form>
+			<h:form prependId="false">
 			
-				<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" model="#{mapBean.advancedModel}" style="width:600px;height:400px">
+				<p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" model="#{mapBean.advancedModel}" style="width:600px;height:400px">
 
                     <p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}" />
 					
-					<p:gmapInfoWindow>
+					<p:gmapInfoWindow id="infoWindow">
 						<p:outputPanel style="text-align:center;display:block;margin:auto:">
 							
 								<p:graphicImage value="/images/antalya/#{mapBean.marker.data}" height="150"/>

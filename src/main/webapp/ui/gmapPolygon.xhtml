@@ -15,11 +15,11 @@
 		<div class="entry">
 			<p>Any number of polygons can be displayed on map. Polygons can also respond to selection by via overlaySelect behavior.</p>
 			
-            <h:form>
+            <h:form prependId="false">
 				
                 <p:growl id="growl" life="3000"/>
 				
-                <p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="#{mapBean.polygonModel}">
+                <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="#{mapBean.polygonModel}">
                     <p:ajax event="overlaySelect" listener="#{mapBean.onPolygonSelect}" update="growl" />
                 </p:gmap>
 					

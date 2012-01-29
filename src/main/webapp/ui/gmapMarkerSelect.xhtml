@@ -15,11 +15,11 @@
 		<div class="entry">
 			<p>Overlays can be selected via ajax behaviors.</p>
 		
-			<h:form>
+			<h:form prependId="false">
 			
 				<p:growl id="growl" showDetail="true"/>
 				
-				<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" model="#{mapBean.simpleModel}"  style="width:600px;height:400px">
+				<p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" model="#{mapBean.simpleModel}"  style="width:600px;height:400px">
                     <p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}" update="growl" />
                 </p:gmap>
 

@@ -15,11 +15,11 @@
 		<div class="entry">
 			<p>Map can respond to various events such as click, zoom change and overlay select.</p>
 			
-			<h:form>
+			<h:form prependId="false">
 				
 				<p:growl id="messages" showDetail="true" life="2000" />
 			
-				<p:gmap center="41.381542, 2.122893" zoom="15" type="ROADMAP" style="width:600px;height:400px">
+				<p:gmap id="gmap" center="41.381542, 2.122893" zoom="15" type="ROADMAP" style="width:600px;height:400px">
 
                     <p:ajax event="stateChange" listener="#{mapBean.onStateChange}" update="messages" />
                     <p:ajax event="pointSelect" listener="#{mapBean.onPointSelect}" update="messages" />
