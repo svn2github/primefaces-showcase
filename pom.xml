@@ -10,7 +10,7 @@
 	<url>http://www.primefaces.org</url>
 
 	<properties>
-		<theme.version>1.0.3</theme.version>
+		<theme.version>1.0.4-SNAPSHOT</theme.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -317,7 +317,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>2.15.0</version>
+			<version>2.17.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -623,9 +623,6 @@
 				</plugins>
 			</build>
 		</profile>
-
-
-
 
 	</profiles>
 
