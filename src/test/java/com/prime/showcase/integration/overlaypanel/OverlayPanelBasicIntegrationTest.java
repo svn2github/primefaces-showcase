@@ -2,6 +2,7 @@ package com.prime.showcase.integration.overlaypanel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.NoSuchElementException;
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import com.prime.showcase.integration.SeleniumActionHelper;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
@@ -9,10 +10,12 @@ import static org.junit.Assert.assertTrue;
 public class OverlayPanelBasicIntegrationTest extends AbstractIntegrationTest{
  
     protected static final String TEST_URL = PRIME_SHOWCASE_UI + "overlayPanel.jsf";
+    protected static SeleniumActionHelper action;
     
     @BeforeClass
     public static void init(){
         driver.get(TEST_URL);
+        action = new SeleniumActionHelper(driver);
     }
     
     @Test
@@ -26,7 +29,7 @@ public class OverlayPanelBasicIntegrationTest extends AbstractIntegrationTest{
             findElementById("form:chartBtn");
             assertTrue("Chart panel should be hidden on startup.", !findElementById("form:chartPanel").isDisplayed());
             
-            findElementById("form:imgBtn");
+            findElementById("form:img");
             assertTrue("Image panel should be hidden on startup.", !findElementById("form:imgPanel").isDisplayed());
             
         }
@@ -38,20 +41,26 @@ public class OverlayPanelBasicIntegrationTest extends AbstractIntegrationTest{
     @Test
     public void shouldDisplayPanels() throws InterruptedException{
         
-        WebElement car = findElementBySelector(escapeClientId("form:carPanel") + " " + escapeClientId("form:table"));
-        WebElement chart = findElementBySelector(escapeClientId("form:chartPanel") + " " + escapeClientId("form:chart"));
-        WebElement image = findElementBySelector(escapeClientId("form:imgPanel") + " " + escapeClientId("form:img"));
+        WebElement car = findElementBySelector(escapeClientId("form:carPanel"));
+        WebElement image = findElementBySelector(escapeClientId("form:imgPanel"));
+        WebElement chart = findElementBySelector(escapeClientId("form:chartPanel"));
+        
+        findElementById("form:chartBtn").click();
+        waitUntilAllAnimationsComplete();
+        assertTrue("Should only display chart panel.", chart.isDisplayed() && !car.isDisplayed() && !image.isDisplayed());
+        
         
         findElementById("form:carBtn").click();
-        Thread.sleep(500);
+        waitUntilAjaxRequestCompletes();
+        chart = findElementBySelector(escapeClientId("form:chartPanel"));
+        waitUntilAllAnimationsComplete();
         assertTrue("Should only display car panel.", car.isDisplayed() && !chart.isDisplayed() && !image.isDisplayed());
 
-        findElementById("form:chartBtn").click();
-        Thread.sleep(500);
-        assertTrue("Should only display chart panel.", chart.isDisplayed() && !car.isDisplayed() && !image.isDisplayed());
-
-        findElementById("form:imgBtn").click();
-        Thread.sleep(500);
+        WebElement img = findElementById("form:img");
+        img.click();
+        waitUntilAllAnimationsComplete();
+        action.mouseHover(img);
+        waitUntilAllAnimationsComplete();
         assertTrue("Should only display image panel.", image.isDisplayed() && !car.isDisplayed() && !chart.isDisplayed());
     }
 }
