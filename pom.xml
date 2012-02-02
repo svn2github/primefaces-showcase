@@ -10,7 +10,7 @@
 	<url>http://www.primefaces.org</url>
 
 	<properties>
-		<theme.version>1.0.3</theme.version>
+		<theme.version>1.0.4-SNAPSHOT</theme.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
