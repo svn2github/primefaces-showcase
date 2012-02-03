@@ -1,0 +1,118 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+
+            //]]>
+        </script>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">BlockUI</h1>
+        <div class="entry">
+            <p>BlockUI blocks other JSF Components. It can be used with special ajax integration or manually with client side api.</p>
+
+            <h:form>
+                
+                <p:growl id="growl" />
+                
+                <h3>Basic BlockUI</h3>
+                <p:panel id="pnl" header="New User" style="margin-bottom:10px;">
+                    <p:messages id="messages" />
+                    <h:panelGrid columns="3">
+                        <h:outputLabel for="firstname" value="Firstname: *" />
+                        <p:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
+                            <f:validateLength minimum="2" />
+                        </p:inputText>
+                        <p:message for="firstname" />
+
+                        <h:outputLabel for="surname" value="Surname: *" />
+                        <p:inputText id="surname" value="#{pprBean.surname}" required="true" label="Surname"/>
+                        <p:message for="surname" />
+                    </h:panelGrid>
+                    
+                    <p:commandButton id="saveBtn" value="Save" icon="ui-icon-check" style="margin:0" actionListener="#{pprBean.savePerson}" update="growl"/>
+                </p:panel>
+                                
+                <p:blockUI block="pnl" trigger="saveBtn" />
+                
+                <h3>Advanced BlockUI</h3>
+                <p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+                             paginator="true" rows="10">
+                    <f:facet name="header">
+                        Ajax Pagination
+                    </f:facet>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model" />
+                        </f:facet>
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Year" />
+                        </f:facet>
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer" />
+                        </f:facet>
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Color" />
+                        </f:facet>
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+                </p:dataTable>
+                
+                <p:blockUI block="dataTable" trigger="dataTable">
+                    LOADING<br />
+                    <p:graphicImage value="/images/ajax-loader.gif"/>
+                </p:blockUI>
+
+                <h3>Client Side API</h3>
+                <p:tree value="#{treeBean.root}" var="node" id="tree">
+					<p:treeNode id="treeNode">
+						<h:outputText value="#{node}" id="lblNode"/>
+					</p:treeNode>
+				</p:tree>
+
+                <br /> 
+                
+                <p:commandButton id="pnlBtn" value="Block Panel" type="button" onclick="bui.show()"/>
+                <p:commandButton id="pnlBtn2" value="Unblock Panel" type="button" onclick="bui.hide()"/>
+                
+                <p:blockUI block="tree" widgetVar="bui"/>
+                
+            </h:form>
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="blockUI.xhtml">
+                    <pre name="code" class="xml">
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
