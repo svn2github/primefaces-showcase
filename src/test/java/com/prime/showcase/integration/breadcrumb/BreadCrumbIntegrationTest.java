@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import org.junit.Ignore;
 
 public class BreadCrumbIntegrationTest extends AbstractIntegrationTest {
 	
@@ -42,6 +43,7 @@ public class BreadCrumbIntegrationTest extends AbstractIntegrationTest {
 		assertBreadCrumbItem(listItems.get(7),"Lionel Messi","#");
 	}
 	
+    @Ignore("BreadCrumb effects removed on PF3.1")
 	@Test
 	public void shouldRenderBreadCrumbItemsWithEffects() {
 	List<WebElement> breadCrumbs = driver.findElements(By.className("ui-breadcrumb"));
