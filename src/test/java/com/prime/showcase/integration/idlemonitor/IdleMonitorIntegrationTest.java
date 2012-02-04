@@ -2,7 +2,7 @@ package com.prime.showcase.integration.idlemonitor;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -21,9 +21,7 @@ public class IdleMonitorIntegrationTest extends AbstractIntegrationTest {
 		
 		WebElement dialogElement = driver.findElement(By.className("ui-dialog"));
 		
-		String style = dialogElement.getAttribute("style");
-		
-		assertThat(style, containsString("display: block"));
+		assertTrue("Dialog should be displayed.", dialogElement.isDisplayed());
 	}
 	
 	@Test
