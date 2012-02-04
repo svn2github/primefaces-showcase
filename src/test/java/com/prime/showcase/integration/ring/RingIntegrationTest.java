@@ -31,13 +31,9 @@ public class RingIntegrationTest extends AbstractIntegrationTest{
 		
 		choosenItem.findElement(By.tagName("button")).click();
 
-		waitForCondition(new ExpectedCondition<Boolean>() {
-			public Boolean apply(WebDriver driver) {
-				return driver.findElement(By.id("form:dialog")).getAttribute("style").contains("display: block;");
-			}
-		});	
 		waitUntilAllAnimationsComplete();
 		
+		assertTrue("Dialog should be displayed.", findElementById("form:dialog").isDisplayed());
 		assertTrue(frontItem.getAttribute("style").contains("z-index: 296;"));
 		assertTrue(choosenItem.getAttribute("style").contains("z-index: 400;"));
 		
