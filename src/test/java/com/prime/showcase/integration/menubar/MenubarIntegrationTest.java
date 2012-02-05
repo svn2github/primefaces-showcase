@@ -11,12 +11,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import com.prime.showcase.integration.SeleniumActionHelper;
 
 public class MenubarIntegrationTest extends AbstractIntegrationTest  {
 	
+    protected static SeleniumActionHelper action;
+    
 	@Before
 	public void before() {
 		driver.get(toShowcaseUrl("menubar.jsf"));
+        action = new SeleniumActionHelper(driver);
 	}
 	
 	@Test
@@ -39,7 +43,8 @@ public class MenubarIntegrationTest extends AbstractIntegrationTest  {
 		List<WebElement> menuItems = menuBar.findElements(By.className("ui-menuitem"));
 		
 		WebElement editSubMenu = menuItems.get(6);
-		editSubMenu.click();
+		
+        action.mouseHover(editSubMenu);
 		
 		WebElement ulOfEditSubMenu = editSubMenu.findElement(By.tagName("ul"));
 		
@@ -53,12 +58,12 @@ public class MenubarIntegrationTest extends AbstractIntegrationTest  {
 		List<WebElement> menuItems = menuBar.findElements(By.className("ui-menuitem"));
 		WebElement fileMenu = menuItems.get(0);
 		
-		
-		fileMenu.click();
+        action.mouseHover(fileMenu);
 		
 		WebElement newMenu = fileMenu.findElement(By.tagName("ul")).findElement(By.className("ui-menuitem"));
-		newMenu.click();
-		
+
+        action.mouseHover(newMenu);
+        
 		assertThat(newMenu.findElement(By.tagName("ul")).getText(), equalTo("Project\nOther"));
 	}
 
