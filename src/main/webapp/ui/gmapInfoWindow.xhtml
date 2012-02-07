@@ -108,7 +108,7 @@ public class MapBean implements Serializable {
 	}
 	
 	public void onMarkerSelect(OverlaySelectEvent event) {
-		marker = (Marker) event.getMarker();
+		marker = (Marker) event.getOverlay();
 	}
 	
 	public Marker getMarker() {
