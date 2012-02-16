@@ -19,7 +19,7 @@
             <p>Datatable provides column based and global data filtering feature. There are four different match modes, "startsWith"(default), "endsWith",
             "contains" and "exact". In addition using filterOptions, predefined filter values can be displayed.</p>
 
-            <h:form prependId="false">
+            <h:form>
                 
                 <p:dataTable id="dataTable" var="car" value="#{tableBean.carsSmall}" widgetVar="carsTable"
                              emptyMessage="No cars found with given criteria">
@@ -54,7 +54,7 @@
             <p:tabView>
                 <p:tab title="datatableFiltering.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form prependId="false"&gt;
+&lt;h:form&gt;
 
     &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.carsSmall}" widgetVar="carsTable" 
             emptyMessage="No cars found with given criteria"&gt;
