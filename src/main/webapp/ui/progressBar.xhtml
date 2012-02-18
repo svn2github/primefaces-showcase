@@ -5,20 +5,37 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
 	
-	<ui:define name="head">
-		<script type="text/javascript">
-			function start() {
-				this.progressInterval = setInterval(function(){
-					pbClient.setValue(pbClient.getValue() + 10);
-				}, 1000);
-			}
-	
-			function cancel() {
-				clearInterval(this.progressInterval);
-				pbClient.setValue(0);
-			}
-		</script>
-	</ui:define>
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-progressbar {
+                height: 2em;
+            }
+        </style>
+        
+        <script type="text/javascript">
+function start() {
+    startButton1.disable();
+    window['progress'] = setInterval(function() {
+        var oldValue = pbClient.getValue(),
+        newValue = oldValue + 10;
+                
+        pbClient.setValue(pbClient.getValue() + 10);
+    
+        if(newValue == 100) {
+            clearInterval(window['progress']);
+        }
+        
+        
+    }, 1000);
+}
+
+function cancel() {
+    clearInterval(window['progress']);
+    pbClient.setValue(0);
+    startButton1.enable();
+}
+        </script>
+    </ui:define>
 
 	<ui:define name="content">
 
@@ -27,16 +44,16 @@
 			<p>ProgressBar is a process status indicator that can either work purely on client side or interact with server side
 			via ajax.</p>
 		
-			<h:form id="form">
+			<h:form>
                 
                 <p:growl id="growl" />
 		
 				<h3>Client Side ProgressBar</h3>
-				<p:commandButton value="Start" id="start" type="button" onclick="start();startButton1.disable()" widgetVar="startButton1"/>
-				<p:commandButton value="Cancel" id="cancel" type="button" onclick="cancel();startButton1.enable()" />
+				<p:commandButton value="Start" id="start" type="button" onclick="start()" widgetVar="startButton1"/>
+				<p:commandButton value="Cancel" id="cancel" type="button" onclick="cancel()" />
 				<br /><br />
 				<p:progressBar id="progressBarClient" widgetVar="pbClient" style="width:300px"/>
-				 				 
+	 
 				<h3>Ajax ProgressBar with Growl Integration</h3>
 				<p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2" />
 				<p:commandButton value="Cancel" actionListener="#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" />
@@ -56,15 +73,15 @@
     &lt;p:growl id="growl" /&gt;
 
     &lt;h3&gt;Client Side ProgressBar&lt;/h3&gt;
-    &lt;p:commandButton value="Start" type="button" onclick="start();startButton1.disable()" widgetVar="startButton1"/&gt;
-    &lt;p:commandButton value="Cancel" type="button" onclick="cancel();startButton1.enable()" /&gt;
-
-    &lt;p:progressBar widgetVar="pbClient" style="width:300px"/&gt;
+    &lt;p:commandButton value="Start" id="start" type="button" onclick="start()" widgetVar="startButton1"/&gt;
+    &lt;p:commandButton value="Cancel" id="cancel" type="button" onclick="cancel()" /&gt;
+    &lt;br /&gt;&lt;br /&gt;
+    &lt;p:progressBar id="progressBarClient" widgetVar="pbClient" style="width:300px"/&gt;
 
     &lt;h3&gt;Ajax ProgressBar with Growl Integration&lt;/h3&gt;
-    &lt;p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2"/&gt;
+    &lt;p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2" /&gt;
     &lt;p:commandButton value="Cancel" actionListener="\#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" /&gt;
-
+    &lt;br /&gt;&lt;br /&gt;
     &lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}" oncomplete="startButton2.enable()"&gt;
         &lt;p:ajax event="complete" listener="\#{progressBean.onComplete}" update="growl" /&gt;
     &lt;/p:progressBar&gt;
@@ -75,15 +92,26 @@
 				<pre name="code" class="javascript">
 &lt;script type="text/javascript"&gt;
 	function start() {
-		this.progressInterval = setInterval(function(){
-			pbClient.setValue(pbClient.getValue() + 10);
-		}, 2000);
-	}
+        startButton1.disable();
+        window['progress'] = setInterval(function() {
+            var oldValue = pbClient.getValue(),
+            newValue = oldValue + 10;
 
-	function cancel() {
-		clearInterval(this.progressInterval);
-		pbClient.setValue(0);
-	}
+            pbClient.setValue(pbClient.getValue() + 10);
+
+            if(newValue == 100) {
+                clearInterval(window['progress']);
+            }
+
+
+        }, 1000);
+    }
+
+    function cancel() {
+        clearInterval(window['progress']);
+        pbClient.setValue(0);
+        startButton1.enable();
+    }
 &lt;/script&gt;
 				</pre>
 				</p:tab>
