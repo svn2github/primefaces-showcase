@@ -5,14 +5,13 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
 	
-    <ui:define name="head">
-        <style type="text/css">
-            .ui-progressbar {
-                height: 2em;
-            }
+    <ui:define name="head"> 
+        <style tyle="text/css">
+
         </style>
         
         <script type="text/javascript">
+            //<![CDATA[
 function start() {
     startButton1.disable();
     window['progress'] = setInterval(function() {
@@ -34,6 +33,7 @@ function cancel() {
     pbClient.setValue(0);
     startButton1.enable();
 }
+            //]]>
         </script>
     </ui:define>
 
@@ -41,7 +41,7 @@ function cancel() {
 
 		<h1 class="title ui-widget-header ui-corner-all">ProgressBar</h1>
 		<div class="entry">
-			<p>ProgressBar is a process status indicator that can either work purely on client side or interact with server side
+			<p>ProgressBar is a process status indicator that can either work on client side or integrate with server side
 			via ajax.</p>
 		
 			<h:form>
@@ -54,11 +54,11 @@ function cancel() {
 				<br /><br />
 				<p:progressBar id="progressBarClient" widgetVar="pbClient" style="width:300px"/>
 	 
-				<h3>Ajax ProgressBar with Growl Integration</h3>
+				<h3>Advanced Ajax ProgressBar</h3>
 				<p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2" />
 				<p:commandButton value="Cancel" actionListener="#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" />
 				<br /><br />
-				<p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBean.progress}" oncomplete="startButton2.enable()">
+				<p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBean.progress}" oncomplete="startButton2.enable()" labelTemplate="{value}%">
                     <p:ajax event="complete" listener="#{progressBean.onComplete}" update="growl" />
                 </p:progressBar>
 					
@@ -75,14 +75,14 @@ function cancel() {
     &lt;h3&gt;Client Side ProgressBar&lt;/h3&gt;
     &lt;p:commandButton value="Start" id="start" type="button" onclick="start()" widgetVar="startButton1"/&gt;
     &lt;p:commandButton value="Cancel" id="cancel" type="button" onclick="cancel()" /&gt;
-    &lt;br /&gt;&lt;br /&gt;
+
     &lt;p:progressBar id="progressBarClient" widgetVar="pbClient" style="width:300px"/&gt;
 
     &lt;h3&gt;Ajax ProgressBar with Growl Integration&lt;/h3&gt;
     &lt;p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2" /&gt;
     &lt;p:commandButton value="Cancel" actionListener="\#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" /&gt;
-    &lt;br /&gt;&lt;br /&gt;
-    &lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}" oncomplete="startButton2.enable()"&gt;
+
+    &lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}" oncomplete="startButton2.enable()" labelTemplate="{value}%"&gt;
         &lt;p:ajax event="complete" listener="\#{progressBean.onComplete}" update="growl" /&gt;
     &lt;/p:progressBar&gt;
 
