@@ -17,7 +17,8 @@
 	<ui:define name="content">
 	<h1 class="title ui-widget-header ui-corner-all">DataTable - Columns Reordering</h1>
 		<div class="entry">
-			<p>DataTable columns can be reordered using drag and drop.</p>
+			<p>DataTable columns can be reordered using drag and drop. Column order is preserved in postbacks and
+            "columnReorder" event is available as an ajax event for optional use.</p>
 
             <h:form>
                 <p:dataTable id="basic" var="car" value="#{tableBean.carsSmall}" draggableColumns="true">
