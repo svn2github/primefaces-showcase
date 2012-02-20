@@ -28,7 +28,8 @@
                 <h3>Simple</h3>
                 <p:dataTable var="car" value="#{tableBean.carsSmall}">
 
-                    <p:columns value="#{tableBean.simpleColumns}" var="column" columnIndexVar="colIndex">
+                    <p:columns value="#{tableBean.simpleColumns}" var="column" columnIndexVar="colIndex" 
+                                sortBy="#{car[column.property]}" filterBy="#{car[column.property]}">
                         <f:facet name="header">
                             #{column.header}
                         </f:facet>
@@ -37,46 +38,7 @@
                     </p:columns>
 
                 </p:dataTable>
-
-                <h3>Advanced</h3>
-                <p:dataTable var="cars" value="#{tableBean.dynamicCars}" id="carsTable">
-
-                    <f:facet name="header">
-                        <p:commandButton id="addButton" type="button" onclick="carDialog.show()" value="Add a New Column" icon="add"/>
-                    </f:facet>
-
-                    <p:columns value="#{tableBean.columns}" var="column" columnIndexVar="colIndex">
-                        <f:facet name="header">
-                            <p:outputPanel>
-                                
-                                <p:commandButton icon="remove" actionListener="#{tableBean.removeColumn}" 
-                                                 update="carsTable" title="Remove Column" style="float:right">
-                                    <f:param name="columnToRemove" value="#{column}" />
-                                </p:commandButton>
-                                #{column}
-                            </p:outputPanel>  
-                        </f:facet>
-
-                        <h:outputText value="#{cars[colIndex].model}" /> <br />
-                        <h:outputText value="#{cars[colIndex].year}" /> <br />
-                        <h:outputText value="#{cars[colIndex].color}" style="color:#{cars[colIndex].color}"/>
-                    </p:columns>
-
-                     <f:facet name="footer">
-                         Dynamic Columns
-                    </f:facet>
-
-                </p:dataTable>               
-
-                <p:dialog widgetVar="carDialog" showEffect="explode" hideEffect="explode" header="New Column">
-                    <h:panelGrid columns="3" id="newColumnGrid">
-                        <h:outputText value="Column Name:" />
-                        <h:selectOneMenu id="selectCar" value="#{tableBean.columnName}">
-                            <f:selectItems value="#{tableBean.availableManufacturers}" var="manufacturer" itemLabel="#{manufacturer}" itemValue="#{manufacturer}" />
-                        </h:selectOneMenu>
-                        <p:commandButton id="saveButton" value="Add" actionListener="#{tableBean.addColumn}" update="carsTable newColumnGrid" oncomplete="carDialog.hide()"/>
-                    </h:panelGrid>
-                </p:dialog>
+                
                 
             </h:form>
 
@@ -88,8 +50,8 @@
 
     &lt;h3&gt;Simple&lt;/h3&gt;
     &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
-        &lt;p:columns value="\#{tableBean.simpleColumns}"
-                    var="column" columnIndexVar="colIndex"&gt;
+        &lt;p:columns value="\#{tableBean.simpleColumns}" var="column" columnIndexVar="colIndex"
+                    sortBy="\#{car[column.property]}" filterBy="\#{car[column.property]}"&gt;
             &lt;f:facet name="header"&gt;
                 \#{column.header}
             &lt;/f:facet&gt;
@@ -97,56 +59,6 @@
             \#{car[column.property]}
         &lt;/p:columns&gt;
     &lt;/p:dataTable&gt;
-
-    &lt;h3&gt;Advanced&lt;/h3&gt;
-    &lt;p:dataTable var="cars" value="\#{tableBean.dynamicCars}" id="carsTable"&gt;
-
-        &lt;f:facet name="header"&gt;
-            &lt;p:commandButton id="addButton" type="button" onclick="carDialog.show()" value="Add a New Column" icon="add"/&gt;
-        &lt;/f:facet&gt;
-
-        &lt;p:columns value="\#{tableBean.columns}"
-                var="column" columnIndexVar="colIndex"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;p:outputPanel&gt;
-
-                    &lt;p:commandButton icon="remove"
-                                actionListener="\#{tableBean.removeColumn}"
-                                update="carsTable" title="Remove Column" style="float:right"&gt;
-                        &lt;f:param name="columnToRemove" value="\#{column}" /&gt;
-                    &lt;/p:commandButton&gt;
-                    \#{column}
-                &lt;/p:outputPanel&gt;
-            &lt;/f:facet&gt;
-
-            &lt;h:outputText value="\#{cars[colIndex].model}" /&gt;&lt;br /&gt;
-            &lt;h:outputText value="\#{cars[colIndex].year}" /&gt; &lt;br /&gt;
-            &lt;h:outputText value="\#{cars[colIndex].color}"
-                        style="color:\#{cars[colIndex].color}"/&gt;
-        &lt;/p:columns&gt;
-
-         &lt;f:facet name="footer"&gt;
-             Dynamic Columns
-        &lt;/f:facet&gt;
-
-    &lt;/p:dataTable&gt;
-
-    &lt;p:dialog widgetVar="carDialog" showEffect="explode" hideEffect="explode" header="New Column"&gt;
-
-        &lt;h:panelGrid columns="3" id="newColumnGrid"&gt;
-
-            &lt;h:outputText value="Column Name:" /&gt;
-            &lt;h:selectOneMenu id="selectCar" value="\#{tableBean.columnName}"&gt;
-                &lt;f:selectItems value="\#{tableBean.availableManufacturers}"
-                    var="manufacturer" itemLabel="\#{manufacturer}"
-                    itemValue="\#{manufacturer}" /&gt;
-            &lt;/h:selectOneMenu&gt;
-            &lt;p:commandButton id="saveButton" value="Add" actionListener="\#{tableBean.addColumn}"
-                    update="carsTable newColumnGrid" oncomplete="carDialog.hide()"/&gt;
-
-        &lt;/h:panelGrid&gt;
-
-    &lt;/p:dialog&gt;
 
 &lt;/h:form&gt;
 				</pre>
@@ -203,75 +115,19 @@ public class TableBean implements Serializable {
 		manufacturers[9] = "Ford";
 	}
 
-    private List&lt;String&gt; columns;
-
-    private List&lt;Car[]&gt; dynamicCars;
-
-    private String columnName;
-
 	public TableBean() {
         createDynamicColumns();
-        populateDynamicCars();
 	}
 
-    private void populateDynamicCars() {
-        dynamicCars = new ArrayList&lt;Car[]&gt;();
-
-        for(int i=0; i &lt; 9; i++) {
-            Car[] cars = new Car[columns.size()];
-
-            for(int j=0; j &lt; columns.size(); j++) {
-                cars[j] = new Car(getRandomModel(), getRandomYear(), columns.get(j), getRandomColor());
-            }
-
-            dynamicCars.add(cars);
-        }
-    }
-
     private void createDynamicColumns() {
-        columns = new ArrayList&lt;String&gt;();
-        for(int i=0; i &lt; 3; i++) {
-            columns.add(manufacturers[i]);
-        }
-
         simpleColumns = new ArrayList&lt;ColumnModel&gt;();
         simpleColumns.add(new ColumnModel("Model", "model"));
         simpleColumns.add(new ColumnModel("Manufacturer", "manufacturer"));
-    }
-
-    public List&lt;String&gt; getColumns() {
-        return columns;
+        simpleColumns.add(new ColumnModel("Year", "year"));
     }
 
     public List&lt;ColumnModel&gt; getSimpleColumns() {
         return simpleColumns;
-    }
-
-    public List&lt;Car[]&gt; getDynamicCars() {
-        return dynamicCars;
-    }
-
-    public String getColumnName() {
-        return columnName;
-    }
-
-    public void setColumnName(String columnName) {
-        this.columnName = columnName;
-    }
-
-    public void addColumn() {
-        columns.add(columnName);
-        columnName = null;
-
-        populateDynamicCars();
-    }
-
-    public void removeColumn() {
-        String columnToRemove = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("columnToRemove");
-
-        columns.remove(columnToRemove);
-
-        populateDynamicCars();
     }
 
     public String[] getManufacturers() {

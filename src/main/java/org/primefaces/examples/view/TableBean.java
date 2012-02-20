@@ -106,8 +106,6 @@ public class TableBean implements Serializable {
 
     private List<String> columns;
 
-    private List<Car[]> dynamicCars;
-
     private String columnName;
 
     private SelectItem[] manufacturerOptions;
@@ -136,7 +134,6 @@ public class TableBean implements Serializable {
         populateRandomSales();
 
         createDynamicColumns();
-        populateDynamicCars();
         manufacturerOptions = createFilterOptions(manufacturers);
         
         populatePlayers();
@@ -313,20 +310,6 @@ public class TableBean implements Serializable {
         return total;
     }
 
-    private void populateDynamicCars() {
-        dynamicCars = new ArrayList<Car[]>();
-
-        for(int i=0; i < 9; i++) {
-            Car[] cars = new Car[columns.size()];
-            
-            for(int j=0; j < columns.size(); j++) {
-                cars[j] = new Car(getRandomModel(), getRandomYear(), columns.get(j), getRandomColor());
-            }
-
-            dynamicCars.add(cars);
-        }
-    }
-
     private void createDynamicColumns() {
         columns = new ArrayList<String>();
         for(int i=0; i < 3; i++) {
@@ -336,6 +319,7 @@ public class TableBean implements Serializable {
         simpleColumns = new ArrayList<ColumnModel>();
         simpleColumns.add(new ColumnModel("Model", "model"));
         simpleColumns.add(new ColumnModel("Manufacturer", "manufacturer"));
+        simpleColumns.add(new ColumnModel("Year", "year"));
     }
 
     public List<String> getColumns() {
@@ -346,31 +330,12 @@ public class TableBean implements Serializable {
         return simpleColumns;
     }
 
-    public List<Car[]> getDynamicCars() {
-        return dynamicCars;
-    }
-
     public String getColumnName() {
         return columnName;
     }
 
     public void setColumnName(String columnName) {
         this.columnName = columnName;
-    }
-
-    public void addColumn() {
-        columns.add(columnName);
-        columnName = null;
-
-        populateDynamicCars();
-    }
-
-    public void removeColumn() {
-        String columnToRemove = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("columnToRemove");
-
-        columns.remove(columnToRemove);
-
-        populateDynamicCars();
     }
 
     public String[] getManufacturers() {
