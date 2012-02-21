@@ -76,7 +76,7 @@ import java.util.UUID;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
+import javax.faces.component.UIComponent;
 import org.primefaces.examples.domain.Car;
 import java.util.*;
 
@@ -193,6 +193,11 @@ public class TableBean implements Serializable {
     }
     
     public void updateColumns() {
+        //reset table state
+        UIComponent table = FacesContext.getCurrentInstance().getViewRoot().findComponent(":form:cars");
+        table.setValueExpression("sortBy", null);
+        
+        //update columns
         String[] columnKeys = columnTemplate.split(" ");
         columns.clear();      
         

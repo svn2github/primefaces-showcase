@@ -43,6 +43,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
 import java.util.*;
+import javax.faces.component.UIComponent;
 import javax.faces.model.SelectItem;
 import org.primefaces.event.ColumnResizeEvent;
 import org.primefaces.event.DragDropEvent;
@@ -462,6 +463,11 @@ public class TableBean implements Serializable {
     }
     
     public void updateColumns() {
+        //reset table state
+        UIComponent table = FacesContext.getCurrentInstance().getViewRoot().findComponent(":form:cars");
+        table.setValueExpression("sortBy", null);
+        
+        //update columns
         String[] columnKeys = columnTemplate.split(" ");
         columns.clear();      
         
