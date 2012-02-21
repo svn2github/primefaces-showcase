@@ -5,30 +5,24 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
 
-    <ui:define name="head">
-        <style type="text/css">
-            .add {
-                background-image: url(../images/add.png) !important;
-            }
-
-            .remove {
-                background-image: url(../images/delete.png) !important;
-            }
-        </style>
-    </ui:define>
 
 	<ui:define name="content">
 	<h1 class="title ui-widget-header ui-corner-all">DataTable - Dynamic Columns</h1>
 		<div class="entry">
-			<p>Columns of datatable can also be defined dynamically with p:columns component. Since columns are created
-            on-the-fly it is easy to add/remove columns programmatically.</p>
+			<p>Columns of datatable can be defined dynamically with p:columns component. Since columns are created
+            on-the-fly it is easy to add/remove columns programmatically. Column template below is a white-space separated values that can be a combination
+            of "model", "manufacturer", "color" and "year".</p>
 
-            <h:form id="form" rependId="false">
+            <h:form id="form">
+                
+                <h:panelGrid id="grid" columns="3" style="margin-bottom:10px">
+                    <h:outputLabel for="template" value="Template:" style="font-weight:bold"/>
+                    <p:inputText id="template" value="#{tableBean.columnTemplate}" size="50"/>
+                    <p:commandButton id="btn" update="cars" actionListener="#{tableBean.updateColumns}" value="Update" process="@parent"/>
+                </h:panelGrid>
 
-                <h3>Simple</h3>
-                <p:dataTable var="car" value="#{tableBean.carsSmall}">
-
-                    <p:columns value="#{tableBean.simpleColumns}" var="column" columnIndexVar="colIndex" 
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}">                    
+                    <p:columns value="#{tableBean.columns}" var="column" columnIndexVar="colIndex" 
                                 sortBy="#{car[column.property]}" filterBy="#{car[column.property]}">
                         <f:facet name="header">
                             #{column.header}
@@ -38,19 +32,23 @@
                     </p:columns>
 
                 </p:dataTable>
-                
-                
+
             </h:form>
 
 		<h3>Source</h3>
 		<p:tabView>
 			<p:tab title="datatableDynamicColumns.xhtml">
                 <pre name="code" class="xml">
-&lt;h:form id="form" prependId="false"&gt;
+&lt;h:form id="form"&gt;
+                
+    &lt;h:panelGrid id="grid" columns="3" style="margin-bottom:10px"&gt;
+        &lt;h:outputLabel for="template" value="Template:" style="font-weight:bold"/&gt;
+        &lt;p:inputText id="template" value="\#{tableBean.columnTemplate}" size="50"/&gt;
+        &lt;p:commandButton id="btn" update="cars" actionListener="\#{tableBean.updateColumns}" value="Update" process="@parent"/&gt;
+    &lt;/h:panelGrid&gt;
 
-    &lt;h3&gt;Simple&lt;/h3&gt;
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
-        &lt;p:columns value="\#{tableBean.simpleColumns}" var="column" columnIndexVar="colIndex"
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}"&gt;                    
+        &lt;p:columns value="\#{tableBean.columns}" var="column" columnIndexVar="colIndex" 
                     sortBy="\#{car[column.property]}" filterBy="\#{car[column.property]}"&gt;
             &lt;f:facet name="header"&gt;
                 \#{column.header}
@@ -58,6 +56,7 @@
 
             \#{car[column.property]}
         &lt;/p:columns&gt;
+
     &lt;/p:dataTable&gt;
 
 &lt;/h:form&gt;
@@ -68,26 +67,28 @@
                 <pre name="code" class="java">
 package org.primefaces.examples.view;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-
+import javax.servlet.ServletContext;
 import org.primefaces.examples.domain.Car;
+import java.util.*;
 
 public class TableBean implements Serializable {
-
-	private final static Logger logger = Logger.getLogger(TableBean.class.getName());
+    
+    private final static List&lt;String&gt; VALID_COLUMN_KEYS = Arrays.asList("model", "manufacturer", "year", "color");
 
 	private final static String[] colors;
-
+	
 	private final static String[] manufacturers;
 
-    private List&lt;ColumnModel&gt; simpleColumns;
-
-	private String theme;
+    private String columnTemplate = "model manufacturer year";
 
 	static {
 		colors = new String[10];
@@ -101,7 +102,7 @@ public class TableBean implements Serializable {
 		colors[7] = "Yellow";
 		colors[8] = "Brown";
 		colors[9] = "Maroon";
-
+		
 		manufacturers = new String[10];
 		manufacturers[0] = "Mercedes";
 		manufacturers[1] = "BMW";
@@ -115,48 +116,56 @@ public class TableBean implements Serializable {
 		manufacturers[9] = "Ford";
 	}
 
+	private List&lt;Car&gt; carsSmall;
+
+    private List&lt;ColumnModel&gt; columns = new ArrayList&lt;ColumnModel&gt;();;
+
 	public TableBean() {
-        createDynamicColumns();
+		carsSmall = new ArrayList&lt;Car&gt;();
+		
+		populateRandomCars(cars, 50);
+		populateRandomCars(carsSmall, 9);
+
+        updateColumns();
+	}
+	
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+	
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
 	}
 
-    private void createDynamicColumns() {
-        simpleColumns = new ArrayList&lt;ColumnModel&gt;();
-        simpleColumns.add(new ColumnModel("Model", "model"));
-        simpleColumns.add(new ColumnModel("Manufacturer", "manufacturer"));
-        simpleColumns.add(new ColumnModel("Year", "year"));
-    }
-
-    public List&lt;ColumnModel&gt; getSimpleColumns() {
-        return simpleColumns;
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+	
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+    
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+	
+    public List&lt;ColumnModel&gt; getColumns() {
+        return columns;
     }
 
     public String[] getManufacturers() {
         return manufacturers;
     }
 
-    public List&lt;String&gt; getAvailableManufacturers() {
-        List&lt;String&gt; availableManufacturers = new ArrayList&lt;String&gt;();
-
-        for(String manufacturer : manufacturers) {
-            if(!columns.contains(manufacturer))
-                availableManufacturers.add(manufacturer);
-        }
-
-        return availableManufacturers;
+    public String[] getColors() {
+        return colors;
     }
-
-    private int getRandomYear() {
-		return (int) (Math.random() * 50 + 1960);
-	}
-
-	private String getRandomColor() {
-		return colors[(int) (Math.random() * 10)];
-	}
-
-    private String getRandomModel() {
-		return UUID.randomUUID().toString().substring(0, 8);
-	}
-
+    
     static public class ColumnModel implements Serializable {
 
         private String header;
@@ -173,6 +182,26 @@ public class TableBean implements Serializable {
 
         public String getProperty() {
             return property;
+        }
+    }
+    
+    public String getColumnTemplate() {
+        return columnTemplate;
+    }
+    public void setColumnTemplate(String columnTemplate) {
+        this.columnTemplate = columnTemplate;
+    }
+    
+    public void updateColumns() {
+        String[] columnKeys = columnTemplate.split(" ");
+        columns.clear();      
+        
+        for(String columnKey : columnKeys) {
+            String key = columnKey.trim();
+            
+            if(VALID_COLUMN_KEYS.contains(key)) {
+                columns.add(new ColumnModel(columnKey.toUpperCase(), columnKey));
+            }
         }
     }
 }

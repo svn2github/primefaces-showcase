@@ -42,6 +42,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
+import java.util.*;
 import javax.faces.model.SelectItem;
 import org.primefaces.event.ColumnResizeEvent;
 import org.primefaces.event.DragDropEvent;
@@ -53,6 +54,8 @@ import org.primefaces.examples.domain.Player;
 import org.primefaces.examples.domain.Stats;
 
 public class TableBean implements Serializable {
+    
+    private final static List<String> VALID_COLUMN_KEYS = Arrays.asList("model", "manufacturer", "year", "color");
 	
 	private final static Logger logger = Logger.getLogger(TableBean.class.getName());
 	
@@ -61,6 +64,8 @@ public class TableBean implements Serializable {
 	private final static String[] manufacturers;
 	
 	private String theme;
+    
+    private String columnTemplate = "model manufacturer year";
 
 	static {
 		colors = new String[10];
@@ -104,15 +109,13 @@ public class TableBean implements Serializable {
 
     private List<ManufacturerSale> sales;
 
-    private List<String> columns;
-
     private String columnName;
 
     private SelectItem[] manufacturerOptions;
 
     private List<Car> droppedCars;
 
-    private List<ColumnModel> simpleColumns;
+    private List<ColumnModel> columns = new ArrayList<ColumnModel>();;
 
     private boolean editMode;
     
@@ -133,7 +136,8 @@ public class TableBean implements Serializable {
         populateRandomCars(carsLarge, 200);
         populateRandomSales();
 
-        createDynamicColumns();
+        updateColumns();
+        
         manufacturerOptions = createFilterOptions(manufacturers);
         
         populatePlayers();
@@ -310,24 +314,8 @@ public class TableBean implements Serializable {
         return total;
     }
 
-    private void createDynamicColumns() {
-        columns = new ArrayList<String>();
-        for(int i=0; i < 3; i++) {
-            columns.add(manufacturers[i]);
-        }
-
-        simpleColumns = new ArrayList<ColumnModel>();
-        simpleColumns.add(new ColumnModel("Model", "model"));
-        simpleColumns.add(new ColumnModel("Manufacturer", "manufacturer"));
-        simpleColumns.add(new ColumnModel("Year", "year"));
-    }
-
-    public List<String> getColumns() {
+    public List<ColumnModel> getColumns() {
         return columns;
-    }
-
-    public List<ColumnModel> getSimpleColumns() {
-        return simpleColumns;
     }
 
     public String getColumnName() {
@@ -344,17 +332,6 @@ public class TableBean implements Serializable {
 
     public String[] getColors() {
         return colors;
-    }
-
-    public List<String> getAvailableManufacturers() {
-        List<String> availableManufacturers = new ArrayList<String>();
-
-        for(String manufacturer : manufacturers) {
-            if(!columns.contains(manufacturer))
-                availableManufacturers.add(manufacturer);
-        }
-
-        return availableManufacturers;
     }
 
     private SelectItem[] createFilterOptions(String[] data)  {
@@ -475,5 +452,25 @@ public class TableBean implements Serializable {
     
     public void deleteCar() {
         carsSmall.remove(selectedCar);
+    }
+
+    public String getColumnTemplate() {
+        return columnTemplate;
+    }
+    public void setColumnTemplate(String columnTemplate) {
+        this.columnTemplate = columnTemplate;
+    }
+    
+    public void updateColumns() {
+        String[] columnKeys = columnTemplate.split(" ");
+        columns.clear();      
+        
+        for(String columnKey : columnKeys) {
+            String key = columnKey.trim();
+            
+            if(VALID_COLUMN_KEYS.contains(key)) {
+                columns.add(new ColumnModel(columnKey.toUpperCase(), columnKey));
+            }
+        }
     }
 }
