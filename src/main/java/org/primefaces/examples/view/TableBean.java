@@ -137,7 +137,7 @@ public class TableBean implements Serializable {
         populateRandomCars(carsLarge, 200);
         populateRandomSales();
 
-        updateColumns();
+        createDynamicColumns();
         
         manufacturerOptions = createFilterOptions(manufacturers);
         
@@ -468,6 +468,10 @@ public class TableBean implements Serializable {
         table.setValueExpression("sortBy", null);
         
         //update columns
+        createDynamicColumns();
+    }
+    
+    public void createDynamicColumns() {
         String[] columnKeys = columnTemplate.split(" ");
         columns.clear();      
         

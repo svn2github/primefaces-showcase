@@ -123,10 +123,9 @@ public class TableBean implements Serializable {
 	public TableBean() {
 		carsSmall = new ArrayList&lt;Car&gt;();
 		
-		populateRandomCars(cars, 50);
 		populateRandomCars(carsSmall, 9);
 
-        updateColumns();
+        createDynamicColumns();
 	}
 	
 	private void populateRandomCars(List&lt;Car&gt; list, int size) {
@@ -198,6 +197,10 @@ public class TableBean implements Serializable {
         table.setValueExpression("sortBy", null);
         
         //update columns
+        createDynamicColumns();
+    }
+    
+    public void createDynamicColumns() {
         String[] columnKeys = columnTemplate.split(" ");
         columns.clear();      
         
