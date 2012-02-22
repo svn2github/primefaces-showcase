@@ -12,8 +12,11 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -39,16 +42,48 @@ public abstract class AbstractIntegrationTest {
 	protected static final boolean DECREASING = false;
 
 	protected static WebDriver driver;
-
+    
 	@BeforeClass
 	public static void beforeClass() {
-		FirefoxProfile profile = prepareProfileForFileDownload();
-		driver = new FirefoxDriver(profile);
-		driver.manage().window().setPosition(new Point(0, 0));
-		driver.manage().window().setSize(new Dimension(WIDTH, HEIGHT));
+		
+        driver = getDriver();
+        
+//      init driver for all types
+//		driver.manage().window().setPosition(new Point(0, 0));
+//		driver.manage().window().setSize(new Dimension(WIDTH, HEIGHT));
 	}
+    
+    protected static WebDriver getDriver() {
+        if(driver == null) {
+            
+            String type = System.getProperty("integrationTestsDriverType");
+            String path = System.getProperty("integrationTestsDriverPath");
+            
+            if(type != null) {
+                if(type.equalsIgnoreCase("chrome")) {
+                    
+                    System.setProperty("webdriver.chrome.driver", path );
 
-	private static FirefoxProfile prepareProfileForFileDownload() {
+                    return new ChromeDriver();
+                }
+                else if(type.equalsIgnoreCase("win32ie")) {
+                    System.setProperty("webdriver.ie.driver", path );
+                    
+                    DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();  
+                    ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+
+                    return new InternetExplorerDriver(ieCapabilities);
+                }
+            }
+            
+            
+            return new FirefoxDriver(prepareFirefoxProfileForFileDownload());
+        }
+        
+        return driver;
+    }
+
+	private static FirefoxProfile prepareFirefoxProfileForFileDownload() {
 		FirefoxProfile profile = new FirefoxProfile();
 		profile.setPreference("browser.download.folderList", 2);
 		profile.setPreference("browser.download.manager.showWhenStarting", false);
