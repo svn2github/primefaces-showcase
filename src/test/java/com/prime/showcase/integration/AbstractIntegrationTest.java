@@ -54,33 +54,25 @@ public abstract class AbstractIntegrationTest {
 	}
     
     protected static WebDriver getDriver() {
-        if(driver == null) {
             
-            String type = System.getProperty("integrationTestsDriverType");
-            String path = System.getProperty("integrationTestsDriverPath");
-            
-            if(type != null) {
-                if(type.equalsIgnoreCase("chrome")) {
-                    
-                    System.setProperty("webdriver.chrome.driver", path );
+        String type = System.getProperty("integrationTestsDriverType");
+        String path = System.getProperty("integrationTestsDriverPath");
 
-                    return new ChromeDriver();
-                }
-                else if(type.equalsIgnoreCase("win32ie")) {
-                    System.setProperty("webdriver.ie.driver", path );
-                    
-                    DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();  
-                    ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+        if(type != null) {
+            if(type.equalsIgnoreCase("chrome")) {
 
-                    return new InternetExplorerDriver(ieCapabilities);
-                }
+                System.setProperty("webdriver.chrome.driver", path );
+
+                return new ChromeDriver();
             }
-            
-            
-            return new FirefoxDriver(prepareFirefoxProfileForFileDownload());
+            else if(type.equalsIgnoreCase("win32ie")) {
+                DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();  
+                ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+                return new InternetExplorerDriver(ieCapabilities);
+            }
         }
         
-        return driver;
+        return new FirefoxDriver(prepareFirefoxProfileForFileDownload());
     }
 
 	private static FirefoxProfile prepareFirefoxProfileForFileDownload() {
@@ -94,7 +86,7 @@ public abstract class AbstractIntegrationTest {
 
 	@AfterClass
 	public static void afterClass() {
-		driver.quit();
+                driver.quit();
 	}
 
 	/**
