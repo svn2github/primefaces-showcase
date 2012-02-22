@@ -23,7 +23,7 @@ public class SelectManyButtonBasicIntegrationTest extends AbstractIntegrationTes
             
             WebElement menu = findElementById("form:menu");
             
-            assertTrue("Should render valid number of buttons.", findElementsBySelector(menu, "button[type='button'] input[type='checkbox']:not([checked])").size() == 3);
+            assertTrue("Should render valid number of buttons.", findElementsBySelector(menu, "div.ui-button input[type='checkbox']:not([checked])").size() == 3);
             
             findElementById("form:submit");
             
@@ -38,7 +38,7 @@ public class SelectManyButtonBasicIntegrationTest extends AbstractIntegrationTes
     @Test
     public void shouldManageMenu(){
         
-        for (WebElement e : findElementsBySelector(escapeClientId("form:menu") + " button")) {
+        for (WebElement e : findElementsBySelector(escapeClientId("form:menu") + " .ui-button")) {
             
             WebElement hidden = findElementBySelector(e, "input[type='checkbox']");
             
