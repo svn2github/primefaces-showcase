@@ -31,39 +31,16 @@ public class BreadCrumbIntegrationTest extends AbstractIntegrationTest {
 		
 		List<WebElement> listItems = firstBreadCrumb.findElements(By.tagName("li"));
 		
-		assertThat(listItems.size(),equalTo(8));
+		assertThat(listItems.size(),equalTo(15));
 		
-		assertBreadCrumbItem(listItems.get(0),"Categories","#");
-		assertBreadCrumbItem(listItems.get(1),"Sports","#");
-		assertBreadCrumbItem(listItems.get(2),"Football","#");
-		assertBreadCrumbItem(listItems.get(3),"Countries","#");
-		assertBreadCrumbItem(listItems.get(4),"Spain","#");
-		assertBreadCrumbItem(listItems.get(5),"F.C. Barcelona","#");
-		assertBreadCrumbItem(listItems.get(6),"Squad","#");
-		assertBreadCrumbItem(listItems.get(7),"Lionel Messi","#");
+		assertBreadCrumbItem(listItems.get(2),"Sports","#");
+		assertBreadCrumbItem(listItems.get(4),"Football","#");
+		assertBreadCrumbItem(listItems.get(6),"Countries","#");
+		assertBreadCrumbItem(listItems.get(8),"Spain","#");
+		assertBreadCrumbItem(listItems.get(10),"F.C. Barcelona","#");
+		assertBreadCrumbItem(listItems.get(12),"Squad","#");
+		assertBreadCrumbItem(listItems.get(14),"Lionel Messi","#");
 	}
-	
-    @Ignore("BreadCrumb effects removed on PF3.1")
-	@Test
-	public void shouldRenderBreadCrumbItemsWithEffects() {
-	List<WebElement> breadCrumbs = driver.findElements(By.className("ui-breadcrumb"));
-		
-		WebElement firstBreadCrumb = breadCrumbs.get(1);
-		
-		List<WebElement> listItems = firstBreadCrumb.findElements(By.tagName("li"));
-		
-		assertThat(listItems.size(),equalTo(8));
-		
-		assertBreadCrumbItem(listItems.get(0),"Categories","#");
-		assertBreadCrumbItem(listItems.get(1),"Sports","#");
-		assertBreadCrumbItem(listItems.get(2),"Football","#");
-		assertBreadCrumbItem(listItems.get(3),"Countries","#");
-		assertBreadCrumbItem(listItems.get(4),"Spain","#");
-		assertBreadCrumbItem(listItems.get(5),"F.C. Barcelona","#");
-		assertBreadCrumbItem(listItems.get(6),"Squad","#");
-		assertBreadCrumbItem(listItems.get(7),"Lionel Messi","#");
-	}
-	
 	
 
 	private void assertBreadCrumbItem(WebElement breadCrumbItem, String text, String url) {
