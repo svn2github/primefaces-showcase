@@ -726,6 +726,25 @@
                         </configuration>
                         <executions>
                             <execution>
+                                <id>win32ie</id>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                                <configuration>
+                                    <systemProperties>
+                                        <property>
+                                            <name>integrationTestsDriverType</name>
+                                            <value>win32ie</value>
+                                        </property>
+                                        <property>
+                                            <name>integrationTestsDriverPath</name>
+                                            <value>src/test/drivers/InternetExplorerDriver.exe</value>
+                                        </property>
+                                    </systemProperties>
+                                </configuration>
+                            </execution>
+                            <execution>
                                 <id>firefox</id>
                                 <goals>
                                     <goal>integration-test</goal>
@@ -755,31 +774,6 @@
                                         <property>
                                             <name>integrationTestsDriverPath</name>
                                             <value>src/test/drivers/chromedriver.exe</value>
-                                        </property>
-                                    </systemProperties>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>win32ie</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <rules>
-                                        <requireOS>
-                                            <family>Windows</family>
-                                            <arch>x86</arch>
-                                        </requireOS>  
-                                    </rules>
-                                    <systemProperties>
-                                        <property>
-                                            <name>integrationTestsDriverType</name>
-                                            <value>win32ie</value>
-                                        </property>
-                                        <property>
-                                            <name>integrationTestsDriverPath</name>
-                                            <value>src/test/drivers/InternetExplorerDriver.exe</value>
                                         </property>
                                     </systemProperties>
                                 </configuration>
