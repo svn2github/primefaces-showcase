@@ -22,15 +22,15 @@ public class DialogLoginIntegrationTest extends AbstractIntegrationTest {
 		findElementById("loginLink").click();
 
 		findElementById("form:username").sendKeys(username);
-		findElementById("form:password_input").sendKeys(password);
+		findElementById("form:password").sendKeys(password);
 
 		findElementById("form:loginButton").click();
 
 		waitForCondition(new ExpectedCondition<Boolean>() {
 
 			public Boolean apply(WebDriver driver) {
-				return !driver.findElement(By.id("dialog")).getAttribute("style").contains("display: block;")
-						&& driver.findElement(By.id("loginLink")).getAttribute("style").contains("display: none;");
+				return !driver.findElement(By.id("dialog")).isDisplayed()
+						&& !driver.findElement(By.id("loginLink")).isDisplayed();
 			}
 		});
 
