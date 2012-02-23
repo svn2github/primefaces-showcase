@@ -19,6 +19,8 @@ public class DialogCloseListenerIntegrationTest extends AbstractIntegrationTest 
 		WebElement openDialogLink = findElementById("form:openDialogLink");
 		openDialogLink.click();
 		
+        waitUntilAllAnimationsComplete();
+        
 		findElementBySelector(".ui-dialog-titlebar-close").click();
 		
 		waitUntilElementExists(By.className("ui-growl"));
