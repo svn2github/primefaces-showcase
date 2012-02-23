@@ -27,6 +27,9 @@ public class DataTableBasicRowSelectionIntegrationTest extends AbstractDataTable
 		clickToElementById("form:cars:"+ rowIndex + ":selectButton");
 		waitUntilAjaxRequestCompletes();
 		assertTrue(isTextsPresent(findElementById("form:carDlg"), aRow));
+        findElementBySelector(findElementById("form:carDlg"), ".ui-dialog-titlebar-close").click();
+        waitUntilAllAnimationsComplete();
+        
 		if(repeat < 3) {
 			repeat++;
 			scrollByOffset(0, -200);
