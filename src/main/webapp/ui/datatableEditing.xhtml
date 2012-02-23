@@ -8,13 +8,13 @@
 	<ui:define name="content">
 	<h1 class="title ui-widget-header ui-corner-all">DataTable - InCell Editing</h1>
 		<div class="entry">
-			<p>DataTable provides in-cell editing feature.</p>
+			<p>In-cell editing feature allows updating values within the datatable.</p>
 
             <h:form id="form">
 
                 <p:growl id="messages" showDetail="true"/>
 
-                <p:dataTable var="car" value="#{tableBean.carsSmall}" id="carList">
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" id="carList" editable="true">
 
                     <f:facet name="header">
                         In-Cell Editing
@@ -72,7 +72,7 @@
 
     &lt;p:growl id="messages" showDetail="true"/&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" id="carList"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" id="carList" editable="true"&gt;
 
         &lt;f:facet name="header"&gt;
             In-Cell Editing
