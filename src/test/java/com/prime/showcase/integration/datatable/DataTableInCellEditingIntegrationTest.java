@@ -31,6 +31,9 @@ public class DataTableInCellEditingIntegrationTest extends AbstractIntegrationTe
 		findElementById(MODEL_INPUT).sendKeys("PF");
 		clickToElementByClass(OK_BUTTON);
 
+        waitUntilAjaxRequestCompletes();
+        waitUntilAllAnimationsComplete();
+        
 		String newModelName = getModelName();
 
 		assertThat(newModelName, not(equalTo(prevModelName)));
