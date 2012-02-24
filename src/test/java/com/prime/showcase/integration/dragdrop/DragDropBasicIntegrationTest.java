@@ -145,7 +145,10 @@ public class DragDropBasicIntegrationTest extends AbstractIntegrationTest {
         List<WebElement> copies = findElementsBySelector(".ui-draggable.ui-draggable-dragging");
         assertTrue("Should be only one dragging.", copies.size() == 1);
         
-        assertTrue("Should clone right.", copies.get(0).getText().equals(clone.getText()));
+        Dimension cd = copies.get(0).getSize();
+        Dimension od = clone.getSize();
+        
+        assertTrue("Should clone right.", cd.height == od.height && cd.width == od.width);
         
         action.releaseMouse();
         
@@ -161,7 +164,7 @@ public class DragDropBasicIntegrationTest extends AbstractIntegrationTest {
         //start position
         Point ps = revert.getLocation();
         
-        scrollByOffset(0, 200);
+//        scrollByOffset(0, 200);
         
         action.clickAndHoldOnElement(revert);
         
