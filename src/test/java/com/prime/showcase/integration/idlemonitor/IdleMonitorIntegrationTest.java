@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import com.prime.showcase.integration.SeleniumActionHelper;
 
 public class IdleMonitorIntegrationTest extends AbstractIntegrationTest {
 	
@@ -30,14 +31,18 @@ public class IdleMonitorIntegrationTest extends AbstractIntegrationTest {
 		driver.get(testUrl);
 
 		Thread.sleep(7000);
+        
+        waitUntilAllAnimationsComplete();
 		
 		WebElement growlElement = driver.findElement(By.className("ui-growl-message"));
 		
 		assertThat(growlElement.getText(),containsString("You have been idle for at least 5 seconds"));
 
-		driver.findElement(By.id("menu")).click();
-		Thread.sleep(1500);	
-		
+        growlElement.click();
+        
+        waitUntilAjaxRequestCompletes();
+        waitUntilAllAnimationsComplete();
+        
 		growlElement = driver.findElement(By.className("ui-growl-message"));
 		
 		
