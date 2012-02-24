@@ -22,68 +22,58 @@ public class PasswordIntegrationTest extends AbstractIntegrationTest {
 	
 	@Test
 	public void shouldRenderInputAsPassword(){
-		WebElement nonFeedback = findElementById("form:nonFeedback_input");
+		WebElement nonFeedback = findElementById("form:nonFeedback");
 		assertThat(nonFeedback.getAttribute("type"), equalTo("password"));
 	}
 	
 	@Test
 	public void shouldShowFeedback() throws InterruptedException{
 		
-		WebElement feedback = findElementById("form:feedback_input");
+		WebElement feedback = findElementById("form:feedback");
 		feedback.click();
 
-		WebElement feedbackMessage = findElementsByClass("jpassword-righttop").get(0).findElement(By.className("jpassword-info"));
+		WebElement feedbackMessage = findElementBySelector(findElementById("form:feedback_panel"), ".ui-password-info");
 		assertThat(feedbackMessage.getText(), equalTo("Please enter a password"));
 
 		feedback.sendKeys("aaa");
 		assertThat(feedbackMessage.getText(), equalTo("Weak"));
-		feedback.sendKeys("33");
+		feedback.sendKeys("33333333");
 		assertThat(feedbackMessage.getText(), equalTo("Good"));
-		feedback.sendKeys("Z!X'");
+		feedback.sendKeys(".zZ4444");
 		assertThat(feedbackMessage.getText(), equalTo("Strong"));
 	}
 	
 	@Test
 	public void shouldShowTurkishFeedback() throws InterruptedException{
 		
-		WebElement feedback = findElementById("form:turkishFeedback_input");
+		WebElement feedback = findElementById("form:turkishFeedback");
 		feedback.click();
 
-		WebElement feedbackMessage = findElementsByClass("jpassword-righttop").get(1).findElement(By.className("jpassword-info"));
+		WebElement feedbackMessage = findElementBySelector(findElementById("form:turkishFeedback_panel"), ".ui-password-info");
 		assertThat(feedbackMessage.getText(), equalTo("Lütfen şifre giriniz"));
 
 		feedback.sendKeys("aaa");
 		assertThat(feedbackMessage.getText(), equalTo("Zayıf"));
-		feedback.sendKeys("33");
+		feedback.sendKeys("33333333");
 		assertThat(feedbackMessage.getText(), equalTo("Orta seviye"));
-		feedback.sendKeys("Z!X'");
+		feedback.sendKeys(".zZ4444");
 		assertThat(feedbackMessage.getText(), equalTo("Güçlü"));
 	}
 	
 	@Test
 	public void shouldShowInlineFeedback() throws InterruptedException{
 		
-		WebElement feedback = findElementById("form:inlineFeedback_input");
+		WebElement feedback = findElementById("form:inlineFeedback");
 		feedback.click();
 
-		WebElement feedbackDiv = findElementsByClass("jpassword-flat").get(0);
-		assertTrue(feedbackDiv.isDisplayed());
-	}
-	
-	@Test
-	public void shouldShowCustomFeedback() throws InterruptedException{
-		
-		WebElement feedback = findElementById("form:customFeedback_input");
-		feedback.click();
-
-		WebElement feedbackDiv = findElementsByClass("jpassword-flat").get(1);
+		WebElement feedbackDiv = findElementById("form:inlineFeedback_panel");
 		assertTrue(feedbackDiv.isDisplayed());
 	}
 	
 	@Test
 	public void shouldShowErrorMessageWhenDifferentPassEntered(){
-		WebElement pwd1 = findElementById("form:pwd1_input");
-		WebElement pwd2 = findElementById("form:pwd2_input");
+		WebElement pwd1 = findElementById("form:pwd1");
+		WebElement pwd2 = findElementById("form:pwd2");
 		WebElement save = findElementById("form:saveButton");
 		
 		pwd1.sendKeys("123");
@@ -99,8 +89,8 @@ public class PasswordIntegrationTest extends AbstractIntegrationTest {
 	
 	@Test
 	public void shouldNotShowErrorSamePassEntered(){
-		WebElement pwd1 = findElementById("form:pwd1_input");
-		WebElement pwd2 = findElementById("form:pwd2_input");
+		WebElement pwd1 = findElementById("form:pwd1");
+		WebElement pwd2 = findElementById("form:pwd2");
 		WebElement save = findElementById("form:saveButton");
 		
 		pwd1.sendKeys("123");
