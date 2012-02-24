@@ -1,8 +1,6 @@
 package com.prime.showcase.integration.scrollpanel;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
@@ -20,17 +18,17 @@ public class ScrollPanelIntegrationTest extends AbstractIntegrationTest {
 	@Test
 	public void shouldShowBasicScrollPanel(){
 		WebElement basicScroll = findElementById("form:basicScroll");
-		assertThat(basicScroll.getAttribute("style"), equalTo("width: 250px; height: 200px;"));
-
+        assertTrue(basicScroll.getSize().width == 252 && basicScroll.getSize().height == 202);
+        
 		WebElement container = findElementByClass("ui-scrollpanel-container");
-		assertThat(container.getAttribute("style"), equalTo("width: 250px; height: 200px;"));
+        assertTrue(container.getSize().width == 250 && container.getSize().height == 200);
 		
 	}
 	
 	@Test
 	public void shouldShowNativeScrollPanel(){
 		WebElement nativeScroll = findElementById("form:nativeScroll");
-		assertThat(nativeScroll.getAttribute("style"), equalTo("width: 250px; height: 200px;"));
+        assertTrue(nativeScroll.getSize().width == 252 && nativeScroll.getSize().height == 202);
 
 	}
 }
