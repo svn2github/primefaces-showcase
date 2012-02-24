@@ -12,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import com.prime.showcase.integration.AbstractIntegrationTest;
 import com.prime.showcase.integration.SeleniumActionHelper;
 import org.junit.BeforeClass;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 
 public class DockIntegrationTest extends AbstractIntegrationTest {
     
@@ -64,16 +66,17 @@ public class DockIntegrationTest extends AbstractIntegrationTest {
         
         for (WebElement e : items) {
             
-            
-            double baseWidth = Double.parseDouble(e.getCssValue("width").replaceAll("px", "")),
-            baseLeft = Double.parseDouble(e.getCssValue("left").replaceAll("px", ""));
+            Dimension ds = e.getSize();
+            Point ps = e.getLocation();
             
             action.mouseHover(e);
             
-            double hoverWidth = Double.parseDouble(e.getCssValue("width").replaceAll("px", "")),
-            hoverLeft = Double.parseDouble(e.getCssValue("left").replaceAll("px", ""));
+            waitUntilAllAnimationsComplete();
             
-            assertTrue("Should hover dock items.", hoverWidth > baseWidth && hoverLeft <= baseLeft);
+            Dimension de = e.getSize();
+            Point pe = e.getLocation();
+            
+            assertTrue("Should hover dock items.", de.height > ds.height && pe.x <= ps.x);
         }
     }
     
