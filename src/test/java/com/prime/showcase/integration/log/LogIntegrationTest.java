@@ -13,6 +13,7 @@ public class LogIntegrationTest extends AbstractIntegrationTest {
 	public void init() {
 		String testUrl = toShowcaseUrl("log.jsf");
 		driver.get(testUrl);
+        scrollByOffset(0, 310);
 	}
 
 	@Test
