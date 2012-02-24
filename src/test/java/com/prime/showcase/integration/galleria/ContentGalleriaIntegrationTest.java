@@ -11,6 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 
 public class ContentGalleriaIntegrationTest extends AbstractIntegrationTest {
 
@@ -38,7 +40,15 @@ public class ContentGalleriaIntegrationTest extends AbstractIntegrationTest {
 		
 		List<WebElement> contents = findElementByClass("ui-galleria-panel_wrap").findElements(By.tagName("div"));
 
-		findElementByClass("ui-galleria-nav-next").click();
+        waitUntilElementExists(By.cssSelector(".ui-galleria-nav-next.ui-icon"));
+        
+        waitForCondition(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver driver) {
+				return findElementBySelector(".ui-galleria-nav-next.ui-icon").isDisplayed();
+			}
+		});
+        
+		findElementBySelector(".ui-galleria-nav-next.ui-icon").click();
 		Thread.sleep(1000);
 		
 		assertThat(contents.get(0).getAttribute("class").contains("current"), equalTo(false));
