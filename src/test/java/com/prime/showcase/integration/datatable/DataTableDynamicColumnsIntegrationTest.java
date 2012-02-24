@@ -1,67 +1,64 @@
 package com.prime.showcase.integration.datatable;
 
+import org.junit.BeforeClass;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import static org.junit.Assert.assertTrue;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import java.util.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 
 public class DataTableDynamicColumnsIntegrationTest extends AbstractIntegrationTest {
 	
-	@Before
-	public void before() {
-		driver.get(toShowcaseUrl("datatableDynamicColumns.jsf"));
-	}
-
-	@Test
-	public void shouldRemoveAndAddColumns() {
-		removeAllColumns();
-		verifyNumberOfColumns(0);
-		
-		addColumnAndVerify("Audi", 1);
-		addColumnAndVerify("Ferrari", 2);
-	}
+    
+    public static final String TEST_URL = PRIME_SHOWCASE_UI + "datatableDynamicColumns.jsf";
+    
+    @BeforeClass
+    public static void init(){
+        driver.get(TEST_URL);
+    }
 	
-	private void addColumnAndVerify(String car, int expectedColumnNumber) {
-		addColumn(car);
-		verifyNumberOfColumns(expectedColumnNumber);
-	}
-	
-	private void addColumn(String car) {
-		clickToElementById("form:carsTable:addButton");
-		waitForOneSecond();
-		selectElementByValue(findElementById("form:selectCar"), car);
-		clickToElementById("form:saveButton");
-		waitUntilAjaxRequestCompletes();
-	}
-
-	private void verifyNumberOfColumns(int expected) {
-		assertThat(getNumberOfColumns(), equalTo(expected));
-	}
-
-	private void removeAllColumns() {
-		int numberOfColumns = getNumberOfColumns();
-		while(numberOfColumns-- > 0) {
-			clickWithScroll(getRemoveColumnButton());
-			waitUntilAjaxRequestCompletes();
-		}
-	}
-	
-	private int getNumberOfColumns() {
-		return getButtonsInDataTable().size() - 1;
-	}
-
-	private List<WebElement> getButtonsInDataTable() {
-		return findElementById("form:carsTable").findElements(By.tagName("button"));
-	}
-
-	private WebElement getRemoveColumnButton() {
-		return getButtonsInDataTable().get(1);
-	}
+    
+    @Test
+    public void shouldVerifyDOM(){
+        
+        try{
+            
+            findElementById("form:template");
+            findElementById("form:btn");
+            
+            List<WebElement> cols = findElementsBySelector(findElementById("form:cars"), "thead th");
+            
+            assertTrue("Should render valid number of columns", cols.size() == 3);
+            assertTrue("Should render valid columns.", cols.get(0).getText().equalsIgnoreCase("model"));
+            assertTrue("Should render valid columns.", cols.get(1).getText().equalsIgnoreCase("manufacturer"));
+            assertTrue("Should render valid columns.", cols.get(2).getText().equalsIgnoreCase("year"));
+            
+            
+            
+        }
+        catch(NoSuchElementException e){
+            assertTrue("DataTable dynamic columns showcase DOM not verified.", false);
+        }
+    }
+    
+    @Test
+    public void shouldChangeColumns(){
+        
+        findElementById("form:template").sendKeys(" model");
+        findElementById("form:btn").click();
+        
+        waitUntilAjaxRequestCompletes();
+        
+        List<WebElement> cols = findElementsBySelector(findElementById("form:cars"), "thead th");
+            
+        assertTrue("Should render valid number of columns", cols.size() == 4);
+        assertTrue("Should render valid columns.", cols.get(0).getText().equalsIgnoreCase("model"));
+        assertTrue("Should render valid columns.", cols.get(1).getText().equalsIgnoreCase("manufacturer"));
+        assertTrue("Should render valid columns.", cols.get(2).getText().equalsIgnoreCase("year"));
+        assertTrue("Should render valid columns.", cols.get(3).getText().equalsIgnoreCase("model"));
+    }
+    
 }
