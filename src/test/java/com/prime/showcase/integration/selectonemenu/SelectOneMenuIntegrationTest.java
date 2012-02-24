@@ -25,16 +25,23 @@ public class SelectOneMenuIntegrationTest extends AbstractIntegrationTest {
 	public void shouldRenderAndSubmitValuesForSelectOneMenu() throws InterruptedException {
 		List<WebElement> selectOneMenus = driver.findElements(By.className("ui-selectonemenu"));
 		List<WebElement> selectOneMenuItems = driver.findElements(By.className("ui-selectonemenu-items"));
+        WebElement title = findElementBySelector(".title");
 		
 		selectOneMenus.get(1).findElement(By.className("ui-selectonemenu-trigger")).click();
 		selectOneMenuItems.get(1).findElements(By.tagName("li")).get(2).click();
 
+        title.click();
+        waitUntilAllAnimationsComplete();
 		selectOneMenus.get(2).findElement(By.className("ui-selectonemenu-trigger")).click();
-		selectOneMenus.get(2).findElement(By.tagName("input")).sendKeys("sample");
+		selectOneMenus.get(2).findElement(By.tagName("input")).sendKeys(" edited");
 		
+        title.click();
+        waitUntilAllAnimationsComplete();
 		selectOneMenus.get(3).findElement(By.className("ui-selectonemenu-trigger")).click();
 		selectOneMenuItems.get(3).findElements(By.tagName("li")).get(2).click();
 
+        title.click();
+        waitUntilAllAnimationsComplete();
 		selectOneMenus.get(4).findElement(By.className("ui-selectonemenu-trigger")).click();
 		selectOneMenuItems.get(4).findElements(By.className("ui-selectonemenu-item")).get(3).click();
 		
@@ -43,7 +50,7 @@ public class SelectOneMenuIntegrationTest extends AbstractIntegrationTest {
 		String dialogText = driver.findElement(By.className("ui-dialog-content")).getText();
 		
 		assertThat(dialogText,containsString("Value 1: 2"));
-		assertThat(dialogText,containsString("Value 2: sample"));
+		assertThat(dialogText,containsString("Value 2: Select One edited"));
 		assertThat(dialogText,containsString("Value 3: Bojan"));
 		assertThat(dialogText,containsString("Value 4: Iniesta"));
 		
