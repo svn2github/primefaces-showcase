@@ -27,23 +27,23 @@ public class DataTableScrollingIntegrationTest extends AbstractIntegrationTest {
 
 		assertTrue(dataTable1
 				.findElement(By.className("ui-datatable-scrollable-body"))
-				.getCssValue("height").equals("150px"));
+				.getSize().height == 150);
 
 		assertTrue(dataTable2
 				.findElement(By.className("ui-datatable-scrollable-body"))
-				.getCssValue("width").equals("400px"));
+				.getSize().width == 400);
 
 		assertTrue(dataTable3
 				.findElement(By.className("ui-datatable-scrollable-body"))
-				.getCssValue("width").equals("400px")
+				.getSize().width == 400
 				&& dataTable3
 						.findElement(
 								By.className("ui-datatable-scrollable-body"))
-						.getCssValue("height").equals("150px"));
+						.getSize().height == 150);
 
 		assertTrue(dataTable4
 				.findElement(By.className("ui-datatable-scrollable-body"))
-				.getCssValue("height").equals("150px"));
+				.getSize().height == 150);
 
 		int size = findElementById("dataTable4_data").findElements(
 				By.tagName("tr")).size();
