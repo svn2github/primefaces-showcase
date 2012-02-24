@@ -13,13 +13,13 @@ public class OverlayPanelBasicIntegrationTest extends AbstractIntegrationTest{
     protected static SeleniumActionHelper action;
     
     @BeforeClass
-    public static void init(){
+    public static void init() {
         driver.get(TEST_URL);
         action = new SeleniumActionHelper(driver);
     }
     
     @Test
-    public void shouldVerifyDOM(){
+    public void shouldVerifyDOM() {
         
         try{
             
@@ -39,28 +39,35 @@ public class OverlayPanelBasicIntegrationTest extends AbstractIntegrationTest{
     }
    
     @Test
-    public void shouldDisplayPanels() throws InterruptedException{
+    public void shouldDisplayPanels() throws InterruptedException {
         
         WebElement car = findElementBySelector(escapeClientId("form:carPanel"));
         WebElement image = findElementBySelector(escapeClientId("form:imgPanel"));
         WebElement chart = findElementBySelector(escapeClientId("form:chartPanel"));
+        WebElement title = findElementBySelector(".title");
         
         findElementById("form:chartBtn").click();
         waitUntilAllAnimationsComplete();
         assertTrue("Should only display chart panel.", chart.isDisplayed() && !car.isDisplayed() && !image.isDisplayed());
         
-        
+        title.click();
+        waitUntilAllAnimationsComplete();
         findElementById("form:carBtn").click();
         waitUntilAjaxRequestCompletes();
         chart = findElementBySelector(escapeClientId("form:chartPanel"));
         waitUntilAllAnimationsComplete();
         assertTrue("Should only display car panel.", car.isDisplayed() && !chart.isDisplayed() && !image.isDisplayed());
 
-        WebElement img = findElementById("form:img");
-        img.click();
+        title.click();
         waitUntilAllAnimationsComplete();
+        WebElement img = findElementById("form:img");
         action.mouseHover(img);
         waitUntilAllAnimationsComplete();
         assertTrue("Should only display image panel.", image.isDisplayed() && !car.isDisplayed() && !chart.isDisplayed());
+        
+        title.click();
+        waitUntilAllAnimationsComplete();
+        assertTrue("Should none display.", !image.isDisplayed() && !car.isDisplayed() && !chart.isDisplayed());
+        
     }
 }
