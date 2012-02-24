@@ -45,7 +45,7 @@ public class EffectsOnLoadIntegrationTest extends AbstractIntegrationTest {
         
         WebElement m = findElementById("messages");
         
-        assertTrue("Animation should start.", shouldElementAnimating(m, "opacity", DECREASING, 700));
+        assertTrue("Animation should start.", shouldElementAnimating(m, "opacity", DECREASING, 1000));
         
         assertTrue("Animation should start.", anyAnimationInProgress("#messages"));
         
