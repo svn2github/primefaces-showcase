@@ -19,12 +19,14 @@ public class RequestContextIntegrationTest extends AbstractIntegrationTest {
 	}
 	
 	@Test
-	public void shouldExecuteJsFromRequestContextAndUpdate() {
+	public void shouldExecuteJsFromRequestContextAndUpdate() throws InterruptedException {
 		driver.findElement(By.id("form:firstname")).sendKeys("Cagatay");
 		driver.findElement(By.id("form:surname")).sendKeys("Civici");
 		
 		driver.findElement(By.className("ui-button")).click();
-
+        
+        Thread.sleep(1000);
+        
 		Alert alert = driver.switchTo().alert();
 		
 		assertThat(alert.getText(),equalTo("Hello from the Backing Bean"));
