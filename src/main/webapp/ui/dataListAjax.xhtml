@@ -8,11 +8,11 @@
 	<ui:define name="head">
 		<style type="text/css">
 			.ui-datalist {
-				width:300px;
+				width:250px;
 			}
 		
-			.ui-datalist-item {
-				padding:3px;
+			.ui-datalist button {
+				margin:5px;
 			}
 		</style>
 	</ui:define>
@@ -21,28 +21,27 @@
 		<h1 class="title ui-widget-header ui-corner-all">DataList - Ajax Pagination</h1>
 		<div class="entry">
 			<p>Ajax Pagination is a built-in feature and paginator UI is fully customizable via various options like paginatorTemplate, rowsPerPageOptions, 
-		pageLinks and more.</p>
+            pageLinks and more. <strong>none</strong> is also another valid option for the datalist type that renders items with no strict markup like standard ui:repeat.</p>
 		
 			<h:form id="form">
 			
 				<p:dataList value="#{tableBean.cars}" var="car" id="cars"
 					paginator="true" rows="5" effectSpeed="fast"
 					paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15">
+					rowsPerPageTemplate="5,10,15" type="none">
                     
-                    <f:facet name="header">
-                        Cars
-                    </f:facet>
+                        <f:facet name="header">
+                            Cars
+                        </f:facet>
 					
-					<p:column>
-						<p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">
-						<p:graphicImage value="/images/search.png"/> 
-						<f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
-					</p:commandLink>
-					
-					<h:outputText value="#{car.manufacturer}, #{car.year}" style="margin-left:10px" />
-					
-					</p:column>
+                        <p:column>
+                            <p:commandButton icon="ui-icon-search" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">
+                                <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
+                            </p:commandButton>
+
+                            <h:outputText value="#{car.manufacturer}, #{car.year}" style="margin-left:10px" />
+                            <br />
+                        </p:column>
 				</p:dataList>
 				
 				<p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade">
@@ -71,25 +70,24 @@
 					<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 			
-	&lt;p:dataList value="\#{tableBean.cars}" var="car"
-		paginator="true" rows="5" effectSpeed="fast"
-		paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
-		rowsPerPageTemplate="5,10,15"&gt;
+	&lt;p:dataList value="\#{tableBean.cars}" var="car" id="cars"
+        paginator="true" rows="5" effectSpeed="fast"
+        paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="5,10,15" type="none"&gt;
 
-        &lt;f:facet name="header"&gt;
-            Cars
-        &lt;/f:facet&gt;
-		
-		&lt;p:column&gt;
-            &lt;p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
-                &lt;p:graphicImage value="/images/search.png"/&gt; 
-                &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
-            &lt;/p:commandLink&gt;
+            &lt;f:facet name="header"&gt;
+                Cars
+            &lt;/f:facet&gt;
 
-            &lt;h:outputText value="\#{car.manufacturer}, \#{car.year}" style="margin-left:10px" /&gt;
-		
-		&lt;/p:column&gt;
-	&lt;/p:dataList&gt;
+            &lt;p:column&gt;
+                &lt;p:commandButton icon="ui-icon-search" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
+                    &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
+                &lt;/p:commandButton&gt;
+
+                &lt;h:outputText value="\#{car.manufacturer}, \#{car.year}" style="margin-left:10px" /&gt;
+                &lt;br /&gt;
+            &lt;/p:column&gt;
+    &lt;/p:dataList&gt;
 	
 	&lt;p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade"&gt;
 		&lt;p:outputPanel id="carDetail" style="text-align:center;" layout="block"&gt;
