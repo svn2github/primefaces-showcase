@@ -25,12 +25,12 @@ public class DataTableFilteringIntegrationTest extends AbstractDataTableIntegrat
         
         try{
             
-            findElementById("dataTable");
-            findElementById("dataTable:globalFilter");
-            findElementById("dataTable:modelColumn_filter");
-            findElementById("dataTable:yearColumn_filter");
-            findElementById("dataTable:manufacturerColumn_filter");
-            findElementById("dataTable:colorColumn_filter");
+            findElementById("form:dataTable");
+            findElementById("form:dataTable:globalFilter");
+            findElementById("form:dataTable:modelColumn_filter");
+            findElementById("form:dataTable:yearColumn_filter");
+            findElementById("form:dataTable:manufacturerColumn_filter");
+            findElementById("form:dataTable:colorColumn_filter");
             
         }
         catch(NoSuchElementException e){
@@ -41,11 +41,11 @@ public class DataTableFilteringIntegrationTest extends AbstractDataTableIntegrat
     @Test
     public void shouldContains() {
         
-        WebElement table = findElementById("dataTable");
+        WebElement table = findElementById("form:dataTable");
         
         int validCount = findElementsByXpath(table, "table/tbody//tr/td[1][contains(., 'a')]").size();
         
-        findElementById("dataTable:modelColumn_filter").sendKeys("a");
+        findElementById("form:dataTable:modelColumn_filter").sendKeys("a");
         
         waitUntilAjaxRequestCompletes();
         
@@ -61,11 +61,11 @@ public class DataTableFilteringIntegrationTest extends AbstractDataTableIntegrat
     @Test
     public void shouldStartsWith() {
         
-        WebElement table = findElementById("dataTable");
+        WebElement table = findElementById("form:dataTable");
         
         int validCount = findElementsByXpath(table, "table/tbody//tr/td[2][starts-with(., '199')]").size();
         
-        findElementById("dataTable:yearColumn_filter").sendKeys("199");
+        findElementById("form:dataTable:yearColumn_filter").sendKeys("199");
         
         waitUntilAjaxRequestCompletes();
         
@@ -81,11 +81,11 @@ public class DataTableFilteringIntegrationTest extends AbstractDataTableIntegrat
     @Test
     public void shouldExact() {
         
-        WebElement table = findElementById("dataTable");
+        WebElement table = findElementById("form:dataTable");
         
         int validCount = findElementsByXpath(table, "table/tbody//tr/td[3][. = 'Ford']").size();
         
-        selectElementByValue(findElementById("dataTable:manufacturerColumn_filter"), "Ford");
+        selectElementByValue(findElementById("form:dataTable:manufacturerColumn_filter"), "Ford");
         
         waitUntilAjaxRequestCompletes();
         
@@ -101,11 +101,11 @@ public class DataTableFilteringIntegrationTest extends AbstractDataTableIntegrat
     @Test
     public void shouldEndsWith() {
         
-        WebElement table = findElementById("dataTable");
+        WebElement table = findElementById("form:dataTable");
         
         int validCount = findElementsByXpath(table, "table/tbody//tr/td[4][. = 'Yellow']").size();
         
-        findElementById("dataTable:colorColumn_filter").sendKeys("low");
+        findElementById("form:dataTable:colorColumn_filter").sendKeys("low");
         
         waitUntilAjaxRequestCompletes();
         
