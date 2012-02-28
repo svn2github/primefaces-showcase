@@ -27,7 +27,7 @@ public class UserController {
         context.execute("PrimeFaces.info('Hello from the Backing Bean');");
         
         //update panel
-        context.addPartialUpdateTarget("form:panel");
+        context.update("form:panel");
         
         //scroll to panel
         context.scrollTo("form:panel");
