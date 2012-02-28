@@ -10,10 +10,11 @@
         <script type="text/javascript">
             function handleComplete(xhr, status, args) {
                 if(args.validationFailed) {
-                    alert("Validation Failed");
-                } else {
-                    alert("Save:" + args.saved);
-                    alert("FirstName: " + args.user.firstname + ", Lastname: " + args.user.lastname);
+                    PrimeFaces.debug("Validation Failed");
+                } 
+                else {
+                    PrimeFaces.debug("Save:" + args.saved);
+                    PrimeFaces.debug("FirstName: " + args.user.firstname + ", Lastname: " + args.user.lastname);
                 }
             }
         </script>
@@ -24,8 +25,13 @@
 
         <h1 class="title ui-widget-header ui-corner-all">Request Context</h1>
         <div class="entry">
-            <p>RequestContext provides a useful API to pass parameters from JSF backing beans in json format to ajax callbacks like oncomplete,
-                execute javascript from server side and add components to update programmatically.</p>
+            <p>RequestContext is a feature with various handy utilities.</p>
+            <ul>
+                <li>Update component(s) programmatically.</li>
+                <li>Execute javascript from beans.</li>
+                <li>Add ajax callback parameters.</li>
+                <li>ScrollTo a specific component after ajax update.</li>
+            </ul>
 
             <h:form id="form">
 
@@ -42,6 +48,8 @@
 
                 <p:commandButton value="Save" actionListener="#{userController.saveUser}" oncomplete="handleComplete(xhr, status, args)" />
 
+                <p:log />
+                
             </h:form>
 
             <h3>Source</h3>
@@ -61,6 +69,8 @@
 	&lt;/p:panel&gt;
 
 	&lt;p:commandButton value="Save" actionListener="\#{userController.saveUser}" oncomplete="handleComplete(xhr, status, args)" /&gt;
+
+    &lt;p:log /&gt;
 &lt;/h:form&gt;
                     </pre>
                     
@@ -68,10 +78,11 @@
 &lt;script type="text/javascript"&gt;
 function handleComplete(xhr, status, args) {
 	if(args.validationFailed) {
-		alert("Validation Failed");
-	} else {
-		alert("Save:" + args.saved);
-		alert("FirstName: " + args.user.firstname + ", Lastname: " + args.user.lastname); 
+		PrimeFaces.debug("Validation Failed");
+	} 
+    else {
+		PrimeFaces.debug("Save:" + args.saved);
+		PrimeFaces.debug("FirstName: " + args.user.firstname + ", Lastname: " + args.user.lastname); 
 	}
 }
 &lt;/script&gt;
@@ -106,10 +117,13 @@ public class UserController {
 		context.addCallbackParam("user", user);     //pojo as json
         
         //execute javascript oncomplete
-        context.execute("alert('Hello from the Backing Bean');");
+        context.execute("PrimeFaces.info('Hello from the Backing Bean');");
         
         //update panel
         context.addPartialUpdateTarget("form:panel");
+
+        //scroll to panel
+        context.scrollTo("form:panel")
         
         //add facesmessage
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success", "Success"));

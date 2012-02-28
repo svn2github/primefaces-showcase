@@ -24,10 +24,13 @@ public class UserController {
 		context.addCallbackParam("user", user);     //pojo as json
         
         //execute javascript oncomplete
-        context.execute("alert('Hello from the Backing Bean');");
+        context.execute("PrimeFaces.info('Hello from the Backing Bean');");
         
         //update panel
         context.addPartialUpdateTarget("form:panel");
+        
+        //scroll to panel
+        context.scrollTo("form:panel");
         
         //add facesmessage
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success", "Success"));
