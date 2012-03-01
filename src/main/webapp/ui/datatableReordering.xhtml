@@ -21,7 +21,7 @@
             "columnReorder" event is available as an ajax event for optional use.</p>
 
             <h:form>
-                <p:dataTable id="basic" var="car" value="#{tableBean.carsSmall}" draggableColumns="true">
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" draggableColumns="true">
                     <p:column id="modelHeader">
                         <f:facet name="header">
 								Model
@@ -57,7 +57,7 @@
 			<p:tab title="datatableReordering.xhtml">
 <pre name="code" class="xml">
 &lt;h:form&gt;
-    &lt;p:dataTable id="basic" var="car" value="\#{tableBean.carsSmall}" draggableColumns="true"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" draggableColumns="true"&gt;
         &lt;p:column id="modelHeader"&gt;
             &lt;f:facet name="header"&gt;
                     Model
