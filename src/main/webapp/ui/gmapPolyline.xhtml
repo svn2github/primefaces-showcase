@@ -34,7 +34,7 @@
     &lt;p:growl id="growl" life="3000"/&gt;
 
     &lt;p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="\#{mapBean.polylineModel}"&gt;
-        &lt;p:ajax event="overlaySelect" listener="\#{mapBean.onMarkerSelect}" update="growl" /&gt;
+        &lt;p:ajax event="overlaySelect" listener="\#{mapBean.onPolylineSelect}" update="growl" /&gt;
     &lt;/p:gmap&gt;
 
 &lt;/h:form&gt;
