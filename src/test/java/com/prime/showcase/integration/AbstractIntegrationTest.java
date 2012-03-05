@@ -48,9 +48,6 @@ public abstract class AbstractIntegrationTest {
 		
         driver = getDriver();
         
-//      init driver for all types
-//		driver.manage().window().setPosition(new Point(0, 0));
-//		driver.manage().window().setSize(new Dimension(WIDTH, HEIGHT));
 	}
     
     protected static WebDriver getDriver() {
@@ -72,7 +69,10 @@ public abstract class AbstractIntegrationTest {
             }
         }
         
-        return new FirefoxDriver(prepareFirefoxProfileForFileDownload());
+        FirefoxDriver ff = new FirefoxDriver(prepareFirefoxProfileForFileDownload());
+        ff.manage().window().setPosition(new Point(0, 0));
+		ff.manage().window().setSize(new Dimension(WIDTH, HEIGHT));
+        return ff;
     }
 
 	private static FirefoxProfile prepareFirefoxProfileForFileDownload() {
