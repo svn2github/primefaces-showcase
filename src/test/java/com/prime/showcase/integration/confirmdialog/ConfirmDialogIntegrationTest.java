@@ -26,7 +26,7 @@ public class ConfirmDialogIntegrationTest extends AbstractIntegrationTest{
 		
 		waitForCondition(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver driver) {
-				return driver.findElement(By.id("confirmDialog")).getAttribute("style").contains("display: none;");
+				return driver.findElement(By.id("confirmDialog")).isDisplayed();
 			}
 		});	
 	}
@@ -41,7 +41,7 @@ public class ConfirmDialogIntegrationTest extends AbstractIntegrationTest{
 		
 		waitForCondition(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver driver) {
-				return driver.findElement(By.id("confirmDialog")).getAttribute("style").contains("display: none;");
+				return driver.findElement(By.id("confirmDialog")).isDisplayed();
 			}
 		});	
 		
