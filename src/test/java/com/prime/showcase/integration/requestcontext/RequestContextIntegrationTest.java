@@ -1,14 +1,12 @@
 package com.prime.showcase.integration.requestcontext;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 
 import com.prime.showcase.integration.AbstractIntegrationTest;
+import junit.framework.Assert;
 
 public class RequestContextIntegrationTest extends AbstractIntegrationTest {
 	
@@ -25,20 +23,13 @@ public class RequestContextIntegrationTest extends AbstractIntegrationTest {
 		
 		driver.findElement(By.className("ui-button")).click();
         
-        Thread.sleep(1000);
+        waitUntilAjaxRequestCompletes();
+        waitUntilAllAnimationsComplete();
         
-		Alert alert = driver.switchTo().alert();
-		
-		assertThat(alert.getText(),equalTo("Hello from the Backing Bean"));
-		alert.accept();
-		
-		alert = driver.switchTo().alert();
-		
-		assertThat(alert.getText(),equalTo("Save:true"));
-		alert.accept();
+        Long top = (Long) executeJS("return $(window).scrollTop();");
+        
+        Assert.assertTrue("Should request context scroll.", top > 0);
 
-		alert = driver.switchTo().alert();
-		assertThat(alert.getText(),equalTo("FirstName: Cagatay, Lastname: Civici"));
-	}
+    }
 
 }
