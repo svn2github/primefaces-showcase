@@ -27,8 +27,8 @@ public class SeparatorIntegrationTest extends AbstractIntegrationTest {
 	public void shouldShowCustomSeparator() {
 		WebElement separator = findElementById("customSeparator");
 		assertTrue(separator.isDisplayed());
-		assertTrue(separator.getSize().width == 502);
-		assertTrue(separator.getSize().height == 22);
+		assertTrue(separator.getSize().width >= 500);
+		assertTrue(separator.getSize().height >= 20);
 	}
 
 }
