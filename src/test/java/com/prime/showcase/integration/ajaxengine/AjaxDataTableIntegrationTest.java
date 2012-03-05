@@ -33,9 +33,8 @@ public class AjaxDataTableIntegrationTest extends AbstractIntegrationTest {
 
 		btnAdd.click();
 
-		waitUntilElementExistsAndGetsValue("form:bookTable:0:lblTitle", title);
-		waitUntilElementExistsAndGetsValue("form:bookTable:0:lblAuthor", author);
-
+        waitUntilAjaxRequestCompletes();
+        
 		WebElement lblTitle = findElementById("form:bookTable:0:lblTitle");
 		WebElement lblAuthor = findElementById("form:bookTable:0:lblAuthor");
 
