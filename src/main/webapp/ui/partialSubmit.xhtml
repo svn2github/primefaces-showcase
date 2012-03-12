@@ -75,7 +75,7 @@
                 <br />
                 <h:selectOneMenu />
                 <br />
-                                <p:inputText />
+                <p:inputText />
                 <br />
                 <p:inputText />
                 <br />
@@ -128,18 +128,115 @@
 			<p:tabView>
 				<p:tab title="partialSubmit.xhtml">
 <pre name="code" class="xml">
-&lt;h:form&gt;
-							
-	&lt;h:panelGrid columns="4" cellpadding="5"&gt;
-		&lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
-		
-		&lt;p:inputText id="name" value="\#{pprBean.firstname}" /&gt;
-		
-		&lt;p:commandButton value="Submit" update="display"/&gt;
+&lt;h:form id="form"&gt;
+
+    &lt;p:log /&gt;
+
+    &lt;h:panelGrid columns="5" cellpadding="5"&gt;
+        &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
+
+        &lt;p:inputText id="name" value="\#{pprBean.firstname}" /&gt;
+
+        &lt;p:commandButton value="Default" update="display" /&gt;
+
+        &lt;p:commandButton value="Partial" update="display" partialSubmit="true" process="name"/&gt;
 
         &lt;h:outputText value="\#{pprBean.firstname}" id="display" /&gt;
-	&lt;/h:panelGrid&gt;
-	
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+
 &lt;/h:form&gt;
 						</pre>
 				</p:tab>
