@@ -1,0 +1,172 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Partial Submit</h1>
+		<div class="entry">
+			<p>PartialSubmit reduces network traffic by only adding the partially processed components to the ajax request post.
+            For big pages with lots of input components, partialSubmit is extremely useful as it leads to more lightweight requests.
+            Compare the Post Data displayed by the logger.</p>
+
+			<h:form id="form">
+                
+                <p:log />
+				
+				<h:panelGrid columns="5" cellpadding="5">
+					<h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+					
+					<p:inputText id="name" value="#{pprBean.firstname}" />
+					
+					<p:commandButton value="Default" update="display" />
+                    
+                    <p:commandButton value="Partial" update="display" partialSubmit="true" process="name"/>
+                    
+                    <h:outputText value="#{pprBean.firstname}" id="display" />
+				</h:panelGrid>
+                
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputText />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <p:inputTextarea />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                <h:selectOneMenu />
+                <br />
+                <h:selectOneMenu />
+                <br />
+
+			</h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="partialSubmit.xhtml">
+<pre name="code" class="xml">
+&lt;h:form&gt;
+							
+	&lt;h:panelGrid columns="4" cellpadding="5"&gt;
+		&lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
+		
+		&lt;p:inputText id="name" value="\#{pprBean.firstname}" /&gt;
+		
+		&lt;p:commandButton value="Submit" update="display"/&gt;
+
+        &lt;h:outputText value="\#{pprBean.firstname}" id="display" /&gt;
+	&lt;/h:panelGrid&gt;
+	
+&lt;/h:form&gt;
+						</pre>
+				</p:tab>
+				
+				<p:tab title="PPRBean.java">
+<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+public class PPRBean implements Serializable {
+
+	private String firstname;
+	
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+}
+</pre>
+				</p:tab>
+			</p:tabView>
+			
+		</div>
+				
+	</ui:define>
+</ui:composition>
