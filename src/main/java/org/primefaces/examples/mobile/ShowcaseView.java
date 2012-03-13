@@ -40,4 +40,8 @@ public class ShowcaseView implements Serializable {
         texts.add(text);
         text = null;
     }
+    
+    public String navigate() {
+        return "pm:target";
+    }
 }

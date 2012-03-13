@@ -23,11 +23,17 @@
                     <h:outputLink value="#navbar">NavBar</h:outputLink>
                     <h:outputLink value="#panels">Panels</h:outputLink>
                 </p:dataList>
-
+                
                 <p:dataList type="inset">
                     <f:facet name="header">Framework</f:facet>
                     <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
                     <h:outputLink value="#ajaxUpdate">Ajax Updates</h:outputLink>
+                </p:dataList>
+                
+                <p:dataList type="inset">
+                    <f:facet name="header">Navigation</f:facet>
+                    <h:outputLink value="#navHandler">Navigation Handler</h:outputLink>
+                    <h:outputLink value="#transitions">Transitions</h:outputLink>
                 </p:dataList>
 
             </pm:content>
@@ -251,34 +257,26 @@
             </pm:content>
         </pm:view>
 
-        <!-- Ajax Status 
-        <pm:view id="transitions">
-            <pm:header title="Transitions">
+        <pm:view id="target">
+            <pm:header title="Target">
                 <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
-                There are 6 types of view transition effects.
 
-                <p:button href="#transition" value="Slide" transition="slide" />
-                <p:button href="#transition" value="Slide Up" transition="slideup" />
-                <p:button href="#transition" value="Slide Down" transition="slidedown" />
-                <p:button href="#transition" value="Pop" transition="pop" />
-                <p:button href="#transition" value="Fade" transition="fade" />
-                <p:button href="#transition" value="Flip" transition="flip" />
-
+                <h1>Target View</h1>
 
             </pm:content>
-        </pm:view>-->
-
-        <pm:view id="transition">
+        </pm:view>
+        
+        <pm:view id="transitionTarget">
             <pm:header title="Transition">
                 <f:facet name="left"><p:button value="Back" icon="back" href="#transitions?reverse=true"/></f:facet>
             </pm:header>
 
             <pm:content>
 
-                <h1>Displayed with a Transition</h1>
+                <h1>Displayed with a transition.</h1>
 
             </pm:content>
         </pm:view>
@@ -333,6 +331,55 @@
                     </p:dataList>
 
                 </h:form>
+            </pm:content>
+        </pm:view>
+        
+        <!-- Navigation Handler -->
+        <pm:view id="navHandler">
+            <pm:header title="Navigation">
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                View Navigation is integrated with JSF Navigation Model. Prepending the action outcome with "pm:" enables
+                mobile view-to-view navigations.
+
+                <h:form>
+                    
+                    <p:commandButton value="Go to Target" action="#{showcaseView.navigate}" />
+                    
+                </h:form>
+
+            </pm:content>
+        </pm:view>
+        
+        <!-- Transitions -->
+        <pm:view id="transitions">
+            <pm:header title="Transitions">
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                Various animation types are supported in view navigations.
+ 
+                <p:button value="Fade" href="#transitionTarget?transition=fade" />
+
+                <p:button value="Pop" href="#transitionTarget?transition=pop" />
+                
+                <p:button value="Flip" href="#transitionTarget?transition=flip" />
+                
+                <p:button value="Turn" href="#transitionTarget?transition=turn" />
+                
+                <p:button value="Flow" href="#transitionTarget?transition=flow" />
+                
+                <p:button value="Slide" href="#transitionTarget?transition=slide" />
+                
+                <p:button value="SlideUp" href="#transitionTarget?transition=slideup" />
+                
+                <p:button value="SlideDown" href="#transitionTarget?transition=slidedown" />
+                
+                <p:button value="None" href="#transitionTarget?transition=none" />
+                    
             </pm:content>
         </pm:view>
 
