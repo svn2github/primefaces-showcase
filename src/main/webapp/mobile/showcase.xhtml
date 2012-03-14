@@ -72,23 +72,21 @@
                 
                 <p:selectBooleanCheckbox id="booleanCheckbox" value="false" itemLabel="I agree" label="Checkbox"/>
                
-                <pm:field>
-                    <h:outputLabel for="checkbox" value="Checkbox: "/>
-                    <h:selectManyCheckbox id="checkbox">
-                        <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
-                        <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
-                        <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
-                    </h:selectManyCheckbox>
-                </pm:field>
+                <h:form>
+                <p:selectManyCheckbox id="checkbox" label="Checkboxes: ">
+                    <p:ajax />
+                    <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+                    <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+                    <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+                </p:selectManyCheckbox>
 
-                <pm:field>
-                    <h:outputLabel for="radio" value="Radio: "/>
-                    <h:selectOneRadio id="radio">
-                        <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
-                        <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
-                        <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
-                    </h:selectOneRadio>
-                </pm:field>
+                <p:selectOneRadio id="radio" layout="lineDirection" label="Radios: ">
+                    <p:ajax />
+                    <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+                    <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+                    <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+                </p:selectOneRadio>
+                </h:form>
 
             </pm:content>
 
