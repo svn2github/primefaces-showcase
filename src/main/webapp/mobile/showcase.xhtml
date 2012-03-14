@@ -72,21 +72,11 @@
                 
                 <p:selectBooleanCheckbox id="booleanCheckbox" value="false" itemLabel="I agree" label="Checkbox"/>
                
-                <h:form>
                 <p:selectManyCheckbox id="checkbox" label="Checkboxes: ">
-                    <p:ajax />
                     <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
                     <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
                     <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
                 </p:selectManyCheckbox>
-
-                <p:selectOneRadio id="radio" layout="lineDirection" label="Radios: ">
-                    <p:ajax />
-                    <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
-                    <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
-                    <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
-                </p:selectOneRadio>
-                </h:form>
 
             </pm:content>
 
@@ -158,6 +148,15 @@
                     <h:outputLink value="#main">Item 1</h:outputLink>
                     <h:outputLink value="#main">Item 2</h:outputLink>
                     <h:outputLink value="#main">Item 3</h:outputLink>
+                </p:dataList>
+                
+                <h3>Filter</h3>
+                <p:dataList>
+                    <f:attribute name="filter" value="true" />
+                    <h:outputText value="Barcelona" />
+                    <h:outputText value="Istanbul" />
+                    <h:outputText value="New York" />
+                    <h:outputText value="Paris" />
                 </p:dataList>
 
                 <p:spacer height="10em" />
