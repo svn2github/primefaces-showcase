@@ -56,10 +56,9 @@ img.right {
 
 /* Header */
 #logo {
-	width: 960px;
-	height: 75px;
-	margin: 0 auto;
-	padding: 25px 10px 0 10px;
+	height: 50px;
+	padding: 25px 10px 0 0px;
+    text-align: left;
 }
 
 #logo h1, #logo p {
@@ -231,7 +230,7 @@ img.right {
 .sidebar {
 	float: left;
 	width: 360px;
-	padding: 10px;
+	padding: 0 10px;
 	font-size: 12px;
 }
 
@@ -269,11 +268,6 @@ img.right {
 	color: #FFFFFF;
 }
 
-.sidebar a {
-    margin-right:25px;
-
-}
-
 .sidebar a.ui-state-hover {
     border:0 none;
     text-decoration: none;
@@ -282,6 +276,10 @@ img.right {
 
 .sidebar a.ui-menuitem-link:hover {
 	text-decoration: none;
+}
+
+.sidebar table {
+    width: 100%;
 }
 
 /* Search */
