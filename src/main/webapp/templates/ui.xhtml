@@ -44,18 +44,18 @@
 				<li><a href="#{request.contextPath}/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;">PrimeMobile</a></li>
                 <li><a href="#{request.contextPath}/push/index.jsf" style="background:url('../design/push.png') no-repeat center left">PrimePush</a></li>
 			</ul>
+            
+            <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:155px;float:right;margin:15px;" effect="fade">
+                <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                <f:selectItems value="#{themeSwitcherBean.themes}" />
+                <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
+            </p:themeSwitcher>
 		</div>
 
 		<div id="wrapper">
 
 			<div id="page">
 				<div id="sidebar1" class="ui-widget-content ui-corner-bottom ui-helper-clearfix sidebar">
-                    
-                    <div class="ui-widget submenu-content">
-                        <h:form>
-                            <ui:include src="themeMenu.xhtml" />
-                        </h:form>
-                    </div>
  
                     <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Ajax Engine</h3>
                     <div class="ui-widget submenu-content">
