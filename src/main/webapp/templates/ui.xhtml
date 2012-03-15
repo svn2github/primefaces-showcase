@@ -17,6 +17,17 @@
         <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
 
 		<ui:insert name="head"></ui:insert>
+        
+        <script type="text/javascript">
+            $(function() {
+               $('.sidebar a').mouseover(function() {
+                   $(this).addClass('ui-state-hover');
+               })
+               .mouseout(function() {
+                   $(this).removeClass('ui-state-hover');
+               });
+            });
+        </script>
 	</h:head>
 
 	<h:body>
@@ -27,7 +38,7 @@
 			</div>
 		</div>
 
-		<div id="menu" class="ui-widget ui-widget-content ui-corner-bottom">
+		<div id="menu" class="ui-widget ui-widget-content">
 			<ul id="main">
 				<li class="current_page_item"><a href="#{request.contextPath}/ui/home.jsf" style="background:url('../design/ui.png') no-repeat center left;">PrimeUI</a></li>
 				<li><a href="#{request.contextPath}/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;">PrimeMobile</a></li>
@@ -39,139 +50,195 @@
 
 			<div id="page">
 				<div id="sidebar1" class="ui-widget-content ui-corner-bottom ui-helper-clearfix sidebar">
-					<ul>
-						<li>                    
-							<table>
-								<tr>
-									<td colspan="2" align="center" style="padding:8px;">
-										<h:form>
-                                            <ui:include src="themeMenu.xhtml" />
-                                        </h:form>
-									</td>
-								</tr>
-                                <tr>
-                                    <td colspan="2">
-										<a href="#{request.contextPath}/ui/macosx.jsf" style="margin-left:75px" >MOCK OS X</a>
-									</td>
-								</tr>
-								<tr>
-									<td valign="top">
-										<ul>
-											<li><a href="#{request.contextPath}/ui/ajaxHome.jsf" class="new">Ajax Engine</a></li>
-											<li><a href="#{request.contextPath}/ui/ajaxPollHome.jsf">Ajax Poll</a></li>
-                                            <li><a href="#{request.contextPath}/ui/ajaxStatusHome.jsf">Ajax Status</a></li>
-											<li><a href="#{request.contextPath}/ui/accordionPanelHome.jsf">Accordion</a></li>
-											<li><a href="#{request.contextPath}/ui/autocompleteHome.jsf">AutoComplete</a></li>
-                                            <li><a href="#{request.contextPath}/ui/blockUI.jsf">BlockUI</a></li>
-											<li><a href="#{request.contextPath}/ui/breadCrumb.jsf">BreadCrumb</a></li>
-                                            <li><a href="#{request.contextPath}/ui/button.jsf">Button</a></li>
-											<li><a href="#{request.contextPath}/ui/calendarHome.jsf">Calendar</a></li>
-											<li><a href="#{request.contextPath}/ui/captchaHome.jsf">Captcha</a></li>
-											<li><a href="#{request.contextPath}/ui/carouselHome.jsf">Carousel</a></li>
-											<li><a href="#{request.contextPath}/ui/chartsHome.jsf">Charts</a></li>
-											<li><a href="#{request.contextPath}/ui/commandButton.jsf">CommandButton</a></li>
-											<li><a href="#{request.contextPath}/ui/commandLink.jsf">CommandLink</a></li>
-											<li><a href="#{request.contextPath}/ui/contextMenuHome.jsf">ContextMenu</a></li>
-											<li><a href="#{request.contextPath}/ui/collector.jsf">Collector</a></li>
-											<li><a href="#{request.contextPath}/ui/colorPicker.jsf">Color Picker</a></li>
-											<li><a href="#{request.contextPath}/ui/confirmDialog.jsf">ConfirmDialog</a></li>
-											<li><a href="#{request.contextPath}/ui/dashboard.jsf">Dashboard</a></li>
-                                            <li><a href="#{request.contextPath}/ui/defaultCommand.jsf">DefaultCommand</a></li>
-											<li><a href="#{request.contextPath}/ui/exporterHome.jsf">Data Exporter</a></li>
-											<li><a href="#{request.contextPath}/ui/datagrid.jsf">DataGrid</a></li>
-											<li><a href="#{request.contextPath}/ui/dataListHome.jsf">DataList</a></li>
-											<li><a href="#{request.contextPath}/ui/datatableHome.jsf">DataTable</a></li>
-											<li><a href="#{request.contextPath}/ui/dialogHome.jsf">Dialog</a></li>
-											<li><a href="#{request.contextPath}/ui/dock.jsf">Dock</a></li>
-                                            <li><a href="#{request.contextPath}/ui/dragdropHome.jsf">DragDrop</a></li>
-											<li><a href="#{request.contextPath}/ui/dynamicImage.jsf">Dyna Image</a></li>
-											<li><a href="#{request.contextPath}/ui/editor.jsf">Editor</a></li>
-											<li><a href="#{request.contextPath}/ui/effectsHome.jsf">Effects</a></li>
-                                            <li><a href="#{request.contextPath}/ui/feedReader.jsf">FeedReader</a></li>
-											<li><a href="#{request.contextPath}/ui/fileUploadHome.jsf">FileUpload</a></li>
-											<li><a href="#{request.contextPath}/ui/fileDownload.jsf">FileDownload</a></li>
-                                            <li><a href="#{request.contextPath}/ui/fieldset.jsf">Fieldset</a></li>
-											<li><a href="#{request.contextPath}/ui/focus.jsf">Focus</a></li>
-                                            <li><a href="#{request.contextPath}/ui/galleriaHome.jsf">Galleria</a></li>
-											<li><a href="#{request.contextPath}/ui/gmapHome.jsf">Google Maps</a></li>
-											<li><a href="#{request.contextPath}/ui/growl.jsf">Growl</a></li>
-                                            <li><a href="#{request.contextPath}/ui/hotkey.jsf">HotKey</a></li>
-                                            <li><a href="#{request.contextPath}/ui/idlemonitorHome.jsf">IdleMonitor</a></li>
-                                            <li><a href="#{request.contextPath}/ui/imageCompare.jsf">ImageCompare</a></li>
-                                            <li><a href="#{request.contextPath}/ui/imageCropper.jsf">ImageCropper</a></li>
-                                            <li><a href="#{request.contextPath}/ui/imageSwitch.jsf">ImageSwitch</a></li>
-                                            <li><a href="#{request.contextPath}/ui/inplace.jsf">Inplace</a></li>
-                                            <li><a href="#{request.contextPath}/ui/inputText.jsf">InputText</a></li>
-                                            <li><a href="#{request.contextPath}/ui/inputTextarea.jsf">InputTextarea</a></li>
-                                            <li><a href="#{request.contextPath}/ui/keyboard.jsf">Keyboard</a></li>
-                                            <li><a href="#{request.contextPath}/ui/layoutHome.jsf">Layout</a></li>
-                                            <li><a href="#{request.contextPath}/ui/lightBox.jsf">LightBox</a></li>
-                                            <li><a href="#{request.contextPath}/ui/log.jsf">Log</a></li>
-											<li><a href="#{request.contextPath}/ui/inputMask.jsf">Masked Input</a></li>
-											
-										</ul>
-									</td>
-									<td valign="top">
-                                        <ul>
-                                            <li><a href="#{request.contextPath}/ui/media.jsf">Media</a></li>
-                                            <li><a href="#{request.contextPath}/ui/megaMenu.jsf">MegaMenu</a></li>
-											<li><a href="#{request.contextPath}/ui/menu.jsf">Menu</a></li>
-											<li><a href="#{request.contextPath}/ui/menubar.jsf">Menubar</a></li>
-											<li><a href="#{request.contextPath}/ui/menubutton.jsf">MenuButton</a></li>
-											<li><a href="#{request.contextPath}/ui/messages.jsf">Messages</a></li>
-											<li><a href="#{request.contextPath}/ui/notificationBar.jsf">NotificationBar</a></li>
-                                            <li><a href="#{request.contextPath}/ui/orderList.jsf">OrderList</a></li>
-											<li><a href="#{request.contextPath}/ui/outputPanel.jsf">OutputPanel</a></li>
-                                            <li><a href="#{request.contextPath}/ui/overlayPanel.jsf">OverlayPanel</a></li>
-											<li><a href="#{request.contextPath}/ui/panel.jsf">Panel</a></li>
-                                            <li><a href="#{request.contextPath}/ui/panelGrid.jsf">PanelGrid</a></li>
-											<li><a href="#{request.contextPath}/ui/password.jsf">Password</a></li>
-                                            <li><a href="#{request.contextPath}/ui/photoCam.jsf">PhotoCam</a></li>
-											<li><a href="#{request.contextPath}/ui/picklist.jsf">PickList</a></li>
-											<li><a href="#{request.contextPath}/ui/printer.jsf">Printer</a></li>
-											<li><a href="#{request.contextPath}/ui/progressBar.jsf">ProgressBar</a></li>
-                                            <li><a href="#{request.contextPath}/push/index.jsf">Push</a></li>
-											<li><a href="#{request.contextPath}/ui/requestContext.jsf">RequestContext</a></li>
-											<li><a href="#{request.contextPath}/ui/resizableHome.jsf">Resizable</a></li>
-											<li><a href="#{request.contextPath}/ui/remoteCommand.jsf">RemoteCommand</a></li>
-                                            <li><a href="#{request.contextPath}/ui/ring.jsf">Ring</a></li>
-											<li><a href="#{request.contextPath}/ui/scheduleHome.jsf">Schedule</a></li>
-                                            <li><a href="#{request.contextPath}/ui/scrollPanel.jsf">ScrollPanel</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectBooleanButton.jsf">SelectBoolButton</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectBooleanCheckbox.jsf">SelectBoolCheckbox</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectCheckboxMenu.jsf">SelectCheckboxMenu</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectManyButton.jsf">SelectManyButton</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectManyCheckbox.jsf">SelectManyCheckbox</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectOneButton.jsf">SelectOneButton</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectOneListbox.jsf">SelectOneListbox</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectOneMenu.jsf">SelectOneMenu</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectOneRadio.jsf">SelectOneRadio</a></li>
-                                            <li><a href="#{request.contextPath}/ui/selectManyMenu.jsf">SelectManyMenu</a></li>
-											<li><a href="#{request.contextPath}/ui/separator.jsf">Separator</a></li>
-                                            <li><a href="#{request.contextPath}/ui/sheet.jsf">Sheet</a></li>
-											<li><a href="#{request.contextPath}/ui/slider.jsf">Slider</a></li>
-                                            <li><a href="#{request.contextPath}/ui/spacer.jsf">Spacer</a></li>
-											<li><a href="#{request.contextPath}/ui/spinner.jsf">Spinner</a></li>
-                                            <li><a href="#{request.contextPath}/ui/splitButton.jsf">SplitButton</a></li>
-											<li><a href="#{request.contextPath}/ui/stack.jsf">Stack</a></li>
-											<li><a href="#{request.contextPath}/ui/rating.jsf">Star Rating</a></li>
-											<li><a href="#{request.contextPath}/ui/tabviewHome.jsf">TabView</a></li>
-                                            <li><a href="#{request.contextPath}/ui/tagCloud.jsf">TagCloud</a></li>
-											<li><a href="#{request.contextPath}/ui/terminalHome.jsf">Terminal</a></li>
-											<li><a href="#{request.contextPath}/ui/themeswitcher.jsf">Themeswitcher</a></li>
-                                            <li><a href="#{request.contextPath}/ui/toolbar.jsf">Toolbar</a></li>
-											<li><a href="#{request.contextPath}/ui/tooltip.jsf">Tooltip</a></li>
-											<li><a href="#{request.contextPath}/ui/treeHome.jsf">Tree</a></li>
-											<li><a href="#{request.contextPath}/ui/treeTableHome.jsf">TreeTable</a></li>
-											<li><a href="#{request.contextPath}/ui/watermark.jsf">Watermark</a></li>
-											<li><a href="#{request.contextPath}/ui/wizard.jsf">Wizard</a></li>
-										</ul>
-									</td>
-								</tr>
-							</table>
+                    
+                    <div class="ui-widget submenu-content">
+                        <h:form>
+                            <ui:include src="themeMenu.xhtml" />
+                        </h:form>
+                    </div>
+ 
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Ajax Engine</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/pprUpdate.jsf">Simple PPR</a>
+                        <a href="#{request.contextPath}/ui/pprCounter.jsf">Counter</a>
+                        <a href="#{request.contextPath}/ui/pprDataTable.jsf">DataTable</a>
+                        <a href="#{request.contextPath}/ui/pprPartialTree.jsf">Partial Processing</a>
+                        <a href="#{request.contextPath}/ui/partialSubmit.jsf">Partial Submit</a>
+                        <a href="#{request.contextPath}/ui/pprAjaxValidations.jsf">Ajax Validations</a>
+                        <a href="#{request.contextPath}/ui/poll.jsf">Polling</a>
+                        <a href="#{request.contextPath}/ui/remoteCommand.jsf">RemoteCommand</a>
+                        <a href="#{request.contextPath}/ui/pprAjaxStatus.jsf">AjaxStatus</a>
+                        <a href="#{request.contextPath}/ui/pprAjaxStatusScript.jsf">Custom AjaxStatus</a>
+                        <a href="#{request.contextPath}/ui/ajaxifyKeyEvents.jsf">Events</a>
+                        <a href="#{request.contextPath}/ui/pprSelect.jsf">Selects</a>
+                        <a href="#{request.contextPath}/ui/ajaxifyAction.jsf">Listeners</a>
+                        <a href="#{request.contextPath}/ui/ajaxifyValidations.jsf">Validations</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Input</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/inputText.jsf">InputText</a>
+                        <a href="#{request.contextPath}/ui/inputTextarea.jsf">InputTextarea</a>
+                        <a href="#{request.contextPath}/ui/inputMask.jsf">InputMask</a>
+                        <a href="#{request.contextPath}/ui/autocompleteHome.jsf">AutoComplete</a>
+                        <a href="#{request.contextPath}/ui/keyboard.jsf">Keyboard</a>
+                        <a href="#{request.contextPath}/ui/inplace.jsf">Inplace</a>
+                        <a href="#{request.contextPath}/ui/spinner.jsf">Spinner</a>
+                        <a href="#{request.contextPath}/ui/slider.jsf">Slider</a>
+                        <a href="#{request.contextPath}/ui/colorPicker.jsf">ColorPicker</a>
+                        <a href="#{request.contextPath}/ui/rating.jsf">Rating</a>
+                        <a href="#{request.contextPath}/ui/calendarHome.jsf">Calendar</a>
+                        <a href="#{request.contextPath}/ui/password.jsf">Password</a>
+                        <a href="#{request.contextPath}/ui/editor.jsf">Editor</a>
+                        <a href="#{request.contextPath}/ui/selectBooleanButton.jsf">SelectBoolButton</a>
+                        <a href="#{request.contextPath}/ui/selectBooleanCheckbox.jsf">SelectBoolCheckbox</a>
+                        <a href="#{request.contextPath}/ui/selectCheckboxMenu.jsf">SelectCheckboxMenu</a>
+                        <a href="#{request.contextPath}/ui/selectManyButton.jsf">SelectManyButton</a>
+                        <a href="#{request.contextPath}/ui/selectManyCheckbox.jsf">SelectManyCheckbox</a>
+                        <a href="#{request.contextPath}/ui/selectOneButton.jsf">SelectOneButton</a>
+                        <a href="#{request.contextPath}/ui/selectOneListbox.jsf">SelectOneListbox</a>
+                        <a href="#{request.contextPath}/ui/selectOneMenu.jsf">SelectOneMenu</a>
+                        <a href="#{request.contextPath}/ui/selectOneRadio.jsf">SelectOneRadio</a>
+                        <a href="#{request.contextPath}/ui/selectManyMenu.jsf">SelectManyMenu</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Button</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/commandButton.jsf">CommandButton</a>
+                        <a href="#{request.contextPath}/ui/button.jsf">Button</a>
+                        <a href="#{request.contextPath}/ui/splitButton.jsf">SplitButton</a>
+                        <a href="#{request.contextPath}/ui/commandLink.jsf">CommandLink</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Data</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/datatableHome.jsf">DataTable</a>
+                        <a href="#{request.contextPath}/ui/dataListHome.jsf">DataList</a>
+                        <a href="#{request.contextPath}/ui/datagrid.jsf">DataGrid</a>
+                        <a href="#{request.contextPath}/ui/exporterHome.jsf">DataExporter</a>
+                        <a href="#{request.contextPath}/ui/carouselHome.jsf">Carousel</a>
+                        <a href="#{request.contextPath}/ui/ring.jsf">Ring</a>
+                        <a href="#{request.contextPath}/ui/sheet.jsf">Sheet</a>
+                        <a href="#{request.contextPath}/ui/treeHome.jsf">Tree</a>
+                        <a href="#{request.contextPath}/ui/treeTableHome.jsf">TreeTable</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Panel</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/accordionPanelHome.jsf">Accordion</a>
+                        <a href="#{request.contextPath}/ui/fieldset.jsf">Fieldset</a>
+                        <a href="#{request.contextPath}/ui/layoutHome.jsf">Layout</a>
+                        <a href="#{request.contextPath}/ui/notificationBar.jsf">NotificationBar</a>
+                        <a href="#{request.contextPath}/ui/panel.jsf">Panel</a>
+                        <a href="#{request.contextPath}/ui/panelGrid.jsf">PanelGrid</a>
+                        <a href="#{request.contextPath}/ui/tabviewHome.jsf">TabView</a>
+                        <a href="#{request.contextPath}/ui/outputPanel.jsf">OutputPanel</a>
+                        <a href="#{request.contextPath}/ui/scrollPanel.jsf">ScrollPanel</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Overlay</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/confirmDialog.jsf">ConfirmDialog</a>
+                        <a href="#{request.contextPath}/ui/dialogHome.jsf">Dialog</a>
+                        <a href="#{request.contextPath}/ui/lightBox.jsf">LightBox</a>
+                        <a href="#{request.contextPath}/ui/overlayPanel.jsf">OverlayPanel</a>
+                        <a href="#{request.contextPath}/ui/tooltip.jsf">Tooltip</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Menu</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/breadCrumb.jsf">BreadCrumb</a>
+                        <a href="#{request.contextPath}/ui/contextMenuHome.jsf">ContextMenu</a>
+                        <a href="#{request.contextPath}/ui/lightBox.jsf">LightBox</a>
+                        <a href="#{request.contextPath}/ui/dock.jsf">Dock</a>
+                        <a href="#{request.contextPath}/ui/megaMenu.jsf">MegaMenu</a>
+                        <a href="#{request.contextPath}/ui/menu.jsf">Menu</a>
+						<a href="#{request.contextPath}/ui/menubar.jsf">Menubar</a>
+						<a href="#{request.contextPath}/ui/menubutton.jsf">MenuButton</a>
+                        <a href="#{request.contextPath}/ui/stack.jsf">Stack</a>
+                        <a href="#{request.contextPath}/ui/toolbar.jsf">Toolbar</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Charts</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/pieChart.jsf">Pie</a>
+                        <a href="#{request.contextPath}/ui/donutChart.jsf">Donut</a>
+                        <a href="#{request.contextPath}/ui/lineChart.jsf">Line</a>
+                        <a href="#{request.contextPath}/ui/areaChart.jsf">Area</a>
+                        <a href="#{request.contextPath}/ui/barChart.jsf">Bar</a>
+                        <a href="#{request.contextPath}/ui/bubbleChartjsf">Bubble</a>
+                        <a href="#{request.contextPath}/ui/ohlcChart.jsf">OHLC</a>
+                        <a href="#{request.contextPath}/ui/meterGaugeChart.jsf">MeterGauge</a>
+                        <a href="#{request.contextPath}/ui/liveChart.jsf">Live</a>
+                        <a href="#{request.contextPath}/ui/interactiveCharts.jsf">Interactive</a>
+                        <a href="#{request.contextPath}/ui/dynamicImage.jsf">Static</a>               
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Message</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/growl.jsf">Growl</a>
+                        <a href="#{request.contextPath}/ui/messages.jsf">Messages</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Imaging</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/imageCompare.jsf">ImageCompare</a>
+                        <a href="#{request.contextPath}/ui/imageCropper.jsf">ImageCropper</a>
+                        <a href="#{request.contextPath}/ui/imageSwitch.jsf">ImageSwitch</a>
+                        <a href="#{request.contextPath}/ui/galleriaHome.jsf">Galleria</a>
+                        <a href="#{request.contextPath}/ui/dynamicImage.jsf">DynaImage</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">File</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/fileUploadSimple.jsf">Basic</a>
+                        <a href="#{request.contextPath}/ui/fileUploadSingle.jsf">Single</a>
+                        <a href="#{request.contextPath}/ui/fileUploadMultiple.jsf">Multiple</a>
+                        <a href="#{request.contextPath}/ui/fileUploadAuto.jsf">Auto</a>
+                        <a href="#{request.contextPath}/ui/fileUploadDnd.jsf">DragDrop</a>
+                        <a href="#{request.contextPath}/ui/fileDownload.jsf">Download</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">DragDrop</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/fileUploadSimple.jsf">Draggable</a>
+                        <a href="#{request.contextPath}/ui/dndGrid.jsf">DataGrid</a>
+                        <a href="#{request.contextPath}/ui/dndTable.jsf">DataTable</a>
+                        <a href="#{request.contextPath}/ui/droppableBarca.jsf">Football</a>
+                    </div>
+                    
+                    <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Misc</h3>
+                    <div class="ui-widget submenu-content">
+                        <a href="#{request.contextPath}/ui/blockUI.jsf">BlockUI</a>
+                        <a href="#{request.contextPath}/ui/dashboard.jsf">Dashboard</a>
+                        <a href="#{request.contextPath}/ui/collector.jsf">Collector</a>
+                        <a href="#{request.contextPath}/ui/defaultCommand.jsf">DefaultCommand</a>
+                        <a href="#{request.contextPath}/ui/captchaHome.jsf">Captcha</a>
+                        <a href="#{request.contextPath}/ui/gmapHome.jsf">GMap</a>
+                        <a href="#{request.contextPath}/ui/focus.jsf">Focus</a>
+                        <a href="#{request.contextPath}/ui/hotkey.jsf">HotKey</a>
+                        <a href="#{request.contextPath}/ui/media.jsf">Media</a>
+                        <a href="#{request.contextPath}/ui/idlemonitorHome.jsf">IdleMonitor</a>
+                        <a href="#{request.contextPath}/ui/tagCloud.jsf">TagCloud</a>
+                        <a href="#{request.contextPath}/ui/orderList.jsf">OrderList</a>
+                        <a href="#{request.contextPath}/ui/picklist.jsf">PickList</a>
+                        <a href="#{request.contextPath}/ui/printer.jsf">Printer</a>
+                        <a href="#{request.contextPath}/ui/photoCam.jsf">PhotoCam</a>
+                        <a href="#{request.contextPath}/ui/log.jsf">Log</a>
+                        <a href="#{request.contextPath}/ui/effectsHome.jsf">Effects</a>
+                        <a href="#{request.contextPath}/ui/feedReader.jsf">FeedReader</a>
+                        <a href="#{request.contextPath}/ui/terminalHome.jsf">Terminal</a>
+                        <a href="#{request.contextPath}/ui/resizableHome.jsf">Resizable</a>
+                        <a href="#{request.contextPath}/ui/requestContext.jsf">RequestContext</a>
+                        <a href="#{request.contextPath}/ui/separator.jsf">Separator</a>
+                        <a href="#{request.contextPath}/ui/scheduleHome.jsf">Schedule</a>
+                        <a href="#{request.contextPath}/ui/spacer.jsf">Spacer</a>
+                        <a href="#{request.contextPath}/ui/progressBar.jsf">ProgressBar</a>
+                        <a href="#{request.contextPath}/ui/themeswitcher.jsf">Themeswitcher</a>
+                        <a href="#{request.contextPath}/ui/watermark.jsf">Watermark</a>
+                        <a href="#{request.contextPath}/ui/wizard.jsf">Wizard</a>
+                    </div>
 
-						</li>
-					</ul>
 				</div>
 
 				<div id="content" class="ui-widget">

@@ -89,15 +89,13 @@ img.right {
 
 /* Menu */
 #menu {
-	width: 960px;
-	margin: 0 auto;
 	padding: 0;
 	height: 59px;
 }
 
 #menu ul {
 	margin: 0;
-	padding-left: 270px;
+	padding-left: 400px;
 	list-style: none;
 }
 
@@ -128,9 +126,7 @@ img.right {
 /* Page */
 
 #page {
-	width: 960px;
-	margin: 0 auto;
-	padding: 20px 5px;
+	padding: 20px 0px;
 	background: #FFFFFF;
 }
 
@@ -172,6 +168,14 @@ img.right {
 
 .title a:hover {
 	border-bottom: 1px dotted #000000;
+}
+
+.submenu-title {
+    padding: 4px 10px;
+}
+
+.submenu-content {
+    text-align:center;
 }
 
 .byline {
@@ -226,8 +230,8 @@ img.right {
 
 .sidebar {
 	float: left;
-	width: 240px;
-	padding: 0;
+	width: 360px;
+	padding: 10px;
 	font-size: 12px;
 }
 
@@ -266,10 +270,14 @@ img.right {
 }
 
 .sidebar a {
+    margin-right:25px;
+
 }
 
-.sidebar a:hover {
-	text-decoration: underline;
+.sidebar a.ui-state-hover {
+    border:0 none;
+    text-decoration: none;
+    font-weight: normal;
 }
 
 .sidebar a.ui-menuitem-link:hover {
@@ -356,17 +364,16 @@ img.right {
 /* Footer */
 
 #footer {
-	width: 960px;
 	height: 70px;
 	margin: 0 auto;
 	padding: 0 20px;
+    font-size: 14px;
 }
 
 #footer p {
 	margin: 0;
 	padding: 25px 0 0 0;
 	text-align: center;
-	font-size: smaller;
 }
 
 #footer a {
