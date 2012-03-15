@@ -9,7 +9,7 @@
 
 	<h1 class="title ui-widget-header ui-corner-all">AJAX - Validations</h1>
 		<div class="entry">
-			<p>Validations are executed on the server side and page is updated with the response.</p>
+			<p>Validations are executed on the server side and page is updated with ajax.</p>
 						
 			<h:form id="form">
 
@@ -22,11 +22,14 @@
 						<p:inputText id="firstname" value="#{personBean.firstname}" required="true" label="Firstname">
 							<f:validateLength minimum="2" />
 						</p:inputText>
-						<p:message for="firstname" id="msgFirstname"/>
+						<p:message for="firstname" display="icon"/>
 						
 						<h:outputLabel for="surname" value="Surname: *" />
-						<p:inputText id="surname" value="#{personBean.surname}" required="true" label="Surname"/>
-						<p:message for="surname" id="msgSurname" />
+						<p:inputText id="surname" value="#{personBean.surname}" label="Surname" required="true">
+                            <f:validateLength minimum="2" />
+                            <p:ajax update="msgSurname" event="keyup" />
+                        </p:inputText>
+						<p:message for="surname" id="msgSurname" display="icon"/>
 
 					</h:panelGrid>
 					
@@ -41,29 +44,29 @@
 					<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
-	&lt;p:panel id="panel" header="New Person"&gt;
-		&lt;p:messages id="msgs"/&gt;
-		&lt;h:panelGrid columns="3"&gt;
-			&lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
-			&lt;p:inputText id="firstname" 
-					value="\#{personBean.firstname}" 
-					required="true" label="Firstname"&gt;
-				&lt;f:validateLength minimum="2" /&gt;
-			&lt;/p:inputText&gt;
-			&lt;p:message for="firstname" id="msgFirstname" /&gt;
-			
-			&lt;h:outputLabel for="surname" value="Surname: *" /&gt;
-			&lt;p:inputText id="surname" 
-					value="\#{personBean.surname}"
-					required="true" label="Surname"/&gt;
-			&lt;p:message for="surname" id="msgSurname" /&gt;
+    &lt;p:panel id="panel" header="New Person"&gt;
 
-		&lt;/h:panelGrid&gt;
-		
-		&lt;p:commandButton id="btn" value="Save" update="panel" 
-				actionListener="\#{personBean.savePerson}"/&gt;
-	&lt;/p:panel&gt;
-	
+        &lt;p:messages id="msgs"/&gt;
+
+        &lt;h:panelGrid columns="3"&gt;
+            &lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
+            &lt;p:inputText id="firstname" value="\#{personBean.firstname}" required="true" label="Firstname"&gt;
+                &lt;f:validateLength minimum="2" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="firstname" display="icon"/&gt;
+
+            &lt;h:outputLabel for="surname" value="Surname: *" /&gt;
+            &lt;p:inputText id="surname" value="\#{personBean.surname}" label="Surname" required="true"&gt;
+                &lt;f:validateLength minimum="2" /&gt;
+                &lt;p:ajax update="msgSurname" event="keyup" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="surname" id="msgSurname" display="icon"/&gt;
+
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton id="btn" value="Save" update="panel" actionListener="\#{personBean.savePerson}"/&gt;
+    &lt;/p:panel&gt;
+
 &lt;/h:form&gt;
 					</pre>
 				</p:tab>
