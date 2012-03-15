@@ -1,199 +1,141 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
 
-<f:view contentType="text/html">
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">PrimeFaces Mobile</h1>
+		<div class="entry">
+			<p>PrimeFaces Mobile is a UI kit to create JSF applications optimized for mobile devices. Powered by jQuery Mobile with PrimeFaces extensions, 
+                various platforms such as iPhone, Android, Palm, Blackberry, Windows Mobile are supported.
+                Sample applications demonstrated here are best viewed with a mobile device or an emulator..</p>
 
-	<h:head>
-		<title>PrimeFaces - ShowCase</title>
-		<meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/default.css" />
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
-		<ui:insert name="head"></ui:insert>
-	</h:head>
+            <table style="text-align:center" cellpadding="5">
+                <tr>
+                    <td><span style="font-weight:bold">Showcase</span></td>
+                    <td><span style="font-weight:bold">Weather</span></td>
+                    <td><span style="font-weight:bold">TwitFaces</span></td>
+                    <td><span style="font-weight:bold">News</span></td>
+                </tr>
 
-	<h:body>
+                <tr>
+                    <td>
+                        <h:outputLink value="showcase.jsf">
+                            <p:graphicImage value="/images/mobile/showcase.png" />
+                            <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
+                        </h:outputLink>
+                    </td>
+                    <td>
+                        <h:outputLink value="weather.jsf">
+                            <p:graphicImage value="/images/mobile/weather.png" />
+                            <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
+                        </h:outputLink>
+                    </td>
+                    <td>
+                        <h:outputLink value="twitfaces.jsf">
+                            <p:graphicImage value="/images/mobile/twitfaces.png" />
+                            <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
+                        </h:outputLink>
+                    </td>
+                    <td>
+                        <h:outputLink value="news.jsf">
+                            <p:graphicImage value="/images/mobile/news.png" />
+                            <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
+                        </h:outputLink>
+                    </td>
+                </tr>
 
-		<div class="ui-widget ui-widget-header">
-			<div id="logo">
-				<h1>PRIMEFACES</h1>
-				<p></p>
-			</div>
+                <tr>
+                    <td>
+                        <h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/showcase.xhtml">
+                            View Source
+                        </h:outputLink>
+                    </td>
+                        <td>
+                        <h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/weather.xhtml">
+                            View Source
+                        </h:outputLink>
+                    </td>
+                    <td>
+                        <h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/twitfaces.xhtml">
+                            View Source
+                        </h:outputLink>
+                    </td>
+                    <td>
+                        <h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/news.xhtml">
+                            View Source
+                        </h:outputLink>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="5" style="padding:15px"></td>
+                </tr>
+
+                <tr>
+                    <td><span style="font-weight:bold">Contacts</span></td>
+                    <td><span style="font-weight:bold">Notes</span></td>
+                    <td><span style="font-weight:bold">Chat</span></td>
+                    <td><span style="font-weight:bold">Maps</span></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h:outputLink value="contacts.jsf">
+                            <p:graphicImage value="/images/mobile/contacts.png" />
+                            <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
+                        </h:outputLink>
+                    </td>
+
+                    <td>
+                        <h:outputLink value="notes.jsf">
+                            <p:graphicImage value="/images/mobile/notes.png" />
+                            <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
+                        </h:outputLink>
+                    </td>
+
+                    <td>
+                        <h:outputLink value="chat.jsf">
+                            <p:graphicImage value="/images/mobile/chat.png" />
+                            <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
+                        </h:outputLink>
+                    </td>
+                    <td>
+                        <h:outputLink value="maps.jsf">
+                            <p:graphicImage value="/images/mobile/maps.png" />
+                            <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
+                        </h:outputLink>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/contacts.xhtml">
+                            View Source
+                        </h:outputLink>
+                    </td>
+                    <td>
+                        <h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/notes.xhtml">
+                            View Source
+                        </h:outputLink>
+                    </td>
+                    <td>
+                        <h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/chat.xhtml">
+                            View Source
+                        </h:outputLink>
+                    </td>
+                    <td>
+                        <h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/maps.xhtml">
+                            View Source
+                        </h:outputLink>
+                    </td>
+                </tr>
+            </table>
+            
 		</div>
-
-		<div id="menu" class="ui-widget ui-widget-content ui-corner-bottom">
-			<ul id="main">
-				<li class="current_page_item"><a href="#{request.contextPath}/ui/home.jsf" style="background:url('../design/ui.png') no-repeat center left;">PrimeUI</a></li>
-				<li><a href="#{request.contextPath}/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;">PrimeMobile</a></li>
-                <li><a href="#{request.contextPath}/push/index.jsf" style="background:url('../design/push.png') no-repeat center left;">PrimePush</a></li>
-			</ul>
-		</div>
-
-		<div id="wrapper">
-
-			<div id="page">
-				<div id="sidebar1" class="ui-widget ui-widget-content ui-corner-bottom ui-helper-clearfix" style="float:left;width:240px;padding: 0;">
-					<ul style="margin:0;padding:0;list-style: none;">
-						<li style="padding: 2px 10px">
-							<p style="width:220px;">PrimeFaces Mobile is a UI kit to create JSF applications optimized for mobile devices.</p>
-                            <p style="width:220px;">Powered by jQuery Mobile with PrimeFaces extensions, various platforms such as iPhone, Android, Palm, Blackberry,
-                                Windows Mobile are supported.</p>
-                            <p style="width:220px;">Sample applications demonstrated here are best viewed with a mobile device or an emulator.</p>
-						</li>
-					</ul>
-				</div>
-
-				<div id="content" class="ui-widget">
-					<div class="post">
-						<h1 class="title ui-widget-header ui-corner-all">PrimeFaces Mobile</h1>
-
-						<table style="text-align:center" cellpadding="5">
-							<tr>
-                                <td><span style="font-weight:bold">Showcase</span></td>
-								<td><span style="font-weight:bold">Weather</span></td>
-                                <td><span style="font-weight:bold">TwitFaces</span></td>
-                                <td><span style="font-weight:bold">News</span></td>
-							</tr>
-
-							<tr>
-                                <td>
-									<h:outputLink value="showcase.jsf">
-										<p:graphicImage value="/images/mobile/showcase.png" />
-                                        <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
-									</h:outputLink>
-								</td>
-								<td>
-									<h:outputLink value="weather.jsf">
-										<p:graphicImage value="/images/mobile/weather.png" />
-                                        <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
-									</h:outputLink>
-								</td>
-                                <td>
-									<h:outputLink value="twitfaces.jsf">
-										<p:graphicImage value="/images/mobile/twitfaces.png" />
-                                        <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
-									</h:outputLink>
-								</td>
-                                <td>
-									<h:outputLink value="news.jsf">
-										<p:graphicImage value="/images/mobile/news.png" />
-                                        <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
-									</h:outputLink>
-								</td>
-							</tr>
-
-                            <tr>
-								<td>
-									<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/showcase.xhtml">
-										View Source
-									</h:outputLink>
-								</td>
-                                 <td>
-									<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/weather.xhtml">
-										View Source
-									</h:outputLink>
-								</td>
-                                <td>
-									<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/twitfaces.xhtml">
-										View Source
-									</h:outputLink>
-								</td>
-                                <td>
-									<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/news.xhtml">
-										View Source
-									</h:outputLink>
-                                </td>
-							</tr>
-
-                            <tr>
-                                <td colspan="5" style="padding:15px"></td>
-                            </tr>
-
-                            <tr>
-                                <td><span style="font-weight:bold">Contacts</span></td>
-                                <td><span style="font-weight:bold">Notes</span></td>
-                                <td><span style="font-weight:bold">Chat</span></td>
-                                <td><span style="font-weight:bold">Maps</span></td>
-							</tr>
-
-                            <tr>
-                                <td>
-									<h:outputLink value="contacts.jsf">
-										<p:graphicImage value="/images/mobile/contacts.png" />
-                                        <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
-									</h:outputLink>
-								</td>
-								
-                                <td>
-									<h:outputLink value="notes.jsf">
-										<p:graphicImage value="/images/mobile/notes.png" />
-                                        <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
-									</h:outputLink>
-								</td>
-
-                                <td>
-									<h:outputLink value="chat.jsf">
-										<p:graphicImage value="/images/mobile/chat.png" />
-                                        <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
-									</h:outputLink>
-								</td>
-                                <td>
-									<h:outputLink value="maps.jsf">
-										<p:graphicImage value="/images/mobile/maps.png" />
-                                        <f:param name="javax.faces.RenderKitId" value="PRIMEFACES_MOBILE" />
-									</h:outputLink>
-								</td>
-							</tr>
-
-                            <tr>
-                                <td>
-									<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/contacts.xhtml">
-										View Source
-									</h:outputLink>
-								</td>
-                                <td>
-									<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/notes.xhtml">
-										View Source
-									</h:outputLink>
-								</td>
-                                <td>
-									<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/chat.xhtml">
-										View Source
-									</h:outputLink>
-                                </td>
-                                <td>
-									<h:outputLink value="http://code.google.com/p/primefaces/source/browse/examples/trunk/showcase/src/main/webapp/mobile/maps.xhtml">
-										View Source
-									</h:outputLink>
-								</td>
-							</tr>
-							
-
-						</table>
-					</div>
-				</div>
-
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
-
-		<div id="footer" class="ui-widget-header ui-corner-all">
-			<p class="copyright">&copy;&nbsp;&nbsp;2009-2011 &nbsp;&bull;&nbsp; <a href="http://www.prime.com.tr">Prime Teknoloji</a>.</p>
-			<p style="float:right">Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
-		</div>
-
-	</h:body>
-
-	<ui:insert name="highlight">
-		<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
-		<script language="javascript">
-			dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
-			dp.SyntaxHighlighter.HighlightAll('code');
-		</script>
-	</ui:insert>
-
-</f:view>
-</html>
+				
+	</ui:define>
+</ui:composition>
