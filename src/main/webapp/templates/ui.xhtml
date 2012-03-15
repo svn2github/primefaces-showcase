@@ -38,11 +38,13 @@
                 <li><a href="#{request.contextPath}/push/index.jsf" style="background:url('../design/push.png') no-repeat center left">PrimePush</a></li>
 			</ul>
             
-            <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:155px;float:right;margin:15px;" effect="fade">
-                <f:selectItem itemLabel="Choose Theme" itemValue="" />
-                <f:selectItems value="#{themeSwitcherBean.themes}" />
-                <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
-            </p:themeSwitcher>
+            <h:form>
+                <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:155px;float:right;margin:15px;" effect="fade">
+                    <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                    <f:selectItems value="#{themeSwitcherBean.themes}" />
+                    <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
+                </p:themeSwitcher>
+            </h:form>
 		</div>
 
 		<div id="wrapper">
