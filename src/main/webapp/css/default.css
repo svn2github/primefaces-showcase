@@ -1,13 +1,6 @@
-/*
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-*/
-
 body {
 	margin: 0px;
 	padding: 0;
-	font-size: 12px;
 	color: #616161;
 }
 
@@ -61,31 +54,6 @@ img.right {
     text-align: left;
 }
 
-#logo h1, #logo p {
-	float: left;
-	margin: 0;
-}
-
-#logo h1 {
-	padding: 0 0 0 0;
-	letter-spacing: -1px;
-	font-weight: normal;
-	font-size: 3em;
-}
-
-#logo p {
-	text-transform: uppercase;
-	padding: 47px 0 0 3px;
-	font-size: 10px;
-	color: #FFFFFF;
-}
-
-#logo a {
-	border: none;
-	text-decoration: none;
-	color: #DC8700;
-}
-
 /* Menu */
 #menu {
 	padding: 0;
@@ -116,31 +84,13 @@ img.right {
 	text-decoration: underline;
 }
 
-
-/* Wrapper */
-
-#wrapper {
-}
-
 /* Page */
-
 #page {
 	padding: 20px 0px;
 	background: #FFFFFF;
 }
 
-#page-bg {
-}
-
-/* Latest Post */
-
-#latest-post {
-	padding: 20px;
-	border: 1px solid #E7E7E7;
-}
-
 /* Content */
-
 #content {
 	float: left;
 	width: 700px;
@@ -210,62 +160,12 @@ img.right {
 .links a:hover {
 }
 
-/* Sidebars */
-
-#sidebar1 {
-	float: left;
-	margin-top: -81px;
-	margin-left: -1px;
-}
-
-#sidebar1 td li {
-    font-family: Arial,sans-serif;
-    font-size:11px !important;
-}
-
-#sidebar2 {
-	float: right;
-}
-
 .sidebar {
 	float: left;
 	width: 360px;
 	padding: 0 10px;
-	font-size: 12px;
-}
-
-.sidebar ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.sidebar li {
-	padding: 0 0 20px 0;
-}
-
-.sidebar span {
-	cursor: pointer;
-}
-
-.sidebar li ul {
-}
-
-.sidebar li li {
-	margin: 0 10px 0 10px;
-	padding: 3px 0px;
-}
-
-
-.sidebar li h2 {
-	height: 40px;
-	margin: 0 0 0 0;
-	padding: 20px 15px 0px 65px;
-	background: url(../images/img04.jpg) no-repeat left top;
-	letter-spacing: -1px;
-	font-size: 16px;
-	font-weight: normal;
-	color: #FFFFFF;
+    margin-top: -81px;
+	margin-left: -1px;
 }
 
 .sidebar a.ui-state-hover {
@@ -274,93 +174,11 @@ img.right {
     font-weight: normal;
 }
 
-.sidebar a.ui-menuitem-link:hover {
-	text-decoration: none;
-}
-
 .sidebar table {
     width: 100%;
 }
 
-/* Search */
-
-#searchform {
-	margin: 0;
-	padding: 0 0 0 0;
-}
-
-#searchform br {
-	display: none;
-}
-
-#searchform h2 {
-}
-
-#s {
-	margin: 10px 0px 0 15px;
-	padding: 2px 2px;
-	width: 180px;
-	height: 18px;
-	border: 1px solid #6F6E6E;
-	background: #FFFFFF;
-	font-size: 10px;
-	color: #000000;
-}
-
-#x {
-	margin: 0;
-	padding: 2px 5px;
-	height: 25px;
-	background: #CA8186;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #CCCCCC;
-}
-/* Calendar */
-
-#calendar_wrap {
-	padding: 0 15px;
-	text-align: center;
-}
-
-#calendar_wrap table {
-	width: 100%;
-}
-
-#calendar_wrap th {
-}
-
-#calendar_wrap td {
-}
-
-#calendar_wrap tfoot td {
-	border: none;
-}
-
-#calendar_wrap tfoot td#prev {
-	text-align: left;
-	font-weight: bold;
-	border: none;
-}
-
-#calendar_wrap tfoot td#prev a {
-	border: none;
-}
-
-#calendar_wrap tfoot td#next {
-	text-align: right;
-	font-weight: bold;
-	border: none;
-}
-
-#calendar_wrap tfoot td#next a {
-	border: none;
-}
-
 /* Footer */
-
 #footer {
 	height: 70px;
 	margin: 0 auto;
@@ -401,10 +219,6 @@ img.right {
     display:block;
 }
 
-.ui-widget {
-    font-size: 98% !important;
-}
-
 .ui-growl {
     top:115px !important;
 }
@@ -425,4 +239,8 @@ img.right {
 
 .ui-themeswitcher a.ui-selectonemenu-label-container {
     text-decoration: none !important;
+}
+
+.ui-widget {
+    font-size: 12px !important;
 }
