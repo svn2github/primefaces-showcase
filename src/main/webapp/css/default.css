@@ -178,6 +178,20 @@ img.right {
     width: 100%;
 }
 
+.sidebar table td {
+    vertical-align: top;
+}
+
+.sidebar ul {
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    list-style-type: none;
+    padding: 1px;
+}
+
 /* Footer */
 #footer {
 	height: 70px;
