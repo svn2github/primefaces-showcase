@@ -88,12 +88,14 @@ img.right {
 #page {
 	padding: 20px 0px;
 	background: #FFFFFF;
+    width:1280px;
 }
 
 /* Content */
 #content {
-	float: left;
 	width: 700px;
+    float:left;
+    display: inline;
 }
 
 .post {
@@ -166,6 +168,7 @@ img.right {
 	padding: 0 10px;
     margin-top: -81px;
 	margin-left: -1px;
+    display: inline;
 }
 
 .sidebar a.ui-state-hover {
