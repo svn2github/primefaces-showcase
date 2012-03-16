@@ -422,22 +422,21 @@
         </div>
 
 		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
-			<p class="copyright">&copy;&nbsp;&nbsp;2009-2011 &nbsp;&bull;&nbsp; <a href="http://www.prime.com.tr">Prime Teknoloji</a>.</p>
-			<p style="float:right">Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
+			<p class="copyright">Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
 		</div>
 
         <ui:insert name="status">
             <p:ajaxStatus style="width:64px;height:64px;display:block;position:fixed;right:0;bottom:0;">
                 <f:facet name="start">
-                    <p:graphicImage value="/images/loading-cube.gif"/>
+                    <p:graphicImage value="/images/cube.gif"/>
                 </f:facet>
 
                 <f:facet name="complete">
-                    <p:graphicImage value="/images/loading-cube-static.gif"/>
+                    <p:graphicImage value="/images/cube-static.gif"/>
                 </f:facet>
                 
                 <f:facet name="default">
-                    <p:graphicImage value="/images/loading-cube-static.gif"/>
+                    <p:graphicImage value="/images/cube-static.gif"/>
                 </f:facet>
             </p:ajaxStatus>
         </ui:insert>
