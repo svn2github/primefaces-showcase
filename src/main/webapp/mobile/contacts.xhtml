@@ -10,16 +10,14 @@
 
         <!-- Main View -->
         <pm:view id="main">
-            <pm:header title="Contacts">
-                <f:facet name="right">
-                    <h:form>
+            <h:form id="listContactsForm">
+                <pm:header title="Contacts">
+                    <f:facet name="right">
                         <p:commandButton value="New" icon="plus" action="#{contactsView.prepareNewContact}" update=":newContactForm"/>
-                    </h:form>
-                </f:facet>
-            </pm:header>
+                    </f:facet>
+                </pm:header>
 
-            <pm:content>
-                <h:form id="listContactsForm">
+                <pm:content>
                     <p:dataList id="contactsList" value="#{contactsView.contacts}" var="contact">
                         <p:column>
                             <p:graphicImage value="/images/pf-logo.png" />
@@ -31,8 +29,8 @@
                             <p><a href="tel:#{contact.phone}">Call</a></p>
                         </p:column>
                     </p:dataList>
-                </h:form>
-            </pm:content>
+                </pm:content>
+            </h:form>
         </pm:view>
 
         <!-- New Contact -->
@@ -55,7 +53,7 @@
 
                     <p:inputTextarea id="address" value="#{contactsView.contact.address}" label="Address:"/>
                     
-                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update=":listContactsForm" icon="check" />
+                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update=":listContactsForm:contactsList" icon="check" />
                 </h:form>
             </pm:content>
 
