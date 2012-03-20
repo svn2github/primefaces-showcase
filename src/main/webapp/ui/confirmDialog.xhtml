@@ -41,7 +41,7 @@
 		&lt;p:commandButton id="showDialogButton" value="Destroy the World" onclick="confirmation.show()" type="button"/&gt;
 	&lt;/h:panelGrid&gt;
 	
-	&lt;p:confirmDialog id="confirmDialog message="Are you sure about destroying the world?"
+	&lt;p:confirmDialog id="confirmDialog" message="Are you sure about destroying the world?"
 				header="Initiating destroy process" severity="alert" widgetVar="confirmation"&gt;
 				
 		&lt;p:commandButton id="confirm" value="Yes Sure" update="messages" oncomplete="confirmation.hide()"
