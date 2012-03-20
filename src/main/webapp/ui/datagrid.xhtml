@@ -23,8 +23,8 @@
 					rows="12" paginator="true" id="cars"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="9,12,15">
-					
-					
+                    
+					<p:column>
 						<p:panel header="#{car.model}" style="text-align:center">
 							<h:panelGrid columns="1" style="width:100%">
 								<p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/> 
@@ -37,7 +37,7 @@
 								</p:commandLink>
 							</h:panelGrid>
 						</p:panel>
-				
+                    </p:column>
 
 				</p:dataGrid>
 				
