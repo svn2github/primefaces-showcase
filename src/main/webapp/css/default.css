@@ -236,10 +236,6 @@ img.right {
     display:block;
 }
 
-.ui-growl {
-    top:115px !important;
-}
-
 .themeMenu {
     overflow: auto;
     height:300px;
