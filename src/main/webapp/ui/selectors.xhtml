@@ -7,22 +7,100 @@
 
 	<ui:define name="content">
 	
-		<h1 class="title ui-widget-header ui-corner-all">PrimeFaces Selectors</h1>
+		<h1 class="title ui-widget-header ui-corner-all">PrimeFaces Selectors - @(<i>selector</i>)</h1>
 		<div class="entry">
-			<p>PFS (PrimeFaces Selectors) integrates jQuery Selector API with JSF's component model. Instead of
-            regular component referencing, full power of Selector API can be used.</p>
+			<p>PFS (PrimeFaces Selectors) integrates <a href="http://api.jquery.com/category/selectors/">jQuery Selector API</a> with JSF's component model. 
+            Full power of Selector API can be used with or without the regular component referencing.</p>
 
 			<h:form id="form">
-				
-				<p:commandButton update="@(form)" value="All Forms" />
+                
+                <p:panel id="panel" header="New User" style="margin-bottom:10px;">
+                    <p:messages id="messages" />
+                    
+                    <h:panelGrid columns="4">
+                        <h:outputLabel for="firstname" value="Firstname: *" />
+                        <p:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
+                            <f:validateLength minimum="2" />
+                        </p:inputText>
+                        <p:message for="firstname" />
+                        <h:outputText value="#{pprBean.firstname}" />
 
+                        <h:outputLabel for="surname" value="Surname: *" />
+                        <p:inputText id="surname" value="#{pprBean.surname}" required="true" label="Surname"/>
+                        <p:message for="surname" />
+                        <h:outputText value="#{pprBean.surname}" />
+                        
+                        <h:outputLabel for="city" value="City: *" />
+                        <h:selectOneMenu id="city" value="#{pprBean.city}" required="true">
+                            <f:selectItem itemLabel="Select One" itemValue="" />
+                            <f:selectItems value="#{pprBean.cities}" />
+                        </h:selectOneMenu>
+                        <p:message for="city" />
+                        <h:outputText value="#{pprBean.city}" />
+                        
+                    </h:panelGrid>
+                </p:panel>
+                
+                <h:panelGrid columns="5">
+                    <p:commandButton update="@(form)" value="All Forms" />
+                    
+                    <p:commandButton update="@(form:last)" value="Last Form" />
+                
+                    <p:commandButton update="@(.ui-panel)" value="All Panels" />
+                
+                    <p:commandButton process="@(.ui-panel :input)" update="@(.ui-panel)" value="Inputs of Panel" />
+                    
+                    <p:commandButton process="@(.ui-panel :input:not(select))" update="@(.ui-panel)" value="Inputs Except Select" />
+                </h:panelGrid>
+				
 			</h:form>
 			
 			<h3>Source</h3>
 			<p:tabView>
-				<p:tab title="pfs.xhtml">
+				<p:tab title="selectors.xhtml">
 <pre name="code" class="xml">
+    &lt;h:form id="form"&gt;
 
+        &lt;p:panel id="panel" header="New User" style="margin-bottom:10px;"&gt;
+            &lt;p:messages id="messages" /&gt;
+
+            &lt;h:panelGrid columns="4"&gt;
+                &lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
+                &lt;p:inputText id="firstname" value="\#{pprBean.firstname}" required="true" label="Firstname"&gt;
+                    &lt;f:validateLength minimum="2" /&gt;
+                &lt;/p:inputText&gt;
+                &lt;p:message for="firstname" /&gt;
+                &lt;h:outputText value="\#{pprBean.firstname}" /&gt;
+
+                &lt;h:outputLabel for="surname" value="Surname: *" /&gt;
+                &lt;p:inputText id="surname" value="\#{pprBean.surname}" required="true" label="Surname"/&gt;
+                &lt;p:message for="surname" /&gt;
+                &lt;h:outputText value="\#{pprBean.surname}" /&gt;
+
+                &lt;h:outputLabel for="city" value="City: *" /&gt;
+                &lt;h:selectOneMenu id="city" value="\#{pprBean.city}" required="true"&gt;
+                    &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
+                    &lt;f:selectItems value="\#{pprBean.cities}" /&gt;
+                &lt;/h:selectOneMenu&gt;
+                &lt;p:message for="city" /&gt;
+                &lt;h:outputText value="\#{pprBean.city}" /&gt;
+
+            &lt;/h:panelGrid&gt;
+        &lt;/p:panel&gt;
+
+        &lt;h:panelGrid columns="5"&gt;
+            &lt;p:commandButton update="@(form)" value="All Forms" /&gt;
+
+            &lt;p:commandButton update="@(form:last)" value="Last Form" /&gt;
+
+            &lt;p:commandButton update="@(.ui-panel)" value="All Panels" /&gt;
+
+            &lt;p:commandButton process="@(.ui-panel :input)" update="@(.ui-panel)" value="Inputs of Panel" /&gt;
+
+            &lt;p:commandButton process="@(.ui-panel :input:not(select))" update="@(.ui-panel)" value="Inputs Except Select" /&gt;
+        &lt;/h:panelGrid&gt;
+
+    &lt;/h:form&gt;
 </pre>
 				</p:tab>
 			</p:tabView>
