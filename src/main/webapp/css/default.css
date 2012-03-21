@@ -171,7 +171,8 @@ img.right {
     display: inline;
 }
 
-.sidebar a.ui-state-hover {
+.sidebar a.ui-state-hover, 
+.sidebar a.ui-state-highlight {
     border:0 none;
     text-decoration: none;
     font-weight: normal;
@@ -230,20 +231,10 @@ img.right {
 	margin-right:10px
 }
 
-.new {
-    color: #FF9900 !important;
-    font-weight: bold;
-    display:block;
-}
-
 .themeMenu {
     overflow: auto;
     height:300px;
     width:200px;
-}
-
-.sidebar .wijmo-wijmenu a {
-    text-decoration: none !important;
 }
 
 .dp-xml {
