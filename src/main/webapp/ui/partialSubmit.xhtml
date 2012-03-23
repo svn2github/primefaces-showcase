@@ -22,9 +22,9 @@
 					
 					<p:inputText id="name" value="#{pprBean.firstname}" />
 					
-					<p:commandButton value="Default" update="display" />
+					<p:commandButton value="False" update="display" partialSubmit="false" process="name"/>
                     
-                    <p:commandButton value="Partial" update="display" partialSubmit="true" process="name"/>
+                    <p:commandButton value="True" update="display" partialSubmit="true" process="name"/>
                     
                     <h:outputText value="#{pprBean.firstname}" id="display" />
 				</h:panelGrid>
@@ -137,9 +137,9 @@
 
         &lt;p:inputText id="name" value="\#{pprBean.firstname}" /&gt;
 
-        &lt;p:commandButton value="Default" update="display" /&gt;
+        &lt;p:commandButton value="False" update="display" partialSubmit="false" process="name"/&gt;
 
-        &lt;p:commandButton value="Partial" update="display" partialSubmit="true" process="name"/&gt;
+        &lt;p:commandButton value="True" update="display" partialSubmit="true" process="name"/&gt;
 
         &lt;h:outputText value="\#{pprBean.firstname}" id="display" /&gt;
     &lt;/h:panelGrid&gt;
