@@ -33,19 +33,19 @@
                         List of Cars
                     </f:facet>
                         
-                    <p:column headerText="Model" style="width:125px" sortBy="#{car.model}">
+                    <p:column headerText="Model" width="125" sortBy="#{car.model}">
                         <h:inputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column headerText="Year" style="width:125px" sortBy="#{car.year}">
+                    <p:column headerText="Year" width="125" sortBy="#{car.year}">
                         <h:inputText value="#{car.year}" onkeypress="return restrict(event)"/>
                     </p:column>
  
-                    <p:column headerText="Manufacturer" style="width:125px" sortBy="#{car.manufacturer}">
+                    <p:column headerText="Manufacturer" width="125" sortBy="#{car.manufacturer}">
                         <h:inputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column headerText="Color" style="width:125px" sortBy="#{car.color}">
+                    <p:column headerText="Color" width="125" sortBy="#{car.color}">
                         <h:inputText value="#{car.color}" />
                     </p:column>
                 </p:sheet>
@@ -64,19 +64,19 @@
             List of Cars
         &lt;/f:facet&gt;
 
-        &lt;p:column headerText="Model" style="width:125px" sortBy="\#{car.model}"&gt;
+        &lt;p:column headerText="Model" width="125" sortBy="\#{car.model}"&gt;
             &lt;h:inputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" style="width:125px" sortBy="\#{car.year}"&gt;
+        &lt;p:column headerText="Year" width="125" sortBy="\#{car.year}"&gt;
             &lt;h:inputText value="\#{car.year}" onkeypress="return restrict(event)"/&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" style="width:125px" sortBy="\#{car.manufacturer}"&gt;
+        &lt;p:column headerText="Manufacturer" width="125" sortBy="\#{car.manufacturer}"&gt;
             &lt;h:inputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" style="width:125px" sortBy="\#{car.color}"&gt;
+        &lt;p:column headerText="Color" width="125" sortBy="\#{car.color}"&gt;
             &lt;h:inputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:sheet&gt;
