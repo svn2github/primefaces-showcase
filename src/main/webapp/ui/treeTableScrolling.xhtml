@@ -19,15 +19,15 @@
                         Y Scrolling
                     </f:facet>
                     
-					<p:column style="width:150px" headerText="Name" footerText="Name">
+					<p:column width="260" headerText="Name">
 						<h:outputText value="#{document.name}" />
 					</p:column>
 					
-					<p:column style="width:100px" headerText="Size" footerText="Size" >
+					<p:column width="160" headerText="Size">
 						<h:outputText value="#{document.size}" />
 					</p:column>
 					
-					<p:column style="width:100px" headerText="Type" footerText="Type">
+					<p:column width="160" headerText="Type">
 						<h:outputText value="#{document.type}" />
 					</p:column>
 				</p:treeTable>
@@ -41,15 +41,15 @@
                         X Scrolling
                     </f:facet>
                     
-					<p:column style="width:150px" headerText="Name" footerText="Name">
+					<p:column width="150" headerText="Name" footerText="Name">
 						<h:outputText value="#{document.name}" />
 					</p:column>
 					
-					<p:column style="width:100px" headerText="Size" footerText="Size" >
+					<p:column width="100" headerText="Size" footerText="Size" >
 						<h:outputText value="#{document.size}" />
 					</p:column>
 					
-					<p:column style="width:100px" headerText="Type" footerText="Type">
+					<p:column width="100" headerText="Type" footerText="Type">
 						<h:outputText value="#{document.type}" />
 					</p:column>
 				</p:treeTable>
@@ -63,15 +63,15 @@
                         X-Y Scrolling
                     </f:facet>
                     
-					<p:column style="width:150px" headerText="Name" footerText="Name">
+					<p:column width="150" headerText="Name" footerText="Name">
 						<h:outputText value="#{document.name}" />
 					</p:column>
 					
-					<p:column style="width:100px" headerText="Size" footerText="Size" >
+					<p:column width="100" headerText="Size" footerText="Size" >
 						<h:outputText value="#{document.size}" />
 					</p:column>
 					
-					<p:column style="width:100px" headerText="Type" footerText="Type">
+					<p:column width="100" headerText="Type" footerText="Type">
 						<h:outputText value="#{document.type}" />
 					</p:column>
 				</p:treeTable>
@@ -82,68 +82,72 @@
 			<p:tabView>
 				<p:tab title="treeTableScrolling.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
-	
-    &lt;p:treeTable value="\#{documentsController.root}" var="document" scrollable="true" scrollHeight="100"&gt;
+&lt;h:form id="form">
 
-        &lt;f:facet name="header"&gt;
+    &lt;p:treeTable id="yscroll" value="\#{documentsController.root}" var="document" scrollable="true" scrollHeight="100">
+
+        &lt;f:facet name="header">
             Y Scrolling
-        &lt;/f:facet&gt;
+        &lt;/f:facet>
 
-        &lt;p:column style="width:150px" headerText="Name" footerText="Name"&gt;
-            &lt;h:outputText value="\#{document.name}" /&gt;
-        &lt;/p:column&gt;
+        &lt;p:column width="260" headerText="Name">
+            &lt;h:outputText value="\#{document.name}" />
+        &lt;/p:column>
 
-        &lt;p:column style="width:100px" headerText="Size" footerText="Size" &gt;
-            &lt;h:outputText value="\#{document.size}" /&gt;
-        &lt;/p:column&gt;
+        &lt;p:column width="160" headerText="Size">
+            &lt;h:outputText value="\#{document.size}" />
+        &lt;/p:column>
 
-        &lt;p:column style="width:100px" headerText="Type" footerText="Type"&gt;
-            &lt;h:outputText value="\#{document.type}" /&gt;
-        &lt;/p:column&gt;
-    &lt;/p:treeTable&gt;
+        &lt;p:column width="160" headerText="Type">
+            &lt;h:outputText value="\#{document.type}" />
+        &lt;/p:column>
+    &lt;/p:treeTable>
 
-    &lt;p:treeTable value="\#{documentsController.root}" var="document"
-                    scrollable="true" scrollWidth="350"&gt;
+    &lt;br />&lt;br />
 
-        &lt;f:facet name="header"&gt;
+    &lt;p:treeTable id="xscroll" value="\#{documentsController.root}" var="document"
+                    scrollable="true" scrollWidth="350">
+
+        &lt;f:facet name="header">
             X Scrolling
-        &lt;/f:facet&gt;
+        &lt;/f:facet>
 
-        &lt;p:column style="width:150px" headerText="Name" footerText="Name"&gt;
-            &lt;h:outputText value="\#{document.name}" /&gt;
-        &lt;/p:column&gt;
+        &lt;p:column width="150" headerText="Name" footerText="Name">
+            &lt;h:outputText value="\#{document.name}" />
+        &lt;/p:column>
 
-        &lt;p:column style="width:100px" headerText="Size" footerText="Size" &gt;
-            &lt;h:outputText value="\#{document.size}" /&gt;
-        &lt;/p:column&gt;
+        &lt;p:column width="100" headerText="Size" footerText="Size" >
+            &lt;h:outputText value="\#{document.size}" />
+        &lt;/p:column>
 
-        &lt;p:column style="width:100px" headerText="Type" footerText="Type"&gt;
-            &lt;h:outputText value="\#{document.type}" /&gt;
-        &lt;/p:column&gt;
-    &lt;/p:treeTable&gt;
+        &lt;p:column width="100" headerText="Type" footerText="Type">
+            &lt;h:outputText value="\#{document.type}" />
+        &lt;/p:column>
+    &lt;/p:treeTable>
 
-    &lt;p:treeTable value="\#{documentsController.root}" var="document" scrollable="true" 
-                 scrollHeight="150" scrollWidth="350"&gt;
+    &lt;br />&lt;br />
 
-        &lt;f:facet name="header"&gt;
+    &lt;p:treeTable id="xyscroll" value="\#{documentsController.root}" var="document" scrollable="true" 
+                    scrollHeight="150" scrollWidth="350">
+
+        &lt;f:facet name="header">
             X-Y Scrolling
-        &lt;/f:facet&gt;
+        &lt;/f:facet>
 
-        &lt;p:column style="width:150px" headerText="Name" footerText="Name"&gt;
-            &lt;h:outputText value="\#{document.name}" /&gt;
-        &lt;/p:column&gt;
+        &lt;p:column width="150" headerText="Name" footerText="Name">
+            &lt;h:outputText value="\#{document.name}" />
+        &lt;/p:column>
 
-        &lt;p:column style="width:100px" headerText="Size" footerText="Size" &gt;
-            &lt;h:outputText value="\#{document.size}" /&gt;
-        &lt;/p:column&gt;
+        &lt;p:column width="100" headerText="Size" footerText="Size" >
+            &lt;h:outputText value="\#{document.size}" />
+        &lt;/p:column>
 
-        &lt;p:column style="width:100px" headerText="Type" footerText="Type"&gt;
-            &lt;h:outputText value="\#{document.type}" /&gt;
-        &lt;/p:column&gt;
-    &lt;/p:treeTable&gt;
+        &lt;p:column width="100" headerText="Type" footerText="Type">
+            &lt;h:outputText value="\#{document.type}" />
+        &lt;/p:column>
+    &lt;/p:treeTable>
 
-&lt;/h:form&gt;
+&lt;/h:form>
 					</pre> 
 				</p:tab>
 				
