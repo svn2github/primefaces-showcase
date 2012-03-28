@@ -43,7 +43,9 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
 import java.util.*;
+import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.component.UIComponent;
+import javax.faces.context.Flash;
 import javax.faces.model.SelectItem;
 import org.primefaces.event.ColumnResizeEvent;
 import org.primefaces.event.DragDropEvent;
@@ -275,6 +277,15 @@ public class TableBean implements Serializable {
         FacesMessage msg = new FacesMessage("Car Unselected", ((Car) event.getObject()).getModel());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void onRowDblselect(SelectEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        ConfigurableNavigationHandler handler = (ConfigurableNavigationHandler) context.getApplication().getNavigationHandler();
+        Flash flash = context.getExternalContext().getFlash();
+        flash.put("selectedCar", (Car) event.getObject());
+        
+        handler.performNavigation("carDetail");
     }
 
     public String onRowSelectNavigate(SelectEvent event) {
