@@ -37,7 +37,7 @@
                 	
                 	<p:commandButton value="Submit" id="submit" update="display" oncomplete="dlg.show()" style="margin:5px" />
                     
-                    <p:dialog header="Values" widgetVar="dlg" showEffect="fold" hideEffect="fade">
+                    <p:dialog header="Values" widgetVar="dlg" showEffect="fade" hideEffect="fade">
                         <h:panelGrid id="display" columns="2" cellpadding="5">
                             <h:outputText value="Rating 1:" />
                             <h:outputText value="#{ratingController.rating1}" />
@@ -82,7 +82,7 @@
 
     &lt;p:commandButton value="Submit" id="submit" update="display" oncomplete="dlg.show()" style="margin:5px"/&gt;
 
-    &lt;p:dialog header="Values" widgetVar="dlg" showEffect="fold" hideEffect="fade"&gt;
+    &lt;p:dialog header="Values" widgetVar="dlg" showEffect="fade" hideEffect="fade"&gt;
         &lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
             &lt;h:outputText value="Rating 1:" /&gt;
             &lt;h:outputText value="\#{ratingController.rating1}" /&gt;
