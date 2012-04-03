@@ -16,15 +16,16 @@
                     <p:growl id="messages" showDetail="true"/>
 
                     <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputText value="Rating 1:" />
+                        <h:outputText value="Basic:" />
                         <p:rating value="#{ratingController.rating1}" />
 
-                        <h:outputText value="Rating 2:" />
-                        <p:rating value="#{ratingController.rating2}" stars="10" cancel="false"/>
+                        <h:outputText value="Callback:" />
+                        <p:rating value="#{ratingController.rating2}" stars="10" cancel="false" onRate="alert('You rated ' + value)"/>
 
                         <h:outputText value="Ajax Rate:" />
                         <p:rating value="#{ratingController.rating3}">
-                            <p:ajax event="rate" listener="#{ratingController.handleRate}" update="messages" />
+                            <p:ajax event="rate" listener="#{ratingController.onrate}" update="messages" />
+                            <p:ajax event="cancel" listener="#{ratingController.oncancel}" update="messages" />
                         </p:rating>
 
                         <h:outputText value="Readonly:"/>
@@ -52,7 +53,6 @@
 
                 </h:form>
                         
-			
 				<h3>Source</h3>
 				<p:tabView>
 					<p:tab title="rating.xhtml">
@@ -66,11 +66,12 @@
         &lt;p:rating value="\#{ratingController.rating1}" /&gt;
 
         &lt;h:outputText value="Rating 2:" /&gt;
-        &lt;p:rating value="\#{ratingController.rating2}" stars="10" cancel="false"/&gt;
+        &lt;p:rating value="\#{ratingController.rating2}" stars="10" cancel="false" onRate="alert('You rated ' + value)"/&gt;
 
         &lt;h:outputText value="Ajax Rate:" /&gt;
         &lt;p:rating value="\#{ratingController.rating3}"&gt;
-            &lt;p:ajax event="rate" listener="\#{ratingController.handleRate}" update="messages" /&gt;
+            &lt;p:ajax event="rate" listener="\#{ratingController.onrate}" update="messages" /&gt;
+            &lt;p:ajax event="cancel" listener="\#{ratingController.oncancel}" update="messages" /&gt;
         &lt;/p:rating&gt;
 
         &lt;h:outputText value="Readonly:"/&gt;
@@ -119,8 +120,14 @@ public class RatingController {
 	
 	private Integer rating4 = 3;
 	
-	public void handleRate(RateEvent rateEvent) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + ((Integer) rateEvent.getRating()).IntegerValue());
+	public void onrate(RateEvent rateEvent) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+    
+    public void oncancel() {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cancel Event", "Rate Reset");
 
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
@@ -157,7 +164,6 @@ public class RatingController {
         this.rating4 = rating4;
     }
 }
-
                         </pre>
 					</p:tab>
 				</p:tabView>
