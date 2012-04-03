@@ -14,15 +14,29 @@
                 <h:form id="form">
 
                     <p:growl id="messages" showDetail="true"/>
-                
-                	<h:panelGrid columns="2" cellpadding="5">
-                		<h:outputText value="Rating 1:" />
-                		<p:rating value="#{ratingController.rating1}" />
-  
-                	</h:panelGrid>
-                	
-                	<p:commandButton value="Submit" id="submit" update="display" oncomplete="dlg.show()" style="margin:5px" />
-                    
+
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputText value="Rating 1:" />
+                        <p:rating value="#{ratingController.rating1}" />
+
+                        <h:outputText value="Rating 2:" />
+                        <p:rating value="#{ratingController.rating2}" stars="10" cancel="false"/>
+
+                        <h:outputText value="Ajax Rate:" />
+                        <p:rating value="#{ratingController.rating3}">
+                            <p:ajax event="rate" listener="#{ratingController.handleRate}" update="messages" />
+                        </p:rating>
+
+                        <h:outputText value="Readonly:"/>
+                        <p:rating value="#{ratingController.rating4}" readonly="true" />
+
+                        <h:outputText value="Disabled"/>
+                        <p:rating value="#{ratingController.rating4}" disabled="true" />
+
+                    </h:panelGrid>
+
+                    <p:commandButton value="Submit" id="submit" update="display" oncomplete="dlg.show()" style="margin:5px"/>
+
                     <p:dialog header="Values" widgetVar="dlg" showEffect="fade" hideEffect="fade">
                         <h:panelGrid id="display" columns="2" cellpadding="5">
                             <h:outputText value="Rating 1:" />
@@ -35,8 +49,9 @@
                             <h:outputText value="#{ratingController.rating3}" />
                         </h:panelGrid>
                     </p:dialog>
-                    
-				</h:form>
+
+                </h:form>
+                        
 			
 				<h3>Source</h3>
 				<p:tabView>
