@@ -13,7 +13,7 @@
             <h:form id="form">
                 <h:outputText id="txt_count" value="#{counterBean.count}" />
 
-                <p:poll interval="3" listener="#{counterBean.increment}" update="txt_count" process="@this" />
+                <p:poll interval="3" listener="#{counterBean.increment}" update="txt_count" />
             </h:form>
 
             <h3>Source</h3>
