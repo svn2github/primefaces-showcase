@@ -17,40 +17,46 @@
                 
                 	<h:panelGrid columns="2" cellpadding="5">
                 		<h:outputText value="Rating 1:" />
-                		<p:rating id="rating1" value="#{ratingController.rating1}" />
+                		<p:rating value="#{ratingController.rating1}" />
   
                 		<h:outputText value="Rating 2:" />
-                		<p:rating id="rating2" value="#{ratingController.rating2}" stars="10"/>
-                	</h:panelGrid>
-                	
-                	<p:commandButton value="Submit" id="submit" update="displayRatings" style="margin:5px"/>
-                		
-                	<h:panelGrid id="displayRatings" columns="1" cellpadding="5">
-                		<h:outputText id="rating1value" value="Rating 1: #{ratingController.rating1}" />
-                		<h:outputText id="rating2value" value="Rating 2: #{ratingController.rating2}" />
-                	</h:panelGrid>
-                	
-				 	<h3>Instant Ajax Rating</h3>
-					<h:panelGrid columns="2" cellpadding="5">
-                		<h:outputText value="Rate Me" />
-                		<p:rating id="ajaxRating" value="#{ratingController.rating3}">
+                		<p:rating value="#{ratingController.rating2}" stars="10" cancel="false"/>
+                        
+                        <h:outputText value="Ajax Rate:" />
+                		<p:rating value="#{ratingController.rating3}">
                             <p:ajax event="rate" listener="#{ratingController.handleRate}" update="messages" />
                         </p:rating>
+                        
+                        <h:outputText value="Readonly:"/>
+						<p:rating value="#{ratingController.rating4}" readonly="true" />
+                        
+                        <h:outputText value="Disabled"/>
+						<p:rating value="#{ratingController.rating4}" disabled="true" />
+   
                 	</h:panelGrid>
+                	
+                	<p:commandButton value="Submit" id="submit" update="display" oncomplete="dlg.show()" style="margin:5px" />
+                    
+                    <p:dialog header="Values" widgetVar="dlg" showEffect="fold" hideEffect="fade">
+                        <h:panelGrid id="display" columns="2" cellpadding="5">
+                            <h:outputText value="Rating 1:" />
+                            <h:outputText value="#{ratingController.rating1}" />
 
-                	<h3>Display Value Only</h3>
-                	<h:panelGrid columns="2" cellpadding="5">
-                		<h:outputText value="A ReadOnly Rating:"/>
-						<p:rating id="disabledRating" value="#{ratingController.rating4}" disabled="true" />
-                	</h:panelGrid>
-					
+                            <h:outputText value="Rating 2:" />
+                            <h:outputText value="#{ratingController.rating2}" />
+
+                            <h:outputText value="Rating 3:" />
+                            <h:outputText value="#{ratingController.rating3}" />
+                        </h:panelGrid>
+                    </p:dialog>
+                    
 				</h:form>
 			
 				<h3>Source</h3>
 				<p:tabView>
 					<p:tab title="rating.xhtml">
                         <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
 
     &lt;p:growl id="messages" showDetail="true"/&gt;
 
@@ -59,29 +65,35 @@
         &lt;p:rating value="\#{ratingController.rating1}" /&gt;
 
         &lt;h:outputText value="Rating 2:" /&gt;
-        &lt;p:rating value="\#{ratingController.rating2}" stars="10"/&gt;
-    &lt;/h:panelGrid&gt;
+        &lt;p:rating value="\#{ratingController.rating2}" stars="10" cancel="false"/&gt;
 
-    &lt;p:commandButton value="Submit" update="displayRatings" style="margin:5px"/&gt;
-
-    &lt;h:panelGrid id="displayRatings" columns="1" cellpadding="5"&gt;
-        &lt;h:outputText value="Rating 1: \#{ratingController.rating1}" /&gt;
-        &lt;h:outputText value="Rating 2: \#{ratingController.rating2}" /&gt;
-    &lt;/h:panelGrid&gt;
-
-    &lt;h3&gt;Instant Ajax Rating&lt;/h3&gt;
-    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
-        &lt;h:outputText value="Rate Me" /&gt;
+        &lt;h:outputText value="Ajax Rate:" /&gt;
         &lt;p:rating value="\#{ratingController.rating3}"&gt;
             &lt;p:ajax event="rate" listener="\#{ratingController.handleRate}" update="messages" /&gt;
         &lt;/p:rating&gt;
+
+        &lt;h:outputText value="Readonly:"/&gt;
+        &lt;p:rating value="\#{ratingController.rating4}" readonly="true" /&gt;
+
+        &lt;h:outputText value="Disabled"/&gt;
+        &lt;p:rating value="\#{ratingController.rating4}" disabled="true" /&gt;
+
     &lt;/h:panelGrid&gt;
 
-    &lt;h3&gt;Display Value Only&lt;/h3&gt;
-    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
-        &lt;h:outputText value="A ReadOnly Rating:"/&gt;
-        &lt;p:rating value="\#{ratingController.rating4}" disabled="true" /&gt;
-    &lt;/h:panelGrid&gt;
+    &lt;p:commandButton value="Submit" id="submit" update="display" oncomplete="dlg.show()" style="margin:5px"/&gt;
+
+    &lt;p:dialog header="Values" widgetVar="dlg" showEffect="fold" hideEffect="fade"&gt;
+        &lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
+            &lt;h:outputText value="Rating 1:" /&gt;
+            &lt;h:outputText value="\#{ratingController.rating1}" /&gt;
+
+            &lt;h:outputText value="Rating 2:" /&gt;
+            &lt;h:outputText value="\#{ratingController.rating2}" /&gt;
+
+            &lt;h:outputText value="Rating 3:" /&gt;
+            &lt;h:outputText value="\#{ratingController.rating3}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
 
 &lt;/h:form&gt;
                         </pre>
