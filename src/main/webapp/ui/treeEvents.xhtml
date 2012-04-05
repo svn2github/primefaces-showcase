@@ -38,7 +38,7 @@
     &lt;p:growl id="messages" showDetail="true" /&gt;
 
     &lt;p:tree value="\#{treeBean.root}" var="node" dynamic="true" cache="false"
-            selectionMode="single"  selection="\#{treeBean.selectedNode}" id="tree" /&gt;
+            selectionMode="single"  selection="\#{treeBean.selectedNode}" id="tree"&gt;
 
         &lt;p:ajax event="expand" update=":form:messages" listener="\#{treeBean.onNodeExpand}" /&gt;
         &lt;p:ajax event="collapse" update=":form:messages" listener="\#{treeBean.onNodeCollapse}" /&gt;
