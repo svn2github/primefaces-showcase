@@ -395,7 +395,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces-mobile</artifactId>
-                    <version>0.9.2</version>
+                    <version>1.0.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -420,7 +420,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces-mobile</artifactId>
-                    <version>0.9.2</version>
+                    <version>1.0.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.myfaces.core</groupId>
@@ -450,7 +450,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces-mobile</artifactId>
-                    <version>0.9.2</version>
+                    <version>1.0.0-SNAPSHOT</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -495,7 +495,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces-mobile</artifactId>
-                    <version>0.9.2</version>
+                    <version>1.0.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -572,7 +572,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces-mobile</artifactId>
-                    <version>0.9.2</version>
+                    <version>1.0.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -684,7 +684,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces-mobile</artifactId>
-                    <version>0.9.2</version>
+                    <version>1.0.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
