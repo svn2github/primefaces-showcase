@@ -61,10 +61,10 @@
     &lt;p:growl id="messages" showDetail="true"/&gt;
 
     &lt;h:panelGrid columns="2" cellpadding="5"&gt;
-        &lt;h:outputText value="Rating 1:" /&gt;
+        &lt;h:outputText value="Basic:" /&gt;
         &lt;p:rating value="\#{ratingController.rating1}" /&gt;
 
-        &lt;h:outputText value="Rating 2:" /&gt;
+        &lt;h:outputText value="Callback:" /&gt;
         &lt;p:rating value="\#{ratingController.rating2}" stars="10" cancel="false" onRate="alert('You rated ' + value)"/&gt;
 
         &lt;h:outputText value="Ajax Rate:" /&gt;
