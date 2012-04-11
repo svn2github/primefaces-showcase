@@ -58,6 +58,7 @@ img.right {
 #menu {
 	padding: 0;
 	height: 59px;
+        overflow: hidden;
 }
 
 #menu ul {
