@@ -4,18 +4,18 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-	
+    	
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">Menubar</h1>
 		<div class="entry">
-			<p>Menubar brings the desktop application menubars to JSF. Using menuitems, it is very easy to execute both ajax and non-ajax actions
-			as well as directly navigating to other resources.</p>
+			<p>Menubar brings the desktop application menubars to JSF. Using menuitems, it is very easy to execute ajax, non-ajax and navigations.</p>
 			
 			<h:form>
 				
 				<p:growl id="messages"/>
 				
+                <h3>Default Menubar</h3>
                 <p:menubar>
 					<p:submenu label="File" icon="ui-icon-document">
 						<p:submenu label="New" icon="ui-icon-contact">
@@ -54,6 +54,50 @@
 
                     <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
 				</p:menubar>
+                
+                <br /><br />
+                
+                <h3>Click Trigger</h3>
+                <p:menubar autoDisplay="false" showEffect="slide">
+					<p:submenu label="File" icon="ui-icon-document">
+						<p:submenu label="New" icon="ui-icon-contact">
+							<p:menuitem value="Project" url="#" />
+							<p:menuitem value="Other" url="#" />
+						</p:submenu>
+						<p:menuitem value="Open" url="#" />
+                        <p:separator />
+						<p:menuitem value="Quit" url="#" />
+					</p:submenu>
+					
+					<p:submenu label="Edit" icon="ui-icon-pencil">
+						<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+						<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+					</p:submenu>
+					
+					<p:submenu label="Help" icon="ui-icon-help">
+						<p:menuitem value="Contents" url="#" />
+						<p:submenu label="Search" icon="ui-icon-search">
+							<p:submenu label="Text">
+								<p:menuitem value="Workspace" url="#" />
+							</p:submenu>
+							<p:menuitem value="File" url="#" />
+						</p:submenu>
+					</p:submenu>
+					
+					<p:submenu label="Actions" icon="ui-icon-gear">
+						<p:submenu label="Ajax" icon="ui-icon-refresh">
+							<p:menuitem value="Save" actionListener="#{buttonBean.save}" icon="ui-icon-disk" update="messages"/>
+							<p:menuitem value="Update" actionListener="#{buttonBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+						</p:submenu>
+						<p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+							<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+						</p:submenu>
+					</p:submenu>
+
+                    <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+				</p:menubar>
+                
+                <br /><br />
 				
 			</h:form>
 		
@@ -65,6 +109,7 @@
 
     &lt;p:growl id="messages"/&gt;
 
+    &lt;h3&gt;Default Menubar&lt;/h3&gt;
     &lt;p:menubar&gt;
         &lt;p:submenu label="File" icon="ui-icon-document"&gt;
             &lt;p:submenu label="New" icon="ui-icon-contact"&gt;
@@ -102,6 +147,11 @@
         &lt;/p:submenu&gt;
 
         &lt;p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" /&gt;
+    &lt;/p:menubar&gt;
+
+    &lt;h3&gt;Click Trigger&lt;/h3&gt;
+    &lt;p:menubar autoDisplay="false"&gt;
+        //same content as default menubar
     &lt;/p:menubar&gt;
 
 &lt;/h:form&gt;
