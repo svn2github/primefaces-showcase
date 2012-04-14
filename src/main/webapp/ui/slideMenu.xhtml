@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">SlideMenu</h1>
+		<div class="entry">
+			<p>SlideMenu displays submenus in with slide animation similar to ipod menus.</p>
+			
+			<h:form>
+			
+				<p:growl id="messages"/>
+                
+				<h3>Default SlideMenu</h3>
+                <p:slideMenu style="width:180px">
+					<p:submenu label="Ajax Menuitems" icon="ui-icon-refresh">
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk" />
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+					<p:submenu label="Non-Ajax Menuitem" icon="ui-icon-newwin">
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+					</p:submenu>
+                    <p:separator />
+					<p:submenu label="Navigations" icon="ui-icon-extlink">
+						<p:submenu label="Prime Links">
+							<p:menuitem value="Prime" url="http://www.prime.com.tr" />
+							<p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+						</p:submenu>
+                        <p:menuitem value="Mobile" url="/mobile" />
+					</p:submenu>
+				</p:slideMenu>
+
+            </h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="slideMenu.xhtml">
+                    <pre name="code" class="xml">
+
+                    </pre>
+				</p:tab>
+			</p:tabView>
+      	</div>
+ 
+</ui:define>
+</ui:composition>
+				
