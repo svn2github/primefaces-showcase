@@ -3,96 +3,116 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	template="../templates/mainTemplate.xhtml">
+	template="../templates/ui.xhtml">
 
-	<ui:define name="head">
-		<style type="text/css">
-		
-			.yui-skin-sam .yuimenu .bd {
-				width: 200px;
-			}
-			
-		</style>
-	</ui:define>
-	
 	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">TieredMenu</h1>
+		<div class="entry">
+			<p>TieredMenu displays submenus in nested overlays.</p>
+			
+			<h:form>
+			
+				<p:growl id="messages"/>
+                
+				<h3>Default TieredMenu</h3>
+                <p:tieredMenu style="width:180px">
+					<p:submenu label="Ajax Menuitems" icon="ui-icon-refresh">
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk" />
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+					<p:submenu label="Non-Ajax Menuitem" icon="ui-icon-newwin">
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+					</p:submenu>
+                    <p:separator />
+					<p:submenu label="Navigations" icon="ui-icon-extlink">
+						<p:submenu label="Prime Links">
+							<p:menuitem value="Prime" url="http://www.prime.com.tr" />
+							<p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+						</p:submenu>
+                        <p:menuitem value="Mobile" url="/mobile" />
+					</p:submenu>
+				</p:tieredMenu>
 
-		<div id="cols">
-		<div class="main box">
+            </h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="tieredMenu.xhtml">
+            <pre name="code" class="xml">
+&lt;h:form&gt;
 
-		<div id="content">
+    &lt;p:growl id="messages"/&gt;
 
-		<div id="content-in" class="box">
-
-		<h2 style="color: #7DAC09;">Menu - Tiered</h2>
-
-		<p:menu tiered="true" effect="NONE">
-			<p:submenu label="Mail">
-				<p:menuitem label="Gmail" url="http://www.google.com"></p:menuitem>
-				<p:menuitem label="Hotmail" url="http://www.hotmail.com"></p:menuitem>
-				<p:menuitem label="Yahoo Mail" url="http://mail.yahoo.com"></p:menuitem>
-			</p:submenu>
-			<p:submenu label="Videos">
-				<p:menuitem label="Youtube" url="http://www.youtube.com"></p:menuitem>
-				<p:menuitem label="Break" url="http://www.break.com"></p:menuitem>
-				<p:menuitem label="Metacafe" url="http://www.metacafe.com"></p:menuitem>
-			</p:submenu>
-			<p:submenu label="Sports">
-				<p:submenu label="Football">
-					<p:menuitem label="FIFA" url="http://www.fifa.com"></p:menuitem>
-					<p:menuitem label="UEFA" url="http://www.uefa.com"></p:menuitem>
-				</p:submenu>
-				<p:submenu label="Basketball">
-					<p:menuitem label="NBA" url="http://www.nba.com"></p:menuitem>
-					<p:menuitem label="FIBA" url="http://www.fiba.com"></p:menuitem>
-				</p:submenu>
-			</p:submenu>
-			<p:submenu label="Social Networks">
-				<p:menuitem label="Facebook" url="http://www.facebook.com"></p:menuitem>
-				<p:menuitem label="MySpace" url="http://www.myspace.com"></p:menuitem>
-			</p:submenu>
-		</p:menu>
-		<h3>Source</h3>
-		<pre name="code" class="xml">
-				&lt;p:menu tiered="true" effect="NONE"&gt;
-					&lt;p:submenu label="Mail"&gt;
-						&lt;p:menuitem label="Gmail" url="http://www.google.com"&gt;&lt;/p:menuitem&gt;
-						&lt;p:menuitem label="Hotmail" url="http://www.hotmail.com"&gt;&lt;/p:menuitem&gt;
-						&lt;p:menuitem label="Yahoo Mail" url="http://mail.yahoo.com"&gt;&lt;/p:menuitem&gt;
-					&lt;/p:submenu&gt;
-					&lt;p:submenu label="Videos"&gt;
-						&lt;p:menuitem label="Youtube" url="http://www.youtube.com"&gt;&lt;/p:menuitem&gt;
-						&lt;p:menuitem label="Break" url="http://www.break.com"&gt;&lt;/p:menuitem&gt;
-						&lt;p:menuitem label="Metacafe" url="http://www.metacafe.com"&gt;&lt;/p:menuitem&gt;
-					&lt;/p:submenu&gt;
-					&lt;p:submenu label="Sports"&gt;
-						&lt;p:submenu label="Football"&gt;
-							&lt;p:menuitem label="FIFA" url="http://www.fifa.com"&gt;&lt;/p:menuitem&gt;
-							&lt;p:menuitem label="UEFA" url="http://www.uefa.com"&gt;&lt;/p:menuitem&gt;
-						&lt;/p:submenu&gt;
-						&lt;p:submenu label="Basketball"&gt;
-							&lt;p:menuitem label="NBA" url="http://www.nba.com"&gt;&lt;/p:menuitem&gt;
-							&lt;p:menuitem label="FIBA" url="http://www.fiba.com"&gt;&lt;/p:menuitem&gt;
-						&lt;/p:submenu&gt;
-					&lt;/p:submenu&gt;
-					&lt;p:submenu label="Social Networks"&gt;
-						&lt;p:menuitem label="Facebook" url="http://www.facebook.com"&gt;&lt;/p:menuitem&gt;
-						&lt;p:menuitem label="MySpace" url="http://www.myspace.com"&gt;&lt;/p:menuitem&gt;
-					&lt;/p:submenu&gt;
-				&lt;/p:menu&gt;
-		</pre></div>
-
-		</div>
+    &lt;h3&gt;Tiered Menu&lt;/h3&gt;
+    &lt;p:menu type="tiered" style="width:180px"&gt;
+        &lt;p:submenu label="Ajax Menuitems" icon="ui-icon-refresh"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon-disk" /&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" /&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax Menuitem" icon="ui-icon-newwin"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:separator /&gt;
+        &lt;p:submenu label="Navigations" icon="ui-icon-extlink"&gt;
+            &lt;p:submenu label="Prime Links"&gt;
+                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr" /&gt;
+                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org" /&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:menuitem value="TouchFaces" url="\#{request.contextPath}/touch" /&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:menu&gt;
 
 
-		<hr class="noscreen" />
+&lt;/h:form&gt;
+			</pre>
+				</p:tab>
+				
+				<p:tab title="MenuBean.java">
+<pre name="code" class="java">
+public class MenuBean {
 
-		<div id="aside"><ui:include src="../templates/components.xhtml" />
+	private MenuModel model;
 
-		</div>
-
-		</div>
-		</div>
-
-	</ui:define>
+	public MenuBean() {
+		model = new DefaultMenuModel();
+		
+		//First submenu
+		Submenu submenu = new Submenu();
+		submenu.setLabel("Dynamic Submenu 1");
+		
+		MenuItem item = new MenuItem();
+		item.setValue("Dynamic Menuitem 1.1");
+		item.setUrl("#");
+		submenu.getChildren().add(item);
+		
+		model.addSubmenu(submenu);
+		
+		//Second submenu
+		submenu = new Submenu();
+		submenu.setLabel("Dynamic Submenu 2");
+		
+		item = new MenuItem();
+		item.setValue("Dynamic Menuitem 2.1");
+		item.setUrl("#");
+		submenu.getChildren().add(item);
+		
+		item = new MenuItem();
+		item.setValue("Dynamic Menuitem 2.2");
+		item.setUrl("#");
+		submenu.getChildren().add(item);
+		
+		model.addSubmenu(submenu);
+	}
+	
+	public MenuModel getModel() {
+		return model;
+	}	
+}
+			</pre>
+				</p:tab>
+			</p:tabView>
+      	</div>
+ 
+</ui:define>
 </ui:composition>
+				
