@@ -29,9 +29,9 @@
 					</p:submenu>
 				</p:menu>
 
-                <h3>Dynamic Position</h3>
+                <h3>Overlay</h3>
 				<p:commandButton id="dynaButton" value="Show" type="button"/>
-                <p:menu position="dynamic" trigger="dynaButton" my="left top" at="left bottom">
+                <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
 					<p:submenu label="Ajax Menuitems">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk"/>
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
@@ -73,9 +73,9 @@
         &lt;/p:submenu&gt;
     &lt;/p:menu&gt;
 
-    &lt;h3&gt;Dynamic Position&lt;/h3&gt;
+    &lt;h3&gt;Overlay&lt;/h3&gt;
     &lt;p:commandButton id="dynaButton" value="Show" type="button"/&gt;
-    &lt;p:menu position="dynamic" trigger="dynaButton" my="left top" at="left bottom"&gt;
+    &lt;p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom"&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon-disk"/&gt;
             &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
