@@ -15,7 +15,7 @@
 				<p:growl id="messages"/>
                 
 				<h3>Default SlideMenu</h3>
-                <p:slideMenu style="width:180px">
+                <p:slideMenu>
 					<p:submenu label="Ajax Menuitems" icon="ui-icon-refresh">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk" />
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
@@ -32,6 +32,25 @@
                         <p:menuitem value="Mobile" url="/mobile" />
 					</p:submenu>
 				</p:slideMenu>
+                
+                <h3>Overlay</h3>
+				<p:commandButton id="dynaButton" value="Show" type="button"/>
+                <p:slideMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
+					<p:submenu label="Ajax Menuitems">
+						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk"/>
+						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+					</p:submenu>
+					<p:submenu label="Non-Ajax Menuitem">
+						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+					</p:submenu>
+					<p:submenu label="Navigations" icon="ui-icon-extlink">
+						<p:submenu label="Prime Links">
+							<p:menuitem value="Prime" url="http://www.prime.com.tr" />
+							<p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+						</p:submenu>
+                        <p:menuitem value="Mobile" url="/mobile" />
+					</p:submenu>
+				</p:slideMenu>
 
             </h:form>
 			
@@ -39,7 +58,49 @@
 			<p:tabView>
 				<p:tab title="slideMenu.xhtml">
                     <pre name="code" class="xml">
+&lt;h:form&gt;
+			
+    &lt;p:growl id="messages"/&gt;
 
+    &lt;h3&gt;Default SlideMenu&lt;/h3&gt;
+    &lt;p:slideMenu&gt;
+        &lt;p:submenu label="Ajax Menuitems" icon="ui-icon-refresh"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon-disk" /&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" /&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax Menuitem" icon="ui-icon-newwin"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:separator /&gt;
+        &lt;p:submenu label="Navigations" icon="ui-icon-extlink"&gt;
+            &lt;p:submenu label="Prime Links"&gt;
+                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr" /&gt;
+                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org" /&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:menuitem value="Mobile" url="/mobile" /&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:slideMenu&gt;
+
+    &lt;h3&gt;Overlay&lt;/h3&gt;
+    &lt;p:commandButton id="dynaButton" value="Show" type="button"/&gt;
+    &lt;p:slideMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom"&gt;
+        &lt;p:submenu label="Ajax Menuitems"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon-disk"/&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Navigations" icon="ui-icon-extlink"&gt;
+            &lt;p:submenu label="Prime Links"&gt;
+                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr" /&gt;
+                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org" /&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:menuitem value="Mobile" url="/mobile" /&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:slideMenu&gt;
+
+&lt;/h:form&gt;
                     </pre>
 				</p:tab>
 			</p:tabView>
