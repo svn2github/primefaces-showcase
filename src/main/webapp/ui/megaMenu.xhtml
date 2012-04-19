@@ -5,18 +5,12 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
     
-        <ui:define name="head">
+    <ui:define name="head">
         <style type="text/css">
             .ui-megamenu .ui-menu-child .ui-menu-list {
                 width: 150px;
             }
         </style>
-        
-        <script type="text/javascript">
-            //<![CDATA[
-
-            //]]>
-        </script>
     </ui:define>
 	
 	<ui:define name="content">
@@ -27,6 +21,7 @@
 			
 			<h:form>
 
+                <h3>Default MegaMenu</h3>
                 <p:megaMenu>
                     <p:submenu label="TV" icon="ui-icon-check">
                         <p:column>
@@ -170,6 +165,155 @@
 
                     <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
 				</p:megaMenu>
+                
+                <br /><br />
+                
+                <h3>Click Trigger</h3>
+                <p:megaMenu autoDisplay="false">
+                    <p:submenu label="TV" icon="ui-icon-check">
+                        <p:column>
+                            <p:submenu label="TV.1">
+                                <p:menuitem value="TV.1.1" url="#" />
+                                <p:menuitem value="TV.1.2" url="#" />
+                            </p:submenu>
+                            <p:submenu label="TV.2">
+                                <p:menuitem value="TV.2.1" url="#" />
+                                <p:menuitem value="TV.2.2" url="#" />
+                                <p:menuitem value="TV.2.3" url="#" />
+                            </p:submenu>
+                            <p:submenu label="TV.3">
+                                <p:menuitem value="TV.3.1" url="#" />
+                                <p:menuitem value="TV.3.2" url="#" />
+                            </p:submenu>
+                        </p:column>
+                        
+                        <p:column>
+                            <p:submenu label="TV.4">
+                                <p:menuitem value="TV.4.1" url="#" />
+                                <p:menuitem value="TV.4.2" url="#" />
+                            </p:submenu>
+                            <p:submenu label="TV.5">
+                                <p:menuitem value="TV.5.1" url="#" />
+                                <p:menuitem value="TV.5.2" url="#" />
+                                <p:menuitem value="TV.5.3" url="#" />
+                            </p:submenu>
+                        </p:column>
+                        
+                        <p:column>
+                            <strong>Sopranos</strong>
+                            <p:graphicImage value="/images/sopranos/sopranos1.jpg" width="200"/>
+                        </p:column>
+                    </p:submenu>
+                        
+					<p:submenu label="Sports" icon="ui-icon-document">
+                        
+                        <p:column>
+                            <p:submenu label="Sports.1">
+                                <p:menuitem value="Sports.1.1" url="#" />
+                                <p:menuitem value="Sports.1.2" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Sports.2">
+                                <p:menuitem value="Sports.2.1" url="#" />
+                                <p:menuitem value="Sports.2.2" url="#" />
+                                <p:menuitem value="Sports.2.3" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Sports.3">
+                                <p:menuitem value="Sports.3.1" url="#" />
+                                <p:menuitem value="Sports.3.2" url="#" />
+                            </p:submenu>
+                        </p:column>
+
+                        <p:column>
+                            <p:submenu label="Sports.4">
+                                <p:menuitem value="Sports.4.1" url="#" />
+                                <p:menuitem value="Sports.4.2" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Sports.5">
+                                <p:menuitem value="Sports.5.1" url="#" />
+                                <p:menuitem value="Sports.5.2" url="#" />
+                                <p:menuitem value="Sports.5.3" url="#" />
+                            </p:submenu>
+                        </p:column>
+                        <p:column>
+                            <p:submenu label="Sports.7">
+                                <p:menuitem value="Sports.7.1" url="#" />
+                                <p:menuitem value="Sports.7.2" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Sports.8">
+                                <p:menuitem value="Sports.8.1" url="#" />
+                                <p:menuitem value="Sports.8.2" url="#" />
+                                <p:menuitem value="Sports.8.3" url="#" />
+                                <p:menuitem value="Sports.8.4" url="#" />
+                                <p:menuitem value="Sports.8.5" url="#" />
+                                <p:menuitem value="Sports.8.6" url="#" />
+                            </p:submenu>
+                        </p:column>
+					</p:submenu>
+                    
+                    <p:submenu label="Entertainment" icon="ui-icon-pencil">
+                        <p:column>
+                            <p:submenu label="Entertainment.1">
+                                <p:menuitem value="Entertainment.1.1" url="#" />
+                                <p:menuitem value="Entertainment.1.2" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Entertainment.2">
+                                <p:menuitem value="Entertainment.2.1" url="#" />
+                                <p:menuitem value="Entertainment.2.2" url="#" />
+                                <p:menuitem value="Entertainment.2.3" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Entertainment.3">
+                                <p:menuitem value="Entertainment.3.1" url="#" />
+                                <p:menuitem value="Entertainment.3.2" url="#" />
+                            </p:submenu>
+                        </p:column>
+
+                        <p:column>
+                            <p:submenu label="Entertainment.4" icon="ui-icon-help">
+                                <p:menuitem value="Entertainment.4.1" url="#" />
+                                <p:menuitem value="Entertainment.4.2" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Entertainment.5">
+                                <p:menuitem value="Entertainment.5.1" url="#" />
+                                <p:menuitem value="Entertainment.5.2" url="#" />
+                                <p:menuitem value="Entertainment.5.3" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Entertainment.6">
+                                <p:menuitem value="Entertainment.6.1" url="#" />
+                                <p:menuitem value="Entertainment.6.2" url="#" />
+                            </p:submenu>
+                        </p:column>
+					</p:submenu>
+                    
+                    
+                    <p:submenu label="Tech" icon="ui-icon-contact">
+                        <p:column>
+                            <p:submenu label="Tech.1">
+                                <p:menuitem value="Tech.1.1" url="#" />
+                                <p:menuitem value="Tech.1.2" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Tech.2">
+                                <p:menuitem value="Tech.2.1" url="#" />
+                                <p:menuitem value="Tech.2.2" url="#" />
+                                <p:menuitem value="Tech.2.3" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Tech.3">
+                                <p:menuitem value="Tech.3.1" url="#" />
+                                <p:menuitem value="Tech.3.2" url="#" />
+                            </p:submenu>
+                        </p:column>
+
+                        <p:column>
+                            <p:submenu label="Tech.4">
+                                <p:menuitem value="Tech.4.1" url="#" />
+                                <p:menuitem value="Tech.4.2" url="#" />
+                            </p:submenu>
+                        </p:column>
+					</p:submenu>
+
+                    <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+				</p:megaMenu>
+                
+                <br /><br />
 				
 			</h:form>
 		
@@ -179,33 +323,34 @@
 <pre name="code" class="xml">
 &lt;h:form&gt;
 
+    &lt;h3&gt;Default MegaMenu&lt;/h3&gt;
     &lt;p:megaMenu&gt;
-       &lt;p:submenu label="TV" icon="ui-icon-check"&gt;
+        &lt;p:submenu label="TV" icon="ui-icon-check"&gt;
             &lt;p:column&gt;
                 &lt;p:submenu label="TV.1"&gt;
-                    &lt;p:menuitem value="TV.1.1" url="#" /&gt;
-                    &lt;p:menuitem value="TV.1.2" url="#" /&gt;
+                    &lt;p:menuitem value="TV.1.1" url="\#" /&gt;
+                    &lt;p:menuitem value="TV.1.2" url="\#" /&gt;
                 &lt;/p:submenu&gt;
                 &lt;p:submenu label="TV.2"&gt;
-                    &lt;p:menuitem value="TV.2.1" url="#" /&gt;
-                    &lt;p:menuitem value="TV.2.2" url="#" /&gt;
-                    &lt;p:menuitem value="TV.2.3" url="#" /&gt;
+                    &lt;p:menuitem value="TV.2.1" url="\#" /&gt;
+                    &lt;p:menuitem value="TV.2.2" url="\#" /&gt;
+                    &lt;p:menuitem value="TV.2.3" url="\#" /&gt;
                 &lt;/p:submenu&gt;
                 &lt;p:submenu label="TV.3"&gt;
-                    &lt;p:menuitem value="TV.3.1" url="#" /&gt;
-                    &lt;p:menuitem value="TV.3.2" url="#" /&gt;
+                    &lt;p:menuitem value="TV.3.1" url="\#" /&gt;
+                    &lt;p:menuitem value="TV.3.2" url="\#" /&gt;
                 &lt;/p:submenu&gt;
             &lt;/p:column&gt;
 
             &lt;p:column&gt;
                 &lt;p:submenu label="TV.4"&gt;
-                    &lt;p:menuitem value="TV.4.1" url="#" /&gt;
-                    &lt;p:menuitem value="TV.4.2" url="#" /&gt;
+                    &lt;p:menuitem value="TV.4.1" url="\#" /&gt;
+                    &lt;p:menuitem value="TV.4.2" url="\#" /&gt;
                 &lt;/p:submenu&gt;
                 &lt;p:submenu label="TV.5"&gt;
-                    &lt;p:menuitem value="TV.5.1" url="#" /&gt;
-                    &lt;p:menuitem value="TV.5.2" url="#" /&gt;
-                    &lt;p:menuitem value="TV.5.3" url="#" /&gt;
+                    &lt;p:menuitem value="TV.5.1" url="\#" /&gt;
+                    &lt;p:menuitem value="TV.5.2" url="\#" /&gt;
+                    &lt;p:menuitem value="TV.5.3" url="\#" /&gt;
                 &lt;/p:submenu&gt;
             &lt;/p:column&gt;
 
@@ -294,6 +439,7 @@
             &lt;/p:column&gt;
         &lt;/p:submenu&gt;
 
+
         &lt;p:submenu label="Tech" icon="ui-icon-contact"&gt;
             &lt;p:column&gt;
                 &lt;p:submenu label="Tech.1"&gt;
@@ -320,6 +466,13 @@
         &lt;/p:submenu&gt;
 
         &lt;p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" /&gt;
+    &lt;/p:megaMenu&gt;
+
+    &lt;br /&gt;&lt;br /&gt;
+
+    &lt;h3&gt;Click Trigger&lt;/h3&gt;
+    &lt;p:megaMenu autoDisplay="false"&gt;
+        //Same as default megamenu
     &lt;/p:megaMenu&gt;
 
 &lt;/h:form&gt;
