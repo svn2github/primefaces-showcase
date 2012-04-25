@@ -15,7 +15,7 @@
 				
 				<p:growl id="messages"/>
 
-                <p:contextMenu>
+                <p:contextMenu style="width:180px">
 					<p:submenu label="Ajax Menuitems" icon="ui-icon-refresh">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk" />
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
@@ -43,7 +43,7 @@
 				
     &lt;p:growl id="messages"/&gt;
 
-    &lt;p:contextMenu&gt;
+    &lt;p:contextMenu style="width:180px"&gt;
         &lt;p:submenu label="Ajax Menuitems" icon="ui-icon-refresh"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon-disk" /&gt;
             &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" /&gt;
