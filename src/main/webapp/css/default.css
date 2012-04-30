@@ -50,6 +50,7 @@ img.right {
 /* Header */
 #header {
     padding: 4px 0px;
+    height: 75px;
     position: relative;
 }
 
@@ -60,7 +61,7 @@ img.right {
 /* Menu */
 #menu {
     position: absolute;
-    top:20px;
+    top:25px;
     right:15px;
 	padding: 0;
 	height: 59px;
@@ -92,7 +93,7 @@ img.right {
 
 #globalthemeswitcher {
     position:absolute;
-    bottom:5px;
+    top:5px;
     right:50px;
 }
 
