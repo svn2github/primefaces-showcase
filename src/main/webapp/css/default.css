@@ -48,22 +48,27 @@ img.right {
 }
 
 /* Header */
+#header {
+    padding: 4px 0px;
+    position: relative;
+}
+
 #logo {
-	height: 50px;
-	padding: 10px 10px 0 0px;
     text-align: left;
 }
 
 /* Menu */
 #menu {
+    position: absolute;
+    top:20px;
+    right:15px;
 	padding: 0;
 	height: 59px;
-        overflow: hidden;
+    overflow: hidden;
 }
 
 #menu ul {
 	margin: 0;
-	padding-left: 400px;
 	list-style: none;
 }
 
@@ -85,18 +90,22 @@ img.right {
 	text-decoration: underline;
 }
 
+#globalthemeswitcher {
+    position:absolute;
+    bottom:5px;
+    right:50px;
+}
+
 /* Page */
 #page {
-	padding: 20px 0px;
+	padding: 10px 0px;
 	background: #FFFFFF;
-    width:1280px;
 }
 
 /* Content */
 #content {
-	width: 700px;
+	width: 70%;
     float:left;
-    display: inline;
 }
 
 .post {
@@ -165,11 +174,10 @@ img.right {
 
 #sidebar {
 	float: left;
-	width: 360px;
+	width: 25%;
 	padding: 0 10px;
-    margin-top: -81px;
 	margin-left: -1px;
-    display: inline;
+    overflow: hidden;
 }
 
 #sidebar a.ui-state-hover, 

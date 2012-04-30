@@ -25,33 +25,35 @@
 
 	<h:body>
 
-		<div class="ui-widget ui-widget-header">
+		<div id="header" class="ui-widget ui-widget-header">
 			<div id="logo">
 				<img src="#{request.contextPath}/images/logo.png" alt="Logo"/>
 			</div>
-		</div>
-
-		<div id="menu" class="ui-widget ui-widget-content">
-			<ul id="main">
-				<li class="current_page_item"><a href="#{request.contextPath}/ui/home.jsf" style="background:url('../design/ui.png') no-repeat center left;">PrimeUI</a></li>
-				<li><a href="#{request.contextPath}/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;">PrimeMobile</a></li>
-                <li><a href="#{request.contextPath}/push/index.jsf" style="background:url('../design/push.png') no-repeat center left">PrimePush</a></li>
-                <li class="current_page_item"><a href="#{request.contextPath}/ui/macosx.jsf" style="background:url('../design/mac.png') no-repeat center left;">Mock OS X</a></li>
-			</ul>
             
-            <h:form>
-                <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:155px;float:right;margin:15px;" effect="fade">
-                    <f:selectItem itemLabel="Choose Theme" itemValue="" />
-                    <f:selectItems value="#{themeSwitcherBean.themes}" />
-                    <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
-                </p:themeSwitcher>
-            </h:form>
+            <div id="menu" class="ui-widget">
+                <ul id="main">
+                    <li class="current_page_item"><a href="#{request.contextPath}/ui/home.jsf" style="background:url('../design/ui.png') no-repeat center left;">PrimeUI</a></li>
+                    <li><a href="#{request.contextPath}/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;">PrimeMobile</a></li>
+                    <li><a href="#{request.contextPath}/push/index.jsf" style="background:url('../design/push.png') no-repeat center left">PrimePush</a></li>
+                    <li class="current_page_item"><a href="#{request.contextPath}/ui/macosx.jsf" style="background:url('../design/mac.png') no-repeat center left;">Mock OS X</a></li>
+                </ul>
+            </div>
+            
+            <div id="globalthemeswitcher">
+                <h:form>
+                    <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:155px;" effect="fade">
+                        <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                        <f:selectItems value="#{themeSwitcherBean.themes}" />
+                        <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
+                    </p:themeSwitcher>
+                </h:form>
+            </div>
 		</div>
 
         <div id="page" class="ui-widget">
             <div id="sidebar" class="ui-widget-content ui-corner-bottom ui-helper-clearfix ui-shadow">
 
-                <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title">Ajax Core</h3>
+                <h3 class="ui-widget ui-widget-header ui-corner-all submenu-title" style="margin-top:2px">Ajax Core</h3>
                 <div class="ui-widget submenu-content">
                     <table>
                         <tr>
@@ -425,21 +427,7 @@
 			<p class="copyright">Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
 		</div>
 
-        <ui:insert name="status">
-            <p:ajaxStatus style="width:64px;height:64px;display:block;position:absolute;right:0;top:150px;">
-                <f:facet name="start">
-                    <p:graphicImage value="/images/cube.gif"/>
-                </f:facet>
-
-                <f:facet name="complete">
-                    <p:graphicImage value="/images/cube-static.gif"/>
-                </f:facet>
-                
-                <f:facet name="default">
-                    <p:graphicImage value="/images/cube-static.gif"/>
-                </f:facet>
-            </p:ajaxStatus>
-        </ui:insert>
+        
 
 	</h:body>
 
