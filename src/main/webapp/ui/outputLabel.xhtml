@@ -8,9 +8,15 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">OutputLabel</h1>
         <div class="entry">
-            <p>OutputLabel is an extension to standard outputLabel component. OutputLabel sets its value as the label of the target component
-            to be displayed in validation errors so that target component does not need to define label attribute again. Another feature is
-            support for components with non-trivial markup like spinner, autocomplete, calendar and so on which are not supported by standard outputLabel.</p>
+            <p>OutputLabel is an extension to standard outputLabel component. Extended features are;</p>
+            <ul>
+                <li>OutputLabel sets its value as the label of the target component
+                        to be displayed in validation errors so that target component does not need to define label attribute again.</li>
+                <li>Support for components with non-trivial markup like spinner, autocomplete, calendar 
+                    and so on which are not supported by standard outputLabel.</li>
+                <li>Theme aware error styling when associated component is not valid.</li>
+                <li>Required field indicator.</li>
+            </ul>
 
             <h:form>
                 <p:panel id="panel" header="New Person" style="margin-bottom:10px;">
