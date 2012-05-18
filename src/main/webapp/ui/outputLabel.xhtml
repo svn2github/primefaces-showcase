@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">OutputLabel</h1>
+        <div class="entry">
+            <p>OutputLabel is an extension to standard outputLabel component. OutputLabel sets its value as the label of the target component
+            to be displayed in validation errors so that target component does not need to define label attribute again. Another feature is
+            support for components with non-trivial markup like spinner, autocomplete, calendar and so on which are not supported by standard outputLabel.</p>
+
+            <h:form>
+                <p:panel id="panel" header="New Person" style="margin-bottom:10px;">
+                    <p:messages id="messages" />
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="name" value="Standard Label" />
+                        <p:inputText id="name" required="true" />
+                        
+                        <p:outputLabel for="extended" value="Extended Label" />
+                        <p:inputText id="extended" required="true" />
+
+                        <p:outputLabel for="number" value="Number" />
+                        <p:spinner id="number" />
+                    </h:panelGrid>
+                </p:panel>
+                
+                <p:commandButton value="Submit" update="panel" style="margin-right:20px;" />
+                
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="outputLabel.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+    &lt;p:panel id="panel" header="New Person" style="margin-bottom:10px;"&gt;
+        &lt;p:messages id="messages" /&gt;
+        &lt;h:panelGrid columns="2"&gt;
+            &lt;h:outputLabel for="name" value="Standard Label" /&gt;
+            &lt;p:inputText id="name" required="true" /&gt;
+
+            &lt;p:outputLabel for="extended" value="Extended Label" /&gt;
+            &lt;p:inputText id="extended" required="true" /&gt;
+
+            &lt;p:outputLabel for="number" value="Number" /&gt;
+            &lt;p:spinner id="number" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:commandButton value="Submit" update="panel" style="margin-right:20px;" /&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
