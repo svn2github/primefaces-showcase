@@ -14,25 +14,25 @@
 
                 <h:panelGrid columns="2" cellpadding="10">
                     <h:outputText value="Default Switcher:" /> 
-                    <p:themeSwitcher style="width:150px" id="defaultSwitcher">
+                    <p:themeSwitcher style="width:165px" id="defaultSwitcher">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.themes}" />
                     </p:themeSwitcher>
                     
                     <h:outputText value="Stateful Switcher:" /> 
-                    <p:themeSwitcher value="#{guestPreferences.theme}" style="width:150px" effect="fade" id="statefulSwitcher">
+                    <p:themeSwitcher value="#{guestPreferences.theme}" style="width:165px" effect="fade" id="statefulSwitcher">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.themes}" />
                         <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
                     </p:themeSwitcher>
                     
                     <h:outputText value="Theme Preview:" /> 
-                    <p:themeSwitcher style="width:150px" effect="fade" var="t" id="themePreview">
+                    <p:themeSwitcher style="width:165px" effect="fade" var="t" id="themePreview">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme}"/>
                         
                         <p:column>
-                            <p:graphicImage value="/images/themes/#{t.image}" width="90" height="60"/>
+                            <p:graphicImage value="/images/themes/#{t.image}"/>
                         </p:column>
                         
                         <p:column>
@@ -96,25 +96,25 @@
 
     &lt;h:panelGrid columns="2" cellpadding="10"&gt;
         &lt;h:outputText value="Default Switcher:" /&gt; 
-        &lt;p:themeSwitcher style="width:150px" id="defaultSwitcher"&gt;
+        &lt;p:themeSwitcher style="width:165px" id="defaultSwitcher"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
             &lt;f:selectItems value="\#{themeSwitcherBean.themes}" /&gt;
         &lt;/p:themeSwitcher&gt;
 
         &lt;h:outputText value="Stateful Switcher:" /&gt; 
-        &lt;p:themeSwitcher value="\#{themeSwitcherBean.theme}" style="width:150px" effect="fade" id="statefulSwitcher"&gt;
+        &lt;p:themeSwitcher value="\#{guestPreferences.theme}" style="width:165px" effect="fade" id="statefulSwitcher"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
             &lt;f:selectItems value="\#{themeSwitcherBean.themes}" /&gt;
             &lt;p:ajax listener="\#{themeSwitcherBean.saveTheme}" /&gt;
         &lt;/p:themeSwitcher&gt;
 
         &lt;h:outputText value="Theme Preview:" /&gt; 
-        &lt;p:themeSwitcher style="width:150px" effect="fade" var="t" id="themePreview"&gt;
+        &lt;p:themeSwitcher style="width:165px" effect="fade" var="t" id="themePreview"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
             &lt;f:selectItems value="\#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="\#{theme.name}" itemValue="\#{theme}"/&gt;
 
             &lt;p:column&gt;
-                &lt;p:graphicImage value="/images/themes/\#{t.image}" width="90" height="60"/&gt;
+                &lt;p:graphicImage value="/images/themes/\#{t.image}"/&gt;
             &lt;/p:column&gt;
 
             &lt;p:column&gt;
@@ -125,11 +125,17 @@
 
     &lt;p:separator /&gt;
 
+    &lt;br /&gt;
+
     &lt;p:commandButton value="Button" /&gt;
+
+    &lt;br /&gt;&lt;br /&gt;
 
     &lt;p:panel header="Panel"&gt;
         Panel Content
     &lt;/p:panel&gt;
+
+    &lt;br /&gt;
 
     &lt;p:toolbar&gt;
         &lt;p:toolbarGroup align="left"&gt;
@@ -153,6 +159,8 @@
         &lt;/p:toolbarGroup&gt;
 
     &lt;/p:toolbar&gt;
+
+    &lt;br /&gt;
 
     &lt;p:tabView&gt;
         &lt;p:tab title="Tab1"&gt;Tab1 Content&lt;/p:tab&gt;

@@ -41,10 +41,18 @@
             
             <div id="globalthemeswitcher">
                 <h:form>
-                    <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:155px;" effect="fade">
+                    <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:175px;" effect="fade" var="t">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
-                        <f:selectItems value="#{themeSwitcherBean.themes}" />
+                        <f:selectItems value="#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme}"/>
                         <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
+                        
+                        <p:column>
+                            <p:graphicImage value="/images/themes/#{t.image}" />
+                        </p:column>
+                        
+                        <p:column>
+                            #{t.name}
+                        </p:column>
                     </p:themeSwitcher>
                 </h:form>
             </div>
