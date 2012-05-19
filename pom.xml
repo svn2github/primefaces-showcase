@@ -118,16 +118,16 @@
             <version>2.1.7</version>
             <exclusions>
                 <exclusion>
-                        <groupId>bouncycastle</groupId>
-                        <artifactId>bcmail-jdk14</artifactId>
+                    <groupId>bouncycastle</groupId>
+                    <artifactId>bcmail-jdk14</artifactId>
                 </exclusion>
                 <exclusion>
-                        <groupId>bouncycastle</groupId>
-                        <artifactId>bcprov-jdk14</artifactId>
+                    <groupId>bouncycastle</groupId>
+                    <artifactId>bcprov-jdk14</artifactId>
                 </exclusion>
                 <exclusion>
-                        <groupId>org.bouncycastle</groupId>
-                        <artifactId>bctsp-jdk14</artifactId>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bctsp-jdk14</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -137,7 +137,6 @@
             <version>2.2</version>
             <scope>provided</scope>
         </dependency>
-
 
 		<!-- File Upload -->
         <dependency>
@@ -151,7 +150,7 @@
             <version>1.4</version>
         </dependency>
 
-		<!-- TouchFaces Sample Apps -->
+		<!-- FeedReader and Mobile News -->
         <dependency>
             <groupId>rome</groupId>
             <artifactId>rome</artifactId>
@@ -556,7 +555,7 @@
         </profile>
 
 
-<!--    MAC TESTS-->
+        <!-- MAC TESTS -->
         <profile>
             <id>integrationTest</id>
             <properties>
@@ -668,7 +667,7 @@
         </profile>
         
         
-<!--    WINDOWS TESTS-->
+        <!-- WINDOWS TESTS -->
         <profile>
             <id>integrationTestWindows</id>
             <properties>
