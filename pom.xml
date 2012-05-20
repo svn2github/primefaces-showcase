@@ -172,6 +172,11 @@
 		<!-- Themes -->
         <dependency>
             <groupId>org.primefaces.themes</groupId>
+            <artifactId>afterdark</artifactId>
+            <version>${theme.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
             <artifactId>black-tie</artifactId>
             <version>${theme.version}</version>
         </dependency>
