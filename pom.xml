@@ -10,7 +10,7 @@
     <url>http://www.primefaces.org</url>
 
     <properties>
-        <theme.version>1.0.4</theme.version>
+        <theme.version>1.0.5-SNAPSHOT</theme.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -173,6 +173,16 @@
         <dependency>
             <groupId>org.primefaces.themes</groupId>
             <artifactId>afterdark</artifactId>
+            <version>${theme.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>afternoon</artifactId>
+            <version>${theme.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>afterwork</artifactId>
             <version>${theme.version}</version>
         </dependency>
         <dependency>
