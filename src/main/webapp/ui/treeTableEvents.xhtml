@@ -59,7 +59,8 @@
 
     &lt;p:growl id="messages" showDetail="true" /&gt;
 
-    &lt;p:treeTable value="\#{documentsController.root}" var="document"&gt;
+    &lt;p:treeTable value="\#{documentsController.root}" var="document"
+            selectionMode="single" selection="#{documentsController.selectedNode}"&gt;
 
         &lt;p:ajax event="expand" listener="\#{documentsController.onNodeExpand}" update=":form:messages" /&gt;
         &lt;p:ajax event="collapse" listener="\#{documentsController.onNodeCollapse}" update=":form:messages" /&gt;
