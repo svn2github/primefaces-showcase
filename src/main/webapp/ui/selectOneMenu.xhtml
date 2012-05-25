@@ -39,12 +39,12 @@
 
                     <h:outputText value="Custom Content:" />
                     <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer2}" converter="player"
-                                     effect="fade" var="p">
+                                     effect="fade" var="p" style="width:160px">
                         <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}"/>
 
                         <p:column>
-                            <p:graphicImage value="/images/barca/#{p.photo}" width="40" height="50"/>
+                            <p:graphicImage value="/images/barca/#{p.photo}" width="40"/>
                         </p:column>
 
                         <p:column>
@@ -100,7 +100,7 @@
 
         &lt;h:outputText value="Custom Content:" /&gt;
         &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer2}" converter="player"
-                         effect="fade" var="p"&gt;
+                         effect="fade" var="p" style="width:160px"&gt;
             &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
             &lt;f:selectItems value="\#{autoCompleteBean.players}" var="player" itemLabel="\#{player.name}" itemValue="\#{player}"/&gt;
 
