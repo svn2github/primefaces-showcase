@@ -398,13 +398,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.1.7</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.3.1-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.4-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.3.1-SNAPSHOT</version>
+                    <version>3.4-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -429,7 +429,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.3.1-SNAPSHOT</version>
+                    <version>3.4-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -459,7 +459,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.3.1-SNAPSHOT</version>
+                    <version>3.4-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -504,7 +504,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.3.1-SNAPSHOT</version>
+                    <version>3.4-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -581,7 +581,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.3.1-SNAPSHOT</version>
+                    <version>3.4-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -693,7 +693,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.3.1-SNAPSHOT</version>
+                    <version>3.4-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
