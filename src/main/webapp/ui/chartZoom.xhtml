@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">Charts - Zoom</h1>
+		<div class="entry">
+            <p>A specific part on Cartesian Charts can be zoomed using drag and drop.</p>
+
+            <p:lineChart value="#{chartBean.linearModel}" legendPosition="e" zoom="true"
+                         title="Linear Chart" minY="0" maxY="10" style="height:300px;" widgetVar="chart"/>
+
+            <br />
+            
+            <p:commandButton type="button" value="Reset" icon="ui-icon-cancel" onclick="chart.resetZoom()"/>
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="lineChart.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:lineChart id="linear" value="\#{chartBean.linearModel}" legendPosition="e" zoom="true"
+     title="Linear Chart" minY="0" maxY="10" style="height:300px" widgetVar="chart"/&gt;
+
+&lt;p:commandButton type="button" value="Reset" icon="ui-icon-cancel" onclick="chart.resetZoom()"/&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="ChartBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.LineChartSeries;
+
+public class ChartBean implements Serializable {
+
+    private CartesianChartModel linearModel;
+
+	public ChartBean() {
+        createLinearModel();
+	}
+
+    public CartesianChartModel getLinearModel() {
+        return linearModel;
+    }
+
+    private void createLinearModel() {
+        linearModel = new CartesianChartModel();
+
+        LineChartSeries series1 = new LineChartSeries();
+        series1.setLabel("Series 1");
+
+        series1.set(1, 2);
+        series1.set(2, 1);
+        series1.set(3, 3);
+        series1.set(4, 6);
+        series1.set(5, 8);
+
+        LineChartSeries series2 = new LineChartSeries();
+        series2.setLabel("Series 2");
+        series2.setMarkerStyle("diamond");
+
+        series2.set(1, 6);
+        series2.set(2, 3);
+        series2.set(3, 2);
+        series2.set(4, 7);
+        series2.set(5, 9);
+
+        linearModel.addSeries(series1);
+        linearModel.addSeries(series2);
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+
+	</ui:define>
+</ui:composition>
