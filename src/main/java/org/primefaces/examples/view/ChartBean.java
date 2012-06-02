@@ -151,13 +151,13 @@ public class ChartBean implements Serializable {
     private void createOhlcModel(){
         ohlcModel = new OhlcChartModel();
 
-        ohlcModel.addRecord(new OhlcChartSeries(2007, 143.82, 144.56, 136.04, 136.97));
-        ohlcModel.addRecord(new OhlcChartSeries(2008, 138.7, 139.68, 135.18, 135.4));
-        ohlcModel.addRecord(new OhlcChartSeries(2009, 143.46, 144.66, 139.79, 140.02));
-        ohlcModel.addRecord(new OhlcChartSeries(2010, 140.67, 143.56, 132.88, 142.44));
-        ohlcModel.addRecord(new OhlcChartSeries(2011, 136.01, 139.5, 134.53, 139.48));
-        ohlcModel.addRecord(new OhlcChartSeries(2012, 124.76, 135.9, 124.55, 135.81));
-        ohlcModel.addRecord(new OhlcChartSeries(2012, 123.73, 129.31, 121.57, 122.5));
+        ohlcModel.add(new OhlcChartSeries(2007, 143.82, 144.56, 136.04, 136.97));
+        ohlcModel.add(new OhlcChartSeries(2008, 138.7, 139.68, 135.18, 135.4));
+        ohlcModel.add(new OhlcChartSeries(2009, 143.46, 144.66, 139.79, 140.02));
+        ohlcModel.add(new OhlcChartSeries(2010, 140.67, 143.56, 132.88, 142.44));
+        ohlcModel.add(new OhlcChartSeries(2011, 136.01, 139.5, 134.53, 139.48));
+        ohlcModel.add(new OhlcChartSeries(2012, 124.76, 135.9, 124.55, 135.81));
+        ohlcModel.add(new OhlcChartSeries(2012, 123.73, 129.31, 121.57, 122.5));
     }
     
     private void createOhlcModel2(){
@@ -169,13 +169,13 @@ public class ChartBean implements Serializable {
     private void createBubbleModel(){
         bubbleModel = new BubbleChartModel();
         
-        bubbleModel.addBubble(new BubbleChartSeries("Acura", 70, 183,55));
-        bubbleModel.addBubble(new BubbleChartSeries("Alfa Romeo", 45, 92, 36));
-        bubbleModel.addBubble(new BubbleChartSeries("AM General", 24, 104, 40));
-        bubbleModel.addBubble(new BubbleChartSeries("Bugatti", 50, 123, 60));
-        bubbleModel.addBubble(new BubbleChartSeries("BMW", 15, 89, 25));
-        bubbleModel.addBubble(new BubbleChartSeries("Audi", 40, 180, 80));
-        bubbleModel.addBubble(new BubbleChartSeries("Aston Martin", 70, 70, 48));
+        bubbleModel.add(new BubbleChartSeries("Acura", 70, 183,55));
+        bubbleModel.add(new BubbleChartSeries("Alfa Romeo", 45, 92, 36));
+        bubbleModel.add(new BubbleChartSeries("AM General", 24, 104, 40));
+        bubbleModel.add(new BubbleChartSeries("Bugatti", 50, 123, 60));
+        bubbleModel.add(new BubbleChartSeries("BMW", 15, 89, 25));
+        bubbleModel.add(new BubbleChartSeries("Audi", 40, 180, 80));
+        bubbleModel.add(new BubbleChartSeries("Aston Martin", 70, 70, 48));
     }
 
     private void createLinearModel() {
