@@ -264,6 +264,6 @@ public class ChartBean implements Serializable {
             add(220);
         }};
         
-        meterGaugeModel = new MeterGaugeChartModel("km/h", 140, intervals);
+        meterGaugeModel = new MeterGaugeChartModel(140, intervals);
     }
 }

@@ -12,19 +12,19 @@
             <p>MeterGaugeChart is created with a MeterGaugeChartModel.</p>
             <p:growl id="growl" showDetail="true" />
 
-            <p:meterGaugeChart id="sample" value="#{chartBean.meterGaugeModel}" style="width:400px;height:250px" title="Simple MeterGauge"/>
+            <p:meterGaugeChart id="sample" value="#{chartBean.meterGaugeModel}" style="width:400px;height:250px" title="Simple MeterGauge" label="km/h"/>
 
             <p:meterGaugeChart id="custom" value="#{chartBean.meterGaugeModel}" showTickLabels="false" labelHeightAdjust="110" intervalOuterRadius="130" 
-                               seriesColors="66cc66, 93b75f, E7E658, cc6666" style="width:400px;height:250px" title="Custom Options"/>
+                               seriesColors="66cc66, 93b75f, E7E658, cc6666" style="width:400px;height:250px" title="Custom Options" label="km/h"/>
             
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="meterGaugeChart.xhtml">
                     <pre name="code" class="xml">
-&lt;p:meterGaugeChart id="sample" value="\#{chartBean.meterGaugeModel}" style="width:400px;height:250px" title="Simple MeterGauge"/&gt;
+&lt;p:meterGaugeChart id="sample" value="\#{chartBean.meterGaugeModel}" style="width:400px;height:250px" title="Simple MeterGauge" label="km/h"/&gt;
 
 &lt;p:meterGaugeChart id="custom" value="\#{chartBean.meterGaugeModel}" showTickLabels="false" labelHeightAdjust="110" intervalOuterRadius="130" 
-                               seriesColors="66cc66, 93b75f, E7E658, cc6666" style="width:400px;height:250px" title="Custom Options"/&gt;
+                               seriesColors="66cc66, 93b75f, E7E658, cc6666" style="width:400px;height:250px" title="Custom Options" label="km/h"/&gt;
                     </pre>
                 </p:tab>
 
@@ -53,7 +53,7 @@ public class ChartBean implements Serializable {
             add(220);
         }};
 
-        meterGaugeModel = new MeterGaugeChartModel("km/h", 140, intervals);
+        meterGaugeModel = new MeterGaugeChartModel(140, intervals);
     }
 }
             </pre>
