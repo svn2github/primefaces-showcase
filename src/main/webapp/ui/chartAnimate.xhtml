@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+	
+	<ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">Charts - Animate</h1>
+		<div class="entry">
+            <p>Animation is enabled via animate attribute..</p>
+
+            <h:panelGrid columns="2">
+                <p:lineChart value="#{chartBean.linearModel}" legendPosition="e" zoom="true" animate="true"
+                         title="Linear Chart" minY="0" maxY="10" style="width:400px;" widgetVar="chart"/>
+                
+                <p:barChart id="basic" value="#{chartBean.categoryModel}" legendPosition="ne"
+                            title="Basic Bar Chart" min="0" max="200" style="width:400px" animate="true"/>
+            </h:panelGrid>
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="chartAnimate.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:panelGrid columns="2"&gt;
+    &lt;p:lineChart value="\#{chartBean.linearModel}" legendPosition="e" zoom="true" animate="true"
+                title="Linear Chart" minY="0" maxY="10" style="width:400px;" widgetVar="chart"/&gt;
+
+    &lt;p:barChart id="basic" value="\#{chartBean.categoryModel}" legendPosition="ne"
+                title="Basic Bar Chart" min="0" max="200" style="width:400px" animate="true"/&gt;
+&lt;/h:panelGrid&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="ChartBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.LineChartSeries;
+
+public class ChartBean implements Serializable {
+
+    private CartesianChartModel linearModel;
+
+    private CartesianChartModel categoryModel;
+
+	public ChartBean() {
+        createLinearModel();
+        createCategoryModel();
+	}
+
+    public CartesianChartModel getLinearModel() {
+        return linearModel;
+    }
+
+    public CartesianChartModel getCategoryModel() {
+        return categoryModel;
+    }
+
+    private void createLinearModel() {
+        linearModel = new CartesianChartModel();
+
+        LineChartSeries series1 = new LineChartSeries();
+        series1.setLabel("Series 1");
+
+        series1.set(1, 2);
+        series1.set(2, 1);
+        series1.set(3, 3);
+        series1.set(4, 6);
+        series1.set(5, 8);
+
+        LineChartSeries series2 = new LineChartSeries();
+        series2.setLabel("Series 2");
+        series2.setMarkerStyle("diamond");
+
+        series2.set(1, 6);
+        series2.set(2, 3);
+        series2.set(3, 2);
+        series2.set(4, 7);
+        series2.set(5, 9);
+
+        linearModel.addSeries(series1);
+        linearModel.addSeries(series2);
+    }
+
+    private void createCategoryModel() {
+        categoryModel = new CartesianChartModel();
+
+        ChartSeries boys = new ChartSeries();
+        boys.setLabel("Boys");
+
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        ChartSeries girls = new ChartSeries();
+        girls.setLabel("Girls");
+
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
+
+        categoryModel.addSeries(boys);
+        categoryModel.addSeries(girls);
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+
+	</ui:define>
+</ui:composition>
