@@ -14,7 +14,7 @@
             <p:pieChart id="sample" value="#{chartBean.pieModel}" legendPosition="w"
                         title="Sample Pie Chart" style="width:400px;height:300px" />
 
-            <p:pieChart id="custom" value="#{chartBean.pieModel}" legendPosition="e" fill="false"
+            <p:pieChart id="custom" value="#{chartBean.pieModel}" legendPosition="e" fill="false" showDataLabels="true"
                         title="Custom Options" style="width:400px;height:300px" sliceMargin="5" diameter="150" />
 
             <h3>Source</h3>
@@ -24,7 +24,7 @@
 &lt;p:pieChart id="sample" value="\#{chartBean.pieModel}" legendPosition="w"
                 title="Sample Pie Chart" style="width:400px;height:300px" /&gt;
 
-&lt;p:pieChart id="custom" value="\#{chartBean.pieModel}" legendPosition="e" fill="false"
+&lt;p:pieChart id="custom" value="\#{chartBean.pieModel}" legendPosition="e" fill="false" showDataLabels="true"
                 title="Custom Options" style="width:400px;height:300px" sliceMargin="5" diameter="150" /&gt;
                     </pre>
                 </p:tab>
