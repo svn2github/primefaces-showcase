@@ -12,7 +12,7 @@
 
 			<h:form id="form">
 
-				<p:growl id="messages" showDetail="true" />
+				<p:growl id="messages" showDetail="true" escape="false"/>
 
 				<p:tree value="#{treeBean.root}" var="node" id="checkboxTree"
 						selectionMode="checkbox"
@@ -34,7 +34,7 @@
 					<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
-    &lt;p:growl id="messages" showDetail="true" /&gt;
+    &lt;p:growl id="messages" showDetail="true" escape="false"/&gt;
 
     &lt;p:tree value="\#{treeBean.root}" var="node" id="checkboxTree"
             selectionMode="checkbox"
