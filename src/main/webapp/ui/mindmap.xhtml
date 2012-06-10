@@ -64,23 +64,27 @@ public class MindmapBean implements Serializable {
     public MindmapNode root;
     
     public MindmapBean() {
-        root = new DefaultMindmapNode("google.com", null, "CC0000");
+        root = new DefaultMindmapNode("google.com", "CC0000", false);
         
-        MindmapNode ips = new DefaultMindmapNode("IPs", root, "3399FF");
-        MindmapNode ns = new DefaultMindmapNode("NS(s)", root, "3399FF");
-        MindmapNode malware = new DefaultMindmapNode("Malware", root, "3399FF");
+        MindmapNode ips = new DefaultMindmapNode("IPs", "3399FF", false);
+        MindmapNode ns = new DefaultMindmapNode("NS(s)", "3399FF", false);
+        MindmapNode malware = new DefaultMindmapNode("Malware", "3399FF", false);
+        
+        root.add(ips);
+        root.add(ns);
+        root.add(malware);
         
         //IPs
-        new DefaultMindmapNode("1.1.1.1", ips, "00CC00");
-        new DefaultMindmapNode("1.1.1.2", ips, "00CC00");
+        ips.add(new DefaultMindmapNode("1.1.1.1", "00CC00", true));
+        ips.add(new DefaultMindmapNode("1.1.1.2", "00CC00", true));
         
         //NSs
-        new DefaultMindmapNode("ns1.google.com", ns, "00CC00");
-        new DefaultMindmapNode("ns2.google.com", ns, "00CC00");
-        new DefaultMindmapNode("ns3.google.com", ns, "00CC00");
+        ns.add(new DefaultMindmapNode("ns1.google.com", "00CC00", true));
+        ns.add(new DefaultMindmapNode("ns2.google.com", "00CC00", true));
+        ns.add(new DefaultMindmapNode("ns3.google.com", "00CC00", true));
         
         //Malware
-        new DefaultMindmapNode("someMalware", malware, "00CC00");
+        malware.add(new DefaultMindmapNode("someMalware", "00CC00", true));
     }
 
     public MindmapNode getRoot() {
