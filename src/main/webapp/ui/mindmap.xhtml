@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
     
-        <ui:define name="head">
+    <ui:define name="head">
         <style type="text/css">
         </style>
         
@@ -23,22 +23,76 @@
 			<p>Mindmap is an interactive mindmapping tool.</p>
 
 			<h:form>
+                
+                <p:growl id="messages" showDetail="true" />
 				
-                <p:mindmap value="#{mindMapBean.root}" style="width:100%;height:600px;border:1px solid black;"/>
+                <p:mindmap value="#{mindmapBean.root}" style="width:100%;height:600px;border:1px solid black;">
+                    <p:ajax event="select" listener="#{mindmapBean.onNodeSelect}" update="messages" />
+                </p:mindmap>
 
 			</h:form>
 			
 			<h3>Source</h3>
 			<p:tabView>
-				<p:tab title="mindMap.xhtml">
+				<p:tab title="mindmap.xhtml">
 <pre name="code" class="xml">
+&lt;h:form&gt;
+                
+    &lt;p:growl id="messages" showDetail="true" /&gt;
 
+    &lt;p:mindmap value="\#{mindmapBean.root}" style="width:100%;height:600px;border:1px solid black;"&gt;
+        &lt;p:ajax event="select" listener="\#{mindmapBean.onNodeSelect}" update="messages" /&gt;
+    &lt;/p:mindmap&gt;
+
+&lt;/h:form&gt;
 						</pre>
 				</p:tab>
 				
-				<p:tab title="MindMap.java">
+				<p:tab title="MindmapBean.java">
 <pre name="code" class="java">
+package org.primefaces.examples.view;
 
+import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.model.mindmap.DefaultMindmapNode;
+import org.primefaces.model.mindmap.MindmapNode;
+
+public class MindmapBean implements Serializable {
+    
+    public MindmapNode root;
+    
+    public MindmapBean() {
+        root = new DefaultMindmapNode("google.com", null, "CC0000");
+        
+        MindmapNode ips = new DefaultMindmapNode("IPs", root, "3399FF");
+        MindmapNode ns = new DefaultMindmapNode("NS(s)", root, "3399FF");
+        MindmapNode malware = new DefaultMindmapNode("Malware", root, "3399FF");
+        
+        //IPs
+        new DefaultMindmapNode("1.1.1.1", ips, "00CC00");
+        new DefaultMindmapNode("1.1.1.2", ips, "00CC00");
+        new DefaultMindmapNode("1.1.1.3", ips, "00CC00");
+        
+        //NSs
+        new DefaultMindmapNode("ns1.google.com", ns, "00CC00");
+        new DefaultMindmapNode("ns2.google.com", ns, "00CC00");
+        
+        //Malware
+        new DefaultMindmapNode("someMalware", malware, "00CC00");
+    }
+
+    public MindmapNode getRoot() {
+        return root;
+    }
+    
+    public void onNodeSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Node selected.", ((MindmapNode) event.getObject()).getData().toString());
+        
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
 </pre>
 				</p:tab>
 			</p:tabView>

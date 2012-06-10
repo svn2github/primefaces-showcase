@@ -405,8 +405,8 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>mindMapBean</managed-bean-name>
-        <managed-bean-class>org.primefaces.examples.view.MindMapBean</managed-bean-class>
+        <managed-bean-name>mindmapBean</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.MindmapBean</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
 </faces-config>
