@@ -9,20 +9,30 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">InputTextarea</h1>
 		<div class="entry">
-			<p>InputTextarea extends standard InputTextarea with autoResize, remaining characters counter and theming features.</p>
+			<p>InputTextarea extends standard InputTextarea with autoComplete, autoResize, remaining characters counter and theming features.</p>
             
-            <h3>AutoResize</h3>
-            <p:inputTextarea rows="6" cols="33" />
+            <h:form>
+                
+                <h3>AutoComplete</h3>
+                <p:inputTextarea rows="5" cols="33" completeMethod="#{autoCompleteBean.complete}" />
             
-            <h3>Remaining Chars</h3>
-            <p:inputTextarea rows="5" cols="30" counter="display" maxlength="10" counterTemplate="{0} characters remaining." autoResize="false"/>
-            <br />
-            <h:outputText id="display" />
+                <h3>AutoResize</h3>
+                <p:inputTextarea rows="6" cols="33" />
+
+                <h3>Remaining Chars</h3>
+                <p:inputTextarea rows="5" cols="30" counter="display" maxlength="10" counterTemplate="{0} characters remaining." autoResize="false"/>
+                <br />
+                <h:outputText id="display" />
+
+            </h:form>
             
 			<h3>Source</h3>
 			<p:tabView>
 				<p:tab title="inputTextarea.xhtml">
 					<pre name="code" class="xml">
+&lt;h3&gt;AutoComplete&lt;/h3&gt;
+&lt;p:inputTextarea rows="5" cols="30" completeMethod="\#{autoCompleteBean.complete}" /&gt;
+                
 &lt;h3&gt;AutoResize&lt;/h3&gt;
 &lt;p:inputTextarea rows="6" cols="33" /&gt;
 
