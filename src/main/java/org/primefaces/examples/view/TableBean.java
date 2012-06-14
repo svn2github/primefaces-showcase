@@ -51,6 +51,7 @@ import org.primefaces.event.ColumnResizeEvent;
 import org.primefaces.event.DragDropEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.event.ToggleEvent;
 import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
 import org.primefaces.examples.domain.Player;
@@ -493,5 +494,13 @@ public class TableBean implements Serializable {
                 columns.add(new ColumnModel(columnKey.toUpperCase(), columnKey));
             }
         }
+    }
+    
+    public void onRowToggle(ToggleEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                                            "Row State " + event.getVisibility(),
+                                            "Model:" + ((Car) event.getData()).getModel());
+        
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }

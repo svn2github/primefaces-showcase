@@ -20,25 +20,29 @@
 			<p>A row can be expanded to display detail content using a row expansion column and expansion facet.</p>
 
             <h:form id="form">
+                
+                <p:growl id="growl" showDetail="true"/>
 
                 <p:dataTable id="carsTable" var="car" value="#{tableBean.carsSmall}">
 
+                    <p:ajax event="rowToggle" listener="#{tableBean.onRowToggle}" update=":form:growl" />
+                    
                     <f:facet name="header">
                         Expand rows to see detailed information
                     </f:facet>
 
-                    <p:column style="width:16px">
+                    <p:column style="width:4%">
                         <p:rowToggler />
                     </p:column>
 
-                    <p:column style="width:250px">
+                    <p:column style="width:48%">
                         <f:facet name="header">
 								Model
                         </f:facet>
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column style="width:250px">
+                    <p:column style="width:48%">
                         <f:facet name="header">
 								Year
                         </f:facet>
@@ -74,26 +78,30 @@
 		<p:tabView>
 			<p:tab title="basicDataTable.xhtml">
                 <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
+                
+    &lt;p:growl id="growl" showDetail="true"/&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
+    &lt;p:dataTable id="carsTable" var="car" value="\#{tableBean.carsSmall}"&gt;
+
+        &lt;p:ajax event="rowToggle" listener="\#{tableBean.onRowToggle}" update=":form:growl" /&gt;
 
         &lt;f:facet name="header"&gt;
-             Expand rows to see detailed information
+            Expand rows to see detailed information
         &lt;/f:facet&gt;
 
-        &lt;p:column style="width:16px"&gt;
+        &lt;p:column style="width:4%"&gt;
             &lt;p:rowToggler /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:250px"&gt;
+        &lt;p:column style="width:48%"&gt;
             &lt;f:facet name="header"&gt;
                     Model
             &lt;/f:facet&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:250px"&gt;
+        &lt;p:column style="width:48%"&gt;
             &lt;f:facet name="header"&gt;
                     Year
             &lt;/f:facet&gt;
@@ -101,10 +109,8 @@
         &lt;/p:column&gt;
 
         &lt;p:rowExpansion&gt;
-            &lt;h:panelGrid id="display" columns="2" cellpadding="4"
-                        style="width:300px;"
-                        styleClass="ui-widget-content"
-                        columnClasses="label, value"&gt;
+            &lt;h:panelGrid id="display" columns="2" cellpadding="4" style="width:300px;"
+                            styleClass=" ui-widget-content grid"&gt;
 
                 &lt;f:facet name="header"&gt;
                     &lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt;
@@ -139,6 +145,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.primefaces.examples.domain.Car;
+
+import org.primefaces.event.ToggleEvent;
 
 public class TableBean implements Serializable {
 
@@ -204,6 +212,14 @@ public class TableBean implements Serializable {
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
+
+    public void onRowToggle(ToggleEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                                            "Row State " + event.getVisibility(),
+                                            "Model:" + ((Car) event.getData()).getModel());
+        
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
 				</pre>
 			</p:tab>
