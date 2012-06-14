@@ -14,7 +14,7 @@
             <h:form>
                 
                 <h3>AutoComplete</h3>
-                <p:inputTextarea rows="5" cols="33" completeMethod="#{autoCompleteBean.complete}" />
+                <p:inputTextarea rows="5" cols="33" completeMethod="#{autoCompleteBean.complete}" queryDelay="750" minQueryLength="4"/>
             
                 <h3>AutoResize</h3>
                 <p:inputTextarea rows="6" cols="33" />
@@ -31,7 +31,7 @@
 				<p:tab title="inputTextarea.xhtml">
 					<pre name="code" class="xml">
 &lt;h3&gt;AutoComplete&lt;/h3&gt;
-&lt;p:inputTextarea rows="5" cols="30" completeMethod="\#{autoCompleteBean.complete}" /&gt;
+&lt;p:inputTextarea rows="5" cols="30" completeMethod="\#{autoCompleteBean.complete}" queryDelay="750" minQueryLength="4"/&gt;
                 
 &lt;h3&gt;AutoResize&lt;/h3&gt;
 &lt;p:inputTextarea rows="6" cols="33" /&gt;
