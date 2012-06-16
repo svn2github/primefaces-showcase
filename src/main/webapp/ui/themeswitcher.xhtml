@@ -42,10 +42,14 @@
                 </h:panelGrid>
 
                 <p:separator />
+                
+                <p:dialog header="Dialog" widgetVar="dlg" minHeight="40" modal="true">
+					<h:outputText value="Resistance to PrimeFaces is futile!" />
+				</p:dialog>	
             
             	<br />
             	
-            	<p:commandButton value="Button" />
+            	<p:commandButton value="Dialog" onclick="dlg.show()" type="button"/>
             	
             	<br /><br />
             	

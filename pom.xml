@@ -10,7 +10,7 @@
     <url>http://www.primefaces.org</url>
 
     <properties>
-        <theme.version>1.0.5</theme.version>
+        <theme.version>1.0.6-SNAPSHOT</theme.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -208,6 +208,11 @@
         <dependency>
             <groupId>org.primefaces.themes</groupId>
             <artifactId>casablanca</artifactId>
+            <version>${theme.version}</version>
+        </dependency>
+         <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>cruze</artifactId>
             <version>${theme.version}</version>
         </dependency>
         <dependency>
