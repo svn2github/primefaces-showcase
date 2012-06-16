@@ -14,8 +14,9 @@
             <h:form>
                 
                 <h3>AutoComplete</h3>
-                <p:inputTextarea rows="5" cols="33" completeMethod="#{autoCompleteBean.complete}" queryDelay="750" minQueryLength="4"/>
-            
+                <p>Following inputTextarea send a query for each word that has at least 4 characters to the complete method. Try typing "PrimeFaces".</p>
+                <p:inputTextarea rows="10" cols="50" completeMethod="#{autoCompleteBean.completeArea}" queryDelay="750" minQueryLength="4" />
+                
                 <h3>AutoResize</h3>
                 <p:inputTextarea rows="6" cols="33" />
 
@@ -31,8 +32,9 @@
 				<p:tab title="inputTextarea.xhtml">
 					<pre name="code" class="xml">
 &lt;h3&gt;AutoComplete&lt;/h3&gt;
-&lt;p:inputTextarea rows="5" cols="30" completeMethod="\#{autoCompleteBean.complete}" queryDelay="750" minQueryLength="4"/&gt;
-                
+&lt;p&gt;Following inputTextarea send a query for each word that has at least 4 characters to the complete method. Try typing "PrimeFaces".&lt;/p&gt;
+&lt;p:inputTextarea rows="10" cols="50" completeMethod="\#{autoCompleteBean.completeArea}" queryDelay="750" minQueryLength="4" /&gt;
+                          
 &lt;h3&gt;AutoResize&lt;/h3&gt;
 &lt;p:inputTextarea rows="6" cols="33" /&gt;
 
@@ -41,6 +43,37 @@
     counterTemplate="{0} characters remaining." autoResize="false"/&gt;
 
 &lt;h:outputText id="counter" /&gt;
+					</pre>
+				</p:tab>
+                
+                <p:tab title="autoCompleteBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AutoCompleteBean {
+    
+    public List&lt;String&gt; completeArea(String query) {
+		List&lt;String&gt; results = new ArrayList&lt;String&gt;();
+		
+		if(query.equals("PrimeFaces")) {
+            results.add("PrimeFaces Rocks!!!");
+            results.add("PrimeFaces has 100+ components.");
+            results.add("PrimeFaces is lightweight.");
+            results.add("PrimeFaces is easy to use.");
+            results.add("PrimeFaces is developed with passion!");
+        }
+        else {
+            for(int i = 0; i &lt; 10; i++) {
+            	results.add(query + i);
+            }
+        }
+		
+		return results;
+	}
+}
 					</pre>
 				</p:tab>
 			</p:tabView>

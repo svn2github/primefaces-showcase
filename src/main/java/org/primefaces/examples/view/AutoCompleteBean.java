@@ -92,6 +92,25 @@ public class AutoCompleteBean {
 		
 		return suggestions;
 	}
+    
+    public List<String> completeArea(String query) {
+		List<String> results = new ArrayList<String>();
+		
+		if(query.equals("PrimeFaces")) {
+            results.add("PrimeFaces Rocks!!!");
+            results.add("PrimeFaces has 100+ components.");
+            results.add("PrimeFaces is lightweight.");
+            results.add("PrimeFaces is easy to use.");
+            results.add("PrimeFaces is developed with passion!");
+        }
+        else {
+            for(int i = 0; i < 10; i++) {
+            	results.add(query + i);
+            }
+        }
+		
+		return results;
+	}
 	
 	public void handleSelect(SelectEvent event) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected:" + event.getObject().toString(), null);
