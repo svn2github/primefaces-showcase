@@ -6,15 +6,15 @@
 	template="../templates/ui.xhtml">
     
 	<ui:define name="content">
-		<h1 class="title ui-widget-header ui-corner-all">TreeMenu</h1>
+		<h1 class="title ui-widget-header ui-corner-all">PanelMenu</h1>
 		<div class="entry">
-			<p>TreeMenu is a hybrid of accordion-tree components used for navigations and actions.</p>
+			<p>PanelMenu is a hybrid of accordion-tree components used for navigations and actions.</p>
 			
 			<h:form>
 			
 				<p:growl id="messages" autoUpdate="true"/>
                                 
-                <p:treeMenu style="width:200px">
+                <p:panelMenu style="width:200px">
 					<p:submenu label="Ajax Menuitems">
 						<p:menuitem value="Save" actionListener="#{buttonBean.save}" icon="ui-icon-disk" />
 						<p:menuitem value="Update" actionListener="#{buttonBean.update}"  icon="ui-icon-arrowrefresh-1-w" />
@@ -34,19 +34,19 @@
 						</p:submenu>
                         <p:menuitem value="Mobile" url="/mobile" icon="ui-icon-signal"/>
 					</p:submenu>
-				</p:treeMenu>
+				</p:panelMenu>
 
             </h:form>
 			
 			<h3>Source</h3>
 			<p:tabView>
-				<p:tab title="treeMenu.xhtml">
+				<p:tab title="panelMenu.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
 			
     &lt;p:growl id="messages" autoUpdate="true"/&gt;
 
-    &lt;p:treeMenu style="width:200px"&gt;
+    &lt;p:panelMenu style="width:200px"&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" icon="ui-icon-disk" /&gt;
             &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}"  icon="ui-icon-arrowrefresh-1-w" /&gt;
@@ -66,7 +66,7 @@
             &lt;/p:submenu&gt;
             &lt;p:menuitem value="Mobile" url="/mobile" icon="ui-icon-signal"/&gt;
         &lt;/p:submenu&gt;
-    &lt;/p:treeMenu&gt;
+    &lt;/p:panelMenu&gt;
 
 &lt;/h:form&gt;
                     </pre>
