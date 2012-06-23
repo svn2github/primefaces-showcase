@@ -9,11 +9,11 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">SelectManyCheckbox</h1>
 		<div class="entry">
-			<p>SelectCheckboxMenu is an input component based on checkboxes in an overlay menu.</p>
+			<p>SelectCheckboxMenu is a multiselect input component based on checkboxes in an overlay menu.</p>
 
 			<h:form id="form">
 
-                <p:selectCheckboxMenu id="menu" value="#{formBean.selectedMovies}" label="Movies">
+                <p:selectCheckboxMenu id="menu" value="#{formBean.selectedMovies}" label="Movies" filter="true" filterText="Filter">
                     <f:selectItems value="#{formBean.movies}" />
                 </p:selectCheckboxMenu>
 
@@ -35,7 +35,7 @@
 					<pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;p:selectCheckboxMenu value="\#{formBean.selectedMovies}" label="Movies"&gt;
+    &lt;p:selectCheckboxMenu value="\#{formBean.selectedMovies}" label="Movies" filter="true" filterText="Filter"&gt;
         &lt;f:selectItems value="\#{formBean.movies}" /&gt;
     &lt;/p:selectCheckboxMenu&gt;
 
