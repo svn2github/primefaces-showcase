@@ -97,6 +97,8 @@ public class TableBean implements Serializable {
 		manufacturers[9] = "Ford";
 	}
 
+    private List<Car> filteredCars;
+    
 	private List<Car> cars;
 	
 	private List<Car> carsSmall;
@@ -188,6 +190,14 @@ public class TableBean implements Serializable {
 			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 		}
 	}
+
+    public List<Car> getFilteredCars() {
+        return filteredCars;
+    }
+
+    public void setFilteredCars(List<Car> filteredCars) {
+        this.filteredCars = filteredCars;
+    }
 
 	public List<Car> getCars() {
 		return cars;

@@ -22,7 +22,7 @@
             <h:form id="form">
                 
                 <p:dataTable id="dataTable" var="car" value="#{tableBean.carsSmall}" widgetVar="carsTable"
-                             emptyMessage="No cars found with given criteria">
+                             emptyMessage="No cars found with given criteria" filteredValue="#{tableBean.filteredCars}">
 
                     <f:facet name="header">
                         <p:outputPanel>
@@ -48,6 +48,8 @@
                     </p:column>
 
                 </p:dataTable>
+                
+                <p:commandButton value="XXX" ajax="false" />
             </h:form>
 
             <h3>Source</h3>
@@ -57,7 +59,7 @@
 &lt;h:form&gt;
 
     &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.carsSmall}" widgetVar="carsTable" 
-            emptyMessage="No cars found with given criteria"&gt;
+            emptyMessage="No cars found with given criteria" filteredValue="\#{tableBean.filteredCars}"&gt;
 
          &lt;f:facet name="header"&gt;
             &lt;p:outputPanel&gt;
@@ -139,6 +141,8 @@ public class TableBean implements Serializable {
 
     private SelectItem[] manufacturerOptions;
 
+    private List&lt;Car&gt; filteredCars;
+
 	private List&lt;Car&gt; carsSmall;
 
 	public TableBean() {
@@ -152,6 +156,14 @@ public class TableBean implements Serializable {
 		for(int i = 0 ; i &lt; size ; i++)
 			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
 	}
+
+    public List&lt;Car&gt; getFilteredCars() {
+        return filteredCars;
+    }
+
+    public void setFilteredCars(List&lt;Car&gt; filteredCars) {
+        this.filteredCars = filteredCars;
+    }
 
 	public List&lt;Car&gt; getCarsSmall() {
 		return carsSmall;

@@ -22,7 +22,7 @@
               <h:form id="form">
 
 				<p:dataTable var="car" value="#{tableBean.cars}" rowKey="#{car.model}" paginator="true" rows="10"
-                            selection="#{tableBean.selectedCar}" selectionMode="single" id="carsTable">
+                            selection="#{tableBean.selectedCar}" selectionMode="single"  filteredValue="#{tableBean.filteredCars}" id="carsTable">
                     
                     <p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" />
 
@@ -80,7 +80,7 @@
 &lt;h:form id="form"&gt;
 
     &lt;p:dataTable var="car" value="\#{tableBean.cars}" rowKey="\#{car.model}" paginator="true" rows="10"
-                selection="\#{tableBean.selectedCar}" selectionMode="single" id="carsTable"&gt;
+                selection="\#{tableBean.selectedCar}" selectionMode="single" filteredValue="\#{tableBean.filteredCars}" id="carsTable"&gt;
 
         &lt;p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" /&gt;
 
@@ -177,6 +177,8 @@ public class TableBean implements Serializable {
 		manufacturers[9] = "Ford";
 	}
 
+    private List&lt;Car&gt; filteredCars;
+
 	private List&lt;Car&gt; cars;
 
 	private Car selectedCar;
@@ -217,6 +219,14 @@ public class TableBean implements Serializable {
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
+
+    public List&lt;Car&gt; getFilteredCars() {
+        return filteredCars;
+    }
+
+    public void setFilteredCars(List&lt;Car&gt; filteredCars) {
+        this.filteredCars = filteredCars;
+    }
 
     public List&lt;Car&gt; getCars() {
         return cars;
