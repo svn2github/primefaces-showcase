@@ -424,6 +424,12 @@ public class TableBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
+    public void onCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Car Cancelled", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
     public void onResize(ColumnResizeEvent event) {
         FacesMessage msg = new FacesMessage("Column " + event.getColumn().getClientId() + " resized", "W:" + event.getWidth() + ", H:" + event.getHeight());
 
