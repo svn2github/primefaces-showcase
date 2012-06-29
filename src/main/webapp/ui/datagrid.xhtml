@@ -24,21 +24,19 @@
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="9,12,15">
                     
-					<p:column>
-						<p:panel header="#{car.model}" style="text-align:center">
-							<h:panelGrid columns="1" style="width:100%">
-								<p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/> 
-							
-								<h:outputText value="#{car.year}" />
-								
-								<p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail" >
-									<p:graphicImage value="/images/search.png"/> 
-									<f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
-								</p:commandLink>
-							</h:panelGrid>
-						</p:panel>
-                    </p:column>
+                    <p:panel header="#{car.model}" style="text-align:center">
+                        <h:panelGrid columns="1" style="width:100%">
+                            <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/> 
 
+                            <h:outputText value="#{car.year}" />
+
+                            <p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail" >
+                                <p:graphicImage value="/images/search.png"/> 
+                                <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
+                            </p:commandLink>
+                        </h:panelGrid>
+                    </p:panel>
+                    
 				</p:dataGrid>
 				
                 <p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade">
@@ -71,22 +69,20 @@
 		rows="12" paginator="true"
 		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 		rowsPerPageTemplate="9,12,15"&gt;
-		
-		&lt;p:column&gt;
-			&lt;p:panel header="\#{car.model}" style="text-align:center"&gt;
-				&lt;h:panelGrid columns="1" style="width:100%"&gt;
-					&lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt; 
-				
-					&lt;h:outputText value="\#{car.year}" /&gt;
-					
-					&lt;p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
-						&lt;p:graphicImage value="/images/search.png"/&gt; 
-						&lt;f:setPropertyActionListener value="\#{car}" 
-								target="\#{tableBean.selectedCar}" /&gt;
-					&lt;/p:commandLink&gt;
-				&lt;/h:panelGrid&gt;
-			&lt;/p:panel&gt;
-		&lt;/p:column&gt;
+
+        &lt;p:panel header="\#{car.model}" style="text-align:center"&gt;
+            &lt;h:panelGrid columns="1" style="width:100%"&gt;
+                &lt;p:graphicImage value="/images/cars/\#{car.manufacturer}.jpg"/&gt; 
+
+                &lt;h:outputText value="\#{car.year}" /&gt;
+
+                &lt;p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
+                    &lt;p:graphicImage value="/images/search.png"/&gt; 
+                    &lt;f:setPropertyActionListener value="\#{car}" 
+                            target="\#{tableBean.selectedCar}" /&gt;
+                &lt;/p:commandLink&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:panel&gt;
 
 	&lt;/p:dataGrid&gt;
 	

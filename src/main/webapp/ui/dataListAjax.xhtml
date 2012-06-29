@@ -33,15 +33,13 @@
                         <f:facet name="header">
                             Cars
                         </f:facet>
-					
-                        <p:column>
-                            <p:commandButton icon="ui-icon-search" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">
-                                <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
-                            </p:commandButton>
 
-                            <h:outputText value="#{car.manufacturer}, #{car.year}" style="margin-left:10px" />
-                            <br />
-                        </p:column>
+                        <p:commandButton icon="ui-icon-search" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">
+                            <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
+                        </p:commandButton>
+
+                        <h:outputText value="#{car.manufacturer}, #{car.year}" style="margin-left:10px" />
+                        <br />
 				</p:dataList>
 				
 				<p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade">
@@ -79,14 +77,12 @@
                 Cars
             &lt;/f:facet&gt;
 
-            &lt;p:column&gt;
-                &lt;p:commandButton icon="ui-icon-search" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
-                    &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
-                &lt;/p:commandButton&gt;
+            &lt;p:commandButton icon="ui-icon-search" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
+                &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
+            &lt;/p:commandButton&gt;
 
-                &lt;h:outputText value="\#{car.manufacturer}, \#{car.year}" style="margin-left:10px" /&gt;
-                &lt;br /&gt;
-            &lt;/p:column&gt;
+            &lt;h:outputText value="\#{car.manufacturer}, \#{car.year}" style="margin-left:10px" /&gt;
+            &lt;br /&gt;
     &lt;/p:dataList&gt;
 	
 	&lt;p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade"&gt;
