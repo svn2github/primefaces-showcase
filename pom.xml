@@ -407,7 +407,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <jsfVersion>Mojarra-2.1.7</jsfVersion>
+                <jsfVersion>Mojarra-2.1.10</jsfVersion>
                 <primefacesVersion>PrimeFaces-3.4-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
@@ -424,7 +424,7 @@
                 <dependency>
                     <groupId>org.glassfish</groupId>
                     <artifactId>javax.faces</artifactId>
-                    <version>2.1.7</version>
+                    <version>2.1.10</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -482,7 +482,7 @@
         <profile>
             <id>stable</id>
             <properties>
-                <jsfVersion>Mojarra-2.1.7</jsfVersion>
+                <jsfVersion>Mojarra-2.1.10</jsfVersion>
                 <primefacesVersion>PrimeFaces-3.3</primefacesVersion>
             </properties>
             <dependencies>
@@ -499,7 +499,7 @@
                 <dependency>
                     <groupId>org.glassfish</groupId>
                     <artifactId>javax.faces</artifactId>
-                    <version>2.1.7</version>
+                    <version>2.1.10</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -507,8 +507,8 @@
         <profile>
             <id>gae</id>
             <properties>
-                <jsfVersion>Mojarra-2.1.7</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.3.1-SNAPSHOT</primefacesVersion>
+                <jsfVersion>Mojarra-2.1.10</jsfVersion>
+                <primefacesVersion>PrimeFaces-3.4-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
@@ -524,7 +524,7 @@
                 <dependency>
                     <groupId>org.glassfish</groupId>
                     <artifactId>javax.faces</artifactId>
-                    <version>2.1.7</version>
+                    <version>2.1.10</version>
                 </dependency>
                 <dependency>
                     <groupId>xalan</groupId>
@@ -584,8 +584,8 @@
         <profile>
             <id>integrationTest</id>
             <properties>
-                <jsfVersion>Mojarra-2.1.7</jsfVersion>
-                <primefacesVersion>3.3-SNAPSHOT</primefacesVersion>
+                <jsfVersion>Mojarra-2.1.10</jsfVersion>
+                <primefacesVersion>3.4-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
@@ -601,7 +601,7 @@
                 <dependency>
                     <groupId>org.glassfish</groupId>
                     <artifactId>javax.faces</artifactId>
-                    <version>2.1.7</version>
+                    <version>2.1.10</version>
                 </dependency>
             </dependencies>
             <build>
@@ -696,8 +696,8 @@
         <profile>
             <id>integrationTestWindows</id>
             <properties>
-                <jsfVersion>Mojarra-2.1.7</jsfVersion>
-                <primefacesVersion>3.3.1-SNAPSHOT</primefacesVersion>
+                <jsfVersion>Mojarra-2.1.10</jsfVersion>
+                <primefacesVersion>3.4-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
@@ -713,7 +713,7 @@
                 <dependency>
                     <groupId>org.glassfish</groupId>
                     <artifactId>javax.faces</artifactId>
-                    <version>2.1.7</version>
+                    <version>2.1.10</version>
                 </dependency>
             </dependencies>
             <build>
