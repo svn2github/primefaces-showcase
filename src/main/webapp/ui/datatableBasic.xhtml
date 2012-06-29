@@ -10,7 +10,7 @@
 		<div class="entry">
 			<p>Basic usage is same as standard datatable.</p>
 
-            <h:form prependId="false">
+            <h:form>
                 <p:dataTable id="basic" var="car" value="#{tableBean.carsSmall}">
                     <p:column id="modelHeader">
                         <f:facet name="header">
@@ -46,7 +46,7 @@
 		<p:tabView>
 			<p:tab title="datatableBasic.xhtml">
 <pre name="code" class="xml">
-&lt;h:form prependId="false"&gt;
+&lt;h:form&gt;
     &lt;p:dataTable id="basic" var="car" value="\#{tableBean.carsSmall}"&gt;
         &lt;p:column id="modelHeader"&gt;
             &lt;f:facet name="header"&gt;
