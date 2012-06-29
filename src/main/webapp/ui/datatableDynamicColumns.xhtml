@@ -22,7 +22,7 @@
                                      onclick="carsTable.clearFilters()"/>
                 </h:panelGrid>
 
-                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" widgetVar="carsTable">                    
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" widgetVar="carsTable" filteredValue="#{tableBean.filteredCars}">                    
                     <p:columns value="#{tableBean.columns}" var="column" columnIndexVar="colIndex" 
                                 sortBy="#{car[column.property]}" filterBy="#{car[column.property]}">
                         <f:facet name="header">
@@ -48,7 +48,7 @@
         &lt;p:commandButton id="btn" update="cars" actionListener="\#{tableBean.updateColumns}" value="Update" process="@parent"/&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}"&gt;                    
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" filteredValue="\#{tableBean.filteredCars}"&gt;                    
         &lt;p:columns value="\#{tableBean.columns}" var="column" columnIndexVar="colIndex" 
                     sortBy="\#{car[column.property]}" filterBy="\#{car[column.property]}"&gt;
             &lt;f:facet name="header"&gt;
@@ -117,6 +117,8 @@ public class TableBean implements Serializable {
 		manufacturers[9] = "Ford";
 	}
 
+    private List&lt;Car&gt; filteredCars;
+
 	private List&lt;Car&gt; carsSmall;
 
     private List&lt;ColumnModel&gt; columns = new ArrayList&lt;ColumnModel&gt;();;
@@ -164,6 +166,14 @@ public class TableBean implements Serializable {
 
     public String[] getColors() {
         return colors;
+    }
+
+    public List&lt;Car&gt; getFilteredCars() {
+        return filteredCars;
+    }
+
+    public void setFilteredCars(List&lt;Car&gt; filteredCars) {
+        this.filteredCars = filteredCars;
     }
     
     static public class ColumnModel implements Serializable {
