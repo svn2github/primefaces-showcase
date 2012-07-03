@@ -25,11 +25,11 @@ public class MindmapBean implements Serializable {
     public MindmapNode root;
     
     public MindmapBean() {
-        root = new DefaultMindmapNode("google.com", "CC0000", false);
+        root = new DefaultMindmapNode("google.com", "FFCC00", false);
         
-        MindmapNode ips = new DefaultMindmapNode("IPs", "3399FF", true);
-        MindmapNode ns = new DefaultMindmapNode("NS(s)", "3399FF", true);
-        MindmapNode malware = new DefaultMindmapNode("Malware", "3399FF", true);
+        MindmapNode ips = new DefaultMindmapNode("IPs", "6e9ebf", true);
+        MindmapNode ns = new DefaultMindmapNode("NS(s)", "6e9ebf", true);
+        MindmapNode malware = new DefaultMindmapNode("Malware", "6e9ebf", true);
         
         root.add(ips);
         root.add(ns);
@@ -48,16 +48,20 @@ public class MindmapBean implements Serializable {
             Object data = node.getData();
 
             if(data.equals("NS(s)")) {
-                node.add(new DefaultMindmapNode("ns1.google.com", "00CC00", false));
-                node.add(new DefaultMindmapNode("ns2.google.com", "00CC00", false));
-                node.add(new DefaultMindmapNode("ns3.google.com", "00CC00", false));
+                for(int i = 0; i < 25; i++) {
+                    node.add(new DefaultMindmapNode("ns" + i + ".google.com", "82c542"));
+                }                
             }
             else if(data.equals("IPs")) {
-                node.add(new DefaultMindmapNode("1.1.1.1", "00CC00", false));
-                node.add(new DefaultMindmapNode("1.1.1.2", "00CC00", false));
+                for(int i = 0; i < 18; i++) {
+                    node.add(new DefaultMindmapNode("1.1.1."  + i, "fce24f"));
+                } 
+
             }
             else if(data.equals("Malware")) {
-                node.add(new DefaultMindmapNode("someMalware", "00CC00", false));
+                for(int i = 0; i < 18; i++) {
+                    node.add(new DefaultMindmapNode("someMalware-"  + i, "3399ff", false));
+                }
             }
         }
         
