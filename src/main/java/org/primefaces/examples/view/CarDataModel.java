@@ -15,12 +15,13 @@
  */
 package org.primefaces.examples.view;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.model.ListDataModel;
 import org.primefaces.examples.domain.Car;
 import org.primefaces.model.SelectableDataModel;
 
-public class CarDataModel extends ListDataModel<Car> implements SelectableDataModel<Car> {  
+public class CarDataModel extends ListDataModel<Car> implements SelectableDataModel<Car>, Serializable {  
 
     public CarDataModel() {
     }
