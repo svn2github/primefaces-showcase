@@ -11,32 +11,20 @@
 			<p>Basic usage is same as standard datatable.</p>
 
             <h:form>
-                <p:dataTable id="basic" var="car" value="#{tableBean.carsSmall}">
-                    <p:column id="modelHeader">
-                        <f:facet name="header">
-								Model
-                        </f:facet>
+                <p:dataTable var="car" value="#{tableBean.carsSmall}">
+                    <p:column headerText="Model">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-								Year
-                        </f:facet>
+                    <p:column headerText="Year">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-								Manufacturer
-                        </f:facet>
+                    <p:column headerText="Manufacturer">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-								Color
-                        </f:facet>
+                    <p:column headerText="Color">
                         <h:outputText value="#{car.color}" />
                     </p:column>
                 </p:dataTable>
@@ -47,32 +35,20 @@
 			<p:tab title="datatableBasic.xhtml">
 <pre name="code" class="xml">
 &lt;h:form&gt;
-    &lt;p:dataTable id="basic" var="car" value="\#{tableBean.carsSmall}"&gt;
-        &lt;p:column id="modelHeader"&gt;
-            &lt;f:facet name="header"&gt;
-                    Model
-            &lt;/f:facet&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
+        &lt;p:column headerText="Model"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                    Year
-            &lt;/f:facet&gt;
+        &lt;p:column headerText="Year"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                    Manufacturer
-            &lt;/f:facet&gt;
+        &lt;p:column headerText="Manufacturer"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column&gt;
-            &lt;f:facet name="header"&gt;
-                    Color
-            &lt;/f:facet&gt;
+        &lt;p:column headerText="Color"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
