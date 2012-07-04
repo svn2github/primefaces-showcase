@@ -32,7 +32,7 @@
 						</h:panelGrid>
 							
 						<p:commandLink id="view" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">
-							<p:graphicImage value="/images/search.png"/> 
+							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
 							<f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
 						</p:commandLink>
 					</p:column>
@@ -74,7 +74,7 @@
 			&lt;/h:panelGrid&gt;
 				
 			&lt;p:commandLink id="view" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
-				&lt;p:graphicImage value="/images/search.png"/&gt; 
+				&lt;h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" /&gt; 
 				&lt;f:setPropertyActionListener value="\#{car}" 
 						target="\#{tableBean.selectedCar}" /&gt;
 			&lt;/p:commandLink&gt;
