@@ -16,54 +16,69 @@
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
+import java.util.UUID;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.mindmap.DefaultMindmapNode;
 import org.primefaces.model.mindmap.MindmapNode;
 
 public class MindmapBean implements Serializable {
     
-    public MindmapNode root;
+    private MindmapNode root;
+    
+    private MindmapNode selectedNode;
     
     public MindmapBean() {
-        root = new DefaultMindmapNode("google.com", "FFCC00", false);
+        root = new DefaultMindmapNode("google.com", "Google WebSite", "FFCC00", false);
         
-        MindmapNode ips = new DefaultMindmapNode("IPs", "6e9ebf", true);
-        MindmapNode ns = new DefaultMindmapNode("NS(s)", "6e9ebf", true);
-        MindmapNode malware = new DefaultMindmapNode("Malware", "6e9ebf", true);
+        MindmapNode ips = new DefaultMindmapNode("IPs", "IP Numbers", "6e9ebf", true);
+        MindmapNode ns = new DefaultMindmapNode("NS(s)", "Namespaces", "6e9ebf", true);
+        MindmapNode malware = new DefaultMindmapNode("Malware", "Malicious Software", "6e9ebf", true);
         
-        root.add(ips);
-        root.add(ns);
-        root.add(malware);
+        root.addNode(ips);
+        root.addNode(ns);
+        root.addNode(malware);
     }
 
     public MindmapNode getRoot() {
         return root;
     }
-    
+
+    public MindmapNode getSelectedNode() {
+        return selectedNode;
+    }
+    public void setSelectedNode(MindmapNode selectedNode) {
+        this.selectedNode = selectedNode;
+    }
+
     public void onNodeSelect(SelectEvent event) {
         MindmapNode node = (MindmapNode) event.getObject();
         
         //populate if not already loaded
         if(node.getChildren().isEmpty()) {
-            Object data = node.getData();
+            Object label = node.getLabel();
 
-            if(data.equals("NS(s)")) {
+            if(label.equals("NS(s)")) {
                 for(int i = 0; i < 25; i++) {
-                    node.add(new DefaultMindmapNode("ns" + i + ".google.com", "82c542"));
-                }                
+                    node.addNode(new DefaultMindmapNode("ns" + i + ".google.com", "Namespace " + i + " of Google", "82c542"));
+                }
             }
-            else if(data.equals("IPs")) {
+            else if(label.equals("IPs")) {
                 for(int i = 0; i < 18; i++) {
-                    node.add(new DefaultMindmapNode("1.1.1."  + i, "fce24f"));
+                    node.addNode(new DefaultMindmapNode("1.1.1."  + i, "IP Number: 1.1.1." + i, "fce24f"));
                 } 
 
             }
-            else if(data.equals("Malware")) {
+            else if(label.equals("Malware")) {
                 for(int i = 0; i < 18; i++) {
-                    node.add(new DefaultMindmapNode("someMalware-"  + i, "3399ff", false));
+                    String random = UUID.randomUUID().toString();
+                    node.addNode(new DefaultMindmapNode("Malware-"  + random, "Malicious Software: " + random, "3399ff", false));
                 }
             }
         }
         
+    }
+    
+    public void onNodeDblselect(SelectEvent event) {
+        this.selectedNode = (MindmapNode) event.getObject();        
     }
 }
