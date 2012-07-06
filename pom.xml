@@ -10,7 +10,7 @@
     <url>http://www.primefaces.org</url>
 
     <properties>
-        <theme.version>1.0.7-SNAPSHOT</theme.version>
+        <theme.version>1.0.6</theme.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -73,8 +73,8 @@
             
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.16</version>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.3.v20120416</version>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <webAppConfig>
@@ -172,6 +172,13 @@
             <groupId>jfree</groupId>
             <artifactId>jfreechart</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        
+        <!-- Atmosphere -->
+        <dependency>
+            <groupId>org.atmosphere</groupId>
+            <artifactId>atmosphere-runtime</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
 		<!-- Themes -->

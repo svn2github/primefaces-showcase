@@ -33,11 +33,6 @@
         <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
         <param-value>true</param-value>
     </context-param>
-    
-    <context-param>
-        <param-name>primefaces.PUSH_SERVER_URL</param-name>
-        <param-value>ws://www.primefaces.org:9090/prime-pushserver</param-value>
-    </context-param>
 
     <!--
     <context-param>
@@ -73,6 +68,17 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Push Servlet</servlet-name>
+        <servlet-class>org.primefaces.push.PushServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Push Servlet</servlet-name>
+        <url-pattern>/prime-push/</url-pattern>
     </servlet-mapping>
     
 </web-app>
