@@ -84,7 +84,7 @@
 
     <servlet-mapping>
         <servlet-name>Push Servlet</servlet-name>
-        <url-pattern>/prime-push/</url-pattern>
+        <url-pattern>/prime-push/*</url-pattern>
     </servlet-mapping>
     
 </web-app>
