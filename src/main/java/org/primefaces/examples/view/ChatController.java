@@ -58,7 +58,7 @@ public class ChatController implements Serializable {
 	}
 
 	public void send() {
-		RequestContext.getCurrentInstance().push(CHANNEL, username + ": "+  message);
+		//RequestContext.getCurrentInstance().push(CHANNEL, username + ": "+  message);
 		
 		message = null;
 	}
@@ -76,12 +76,12 @@ public class ChatController implements Serializable {
             users.add(username);
             loggedIn = true;
             
-            requestContext.push(CHANNEL, username + " joined the channel.");
+            //requestContext.push(CHANNEL, username + " joined the channel.");
         }
 	}
     
     public void disconnect() {
-        RequestContext.getCurrentInstance().push(CHANNEL, username + " has left the channel.");
+        //RequestContext.getCurrentInstance().push(CHANNEL, username + " has left the channel.");
         loggedIn = false;
         username = null;
     }

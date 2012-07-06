@@ -38,6 +38,6 @@ public class GlobalCounterBean implements Serializable{
 	
 	public synchronized void increment() {
 		count++;
-        RequestContext.getCurrentInstance().push("counter", count);
+        //RequestContext.getCurrentInstance().push("counter", count);
 	}
 }
