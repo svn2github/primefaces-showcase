@@ -15,53 +15,8 @@
         <script type="text/javascript">
             //<![CDATA[
                 function handleMessage(response) {
-                    alert(response);
-                    $('.display').html(response);
+                    $('.display').html(response.responseBody);
                 }
-                
-                /**
- * PrimeFaces Push Widget
- */
-PrimeFaces.widget.Push = PrimeFaces.widget.BaseWidget.extend({
-    
-    init: function(cfg) {
-        this.cfg = cfg;
-        var _self = this;
-        
-        this.cfg.request = {
-            url: this.cfg.url,
-            transport: 'websocket',
-            fallbackTransport: 'long-polling',
-            enableXDR: false,
-            onMessage: function(response) {
-                _self.publish(response);
-            }
-        };
-        
-        if(this.cfg.onMessage) {
-            this.cfg.request.onMessage = this.cfg.onMessage
-        }
-        
-        if(this.cfg.autoConnect) {
-            this.connect();
-        }
-    },
-
-    connect: function() {
-        this.connection = $.atmosphere.subscribe(this.cfg.request);
-    },
-    
-    publish: function(response) {
-        if(this.cfg.onMessage) {
-            this.cfg.onMessage.call(this, response);
-        }
-        
-        if(this.cfg.behaviors && this.cfg.behaviors['publish']) {
-            this.cfg.behaviors['publish'].call(this);
-        }
-    }
-    
-});
             //]]> 
         </script>
     </ui:define>
@@ -73,8 +28,8 @@ PrimeFaces.widget.Push = PrimeFaces.widget.BaseWidget.extend({
 			<p>Counter is an instant global click counter. When you click the button,
             updated count value is updated on all connected clients.</p>
            
-            <h:form>
-                <h:outputText value="#{globalCounter.count}" styleClass="ui-widget display" />
+            <h:form id="form">
+                <h:outputText id="out" value="#{globalCounter.count}" styleClass="ui-widget display" />
                 
                 <br />
                 
@@ -87,21 +42,15 @@ PrimeFaces.widget.Push = PrimeFaces.widget.BaseWidget.extend({
             <p:tabView>
                 <p:tab title="chat.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
-    &lt;h:outputText value="\#{globalCounter.count}" styleClass="ui-widget display" /&gt;
+&lt;h:form id="form"&gt;
+    &lt;h:outputText id="out" value="\#{globalCounter.count}" styleClass="ui-widget display" /&gt;
 
     &lt;br /&gt;
 
     &lt;p:commandButton value="Click" actionListener="\#{globalCounter.increment}" /&gt;
 &lt;/h:form&gt;
-            
-&lt;p:push onmessage="handleMessage" channel="counter" /&gt;
 
-&lt;script type="text/javascript"&gt;
-    function handleMessage(evt, data) {
-        $('.display').html(data);
-    }
-&lt;/script&gt;
+&lt;p:push onMessage="handleMessage" channel="counter" /&gt;
                     </pre>
                 </p:tab>
                 
@@ -110,8 +59,15 @@ PrimeFaces.widget.Push = PrimeFaces.widget.BaseWidget.extend({
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
-import org.primefaces.context.RequestContext;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+import org.primefaces.push.PushContext;
+import org.primefaces.push.PushContextFactory;
+
+@ManagedBean(name = "globalCounter")
+@ApplicationScoped
 public class GlobalCounterBean implements Serializable{
 
 	private int count;
@@ -126,7 +82,9 @@ public class GlobalCounterBean implements Serializable{
 	
 	public synchronized void increment() {
 		count++;
-        RequestContext.getCurrentInstance().push("counter", count);
+        
+        PushContext pushContext = PushContextFactory.getDefault();
+        pushContext.push("/counter", String.valueOf(count));
 	}
 }
                     </pre>
