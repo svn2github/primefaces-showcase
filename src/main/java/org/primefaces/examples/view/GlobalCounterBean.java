@@ -20,7 +20,8 @@ import java.io.Serializable;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
-import org.primefaces.context.RequestContext;
+import org.primefaces.push.PushContext;
+import org.primefaces.push.PushContextFactory;
 
 @ManagedBean(name = "globalCounter")
 @ApplicationScoped
@@ -38,6 +39,8 @@ public class GlobalCounterBean implements Serializable{
 	
 	public synchronized void increment() {
 		count++;
-        //RequestContext.getCurrentInstance().push("counter", count);
+        
+        PushContext pushContext = PushContextFactory.getDefault();
+        pushContext.push("/counter", String.valueOf(count));
 	}
 }

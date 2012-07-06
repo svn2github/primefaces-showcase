@@ -14,8 +14,9 @@
         
         <script type="text/javascript">
             //<![CDATA[
-                function handleMessage(evt, data) {
-                    $('.display').html(data);
+                function handleMessage(response) {
+                    alert(response);
+                    $('.display').html(response);
                 }
                 
                 /**
@@ -25,14 +26,21 @@ PrimeFaces.widget.Push = PrimeFaces.widget.BaseWidget.extend({
     
     init: function(cfg) {
         this.cfg = cfg;
+        var _self = this;
+        
         this.cfg.request = {
             url: this.cfg.url,
             transport: 'websocket',
             fallbackTransport: 'long-polling',
-            trackMessageLength:true,
             enableXDR: false,
-            onMessage: this.cfg.onMessage
+            onMessage: function(response) {
+                _self.publish(response);
+            }
         };
+        
+        if(this.cfg.onMessage) {
+            this.cfg.request.onMessage = this.cfg.onMessage
+        }
         
         if(this.cfg.autoConnect) {
             this.connect();
@@ -41,6 +49,16 @@ PrimeFaces.widget.Push = PrimeFaces.widget.BaseWidget.extend({
 
     connect: function() {
         this.connection = $.atmosphere.subscribe(this.cfg.request);
+    },
+    
+    publish: function(response) {
+        if(this.cfg.onMessage) {
+            this.cfg.onMessage.call(this, response);
+        }
+        
+        if(this.cfg.behaviors && this.cfg.behaviors['publish']) {
+            this.cfg.behaviors['publish'].call(this);
+        }
     }
     
 });
