@@ -20,8 +20,9 @@ import javax.faces.FacesException;
 import javax.faces.context.FacesContext;
 import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletContext;
-import org.primefaces.context.RequestContext;
 import org.primefaces.event.CaptureEvent;
+import org.primefaces.push.PushContext;
+import org.primefaces.push.PushContextFactory;
 
 public class PhotoShare {
         
@@ -44,7 +45,7 @@ public class PhotoShare {
 			imageOutput.write(data, 0, data.length);
 			imageOutput.close();
             
-            //RequestContext.getCurrentInstance().push("photoshare", photo + ".png");
+            PushContextFactory.getDefault().push("/photoshare", photo + ".png");
 		}
         catch(Exception e) {
 			throw new FacesException("Error in writing captured image.");

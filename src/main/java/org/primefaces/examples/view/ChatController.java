@@ -23,16 +23,17 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
+import org.primefaces.push.PushContextFactory;
 
 public class ChatController implements Serializable {
     
-    private final static String CHANNEL = "chat";
-
 	private String message;
 	
 	private String username;
 	
 	private boolean loggedIn;
+    
+    private final static String CHANNEL = "/chat";
     
     private Set<String> users = new HashSet<String>();
 
@@ -58,7 +59,7 @@ public class ChatController implements Serializable {
 	}
 
 	public void send() {
-		//RequestContext.getCurrentInstance().push(CHANNEL, username + ": "+  message);
+        PushContextFactory.getDefault().push(CHANNEL, username + ": "+  message);
 		
 		message = null;
 	}
@@ -70,18 +71,19 @@ public class ChatController implements Serializable {
             loggedIn = false;
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username taken", "Try with another username."));
             
-            requestContext.addPartialUpdateTarget("growl");
+            requestContext.update("growl");
         }
         else {
             users.add(username);
             loggedIn = true;
             
-            //requestContext.push(CHANNEL, username + " joined the channel.");
+            PushContextFactory.getDefault().push(CHANNEL, username + " joined the channel.");
         }
 	}
     
     public void disconnect() {
-        //RequestContext.getCurrentInstance().push(CHANNEL, username + " has left the channel.");
+        PushContextFactory.getDefault().push(CHANNEL, username + " left the channel.");
+        
         loggedIn = false;
         username = null;
     }
