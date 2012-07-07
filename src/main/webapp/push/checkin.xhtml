@@ -1,0 +1,267 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+        </style>
+        
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+                function handleMessage(data) {
+                    var coords = new google.maps.LatLng(data.lat, data.lng);
+                    
+                    var marker = new google.maps.Marker({
+						position: coords
+                        ,title: data.title
+					});
+									            
+					map.addOverlay(marker);
+                     
+                    map.infowindow = new google.maps.InfoWindow({
+                        content: '<h3>' + data.title + " just checked in!</h3>"
+                    });
+            
+                    map.getMap().setCenter(coords);
+                    map.infowindow.open(map.getMap(), marker);
+                }
+                
+                $(function() {
+                    navigator.geolocation.getCurrentPosition(
+                        function(position) {                            
+                            $(PrimeFaces.escapeClientId('form:lat')).val(position.coords.latitude);
+                            $(PrimeFaces.escapeClientId('form:lng')).val(position.coords.longitude);
+                        },
+                        function(error) {
+                            alert(error.message);
+                        },
+                        {
+                           enableHighAccuracy: true
+                        });
+                });
+            //]]> 
+        </script>
+        
+
+    </ui:define>
+
+	<ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">PrimePush - Check-In</h1>
+        <div class="entry">
+            <p>Check-in is a real-time location sharing sample.</p>
+
+            <h:form id="form">
+
+                <p:fieldset legend="Check-In">
+                    <h:panelGrid columns="2">
+                        <p:outputLabel for="title" value="Title: " />
+                        <p:inputText id="title" value="#{mapBean.title}" />
+
+                        <p:spacer />
+                        <p:commandButton value="Check-In" actionListener="#{mapBean.checkin}" />
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <br />
+
+                <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px"
+                    model="#{mapBean.emptyModel}" widgetVar="map" />
+
+                <h:inputHidden id="lat" value="#{mapBean.lat}" />
+                <h:inputHidden id="lng" value="#{mapBean.lng}" />
+
+            </h:form>
+
+            <p:push onMessage="handleMessage" channel="check-in" />
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="checkin.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+
+    &lt;p:fieldset legend="Check-In"&gt;
+        &lt;h:panelGrid columns="2"&gt;
+            &lt;p:outputLabel for="name" value="Name" /&gt;
+            &lt;p:inputText id="name" value="\#{mapBean.name}" /&gt;
+
+            &lt;p:spacer /&gt;
+            &lt;p:commandButton value="Check-In" actionListener="\#{mapBean.checkin}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:fieldset&gt;
+
+    &lt;br /&gt;
+
+    &lt;p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px"
+        model="#{mapBean.emptyModel}" widgetVar="map" /&gt;
+
+    &lt;h:inputHidden id="lat" value="#{mapBean.lat}" /&gt;
+    &lt;h:inputHidden id="lng" value="#{mapBean.lng}" /&gt;
+
+&lt;/h:form&gt;
+
+function handleMessage(data) {
+    var coords = new google.maps.LatLng(data.lat, data.lng);
+
+    var marker = new google.maps.Marker({
+        position: coords
+        ,title: data.title
+    });
+
+    map.addOverlay(marker);
+
+    map.infowindow = new google.maps.InfoWindow({
+        content: '&lt;h3&gt;' + data.title + " just checked in!&lt;/h3&gt;"
+    });
+
+    map.getMap().setCenter(coords);
+    map.infowindow.open(map.getMap(), marker);
+}
+
+$(function() {
+    navigator.geolocation.getCurrentPosition(
+        function(position) {                            
+            $(PrimeFaces.escapeClientId('form:lat')).val(position.coords.latitude);
+            $(PrimeFaces.escapeClientId('form:lng')).val(position.coords.longitude);
+        },
+        function(error) {
+            alert(error.message);
+        },
+        {
+            enableHighAccuracy: true
+        });
+});
+                    </pre>
+                </p:tab>
+
+                <p:tab title="MapBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.primefaces.event.map.MarkerDragEvent;
+import org.primefaces.event.map.OverlaySelectEvent;
+import org.primefaces.event.map.PointSelectEvent;
+import org.primefaces.event.map.StateChangeEvent;
+import org.primefaces.examples.domain.CheckIn;
+import org.primefaces.model.map.Circle;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.LatLngBounds;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+import org.primefaces.model.map.Polygon;
+import org.primefaces.model.map.Polyline;
+import org.primefaces.model.map.Rectangle;
+import org.primefaces.push.PushContext;
+import org.primefaces.push.PushContextFactory;
+
+public class MapBean implements Serializable {
+	
+	private String title;
+	
+	private double lat;
+	
+	private double lng;
+    	
+	public MapModel getEmptyModel() {
+		return emptyModel;
+	}
+
+
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLng() {
+		return lng;
+	}
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    public void checkin() {
+        PushContext pushContext = PushContextFactory.getDefault();        
+        
+        pushContext.push("/check-in", new CheckIn(title, lat, lng));
+    }
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="CheckIn.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.domain;
+
+public class CheckIn {
+    
+    private String title;
+    private double lat;
+    private double lng;
+    
+    public CheckIn() {
+        
+    }
+
+    public CheckIn(String title, double lat, double lng) {
+        this.title = title;
+        this.lat = lat;
+        this.lng = lng;
+    }
+    
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+}
+                    </pre>
+                </p:tab>
+                
+            </p:tabView>
+		
+		</div>
+	</ui:define>
+</ui:composition>

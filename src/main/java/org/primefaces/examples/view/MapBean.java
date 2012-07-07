@@ -25,6 +25,7 @@ import org.primefaces.event.map.MarkerDragEvent;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.event.map.PointSelectEvent;
 import org.primefaces.event.map.StateChangeEvent;
+import org.primefaces.examples.domain.CheckIn;
 import org.primefaces.model.map.Circle;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -34,6 +35,8 @@ import org.primefaces.model.map.Marker;
 import org.primefaces.model.map.Polygon;
 import org.primefaces.model.map.Polyline;
 import org.primefaces.model.map.Rectangle;
+import org.primefaces.push.PushContext;
+import org.primefaces.push.PushContextFactory;
 
 public class MapBean implements Serializable {
 
@@ -49,7 +52,7 @@ public class MapBean implements Serializable {
         
 	private MapModel circleModel;
 	
-        private MapModel rectangleModel;
+    private MapModel rectangleModel;
 	
 	private MapModel draggableModel;
 
@@ -262,5 +265,10 @@ public class MapBean implements Serializable {
 		
 		addMessage(new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Added", "Lat:" + lat + ", Lng:" + lng));
 	}
-
+    
+    public void checkin() {
+        PushContext pushContext = PushContextFactory.getDefault();        
+        
+        pushContext.push("/check-in", new CheckIn(title, lat, lng));
+    }
 }
