@@ -40,7 +40,7 @@ public class GlobalCounterBean implements Serializable{
 	public synchronized void increment() {
 		count++;
         
-        PushContext pushContext = PushContextFactory.getDefault();
-        pushContext.push("/counter", String.valueOf(count));
+        PushContext pushContext = PushContextFactory.getDefault().getPushContext();
+        pushContext.push("counter", String.valueOf(count));
 	}
 }

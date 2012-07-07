@@ -45,7 +45,7 @@ public class PhotoShare {
 			imageOutput.write(data, 0, data.length);
 			imageOutput.close();
             
-            PushContextFactory.getDefault().push("/photoshare", photo + ".png");
+            PushContextFactory.getDefault().getPushContext().push("/photoshare", photo + ".png");
 		}
         catch(Exception e) {
 			throw new FacesException("Error in writing captured image.");

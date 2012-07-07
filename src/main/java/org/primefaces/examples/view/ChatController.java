@@ -23,10 +23,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
+import org.primefaces.push.PushContext;
 import org.primefaces.push.PushContextFactory;
 
 public class ChatController implements Serializable {
-    
+
+    private final PushContext pushContext = PushContextFactory.getDefault().getPushContext();
+
 	private String message;
 	
 	private String username;
@@ -59,7 +62,7 @@ public class ChatController implements Serializable {
 	}
 
 	public void send() {
-        PushContextFactory.getDefault().push(CHANNEL, username + ": "+  message);
+        pushContext.push(CHANNEL, username + ": " + message);
 		
 		message = null;
 	}
@@ -76,13 +79,13 @@ public class ChatController implements Serializable {
         else {
             users.add(username);
             loggedIn = true;
-            
-            PushContextFactory.getDefault().push(CHANNEL, username + " joined the channel.");
+
+            pushContext.push(CHANNEL, username + " joined the channel.");
         }
 	}
     
     public void disconnect() {
-        PushContextFactory.getDefault().push(CHANNEL, username + " left the channel.");
+        pushContext.push(CHANNEL, username + " left the channel.");
         
         loggedIn = false;
         username = null;
