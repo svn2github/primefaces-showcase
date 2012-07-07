@@ -205,7 +205,7 @@ public class MapBean implements Serializable {
     }
     
     public void checkin() {
-        PushContext pushContext = PushContextFactory.getDefault();        
+        PushContext pushContext = PushContextFactory.getDefault().getPushContext();                
         
         pushContext.push("/check-in", new CheckIn(title, lat, lng));
     }
