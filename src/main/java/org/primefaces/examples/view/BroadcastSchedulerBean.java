@@ -15,7 +15,6 @@
  */
 package org.primefaces.examples.view;
 
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.primefaces.push.PushContext;
 import org.primefaces.push.PushContextFactory;
@@ -35,7 +34,7 @@ public class BroadcastSchedulerBean {
     public void start() {
         if(!active) {
             PushContext context = PushContextFactory.getDefault().getPushContext();
-            context.schedule("/schedule", "Scheduled Message at time: " + new Date(), 30, TimeUnit.SECONDS);
+            context.schedule("/schedule", "Ping", 30, TimeUnit.SECONDS);
             
             active = true;
         } 

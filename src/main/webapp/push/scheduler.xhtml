@@ -20,7 +20,7 @@
                     out.append(data + '<br />');
                     out.scrollTop(out.height());
                 }
-            //]]> 
+            //]]>
         </script>
     </ui:define>
 
@@ -90,7 +90,7 @@ public class BroadcastSchedulerBean {
     public void start() {
         if(!active) {
             PushContext context = PushContextFactory.getDefault().getPushContext();
-            context.schedule("/schedule", "Scheduled Message at time: " + new Date(), 30, TimeUnit.SECONDS);
+            context.schedule("/schedule", "Ping", 30, TimeUnit.SECONDS);
             
             active = true;
         } 
