@@ -409,4 +409,9 @@
         <managed-bean-class>org.primefaces.examples.view.MindmapBean</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>viewparamPush</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.ViewparamPushBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

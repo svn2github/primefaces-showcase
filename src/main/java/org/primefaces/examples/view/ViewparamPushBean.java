@@ -17,28 +17,24 @@ package org.primefaces.examples.view;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-
 import org.primefaces.push.PushContext;
 import org.primefaces.push.PushContextFactory;
 
-public class GlobalCounterBean implements Serializable{
+public class ViewparamPushBean implements Serializable{
 
-	private int count;
+	private String data;
 
-	public int getCount() {
-		return count;
-	}
+    public String getData() {
+        return data;
+    }
 
-	public void setCount(int count) {
-		this.count = count;
-	}
-	
-	public synchronized void increment() {
-		count++;
+    public void setData(String data) {
+        this.data = data;
+    }
+
+	public void prerender() {
+		PushContext pushContext = PushContextFactory.getDefault().getPushContext();
         
-        PushContext pushContext = PushContextFactory.getDefault().getPushContext();
-        pushContext.push("counter", String.valueOf(count));
+        pushContext.push("/viewparam", data);
 	}
 }
