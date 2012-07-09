@@ -290,15 +290,6 @@ public class TableBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
-    public void onRowDblselect(SelectEvent event) {
-        FacesContext context = FacesContext.getCurrentInstance();
-        ConfigurableNavigationHandler handler = (ConfigurableNavigationHandler) context.getApplication().getNavigationHandler();
-        Flash flash = context.getExternalContext().getFlash();
-        flash.put("selectedCar", (Car) event.getObject());
-        
-        handler.performNavigation("carDetail");
-    }
-
     public String onRowSelectNavigate(SelectEvent event) {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().put("selectedCar", event.getObject());
 

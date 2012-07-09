@@ -19,7 +19,6 @@
                     
                     <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" />
                     <p:ajax event="rowUnselect" listener="#{tableBean.onRowUnselect}" update=":form:growl"/>
-                    <p:ajax event="rowDblselect" listener="#{tableBean.onRowDblselect}" />
                     
                     <f:facet name="header">
                         Select a row to display a message
@@ -81,7 +80,6 @@
         &lt;p:ajax event="rowSelect" listener="\#{tableBean.onRowSelect}" 
                     update=":form:display :form:growl" oncomplete="carDialog.show()" /&gt;
         &lt;p:ajax event="rowUnselect" listener="\#{tableBean.onRowUnselect}" update=":form:growl"/&gt;
-        &lt;p:ajax event="rowDblselect" listener="\#{tableBean.onRowDblselect}" /&gt;
 
         &lt;f:facet name="header"&gt;
             Select a row to display a message
@@ -219,15 +217,6 @@ public class TableBean {
         FacesMessage msg = new FacesMessage("Car Unselected", ((Car) event.getObject()).getModel());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
-    public void onRowDblselect(SelectEvent event) {
-        FacesContext context = FacesContext.getCurrentInstance();
-        ConfigurableNavigationHandler handler = (ConfigurableNavigationHandler) context.getApplication().getNavigationHandler();
-        Flash flash = context.getExternalContext().getFlash();
-        flash.put("selectedCar", (Car) event.getObject());
-        
-        handler.performNavigation("carDetail");
     }
 }
                     </pre>
