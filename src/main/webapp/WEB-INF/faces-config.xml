@@ -15,7 +15,6 @@
         <exception-handler-factory>org.primefaces.examples.application.ShowcaseExceptionHandlerFactory</exception-handler-factory>
     </factory>
 
-
     <converter>
         <converter-id>player</converter-id>
         <converter-class>org.primefaces.examples.view.PlayerConverter</converter-class>
@@ -413,5 +412,10 @@
         <managed-bean-name>viewparamPush</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.view.ViewparamPushBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>broadcastScheduler</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.BroadcastSchedulerBean</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
 </faces-config>

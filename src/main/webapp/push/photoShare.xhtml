@@ -8,8 +8,8 @@
     <ui:define name="head">        
         <script type="text/javascript">
             //<![CDATA[
-                function handleShare(evt, data) {
-                    $('#photos').append('<img src="#{request.contextPath}/photocam/' + data + '" />');
+                function handleShare(data) {
+                    $('#photos').append('<img src="#{request.contextPath}/photocam/' + data + '" width="160" height="120" style="float:left"/>');
                 }
             //]]> 
         </script>
@@ -19,21 +19,89 @@
         
         <h1 class="title ui-widget-header ui-corner-all">PrimePush - PhotoShare</h1>
 		<div class="entry">
-			<p>Share your photos with Prime Push PhotoShare Sample.</p>
+			<p>Share your photos Real-Time. Note that PhotoCam is not supported on IE.</p>
             
             <h:form>
                 
-                <p:photoCam widgetVar="pc" listener="#{photoShare.share}"/>
+                <p:photoCam widgetVar="pc" listener="#{photoShare.share}" />
                     
-                <p:commandButton type="button" value="Share" onclick="pc.capture()"/>
+                <p:commandButton type="button" value="Share" onclick="pc.capture()" style="margin:20px 0px;"/>
                 
             </h:form>
             
-            <div id="photos">
-                
-            </div>
+            <p:outputPanel id="photos" layout="block" styleClass="ui-widget-content ui-helper-clearfix" />
             
-            <p:push onmessage="handleShare" channel="photoshare" />
+            <p:push onMessage="handleShare" channel="photoshare" />
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="photoShare.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+                
+    &lt;p:photoCam widgetVar="pc" listener="\#{photoShare.share}" /&gt;
+
+    &lt;p:commandButton type="button" value="Share" onclick="pc.capture()" style="margin:20px 0px;"/&gt;
+
+&lt;/h:form&gt;
+
+&lt;p:outputPanel id="photos" layout="block" styleClass="ui-widget-content ui-helper-clearfix" /&gt;
+
+&lt;p:push onMessage="handleShare" channel="photoshare" /&gt;
+
+&lt;script type="text/javascript"&gt;
+    //<![CDATA[
+        function handleShare(data) {
+            $('#photos').append('&lt;img src="\#{request.contextPath}/photocam/' + data + '" width="160" height="120" style="float:left"/&gt;');
+        }
+    //]]> 
+&lt;/script&gt;
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="PhotoShareBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.File;
+import javax.faces.FacesException;
+import javax.faces.context.FacesContext;
+import javax.imageio.stream.FileImageOutputStream;
+import javax.servlet.ServletContext;
+import org.primefaces.event.CaptureEvent;
+import org.primefaces.push.PushContextFactory;
+
+public class PhotoShare {
+        
+    private String getRandomImageName() {
+		int i = (int) (Math.random() * 10000000);
+		
+		return String.valueOf(i);
+	}
+    
+    public void share(CaptureEvent captureEvent) {
+        String photo = getRandomImageName();
+        byte[] data = captureEvent.getData();
+        
+		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+		String newFileName = servletContext.getRealPath("") + File.separator + "photocam" + File.separator + photo + ".png";
+		
+		FileImageOutputStream imageOutput;
+		try {
+			imageOutput = new FileImageOutputStream(new File(newFileName));
+			imageOutput.write(data, 0, data.length);
+			imageOutput.close();
+            
+            PushContextFactory.getDefault().getPushContext().push("/photoshare", photo + ".png");
+		}
+        catch(Exception e) {
+			throw new FacesException("Error in writing captured image.");
+		}
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
 
         </div>
 

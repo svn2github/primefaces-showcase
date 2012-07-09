@@ -21,7 +21,6 @@ import javax.faces.context.FacesContext;
 import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletContext;
 import org.primefaces.event.CaptureEvent;
-import org.primefaces.push.PushContext;
 import org.primefaces.push.PushContextFactory;
 
 public class PhotoShare {
