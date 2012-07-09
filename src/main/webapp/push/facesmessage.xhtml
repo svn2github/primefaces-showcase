@@ -32,7 +32,7 @@
                         <p:inputText id="summary" value="#{growlBean.summary}" required="true" />
                         
                         <p:outputLabel for="detail" value="Detail: " /> 
-                        <p:inputText id="detail" value="#{growlBean.summary}" required="true" />
+                        <p:inputText id="detail" value="#{growlBean.detail}" required="true" />
                     </h:panelGrid>
 
                     <p:commandButton value="Send" actionListener="#{growlBean.send}" />
@@ -54,7 +54,7 @@
             &lt;p:inputText id="summary" value="\#{growlBean.summary}" required="true" /&gt;
 
             &lt;p:outputLabel for="detail" value="Detail: " /&gt; 
-            &lt;p:inputText id="detail" value="\#{growlBean.summary}" required="true" /&gt;
+            &lt;p:inputText id="detail" value="\#{growlBean.detail}" required="true" /&gt;
         &lt;/h:panelGrid&gt;
 
         &lt;p:commandButton value="Send" actionListener="\#{growlBean.send}" /&gt;
