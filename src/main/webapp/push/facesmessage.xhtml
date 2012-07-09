@@ -1,0 +1,124 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">        
+        <script type="text/javascript">
+            //<![CDATA[
+                function handleMessage(facesmessage) {
+                    facesmessage.severity = 'info';
+                    
+                    growl.show([facesmessage]);
+                }
+            //]]> 
+        </script>
+    </ui:define>
+
+	<ui:define name="content">
+
+			<h1 class="title ui-widget-header ui-corner-all">PrimePush - FacesMessage</h1>
+			<div class="entry">
+			<p>This sample demonstrates how to push FacesMessages to all subscribers.</p>
+           
+            <p:growl widgetVar="growl" showDetail="true" />
+            
+            <h:form>
+                <p:panel header="Growl">
+                    <h:panelGrid columns="2">
+                        <p:outputLabel for="summary" value="Summary: " /> 
+                        <p:inputText id="summary" value="#{growlBean.summary}" required="true" />
+                        
+                        <p:outputLabel for="detail" value="Detail: " /> 
+                        <p:inputText id="detail" value="#{growlBean.summary}" required="true" />
+                    </h:panelGrid>
+
+                    <p:commandButton value="Send" actionListener="#{growlBean.send}" />
+                </p:panel>
+            </h:form>
+            
+            <p:push onMessage="handleMessage" channel="notifications" />
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="facesmessage.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:growl widgetVar="growl" showDetail="true" /&gt;
+            
+&lt;h:form&gt;
+    &lt;p:panel header="Growl"&gt;
+        &lt;h:panelGrid columns="2"&gt;
+            &lt;p:outputLabel for="summary" value="Summary: " /&gt; 
+            &lt;p:inputText id="summary" value="\#{growlBean.summary}" required="true" /&gt;
+
+            &lt;p:outputLabel for="detail" value="Detail: " /&gt; 
+            &lt;p:inputText id="detail" value="\#{growlBean.summary}" required="true" /&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton value="Send" actionListener="\#{growlBean.send}" /&gt;
+    &lt;/p:panel&gt;
+&lt;/h:form&gt;
+
+&lt;script type="text/javascript"&gt;
+function handleMessage(facesmessage) {
+    facesmessage.severity = 'info';
+
+    growl.show([facesmessage]);
+}
+&lt;script&gt;
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="GrowlBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import org.primefaces.push.PushContext;
+import org.primefaces.push.PushContextFactory;
+
+public class GrowlBean {
+
+    private String summary;
+    
+    private String detail;
+    
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+	public void save(ActionEvent actionEvent) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		context.addMessage(null, new FacesMessage("Successful", "Hello " + text));
+		context.addMessage(null, new FacesMessage("Second Message", "Additional Info Here..."));
+	}
+    
+    public void send() {
+        PushContext pushContext = PushContextFactory.getDefault().getPushContext();
+        
+        pushContext.push("/notifications", new FacesMessage(summary, detail));
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+		
+		</div>
+	</ui:define>
+</ui:composition>
