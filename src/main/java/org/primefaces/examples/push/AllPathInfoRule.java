@@ -19,7 +19,7 @@ import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.cpr.BroadcasterLifeCyclePolicyListener;
-import org.primefaces.push.Rule;
+import org.primefaces.push.PushRule;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 
 import static org.atmosphere.cpr.BroadcasterLifeCyclePolicy.EMPTY_DESTROY;
 
-public class AllPathInfoRule implements Rule {
+public class AllPathInfoRule implements PushRule {
 
     private final Logger logger = Logger.getLogger(AllPathInfoRule.class.getName());
 
