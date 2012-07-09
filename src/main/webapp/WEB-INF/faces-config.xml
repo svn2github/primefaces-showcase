@@ -50,9 +50,18 @@
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>chatController</managed-bean-name>
-        <managed-bean-class>org.primefaces.examples.view.ChatController</managed-bean-class>
+        <managed-bean-name>chatView</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.ChatView</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
+        <managed-property>
+            <property-name>users</property-name>
+            <value>#{chatUsers}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>chatUsers</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.ChatUsers</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>colorBean</managed-bean-name>
