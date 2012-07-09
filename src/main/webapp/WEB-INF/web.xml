@@ -79,10 +79,6 @@
     <servlet>
         <servlet-name>Push Servlet</servlet-name>
         <servlet-class>org.primefaces.push.PushServlet</servlet-class>
-        <init-param>
-            <param-name>org.primefaces.push.rules</param-name>
-            <param-value>org.primefaces.examples.push.AllPathInfoRule</param-value>
-        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
