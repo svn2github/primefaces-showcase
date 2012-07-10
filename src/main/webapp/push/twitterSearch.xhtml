@@ -48,6 +48,10 @@ function handleMessage(data) {
         tweetList.list.append(markup);
     }
 }
+
+setTimeout(function() {
+    init();
+}, 3000);
             //]]>
         </script>
     </ui:define>
@@ -58,7 +62,7 @@ function handleMessage(data) {
 			<div class="entry">
 			<p>Broadcasts can be delayed using <i>delay</i> feature and configured to run at periodic intervals using <i>schedule</i> feature. 
             This samples demonstrates a scheduled push to every connected client in every 10 seconds.</p>
-           
+  
             <h:form>
                 
                 <p:dataList widgetVar="tweetList" styleClass="ui-tweet-list">
@@ -67,10 +71,9 @@ function handleMessage(data) {
                     </f:facet>
                 </p:dataList>
                 
-                <p:commandButton value="Search" actionListener="#{twitterSearchView.start}" onclick="$(this).fadeOut();"
-                                 rendered="#{not twitterSearchView.active}" icon="ui-icon-search"/>
+                <p:remoteCommand name="init" actionListener="#{twitterSearchView.start}" global="false"/>
             </h:form>
-            
+                
             <p:socket onMessage="handleMessage" channel="/twitter" />
             
             <h3>Source</h3>
@@ -86,8 +89,8 @@ function handleMessage(data) {
         &lt;/f:facet&gt;
     &lt;/p:dataList&gt;
 
-    &lt;p:commandButton value="Search" actionListener="\#{twitterSearchView.start}" onclick="$(this).fadeOut();"
-                        rendered="\#{not twitterSearchView.active}" icon="ui-icon-search"/&gt;
+    &lt;p:remoteCommand name="init" actionListener="\#{twitterSearchView.start}" global="false"/&gt;
+
 &lt;/h:form&gt;
 
 &lt;p:socket onMessage="handleMessage" channel="/twitter" /&gt;
