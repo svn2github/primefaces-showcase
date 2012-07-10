@@ -20,7 +20,7 @@ import org.primefaces.push.PushContext;
 import org.primefaces.push.PushContextFactory;
 
 public class BroadcastSchedulerBean {
-    
+        
     private boolean active;
 
     public boolean isActive() {

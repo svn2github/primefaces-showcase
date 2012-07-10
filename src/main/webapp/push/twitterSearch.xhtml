@@ -1,0 +1,187 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-tweet-list {
+                width:400px;
+                margin-bottom: 10px;
+            }
+            .ui-tweet-list .ui-datalist-content {
+                height:300px;
+                overflow:auto;
+            }
+            
+            .ui-tweet-list .ui-datalist-data {
+                list-style-type: none;
+                padding:0px;
+            }
+            
+            .ui-tweet-list .ui-datalist-item {
+                padding:5px;
+            }
+            
+            .ui-tweet-list .ui-datalist-item img {
+                float:left;
+                margin-right:5px;
+            }
+        </style>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+function handleMessage(data) {
+    var tweets = data.results;
+    
+    tweetList.list.html('');
+    
+    for(var i = 0; i < tweets.length; i++) {
+        var tweet = tweets[i],
+        markup = '<li class="ui-datalist-item ui-helper-clearfix">';
+        markup += '<img src="https://api.twitter.com/1/users/profile_image/' + tweet.from_user + '" alt=""></img>';
+        markup += '<strong>' + tweet.from_user + '</strong><br />' + tweet.text;
+        markup += '</li>';
+        
+        tweetList.list.append(markup);
+    }
+}
+            //]]>
+        </script>
+    </ui:define>
+
+	<ui:define name="content">
+
+			<h1 class="title ui-widget-header ui-corner-all">PrimePush - Twitter</h1>
+			<div class="entry">
+			<p>Broadcasts can be delayed using <i>delay</i> feature and configured to run at periodic intervals using <i>schedule</i> feature. 
+            This samples demonstrates a scheduled push to every connected client in every 10 seconds.</p>
+           
+            <h:form>
+                
+                <p:dataList widgetVar="tweetList" styleClass="ui-tweet-list">
+                    <f:facet name="header">
+                        Twitter Search for "I"
+                    </f:facet>
+                </p:dataList>
+                
+                <p:commandButton value="Search" actionListener="#{twitterSearchView.start}" onclick="$(this).fadeOut();"
+                                 rendered="#{not twitterSearchView.active}" icon="ui-icon-search"/>
+            </h:form>
+            
+            <p:push onMessage="handleMessage" channel="twitter" />
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="twitterSearch.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+                
+    &lt;img url="http://a0.twimg.com/profile_images/2337148726/vPLz00IG_normal.jpeg" alt="" /&gt;
+    &lt;p:dataList widgetVar="tweetList" styleClass="ui-tweet-list"&gt;
+        &lt;f:facet name="header"&gt;
+            Twitter Search for "I"
+        &lt;/f:facet&gt;
+    &lt;/p:dataList&gt;
+
+    &lt;p:commandButton value="Search" actionListener="\#{twitterSearchView.start}" onclick="$(this).fadeOut();"
+                        rendered="\#{not twitterSearchView.active}" icon="ui-icon-search"/&gt;
+&lt;/h:form&gt;
+
+function handleMessage(data) {
+    var tweets = data.results;
+    
+    tweetList.list.html('');
+    
+    for(var i = 0; i &lt; tweets.length; i++) {
+        var tweet = tweets[i],
+        markup = '&lt;li class="ui-datalist-item ui-helper-clearfix"&gt;';
+        markup += '&lt;img src="https://api.twitter.com/1/users/profile_image/' + tweet.from_user + '" alt=""&gt;&lt;/img&gt;';
+        markup += '&lt;strong&gt;' + tweet.from_user + '&lt;/strong&gt;&lt;br /&gt;' + tweet.text;
+        markup += '&lt;/li&gt;';
+        
+        tweetList.list.append(markup);
+    }
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="TwitterSearchView.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import com.ning.http.client.AsyncCompletionHandler;
+import com.ning.http.client.AsyncHttpClient;
+import com.ning.http.client.Response;
+import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
+import org.primefaces.push.PushContext;
+import org.primefaces.push.PushContextFactory;
+
+public class TwitterSearchView {
+        
+    private boolean active;
+    
+    private final AsyncHttpClient asyncClient = new AsyncHttpClient();
+        
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    
+    public void start() {
+        if(!active) {
+            PushContext context = PushContextFactory.getDefault().getPushContext();
+            
+            context.schedule("/twitter", new Callable&lt;String&gt;() {
+
+                private String results;
+                
+                public String call() throws Exception {
+
+                    asyncClient.prepareGet("http://search.twitter.com/search.json?q=I").execute(
+                            
+                            new AsyncCompletionHandler&lt;Object>() {
+
+                                @Override
+                                public Object onCompleted(Response response) throws Exception {
+                                    String s = response.getResponseBody();
+             
+                                    if(response.getStatusCode() != 200) {                                        
+                                        return null;
+                                    }
+                                    
+                                    StringBuilder jsonBuilder = new StringBuilder();
+                                    jsonBuilder.append("{\"data\":").append(s).append("}");
+                                    
+                                    results = jsonBuilder.toString();
+                                    
+                                    System.out.println(results);
+                                    
+                                    return results;
+                                }
+
+                                
+                            }).get();
+                    
+                    return results;
+                }
+
+            }, 10, TimeUnit.SECONDS);
+            
+            active = true;
+        } 
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+		
+		</div>
+	</ui:define>
+</ui:composition>
