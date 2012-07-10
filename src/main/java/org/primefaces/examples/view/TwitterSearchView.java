@@ -39,6 +39,7 @@ public class TwitterSearchView {
     
     public void start() {
         if(!active) {
+            
             PushContext context = PushContextFactory.getDefault().getPushContext();
             
             context.schedule("/twitter", new Callable<String>() {
