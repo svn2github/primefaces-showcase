@@ -39,6 +39,6 @@ public class GlobalCounterBean implements Serializable{
 		count++;
         
         PushContext pushContext = PushContextFactory.getDefault().getPushContext();
-        pushContext.push("counter", String.valueOf(count));
+        pushContext.push("/counter", String.valueOf(count));
 	}
 }

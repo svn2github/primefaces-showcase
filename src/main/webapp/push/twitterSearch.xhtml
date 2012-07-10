@@ -71,7 +71,7 @@ function handleMessage(data) {
                                  rendered="#{not twitterSearchView.active}" icon="ui-icon-search"/>
             </h:form>
             
-            <p:socket onMessage="handleMessage" channel="twitter" />
+            <p:socket onMessage="handleMessage" channel="/twitter" />
             
             <h3>Source</h3>
             <p:tabView>
@@ -90,7 +90,7 @@ function handleMessage(data) {
                         rendered="\#{not twitterSearchView.active}" icon="ui-icon-search"/&gt;
 &lt;/h:form&gt;
 
-&lt;p:socket onMessage="handleMessage" channel="twitter" /&gt;
+&lt;p:socket onMessage="handleMessage" channel="/twitter" /&gt;
 
 function handleMessage(data) {
     var tweets = data.results;

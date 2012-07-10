@@ -121,45 +121,67 @@
                              
             </h:form>
             
-            <p:socket onMessage="handleMessage" channel="chat" autoConnect="false" widgetVar="subscriber"/>
+            <p:socket onMessage="handleMessage" channel="/chat" autoConnect="false" widgetVar="subscriber"/>
 
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="chat.xhtml">
                     <pre name="code" class="xml">
 &lt;p:growl id="growl" showDetail="true" /&gt;
-            
-&lt;h:form&gt;
 
-    &lt;p:fieldset id="container" legend="PrimeChat"&gt;
+&lt;h:form id="form"&gt;
 
-        &lt;h:panelGroup rendered="\#{chatController.loggedIn}" &gt;
-            &lt;p:outputPanel layout="block" style="width:600px;height:200px;overflow:auto" 
-                       styleClass="chatroom" /&gt;
+    &lt;p:fieldset id="container" legend="PrimeChat" toggleable="true"&gt;
+
+        &lt;h:panelGroup rendered="\#{chatView.loggedIn}"&gt;
+
+            &lt;h:panelGrid columns="2" columnClasses="publicColumn,usersColumn" style="width:100%"&gt;
+                &lt;p:outputPanel id="public" layout="block" styleClass="ui-corner-all ui-widget-content chatlogs"/&gt;
+
+                &lt;p:dataList id="users" var="user" value="\#{chatUsers.users}" styleClass="usersList"&gt;
+                    &lt;f:facet name="header"&gt;
+                        Users
+                    &lt;/f:facet&gt;
+
+                    &lt;p:commandButton title="Chat" icon="ui-icon-comment" oncomplete="pChat.show()" update=":form:privateChatContainer"&gt;
+                        &lt;f:setPropertyActionListener value="\#{user}" target="\#{chatView.privateUser}" /&gt;
+                    &lt;/p:commandButton&gt;
+                    \#{user}
+                &lt;/p:dataList&gt;
+            &lt;/h:panelGrid&gt;
 
             &lt;p:separator /&gt;
 
-            &lt;p:inputText value="\#{chatController.message}" styleClass="messageInput" /&gt;
+            &lt;p:inputText value="\#{chatView.globalMessage}" styleClass="messageInput" /&gt;
             &lt;p:spacer width="5" /&gt;
-            &lt;p:commandButton value="Send" actionListener="\#{chatController.send}" global="false" oncomplete="$('.messageInput').val('').focus()"/&gt;
+            &lt;p:commandButton value="Send" actionListener="\#{chatView.sendGlobal}" oncomplete="$('.messageInput').val('').focus()"/&gt;
             &lt;p:spacer width="5" /&gt;
-            &lt;p:commandButton value="Disconnect" actionListener="\#{chatController.disconnect}" global="false" 
-                                oncomplete="chatAgent.close()" update="container" /&gt;
+            &lt;p:commandButton value="Disconnect" actionListener="\#{chatView.disconnect}" global="false" update="container" /&gt;
         &lt;/h:panelGroup&gt;
 
-        &lt;h:panelGroup rendered="\#{not chatController.loggedIn}" &gt;
-            Username: &lt;p:inputText value="\#{chatController.username}" /&gt;
+        &lt;h:panelGroup rendered="\#{not chatView.loggedIn}" &gt;
+            Username: &lt;p:inputText value="\#{chatView.username}" /&gt;
 
             &lt;p:spacer width="5" /&gt;
-            &lt;p:commandButton value="Login" actionListener="\#{chatController.login}" update="container" 
-                             icon="ui-icon-person"/&gt;
+            &lt;p:commandButton value="Login" actionListener="\#{chatView.login}" update="container" 
+                                icon="ui-icon-person" /&gt;
         &lt;/h:panelGroup&gt;
 
     &lt;/p:fieldset&gt;
 
+    &lt;p:dialog widgetVar="pChat" header="Private Chat" modal="true" showEffect="fade" hideEffect="fade"&gt;
+        &lt;h:panelGrid id="privateChatContainer" columns="2" columnClasses="vtop,vtop"&gt;
+            &lt;p:outputLabel for="pChatInput" value="To: \#{chatView.privateUser}" /&gt;
+            &lt;p:inputTextarea id="pChatInput" value="\#{chatView.privateMessage}" rows="5" cols="30" /&gt;
+
+            &lt;p:spacer /&gt;
+            &lt;p:commandButton value="Send" actionListener="\#{chatView.sendPrivate}" oncomplete="pChat.hide()" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
 &lt;/h:form&gt;
 
-&lt;p:socket onmessage="handleMessage" channel="chat" widgetVar="chatAgent" /&gt;
+&lt;p:socket onMessage="handleMessage" channel="/chat" autoConnect="false" widgetVar="subscriber"/&gt;
 
 &lt;script type="text/javascript"&gt;
     function handleMessage(evt, data) {
@@ -173,38 +195,62 @@
                     </pre>
                 </p:tab>
                 
-                <p:tab title="ChatController.java">
+                <p:tab title="ChatView.java">
                     <pre name="code" class="java">
 package org.primefaces.examples.view;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-
 import org.primefaces.context.RequestContext;
+import org.primefaces.push.PushContext;
+import org.primefaces.push.PushContextFactory;
 
-public class ChatController implements Serializable {
+public class ChatView {
     
-    private final static String CHANNEL = "chat";
+    private final PushContext pushContext = PushContextFactory.getDefault().getPushContext();
+    
+    private ChatUsers users;
 
-	private String message;
+	private String privateMessage;
+    
+    private String globalMessage;
 	
 	private String username;
 	
 	private boolean loggedIn;
     
-    private Set&lt;String&gt; users = new HashSet&lt;String&gt;();
+    private String privateUser;
+    
+    private final static String CHANNEL = "/chat/";
 
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	
+    public void setUsers(ChatUsers users) {
+        this.users = users;
+    }
+
+    public String getPrivateUser() {
+        return privateUser;
+    }
+
+    public void setPrivateUser(String privateUser) {
+        this.privateUser = privateUser;
+    }
+
+    public String getGlobalMessage() {
+        return globalMessage;
+    }
+
+    public void setGlobalMessage(String globalMessage) {
+        this.globalMessage = globalMessage;
+    }
+
+    public String getPrivateMessage() {
+        return privateMessage;
+    }
+
+    public void setPrivateMessage(String privateMessage) {
+        this.privateMessage = privateMessage;
+    }
+    
 	public String getUsername() {
 		return username;
 	}
@@ -219,11 +265,17 @@ public class ChatController implements Serializable {
 		this.loggedIn = loggedIn;
 	}
 
-	public void send() {
-		RequestContext.getCurrentInstance().push(CHANNEL, username + ": "+  message);
+	public void sendGlobal() {
+        pushContext.push(CHANNEL + "*", username + ": " + globalMessage);
 		
-		message = null;
+		globalMessage = null;
 	}
+    
+    public void sendPrivate() {
+        pushContext.push(CHANNEL + privateUser, "[PM] " + username + ": " + privateMessage);
+        
+        privateMessage = null;
+    }
 	
 	public void login() {
         RequestContext requestContext = RequestContext.getCurrentInstance();
@@ -232,18 +284,25 @@ public class ChatController implements Serializable {
             loggedIn = false;
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username taken", "Try with another username."));
             
-            requestContext.addPartialUpdateTarget("growl");
+            requestContext.update("growl");
         }
         else {
-            users.add(username);
+            users.addUser(username);
+            pushContext.push(CHANNEL, username + " joined the channel.");
+            requestContext.execute("subscriber.connect('/" + username + "')");
             loggedIn = true;
-            
-            requestContext.push(CHANNEL, username + " joined the channel.");
         }
 	}
     
     public void disconnect() {
-        RequestContext.getCurrentInstance().push(CHANNEL, username + " has left the channel.");
+        //remove user and update ui
+        users.removeUser(username);
+        RequestContext.getCurrentInstance().update("form:users");
+        
+        //push leave information
+        pushContext.push(CHANNEL, username + " left the channel.");
+        
+        //reset state
         loggedIn = false;
         username = null;
     }

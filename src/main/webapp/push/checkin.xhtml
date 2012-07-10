@@ -78,7 +78,7 @@
 
             </h:form>
 
-            <p:socket onMessage="handleMessage" channel="check-in" />
+            <p:socket onMessage="handleMessage" channel="/check-in" />
 
             <h3>Source</h3>
             <p:tabView>
@@ -105,6 +105,8 @@
     &lt;h:inputHidden id="lng" value="#{mapBean.lng}" /&gt;
 
 &lt;/h:form&gt;
+
+&lt;p:socket onMessage="handleMessage" channel="/check-in" /&gt;
 
 function handleMessage(data) {
     var coords = new google.maps.LatLng(data.lat, data.lng);

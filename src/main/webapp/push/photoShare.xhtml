@@ -31,7 +31,7 @@
             
             <p:outputPanel id="photos" layout="block" styleClass="ui-widget-content ui-helper-clearfix" />
             
-            <p:socket onMessage="handleShare" channel="photoshare" />
+            <p:socket onMessage="handleShare" channel="/photoshare" />
             
             <h3>Source</h3>
             <p:tabView>
@@ -47,7 +47,7 @@
 
 &lt;p:outputPanel id="photos" layout="block" styleClass="ui-widget-content ui-helper-clearfix" /&gt;
 
-&lt;p:socket onMessage="handleShare" channel="photoshare" /&gt;
+&lt;p:socket onMessage="handleShare" channel="/photoshare" /&gt;
 
 &lt;script type="text/javascript"&gt;
     //<![CDATA[
