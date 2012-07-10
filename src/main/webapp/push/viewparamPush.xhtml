@@ -29,7 +29,7 @@
             
             <h:outputText id="out" value="#{viewparamPush.data}" style="font-size:16px" />
             
-            <p:push onMessage="handleMessage" channel="viewparam" />
+            <p:socket onMessage="handleMessage" channel="viewparam" />
             
             <h3>Source</h3>
             <p:tabView>
@@ -42,7 +42,7 @@
 
 &lt;h:outputText id="out" value="\#{viewparamPush.data}" style="font-size:16px" /&gt;
             
-&lt;p:push onMessage="handleMessage" channel="viewparam" /&gt;
+&lt;p:socket onMessage="handleMessage" channel="viewparam" /&gt;
                     </pre>
                 </p:tab>
                 

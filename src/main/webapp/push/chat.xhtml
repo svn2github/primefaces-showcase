@@ -121,7 +121,7 @@
                              
             </h:form>
             
-            <p:push onMessage="handleMessage" channel="chat" autoConnect="false" widgetVar="subscriber"/>
+            <p:socket onMessage="handleMessage" channel="chat" autoConnect="false" widgetVar="subscriber"/>
 
             <h3>Source</h3>
             <p:tabView>
@@ -159,7 +159,7 @@
 
 &lt;/h:form&gt;
 
-&lt;p:push onmessage="handleMessage" channel="chat" widgetVar="chatAgent" /&gt;
+&lt;p:socket onmessage="handleMessage" channel="chat" widgetVar="chatAgent" /&gt;
 
 &lt;script type="text/javascript"&gt;
     function handleMessage(evt, data) {

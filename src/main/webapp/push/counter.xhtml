@@ -36,7 +36,7 @@
                 <p:commandButton value="Click" actionListener="#{globalCounter.increment}" />
             </h:form>
             
-            <p:push onMessage="handleMessage" channel="counter" />
+            <p:socket onMessage="handleMessage" channel="counter" />
             
             <h3>Source</h3>
             <p:tabView>
@@ -50,7 +50,7 @@
     &lt;p:commandButton value="Click" actionListener="\#{globalCounter.increment}" /&gt;
 &lt;/h:form&gt;
 
-&lt;p:push onMessage="handleMessage" channel="counter" /&gt;
+&lt;p:socket onMessage="handleMessage" channel="counter" /&gt;
                     </pre>
                 </p:tab>
                 
