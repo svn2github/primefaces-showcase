@@ -5,38 +5,6 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
 
-    <ui:define name="head">
-        <style type="text/css">
-            .silver .ui-colorpicker-container {
-                background-image: url(../images/colorpicker/silver_background.png);
-            }
-            .silver .ui-colorpicker_hex {
-                background-image: url(../images/colorpicker/silver_hex.png);
-            }
-            .silver .ui-colorpicker_rgb_r {
-                background-image: url(../images/colorpicker/silver_rgb_r.png);
-            }
-            .silver .ui-colorpicker_rgb_g {
-                background-image: url(../images/colorpicker/silver_rgb_g.png);
-            }
-            .silver .ui-colorpicker_rgb_b {
-                background-image: url(../images/colorpicker/silver_rgb_b.png);
-            }
-            .silver .ui-colorpicker_hsb_s {
-                background-image: url(../images/colorpicker/silver_hsb_s.png);
-            }
-            .silver .ui-colorpicker_hsb_h {
-                background-image: url(../images/colorpicker/silver_hsb_h.png);
-            }
-            .silver .ui-colorpicker_hsb_b {
-                background-image: url(../images/colorpicker/silver_hsb_b.png);
-            }
-            .silver .ui-colorpicker_submit {
-                background-image: url(../images/colorpicker/silver_submit.png);
-            }
-        </style>
-    </ui:define>
-
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">Color Picker</h1>
@@ -50,11 +18,8 @@
 						<h:outputText value="Inline: " />
 						<p:colorPicker id="inlineCP" value="#{colorBean.color1}" mode="inline" />
 
-                        <h:outputText value="Styled: " />
-						<p:colorPicker value="#{colorBean.color2}" styleClass="silver" mode="inline" />
-
                         <h:outputText value="Popup: " />
-						<p:colorPicker id="popupCP" value="#{colorBean.color3}" widgetVar="picker"/>
+						<p:colorPicker id="popupCP" value="#{colorBean.color2}" widgetVar="picker"/>
 					</h:panelGrid>
 
                     <p:separator />
@@ -62,16 +27,13 @@
                     <p:commandButton id="btn" value="Submit" oncomplete="dlg.show()" update="grid" />
 				</p:panel>
 
-                <p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors">
+                <p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false">
                     <h:panelGrid columns="2" id="grid">
                         <h:outputText value="Color 1: " />
                         <h:outputText id="inlineCPColor" value="#{colorBean.color1}" style="background-color:\##{colorBean.color1}"/>
 
                         <h:outputText value="Color 2: " />
                         <h:outputText value="#{colorBean.color2}" style="background-color:\##{colorBean.color2}"/>
-
-                        <h:outputText value="Color 3: " />
-                        <h:outputText id="popupCPColor" value="#{colorBean.color3}" style="background-color:\##{colorBean.color3}"/>
                     </h:panelGrid>
                 </p:dialog>
 				
@@ -88,11 +50,8 @@
             &lt;h:outputText value="Inline: " /&gt;
             &lt;p:colorPicker id="inlineCP" value="\#{colorBean.color1}" mode="inline" /&gt;
 
-            &lt;h:outputText value="Styled: " /&gt;
-            &lt;p:colorPicker value="\#{colorBean.color2}" styleClass="silver" mode="inline" /&gt;
-
             &lt;h:outputText value="Popup: " /&gt;
-            &lt;p:colorPicker id="popupCP" value="\#{colorBean.color3}" widgetVar="picker"/&gt;
+            &lt;p:colorPicker id="popupCP" value="\#{colorBean.color2}" widgetVar="picker"/&gt;
         &lt;/h:panelGrid&gt;
 
         &lt;p:separator /&gt;
@@ -100,16 +59,13 @@
         &lt;p:commandButton value="Submit" oncomplete="dlg.show()" update="grid @parent" /&gt;
     &lt;/p:panel&gt;
 
-    &lt;p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors"&gt;
+    &lt;p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false"&gt;
         &lt;h:panelGrid columns="2" id="grid"&gt;
             &lt;h:outputText value="Color 1: " /&gt;
             &lt;h:outputText value="\#{colorBean.color1}" style="background-color:\\#\#{colorBean.color1}"/&gt;
 
             &lt;h:outputText value="Color 2: " /&gt;
             &lt;h:outputText value="\#{colorBean.color2}" style="background-color:\\#\#{colorBean.color2}"/&gt;
-
-            &lt;h:outputText value="Color 3: " /&gt;
-            &lt;h:outputText value="\#{colorBean.color3}" style="background-color:\\#\#{colorBean.color3}"/&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
 
