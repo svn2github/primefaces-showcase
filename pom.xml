@@ -480,10 +480,10 @@
         </profile>
 
         <profile>
-            <id>appserver-2.0</id>
+            <id>appserver</id>
             <properties>
                 <jsfVersion>Native JSF Implementation</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.3.1-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.4-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
