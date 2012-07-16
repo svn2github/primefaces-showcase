@@ -184,8 +184,8 @@
 &lt;p:socket onMessage="handleMessage" channel="/chat" autoConnect="false" widgetVar="subscriber"/&gt;
 
 &lt;script type="text/javascript"&gt;
-    function handleMessage(evt, data) {
-        var chatContent = $('.chatContent');
+    function handleMessage(data) {
+        var chatContent = $(PrimeFaces.escapeClientId('form:public'));
         chatContent.append(data + '&lt;br /&gt;');
 
         //keep scroll
