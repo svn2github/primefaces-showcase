@@ -12,8 +12,8 @@
         <f:facet name="postinit">
             <script type="text/javascript">
                 //<![CDATA[
-                    function handleMessage(evt, data) {
-                        var chatContent = $('.chatContent');
+                    function handleMessage(data) {
+                        var chatContent = $(PrimeFaces.escapeClientId('chatForm:content'));
                         chatContent.append(data + '<br />');
 
                         //keep scroll
@@ -32,31 +32,30 @@
                 <h:form id="chatForm">
                     
                     <p:outputPanel id="container">
-                        <h:panelGroup rendered="#{chatController.loggedIn}" >
-                            <p:outputPanel layout="block" style="width:100%;height:200px;overflow:auto" 
-                                       styleClass="chatContent" />
+                        <h:panelGroup rendered="#{chatView.loggedIn}" >
+                            <p:outputPanel id="content" layout="block" style="width:100%;height:200px;overflow:auto"/>
 
                             <p:separator />
 
-                            <h:inputText value="#{chatController.message}" styleClass="messageInput" />
-                            <p:commandButton value="Send" actionListener="#{chatController.send}" 
+                            <p:inputText value="#{chatView.globalMessage}" styleClass="messageInput" />
+                            <p:commandButton value="Send" actionListener="#{chatView.sendGlobal}" 
                                      oncomplete="$('.messageInput').val('')"/>
                         </h:panelGroup>
                     
-                        <h:panelGroup rendered="#{not chatController.loggedIn}" >
-                            <h:inputText id="username" value="#{chatController.username}" />
+                        <h:panelGroup rendered="#{not chatView.loggedIn}" >
+                            <p:inputText id="username" value="#{chatView.username}" />
                             <p:watermark for="username" value="Username" />
                             
                             <p:separator />
 
                             <p:commandButton value="Login" icon="refresh" update="container"
-                                              actionListener="#{chatController.login}" />
+                                              actionListener="#{chatView.login}" />
                         </h:panelGroup>
                     </p:outputPanel>
                             
                 </h:form>
                 
-                <p:push onmessage="handleMessage" channel="chat" widgetVar="chatAgent" />
+                <p:socket onMessage="handleMessage" channel="/chat" widgetVar="subscriber"/>
                 
             </pm:content>
 

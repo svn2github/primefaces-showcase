@@ -104,7 +104,7 @@ public class ChatView {
         }
         else {
             users.addUser(username);
-            pushContext.push(CHANNEL, username + " joined the channel.");
+            pushContext.push(CHANNEL + "*", username + " joined the channel.");
             requestContext.execute("subscriber.connect('/" + username + "')");
             loggedIn = true;
         }
@@ -116,7 +116,7 @@ public class ChatView {
         RequestContext.getCurrentInstance().update("form:users");
         
         //push leave information
-        pushContext.push(CHANNEL, username + " left the channel.");
+        pushContext.push(CHANNEL + "*", username + " left the channel.");
         
         //reset state
         loggedIn = false;
