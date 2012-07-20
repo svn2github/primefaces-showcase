@@ -71,21 +71,22 @@
                                     <li><a href="#{request.contextPath}/ui/pprPartialTree.jsf">Partial Processing</a></li>
                                     <li><a href="#{request.contextPath}/ui/partialSubmit.jsf">Partial Submit</a></li>
                                     <li><a href="#{request.contextPath}/ui/pprAjaxValidations.jsf">Validations</a></li>
-                                    <li><a href="#{request.contextPath}/ui/selectors.jsf">Selectors</a></li>
+                                    
                                 </ul>
                             </td>
                             <td style="width:33%">
                                 <ul>
+                                    <li><a href="#{request.contextPath}/ui/selectors.jsf">Selectors</a></li>
                                     <li><a href="#{request.contextPath}/ui/poll.jsf">Polling</a></li>
                                     <li><a href="#{request.contextPath}/ui/remoteCommand.jsf">RemoteCommand</a></li>
-                                    <li><a href="#{request.contextPath}/ui/pprAjaxStatus.jsf">AjaxStatus 1</a></li>
-                                    <li><a href="#{request.contextPath}/ui/pprAjaxStatusScript.jsf">AjaxStatus 2</a></li>
+                                    <li><a href="#{request.contextPath}/ui/ajaxStatusHome.jsf">AjaxStatus</a></li>
+                                    
                                 </ul>
                             </td>
                             <td style="width:33%">
                                 <ul>
                                     <li><a href="#{request.contextPath}/ui/ajaxifyKeyEvents.jsf">Events</a></li>
-                                    <li><a href="#{request.contextPath}/ui/pprSelect.jsf">Selects</a></li>
+                                    <li><a href="#{request.contextPath}/ui/pprSelect.jsf">Selects</a></li>                                    
                                     <li><a href="#{request.contextPath}/ui/ajaxifyAction.jsf">Listeners</a></li>
                                     <li><a href="#{request.contextPath}/ui/pprCounter.jsf">Counter</a></li>
                                 </ul>
@@ -440,15 +441,17 @@
 			<p class="copyright">Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
 		</div>
 
-        <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
-            <f:facet name="start">
-                <p:graphicImage value="/images/loading.gif" />
-            </f:facet>
+        <ui:insert name="status">
+            <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+                <f:facet name="start">
+                    <p:graphicImage value="/images/loading.gif" />
+                </f:facet>
 
-            <f:facet name="complete">
-                <h:outputText value="" />
-            </f:facet>
-        </p:ajaxStatus>
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+        </ui:insert>
 
 	</h:body>
 
