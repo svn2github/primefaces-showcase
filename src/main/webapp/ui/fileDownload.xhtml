@@ -4,6 +4,23 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+        </style>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+function start() {
+    statusDialog.show();
+}
+
+function stop() {
+    statusDialog.show();
+}
+            //]]>
+        </script>
+    </ui:define>
 
 	<ui:define name="content">
 
@@ -13,11 +30,15 @@
 			is used by attaching it to any JSF command component like button or a link. Additionally presentation
 			of download can be configured with the contentDisposition attribute that takes either "attachment" or "inline" as a value.</p>
 			
+            <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+				<p:graphicImage value="/design/ajaxloadingbar.gif" />
+			</p:dialog>
+            
 			<h:form id="form">
 			
-				<p:commandLink id="downloadLink" value="Download" ajax="false">
+				<p:commandButton id="downloadLink" value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop)" icon="ui-icon-arrowthick-1-s">
 					<p:fileDownload value="#{fileDownloadController.file}" />
-				</p:commandLink>
+				</p:commandButton>
 			
 			</h:form>
 						
@@ -25,9 +46,28 @@
             <p:tabView>
                 <p:tab title="fileDownload.xhtml">
                     <pre name="code" class="xml">
-&lt;p:commandLink id="downloadLink" value="Download" ajax="false"&gt;
-	&lt;p:fileDownload value="\#{fileDownloadController.file}" /&gt;
-&lt;/p:commandLink&gt;
+&lt;p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false"&gt;
+    &lt;p:graphicImage value="/design/ajaxloadingbar.gif" /&gt;
+&lt;/p:dialog&gt;
+
+&lt;h:form id="form"&gt;
+
+&lt;p:commandButton id="downloadLink" value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop)" 
+        icon="ui-icon-arrowthichk-s"&gt;
+    &lt;p:fileDownload value="\#{fileDownloadController.file}" /&gt;
+&lt;/p:commandButton&gt;
+
+&lt;/h:form&gt;
+
+        &lt;script type="text/javascript"&gt;
+function start() {
+    statusDialog.show();
+}
+
+function stop() {
+    statusDialog.show();
+}
+        &lt;/script&gt;
                     </pre>  
                 </p:tab>
                 
