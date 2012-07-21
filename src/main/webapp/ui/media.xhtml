@@ -48,7 +48,7 @@
             <p:media value="http://malsup.github.com/video/clear.avi" width="250" height="300">
                 <f:param name="autostart" value="false" />
                 <p:outputPanel layout="block">
-                    RealPlayer is required to view this media. <h:outputLink value="http://www.microsoft.com/Windows/MediaPlayer/">Download Here</h:outputLink>
+                    Windows Media is required to view this media. <h:outputLink value="http://www.microsoft.com/Windows/MediaPlayer/">Download Here</h:outputLink>
                 </p:outputPanel>
             </p:media>
             
@@ -61,7 +61,9 @@
             </p:media>
             
             <h3>PDF</h3>
-            <p:media value="/resources/other/guide.pdf" width="100%" height="300px" />
+            <p:media value="/resources/other/guide.pdf" width="100%" height="300px">
+                Your browser can't display pdf, <h:outputLink value="/resources/other/guide.pdf">click</h:outputLink> to download pdf instead.
+            </p:media>
             
 			<h3>Source</h3>
             <p:tabView>
@@ -84,7 +86,7 @@
 &lt;p:media value="http://malsup.github.com/video/clear.avi" width="250" height="300"&gt;
     &lt;f:param name="autostart" value="false" /&gt;
     &lt;p:outputPanel layout="block"&gt;
-        RealPlayer is required to view this media. &lt;h:outputLink value="http://www.microsoft.com/Windows/MediaPlayer/"&gt;Download Here&lt;/h:outputLink&gt;
+        Windows Media is required to view this media. &lt;h:outputLink value="http://www.microsoft.com/Windows/MediaPlayer/"&gt;Download Here&lt;/h:outputLink&gt;
     &lt;/p:outputPanel&gt;
 &lt;/p:media&gt;
 
@@ -96,8 +98,9 @@
     &lt;/p:outputPanel&gt;
 &lt;/p:media&gt;
 
-&lt;h3&gt;PDF&lt;/h3&gt;
-&lt;p:media value="/resources/other/guide.pdf" width="100%" height="300px" /&gt;
+&lt;p:media value="/resources/other/guide.pdf" width="100%" height="300px"&gt;
+    Your browser can't display pdf, &lt;h:outputLink value="/resources/other/guide.pdf"&gt;click&lt;/h:outputLink&gt; to download pdf instead.
+&lt;/p:media&gt;
                     </pre>	
                 </p:tab>
             </p:tabView>
