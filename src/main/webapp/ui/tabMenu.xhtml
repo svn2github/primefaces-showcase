@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">TabMenu</h1>
+		<div class="entry">
+			<p>TabMenu is a menu component that displays menuitems as tabs.</p>
+			
+			<p:tabMenu activeIndex="0">
+				<p:menuitem value="Overview" url="/ui/tabMenu.jsf" icon="ui-icon-star"/>
+				<p:menuitem value="Demos" url="/ui/tabMenuDemos.jsf" icon="ui-icon-search" />
+				<p:menuitem value="Documentation" url="/ui/tabMenuDocumentation.jsf" icon="ui-icon-document"/>
+				<p:menuitem value="Support" url="/ui/tabMenuSupport.jsf" icon="ui-icon-wrench"/>
+				<p:menuitem value="Social" url="/ui/tabMenuSocial.jsf" icon="ui-icon-person" />
+			</p:tabMenu>
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="tabMenu.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:tabMenu activeIndex="0"&gt;
+    &lt;p:menuitem value="Overview" url="/ui/tabMenu.jsf" icon="ui-icon-star"/&gt;
+    &lt;p:menuitem value="Demos" url="/ui/tabMenuDemos.jsf" icon="ui-icon-search" /&gt;
+    &lt;p:menuitem value="Documentation" url="/ui/tabMenuDocumentation.jsf" icon="ui-icon-document"/&gt;
+    &lt;p:menuitem value="Support" url="/ui/tabMenuSupport.jsf" icon="ui-icon-wrench"/&gt;
+    &lt;p:menuitem value="Social" url="/ui/tabMenuSocial.jsf" icon="ui-icon-person" /&gt;
+&lt;/p:tabMenu&gt;
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+		</div>
+
+	</ui:define>
+</ui:composition>
