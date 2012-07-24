@@ -1,1 +1,4 @@
-<% response.sendRedirect("index.jsf"); %>
+<% 
+    response.sendRedirect("index.jsf");
+    return;
+%>
