@@ -13,7 +13,7 @@
 					
 			<h3>Messages</h3>	
 			<h:form id="form1">
-                <p:messages id="messages" showDetail="true" autoUpdate="true"/>
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 				
 				<p:commandButton id="infoButton" value="Info" actionListener="#{messagesController.addInfo}"/>
 				<p:commandButton id="warnButton" value="Warn" actionListener="#{messagesController.addWarn}"/>
@@ -46,7 +46,7 @@
 <pre name="code" class="xml">
 &lt;h3&gt;Messages&lt;/h3&gt;
 &lt;h:form id="form1"&gt;
-    &lt;p:messages id="messages" showDetail="true" autoUpdate="true"/&gt;
+    &lt;p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /&gt;
 
     &lt;p:commandButton id="infoButton" value="Info" actionListener="\#{messagesController.addInfo}"/&gt;
     &lt;p:commandButton id="warnButton" value="Warn" actionListener="\#{messagesController.addWarn}"/&gt;
