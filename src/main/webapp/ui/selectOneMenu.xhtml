@@ -31,15 +31,15 @@
                         <f:selectItems value="#{pprBean.cities}" />
                     </p:selectOneMenu>
 
-                    <h:outputText value="Pojo with Filter: " />
-                    <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer1}" effect="fade" converter="player" filter="true" filterMatchMode="startsWith">
+                    <h:outputText value="Pojo: " />
+                    <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer1}" effect="fade" converter="player">
                         <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}"/>
                     </p:selectOneMenu>
 
                     <h:outputText value="Content with Filter:" />
                     <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer2}" converter="player"
-                                     effect="fade" var="p" style="width:160px">
+                                     effect="fade" var="p" style="width:160px" filter="true" filterMatchMode="startsWith">
                         <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}"/>
 
@@ -92,15 +92,15 @@
             &lt;f:selectItems value="\#{pprBean.cities}" /&gt;
         &lt;/p:selectOneMenu&gt;
 
-        &lt;h:outputText value="Pojo with Filter: " /&gt;
-        &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer1}" effect="fade" converter="player" filter="true" filterMatchMode="startsWith"&gt;
+        &lt;h:outputText value="Pojo: " /&gt;
+        &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer1}" effect="fade" converter="player"&gt;
             &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
             &lt;f:selectItems value="\#{autoCompleteBean.players}" var="player" itemLabel="\#{player.name}" itemValue="\#{player}"/&gt;
         &lt;/p:selectOneMenu&gt;
 
-        &lt;h:outputText value="Custom Content:" /&gt;
+        &lt;h:outputText value="Content with Filter:" /&gt;
         &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer2}" converter="player"
-                         effect="fade" var="p" style="width:160px"&gt;
+                         effect="fade" var="p" style="width:160px"  filter="true" filterMatchMode="startsWith"&gt;
             &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
             &lt;f:selectItems value="\#{autoCompleteBean.players}" var="player" itemLabel="\#{player.name}" itemValue="\#{player}"/&gt;
 
