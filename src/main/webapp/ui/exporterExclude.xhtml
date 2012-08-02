@@ -9,7 +9,7 @@
 
         <h1 class="title ui-widget-header ui-corner-all">DataExporter - Exclude Columns</h1>
         <div class="entry">
-            <p>excludeColumns property is used to specify columns to be excluded from the data export process</p>    	
+            <p>Particular columns can be exluded in exported document.</p>    	
 
             <h:form id="form">
                 <p:dataTable id="tbl" var="car" value="#{tableBean.cars}" 
@@ -21,21 +21,21 @@
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column>
+                    <p:column exportable="false">
                         <f:facet name="header">
                             <h:outputText value="Year" />
                         </f:facet>
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column>
+                    <p:column  exportable="false">
                         <f:facet name="header">
                             <h:outputText value="Manufacturer" />
                         </f:facet>
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column>
+                    <p:column exportable="false">
                         <f:facet name="header">
                             <h:outputText value="Color" />
                         </f:facet>
@@ -45,22 +45,22 @@
 
                 <h:commandLink id="excel">
                     <p:graphicImage value="/images/excel.png" />
-                    <p:dataExporter type="xls" target="tbl" fileName="cars" excludeColumns="0"/>
+                    <p:dataExporter type="xls" target="tbl" fileName="cars" />
                 </h:commandLink>
 
                 <h:commandLink id="pdf">
                     <p:graphicImage value="/images/pdf.png" />
-                    <p:dataExporter type="pdf" target="tbl" fileName="cars" excludeColumns="1"/>
+                    <p:dataExporter type="pdf" target="tbl" fileName="cars" />
                 </h:commandLink>
 
                 <h:commandLink id="csv">
                     <p:graphicImage value="/images/csv.png" />
-                    <p:dataExporter type="csv" target="tbl" fileName="cars" excludeColumns="0,1"/>
+                    <p:dataExporter type="csv" target="tbl" fileName="cars" />
                 </h:commandLink>
 
                 <h:commandLink id="xml">
                     <p:graphicImage value="/images/xml.png" />
-                    <p:dataExporter type="xml" target="tbl" fileName="cars" excludeColumns="1,2"/>
+                    <p:dataExporter type="xml" target="tbl" fileName="cars" />
                 </h:commandLink>
             </h:form>
 
@@ -76,21 +76,21 @@
 		&lt;h:outputText value="\#{car.model}" /&gt;
 	&lt;/p:column&gt;
 
-	&lt;p:column&gt;
+	&lt;p:column exportable="false"&gt;
 		&lt;f:facet name="header"&gt;
 			&lt;h:outputText value="Year" /&gt;
 		&lt;/f:facet&gt;
 		&lt;h:outputText value="\#{car.year}" /&gt;
 	&lt;/p:column&gt;
 
-	&lt;p:column&gt;
+	&lt;p:column  exportable="false"&gt;
 		&lt;f:facet name="header"&gt;
 			&lt;h:outputText value="Manufacturer" /&gt;
 		&lt;/f:facet&gt;
 		&lt;h:outputText value="\#{car.manufacturer}" /&gt;
 	&lt;/p:column&gt;
 
-	&lt;p:column&gt;
+	&lt;p:column  exportable="false"&gt;
 		&lt;f:facet name="header"&gt;
 			&lt;h:outputText value="Color" /&gt;
 		&lt;/f:facet&gt;
