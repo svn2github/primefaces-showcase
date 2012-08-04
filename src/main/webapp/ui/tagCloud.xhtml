@@ -4,20 +4,37 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-
+    
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">TagCloud</h1>
 		<div class="entry">
-			<p>TagCloud displays a collection of tags with different strengths.</p>
+			<p>TagCloud displays a collection of tags with different strengths. Items can either be used as
+            regular links or as command items via optional select ajax behavior event.</p>
 
-			<p:tagCloud model="#{tagCloudBean.model}" />
+            <h:form>
+                
+                <p:growl id="msg" showDetail="true" />
+            
+                <p:tagCloud model="#{tagCloudBean.model}">
+                    <p:ajax event="select" update="msg" listener="#{tagCloudBean.onSelect}" />
+                </p:tagCloud>
 
+            </h:form>
+                
 			<h3>Source</h3>
 			<p:tabView>
 				<p:tab title="tagCloud.xhtml">
                     <pre name="code" class="xml">
-&lt;p:tagCloud model="\#{tagCloudBean.model}" /&gt;
+&lt;h:form&gt;
+                
+    &lt;p:growl id="msg" showDetail="true" /&gt;
+
+    &lt;p:tagCloud model="\#{tagCloudBean.model}"&gt;
+        &lt;p:ajax event="select" update="msg" listener="\#{tagCloudBean.onSelect}" /&gt;
+    &lt;/p:tagCloud&gt;
+
+&lt;/h:form&gt;
                     </pre>
 				</p:tab>
 
@@ -25,32 +42,43 @@
                     <pre name="code" class="java">
 package org.primefaces.examples.view;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.tagcloud.DefaultTagCloudItem;
 import org.primefaces.model.tagcloud.DefaultTagCloudModel;
+import org.primefaces.model.tagcloud.TagCloudItem;
 import org.primefaces.model.tagcloud.TagCloudModel;
 
 public class TagCloudBean {
 
     private TagCloudModel model;
-
+    
     public TagCloudBean() {
         model = new DefaultTagCloudModel();
-        model.addTag(new DefaultTagCloudItem("Transformers", "#", 1));
-        model.addTag(new DefaultTagCloudItem("RIA", "#", 3));
-        model.addTag(new DefaultTagCloudItem("AJAX", "#", 2));
-        model.addTag(new DefaultTagCloudItem("jQuery", "#", 5));
-        model.addTag(new DefaultTagCloudItem("NextGen", "#", 4));
-        model.addTag(new DefaultTagCloudItem("JSF 2.0", "#", 2));
-        model.addTag(new DefaultTagCloudItem("FCB", "#", 5));
-        model.addTag(new DefaultTagCloudItem("Mobile", "#", 3));
-        model.addTag(new DefaultTagCloudItem("Themes", "#", 4));
-        model.addTag(new DefaultTagCloudItem("Rocks", "#", 1));
+        model.addTag(new DefaultTagCloudItem("Transformers", 1));
+        model.addTag(new DefaultTagCloudItem("RIA", "/ui/tagCloud.jsf", 3));
+        model.addTag(new DefaultTagCloudItem("AJAX", 2));
+        model.addTag(new DefaultTagCloudItem("jQuery", "/ui/tagCloud.jsf", 5));
+        model.addTag(new DefaultTagCloudItem("NextGen", 4));
+        model.addTag(new DefaultTagCloudItem("JSF 2.0", "/ui/tagCloud.jsf", 2));
+        model.addTag(new DefaultTagCloudItem("FCB", 5));
+        model.addTag(new DefaultTagCloudItem("Mobile",  3));
+        model.addTag(new DefaultTagCloudItem("Themes", "/ui/tagCloud.jsf", 4));
+        model.addTag(new DefaultTagCloudItem("Rocks", "/ui/tagCloud.jsf", 1));
     }
 
     public TagCloudModel getModel() {
         return model;
     }
+    
+    public void onSelect(SelectEvent event) {
+        TagCloudItem item = (TagCloudItem) event.getObject();
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item Selected", item.getLabel());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
+
                     </pre>
 				</p:tab>
 			</p:tabView>
