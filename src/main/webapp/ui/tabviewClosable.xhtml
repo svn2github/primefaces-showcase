@@ -103,8 +103,8 @@ import org.primefaces.event.TabCloseEvent;
 
 public class TabBean {
 
-    public void onTabChange(TabCloseEvent event) {
-        FacesMessage msg = new FacesMessage("Tab Closed", "Closed Tab: " + event.getTab().getTitle());
+    public void onTabClose(TabCloseEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
