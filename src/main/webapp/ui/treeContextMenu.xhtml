@@ -22,7 +22,8 @@
 
 				<p:tree id="treeSingle" value="#{treeBean.root}" var="node"
 						selectionMode="single"
-						selection="#{treeBean.selectedNode}">
+						selection="#{treeBean.selectedNode}"
+                        dynamic="true">
 
 					<p:treeNode>
 						<h:outputText value="#{node}" />
@@ -46,7 +47,8 @@
 
     &lt;p:tree id="treeSingle" value="\#{treeBean.root}" var="node"
             selectionMode="single"
-            selection="\#{treeBean.selectedNode}"&gt;
+            selection="\#{treeBean.selectedNode}"
+            dynamic="true"&gt;
 
         &lt;p:treeNode&gt;
             &lt;h:outputText value="\#{node}" /&gt;
