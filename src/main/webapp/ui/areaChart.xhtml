@@ -10,20 +10,20 @@
 		<div class="entry">
             <p>AreaChart is implemented by enabling stacked and fill options of lineChart.</p>
 
-            <p:lineChart id="filled" value="#{chartBean.categoryModel}" legendPosition="ne" fill="false" minY="0"
+            <p:lineChart id="filled" value="#{chartBean.categoryModel}" legendPosition="ne" fill="true"
                          title="Filled" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Births" />
 
-            <p:lineChart id="stacked" value="#{chartBean.categoryModel}" legendPosition="ne" stacked="true" fill="true" minY="0"
+            <p:lineChart id="stacked" value="#{chartBean.categoryModel}" legendPosition="ne" stacked="true" fill="true"
                          title="Stacked and Filled" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Births" />
             
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="areaChart.xhtml">
                     <pre name="code" class="xml">
-&lt;p:lineChart id="filled" value="\#{chartBean.categoryModel}" legendPosition="ne" fill="true" minY="0"
+&lt;p:lineChart id="filled" value="\#{chartBean.categoryModel}" legendPosition="ne" fill="true"
              title="Filled" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Births" /&gt;
 
-&lt;p:lineChart id="stacked" value="\#{chartBean.categoryModel}" legendPosition="ne" stacked="true" fill="true" minY="0"
+&lt;p:lineChart id="stacked" value="\#{chartBean.categoryModel}" legendPosition="ne" stacked="true" fill="true""
              title="Stacked and Filled" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Births" /&gt;
                     </pre>
                 </p:tab>
