@@ -26,7 +26,7 @@
                 </p:panel>
 
                 <h3>Advanced Panel</h3>
-                <p:panel id="pnl" header="About Barca" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="2000" widgetVar="panel">
+                <p:panel id="pnl" header="About Barca" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel">
 
                     <p:ajax event="close" listener="#{panelBean.handleClose}" update="growl" />
                     <p:ajax event="toggle" listener="#{panelBean.handleToggle}" update="growl" />
@@ -78,7 +78,7 @@
     &lt;/p:panel&gt;
 
     &lt;h3&gt;Advanced Panel&lt;/h3&gt;
-    &lt;p:panel id="pnl" header="About Barca" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="2000" widgetVar="panel"&gt;
+    &lt;p:panel id="pnl" header="About Barca" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel"&gt;
 
         &lt;p:ajax event="close" listener="\#{panelBean.handleClose}" update="growl" /&gt;
         &lt;p:ajax event="toggle" listener="\#{panelBean.handleToggle}" update="growl" /&gt;
