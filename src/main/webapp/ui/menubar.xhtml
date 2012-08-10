@@ -44,11 +44,11 @@
 					
 					<p:submenu label="Actions" icon="ui-icon-gear">
 						<p:submenu label="Ajax" icon="ui-icon-refresh">
-							<p:menuitem value="Save" actionListener="#{buttonBean.save}" icon="ui-icon-disk" update="messages"/>
-							<p:menuitem value="Update" actionListener="#{buttonBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+							<p:menuitem value="Save" actionListener="#{menuBean.save}" icon="ui-icon-disk" update="messages"/>
+							<p:menuitem value="Update" actionListener="#{menuBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
 						</p:submenu>
 						<p:submenu label="Non-Ajax" icon="ui-icon-newwin">
-							<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+							<p:menuitem value="Delete" actionListener="#{menuBean.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
 						</p:submenu>
 					</p:submenu>
 
@@ -86,11 +86,11 @@
 					
 					<p:submenu label="Actions" icon="ui-icon-gear">
 						<p:submenu label="Ajax" icon="ui-icon-refresh">
-							<p:menuitem value="Save" actionListener="#{buttonBean.save}" icon="ui-icon-disk" update="messages"/>
-							<p:menuitem value="Update" actionListener="#{buttonBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+							<p:menuitem value="Save" actionListener="#{menuBean.save}" icon="ui-icon-disk" update="messages"/>
+							<p:menuitem value="Update" actionListener="#{menuBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
 						</p:submenu>
 						<p:submenu label="Non-Ajax" icon="ui-icon-newwin">
-							<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+							<p:menuitem value="Delete" actionListener="#{menuBean.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
 						</p:submenu>
 					</p:submenu>
 
@@ -138,11 +138,11 @@
 
         &lt;p:submenu label="Actions" icon="ui-icon-gear"&gt;
             &lt;p:submenu label="Ajax" icon="ui-icon-refresh"&gt;
-                &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" icon="ui-icon-disk" update="messages"/&gt;
-                &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/&gt;
+                &lt;p:menuitem value="Save" actionListener="\#{menuBean.save}" icon="ui-icon-disk" update="messages"/&gt;
+                &lt;p:menuitem value="Update" actionListener="\#{menuBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/&gt;
             &lt;/p:submenu&gt;
             &lt;p:submenu label="Non-Ajax" icon="ui-icon-newwin"&gt;
-                &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" icon="ui-icon-close" update="messages" ajax="false"/&gt;
+                &lt;p:menuitem value="Delete" actionListener="\#{menuBean.delete}" icon="ui-icon-close" update="messages" ajax="false"/&gt;
             &lt;/p:submenu&gt;
         &lt;/p:submenu&gt;
 
@@ -159,24 +159,23 @@
 				</p:tab>
 				
 				<p:tab title="MenuBean.java">
-<pre name="code" class="xml">
+<pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 public class MenuBean {
-	
-	public void save(ActionEvent actionEvent) {
+    
+    public void save() {
 		addMessage("Data saved");
 	}
 	
-	public void update(ActionEvent actionEvent) {
+	public void update() {
 		addMessage("Data updated");
 	}
 	
-	public void delete(ActionEvent actionEvent) {
+	public void delete() {
 		addMessage("Data deleted");
 	}
 	

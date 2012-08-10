@@ -17,15 +17,15 @@
 				<h3>Plain Menu</h3>
 				<p:menu>
 					<p:submenu label="Ajax Menuitems">
-						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk" />
-						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+						<p:menuitem value="Save" actionListener="#{menuBean.save}" update="messages" icon="ui-icon-disk" />
+						<p:menuitem value="Update" actionListener="#{menuBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
 					</p:submenu>
 					<p:submenu label="Non-Ajax Menuitem">
-						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+						<p:menuitem value="Delete" actionListener="#{menuBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
 					</p:submenu>
 					<p:submenu label="Navigations">
-						<p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home"/>
-						<p:menuitem value="TouchFaces" url="/touch" icon="ui-icon-star"/>
+						<p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
+						<p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/>
 					</p:submenu>
 				</p:menu>
 
@@ -33,15 +33,15 @@
 				<p:commandButton id="dynaButton" value="Show" type="button"/>
                 <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
 					<p:submenu label="Ajax Menuitems">
-						<p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk"/>
-						<p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+						<p:menuitem value="Save" actionListener="#{menuBean.save}" update="messages" icon="ui-icon-disk"/>
+						<p:menuitem value="Update" actionListener="#{menuBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
 					</p:submenu>
 					<p:submenu label="Non-Ajax Menuitem">
-						<p:menuitem value="Delete" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+						<p:menuitem value="Delete" actionListener="#{menuBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
 					</p:submenu>
 					<p:submenu label="Navigations">
-						<p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home"/>
-						<p:menuitem value="TouchFaces" url="/touch" icon="ui-icon-star"/>
+						<p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
+						<p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/>
 					</p:submenu>
 				</p:menu>
                 
@@ -61,15 +61,15 @@
     &lt;h3&gt;Plain Menu&lt;/h3&gt;
     &lt;p:menu&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
-            &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon-disk"/&gt;
-            &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{menuBean.save}" update="messages" icon="ui-icon-disk" /&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{menuBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Non-Ajax Menuitem"&gt;
-            &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{menuBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Navigations"&gt;
-            &lt;p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home"/&gt;
-            &lt;p:menuitem value="TouchFaces" url="/touch" icon="ui-icon-star"/&gt;
+            &lt;p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/&gt;
+            &lt;p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/&gt;
         &lt;/p:submenu&gt;
     &lt;/p:menu&gt;
 
@@ -77,15 +77,15 @@
     &lt;p:commandButton id="dynaButton" value="Show" type="button"/&gt;
     &lt;p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom"&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
-            &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon-disk"/&gt;
-            &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{menuBean.save}" update="messages" icon="ui-icon-disk"/&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{menuBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Non-Ajax Menuitem"&gt;
-            &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{menuBean.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Navigations"&gt;
-            &lt;p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home"/&gt;
-            &lt;p:menuitem value="TouchFaces" url="/touch" icon="ui-icon-star"/&gt;
+            &lt;p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/&gt;
+            &lt;p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/&gt;
         &lt;/p:submenu&gt;
     &lt;/p:menu&gt;
 
@@ -98,6 +98,15 @@
 				
 				<p:tab title="MenuBean.java">
 <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.component.menuitem.MenuItem;
+import org.primefaces.component.submenu.Submenu;
+import org.primefaces.model.DefaultMenuModel;
+import org.primefaces.model.MenuModel;
+
 public class MenuBean {
 
 	private MenuModel model;
@@ -132,10 +141,27 @@ public class MenuBean {
 		
 		model.addSubmenu(submenu);
 	}
-	
+
 	public MenuModel getModel() {
 		return model;
 	}	
+    
+    public void save() {
+		addMessage("Data saved");
+	}
+	
+	public void update() {
+		addMessage("Data updated");
+	}
+	
+	public void delete() {
+		addMessage("Data deleted");
+	}
+	
+	public void addMessage(String summary) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
 }
 			</pre>
 				</p:tab>
