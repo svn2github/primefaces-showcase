@@ -13,7 +13,7 @@
 
 			<h:form id="form">
 
-                <p:selectCheckboxMenu id="menu" value="#{formBean.selectedMovies}" label="Movies" filter="true" filterText="Filter">
+                <p:selectCheckboxMenu id="menu" value="#{formBean.selectedMovies}" label="Movies" filter="true" filterMatchMode="startsWith">
                     <f:selectItems value="#{formBean.movies}" />
                 </p:selectCheckboxMenu>
 
@@ -35,7 +35,7 @@
 					<pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;p:selectCheckboxMenu value="\#{formBean.selectedMovies}" label="Movies" filter="true" filterText="Filter"&gt;
+    &lt;p:selectCheckboxMenu value="\#{formBean.selectedMovies}" label="Movies" filter="true" filterText="Filter" filterMatchMode="startsWith"&gt;
         &lt;f:selectItems value="\#{formBean.movies}" /&gt;
     &lt;/p:selectCheckboxMenu&gt;
 
