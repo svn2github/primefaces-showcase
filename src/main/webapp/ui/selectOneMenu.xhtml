@@ -38,7 +38,7 @@
                     </p:selectOneMenu>
 
                     <h:outputText value="Content with Filter:" />
-                    <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer2}" converter="player"
+                    <p:selectOneMenu value="#{autoCompleteBean.selectedPlayer2}" converter="player" panelStyle="width:150px"
                                      effect="fade" var="p" style="width:160px" filter="true" filterMatchMode="startsWith">
                         <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}"/>
@@ -99,7 +99,7 @@
         &lt;/p:selectOneMenu&gt;
 
         &lt;h:outputText value="Content with Filter:" /&gt;
-        &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer2}" converter="player"
+        &lt;p:selectOneMenu value="\#{autoCompleteBean.selectedPlayer2}" converter="player" panelStyle="width:150px"
                          effect="fade" var="p" style="width:160px"  filter="true" filterMatchMode="startsWith"&gt;
             &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
             &lt;f:selectItems value="\#{autoCompleteBean.players}" var="player" itemLabel="\#{player.name}" itemValue="\#{player}"/&gt;
