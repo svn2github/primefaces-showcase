@@ -22,6 +22,7 @@ import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import org.primefaces.context.RequestContext;
 
 public class PPRBean implements Serializable {
 
@@ -243,5 +244,9 @@ public class PPRBean implements Serializable {
         FacesMessage msg = new FacesMessage("Selected", "City:" + city + ", Suburb: " + suburb);
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void reset() {
+        RequestContext.getCurrentInstance().reset("form:panel");
     }
 }

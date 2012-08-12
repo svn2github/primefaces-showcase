@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">ResetInput</h1>
+        <div class="entry">
+            <p>Input components keep their local values at state when validation fails. ResetInput is used to clear the cached
+            values from state so that components retrieve their values from the backing bean model instead.</p>
+
+            <h:form id="form">
+
+                <p:panel id="panel" header="New User" style="margin-bottom:10px;">
+                    <p:messages id="messages" />
+                    <h:panelGrid columns="3">
+                        <h:outputLabel for="firstname" value="Firstname: *" />
+                        <p:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
+                            <f:validateLength minimum="2" />
+                        </p:inputText>
+                        <p:message for="firstname" />
+
+                        <h:outputLabel for="surname" value="Surname: *" />
+                        <p:inputText id="surname" value="#{pprBean.surname}" required="true" label="Surname"/>
+                        <p:message for="surname" />
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:commandButton value="Submit" update="panel" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" />
+                
+                <p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" >
+                    <p:resetInput target="panel" />
+                </p:commandButton>
+                
+                <p:commandButton value="Reset Code" actionListener="#{pprBean.reset}" process="@this" style="margin-right:20px;" />
+                
+                <p:commandButton value="Reset Non-Ajax" actionListener="#{pprBean.reset}" immediate="true" ajax="false">
+                    <p:resetInput target="panel" />
+                </p:commandButton>
+
+            </h:form>
+
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="resetInput.xhtml">
+                        <pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+
+    &lt;p:panel id="panel" header="New User" style="margin-bottom:10px;"&gt;
+        &lt;p:messages id="messages" /&gt;
+        &lt;h:panelGrid columns="3"&gt;
+            &lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
+            &lt;p:inputText id="firstname" value="\#{pprBean.firstname}" required="true" label="Firstname"&gt;
+                &lt;f:validateLength minimum="2" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="firstname" /&gt;
+
+            &lt;h:outputLabel for="surname" value="Surname: *" /&gt;
+            &lt;p:inputText id="surname" value="\#{pprBean.surname}" required="true" label="Surname"/&gt;
+            &lt;p:message for="surname" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:commandButton value="Submit" update="panel" actionListener="\#{pprBean.savePerson}" style="margin-right:20px;" /&gt;
+
+    &lt;p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" &gt;
+        &lt;p:resetInput target="panel" /&gt;
+    &lt;/p:commandButton&gt;
+
+    &lt;p:commandButton value="Reset Code" actionListener="\#{pprBean.reset}" process="@this" style="margin-right:20px;" /&gt;
+
+    &lt;p:commandButton value="Reset Non-Ajax" actionListener="\#{pprBean.reset}" immediate="true" ajax="false"&gt;
+        &lt;p:resetInput target="panel" /&gt;
+    &lt;/p:commandButton&gt;
+
+&lt;/h:form&gt;
+						</pre>
+				</p:tab>
+				
+				<p:tab title="PPRBean.java">
+<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import org.primefaces.context.RequestContext;
+
+public class PPRBean {
+
+	private String firstname;
+	
+	private String surname;
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+    
+    public void reset() {
+        RequestContext.getCurrentInstance().reset("form:panel");
+    }
+}
+</pre>
+				</p:tab>
+			</p:tabView>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
