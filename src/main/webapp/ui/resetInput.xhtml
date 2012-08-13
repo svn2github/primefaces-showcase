@@ -29,13 +29,13 @@
                     </h:panelGrid>
                 </p:panel>
 
-                <p:commandButton value="Submit" update="panel" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" />
+                <p:commandButton value="Submit" update="panel" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" process="panel"/>
                 
                 <p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" >
                     <p:resetInput target="panel" />
                 </p:commandButton>
                 
-                <p:commandButton value="Reset Code" actionListener="#{pprBean.reset}" process="@this" style="margin-right:20px;" />
+                <p:commandButton value="Reset Code" update="panel" process="@this" actionListener="#{pprBean.reset}"  style="margin-right:20px;" />
                 
                 <p:commandButton value="Reset Non-Ajax" actionListener="#{pprBean.reset}" immediate="true" ajax="false">
                     <p:resetInput target="panel" />
