@@ -20,22 +20,20 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">Carousel - Selection</h1>
 		<div class="entry">
-			<p>As carousel is a data component, a column is necessary to process selection properly.</p>
+			<p>This example demonstrates how to select an item from Carousel.</p>
 		
 			<h:form id="form">
 				<p:carousel id="carousel" value="#{tableBean.carsSmall}" var="car" itemStyleClass="carItem" headerText="Cars">
-					<p:column>
-						<p:graphicImage id="image" value="/images/cars/#{car.manufacturer}.jpg"/> 
-							
-						<h:panelGrid columns="1" style="width:100%" cellpadding="5">
-							<h:outputText value="Model: " /><h:outputText id="model" value="#{car.model}" />
-						</h:panelGrid>
-							
-						<p:commandLink id="view" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">
-							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
-							<f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
-						</p:commandLink>
-					</p:column>
+                    <p:graphicImage id="image" value="/images/cars/#{car.manufacturer}.jpg"/> 
+
+                    <h:panelGrid columns="1" style="width:100%" cellpadding="5">
+                        <h:outputText value="Model: " /><h:outputText id="model" value="#{car.model}" />
+                    </h:panelGrid>
+
+                    <p:commandLink id="view" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">
+                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                        <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
+                    </p:commandLink>
 				</p:carousel>
 				
 				<p:dialog id="dialog" header="Car Detail" showEffect="fade" hideEffect="fade" modal="true"
@@ -66,19 +64,17 @@
 				<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 	&lt;p:carousel id="carousel" value="\#{tableBean.carsSmall}" var="car" itemStyleClass="carItem" headerText="Cars"&gt;
-		&lt;p:column&gt;
-			&lt;p:graphicImage id="image" value="/images/cars/\#{car.manufacturer}.jpg"/&gt; 
-				
-			&lt;h:panelGrid columns="2" style="width:100%" cellpadding="5"&gt;
-				&lt;h:outputText value="Model: " /&gt;&lt;h:outputText id="model" value="\#{car.model}" /&gt;
-			&lt;/h:panelGrid&gt;
-				
-			&lt;p:commandLink id="view" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
-				&lt;h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" /&gt; 
-				&lt;f:setPropertyActionListener value="\#{car}" 
-						target="\#{tableBean.selectedCar}" /&gt;
-			&lt;/p:commandLink&gt;
-		&lt;/p:column&gt;
+        &lt;p:graphicImage id="image" value="/images/cars/\#{car.manufacturer}.jpg"/&gt; 
+
+        &lt;h:panelGrid columns="2" style="width:100%" cellpadding="5"&gt;
+            &lt;h:outputText value="Model: " /&gt;&lt;h:outputText id="model" value="\#{car.model}" /&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:commandLink id="view" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
+            &lt;h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" /&gt; 
+            &lt;f:setPropertyActionListener value="\#{car}" 
+                    target="\#{tableBean.selectedCar}" /&gt;
+        &lt;/p:commandLink&gt;
 	&lt;/p:carousel&gt;
 
 	&lt;p:dialog header="Car Detail" showEffect="fade" hideEffect="fade" modal="true"
