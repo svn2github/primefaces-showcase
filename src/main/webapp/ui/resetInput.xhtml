@@ -29,7 +29,9 @@
                     </h:panelGrid>
                 </p:panel>
 
-                <p:commandButton value="Submit" update="panel" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" process="panel"/>
+                <p:commandButton value="Submit" update="panel" actionListener="#{pprBean.savePerson}" style="margin-right:20px;" />
+                
+                <p:commandButton value="Reset Fail" update="panel" process="@this" actionListener="#{pprBean.resetFail}" style="margin-right:20px;" />
                 
                 <p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" >
                     <p:resetInput target="panel" />
@@ -64,13 +66,15 @@
         &lt;/h:panelGrid&gt;
     &lt;/p:panel&gt;
 
-    &lt;p:commandButton value="Submit" update="panel" actionListener="\#{pprBean.savePerson}" style="margin-right:20px;" /&gt;
+    &lt;p:commandButton value="Submit" update="panel" actionListener="\#{pprBean.savePerson}" /&gt;
+                
+    &lt;p:commandButton value="Reset Fail" update="panel" process="@this" actionListener="\#{pprBean.resetFail}" /&gt;
 
-    &lt;p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" &gt;
+    &lt;p:commandButton value="Reset Tag" update="panel" process="@this"  &gt;
         &lt;p:resetInput target="panel" /&gt;
     &lt;/p:commandButton&gt;
 
-    &lt;p:commandButton value="Reset Code" actionListener="\#{pprBean.reset}" process="@this" style="margin-right:20px;" /&gt;
+    &lt;p:commandButton value="Reset Code" update="panel" process="@this" actionListener="\#{pprBean.reset}" /&gt;
 
     &lt;p:commandButton value="Reset Non-Ajax" actionListener="\#{pprBean.reset}" immediate="true" ajax="false"&gt;
         &lt;p:resetInput target="panel" /&gt;
@@ -110,6 +114,14 @@ public class PPRBean {
     
     public void reset() {
         RequestContext.getCurrentInstance().reset("form:panel");
+    }
+
+    public void resetFail() {
+        this.firstname = null;
+        this.surname = null;
+        
+        FacesMessage msg = new FacesMessage("Model reset, but it won't work.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
 </pre>

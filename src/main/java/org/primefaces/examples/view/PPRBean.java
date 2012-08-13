@@ -249,4 +249,12 @@ public class PPRBean implements Serializable {
     public void reset() {
         RequestContext.getCurrentInstance().reset("form:panel");
     }
+    
+    public void resetFail() {
+        this.firstname = null;
+        this.surname = null;
+        
+        FacesMessage msg = new FacesMessage("Model reset, but it won't work.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
