@@ -60,6 +60,7 @@ public class ThemeSwitcherBean {
         advancedThemes.add(new Theme("black-tie", "black-tie.png"));
         advancedThemes.add(new Theme("blitzer", "blitzer.png"));
         advancedThemes.add(new Theme("bluesky", "bluesky.png"));
+        advancedThemes.add(new Theme("bootstrap", "bootstrap.png"));
         advancedThemes.add(new Theme("casablanca", "casablanca.png"));
         advancedThemes.add(new Theme("cruze", "cruze.png"));
         advancedThemes.add(new Theme("cupertino", "cupertino.png"));
@@ -98,6 +99,7 @@ public class ThemeSwitcherBean {
         themes.put("Black-Tie", "black-tie");
         themes.put("Blitzer", "blitzer");
         themes.put("Bluesky", "bluesky");
+        themes.put("Bootstrap", "bootstrap");
         themes.put("Casablanca", "casablanca");
         themes.put("Cupertino", "cupertino");
         themes.put("Cruze", "cruze");
