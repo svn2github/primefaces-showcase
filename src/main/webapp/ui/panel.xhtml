@@ -48,6 +48,21 @@
                     </f:facet>
                 </p:panel>
                 
+                <h3>Custom Actions</h3>
+                <p:panel header="F.C. Barcelona">
+                    <h:outputText value="FC Barcelona is one of only three clubs never to have been relegated from La Liga and is the most successful club in Spanish football along with Real Madrid,
+                    having won twenty La Liga titles, a record twenty-five Spanish Cups, eight Spanish Super Cups, four Eva Duarte Cups and two League Cups.
+                    They are also one of the most successful clubs  in European football having won fourteen official major trophies in total,
+                    including ten UEFA competitions. They have won three UEFA Champions League titles, a record four UEFA Cup Winners' Cups,
+                    a record three InterCities Fairs Cups (the forerunner to the UEFA Europa League), three UEFA Super Cups and one FIFA Club World Cup.
+                    The club is also the only European side to have played continental football in every season since its inception in 1955." />
+                    
+                    <f:facet name="actions">
+                        <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></h:commandLink>
+                        <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-star" /></h:commandLink>
+                    </f:facet>
+                </p:panel>
+                
                 <h3>Horizontal Toggle</h3>
                 <p:panel header="F.C. Barcelona" toggleable="true" toggleOrientation="horizontal">
                     <h:outputText value="FC Barcelona is one of only three clubs never to have been relegated from La Liga and is the most successful club in Spanish football along with Real Madrid,
@@ -97,6 +112,25 @@
                     &lt;p:menuitem value="Remove" url="\#" icon="ui-icon-close" onclick="panel.close()"/&gt;
                 &lt;/p:submenu&gt;
             &lt;/p:menu&gt;
+        &lt;/f:facet&gt;
+    &lt;/p:panel&gt;
+
+    &lt;h3&gt;Custom Actions&lt;/h3&gt;
+    &lt;p:panel header="F.C. Barcelona"&gt;
+        &lt;h:outputText value="FC Barcelona is one of only three clubs never to have been relegated from La Liga and is the most successful club in Spanish football along with Real Madrid,
+        having won twenty La Liga titles, a record twenty-five Spanish Cups, eight Spanish Super Cups, four Eva Duarte Cups and two League Cups.
+        They are also one of the most successful clubs  in European football having won fourteen official major trophies in total,
+        including ten UEFA competitions. They have won three UEFA Champions League titles, a record four UEFA Cup Winners' Cups,
+        a record three InterCities Fairs Cups (the forerunner to the UEFA Europa League), three UEFA Super Cups and one FIFA Club World Cup.
+        The club is also the only European side to have played continental football in every season since its inception in 1955." /&gt;
+
+        &lt;f:facet name="actions"&gt;
+            &lt;h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"&gt;
+                &lt;h:outputText styleClass="ui-icon ui-icon-help" /&gt;
+            &lt;/h:commandLink&gt;
+            &lt;h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"&gt;
+                &lt;h:outputText styleClass="ui-icon ui-icon-star" /&gt;
+            &lt;/h:commandLink&gt;
         &lt;/f:facet&gt;
     &lt;/p:panel&gt;
 
