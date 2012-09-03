@@ -178,7 +178,7 @@
         <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-runtime</artifactId>
-            <version>1.0.0.beta5</version>
+            <version>1.0.0.RC1</version>
         </dependency>
         
         <dependency>
