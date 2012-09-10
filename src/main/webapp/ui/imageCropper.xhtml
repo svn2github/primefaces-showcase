@@ -46,7 +46,7 @@
 					<p:tab title="ImageCropperBean">
 						<pre name="code" class="java">
 package org.primefaces.examples.view;
-						
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -55,12 +55,14 @@ import javax.faces.context.FacesContext;
 import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletContext;
 
-import org.primefaces.ui.model.imagecropper.CroppedImage;
+import org.primefaces.model.CroppedImage;
 
 public class ImageCropperBean {
 	
 	private CroppedImage croppedImage;
 	
+	private String newImageName;
+
 	public CroppedImage getCroppedImage() {
 		return croppedImage;
 	}
@@ -70,8 +72,12 @@ public class ImageCropperBean {
 	}
 
 	public String crop() {
+		if(croppedImage == null)
+			return null;
+		
+		setNewImageName(getRandomImageName());
 		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-		String newFileName = servletContext.getRealPath("") + File.separator + "images" + File.separator + "barca" + File.separator+ "croppedImage.jpg";
+		String newFileName = servletContext.getRealPath("") + File.separator + "images" + File.separator + "barca" + File.separator + getNewImageName() + ".jpg";
 		
 		FileImageOutputStream imageOutput;
 		try {
@@ -86,7 +92,22 @@ public class ImageCropperBean {
 		
 		return null;
 	}
+	
+	private String getRandomImageName() {
+		int i = (int) (Math.random() * 100000);
+		
+		return String.valueOf(i);
+	}
+	
+	public String getNewImageName() {
+		return newImageName;
+	}
+
+	public void setNewImageName(String newImageName) {
+		this.newImageName = newImageName;
+	}
 }
+
 			</pre>
 
 					</p:tab>
