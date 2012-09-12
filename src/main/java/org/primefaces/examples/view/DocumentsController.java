@@ -28,7 +28,7 @@ public class DocumentsController implements Serializable {
 	private Document selectedDocument;
 	
 	public DocumentsController() {
-		root = new DefaultTreeNode("root", null);
+		root = new DefaultTreeNode(new Document("Files", "-", "Folder"), null);
 		
 		TreeNode documents = new DefaultTreeNode(new Document("Documents", "-", "Folder"), root);
 		TreeNode pictures = new DefaultTreeNode(new Document("Pictures", "-", "Folder"), root);
