@@ -1,0 +1,124 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Tree - Multiple Selection</h1>
+		<div class="entry">
+			<p>Node selection is a built-in feature and support three different modes, "single", "multiple" and "checkbox.</p>
+			
+			<h:form>
+			
+                <p:growl id="messages" showDetail="true" escape="false"/>
+
+				<p:tree value="#{treeBean.root}" var="node" orientation="horizontal"
+						selectionMode="multiple" selection="#{treeBean.selectedNodes}">
+
+					<p:treeNode>
+						<h:outputText value="#{node}" />
+					</p:treeNode>
+				</p:tree>
+				
+				<p:commandButton value="Display Selected" update="messages" style="margin-top:20px;"
+								actionListener="#{treeBean.displaySelectedMultiple}" id="btnDisplay"/>
+				
+			</h:form>
+			
+			<h3>Source</h3>			
+			<p:tabView>
+				<p:tab title="treeHorizontalSelectionMultiple.xhtml">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+	&lt;p:growl id="messages" showDetail="true" escape="false"/&gt;
+
+	&lt;p:tree value="\#{treeBean.root}" var="node" orientation="horizontal"
+		selectionMode="multiple" selection="\#{treeBean.selectedNodes}"&gt;
+
+		&lt;p:treeNode&gt;
+			&lt;h:outputText value="\#{node}" /&gt;
+		&lt;/p:treeNode&gt;
+	&lt;/p:tree&gt;
+	
+	&lt;p:commandButton value="Display Selected" update="messages" style="margin-top:20px;"
+		actionListener="\#{treeBean.displaySelectedMultiple}" id="btnDisplay" /&gt;
+	
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="TreeBean.java">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
+
+public class TreeBean implements Serializable {
+	
+	private TreeNode root;
+	
+	private TreeNode[] selectedNodes;
+
+	public TreeBean() {
+		root = new DefaultTreeNode("Root", null);
+		TreeNode node0 = new DefaultTreeNode("Node 0", root);
+		TreeNode node1 = new DefaultTreeNode("Node 1", root);
+		TreeNode node2 = new DefaultTreeNode("Node 2", root);
+		
+		TreeNode node00 = new DefaultTreeNode("Node 0.0", node0);
+		TreeNode node01 = new DefaultTreeNode("Node 0.1", node0);
+		
+		TreeNode node10 = new DefaultTreeNode("Node 1.0", node1);
+		TreeNode node11 = new DefaultTreeNode("Node 1.1", node1);
+		
+		TreeNode node000 = new DefaultTreeNode("Node 0.0.0", node00);
+		TreeNode node001 = new DefaultTreeNode("Node 0.0.1", node00);
+		TreeNode node010 = new DefaultTreeNode("Node 0.1.0", node01);
+		
+		TreeNode node100 = new DefaultTreeNode("Node 1.0.0", node10);
+	}
+
+	public TreeNode getRoot() {
+		return root;
+	}
+	
+	public TreeNode[] getSelectedNodes() {
+		return selectedNodes;
+	}
+
+	public void setSelectedNodes(TreeNode[] selectedNodes) {
+		this.selectedNodes = selectedNodes;
+	}
+	
+	public void displaySelectedMultiple(ActionEvent event) {
+        if(selectedNodes != null &amp;&amp; selectedNodes.length > 0) {
+            StringBuilder builder = new StringBuilder();
+
+            for(TreeNode node : selectedNodes) {
+                builder.append(node.getData().toString());
+                builder.append("&lt;br /&gt;");
+            }
+
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", builder.toString());
+
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+	}
+}
+					</pre>
+				</p:tab>
+			</p:tabView>
+
+            </div>
+	</ui:define>
+</ui:composition>
