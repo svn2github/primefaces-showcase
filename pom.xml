@@ -88,7 +88,7 @@
         <extensions>
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ftp</artifactId>
+                <artifactId>wagon-ssh</artifactId>
                 <version>1.0</version>
             </extension>
         </extensions>
@@ -421,7 +421,6 @@
             <id>prime-repo</id>
             <name>PrimeFaces Maven Repository</name>
             <url>sftp://primefaces.org/var/www/repository</url>
-            <uniqueVersion>false</uniqueVersion>
         </repository>
     </distributionManagement>
 
