@@ -18,10 +18,11 @@ package org.primefaces.examples.application;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerFactory;
 
-
 public class ShowcaseExceptionHandlerFactory extends ExceptionHandlerFactory {
 
     private ExceptionHandlerFactory base;
+    
+    private ShowcaseExceptionHandler cached;
     
     public ShowcaseExceptionHandlerFactory(ExceptionHandlerFactory base) {
         this.base = base;
@@ -29,7 +30,10 @@ public class ShowcaseExceptionHandlerFactory extends ExceptionHandlerFactory {
     
     @Override
     public ExceptionHandler getExceptionHandler() {
-        return new ShowcaseExceptionHandler(base.getExceptionHandler());
+        if(cached == null) {
+            cached = new ShowcaseExceptionHandler(base.getExceptionHandler());
+        }
+        
+        return cached;
     }
-    
 }
