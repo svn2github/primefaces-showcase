@@ -1,0 +1,323 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DragDrop - Native</h1>
+		<div class="entry">
+			<p>This sample demonstrates how to integrate low level jquery apis with PrimeFaces. Tree component displays the available
+            columns which are draggable. Column headers have drop targets and dropping a treenode onto one of these adds the related property column to the datatable.</p>
+
+            <h:form id="form">
+                
+                <script type="text/javascript">
+                    function initDND() {
+                        $('.ui-treenode').draggable({
+                           helper: 'clone',
+                           zIndex: ++PrimeFaces.zindex
+                        });
+                        
+                        $('.ui-datatable .ui-dynamic-column .droppoint').droppable({
+                           activeClass: 'ui-state-active',
+                           hoverClass: 'ui-state-highlight',
+                           tolerance: 'pointer',
+                           drop: function(event, ui) {
+                               var property = ui.draggable.find('.ui-treenode-label').text(),
+                               droppedColumnId = $(this).parents('th:first').attr('id'),
+                               dropPos = $(this).hasClass('dropleft') ? 0 : 1;
+                               
+                               ui.draggable.remove();
+                               
+                               updateColumns([
+                                    {name: 'property', value:  property}
+                                   ,{name: 'droppedColumnId', value: droppedColumnId}
+                                   ,{name: 'dropPos', value: dropPos}
+                               ]);
+                           }
+                        });
+                    }
+                    
+                    $(function() {
+                        initDND();
+                    });
+                </script>
+                
+                <p:remoteCommand name="updateColumns" actionListener="#{tableBean.onColumnDrop}" update="cars" oncomplete="initDND()"/>
+                
+                <p:tree id="tree" value="#{tableBean.availableColumns}" var="column">
+					<p:treeNode>
+						<h:outputText value="#{column}" />
+					</p:treeNode>
+                    
+                    <p:treeNode type="column" icon="ui-icon-grip-dotted-vertical">
+						<h:outputText value="#{column.property}" />
+					</p:treeNode>
+				</p:tree>
+                
+                <br />
+                
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" widgetVar="carsTable">                    
+                    <p:columns value="#{tableBean.columns}" var="column">
+                        <f:facet name="header">
+                                <h:outputText style="float:left;display:block;height:20px;width:10px;border:0 none;" styleClass="droppoint dropleft" />                           
+                                <h:outputText style="float:right;display:block;height:20px;width:10px;border:0 none;" styleClass="droppoint dropright" />
+                                <h:outputText value="#{column.header}" />
+                        </f:facet>
+
+                        <h:outputText value="#{car[column.property]}" />
+                    </p:columns>
+
+                </p:dataTable>
+            </h:form>
+
+		<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="dndColumns.xhtml">
+                <pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+                
+    &lt;p:remoteCommand name="updateColumns" actionListener="\#{tableBean.onColumnDrop}" update="cars" oncomplete="initDND()"/&gt;
+
+    &lt;p:tree id="tree" value="\#{tableBean.availableColumns}" var="column"&gt;
+        &lt;p:treeNode&gt;
+            &lt;h:outputText value="\#{column}" /&gt;
+        &lt;/p:treeNode&gt;
+
+        &lt;p:treeNode type="column" icon="ui-icon-grip-dotted-vertical"&gt;
+            &lt;h:outputText value="\#{column.property}" /&gt;
+        &lt;/p:treeNode&gt;
+    &lt;/p:tree&gt;
+
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" widgetVar="carsTable"&gt;                    
+        &lt;p:columns value="\#{tableBean.columns}" var="column"&gt;
+            &lt;f:facet name="header"&gt;
+                    &lt;h:outputText style="float:left;display:block;height:12px;width:10px;border:0 none;" styleClass="droppoint dropleft" /&gt;                           
+                    &lt;h:outputText style="float:right;display:block;height:12px;width:10px;border:0 none;" styleClass="droppoint dropright" /&gt;
+                    &lt;h:outputText value="\#{column.header}" /&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="\#{car[column.property]}" /&gt;
+        &lt;/p:columns&gt;
+
+    &lt;/p:dataTable&gt;
+
+    &lt;script type="text/javascript"&gt;
+        function initDND() {
+            $('.ui-treenode').draggable({
+               helper: 'clone',
+               zIndex: ++PrimeFaces.zindex
+            });
+
+            $('.ui-datatable .ui-dynamic-column .droppoint').droppable({
+               activeClass: 'ui-state-active',
+               hoverClass: 'ui-state-highlight',
+               tolerance: 'pointer',
+               drop: function(event, ui) {
+                   var property = ui.draggable.find('.ui-treenode-label').text(),
+                   droppedColumnId = $(this).parents('th:first').attr('id'),
+                   dropPos = $(this).hasClass('dropleft') ? 0 : 1;
+
+                   ui.draggable.remove();
+
+                   updateColumns([
+                        {name: 'property', value:  property}
+                       ,{name: 'droppedColumnId', value: droppedColumnId}
+                       ,{name: 'dropPos', value: dropPos}
+                   ]);
+               }
+            });
+        }
+
+        $(function() {
+            initDND();
+        });
+    &lt;/script&gt;
+&lt;/h:form&gt;
+				</pre>
+			</p:tab>
+            
+            <p:tab title="dndColumns.xhtml">
+                <pre name="code" class="xml">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+import java.util.logging.Logger;
+
+import javax.faces.context.FacesContext;
+
+import org.primefaces.examples.domain.Car;
+
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
+
+public class TableBean implements Serializable {
+    
+    private final static List&lt;String&gt; VALID_COLUMN_KEYS = Arrays.asList("model", "manufacturer", "year", "color");
+
+	private final static String[] colors;
+	
+	private final static String[] manufacturers;
+    
+    private String columnTemplate = "model manufacturer year";
+
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+		
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+	private List&lt;Car&gt; carsSmall;
+
+    private List&lt;Car&gt; carsLarge;
+	
+    private List&lt;ColumnModel&gt; columns = new ArrayList&lt;ColumnModel&gt;();
+
+    private TreeNode availableColumns;
+
+	public TableBean() {
+		carsSmall = new ArrayList&lt;Car&gt;();
+
+		populateRandomCars(carsSmall, 9);
+        createDynamicColumns();
+        createAvailableColumns();
+	}
+
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+	
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+	
+    public List&lt;ColumnModel&gt; getColumns() {
+        return columns;
+    }
+
+    private void createAvailableColumns() {
+        availableColumns = new DefaultTreeNode("Root", null);
+        TreeNode root = new DefaultTreeNode("Columns", availableColumns);
+        root.setExpanded(true);
+		TreeNode model = new DefaultTreeNode("column", new ColumnModel("Model", "model"), root);
+        TreeNode year = new DefaultTreeNode("column", new ColumnModel("Year", "year"), root);
+        TreeNode manufacturer = new DefaultTreeNode("column", new ColumnModel("Manufacturer", "manufacturer"), root);
+        TreeNode color = new DefaultTreeNode("column", new ColumnModel("Color", "color"), root);
+    }
+    
+    public TreeNode getAvailableColumns() {
+        return availableColumns;
+    }
+
+    public void createDynamicColumns() {
+        String[] columnKeys = columnTemplate.split(" ");
+        columns.clear();      
+        
+        for(String columnKey : columnKeys) {
+            String key = columnKey.trim();
+            
+            if(VALID_COLUMN_KEYS.contains(key)) {
+                columns.add(new ColumnModel(columnKey.toUpperCase(), columnKey));
+            }
+        }
+    }
+    
+    public void onRowToggle(ToggleEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                                            "Row State " + event.getVisibility(),
+                                            "Model:" + ((Car) event.getData()).getModel());
+        
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void onColumnDrop() {
+        Map&lt;String,String&gt; params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        String property = params.get("property");
+        String droppedColumnId = params.get("droppedColumnId");
+        String dropPos = params.get("dropPos");
+        
+        String[] droppedColumnTokens = droppedColumnId.split(":");
+        int draggedColumnIndex = Integer.parseInt(droppedColumnTokens[droppedColumnTokens.length - 1]);
+        int dropColumnIndex = draggedColumnIndex + Integer.parseInt(dropPos);
+        
+        this.columns.add(dropColumnIndex, new ColumnModel(property.toUpperCase(), property));
+        
+        TreeNode root = availableColumns.getChildren().get(0);
+        for(TreeNode node : root.getChildren()) {
+            ColumnModel model = (ColumnModel) node.getData();
+            if(model.getProperty().equals(property)) {
+                root.getChildren().remove(node);
+                break;
+            }
+        }
+    }
+
+    static public class ColumnModel implements Serializable {
+
+        private String header;
+        private String property;
+
+        public ColumnModel(String header, String property) {
+            this.header = header;
+            this.property = property;
+        }
+
+        public String getHeader() {
+            return header;
+        }
+
+        public String getProperty() {
+            return property;
+        }
+    }
+}
+                </pre>
+            </p:tab>
+		</p:tabView>
+	       </div>
+				
+	</ui:define>
+</ui:composition>

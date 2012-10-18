@@ -54,6 +54,8 @@ import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
 import org.primefaces.examples.domain.Player;
 import org.primefaces.examples.domain.Stats;
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
 
 public class TableBean implements Serializable {
     
@@ -119,7 +121,7 @@ public class TableBean implements Serializable {
 
     private List<Car> droppedCars;
 
-    private List<ColumnModel> columns = new ArrayList<ColumnModel>();;
+    private List<ColumnModel> columns = new ArrayList<ColumnModel>();
 
     private boolean editMode;
     
@@ -128,6 +130,8 @@ public class TableBean implements Serializable {
     private CarDataModel smallCarsModel;
     
     private CarDataModel mediumCarsModel;
+    
+    private TreeNode availableColumns;
 
 	public TableBean() {
 		cars = new ArrayList<Car>();
@@ -150,6 +154,8 @@ public class TableBean implements Serializable {
         mediumCarsModel = new CarDataModel(cars);
         	
 		lazyModel = new LazyCarDataModel(cars);
+        
+        createAvailableColumns();
 	}
 	
 	public LazyDataModel<Car> getLazyModel() {
@@ -371,6 +377,16 @@ public class TableBean implements Serializable {
     public List<Car> getDroppedCars() {
         return droppedCars;
     }
+
+    private void createAvailableColumns() {
+        availableColumns = new DefaultTreeNode("Root", null);
+        TreeNode root = new DefaultTreeNode("Columns", availableColumns);
+        root.setExpanded(true);
+		TreeNode model = new DefaultTreeNode("column", new ColumnModel("Model", "model"), root);
+        TreeNode year = new DefaultTreeNode("column", new ColumnModel("Year", "year"), root);
+        TreeNode manufacturer = new DefaultTreeNode("column", new ColumnModel("Manufacturer", "manufacturer"), root);
+        TreeNode color = new DefaultTreeNode("column", new ColumnModel("Color", "color"), root);
+    }
     
     static public class ColumnModel implements Serializable {
 
@@ -467,7 +483,11 @@ public class TableBean implements Serializable {
     public CarDataModel getSmallCarsModel() {
         return smallCarsModel;
     }
-    
+
+    public TreeNode getAvailableColumns() {
+        return availableColumns;
+    }
+
     public void deleteCar() {
         carsSmall.remove(selectedCar);
     }
@@ -507,5 +527,27 @@ public class TableBean implements Serializable {
                                             "Model:" + ((Car) event.getData()).getModel());
         
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void onColumnDrop() {
+        Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        String property = params.get("property");
+        String droppedColumnId = params.get("droppedColumnId");
+        String dropPos = params.get("dropPos");
+        
+        String[] droppedColumnTokens = droppedColumnId.split(":");
+        int draggedColumnIndex = Integer.parseInt(droppedColumnTokens[droppedColumnTokens.length - 1]);
+        int dropColumnIndex = draggedColumnIndex + Integer.parseInt(dropPos);
+        
+        this.columns.add(dropColumnIndex, new ColumnModel(property.toUpperCase(), property));
+        
+        TreeNode root = availableColumns.getChildren().get(0);
+        for(TreeNode node : root.getChildren()) {
+            ColumnModel model = (ColumnModel) node.getData();
+            if(model.getProperty().equals(property)) {
+                root.getChildren().remove(node);
+                break;
+            }
+        }
     }
 }
