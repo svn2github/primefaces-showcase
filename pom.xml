@@ -432,13 +432,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.1.10</jsfVersion>
-                <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.5-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>4.0-SNAPSHOT</version>
+                    <version>3.5-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -457,13 +457,13 @@
             <id>myfaces</id>
             <properties>
                 <jsfVersion>MyFaces-2.1.3</jsfVersion>
-                <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.5-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>4.0-SNAPSHOT</version>
+                    <version>3.5-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -487,13 +487,13 @@
             <id>appserver</id>
             <properties>
                 <jsfVersion>Native JSF Implementation</jsfVersion>
-                <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.5-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>4.0-SNAPSHOT</version>
+                    <version>3.5-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -538,13 +538,13 @@
             <id>gae</id>
             <properties>
                 <jsfVersion>Mojarra-2.1.10</jsfVersion>
-                <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.5-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>4.0-SNAPSHOT</version>
+                    <version>3.5-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
