@@ -5,47 +5,74 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
     
+    <ui:define name="head">
+        <script type="text/javascript">
+            function initDND() {
+                $('.ui-treenode-leaf').draggable({
+                   helper: 'clone',
+                   scope: 'treetotable',
+                   zIndex: ++PrimeFaces.zindex
+                });
+
+                $('.ui-datatable .droppoint').droppable({
+                   activeClass: 'ui-state-active',
+                   hoverClass: 'ui-state-highlight',
+                   tolerance: 'pointer',
+                   scope: 'treetotable',
+                   drop: function(event, ui) {
+                       var property = ui.draggable.find('.ui-treenode-label').text(),
+                       droppedColumnId = $(this).parents('th:first').attr('id'),
+                       dropPos = $(this).hasClass('dropleft') ? 0 : 1;
+
+                       treeToTable([
+                            {name: 'property', value:  property}
+                           ,{name: 'droppedColumnId', value: droppedColumnId}
+                           ,{name: 'dropPos', value: dropPos}
+                       ]);
+                   }
+                });
+
+                $('.ui-datatable th').draggable({
+                   helper: 'clone',
+                   scope: 'tabletotree',
+                   helper: function() {
+                       var th = $(this);
+
+                       return th.clone().css('width', th.width());
+                   }
+                });
+
+                $('.ui-tree').droppable({
+                   helper: 'clone',
+                   scope: 'tabletotree',
+                   activeClass: 'ui-state-active',
+                   hoverClass: 'ui-state-highlight',
+                   tolerance: 'touch',
+                   drop: function(event, ui) {                               
+                       tableToTree([
+                           {name: 'colIndex', value:  ui.draggable.index()}
+                       ]);
+                   }
+                });
+            }
+
+            $(function() {
+                initDND();
+            });
+        </script>
+    </ui:define>
+    
 	<ui:define name="content">
 	<h1 class="title ui-widget-header ui-corner-all">DragDrop - Native</h1>
 		<div class="entry">
 			<p>This sample demonstrates how to integrate low level jquery apis with PrimeFaces. Tree component displays the available
-            columns which are draggable. Column headers have drop targets and dropping a treenode onto one of these adds the related property column to the datatable.</p>
+            columns which are draggable. Column headers have drop targets and dropping a treenode onto one of these adds the related property column to the datatable.
+            Column headers can also be moved back to the tree.</p>
 
             <h:form id="form">
                 
-                <script type="text/javascript">
-                    function initDND() {
-                        $('.ui-treenode-leaf').draggable({
-                           helper: 'clone',
-                           zIndex: ++PrimeFaces.zindex
-                        });
-                        
-                        $('.ui-datatable .ui-dynamic-column .droppoint').droppable({
-                           activeClass: 'ui-state-active',
-                           hoverClass: 'ui-state-highlight',
-                           tolerance: 'pointer',
-                           drop: function(event, ui) {
-                               var property = ui.draggable.find('.ui-treenode-label').text(),
-                               droppedColumnId = $(this).parents('th:first').attr('id'),
-                               dropPos = $(this).hasClass('dropleft') ? 0 : 1;
-                               
-                               ui.draggable.remove();
-                               
-                               updateColumns([
-                                    {name: 'property', value:  property}
-                                   ,{name: 'droppedColumnId', value: droppedColumnId}
-                                   ,{name: 'dropPos', value: dropPos}
-                               ]);
-                           }
-                        });
-                    }
-                    
-                    $(function() {
-                        initDND();
-                    });
-                </script>
-                
-                <p:remoteCommand name="updateColumns" actionListener="#{tableBean.onColumnDrop}" update="cars" oncomplete="initDND()"/>
+                <p:remoteCommand name="treeToTable" actionListener="#{tableBean.treeToTable}" update="tree cars" oncomplete="initDND()"/>
+                <p:remoteCommand name="tableToTree" actionListener="#{tableBean.tableToTree}" update="tree cars" oncomplete="initDND()"/>
                 
                 <p:tree id="tree" value="#{tableBean.availableColumns}" var="column">
 					<p:treeNode>
@@ -108,24 +135,47 @@
         function initDND() {
             $('.ui-treenode-leaf').draggable({
                helper: 'clone',
+               scope: 'treetotable',
                zIndex: ++PrimeFaces.zindex
             });
 
-            $('.ui-datatable .ui-dynamic-column .droppoint').droppable({
+            $('.ui-datatable .droppoint').droppable({
                activeClass: 'ui-state-active',
                hoverClass: 'ui-state-highlight',
                tolerance: 'pointer',
+               scope: 'treetotable',
                drop: function(event, ui) {
                    var property = ui.draggable.find('.ui-treenode-label').text(),
                    droppedColumnId = $(this).parents('th:first').attr('id'),
                    dropPos = $(this).hasClass('dropleft') ? 0 : 1;
 
-                   ui.draggable.remove();
-
-                   updateColumns([
+                   treeToTable([
                         {name: 'property', value:  property}
                        ,{name: 'droppedColumnId', value: droppedColumnId}
                        ,{name: 'dropPos', value: dropPos}
+                   ]);
+               }
+            });
+
+            $('.ui-datatable th').draggable({
+               helper: 'clone',
+               scope: 'tabletotree',
+               helper: function() {
+                   var th = $(this);
+
+                   return th.clone().css('width', th.width());
+               }
+            });
+
+            $('.ui-tree').droppable({
+               helper: 'clone',
+               scope: 'tabletotree',
+               activeClass: 'ui-state-active',
+               hoverClass: 'ui-state-highlight',
+               tolerance: 'touch',
+               drop: function(event, ui) {                               
+                   tableToTree([
+                       {name: 'colIndex', value:  ui.draggable.index()}
                    ]);
                }
             });
@@ -139,14 +189,16 @@
 				</pre>
 			</p:tab>
             
-            <p:tab title="dndColumns.xhtml">
+            <p:tab title="TableBean.java">
                 <pre name="code" class="xml">
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -264,16 +316,8 @@ public class TableBean implements Serializable {
             }
         }
     }
-    
-    public void onRowToggle(ToggleEvent event) {
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
-                                            "Row State " + event.getVisibility(),
-                                            "Model:" + ((Car) event.getData()).getModel());
         
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-    
-    public void onColumnDrop() {
+    public void treeToTable() {
         Map&lt;String,String&gt; params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         String property = params.get("property");
         String droppedColumnId = params.get("droppedColumnId");
@@ -283,8 +327,10 @@ public class TableBean implements Serializable {
         int draggedColumnIndex = Integer.parseInt(droppedColumnTokens[droppedColumnTokens.length - 1]);
         int dropColumnIndex = draggedColumnIndex + Integer.parseInt(dropPos);
         
+        //add to columns
         this.columns.add(dropColumnIndex, new ColumnModel(property.toUpperCase(), property));
         
+        //remove from nodes
         TreeNode root = availableColumns.getChildren().get(0);
         for(TreeNode node : root.getChildren()) {
             ColumnModel model = (ColumnModel) node.getData();
@@ -293,6 +339,17 @@ public class TableBean implements Serializable {
                 break;
             }
         }
+    }
+    
+    public void tableToTree() {
+        Map&lt;String,String&gt; params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        int colIndex = Integer.parseInt(params.get("colIndex"));
+        
+        //remove from table
+        ColumnModel model = this.columns.remove(colIndex);
+        
+        //add to nodes
+        TreeNode property = new DefaultTreeNode("column", model, availableColumns.getChildren().get(0));
     }
 
     static public class ColumnModel implements Serializable {

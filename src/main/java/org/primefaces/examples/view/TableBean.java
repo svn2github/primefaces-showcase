@@ -529,7 +529,7 @@ public class TableBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
-    public void onColumnDrop() {
+    public void treeToTable() {
         Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         String property = params.get("property");
         String droppedColumnId = params.get("droppedColumnId");
@@ -539,8 +539,10 @@ public class TableBean implements Serializable {
         int draggedColumnIndex = Integer.parseInt(droppedColumnTokens[droppedColumnTokens.length - 1]);
         int dropColumnIndex = draggedColumnIndex + Integer.parseInt(dropPos);
         
+        //add to columns
         this.columns.add(dropColumnIndex, new ColumnModel(property.toUpperCase(), property));
         
+        //remove from nodes
         TreeNode root = availableColumns.getChildren().get(0);
         for(TreeNode node : root.getChildren()) {
             ColumnModel model = (ColumnModel) node.getData();
@@ -549,5 +551,16 @@ public class TableBean implements Serializable {
                 break;
             }
         }
+    }
+    
+    public void tableToTree() {
+        Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        int colIndex = Integer.parseInt(params.get("colIndex"));
+        
+        //remove from table
+        ColumnModel model = this.columns.remove(colIndex);
+        
+        //add to nodes
+        TreeNode property = new DefaultTreeNode("column", model, availableColumns.getChildren().get(0));
     }
 }
