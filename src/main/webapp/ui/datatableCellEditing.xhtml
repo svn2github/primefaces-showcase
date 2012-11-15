@@ -1,0 +1,255 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Cell Editing</h1>
+		<div class="entry">
+			<p>Cell editing is enabled by double clicking on a cell.</p>
+
+            <h:form id="form">
+
+                <p:growl id="messages" showDetail="true"/>
+
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" id="carList" editable="true">
+
+                    <f:facet name="header">
+                        In-Cell Editing
+                    </f:facet>
+                    
+                    <p:ajax event="rowEdit" listener="#{tableBean.onEdit}" update=":form:messages" />
+                    <p:ajax event="rowEditCancel" listener="#{tableBean.onCancel}" update=":form:messages" />
+                    
+                    <p:column headerText="Model" style="width:125px">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.model}" /></f:facet>
+                            <f:facet name="input"><p:inputText id="modelInput" value="#{car.model}" style="width:100%"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Year" style="width:125px">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Manufacturer" style="width:125px">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.manufacturer}" /></f:facet>
+                            <f:facet name="input">
+                                <h:selectOneMenu value="#{car.manufacturer}" style="width:100%">
+                                    <f:selectItems value="#{tableBean.manufacturers}" var="man" itemLabel="#{man}" itemValue="#{man}" />
+                                </h:selectOneMenu>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Color" style="width:125px">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.color}" /></f:facet>
+                            <f:facet name="input">
+                                <h:selectOneMenu value="#{car.color}" style="width:100%">
+                                    <f:selectItems value="#{tableBean.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />
+                                </h:selectOneMenu>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Options" style="width:50px">
+                        <p:rowEditor />
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+
+		<h3>Source</h3>
+		<p:tabView>
+			<p:tab title="datatableEditing.xhtml">
+                <pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+
+    &lt;p:growl id="messages" showDetail="true"/&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" id="carList" editable="true"&gt;
+
+        &lt;f:facet name="header"&gt;
+            In-Cell Editing
+        &lt;/f:facet&gt;
+
+        &lt;p:ajax event="rowEdit" listener="\#{tableBean.onEdit}" update=":form:messages" /&gt;
+        &lt;p:ajax event="rowEditCancel" listener="\#{tableBean.onCancel}" update=":form:messages" /&gt;
+
+        &lt;p:column headerText="Model" style="width:125px"&gt;
+            &lt;p:cellEditor&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.model}" /&gt;
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;p:inputText value="\#{car.model}" style="width:100%"/&gt;
+                &lt;/f:facet&gt;
+            &lt;/p:cellEditor&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year" style="width:125px"&gt;
+            &lt;p:cellEditor&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.year}" /&gt;
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;p:inputText value="\#{car.year}" style="width:100%" label="Year"/&gt;
+                &lt;/f:facet&gt;
+            &lt;/p:cellEditor&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer" style="width:125px"&gt;
+            &lt;p:cellEditor&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;h:selectOneMenu value="\#{car.manufacturer}" &gt;
+                        &lt;f:selectItems value="\#{tableBean.manufacturers}"
+                            var="man" 
+                            itemLabel="\#{man}"
+                            itemValue="\#{man}" /&gt;
+                    &lt;/h:selectOneMenu&gt;
+                &lt;/f:facet&gt;
+            &lt;/p:cellEditor&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" style="width:125px"&gt;
+            &lt;p:cellEditor&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.color}" /&gt;
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;h:selectOneMenu value="\#{car.color}" &gt;
+                        &lt;f:selectItems value="\#{tableBean.colors}"
+                            var="color" 
+                            itemLabel="\#{color}"
+                            itemValue="\#{color}" /&gt;
+                    &lt;/h:selectOneMenu&gt;
+                &lt;/f:facet&gt;
+            &lt;/p:cellEditor&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Options" style="width:50px"&gt;
+            &lt;p:rowEditor /&gt;
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+
+&lt;/h:form&gt;
+				</pre>
+			</p:tab>
+
+			<p:tab title="TableBean.java">
+                <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import javax.faces.context.FacesContext;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+
+	private final static String[] colors;
+
+	private final static String[] manufacturers;
+
+    private List&lt;Car&gt; carsSmall;
+
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+	public TableBean() {
+		carsSmall = new ArrayList&lt;Car&gt;();
+
+		populateRandomCars(carsSmall, 9);
+	}
+
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+
+    public String[] getManufacturers() {
+        return manufacturers;
+    }
+
+    public String[] getColors() {
+        return colors;
+    }
+
+    public void onEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Car Edited", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void onCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Car Cancelled", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+				</pre>
+			</p:tab>
+		</p:tabView>
+	       </div>
+
+	</ui:define>
+</ui:composition>
