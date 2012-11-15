@@ -21,12 +21,12 @@
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Multiple Sorting</h1>
 
         <div class="entry">
-            <p>Multiple column sorting is enabled by holding the meta key (ctrl or command). Both lazy and non-lazy
-            table support multi column sorting</p>
+            <p>Multiple column sorting is enabled by holding the meta key (ctrl or command). Dynamic columns are supported as well with or
+            without LazyDataModel support.</p>
 
             <h:form>
 
-                <p:dataTable id="dataTable" var="car" value="#{tableBean.carsLarge}" sortMode="multiple">
+                <p:dataTable id="dataTable" var="car" value="#{tableBean.carsLarge}" sortMode="multiple" rows="25" paginator="true">
                     <f:facet name="header">
                         Ajax Sorting
                     </f:facet>
@@ -68,7 +68,7 @@
                     <pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.carsSmall}" sortMode="multiple"&gt;
+    &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.carsSmall}" sortMode="multiple" rows="25" paginator="true"&gt;
         &lt;f:facet name="header"&gt;
             Ajax Sorting
         &lt;/f:facet&gt;
