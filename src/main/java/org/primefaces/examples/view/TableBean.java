@@ -45,6 +45,7 @@ import com.lowagie.text.PageSize;
 import java.util.*;
 import javax.faces.component.UIComponent;
 import javax.faces.model.SelectItem;
+import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.ColumnResizeEvent;
 import org.primefaces.event.DragDropEvent;
 import org.primefaces.event.RowEditEvent;
@@ -562,5 +563,13 @@ public class TableBean implements Serializable {
         
         //add to nodes
         TreeNode property = new DefaultTreeNode("column", model, availableColumns.getChildren().get(0));
+    }
+    
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+        
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Edited", "Old: " + oldValue + ", New:" + newValue);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }

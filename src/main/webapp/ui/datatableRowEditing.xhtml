@@ -4,29 +4,25 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-    
+
 	<ui:define name="content">
-	<h1 class="title ui-widget-header ui-corner-all">DataTable - Cell Editing</h1>
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Row Editing</h1>
 		<div class="entry">
-            <p>Inline cell editing is enabled by double clicking on a cell. Optional "cellEdit" ajax behavior event is provided as a callback to process edited data with CellEditEvent. 
-                This sample also has a context menu attached to demonstrate the usage of client side api.</p>
+			<p>Row editing feature allows updating values within the datatable. Optional "rowEdit" and "rowEditCancel"
+            ajax behaviors are provided as callbacks to process edited data.</p>
 
             <h:form id="form">
 
                 <p:growl id="messages" showDetail="true"/>
-                
-                <p:contextMenu for="cars" widgetVar="cMenu">   
-                    <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="carsTable.showCellEditor();return false;"/>  
-                    <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="cMenu.hide()"/>  
-                </p:contextMenu> 
 
-                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" editable="true" editMode="cell" widgetVar="carsTable">
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" id="carList" editable="true">
 
                     <f:facet name="header">
                         In-Cell Editing
                     </f:facet>
                     
-                    <p:ajax event="cellEdit" listener="#{tableBean.onCellEdit}" update=":form:messages" />
+                    <p:ajax event="rowEdit" listener="#{tableBean.onEdit}" update=":form:messages" />
+                    <p:ajax event="rowEditCancel" listener="#{tableBean.onCancel}" update=":form:messages" />
                     
                     <p:column headerText="Model" style="width:125px">
                         <p:cellEditor>
@@ -64,51 +60,64 @@
                         </p:cellEditor>
                     </p:column>
 
+                    <p:column headerText="Options" style="width:50px">
+                        <p:rowEditor />
+                    </p:column>
+
                 </p:dataTable>
 
             </h:form>
 
 		<h3>Source</h3>
 		<p:tabView>
-			<p:tab title="datatableCellEditing.xhtml">
+			<p:tab title="datatableRowEditing.xhtml">
                 <pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
     &lt;p:growl id="messages" showDetail="true"/&gt;
 
-    &lt;p:contextMenu for="cars" widgetVar="cMenu"&gt;   
-        &lt;p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="carsTable.showCellEditor();return false;"/&gt;  
-        &lt;p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="cMenu.hide()"/&gt;  
-    &lt;/p:contextMenu&gt; 
-
-    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" editable="true" editMode="cell" widgetVar="carsTable"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" id="carList" editable="true"&gt;
 
         &lt;f:facet name="header"&gt;
             In-Cell Editing
         &lt;/f:facet&gt;
 
-        &lt;p:ajax event="cellEdit" listener="\#{tableBean.onCellEdit}" update=":form:messages" /&gt;
+        &lt;p:ajax event="rowEdit" listener="\#{tableBean.onEdit}" update=":form:messages" /&gt;
+        &lt;p:ajax event="rowEditCancel" listener="\#{tableBean.onCancel}" update=":form:messages" /&gt;
 
         &lt;p:column headerText="Model" style="width:125px"&gt;
             &lt;p:cellEditor&gt;
-                &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.model}" /&gt;&lt;/f:facet&gt;
-                &lt;f:facet name="input"&gt;&lt;p:inputText id="modelInput" value="\#{car.model}" style="width:100%"/&gt;&lt;/f:facet&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.model}" /&gt;
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;p:inputText value="\#{car.model}" style="width:100%"/&gt;
+                &lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Year" style="width:125px"&gt;
             &lt;p:cellEditor&gt;
-                &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.year}" /&gt;&lt;/f:facet&gt;
-                &lt;f:facet name="input"&gt;&lt;p:inputText value="\#{car.year}" style="width:100%" label="Year"/&gt;&lt;/f:facet&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.year}" /&gt;
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;p:inputText value="\#{car.year}" style="width:100%" label="Year"/&gt;
+                &lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Manufacturer" style="width:125px"&gt;
             &lt;p:cellEditor&gt;
-                &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.manufacturer}" /&gt;&lt;/f:facet&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+                &lt;/f:facet&gt;
                 &lt;f:facet name="input"&gt;
-                    &lt;h:selectOneMenu value="\#{car.manufacturer}" style="width:100%"&gt;
-                        &lt;f:selectItems value="\#{tableBean.manufacturers}" var="man" itemLabel="\#{man}" itemValue="\#{man}" /&gt;
+                    &lt;h:selectOneMenu value="\#{car.manufacturer}" &gt;
+                        &lt;f:selectItems value="\#{tableBean.manufacturers}"
+                            var="man" 
+                            itemLabel="\#{man}"
+                            itemValue="\#{man}" /&gt;
                     &lt;/h:selectOneMenu&gt;
                 &lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
@@ -116,13 +125,22 @@
 
         &lt;p:column headerText="Color" style="width:125px"&gt;
             &lt;p:cellEditor&gt;
-                &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.color}" /&gt;&lt;/f:facet&gt;
+                &lt;f:facet name="output"&gt;
+                    &lt;h:outputText value="\#{car.color}" /&gt;
+                &lt;/f:facet&gt;
                 &lt;f:facet name="input"&gt;
-                    &lt;h:selectOneMenu value="\#{car.color}" style="width:100%"&gt;
-                        &lt;f:selectItems value="\#{tableBean.colors}" var="color" itemLabel="\#{color}" itemValue="\#{color}" /&gt;
+                    &lt;h:selectOneMenu value="\#{car.color}" &gt;
+                        &lt;f:selectItems value="\#{tableBean.colors}"
+                            var="color" 
+                            itemLabel="\#{color}"
+                            itemValue="\#{color}" /&gt;
                     &lt;/h:selectOneMenu&gt;
                 &lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Options" style="width:50px"&gt;
+            &lt;p:rowEditor /&gt;
         &lt;/p:column&gt;
 
     &lt;/p:dataTable&gt;
@@ -141,7 +159,8 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.faces.context.FacesContext;
-import org.primefaces.event.CellEditEvent;
+
+import org.primefaces.event.RowEditEvent;
 
 import org.primefaces.examples.domain.Car;
 
@@ -218,11 +237,15 @@ public class TableBean implements Serializable {
         return colors;
     }
 
-    public void onCellEdit(CellEditEvent event) {
-        Object oldValue = event.getOldValue();
-        Object newValue = event.getNewValue();
-        
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Edited", "Old: " + oldValue + ", New:" + newValue);
+    public void onEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Car Edited", ((Car) event.getObject()).getModel());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void onCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Car Cancelled", ((Car) event.getObject()).getModel());
+
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
