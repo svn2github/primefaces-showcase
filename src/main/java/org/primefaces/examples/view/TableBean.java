@@ -569,7 +569,9 @@ public class TableBean implements Serializable {
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
         
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Edited", "Old: " + oldValue + ", New:" + newValue);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        if(newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
 }

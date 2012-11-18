@@ -1,20 +1,20 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	template="../templates/ui.xhtml">
-    
-	<ui:define name="content">
-	<h1 class="title ui-widget-header ui-corner-all">DataTable - Cell Editing</h1>
-		<div class="entry">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - Cell Editing</h1>
+        <div class="entry">
             <p>Inline cell editing is enabled by double clicking on a cell. Optional "cellEdit" ajax behavior event is provided as a callback to process edited data with CellEditEvent. 
                 This sample also has a context menu attached to demonstrate the usage of client side api.</p>
 
             <h:form id="form">
 
                 <p:growl id="messages" showDetail="true"/>
-                
+
                 <p:contextMenu for="cars" widgetVar="cMenu">   
                     <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="carsTable.showCellEditor();return false;"/>  
                     <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="cMenu.hide()"/>  
@@ -25,17 +25,17 @@
                     <f:facet name="header">
                         In-Cell Editing
                     </f:facet>
-                    
-                    <p:ajax event="cellEdit" listener="#{tableBean.onCellEdit}" update=":form:messages" />
-                    
-                    <p:column headerText="Model" style="width:125px">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{car.model}" /></f:facet>
-                            <f:facet name="input"><p:inputText id="modelInput" value="#{car.model}" style="width:100%"/></f:facet>
-                        </p:cellEditor>
-                    </p:column>
 
-                    <p:column headerText="Year" style="width:125px">
+                    <p:ajax event="cellEdit" listener="#{tableBean.onCellEdit}" update=":form:messages" />
+
+                    <p:column headerText="Model" style="width:125px">
+                           <p:cellEditor>
+                               <f:facet name="output"><h:outputText value="#{car.model}" /></f:facet>
+                               <f:facet name="input"><p:inputText id="modelInput" value="#{car.model}" style="width:100%"/></f:facet>
+                           </p:cellEditor>
+                       </p:column>
+
+                       <p:column headerText="Year" style="width:125px">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
                             <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
@@ -68,10 +68,10 @@
 
             </h:form>
 
-		<h3>Source</h3>
-		<p:tabView>
-			<p:tab title="datatableCellEditing.xhtml">
-                <pre name="code" class="xml">
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="datatableCellEditing.xhtml">
+                    <pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
     &lt;p:growl id="messages" showDetail="true"/&gt;
@@ -128,11 +128,11 @@
     &lt;/p:dataTable&gt;
 
 &lt;/h:form&gt;
-				</pre>
-			</p:tab>
+                    </pre>
+                </p:tab>
 
-			<p:tab title="TableBean.java">
-                <pre name="code" class="java">
+                <p:tab title="TableBean.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
@@ -222,14 +222,16 @@ public class TableBean implements Serializable {
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
         
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Edited", "Old: " + oldValue + ", New:" + newValue);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        if(newValue != null &amp;&amp; !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
 }
-				</pre>
-			</p:tab>
-		</p:tabView>
-	       </div>
+                     </pre>
+                    </p:tab>
+                </p:tabView>
+            </div>
 
-	</ui:define>
-</ui:composition>
+        </ui:define>
+    </ui:composition>
