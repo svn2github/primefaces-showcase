@@ -6,142 +6,16 @@
                 template="../templates/ui.xhtml">
 
     <ui:define name="content">
-        <h1 class="title ui-widget-header ui-corner-all">Slider</h1>
+        <h1 class="title ui-widget-header ui-corner-all">Clock</h1>
         <div class="entry">
-            <script>
-                
-            </script>
-            <h:form id="form">
-                <p:clock date="true" pattern="hh:mm:ss dddd.MMMM.YY" serverMode="true"/>
-            </h:form>
 
+            <p:clock pattern="MM/dd/YYYY" />
+                
             <h3>Source</h3>
             <p:tabView>
-                <p:tab title="slider.xhtml">
+                <p:tab title="clock.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form id="form"&gt;
 
-    &lt;p:growl id="growl" showDetail="true" /&gt;
-
-	&lt;h3&gt;Input Text Slider&lt;/h3&gt;
-	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
-		&lt;p:inputText id="txt1" value="\#{sliderBean.number1}" /&gt;
-		&lt;p:slider for="txt1"/&gt;
-	&lt;/h:panelGrid&gt;
-	
-	&lt;h3&gt;Hidden Input Slider with Display Value&lt;/h3&gt;
-	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
-		&lt;h:panelGroup&gt;
-			&lt;h:outputText value="Set ratio to %"/&gt;
-			&lt;h:outputText id="output" value="\#{sliderBean.number2}"/&gt;
-		&lt;/h:panelGroup&gt; 
-		
-		&lt;h:inputHidden id="txt2" value="\#{sliderBean.number2}" /&gt;
-		&lt;p:slider for="txt2" display="output" style="width:200px" /&gt;
-	&lt;/h:panelGrid&gt;
-	
-	&lt;h3&gt;Slider with Step Factor&lt;/h3&gt;
-	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
-		&lt;p:inputText id="txt3" value="\#{sliderBean.number3}"/&gt;
-		&lt;p:slider for="txt3" step="10"/&gt;
-	&lt;/h:panelGrid&gt;
-	
-	&lt;h3&gt;Vertical Slider&lt;/h3&gt;
-	&lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
-		&lt;p:inputText id="txt4" value="\#{sliderBean.number4}"/&gt;
-		&lt;p:slider for="txt4" type="vertical" /&gt;
-	&lt;/h:panelGrid&gt;
-
-    &lt;h3&gt;Ajax Slider&lt;/h3&gt;
-    &lt;h:panelGrid columns="1" style="margin-bottom:10px"&gt;
-        &lt;p:inputText id="txt5" value="\#{sliderBean.number5}" /&gt;
-        &lt;p:slider for="txt5"&gt;
-            &lt;p:ajax event="slideEnd" listener="\#{sliderBean.onSlideEnd}" update="growl" /&gt;
-        &lt;/p:slider&gt;
-    &lt;/h:panelGrid&gt;
-
-    &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
-	
-	&lt;p:dialog header="Slider Values" widgetVar="dialog" 
-		showEffect="bounce" hideEffect="fade" width="200"&gt;
-		
-		&lt;h:panelGrid id="display" columns="1" cellpadding="5"&gt;
-			&lt;h:outputText value="Number 1: \#{sliderBean.number1}" /&gt;
-			
-			&lt;h:outputText value="Number 2: \#{sliderBean.number2}" /&gt;
-			
-			&lt;h:outputText value="Number 3: \#{sliderBean.number3}" /&gt;
-			
-			&lt;h:outputText value="Number 4: \#{sliderBean.number4}" /&gt;
-
-            &lt;h:outputText value="Number 5: \#{sliderBean.number5}" /&gt;
-		&lt;/h:panelGrid&gt;
-		
-	&lt;/p:dialog&gt;	
-	
-&lt;/h:form&gt;
-                    </pre>
-                </p:tab>
-
-                <p:tab title="SliderBean.java">
-                    <pre name="code" class="java">
-public class SliderBean {
-
-	private int number1;
-	
-	private int number2;
-	
-	private int number3;
-	
-	private int number4;
-
-    private int number5;
-
-	public int getNumber1() {
-		return number1;
-	}
-
-	public void setNumber1(int number1) {
-		this.number1 = number1;
-	}
-
-	public int getNumber2() {
-		return number2;
-	}
-
-	public void setNumber2(int number2) {
-		this.number2 = number2;
-	}
-
-	public int getNumber3() {
-		return number3;
-	}
-
-	public void setNumber3(int number3) {
-		this.number3 = number3;
-	}
-
-	public int getNumber4() {
-		return number4;
-	}
-
-	public void setNumber4(int number4) {
-		this.number4 = number4;
-	}
-
-    public int getNumber5() {
-        return number5;
-    }
-
-    public void setNumber5(int number5) {
-        this.number5 = number5;
-    }
-
-    public void onSlideEnd(SlideEndEvent event) {
-        FacesMessage msg = new FacesMessage("Slide Ended", "Value: " + event.getValue());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-}
                     </pre>
                 </p:tab>
             </p:tabView>
