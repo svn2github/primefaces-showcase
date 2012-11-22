@@ -33,8 +33,8 @@ public class TwitterRSSService implements TwitterService {
 		List<String> tweets = new ArrayList<String>();
 		
 		try {
-			URL feedSource = new URL("http://twitter.com/statuses/user_timeline.rss?screen_name=" + username);
-
+			URL feedSource = new URL("http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=" + username);
+            
 			SyndFeedInput input = new SyndFeedInput();
 			SyndFeed feed = input.build(new XmlReader(feedSource));
 			for(Object f : feed.getEntries()) {
