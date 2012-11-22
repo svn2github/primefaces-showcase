@@ -6,24 +6,11 @@
                 template="../templates/ui.xhtml"
                 xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-
-    <ui:define name="head">
-        <style type="text/css">
-
-        </style>
-
-        <script type="text/javascript">
-            //<![CDATA[
-           
-            //]]>
-        </script>
-    </ui:define>
-
     <ui:define name="content">
 
         <h1 class="title ui-widget-header ui-corner-all">Galleria</h1>
         <div class="entry">
-            <p>Galleria is an image gallery component.</p>
+            <p>Galleria is an image gallery component. Images can be defined with manually as children or dynamically using a collection.</p>
 
             <p:galleria value="#{galleriaBean.images}" var="image" widgetVar="g">
                 <p:graphicImage value="/images/galleria/#{image}" />
