@@ -31,15 +31,13 @@
 
                 <h3>Basic Ring</h3>
                 <p:ring id="basic" value="#{ringBean.players}" var="player">
-                    <p:column>
-                        <p:outputPanel style="text-align:center;" layout="block">
-                            #{player.name}
-                            <br />
-                            <p:commandButton update=":form:detail" icon="ui-icon-search" title="View" oncomplete="dlg.show()">
-                                <f:setPropertyActionListener value="#{player}" target="#{ringBean.selectedPlayer}" />
-                            </p:commandButton>
-                        </p:outputPanel>
-                    </p:column>
+                    <p:outputPanel style="text-align:center;" layout="block">
+                        #{player.name}
+                        <br />
+                        <p:commandButton update=":form:detail" icon="ui-icon-search" title="View" oncomplete="dlg.show()">
+                            <f:setPropertyActionListener value="#{player}" target="#{ringBean.selectedPlayer}" />
+                        </p:commandButton>
+                    </p:outputPanel>
                 </p:ring>
 
                 <h3>Images with Custom Easing</h3>
@@ -81,17 +79,15 @@
 
     &lt;h3&gt;Basic Ring&lt;/h3&gt;
     &lt;p:ring id="basic" value="\#{ringBean.players}" var="player"&gt;
-        &lt;p:column&gt;
-            &lt;p:outputPanel style="text-align:center;" layout="block"&gt;
-                \#{player.name}
-                &lt;p:commandButton update=":form:detail"
-                            icon="ui-icon-search"
-                            title="View" oncomplete="dlg.show()"&gt;
-                    &lt;f:setPropertyActionListener value="\#{player}"
-                        target="\#{ringBean.selectedPlayer}" /&gt;
-                &lt;/p:commandButton&gt;
-            &lt;/p:outputPanel&gt;
-        &lt;/p:column&gt;
+        &lt;p:outputPanel style="text-align:center;" layout="block"&gt;
+            \#{player.name}
+            &lt;p:commandButton update=":form:detail"
+                        icon="ui-icon-search"
+                        title="View" oncomplete="dlg.show()"&gt;
+                &lt;f:setPropertyActionListener value="\#{player}"
+                    target="\#{ringBean.selectedPlayer}" /&gt;
+            &lt;/p:commandButton&gt;
+        &lt;/p:outputPanel&gt;
     &lt;/p:ring&gt;
 
     &lt;h3&gt;Images with Custom Easing&lt;/h3&gt;
