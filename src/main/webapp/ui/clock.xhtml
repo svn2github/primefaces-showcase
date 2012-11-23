@@ -8,19 +8,23 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">Clock</h1>
         <div class="entry">
+            <p>Clock displays server or client datetime live.</p>
             
-            <p:panelGrid columns="2">
-                <p:outputLabel value="server time: "/>
-                <p:clock pattern="MM/dd/yyyy hh:mm:ss" mode="server" />
-                <p:outputLabel value="Client time: " />
-                <p:clock pattern="MM/dd/yyyy hh:mm:ss" mode="client" />
-            </p:panelGrid> 
-
+            <h3>Client</h3>
+            <p:clock pattern="MM/dd/yyyy hh:mm:ss" mode="client" />
+            
+            <h3>Server</h3>
+            <p:clock pattern="MM/dd/yyyy hh:mm:ss" mode="server" />
+          
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="clock.xhtml">
                     <pre name="code" class="xml">
+&lt;h3&gt;Client&lt;/h3&gt;
+&lt;p:clock pattern="MM/dd/yyyy hh:mm:ss" mode="client" /&gt;
 
+&lt;h3&gt;Server&lt;/h3&gt;
+&lt;p:clock pattern="MM/dd/yyyy hh:mm:ss" mode="server" /&gt;
                     </pre>
                 </p:tab>
             </p:tabView>
