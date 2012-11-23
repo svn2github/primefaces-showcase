@@ -14,7 +14,7 @@
             <h:form>
             
                 <h3>Client</h3>
-                <p:clock mode="client" />
+                <p:clock />
 
                 <h3>Server</h3>
                 <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" autoSync="true" syncInterval="10000"/>
@@ -26,10 +26,10 @@
                 <p:tab title="clock.xhtml">
                     <pre name="code" class="xml">
 &lt;h3&gt;Client&lt;/h3&gt;
-&lt;p:clock pattern="MM/dd/yyyy hh:mm:ss" mode="client" /&gt;
+&lt;p:clock /&gt;
 
 &lt;h3&gt;Server&lt;/h3&gt;
-&lt;p:clock pattern="MM/dd/yyyy HH:mm:ss" mode="server" /&gt;
+&lt;p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" /&gt;
                     </pre>
                 </p:tab>
             </p:tabView>
