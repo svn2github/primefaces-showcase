@@ -53,6 +53,11 @@
 					</p:submenu>
 
                     <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+                    
+                    <f:facet name="options">
+                        <p:inputText style="margin-right:10px"/>
+                        <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                    </f:facet>
 				</p:menubar>
                 
                 <br /><br />
@@ -147,6 +152,11 @@
         &lt;/p:submenu&gt;
 
         &lt;p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" /&gt;
+
+        &lt;f:facet name="options"&gt;
+            &lt;p:inputText style="margin-right:10px"/&gt;
+            &lt;p:commandButton type="button" value="Logout" icon="ui-icon-extlink" /&gt;
+        &lt;/f:facet&gt;
     &lt;/p:menubar&gt;
 
     &lt;h3&gt;Click Trigger&lt;/h3&gt;
