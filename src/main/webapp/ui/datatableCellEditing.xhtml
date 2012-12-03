@@ -9,7 +9,8 @@
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Cell Editing</h1>
         <div class="entry">
             <p>Inline cell editing is enabled by selecting a cell. As a callback "cellEdit" ajax behavior event is provided to process edited data with CellEditEvent. 
-                This sample also has a context menu attached to demonstrate the usage of client side api.</p>
+                First sample also has a context menu attached to demonstrate the usage of client side api. Second sample demonstrates multiple components support in a single
+                cell along with customizable edit event set to double click. Quick tab navigation between cells is also supported for easier editing.</p>
 
             <h:form id="form">
 
@@ -20,7 +21,7 @@
                     <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="cMenu.hide()"/>  
                 </p:contextMenu> 
 
-                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" editable="true" editMode="cell" widgetVar="carsTable">
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" editable="true" editMode="cell">
 
                     <f:facet name="header">
                         In-Cell Editing
@@ -28,21 +29,21 @@
 
                     <p:ajax event="cellEdit" listener="#{tableBean.onCellEdit}" update=":form:messages" />
 
-                    <p:column headerText="Model" style="width:125px">
+                    <p:column headerText="Model" style="width:25%">
                            <p:cellEditor>
                                <f:facet name="output"><h:outputText value="#{car.model}" /></f:facet>
                                <f:facet name="input"><p:inputText id="modelInput" value="#{car.model}" style="width:100%"/></f:facet>
                            </p:cellEditor>
                        </p:column>
 
-                       <p:column headerText="Year" style="width:125px">
+                       <p:column headerText="Year" style="width:25%">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
                             <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Manufacturer" style="width:125px">
+                    <p:column headerText="Manufacturer" style="width:25%">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{car.manufacturer}" /></f:facet>
                             <f:facet name="input">
@@ -53,7 +54,7 @@
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Color" style="width:125px">
+                    <p:column headerText="Color" style="width:25%">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{car.color}" /></f:facet>
                             <f:facet name="input">
@@ -64,6 +65,50 @@
                         </p:cellEditor>
                     </p:column>
 
+                </p:dataTable>
+                
+                <br />
+                
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" editable="true" editMode="cell"
+                             cellEditEvent="dblclick" cellSeparator=" \/ ">
+                                 
+                    <f:facet name="header">
+                        Multiple Components with Double Click
+                    </f:facet>
+                        
+                    <p:column headerText="Model/Year" style="width:50%">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.model}" /> / <h:outputText value="#{car.year}" /></f:facet>
+                            <f:facet name="input">
+                                <p:inputText id="modelInput" value="#{car.model}" style="width:46%"/>
+                                /
+                                <p:inputText value="#{car.year}" style="width:47%" label="Year"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                        
+                    <p:column headerText="Manufacturer" style="width:25%">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.manufacturer}" /></f:facet>
+                            <f:facet name="input">
+                                <h:selectOneMenu value="#{car.manufacturer}" style="width:100%">
+                                    <f:selectItems value="#{tableBean.manufacturers}" var="man" itemLabel="#{man}" itemValue="#{man}" />
+                                </h:selectOneMenu>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                        
+                    <p:column headerText="Color" style="width:25%">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.color}" /></f:facet>
+                            <f:facet name="input">
+                                <h:selectOneMenu value="#{car.color}" style="width:100%">
+                                    <f:selectItems value="#{tableBean.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />
+                                </h:selectOneMenu>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                        
                 </p:dataTable>
 
             </h:form>
@@ -81,7 +126,7 @@
         &lt;p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="cMenu.hide()"/&gt;  
     &lt;/p:contextMenu&gt; 
 
-    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" editable="true" editMode="cell" widgetVar="carsTable"&gt;
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" editable="true" editMode="cell"&gt;
 
         &lt;f:facet name="header"&gt;
             In-Cell Editing
@@ -89,21 +134,21 @@
 
         &lt;p:ajax event="cellEdit" listener="\#{tableBean.onCellEdit}" update=":form:messages" /&gt;
 
-        &lt;p:column headerText="Model" style="width:125px"&gt;
-            &lt;p:cellEditor&gt;
-                &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.model}" /&gt;&lt;/f:facet&gt;
-                &lt;f:facet name="input"&gt;&lt;p:inputText id="modelInput" value="\#{car.model}" style="width:100%"/&gt;&lt;/f:facet&gt;
-            &lt;/p:cellEditor&gt;
-        &lt;/p:column&gt;
+        &lt;p:column headerText="Model" style="width:25%"&gt;
+               &lt;p:cellEditor&gt;
+                   &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.model}" /&gt;&lt;/f:facet&gt;
+                   &lt;f:facet name="input"&gt;&lt;p:inputText id="modelInput" value="\#{car.model}" style="width:100%"/&gt;&lt;/f:facet&gt;
+               &lt;/p:cellEditor&gt;
+           &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" style="width:125px"&gt;
+           &lt;p:column headerText="Year" style="width:25%"&gt;
             &lt;p:cellEditor&gt;
                 &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.year}" /&gt;&lt;/f:facet&gt;
                 &lt;f:facet name="input"&gt;&lt;p:inputText value="\#{car.year}" style="width:100%" label="Year"/&gt;&lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" style="width:125px"&gt;
+        &lt;p:column headerText="Manufacturer" style="width:25%"&gt;
             &lt;p:cellEditor&gt;
                 &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.manufacturer}" /&gt;&lt;/f:facet&gt;
                 &lt;f:facet name="input"&gt;
@@ -114,7 +159,49 @@
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" style="width:125px"&gt;
+        &lt;p:column headerText="Color" style="width:25%"&gt;
+            &lt;p:cellEditor&gt;
+                &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.color}" /&gt;&lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;h:selectOneMenu value="\#{car.color}" style="width:100%"&gt;
+                        &lt;f:selectItems value="\#{tableBean.colors}" var="color" itemLabel="\#{color}" itemValue="\#{color}" /&gt;
+                    &lt;/h:selectOneMenu&gt;
+                &lt;/f:facet&gt;
+            &lt;/p:cellEditor&gt;
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" editable="true" editMode="cell"
+                 cellEditEvent="dblclick" cellSeparator=" \/ "&gt;
+
+        &lt;f:facet name="header"&gt;
+            Multiple Components with Double Click
+        &lt;/f:facet&gt;
+
+        &lt;p:column headerText="Model/Year" style="width:50%"&gt;
+            &lt;p:cellEditor&gt;
+                &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.model}" /&gt; / &lt;h:outputText value="\#{car.year}" /&gt;&lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;p:inputText id="modelInput" value="\#{car.model}" style="width:46%"/&gt;
+                    /
+                    &lt;p:inputText value="\#{car.year}" style="width:47%" label="Year"/&gt;
+                &lt;/f:facet&gt;
+            &lt;/p:cellEditor&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer" style="width:25%"&gt;
+            &lt;p:cellEditor&gt;
+                &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.manufacturer}" /&gt;&lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;h:selectOneMenu value="\#{car.manufacturer}" style="width:100%"&gt;
+                        &lt;f:selectItems value="\#{tableBean.manufacturers}" var="man" itemLabel="\#{man}" itemValue="\#{man}" /&gt;
+                    &lt;/h:selectOneMenu&gt;
+                &lt;/f:facet&gt;
+            &lt;/p:cellEditor&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" style="width:25%"&gt;
             &lt;p:cellEditor&gt;
                 &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.color}" /&gt;&lt;/f:facet&gt;
                 &lt;f:facet name="input"&gt;
