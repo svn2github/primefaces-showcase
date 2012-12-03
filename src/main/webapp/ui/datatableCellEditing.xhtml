@@ -32,14 +32,14 @@
                     <p:column headerText="Model" style="width:25%">
                            <p:cellEditor>
                                <f:facet name="output"><h:outputText value="#{car.model}" /></f:facet>
-                               <f:facet name="input"><p:inputText id="modelInput" value="#{car.model}" style="width:100%"/></f:facet>
+                               <f:facet name="input"><p:inputText id="modelInput" value="#{car.model}" style="width:96%"/></f:facet>
                            </p:cellEditor>
                        </p:column>
 
                        <p:column headerText="Year" style="width:25%">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
-                            <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
+                            <f:facet name="input"><p:inputText value="#{car.year}" style="width:96%" label="Year"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
@@ -80,9 +80,9 @@
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{car.model}" /> / <h:outputText value="#{car.year}" /></f:facet>
                             <f:facet name="input">
-                                <p:inputText id="modelInput" value="#{car.model}" style="width:46%"/>
+                                <p:inputText id="modelInput" value="#{car.model}" style="width:46%" title="Model"/>
                                 /
-                                <p:inputText value="#{car.year}" style="width:47%" label="Year"/>
+                                <p:inputText value="#{car.year}" style="width:47%" label="Year" title="Year"/>
                             </f:facet>
                         </p:cellEditor>
                     </p:column>
@@ -137,14 +137,14 @@
         &lt;p:column headerText="Model" style="width:25%"&gt;
                &lt;p:cellEditor&gt;
                    &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.model}" /&gt;&lt;/f:facet&gt;
-                   &lt;f:facet name="input"&gt;&lt;p:inputText id="modelInput" value="\#{car.model}" style="width:100%"/&gt;&lt;/f:facet&gt;
+                   &lt;f:facet name="input"&gt;&lt;p:inputText id="modelInput" value="\#{car.model}" style="width:96%"/&gt;&lt;/f:facet&gt;
                &lt;/p:cellEditor&gt;
            &lt;/p:column&gt;
 
            &lt;p:column headerText="Year" style="width:25%"&gt;
             &lt;p:cellEditor&gt;
                 &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.year}" /&gt;&lt;/f:facet&gt;
-                &lt;f:facet name="input"&gt;&lt;p:inputText value="\#{car.year}" style="width:100%" label="Year"/&gt;&lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;&lt;p:inputText value="\#{car.year}" style="width:96%" label="Year"/&gt;&lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
@@ -183,9 +183,9 @@
             &lt;p:cellEditor&gt;
                 &lt;f:facet name="output"&gt;&lt;h:outputText value="\#{car.model}" /&gt; / &lt;h:outputText value="\#{car.year}" /&gt;&lt;/f:facet&gt;
                 &lt;f:facet name="input"&gt;
-                    &lt;p:inputText id="modelInput" value="\#{car.model}" style="width:46%"/&gt;
+                    &lt;p:inputText id="modelInput" value="\#{car.model}" style="width:46%" title="Model"/&gt;
                     /
-                    &lt;p:inputText value="\#{car.year}" style="width:47%" label="Year"/&gt;
+                    &lt;p:inputText value="\#{car.year}" style="width:47%" label="Year" title="Year"/&gt;
                 &lt;/f:facet&gt;
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
