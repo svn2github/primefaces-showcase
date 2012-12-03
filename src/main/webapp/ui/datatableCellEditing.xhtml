@@ -21,7 +21,7 @@
                     <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="cMenu.hide()"/>  
                 </p:contextMenu> 
 
-                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" editable="true" editMode="cell">
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" editable="true" editMode="cell" widgetVar="carsTable">
 
                     <f:facet name="header">
                         In-Cell Editing
@@ -126,7 +126,7 @@
         &lt;p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="cMenu.hide()"/&gt;  
     &lt;/p:contextMenu&gt; 
 
-    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" editable="true" editMode="cell"&gt;
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" editable="true" editMode="cell" widgetVar="carsTable"&gt;
 
         &lt;f:facet name="header"&gt;
             In-Cell Editing
