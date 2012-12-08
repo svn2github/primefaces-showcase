@@ -5,23 +5,82 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="../templates/ui.xhtml"
                 xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+        
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-galleria-panel-content table {
+                margin:0 auto;
+            }
+        </style>
+    </ui:define>
 
     <ui:define name="content">
 
         <h1 class="title ui-widget-header ui-corner-all">Galleria</h1>
         <div class="entry">
-            <p>Galleria is an image gallery component. Images can be defined with manually as children or dynamically using a collection.</p>
+            <p>Galleria is a content gallery component featuring.</p>
 
-            <p:galleria value="#{galleriaBean.images}" var="image">
+            <h3>Images</h3>
+            <p:galleria value="#{galleriaBean.images}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
                 <p:graphicImage value="/images/galleria/#{image}" alt="Image Description for #{image}" title="#{image}"/>
+            </p:galleria>
+            
+            <h3>Custom Content</h3>
+            <p:galleria id="contentGalleria" value="#{galleriaBean.players}" var="player" panelWidth="250" panelHeight="200"
+                        frameWidth="48" frameHeight="65" effect="clip">
+
+                <p:graphicImage id="playerImage" value="/images/barca/#{player.photo}" alt="#{image}" title="#{player.name}"/>
+                <f:facet name="content">
+                    <h:panelGrid  columns="2" cellpadding="5">
+                        <f:facet name="header">
+                            <p:graphicImage value="/images/barca/#{player.photo}" />
+                        </f:facet>
+
+                        <h:outputText value="Name: " />
+                        <h:outputText id="name" value="#{player.name}"/>
+
+                        <h:outputText value="Number " />
+                        <h:outputText id="number" value="#{player.number}"/>
+
+                        <h:outputText value="Position " />
+                        <h:outputText id="position" value="#{player.position}"/>
+                    </h:panelGrid>
+                </f:facet>
+
             </p:galleria>
 
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="galleria.xhtml">
                     <pre name="code" class="xml">
-&lt;p:galleria value="\#{galleriaBean.images}" var="image"&gt;
+&lt;h3&gt;Images&lt;/h3&gt;
+&lt;p:galleria value="\#{galleriaBean.images}" var="image" panelWidth="500" panelHeight="313" showCaption="true"&gt;
     &lt;p:graphicImage value="/images/galleria/\#{image}" alt="Image Description for \#{image}" title="\#{image}"/&gt;
+&lt;/p:galleria&gt;
+
+&lt;h3&gt;Custom Content&lt;/h3&gt;
+&lt;p:galleria id="contentGalleria" value="\#{galleriaBean.players}" var="player" panelWidth="250" panelHeight="200"
+            frameWidth="48" frameHeight="65" effect="clip"&gt;
+
+    &lt;p:graphicImage id="playerImage" value="/images/barca/\#{player.photo}" alt="\#{image}" title="\#{player.name}"/&gt;
+    &lt;f:facet name="content"&gt;
+        &lt;h:panelGrid  columns="2" cellpadding="5"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage value="/images/barca/\#{player.photo}" /&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Name: " /&gt;
+            &lt;h:outputText id="name" value="\#{player.name}"/&gt;
+
+            &lt;h:outputText value="Number " /&gt;
+            &lt;h:outputText id="number" value="\#{player.number}"/&gt;
+
+            &lt;h:outputText value="Position " /&gt;
+            &lt;h:outputText id="position" value="\#{player.position}"/&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/f:facet&gt;
+
 &lt;/p:galleria&gt;
                     </pre>
                 </p:tab>
@@ -33,10 +92,15 @@ package org.primefaces.examples.view;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import org.primefaces.examples.domain.Player;
 
 public class GalleriaBean {
 
     private List&lt;String&gt; images;
+
+    private List&lt;Player&gt; players;
+
+    private Player selectedPlayer;
 
     @PostConstruct
     public void init() {
@@ -45,13 +109,33 @@ public class GalleriaBean {
         for(int i=1;i&lt;=12;i++) {
             images.add("galleria" + i + ".jpg");
         }
+
+        players = new ArrayList&lt;Player&gt;();
+
+        players.add(new Player("Messi", 10, "messi.jpg", "CF"));
+        players.add(new Player("Iniesta", 8, "iniesta.jpg", "CM"));
+        players.add(new Player("Villa", 7, "villa.jpg", "CF"));
+        players.add(new Player("Xavi", 6, "xavi.jpg", "CM"));
+        players.add(new Player("Puyol", 5, "puyol.jpg", "CB"));
     }
 
+    public Player getSelectedPlayer() {
+        return selectedPlayer;
+    }
+
+    public void setSelectedPlayer(Player selectedPlayer) {
+        this.selectedPlayer = selectedPlayer;
+    }
+
+   
     public List&lt;String&gt; getImages() {
         return images;
     }
-}
 
+    public List&lt;Player&gt; getPlayers() {
+        return players;
+    }
+}
                     </pre>
                 </p:tab>
             </p:tabView>
