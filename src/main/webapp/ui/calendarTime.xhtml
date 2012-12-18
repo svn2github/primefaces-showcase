@@ -28,15 +28,14 @@
 				<p:calendar value="#{calendarBean.date5}" pattern="MM/dd/yyyy HH:mm:ss" stepHour="2" stepMinute="10" stepSecond="10" id="stepsCal"/>
 
                 <h3>Min/Max</h3>
-				<p:calendar value="#{calendarBean.date6}" pattern="MM/dd/yyyy HH:mm" minHour="9" maxHour="18" id="minMaxCal"/>
+                <p:calendar value="#{calendarBean.date6}" pattern="MM/dd/yyyy HH:mm" minHour="9" maxHour="18" id="minMaxCal"/>
 
                 <br />
 
                 <p:commandButton value="Submit" update="display" oncomplete="dialog.show()" style="margin-top:10px"/>
 
 				<p:dialog header="Selected Dates" widgetVar="dialog"
-							showEffect="fold" hideEffect="fold"
-							height="225">
+							showEffect="fold" hideEffect="fold">
 
                 	<h:panelGrid id="display" columns="2" cellpadding="5">
 
@@ -104,8 +103,7 @@
     &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
 
     &lt;p:dialog header="Selected Dates" widgetVar="dialog"
-                showEffect="fold" hideEffect="fold"
-                height="225"&gt;
+                showEffect="fold" hideEffect="fold"&gt;
 
         &lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
 
