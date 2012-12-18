@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Accordion - RTL</h1>
+		<div class="entry">
+            <p>Accordion supports RTL direction either by setting <i>dir</i> attribute to <i>rtl</i> at component level or globally using <i>primefaces.DIR</i> context param.</p>
+
+            <p:accordionPanel dir="rtl">
+
+				<p:tab title="ن. جهة هو بسبب">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:graphicImage id="tab1Img" value="/images/godfather/godfather1.jpg" />
+						<h:outputText id="tab1Text"
+							value="وسفن الكونجرس بلا مع, غير صفحة العالمية الإستسلام و. دحر تم تسمّى العصبة. وفي عن الغزو محاولات بالهجوم, كانت فكان وتنصيب ما أضف. تم أدنى حالية بريطانيا، دول. إيو ثم حقول التغييرات, لم حرب اعتداء الصيني.
+								مع جوي ٢٠٠٤ أحدث استرجاع. ثم تسمّى العالم اللازمة شيء, تلك لعملة وقدّموا أن, إيو و ماشاء تغييرات. لها من هنا؟ الأثنان اليابان،, وفي تعديل اتّجة ٣٠, بحق بل سكان استمرار. بسبب غرّة، الحلفاء هو ذلك, ربع أحكم بلاده الأمور هو, تحت ومضى العمليات ما. غير فهرست اسبوعين لألمانيا أم." />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="رتيب الإستسلام ولم">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:graphicImage id="tab2Img" value="/images/godfather/godfather2.jpg" />
+						<h:outputText id="tab2Text" value="حدى من تاريخ الصفحات ايطاليا،, الفاشي نورماندي بعد كل. بين الله قوات ناجازاكي إذ. دحر ما لهيمنة واتّجه, ذلك يونيو والمانيا بل. أضف مهاجمة بعتادهم والبريطاني من.
+								ربع أن الجوي يتسنّى الساحلية, شبح واستمرت باستحداث و, شعار بمباركة وضم كل. نقطة هزيمة للحكومة فصل ما, الغزو العظمى وتنصيب قبل تم, ثم على الفترة لألمانيا منهمكتين. في به، كارثة استبدال, ثم واحدة كثيرة السفن كلّ. أي ربع أفريقيا اللازمة استسلام, في وكسبت الجنوبي دنو. واستمر إستيلاء ضرب ان, ٣٠ وصل الفاشي لهيمنة وقوعها،."></h:outputText>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title=" دوجلاس الأسيوي أ">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:graphicImage id="tab3Img" value="/images/godfather/godfather3.jpg" />
+						<h:outputText id="tab3Text" value="هو أطراف بمحاولة عام, القنابل التنازلي من لمّ. سحقت إعادة ابتدعها ان عرض, بل يتم قررت برلين، والبريطاني, حيث أم حكومة التحالف ويكيبيديا. هذه دفّة مناوشات ان. بل جهة العام يرتبط.
+									بعد عل خسائر وفرنسا الإمتعاض. ٣٠ قامت للأسطول ولم. ان بالرغم وتنصيب شيء, أسر بل جندي لإنعدام. و لقهر ويكيبيديا الإمبراطوري لكل, هو مشروط إستسلاماً بين, بحق انتباه الباهضة العالمية ثم."></h:outputText>
+					</h:panelGrid>
+				</p:tab>
+
+			</p:accordionPanel>
+
+			<h3>Source</h3>
+            <p:tabView>
+                <p:tab title="accordionPanelRTL.xhtml">
+		<pre name="code" class="xml">
+&lt;p:accordionPanel id="tabView" dir="rtl"&gt;
+
+	&lt;p:tab title="ة هو بسبب"&gt;
+		&lt;h:panelGrid columns="2" cellpadding="10"&gt;
+			&lt;p:graphicImage id="tab1Img" value="/images/godfather/godfather1.jpg" /&gt;
+			&lt;h:outputText id="tab1Text" value="Text..." /&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:tab&gt;
+
+	&lt;p:tab title="تيب الإستسلام ولم"&gt;
+		&lt;h:panelGrid columns="2" cellpadding="10"&gt;
+			&lt;p:graphicImage id="tab2Img" value="/images/godfather/godfather2.jpg" /&gt;
+			&lt;h:outputText id="tab2Text" value="Text..."/&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:tab&gt;
+
+	&lt;p:tab title=" دوجلاس الأسيوي أ"&gt;
+		&lt;h:panelGrid columns="2" cellpadding="10"&gt;
+			&lt;p:graphicImage id="tab3Img" value="/images/godfather/godfather3.jpg" /&gt;
+			&lt;h:outputText id="tab3Text" value="Text..."/&gt;
+		&lt;/h:panelGrid&gt;
+	&lt;/p:tab&gt;
+
+&lt;/p:accordionPanel&gt;
+		</pre>
+                </p:tab>
+            </p:tabView>
+      </div>
+
+
+	</ui:define>
+</ui:composition>
