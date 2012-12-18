@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+        
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+        </script>
+    </ui:define>
+    
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">Dialog - RTL</h1>
+        <div class="entry">
+            <p>Dialog supports RTL direction either by setting <i>dir</i> attribute to <i>rtl</i> at component level or globally using <i>primefaces.DIR</i> context param.</p>
+
+            <p:commandButton value="Show" onclick="dlg.show();" type="button" />
+
+            <p:dialog id="basicDialog" header="اليابان،, وفي" widgetVar="dlg" modal="true" dir="rtl" width="400" footer=" الغزو العظمى وتنصي" resizable="false">
+                <h:outputText value="غييرات, لم حرب اعتداء الصوسفن الكونجرس بلا مع, غير صفحة العالمية الإستسلام و. دحر تم تسمّى العصبة. وفي عن الغزو محاولات بالهجوم, كانت فكان وتنصيب ما أضف. تم أدنى حالية بريطانيا، دول. إيو ثم حقول التيني." />
+            </p:dialog>	
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="dialogRTL.xhtml">
+                    <pre name="code" class="xml">	
+&lt;p:commandButton value="Show" onclick="dlg.show();" type="button" /&gt;
+
+&lt;p:dialog id="basicDialog" header="اليابان،, وفي" widgetVar="dlg" modal="true" dir="rtl" width="400" footer=" الغزو العظمى وتنصي" resizable="false"&gt;
+    &lt;h:outputText value="غييرات, لم حرب اعتداء الصوسفن الكونجرس بلا مع, غير صفحة العالمية الإستسلام و. دحر تم تسمّى العصبة. وفي عن الغزو محاولات بالهجوم, كانت فكان وتنصيب ما أضف. تم أدنى حالية بريطانيا، دول. إيو ثم حقول التيني." /&gt;
+&lt;/p:dialog&gt;	
+                    </pre>
+                </p:tab>
+            </p:tabView>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
