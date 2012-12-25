@@ -25,7 +25,7 @@ import java.util.TimeZone;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.event.DateSelectEvent;
+import org.primefaces.event.SelectEvent;
 
 public class CalendarBean {
 
@@ -106,10 +106,10 @@ public class CalendarBean {
 			return new ArrayList<Date>();
 	}
 	
-	public void handleDateSelect(DateSelectEvent event) {
+	public void handleDateSelect(SelectEvent event) {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		SimpleDateFormat format = new SimpleDateFormat("d/M/yyyy");
-		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getDate())));
+		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
 	}
 	
 	public TimeZone getTimeZone() {

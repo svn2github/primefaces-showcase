@@ -23,7 +23,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.primefaces.event.DateSelectEvent;
+import org.primefaces.event.SelectEvent;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.ScheduleEntrySelectEvent;
@@ -184,8 +184,8 @@ public class ScheduleController implements Serializable {
 		event = selectEvent.getScheduleEvent();
 	}
 	
-	public void onDateSelect(DateSelectEvent selectEvent) {
-		event = new DefaultScheduleEvent("", selectEvent.getDate(), selectEvent.getDate());
+	public void onDateSelect(SelectEvent selectEvent) {
+		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
 	}
 	
 	public void onEventMove(ScheduleEntryMoveEvent event) {
