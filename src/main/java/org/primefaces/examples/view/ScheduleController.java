@@ -26,7 +26,6 @@ import javax.faces.event.ActionEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
-import org.primefaces.event.ScheduleEntrySelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.LazyScheduleModel;
@@ -180,8 +179,8 @@ public class ScheduleController implements Serializable {
 		event = new DefaultScheduleEvent();
 	}
 	
-	public void onEventSelect(ScheduleEntrySelectEvent selectEvent) {
-		event = selectEvent.getScheduleEvent();
+	public void onEventSelect(SelectEvent selectEvent) {
+		event = (ScheduleEvent) selectEvent.getObject();
 	}
 	
 	public void onDateSelect(SelectEvent selectEvent) {

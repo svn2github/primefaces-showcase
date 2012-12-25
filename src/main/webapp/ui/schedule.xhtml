@@ -138,8 +138,8 @@ public class ScheduleController {
 		event = new DefaultScheduleEvent();
 	}
 	
-	public void onEventSelect(ScheduleEntrySelectEvent selectEvent) {
-		event = selectEvent.getScheduleEvent();
+	public void onEventSelect(SelectEvent selectEvent) {
+		event = (ScheduleEvent) selectEvent.getObject();
 	}
 	
 	public void onDateSelect(DateSelectEvent selectEvent) {
