@@ -1,0 +1,165 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">DataTable - Frozen Rows</h1>
+        <div class="entry">
+            <p>Certain number of records can be fixed in scrolling tables.</p>
+
+            <h:form>
+
+                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" scrollHeight="150" frozenRows="#{tableBean.frozenCars}">
+
+                    <f:facet name="header">
+                        Frozen Rows
+                    </f:facet>
+                    
+                    <p:column headerText="Model" width="125">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column headerText="Year" width="125">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column headerText="Manufacturer" width="125">
+                        <h:outputText value="#{car.manufacturer}" />
+                    </p:column>
+
+                    <p:column headerText="Color" width="125">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="datatableFrozenRows.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" scrollable="true" scrollHeight="150" frozenRows="\#{tableBean.frozenCars}"&gt;
+
+        &lt;f:facet name="header"&gt;
+            Frozen Rows
+        &lt;/f:facet&gt;
+
+        &lt;p:column headerText="Model" width="125"&gt;
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year" width="125" &gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer" width="125"&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" width="125"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="TableBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+
+    private List&lt;Car&gt; cars;
+
+	private List&lt;Car&gt; frozenCars;
+
+	public TableBean() {
+        cars = new ArrayList&lt;Car&gt;();
+        frozenCars = new ArrayList&lt;Car&gt;();
+
+		populateRandomCars(cars, 50);
+        populateRandomCars(frozenCars, 2);
+	}
+
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+
+	public List&lt;Car&gt; getCars() {
+		return cars;
+	}
+
+    public List&lt;Car&gt; getFrozenCars() {
+   		return frozenCars;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+        </div>
+
+    </ui:define>
+</ui:composition>
