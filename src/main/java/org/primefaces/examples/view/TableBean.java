@@ -105,6 +105,8 @@ public class TableBean implements Serializable {
 	private List<Car> carsSmall;
 
     private List<Car> carsLarge;
+    
+    private List<Car> frozenCars;
 	
 	private Date date = new Date();
 	
@@ -139,10 +141,12 @@ public class TableBean implements Serializable {
 		carsSmall = new ArrayList<Car>();
         carsLarge = new ArrayList<Car>();
         droppedCars = new ArrayList<Car>();
+        frozenCars = new ArrayList<Car>();
 		
 		populateRandomCars(cars, 50);
 		populateRandomCars(carsSmall, 9);
         populateRandomCars(carsLarge, 200);
+        populateRandomCars(frozenCars, 2);
         populateRandomSales();
 
         createDynamicColumns();
@@ -216,6 +220,10 @@ public class TableBean implements Serializable {
 		return carsLarge;
 	}
 
+    public List<Car> getFrozenCars() {
+        return frozenCars;
+    }
+    
 	private int getRandomYear() {
 		return (int) (Math.random() * 50 + 1960);
 	}
