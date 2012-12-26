@@ -60,9 +60,6 @@ package org.primefaces.examples.view;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-
 import org.primefaces.push.PushContext;
 import org.primefaces.push.PushContextFactory;
 
@@ -81,7 +78,7 @@ public class GlobalCounterBean implements Serializable{
 	public synchronized void increment() {
 		count++;
         
-        PushContext pushContext = PushContextFactory.getDefault();
+        PushContext pushContext = PushContextFactory.getDefault().getPushContext();
         pushContext.push("/counter", String.valueOf(count));
 	}
 }

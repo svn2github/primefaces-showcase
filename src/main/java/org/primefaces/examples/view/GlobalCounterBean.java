@@ -17,9 +17,6 @@ package org.primefaces.examples.view;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-
 import org.primefaces.push.PushContext;
 import org.primefaces.push.PushContextFactory;
 

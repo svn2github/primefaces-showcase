@@ -4,28 +4,28 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-
+    
+    
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">PickList</h1>
 		<div class="entry">
-            <p>PickList is a dual list input component featuring Drag and Drop based reordering, transition effects, pojo support, theme support
-                filtering, captions, client-server callbacks and more.</p>
+            <p>PickList is a dual list input component featuring Drag and Drop based reordering, transition effects, pojo support, theming
+                filtering, captions, checkbox selection, client-server callbacks and more.</p>
 
             <h:form>
                 
                 <p:growl id="msg" showDetail="true" escape="false" />
 
                 <h3 style="margin-top:0">Basic PickList</h3>
-
                 <p:pickList id="pickList" value="#{pickListBean.cities}" var="city" 
-                            itemLabel="#{city}" itemValue="#{city}" />
+                            itemLabel="#{city}" itemValue="#{city}" rendered="false"/>
 
                 <p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px"/>
 
-                <h3>PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering and Ajax Transfer</h3>
+                <h3>PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes and Ajax Transfer</h3>
                 <p:pickList id="pojoPickList" value="#{pickListBean.players}" var="player" effect="bounce"
 								itemValue="#{player}" itemLabel="#{player.name}" converter="player"
-                                showSourceControls="true" showTargetControls="true" 
+                                showSourceControls="true" showTargetControls="true" showCheckbox="true"
                                 showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" >
                     
                     <f:facet name="sourceCaption">Available</f:facet>
@@ -42,6 +42,7 @@
                     </p:column>
                     
                 </p:pickList>
+                
 
                 <p:commandButton id="pojoSubmit" value="Submit" update="displayPlayers" oncomplete="playerDialog.show()" style="margin-top:5px"/>
 
@@ -90,10 +91,10 @@
 
     &lt;p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px"/&gt;
 
-    &lt;h3&gt;PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering and Ajax Transfer&lt;/h3&gt;
+    &lt;h3&gt;PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes and Ajax Transfer&lt;/h3&gt;
     &lt;p:pickList id="pojoPickList" value="\#{pickListBean.players}" var="player" effect="bounce"
                     itemValue="\#{player}" itemLabel="\#{player.name}" converter="player"
-                    showSourceControls="true" showTargetControls="true" 
+                    showSourceControls="true" showTargetControls="true" showCheckbox="true"
                     showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" &gt;
 
         &lt;f:facet name="sourceCaption"&gt;Available&lt;/f:facet&gt;
