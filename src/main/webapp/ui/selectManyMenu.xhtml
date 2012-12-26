@@ -32,8 +32,8 @@
                         <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
                     </p:selectManyMenu>
 
-                    <h:outputText value="Scrollbar: " />
-                    <p:selectManyMenu id="scroll" value="#{autoCompleteBean.selectedPlayers}" converter="player" style="height:150px" var="p">
+                    <h:outputText value="Advanced: " />
+                    <p:selectManyMenu id="scroll" value="#{autoCompleteBean.selectedPlayers}" converter="player" style="height:200px" var="p">
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}" />
                     
                         <p:column>
@@ -72,15 +72,15 @@
     &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
                  columnClasses="label, column"&gt;
 
-        &lt;h:outputText value="Basic Usage: " /&gt;
+        &lt;h:outputText value="Basic" /&gt;
         &lt;p:selectManyMenu id="basic" value="\#{formBean.selectedOptions}"&gt;
             &lt;f:selectItem itemLabel="Option 1" itemValue="Option 1" /&gt;
             &lt;f:selectItem itemLabel="Option 2" itemValue="Option 2" /&gt;
             &lt;f:selectItem itemLabel="Option 3" itemValue="Option 3" /&gt;
         &lt;/p:selectManyMenu&gt;
 
-        &lt;h:outputText value="Scrollbar: " /&gt;
-        &lt;p:selectManyMenu id="scroll" value="\#{autoCompleteBean.selectedPlayers}" converter="player" style="height:150px" var="p"&gt;
+        &lt;h:outputText value="Advanced" /&gt;
+        &lt;p:selectManyMenu id="scroll" value="\#{autoCompleteBean.selectedPlayers}" converter="player" style="height:200px" var="p"&gt;
             &lt;f:selectItems value="\#{autoCompleteBean.players}" var="player" itemLabel="\#{player.name}" itemValue="\#{player}" /&gt;
 
             &lt;p:column&gt;

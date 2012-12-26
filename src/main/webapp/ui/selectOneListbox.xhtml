@@ -31,9 +31,8 @@
                         <f:selectItem itemLabel="Option 3" itemValue="3" />
                     </p:selectOneListbox>
 
-                    <h:outputText value="Advanced " />
-                    <p:selectOneListbox id="scroll" value="#{autoCompleteBean.selectedPlayer1}" converter="player"
-                                        var="p" style="height:150px">
+                    <h:outputText value="Advanced" />
+                    <p:selectOneListbox id="scroll" value="#{autoCompleteBean.selectedPlayer1}" converter="player" var="p" style="height:200px">
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}" />
                     
                         <p:column>
@@ -77,9 +76,8 @@
             &lt;f:selectItem itemLabel="Option 3" itemValue="3" />
         &lt;/p:selectOneListbox>
 
-        &lt;h:outputText value="Advanced " />
-        &lt;p:selectOneListbox id="scroll" value="\#{autoCompleteBean.selectedPlayer1}" converter="player"
-                            var="p" style="height:150px">
+        &lt;h:outputText value="Advanced" />
+        &lt;p:selectOneListbox id="scroll" value="\#{autoCompleteBean.selectedPlayer1}" converter="player" var="p" style="height:200px">
             &lt;f:selectItems value="\#{autoCompleteBean.players}" var="player" itemLabel="\#{player.name}" itemValue="\#{player}" />
 
             &lt;p:column>
