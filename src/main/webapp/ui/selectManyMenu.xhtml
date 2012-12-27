@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-
+            
     <ui:define name="head">
         <style type="text/css">
             .label, column {
@@ -12,7 +12,6 @@
             }
         </style>
     </ui:define>
-
 
 	<ui:define name="content">
 
@@ -25,15 +24,15 @@
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
                              columnClasses="label, column">
 
-                    <h:outputText value="Basic Usage: " />
+                    <h:outputText value="Basic" />
                     <p:selectManyMenu id="basic" value="#{formBean.selectedOptions}">
                         <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
                         <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
                         <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
                     </p:selectManyMenu>
 
-                    <h:outputText value="Advanced: " />
-                    <p:selectManyMenu id="scroll" value="#{autoCompleteBean.selectedPlayers}" converter="player" style="height:200px" var="p">
+                    <h:outputText value="Advanced" />
+                    <p:selectManyMenu id="scroll" value="#{autoCompleteBean.selectedPlayers}" converter="player" style="width:150px;height:200px" var="p" showCheckbox="true">
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}" />
                     
                         <p:column>
@@ -80,7 +79,7 @@
         &lt;/p:selectManyMenu&gt;
 
         &lt;h:outputText value="Advanced" /&gt;
-        &lt;p:selectManyMenu id="scroll" value="\#{autoCompleteBean.selectedPlayers}" converter="player" style="height:200px" var="p"&gt;
+        &lt;p:selectManyMenu id="scroll" value="\#{autoCompleteBean.selectedPlayers}" converter="player" style="width:150px;height:200px" var="p" showCheckbox="true"&gt;
             &lt;f:selectItems value="\#{autoCompleteBean.players}" var="player" itemLabel="\#{player.name}" itemValue="\#{player}" /&gt;
 
             &lt;p:column&gt;
