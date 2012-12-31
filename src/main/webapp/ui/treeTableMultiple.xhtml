@@ -6,50 +6,12 @@
     template="../templates/ui.xhtml">
 
 	<ui:define name="content">
-		<h1 class="title ui-widget-header ui-corner-all">TreeTable - Selection</h1>
+		<h1 class="title ui-widget-header ui-corner-all">TreeTable - Multiple Selection</h1>
 
 		<div class="entry">
-			<p>TreeTable provides built-in selection for single(row click) and multiple(row click + metakey).</p>
+			<p>TreeTable has built-in support for single node selection using meta and shift keys.</p>
 			
 			<h:form id="form">
-                
-                <p:growl id="messages" showDetail="true" />
-	
-				<p:treeTable value="#{documentsController.root}" var="document" id="singleSelect"
-                             selection="#{documentsController.selectedNode}" selectionMode="single">
-
-                    <f:facet name="header">
-                        Single Selection
-                    </f:facet>
-                    
-					<p:column style="width:150px">
-						<f:facet name="header">
-							Name
-						</f:facet>
-						<h:outputText value="#{document.name}" />
-					</p:column>
-					
-					<p:column style="width:100px">
-						<f:facet name="header">
-							Size
-						</f:facet>
-						<h:outputText value="#{document.size}" />
-					</p:column>
-					
-					<p:column style="width:100px">
-						<f:facet name="header">
-							Type
-						</f:facet>
-						<h:outputText value="#{document.type}" />
-					</p:column>
-                    
-                    <f:facet name="footer">
-                        <p:commandButton id="singleBtn" value="View" icon="ui-icon-search"
-                                update=":form:documentPanel" oncomplete="documentDialog.show()"/>
-                    </f:facet>
-				</p:treeTable>
-                
-                <br />
                 
                 <p:treeTable value="#{documentsController.root}" var="document" id="multiSelect"
                              selection="#{documentsController.selectedNodes}" selectionMode="multiple">
@@ -80,24 +42,12 @@
 					</p:column>
                     
                     <f:facet name="footer">
-                        <p:commandButton value="View" icon="ui-icon-search"
-                                update=":form:documentPanel" oncomplete="documentDialog.show()"/>
+                        <p:commandButton value="View" icon="ui-icon-search" update=":form:documentPanel" oncomplete="documentDialog.show()"/>
                     </f:facet>
 				</p:treeTable>
 				
 				<p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true">
 					<p:outputPanel id="documentPanel">
-                        <h:panelGrid  columns="2" cellpadding="5" rendered="#{not empty documentsController.selectedNode}">
-							<h:outputLabel for="name" value="Name: " />
-							<h:outputText id="name" value="#{documentsController.selectedNode.data.name}" style="font-weight:bold" />
-							
-							<h:outputLabel for="size" value="Size: " />
-							<h:outputText id="size" value="#{documentsController.selectedNode.data.size}" style="font-weight:bold" />
-							
-							<h:outputLabel for="type" value="Type " />
-							<h:outputText id="type" value="#{documentsController.selectedNode.data.type}" style="font-weight:bold" />
-						</h:panelGrid>
-                        
                         <p:dataList value="#{documentsController.selectedNodes}" var="selectedNode" rendered="#{not empty documentsController.selectedNodes}">
                             #{selectedNode.data.name}
                         </p:dataList>
@@ -108,7 +58,7 @@
 			
 			<h3>Source</h3>
 			<p:tabView>
-				<p:tab title="treeTableSelection.xhtml">
+				<p:tab title="treeTableMultiple.xhtml">
 					<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
                 
@@ -227,8 +177,6 @@ public class DocumentsController implements Serializable {
 
 	private TreeNode root;
     
-    private TreeNode selectedNode;
-    
     private TreeNode[] selectedNodes;
 	
 	public DocumentsController() {
@@ -269,14 +217,6 @@ public class DocumentsController implements Serializable {
 	public void setRoot(TreeNode root) {
 		this.root = root;
 	}
-
-    public TreeNode getSelectedNode() {
-        return selectedNode;
-    }
-
-    public void setSelectedNode(TreeNode selectedNode) {
-        this.selectedNode = selectedNode;
-    }
 
     public TreeNode[] getSelectedNodes() {
         return selectedNodes;
