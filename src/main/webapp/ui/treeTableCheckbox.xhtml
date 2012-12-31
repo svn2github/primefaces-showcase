@@ -11,7 +11,7 @@
 		<div class="entry">
 			<p>Another option in addition to single and multiple selection is the checkbox based selection.</p>
 			
-			<h:form>
+			<h:form id="form">
                 	
                 <p:treeTable value="#{documentsController.root}" var="document" id="multiSelect"
                              selection="#{documentsController.selectedNodes}" selectionMode="checkbox">
@@ -48,18 +48,7 @@
 				</p:treeTable>
 				
 				<p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true">
-					<p:outputPanel id="documentPanel">
-                        <h:panelGrid  columns="2" cellpadding="5" rendered="#{not empty documentsController.selectedNode}">
-							<h:outputLabel for="name" value="Name: " />
-							<h:outputText id="name" value="#{documentsController.selectedNode.data.name}" style="font-weight:bold" />
-							
-							<h:outputLabel for="size" value="Size: " />
-							<h:outputText id="size" value="#{documentsController.selectedNode.data.size}" style="font-weight:bold" />
-							
-							<h:outputLabel for="type" value="Type " />
-							<h:outputText id="type" value="#{documentsController.selectedNode.data.type}" style="font-weight:bold" />
-						</h:panelGrid>
-                        
+					<p:outputPanel id="documentPanel">                        
                         <p:dataList value="#{documentsController.selectedNodes}" var="selectedNode" rendered="#{not empty documentsController.selectedNodes}">
                             #{selectedNode.data.name}
                         </p:dataList>
@@ -110,17 +99,6 @@
 
     &lt;p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true"&gt;
         &lt;p:outputPanel id="documentPanel"&gt;
-            &lt;h:panelGrid  columns="2" cellpadding="5" rendered="\#{not empty documentsController.selectedNode}"&gt;
-                &lt;h:outputLabel for="name" value="Name: " /&gt;
-                &lt;h:outputText id="name" value="\#{documentsController.selectedNode.data.name}" style="font-weight:bold" /&gt;
-
-                &lt;h:outputLabel for="size" value="Size: " /&gt;
-                &lt;h:outputText id="size" value="\#{documentsController.selectedNode.data.size}" style="font-weight:bold" /&gt;
-
-                &lt;h:outputLabel for="type" value="Type " /&gt;
-                &lt;h:outputText id="type" value="\#{documentsController.selectedNode.data.type}" style="font-weight:bold" /&gt;
-            &lt;/h:panelGrid&gt;
-
             &lt;p:dataList value="\#{documentsController.selectedNodes}" var="selectedNode" rendered="\#{not empty documentsController.selectedNodes}"&gt;
                 \#{selectedNode.data.name}
             &lt;/p:dataList&gt;
