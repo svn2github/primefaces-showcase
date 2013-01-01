@@ -4,13 +4,13 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="../templates/ui.xhtml">
-
+    
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Cell Editing</h1>
         <div class="entry">
             <p>Inline cell editing is enabled by selecting a cell. As a callback "cellEdit" ajax behavior event is provided to process edited data with CellEditEvent. 
                 First sample also has a context menu attached to demonstrate the usage of client side api. Second sample demonstrates multiple components support in a single
-                cell along with customizable edit event set to double click. Quick tab navigation between cells is also supported for easier editing.</p>
+                cell. Quick tab navigation between cells is also supported for easier editing.</p>
 
             <h:form id="form">
 
@@ -68,12 +68,11 @@
                 </p:dataTable>
                 
                 <br />
-                
-                <p:dataTable var="car" value="#{tableBean.carsSmall}" editable="true" editMode="cell"
-                             cellEditEvent="dblclick" cellSeparator=" \/ ">
+
+                <p:dataTable id="carsMulti" var="car" value="#{tableBean.carsSmall}" editable="true" editMode="cell" cellSeparator=" \/ ">
                                  
                     <f:facet name="header">
-                        Multiple Components with Double Click
+                        Multiple Components
                     </f:facet>
                         
                     <p:column headerText="Model/Year" style="width:50%">
@@ -172,11 +171,10 @@
 
     &lt;/p:dataTable&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" editable="true" editMode="cell"
-                 cellEditEvent="dblclick" cellSeparator=" \/ "&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" editable="true" editMode="cell" cellSeparator=" \/ "&gt;
 
         &lt;f:facet name="header"&gt;
-            Multiple Components with Double Click
+            Multiple Components
         &lt;/f:facet&gt;
 
         &lt;p:column headerText="Model/Year" style="width:50%"&gt;
