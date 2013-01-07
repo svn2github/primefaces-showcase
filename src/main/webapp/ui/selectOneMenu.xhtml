@@ -4,20 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-    
         
-    <ui:define name="head">
-        <style type="text/css">
-
-        </style>
-        
-        <script type="text/javascript">
-//<![CDATA[
-
-//]]>
-        </script>
-    </ui:define>
-    
  	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">SelectOneMenu</h1>
@@ -73,9 +60,9 @@
 
                 </h:panelGrid>
 
-                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" ajax="false"/>
+                <p:commandButton value="Submit" update="display" oncomplete="dlg.show()" />
 
-                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg" visible="true">
+                <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
                     <h:panelGrid columns="1" id="display">
                         <h:outputText value="Value 1: #{buttonBean.number}" />
                         
