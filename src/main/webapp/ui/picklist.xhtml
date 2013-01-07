@@ -18,7 +18,7 @@
 
                 <h3 style="margin-top:0">Basic PickList</h3>
                 <p:pickList id="pickList" value="#{pickListBean.cities}" var="city" 
-                            itemLabel="#{city}" itemValue="#{city}" rendered="false"/>
+                            itemLabel="#{city}" itemValue="#{city}" />
 
                 <p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px"/>
 
