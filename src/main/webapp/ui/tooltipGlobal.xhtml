@@ -8,45 +8,54 @@
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Tooltip - Global</h1>
 		<div class="entry">
-			<p>Global tooltip binds to clickable elements with title attributes.</p>
+			<p>Global tooltip binds to clickable elements with title attributes. Ajax updates are supported as well, meaning
+            if target component is updated with ajax, tooltip can still bind.</p>
 
             <p:tooltip />
             
-            <h:panelGrid columns="2" cellpadding="5">
+            <h:form>
+            
+                <h:panelGrid id="grid" columns="2" cellpadding="5">
 
-                <h:outputText value="Input: " />
-                <p:inputText id="focus" title="Tooltip for an input"/>
+                    <h:outputText value="Input: " />
+                    <p:inputText id="focus" title="Tooltip for an input"/>
 
-                <h:outputText value="Link: " />
-                <h:outputLink id="fade" value="#" title="Tooltip for a link">
-                    <h:outputText value="Fade Effect" />
-                </h:outputLink>
+                    <h:outputText value="Link: " />
+                    <h:outputLink id="fade" value="#" title="Tooltip for a link">
+                        <h:outputText value="Fade Effect" />
+                    </h:outputLink>
+
+                    <h:outputText value="Button: " />
+                    <p:commandButton value="Update" title="Update components" update="@parent"/>
+
+                </h:panelGrid>
                 
-                <h:outputText value="Button: " />
-                <p:commandButton value="Submit" title="Tooltip for a button" />
-
-            </h:panelGrid>
+            </h:form>
 
 			<h3>Source</h3>
             <p:tabView>
                 <p:tab title="tooltipGlobal.xhtml">
                     <pre name="code" class="xml">
 &lt;p:tooltip /&gt;
-            
-&lt;h:panelGrid columns="2" cellpadding="5"&gt;
 
-    &lt;h:outputText value="Input: " /&gt;
-    &lt;p:inputText id="focus" title="Tooltip for an input"/&gt;
+&lt;h:form&gt;
 
-    &lt;h:outputText value="Link: " /&gt;
-    &lt;h:outputLink id="fade" value="#" title="Tooltip for a link"&gt;
-        &lt;h:outputText value="Fade Effect" /&gt;
-    &lt;/h:outputLink&gt;
+    &lt;h:panelGrid id="grid" columns="2" cellpadding="5"&gt;
 
-    &lt;h:outputText value="Button: " /&gt;
-    &lt;p:commandButton value="Submit" title="Tooltip for a button" /&gt;
+        &lt;h:outputText value="Input: " /&gt;
+        &lt;p:inputText id="focus" title="Tooltip for an input"/&gt;
 
-&lt;/h:panelGrid&gt;
+        &lt;h:outputText value="Link: " /&gt;
+        &lt;h:outputLink id="fade" value="\#" title="Tooltip for a link"&gt;
+            &lt;h:outputText value="Fade Effect" /&gt;
+        &lt;/h:outputLink&gt;
+
+        &lt;h:outputText value="Button: " /&gt;
+        &lt;p:commandButton value="Update" title="Update components" update="@parent"/&gt;
+
+    &lt;/h:panelGrid&gt;
+
+&lt;/h:form&gt;
                     </pre>
                 </p:tab>
             </p:tabView>
