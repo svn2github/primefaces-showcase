@@ -18,19 +18,19 @@
                         
                         <p:ajax event="colResize" update=":form:growl" listener="#{tableBean.onResize}" />
                         
-                        <p:column headerText="Model" width="125" id="model">
+                        <p:column headerText="Model">
                             #{car.model}
                         </p:column>
 
-                        <p:column headerText="Year" width="125" id="year">
+                        <p:column headerText="Year">
                             <h:outputText value="#{car.year}" />
                         </p:column>
 
-                        <p:column headerText="Manufacturer" width="125" id="manufacturer">
+                        <p:column headerText="Manufacturer">
                             <h:outputText value="#{car.manufacturer}" />
                         </p:column>
 
-                        <p:column headerText="Color" width="125" id="color">
+                        <p:column headerText="Color">
                             <h:outputText value="#{car.color}" />
                         </p:column>
                     </p:dataTable>
@@ -49,19 +49,19 @@
 
         &lt;p:ajax event="colResize" update=":form:growl" listener="\#{tableBean.onResize}" /&gt;
 
-        &lt;p:column headerText="Model" width="125" id="model"&gt;
+        &lt;p:column headerText="Model"&gt;
             \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" width="125" id="year"&gt;
+        &lt;p:column headerText="Year"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" width="125" id="manufacturer"&gt;
+        &lt;p:column headerText="Manufacturer"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" width="125" id="color"&gt;
+        &lt;p:column headerText="Color"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
