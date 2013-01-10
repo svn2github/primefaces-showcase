@@ -27,22 +27,22 @@
                     <f:facet name="header">
                         RadioButton Based Selection
                     </f:facet>
-
-                    <p:column selectionMode="single" style="width:28px"/>
-
-                    <p:column headerText="Model">
+                    
+                    <p:column selectionMode="single" style="width:2%" />
+                  
+                    <p:column headerText="Model" style="width:25%">
                         #{car.model}
                     </p:column>
 
-                    <p:column headerText="Year">
+                    <p:column headerText="Year" style="width:25%">
                         #{car.year}
                     </p:column>
 
-                    <p:column headerText="Manufacturer" >
+                    <p:column headerText="Manufacturer" style="width:24%">
                         #{car.manufacturer}
                     </p:column>
 
-                    <p:column headerText="Color">
+                    <p:column headerText="Color" style="width:24%">
                         #{car.color}
                     </p:column>
 
@@ -61,21 +61,21 @@
                         Checkbox Based Selection
                     </f:facet>
 
-                    <p:column selectionMode="multiple" style="width:28px"/>
-
-                    <p:column headerText="Model">
+                    <p:column selectionMode="multiple" style="width:2%" />
+                  
+                    <p:column headerText="Model" style="width:25%">
                         #{car.model}
                     </p:column>
 
-                    <p:column headerText="Year">
+                    <p:column headerText="Year" style="width:25%">
                         #{car.year}
                     </p:column>
 
-                    <p:column headerText="Manufacturer" >
+                    <p:column headerText="Manufacturer" style="width:24%">
                         #{car.manufacturer}
                     </p:column>
 
-                    <p:column headerText="Color">
+                    <p:column headerText="Color" style="width:24%">
                         #{car.color}
                     </p:column>
 
@@ -132,29 +132,31 @@
             RadioButton Based Selection
         &lt;/f:facet&gt;
 
-        &lt;p:column selectionMode="single" style="width:28px" /&gt;
+        &lt;p:column selectionMode="single" style="width:2%" /&gt;
 
-        &lt;p:column headerText="Model"&gt;
+        &lt;p:column headerText="Model" style="width:25%"&gt;
             \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year"&gt;
+        &lt;p:column headerText="Year" style="width:25%"&gt;
             \#{car.year}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" &gt;
+        &lt;p:column headerText="Manufacturer" style="width:24%"&gt;
             \#{car.manufacturer}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color"&gt;
+        &lt;p:column headerText="Color" style="width:24%"&gt;
             \#{car.color}
         &lt;/p:column&gt;
 
         &lt;f:facet name="footer"&gt;
-            &lt;p:commandButton id="viewCommand" value="View" icon="ui-icon-search"
+            &lt;p:commandButton id="viewButton" value="View" icon="ui-icon-search"
                              update=":form:displaySingle" oncomplete="singleCarDialog.show()"/&gt;
         &lt;/f:facet&gt;
     &lt;/p:dataTable&gt;
+
+    &lt;br /&gt;
 
     &lt;p:dataTable id="multiCars" var="car" value="\#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                  selection="\#{tableBean.selectedCars}"&gt;
@@ -163,21 +165,21 @@
             Checkbox Based Selection
         &lt;/f:facet&gt;
 
-        &lt;p:column selectionMode="multiple" style="width:28px" /&gt;
+        &lt;p:column selectionMode="multiple" style="width:2%" /&gt;
 
-        &lt;p:column headerText="Model"&gt;
+        &lt;p:column headerText="Model" style="width:25%"&gt;
             \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year"&gt;
+        &lt;p:column headerText="Year" style="width:25%"&gt;
             \#{car.year}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" &gt;
+        &lt;p:column headerText="Manufacturer" style="width:24%"&gt;
             \#{car.manufacturer}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color"&gt;
+        &lt;p:column headerText="Color" style="width:24%"&gt;
             \#{car.color}
         &lt;/p:column&gt;
 
@@ -197,24 +199,23 @@
             &lt;/f:facet&gt;
 
             &lt;h:outputText value="Model:" /&gt;
-            &lt;h:outputText value="\#{tableBean.selectedCar.model}" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.model}" style="font-weight:bold"/&gt;
 
             &lt;h:outputText value="Year:" /&gt;
-            &lt;h:outputText value="\#{tableBean.selectedCar.year}" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.year}" style="font-weight:bold"/&gt;
 
             &lt;h:outputText value="Manufacturer:" /&gt;
-            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/&gt;
 
             &lt;h:outputText value="Color:" /&gt;
-            &lt;h:outputText value="\#{tableBean.selectedCar.color}" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.color}" style="font-weight:bold"/&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
 
     &lt;p:dialog id="multiDialog" header="Car Detail" widgetVar="multiCarDialog"
               height="300" showEffect="fade" hideEffect="explode"&gt;
 
-        &lt;p:dataList id="displayMulti"
-                value="\#{tableBean.selectedCars}" var="selectedCar"&gt;
+        &lt;p:dataList id="displayMulti" value="\#{tableBean.selectedCars}" var="selectedCar"&gt;
             Model: \#{selectedCar.model}, Year: \#{selectedCar.year}
         &lt;/p:dataList&gt;
 
