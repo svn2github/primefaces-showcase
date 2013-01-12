@@ -26,31 +26,19 @@
                         Ajax Sorting
                     </f:facet>
 
-                    <p:column id="modelHeader" sortBy="#{car.model}">
-                        <f:facet name="header">
-                            <h:outputText value="Model" />
-                        </f:facet>
+                    <p:column id="modelHeader" sortBy="#{car.model}" headerText="Model">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column sortBy="#{car.year}">
-                        <f:facet name="header">
-                            <h:outputText value="Year" />
-                        </f:facet>
+                    <p:column sortBy="#{car.year}" headerText="Year">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column sortBy="#{car.manufacturer}">
-                        <f:facet name="header">
-                            <h:outputText value="Manufacturer" />
-                        </f:facet>
+                    <p:column sortBy="#{car.manufacturer}" headerText="Manufacturer">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column sortBy="#{car.color}">
-                        <f:facet name="header">
-                            <h:outputText value="Color" />
-                        </f:facet>
+                    <p:column sortBy="#{car.color}" headerText="Color">
                         <h:outputText value="#{car.color}" />
                     </p:column>
                 </p:dataTable>
@@ -68,31 +56,19 @@
             Ajax Sorting
         &lt;/f:facet&gt;
 
-        &lt;p:column id="modelHeader" sortBy="\#{car.model}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Model" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column sortBy="\#{car.model}" headerText="Model"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column sortBy="\#{car.year}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Year" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column sortBy="\#{car.year}" headerText="Year"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column sortBy="\#{car.manufacturer}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Manufacturer" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column sortBy="\#{car.manufacturer}" headerText="Manufacturer"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column sortBy="\#{car.color}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="Color" /&gt;
-            &lt;/f:facet&gt;
+        &lt;p:column sortBy="\#{car.color}" headerText="Color"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;

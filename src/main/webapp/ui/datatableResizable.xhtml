@@ -19,7 +19,7 @@
                         <p:ajax event="colResize" update=":form:growl" listener="#{tableBean.onResize}" />
                         
                         <p:column headerText="Model">
-                            #{car.model}
+                            <h:outputText value="#{car.model}" />
                         </p:column>
 
                         <p:column headerText="Year">
@@ -50,7 +50,7 @@
         &lt;p:ajax event="colResize" update=":form:growl" listener="\#{tableBean.onResize}" /&gt;
 
         &lt;p:column headerText="Model"&gt;
-            \#{car.model}
+            &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
         &lt;p:column headerText="Year"&gt;
