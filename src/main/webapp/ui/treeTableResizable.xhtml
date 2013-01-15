@@ -31,24 +31,15 @@
                         Document Viewer
                     </f:facet>
                     
-					<p:column width="200">
-						<f:facet name="header">
-							Name
-						</f:facet>
+					<p:column headerText="Name">
 						<h:outputText value="#{document.name}" />
 					</p:column>
 					
-					<p:column width="200">
-						<f:facet name="header">
-							Size
-						</f:facet>
+					<p:column headerText="Size">
 						<h:outputText value="#{document.size}" />
 					</p:column>
-				
-					<p:column width="200">
-						<f:facet name="header">
-							Type
-						</f:facet>
+					
+					<p:column headerText="Type">
 						<h:outputText value="#{document.type}" />
 					</p:column>
 				</p:treeTable>
@@ -66,25 +57,16 @@
             Document Viewer
         &lt;/f:facet&gt;
 
-        &lt;p:column width="200"&gt;
-            &lt;f:facet name="header"&gt;
-                Name
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="#{document.name}" /&gt;
+        &lt;p:column headerText="Name"&gt;
+            &lt;h:outputText value="\#{document.name}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column width="200"&gt;
-            &lt;f:facet name="header"&gt;
-                Size
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="#{document.size}" /&gt;
+        &lt;p:column headerText="Size"&gt;
+            &lt;h:outputText value="\#{document.size}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column width="200"&gt;
-            &lt;f:facet name="header"&gt;
-                Type
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="#{document.type}" /&gt;
+        &lt;p:column headerText="Type"&gt;
+            &lt;h:outputText value="\#{document.type}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:treeTable&gt;
 
