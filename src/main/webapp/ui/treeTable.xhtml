@@ -18,28 +18,28 @@
                         Document Viewer
                     </f:facet>
                     
-					<p:column style="width:150px">
+					<p:column style="width:32%">
 						<f:facet name="header">
 							Name
 						</f:facet>
 						<h:outputText value="#{document.name}" />
 					</p:column>
 					
-					<p:column style="width:100px">
+					<p:column style="width:32%">
 						<f:facet name="header">
 							Size
 						</f:facet>
 						<h:outputText value="#{document.size}" />
 					</p:column>
 					
-					<p:column style="width:100px">
+					<p:column style="width:32%">
 						<f:facet name="header">
 							Type
 						</f:facet>
 						<h:outputText value="#{document.type}" />
 					</p:column>
 					
-					<p:column style="width:20px">
+					<p:column style="width:4%">
                         <p:commandLink update=":form:documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon ui-icon-search">
                             <f:setPropertyActionListener value="#{document}" 
                                 target="#{documentsController.selectedDocument}" />
