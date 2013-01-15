@@ -26,6 +26,8 @@ public class DocumentsController implements Serializable {
     private TreeNode[] selectedNodes;
 
 	private Document selectedDocument;
+    
+    private boolean liveResize;
 	
 	public DocumentsController() {
 		root = new DefaultTreeNode(new Document("Files", "-", "Folder"), null);
@@ -126,5 +128,12 @@ public class DocumentsController implements Serializable {
         selectedNode.setParent(null);
         
         selectedNode = null;
+    }
+
+    public boolean isLiveResize() {
+        return liveResize;
+    }
+    public void setLiveResize(boolean liveResize) {
+        this.liveResize = liveResize;
     }
 }

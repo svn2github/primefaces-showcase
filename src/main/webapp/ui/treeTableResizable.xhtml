@@ -25,8 +25,18 @@
             <p>TreeTable columns can be resized by dragging.</p>
 		
 			<h:form id="form">
+                
+                <h:panelGrid columns="2">
+                    <h:outputText for="resizeMode" value="Resize Mode:" />
+                    <p:selectOneButton value="#{documentsController.liveResize}" onchange="$('#form').submit()">
+                        <f:selectItem itemLabel="Default" itemValue="#{false}" />
+                        <f:selectItem itemLabel="Live" itemValue="#{true}" />
+                    </p:selectOneButton>
+                </h:panelGrid>
+                
+                <br />
 	
-				<p:treeTable id="treetable" value="#{documentsController.root}" var="document" resizableColumns="true">
+				<p:treeTable id="treetable" value="#{documentsController.root}" var="document" resizableColumns="true" liveResize="#{documentsController.liveResize}">
                     <f:facet name="header">
                         Document Viewer
                     </f:facet>
@@ -51,6 +61,14 @@
 				<p:tab title="treeTableResizable.xhtml">
 					<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
+
+    &lt;h:panelGrid columns="2"&gt;
+        &lt;h:outputText for="resizeMode" value="Resize Mode:" /&gt;
+        &lt;p:selectOneButton value="\#{documentsController.liveResize}" onchange="$('\#form').submit()"&gt;
+            &lt;f:selectItem itemLabel="Default" itemValue="\#{false}" /&gt;
+            &lt;f:selectItem itemLabel="Live" itemValue="\#{true}" /&gt;
+        &lt;/p:selectOneButton&gt;
+    &lt;/h:panelGrid&gt;
 	
     &lt;p:treeTable id="treetable" value="\#{documentsController.root}" var="document" resizableColumns="true"&gt;
         &lt;f:facet name="header"&gt;
@@ -92,6 +110,8 @@ public class DocumentsController implements Serializable {
 	private TreeNode root;
 
 	private Document selectedDocument;
+
+    private boolean liveResize;
 	
 	public DocumentsController() {
 		root = new DefaultTreeNode("root", null);
@@ -141,6 +161,13 @@ public class DocumentsController implements Serializable {
 	public void setSelectedDocument(Document selectedDocument) {
 		this.selectedDocument = selectedDocument;
 	}
+
+    public boolean isLiveResize() {
+        return liveResize;
+    }
+    public void setLiveResize(boolean liveResize) {
+        this.liveResize = liveResize;
+    }
 }
 					</pre>
 				</p:tab>
