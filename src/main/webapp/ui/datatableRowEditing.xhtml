@@ -24,14 +24,14 @@
                     <p:ajax event="rowEdit" listener="#{tableBean.onEdit}" update=":form:messages" />
                     <p:ajax event="rowEditCancel" listener="#{tableBean.onCancel}" update=":form:messages" />
                     
-                    <p:column headerText="Model" style="width:24%">
+                    <p:column headerText="Model" style="width:30%">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{car.model}" /></f:facet>
                             <f:facet name="input"><p:inputText id="modelInput" value="#{car.model}" style="width:100%"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Year" style="width:24%">
+                    <p:column headerText="Year" style="width:20%">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
                             <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
@@ -49,7 +49,7 @@
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Color" style="width:24%">
+                    <p:column headerText="Color" style="width:20">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{car.color}" /></f:facet>
                             <f:facet name="input">
@@ -60,7 +60,7 @@
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column style="width:4%">
+                    <p:column style="width:6%">
                         <p:rowEditor />
                     </p:column>
 
@@ -85,7 +85,7 @@
         &lt;p:ajax event="rowEdit" listener="\#{tableBean.onEdit}" update=":form:messages" /&gt;
         &lt;p:ajax event="rowEditCancel" listener="\#{tableBean.onCancel}" update=":form:messages" /&gt;
 
-        &lt;p:column headerText="Model" style="width:24%"&gt;
+        &lt;p:column headerText="Model" style="width:30%"&gt;
             &lt;p:cellEditor&gt;
                 &lt;f:facet name="output"&gt;
                     &lt;h:outputText value="\#{car.model}" /&gt;
@@ -96,7 +96,7 @@
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" style="width:24%"&gt;
+        &lt;p:column headerText="Year" style="width:20%"&gt;
             &lt;p:cellEditor&gt;
                 &lt;f:facet name="output"&gt;
                     &lt;h:outputText value="\#{car.year}" /&gt;
@@ -123,7 +123,7 @@
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" style="width:24%"&gt;
+        &lt;p:column headerText="Color" style="width:20%"&gt;
             &lt;p:cellEditor&gt;
                 &lt;f:facet name="output"&gt;
                     &lt;h:outputText value="\#{car.color}" /&gt;
@@ -139,7 +139,7 @@
             &lt;/p:cellEditor&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:4%"&gt;
+        &lt;p:column style="width:6%"&gt;
             &lt;p:rowEditor /&gt;
         &lt;/p:column&gt;
 
