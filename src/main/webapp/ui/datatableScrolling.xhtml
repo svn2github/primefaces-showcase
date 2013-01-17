@@ -14,7 +14,7 @@
             <h:form>
 
                 <h3>Y Scrolling</h3>
-                <p:dataTable var="car" value="#{tableBean.carsSmall}" scrollable="true" scrollHeight="150" id="dataTable1">
+                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" scrollHeight="150" id="dataTable1">
 
                     <p:column headerText="Model" footerText="Model">
                         <h:outputText value="#{car.model}" />
@@ -35,7 +35,7 @@
                 </p:dataTable>
                 
                 <h3>X Scrolling</h3>
-                <p:dataTable var="car" value="#{tableBean.carsSmall}" scrollable="true" scrollWidth="400" resizableColumns="true" id="dataTable2">
+                <p:dataTable var="car" value="#{tableBean.carsSmall}" scrollable="true" scrollWidth="400" id="dataTable2">
 
                     <p:column headerText="Model" footerText="Model">
                         <h:outputText value="#{car.model}" />
@@ -128,7 +128,7 @@
     &lt;/p:dataTable&gt;
 
     &lt;h3&gt;X Scrolling&lt;/h3&gt;
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" scrollable="true" scrollWidth="400" resizableColumns="true" id="dataTable2"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" scrollable="true" scrollWidth="400" id="dataTable2"&gt;
 
         &lt;p:column headerText="Model" footerText="Model"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
