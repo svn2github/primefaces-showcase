@@ -117,7 +117,7 @@ public class DocumentsController implements Serializable {
 	}
     
     public void onResize(ColumnResizeEvent event) {
-        FacesMessage msg = new FacesMessage("Column " + event.getColumn().getId() + " resized", "W:" + event.getWidth() + ", H:" + event.getHeight());
+        FacesMessage msg = new FacesMessage("Column " + event.getColumn().getColumnKey() + " resized", "W:" + event.getWidth() + ", H:" + event.getHeight());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
