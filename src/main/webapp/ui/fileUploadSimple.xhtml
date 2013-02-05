@@ -9,17 +9,17 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">FileUpload - Simple</h1>
 		<div class="entry">
-            <p>Simple uploader uses native browser file upload.</p>
+            <p>Simple uploader uses native browser file upload. Simple uploader is disabled at online demo.</p>
 
             <h:form enctype="multipart/form-data">
 
                 <p:messages showDetail="true"/>
 
-				<p:fileUpload value="#{fileUploadController.file}" mode="simple" />
+				<p:fileUpload value="#{fileUploadController.file}" mode="simple" disabled="true"/>
 
                 <br /><br />
 
-                <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload}"/>
+                <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload}" disabled="true"/>
 
 			</h:form>
 
