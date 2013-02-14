@@ -39,6 +39,11 @@
         <param-value>true</param-value>
     </context-param>
     
+    <context-param>
+        <param-name>primefaces.PUSH_SERVER_URL</param-name>
+        <param-value>http://www.primefaces.org:8080</param-value>
+    </context-param>
+    
     <listener>
         <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
     </listener>
@@ -78,9 +83,6 @@
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
     
-    
-    <!--
-    Enable for PUSH Demos
     <servlet>
         <servlet-name>Push Servlet</servlet-name>
         <servlet-class>org.primefaces.push.PushServlet</servlet-class>
@@ -94,6 +96,5 @@
         <servlet-name>Push Servlet</servlet-name>
         <url-pattern>/primepush/*</url-pattern>
     </servlet-mapping>
-    -->
     
 </web-app>
