@@ -36,6 +36,12 @@ public class NotesView implements Serializable {
 	public void setNote(Note note) {
 		this.note = note;
 	}
+    
+    public String initNew() {
+        note = new Note();
+        
+        return "pm:new";
+    }
 
 	public String save() {
         if(!notes.contains(note)) {

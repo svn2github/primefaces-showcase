@@ -12,18 +12,25 @@
         <!-- Main View -->
         <pm:view id="main" swatch="e">
             <pm:header title="Notes">
-                <f:facet name="right"><p:button value="New" icon="plus" href="#new" /></f:facet>
+                <f:facet name="right"><p:commandButton value="New" icon="plus" action="#{notesView.initNew}" /></f:facet>
             </pm:header>
 
             <pm:content>
                 <h:form id="listNotesForm">
                     <p:dataList id="notesList" value="#{notesView.notes}" var="note" type="inset">
                         <p:column>
-                            <p:commandLink value="#{note.shortText}" update=":newNoteForm:noteText" action="pm:new">
+                            <p:commandLink value="#{note.shortText}" update=":listNotesForm:noteDetail" oncomplete="dlg.show()">
                                 <f:setPropertyActionListener value="#{note}" target="#{notesView.note}" />
                             </p:commandLink>
                         </p:column>
                     </p:dataList>
+                    
+                    <p:dialog header="Note Details" widgetVar="dlg">
+                        <f:attribute name="contentSwatch" value="e" />
+                        <p:outputPanel id="noteDetail" layout="block" style="padding:4px 10px">
+                            <h:outputText value="#{notesView.note.text}" rendered="#{not empty notesView.note}"/>
+                        </p:outputPanel>
+                    </p:dialog>
                 </h:form>
             </pm:content>
 
