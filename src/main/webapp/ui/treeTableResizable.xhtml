@@ -27,8 +27,8 @@
 			<h:form id="form">
                 
                 <h:panelGrid columns="2">
-                    <h:outputText for="resizeMode" value="Resize Mode:" />
-                    <p:selectOneButton value="#{documentsController.liveResize}" onchange="$('#form').submit()">
+                    <p:outputLabel for="resizeMode" value="Resize Mode:" />
+                    <p:selectOneButton id="resizeMode" value="#{documentsController.liveResize}" onchange="$('#form').submit()">
                         <f:selectItem itemLabel="Default" itemValue="#{false}" />
                         <f:selectItem itemLabel="Live" itemValue="#{true}" />
                     </p:selectOneButton>
@@ -63,8 +63,8 @@
 &lt;h:form id="form"&gt;
 
     &lt;h:panelGrid columns="2"&gt;
-        &lt;h:outputText for="resizeMode" value="Resize Mode:" /&gt;
-        &lt;p:selectOneButton value="\#{documentsController.liveResize}" onchange="$('\#form').submit()"&gt;
+        &lt;p:outputLabel for="resizeMode" value="Resize Mode:" /&gt;
+        &lt;p:selectOneButton id="resizeMode" value="\#{documentsController.liveResize}" onchange="$('\#form').submit()"&gt;
             &lt;f:selectItem itemLabel="Default" itemValue="\#{false}" /&gt;
             &lt;f:selectItem itemLabel="Live" itemValue="\#{true}" /&gt;
         &lt;/p:selectOneButton&gt;
