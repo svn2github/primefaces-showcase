@@ -147,7 +147,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.primefaces.examples.domain.Car;
-import org.primefaces.model.PrimeDataModel;
 
 public class TableBean implements Serializable {
 
@@ -243,16 +242,18 @@ public class TableBean implements Serializable {
                     <pre name="code" class="java">
 package org.primefaces.examples.view;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.faces.model.ListDataModel;
 import org.primefaces.examples.domain.Car;
-import org.primefaces.model.PrimeDataModel;
+import org.primefaces.model.SelectableDataModel;
 
-public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
+public class CarDataModel extends ListDataModel&lt;Car&gt; implements SelectableDataModel&lt;Car&gt;, Serializable {  
 
     public CarDataModel() {
     }
 
-    public CarDataModel(Object data) {
+    public CarDataModel(List&lt;Car&gt; data) {
         super(data);
     }
     
@@ -271,7 +272,7 @@ public class CarDataModel extends PrimeDataModel&lt;Car&gt; {
     }
 
     @Override
-    public String getRowKey(Car car) {
+    public Object getRowKey(Car car) {
         return car.getModel();
     }
 }
