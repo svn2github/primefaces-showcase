@@ -47,17 +47,20 @@ public class ShowcaseExceptionHandler extends ExceptionHandlerWrapper {
             
             if(eqec.getException() instanceof ViewExpiredException) {
                 FacesContext context = eqec.getContext();
-                NavigationHandler navHandler = context.getApplication().getNavigationHandler();
+                if(!context.isReleased()) {
+                    NavigationHandler navHandler = context.getApplication().getNavigationHandler();
  
-                try {
-                    navHandler.handleNavigation(context, null, "home?faces-redirect=true&expired=true");
+                    try {
+                        navHandler.handleNavigation(context, null, "home?faces-redirect=true&expired=true");
+                    }
+                    finally {
+                        it.remove();
+                    }
                 }
-                finally {
-                    it.remove();
-                }
+                
             }
         }
 
-        this.wrapped.handle();;
+        this.wrapped.handle();
     }
 }
