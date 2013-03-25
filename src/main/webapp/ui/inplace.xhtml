@@ -46,8 +46,13 @@
                         </p:inplace>
 
                         <h:outputText value="Checkbox: "/>
-                        <p:inplace id="checkboxInplace" label="Edit me" effect="none">
-                            <h:selectBooleanCheckbox />
+                        <p:inplace id="checkboxInplace" effect="none">
+                            <f:facet name="output">
+                                Yes or No
+                            </f:facet>
+                            <f:facet name="input">
+                                <h:selectBooleanCheckbox />
+                            </f:facet>
                         </p:inplace>
 
                         <h:outputText value="Sliding Image: " />
@@ -90,8 +95,13 @@
             &lt;/p:inplace&gt;
 
             &lt;h:outputText value="Checkbox: "/&gt;
-            &lt;p:inplace id="checkboxInplace" label="Edit me" effect="none"&gt;
-                &lt;h:selectBooleanCheckbox /&gt;
+            &lt;p:inplace id="checkboxInplace" effect="none"&gt;
+                &lt;f:facet name="output"&gt;
+                    Yes or No
+                &lt;/f:facet&gt;
+                &lt;f:facet name="input"&gt;
+                    &lt;h:selectBooleanCheckbox /&gt;
+                &lt;/f:facet&gt;
             &lt;/p:inplace&gt;
 
             &lt;h:outputText value="Sliding Image: " /&gt;
