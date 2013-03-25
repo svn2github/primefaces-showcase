@@ -19,6 +19,7 @@
                 <p:accordionPanel id="accordion">
                     
                     <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" update=":form:growl"/>
+                    <p:ajax event="tabClose" listener="#{tabBean.onTabClose}" update=":form:growl"/>
                     
                     <p:tab title="Godfather Part I" id="Godfather1">
                         <h:panelGrid columns="2" cellpadding="10">
@@ -104,6 +105,12 @@ public class TabBean {
 
     public void onTabChange(TabChangeEvent event) {
         FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab:" + event.getTab().getId());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onTabClose(TabCloseEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
