@@ -264,13 +264,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.1.20</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.6-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.6-SNAPSHOT</version>
+                    <version>4.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -289,13 +289,13 @@
             <id>myfaces</id>
             <properties>
                 <jsfVersion>MyFaces-2.1.3</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.6-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.6-SNAPSHOT</version>
+                    <version>4.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -344,13 +344,13 @@
             <id>appserver</id>
             <properties>
                 <jsfVersion>Native JSF Implementation</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.6-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.6-SNAPSHOT</version>
+                    <version>4.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -395,13 +395,13 @@
             <id>gae</id>
             <properties>
                 <jsfVersion>Mojarra-2.1.10</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.6-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.6-SNAPSHOT</version>
+                    <version>4.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -466,247 +466,5 @@
             </build>
         </profile>
 
-
-        <!-- MAC TESTS -->
-        <profile>
-            <id>integrationTest</id>
-            <properties>
-                <jsfVersion>Mojarra-2.1.10</jsfVersion>
-                <primefacesVersion>3.6-SNAPSHOT</primefacesVersion>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>org.primefaces</groupId>
-                    <artifactId>primefaces</artifactId>
-                    <version>3.6-SNAPSHOT</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.primefaces</groupId>
-                    <artifactId>primefaces-mobile</artifactId>
-                    <version>1.0.0-SNAPSHOT</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.glassfish</groupId>
-                    <artifactId>javax.faces</artifactId>
-                    <version>2.1.10</version>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.mortbay.jetty</groupId>
-                        <artifactId>maven-jetty-plugin</artifactId>
-                        <version>6.1.16</version>
-                        <configuration>
-                            <scanIntervalSeconds>10</scanIntervalSeconds>
-                            <stopPort>9966</stopPort>
-                            <stopKey>foo</stopKey>
-                            <webAppConfig>
-                                <contextPath>/prime-showcase</contextPath>
-                            </webAppConfig>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>start-jetty</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <daemon>true</daemon>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>stop-jetty</id>
-                                <phase>post-integration-test</phase>
-                                <goals>
-                                    <goal>stop</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.11</version>
-                        <configuration>
-                            <includes>
-                                <include>**/integration/**/IntegrationTest*.java</include>
-                                <include>**/integration/**/*IntegrationTest.java</include>
-                            </includes>
-                            <encoding>${project.build.sourceEncoding}</encoding>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>firefox</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <systemProperties>
-                                        <property>
-                                            <name>integrationTestsDriverType</name>
-                                            <value>firefox</value>
-                                        </property>
-                                    </systemProperties>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>chrome</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <systemProperties>
-                                        <property>
-                                            <name>integrationTestsDriverType</name>
-                                            <value>chrome</value>
-                                        </property>
-                                        <property>
-                                            <name>integrationTestsDriverPath</name>
-                                            <value>src/test/drivers/chromedriver</value>
-                                        </property>
-                                    </systemProperties>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        
-        
-        <!-- WINDOWS TESTS -->
-        <profile>
-            <id>integrationTestWindows</id>
-            <properties>
-                <jsfVersion>Mojarra-2.1.10</jsfVersion>
-                <primefacesVersion>3.6-SNAPSHOT</primefacesVersion>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>org.primefaces</groupId>
-                    <artifactId>primefaces</artifactId>
-                    <version>4.0-SNAPSHOT</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.primefaces</groupId>
-                    <artifactId>primefaces-mobile</artifactId>
-                    <version>1.0.0-SNAPSHOT</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.glassfish</groupId>
-                    <artifactId>javax.faces</artifactId>
-                    <version>2.1.10</version>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.mortbay.jetty</groupId>
-                        <artifactId>maven-jetty-plugin</artifactId>
-                        <version>6.1.16</version>
-                        <configuration>
-                            <scanIntervalSeconds>10</scanIntervalSeconds>
-                            <stopPort>9966</stopPort>
-                            <stopKey>foo</stopKey>
-                            <webAppConfig>
-                                <contextPath>/prime-showcase</contextPath>
-                            </webAppConfig>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>start-jetty</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <daemon>true</daemon>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>stop-jetty</id>
-                                <phase>post-integration-test</phase>
-                                <goals>
-                                    <goal>stop</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.11</version>
-                        <configuration>
-                            <includes>
-                                <include>**/integration/**/IntegrationTest*.java</include>
-                                <include>**/integration/**/*IntegrationTest.java</include>
-                            </includes>
-                            <encoding>${project.build.sourceEncoding}</encoding>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>win32ie</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <systemProperties>
-                                        <property>
-                                            <name>integrationTestsDriverType</name>
-                                            <value>win32ie</value>
-                                        </property>
-                                        <property>
-                                            <name>integrationTestsDriverPath</name>
-                                            <value>src/test/drivers/InternetExplorerDriver.exe</value>
-                                        </property>
-                                    </systemProperties>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>firefox</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <systemProperties>
-                                        <property>
-                                            <name>integrationTestsDriverType</name>
-                                            <value>firefox</value>
-                                        </property>
-                                    </systemProperties>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>chrome</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <systemProperties>
-                                        <property>
-                                            <name>integrationTestsDriverType</name>
-                                            <value>chrome</value>
-                                        </property>
-                                        <property>
-                                            <name>integrationTestsDriverPath</name>
-                                            <value>src/test/drivers/chromedriver.exe</value>
-                                        </property>
-                                    </systemProperties>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
     </profiles>
 </project>
