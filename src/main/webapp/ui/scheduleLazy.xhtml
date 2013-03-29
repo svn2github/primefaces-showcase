@@ -35,40 +35,35 @@
 
                 <p:tab title="ScheduleController.java">
 <pre name="code" class="java">
-public class ScheduleController {
-
-	private ScheduleModel&lt;ScheduleEvent&gt; lazyEventModel;
+public class ScheduleController implements Serializable {
+	
+	private ScheduleModel lazyEventModel;
 
 	public ScheduleController() {
-		lazyEventModel = new ScheduleModel&lt;ScheduleEvent&gt;() {
-
+		lazyEventModel = new LazyScheduleModel() {
+			
 			@Override
-			public boolean isLazy() {
-				return true;
-			}
-
-			@Override
-			public void fetchEvents(Date start, Date end) {
-				setEvents(new ArrayList&lt;ScheduleEvent&gt;());	//clean other periods
-
+			public void loadEvents(Date start, Date end) {
+				clear();
+				
 				Date random = getRandomDate(start);
-				addEvent(new ScheduleEventImpl("Lazy Event 1", random, random));
-
+				addEvent(new DefaultScheduleEvent("Lazy Event 1", random, random));
+				
 				random = getRandomDate(start);
-				addEvent(new ScheduleEventImpl("Lazy Event 2", random, random));
-			}
+				addEvent(new DefaultScheduleEvent("Lazy Event 2", random, random));
+			}	
 		};
 	}
-
+	
 	public Date getRandomDate(Date base) {
 		Calendar date = Calendar.getInstance();
 		date.setTime(base);
 		date.add(Calendar.DATE, ((int) (Math.random()*30)) + 1);	//set random day of month
-
+		
 		return date.getTime();
 	}
-
-	public ScheduleModel&lt;ScheduleEvent&gt; getLazyEventModel() {
+	
+	public ScheduleModel getLazyEventModel() {
 		return lazyEventModel;
 	}
 }

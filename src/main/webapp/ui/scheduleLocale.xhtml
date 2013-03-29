@@ -51,6 +51,126 @@
     &lt;h3&gt;Turkish&lt;h3&gt;
     &lt;p:schedule value="\#{scheduleController.eventModel}" locale="tr" /&gt;
 &lt;/h:form&gt;
+
+6lt;script type="text/javascript"&gt;
+    PrimeFaces.locales['tr'] = {
+        closeText: 'kapat',
+        prevText: 'geri',
+        nextText: 'ileri',
+        currentText: 'bugün',
+        monthNames: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran',
+        'Temmuz','Aƒüustos','Eylül','Ekim','Kasım','Aralık'],
+        monthNamesShort: ['Oca','≈ûub','Mar','Nis','May','Haz',
+        'Tem','Ağu','Eyl','Eki','Kas','Ara'],
+        dayNames: ['Pazar','Pazartesi','Salƒ±','√áar≈üamba','Perşembe','Cuma','Cumartesi'],
+        dayNamesShort: ['Pz','Pt','Sa','√áa','Pe','Cu','Ct'],
+        dayNamesMin: ['Pz','Pt','Sa','√áa','Pe','Cu','Ct'],
+        weekHeader: 'Hf',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        month: 'Ay',
+        week: 'Hafta',
+        day: 'Gün',
+        allDayText : 'Tüm Gün'
+    };
+&lt;/script&gt;
+</pre>
+        <pre name="code" class="java">
+public class ScheduleController implements Serializable {
+
+	private ScheduleModel eventModel;
+
+	public ScheduleController() {
+		eventModel = new DefaultScheduleModel();
+		eventModel.addEvent(new DefaultScheduleEvent("Champions League Match", previousDay8Pm(), previousDay11Pm()));
+		eventModel.addEvent(new DefaultScheduleEvent("Birthday Party", today1Pm(), today6Pm()));
+		eventModel.addEvent(new DefaultScheduleEvent("Breakfast at Tiffanys", nextDay9Am(), nextDay11Am()));
+		eventModel.addEvent(new DefaultScheduleEvent("Plant the new garden stuff", theDayAfter3Pm(), fourDaysLater3pm()));
+	}
+	
+	public ScheduleModel getEventModel() {
+		return eventModel;
+	}
+	
+	private Calendar today() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);
+
+		return calendar;
+	}
+	
+	private Date previousDay8Pm() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.DATE, t.get(Calendar.DATE) - 1);
+		t.set(Calendar.HOUR, 8);
+		
+		return t.getTime();
+	}
+	
+	private Date previousDay11Pm() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.DATE, t.get(Calendar.DATE) - 1);
+		t.set(Calendar.HOUR, 11);
+		
+		return t.getTime();
+	}
+	
+	private Date today1Pm() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.HOUR, 1);
+		
+		return t.getTime();
+	}
+	
+	private Date theDayAfter3Pm() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.DATE, t.get(Calendar.DATE) + 2);		
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.HOUR, 3);
+		
+		return t.getTime();
+	}
+
+	private Date today6Pm() {
+		Calendar t = (Calendar) today().clone(); 
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.HOUR, 6);
+		
+		return t.getTime();
+	}
+	
+	private Date nextDay9Am() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.AM_PM, Calendar.AM);
+		t.set(Calendar.DATE, t.get(Calendar.DATE) + 1);
+		t.set(Calendar.HOUR, 9);
+		
+		return t.getTime();
+	}
+	
+	private Date nextDay11Am() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.AM_PM, Calendar.AM);
+		t.set(Calendar.DATE, t.get(Calendar.DATE) + 1);
+		t.set(Calendar.HOUR, 11);
+		
+		return t.getTime();
+	}
+	
+	private Date fourDaysLater3pm() {
+		Calendar t = (Calendar) today().clone(); 
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.DATE, t.get(Calendar.DATE) + 4);
+		t.set(Calendar.HOUR, 3);
+		
+		return t.getTime();
+	}
+}
 </pre>
     </p:tab>
 </p:tabView>
