@@ -44,6 +44,8 @@ public class ChartBean implements Serializable {
     
     private CartesianChartModel combinedModel;
     
+    private CartesianChartModel combinedModel2;
+    
     private CartesianChartModel fillToZero;
 
     private PieChartModel pieModel;
@@ -64,6 +66,7 @@ public class ChartBean implements Serializable {
         createCategoryModel();
         createLinearModel();
         createCombinedModel();
+        createCombinedModel2();
         createPieModel();
         createLivePieModel();
         createDonutModel();
@@ -87,6 +90,10 @@ public class ChartBean implements Serializable {
 
     public CartesianChartModel getCombinedModel() {
         return combinedModel;
+    }
+    
+    public CartesianChartModel getCombinedModel2() {
+        return combinedModel2;
     }
     
     public PieChartModel getPieModel() {
@@ -180,6 +187,32 @@ public class ChartBean implements Serializable {
         combinedModel.addSeries(boys);
         combinedModel.addSeries(girls);
     }
+    private void createCombinedModel2() {
+        combinedModel2 = new CartesianChartModel();
+
+        BarChartSeries boys = new BarChartSeries();
+        boys.setLabel("Boys");
+
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        LineChartSeries girls = new LineChartSeries();
+        girls.setLabel("Girls");
+
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
+        girls.setFill(true);
+        combinedModel2.addSeries(girls);
+        combinedModel2.addSeries(boys);
+        
+    } 
+     
     
     private void createOhlcModel(){
         ohlcModel = new OhlcChartModel();
