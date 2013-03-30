@@ -24,6 +24,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.ItemSelectEvent;
+import org.primefaces.model.chart.BarChartSeries;
 import org.primefaces.model.chart.BubbleChartModel;
 import org.primefaces.model.chart.BubbleChartSeries;
 import org.primefaces.model.chart.CartesianChartModel;
@@ -40,6 +41,8 @@ public class ChartBean implements Serializable {
     private CartesianChartModel categoryModel;
 
     private CartesianChartModel linearModel;
+    
+    private CartesianChartModel combinedModel;
     
     private CartesianChartModel fillToZero;
 
@@ -60,6 +63,7 @@ public class ChartBean implements Serializable {
 	public ChartBean() {
         createCategoryModel();
         createLinearModel();
+        createCombinedModel();
         createPieModel();
         createLivePieModel();
         createDonutModel();
@@ -81,6 +85,10 @@ public class ChartBean implements Serializable {
         return categoryModel;
     }
 
+    public CartesianChartModel getCombinedModel() {
+        return combinedModel;
+    }
+    
     public PieChartModel getPieModel() {
         return pieModel;
     }
@@ -146,6 +154,31 @@ public class ChartBean implements Serializable {
 
         categoryModel.addSeries(boys);
         categoryModel.addSeries(girls);
+    }
+    
+     private void createCombinedModel() {
+        combinedModel = new CartesianChartModel();
+
+        BarChartSeries boys = new BarChartSeries();
+        boys.setLabel("Boys");
+
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        LineChartSeries girls = new LineChartSeries();
+        girls.setLabel("Girls");
+
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
+
+        combinedModel.addSeries(boys);
+        combinedModel.addSeries(girls);
     }
     
     private void createOhlcModel(){

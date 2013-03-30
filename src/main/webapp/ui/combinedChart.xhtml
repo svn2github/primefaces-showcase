@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">Charts - Combined</h1>
+        <div class="entry">
+            <p>CombinedChart displays a BarChart and LineChart together.</p>
+
+            <p:barChart id="bar" value="#{chartBean.combinedModel}" legendPosition="ne"
+                        title="Combined Chart 1" min="0" max="200" style="height:300px"/>
+
+             <p:lineChart id="line" value="#{chartBean.combinedModel}" legendPosition="e"
+                         title="Combined Chart 2" minY="0" maxY="200" style="height:300px;margin-top:30px"/>
+
+           
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="combinedChart.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:barChart id="bar" value="\#{chartBean.combinedModel}" legendPosition="ne"
+                        title="Combined Bar Chart" min="0" max="200" style="height:300px"/&gt;
+
+&lt;p:lineChart id="line" value="\#{chartBean.combinedModel}" legendPosition="e"
+                         title="Combined Line Chart" minY="0" maxY="200" style="height:300px;"/&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="ChartBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.ChartSeries;
+
+public class ChartBean implements Serializable {
+
+    private CartesianChartModel combinedModel;
+
+	public ChartBean() {
+        createCombinedModel();
+	}
+
+    public CartesianChartModel getCombinedModel() {
+        return combinedModel;
+    }
+
+     private void createCombinedModel() {
+        combinedModel = new CartesianChartModel();
+
+        BarChartSeries boys = new BarChartSeries();
+        boys.setLabel("Boys");
+
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        LineChartSeries girls = new LineChartSeries();
+        girls.setLabel("Girls");
+
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
+
+        combinedModel.addSeries(boys);
+        combinedModel.addSeries(girls);
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
