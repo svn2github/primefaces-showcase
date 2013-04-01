@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">TabView - Scrollable</h1>
+		<div class="entry">
+            <p>Tabs can be scrolled to deal with huge number of tabs.</p>
+
+            <h:form>
+
+                <p:tabView scrollable="true" value="#{tabBean.tabs}" var="tab">
+                    <p:tab title="#{tab}">
+                        <h3>Content for #{tab}</h3>
+                    </p:tab>
+                </p:tabView>
+
+            </h:form>
+        
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="tabviewScroll.xhtml">
+		<pre name="code" class="xml">
+&lt;p:tabView scrollable="true" value="\#{tabBean.tabs}" var="tab"&gt;
+    &lt;p:tab title="\#{tab}"&gt;
+        &lt;h3&gt;Content for #{tab}&lt;/h3&gt;
+    &lt;/p:tab&gt;
+&lt;/p:tabView&gt;
+		</pre>
+                </p:tab>
+        <p:tab title="tabBean.java">
+            <pre name="code" class="java">
+public class TabBean {
+
+    private List&lt;String&gt; tabs;
+
+    public TabBean() {
+        tabs = new ArrayList&lt;String&gt;();
+
+        for(int i = 0; i &lt; 30; i++) {
+           tabs.add("Tab " + i); 
+        }
+    }
+
+    public List&lt;String&gt; getTabs() {
+        return tabs;
+    }    
+}
+            </pre>
+                </p:tab>
+            </p:tabView>
+      </div>
+
+
+	</ui:define>
+</ui:composition>

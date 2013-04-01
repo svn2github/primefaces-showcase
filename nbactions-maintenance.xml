@@ -8,4 +8,15 @@
             <goal>-o</goal>
         </goals>
     </action>
+    <action>
+            <actionName>debug</actionName>
+            <goals>
+                <goal>clean</goal>
+                <goal>jetty:run</goal>
+                <goal>-o</goal>
+            </goals>
+            <properties>
+                <jpda.listen>maven</jpda.listen>
+            </properties>
+        </action>
 </actions>

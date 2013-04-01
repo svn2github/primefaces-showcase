@@ -27,17 +27,28 @@ public class TabBean {
     
     private List<Player> players;
     
+    private List<String> tabs;
+    
     private String effect = "fade";
 
     public TabBean() {
         players = new ArrayList<Player>();
+        tabs = new ArrayList<String>();
         
         players.add(new Player("Messi", 10, "messi.jpg", "CF"));
         players.add(new Player("Iniesta", 8, "iniesta.jpg", "CM"));
         players.add(new Player("Villa", 7, "villa.jpg", "CF"));
         players.add(new Player("Xavi", 6, "xavi.jpg", "CM"));
         players.add(new Player("Puyol", 5, "puyol.jpg", "CB"));
+        
+        for(int i = 0; i < 30; i++) {
+           tabs.add("Tab " + i); 
+        }
     }
+
+    public List<String> getTabs() {
+        return tabs;
+    }    
 
     public List<Player> getPlayers() {
         return players;
