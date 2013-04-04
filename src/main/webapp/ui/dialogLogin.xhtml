@@ -23,16 +23,14 @@
 		<h1 class="title ui-widget-header ui-corner-all">Dialog - Login Demo</h1>
 		<div class="entry">
 			<p>This example demonstrates how to create a login dialog. Correct combination is (admin-admin)</p>
-						
+				<h:form id="form">		
 				<h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login">	
 					<p:graphicImage value="/images/login.png" />
 				</h:outputLink>
 				
 				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 	
-				<p:dialog id="dialog" header="Login" widgetVar="dlg">
-						
-					<h:form id="form">
+				<p:dialog id="dialog" header="Login" widgetVar="dlg" focus="loginButton">
 					
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputLabel for="username" value="Username:" />
@@ -42,26 +40,25 @@
 							<p:password id="password" value="#{loginBean.password}" required="true" label="password" feedback="false"/>
 							
 							<f:facet name="footer">
-								<p:commandButton id="loginButton" value="Login" update=":growl" 
+								<p:commandButton id="loginButton" value="Login" update="growl" 
 									actionListener="#{loginBean.login}" oncomplete="handleLoginRequest(xhr, status, args)"/>
 							</f:facet>
-						</h:panelGrid>
-						
-					</h:form>
+						</h:panelGrid>						
+					
 				</p:dialog>
-				
+				</h:form>
 				<h3>Source</h3>
 				<p:tabView>
 					<p:tab title="dialogLogin.xhtml">
 				<pre name="code" class="xml">
-&lt;h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login"&gt;	
-	&lt;p:graphicImage value="/images/login.png" /&gt;
-&lt;/h:outputLink&gt;
+&lt;h:form&gt;
+    &lt;h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login"&gt;	
+        &lt;p:graphicImage value="/images/login.png" /&gt;
+    &lt;/h:outputLink&gt;
 
-&lt;p:growl id="growl" showDetail="true" life="3000" /&gt;
+    &lt;p:growl id="growl" showDetail="true" life="3000" /&gt;
 
-&lt;p:dialog id="dialog" header="Login" widgetVar="dlg"&gt;
-	&lt;h:form&gt;
+    &lt;p:dialog id="dialog" header="Login" focus="loginButton" widgetVar="dlg"&gt;
 
 		&lt;h:panelGrid columns="2" cellpadding="5"&gt;
 			&lt;h:outputLabel for="username" value="Username:" /&gt;
@@ -73,14 +70,14 @@
 					id="password" required="true" label="password" /&gt;
 			
 			&lt;f:facet name="footer"&gt;
-				&lt;p:commandButton id="loginButton" value="Login" update=":growl" 
+				&lt;p:commandButton id="loginButton" value="Login" update="growl" 
 					actionListener="\#{loginBean.login}" 
 					oncomplete="handleLoginRequest(xhr, status, args)"/&gt;
 			&lt;/f:facet&gt;
 		&lt;/h:panelGrid&gt;
 		
-	&lt;/h:form&gt;
-&lt;/p:dialog&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
 
 &lt;script type="text/javascript"&gt;
 	function handleLoginRequest(xhr, status, args) {
