@@ -32,6 +32,9 @@
                         
                         <h:outputLabel value="DropDown :" for="dd" />
 						<p:autoComplete id="dd" dropdown="true" value="#{autoCompleteBean.txt6}" completeMethod="#{autoCompleteBean.complete}"/>
+                        
+                        <h:outputLabel value="Cached :" for="cached" />
+						<p:autoComplete id="cached" cache="true" cacheTimeout="10000" value="#{autoCompleteBean.txt7}" completeMethod="#{autoCompleteBean.complete}"/>
 					</h:panelGrid>
 				</p:panel>
 				
@@ -60,6 +63,9 @@
                         
                         <h:outputText value="Value 6: " />
 						<h:outputText id="txt6" value="#{autoCompleteBean.txt6}" /> 
+                        
+                        <h:outputText value="Value 7: " />
+						<h:outputText id="txt7" value="#{autoCompleteBean.txt7}" />
 					</h:panelGrid>
 					
                 </p:dialog>
@@ -101,6 +107,10 @@
             &lt;h:outputLabel value="DropDown :" for="dd" /&gt;
             &lt;p:autoComplete id="dd" dropdown="true" value="\#{autoCompleteBean.txt6}" 
                     completeMethod="\#{autoCompleteBean.complete}" /&gt;
+            
+            &lt;h:outputLabel value="Cached :" for="cached" /&gt;
+			&lt;p:autoComplete id="cached" cache="true" cacheTimeout="10000" 
+                    value="\#{autoCompleteBean.txt7}" completeMethod="\#{autoCompleteBean.complete}"//&gt;
 			
 		&lt;/h:panelGrid&gt;
 	&lt;/p:panel&gt;
@@ -128,6 +138,9 @@
 
             &lt;h:outputText value="Value 6: " /&gt;
 			&lt;h:outputText value="\#{autoCompleteBean.txt6}" /&gt; 
+
+            &lt;h:outputText value="Value 7: " /&gt;
+			&lt;h:outputText value="\#{autoCompleteBean.txt7}" /&gt;
 		&lt;/h:panelGrid&gt;
 		
 	&lt;/p:dialog&gt;
@@ -156,6 +169,8 @@ public class AutoCompleteBean {
 	private String txt5;
     
     private String txt6;
+
+    private String txt7;
     
 	public List&lt;String&gt; complete(String query) {
 		List&lt;String&gt; results = new ArrayList&lt;String&gt;();
@@ -213,6 +228,14 @@ public class AutoCompleteBean {
 
     public void setTxt6(String txt6) {
         this.txt6 = txt6;
+    }
+
+    public String getTxt7() {
+        return txt7;
+    }
+
+    public void setTxt7(String txt7) {
+        this.txt7 = txt7;
     }
 }
 			</pre>
