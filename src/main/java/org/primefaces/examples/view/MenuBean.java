@@ -17,10 +17,10 @@ package org.primefaces.examples.view;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.primefaces.component.menuitem.MenuItem;
-import org.primefaces.component.submenu.Submenu;
-import org.primefaces.model.DefaultMenuModel;
-import org.primefaces.model.MenuModel;
+import org.primefaces.model.menu.DefaultMenuitem;
+import org.primefaces.model.menu.DefaultMenuModel;
+import org.primefaces.model.menu.DefaultSubMenu;
+import org.primefaces.model.menu.MenuModel;
 
 public class MenuBean {
 
@@ -30,29 +30,24 @@ public class MenuBean {
 		model = new DefaultMenuModel();
 		
 		//First submenu
-		Submenu submenu = new Submenu();
-		submenu.setLabel("Dynamic Submenu 1");
+        DefaultSubMenu submenu = new DefaultSubMenu("Dynamic Submenu 1");
 		
-		MenuItem item = new MenuItem();
-		item.setValue("Dynamic Menuitem 1.1");
+        DefaultMenuitem item = new DefaultMenuitem("Dynamic Menuitem 1.1");
 		item.setUrl("#");
-		submenu.getChildren().add(item);
+		submenu.addElement(item);
 		
 		model.addSubmenu(submenu);
 		
 		//Second submenu
-		submenu = new Submenu();
-		submenu.setLabel("Dynamic Submenu 2");
+		submenu = new DefaultSubMenu("Dynamic Submenu 2");
 		
-		item = new MenuItem();
-		item.setValue("Dynamic Menuitem 2.1");
+		item = new DefaultMenuitem("Dynamic Menuitem 2.1");
 		item.setUrl("#");
-		submenu.getChildren().add(item);
+		submenu.addElement(item);
 		
-		item = new MenuItem();
-		item.setValue("Dynamic Menuitem 2.2");
+		item = new DefaultMenuitem("Dynamic Menuitem 2.2");
 		item.setUrl("#");
-		submenu.getChildren().add(item);
+		submenu.addElement(item);
 		
 		model.addSubmenu(submenu);
 	}
