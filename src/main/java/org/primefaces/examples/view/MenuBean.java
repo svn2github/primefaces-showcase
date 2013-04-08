@@ -17,7 +17,7 @@ package org.primefaces.examples.view;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.primefaces.model.menu.DefaultMenuitem;
+import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
@@ -33,7 +33,7 @@ public class MenuBean {
         DefaultSubMenu submenu = new DefaultSubMenu("Dynamic Submenu");
 		model.addSubmenu(submenu);
         
-        DefaultMenuitem item = new DefaultMenuitem("External");
+        DefaultMenuItem item = new DefaultMenuItem("External");
 		item.setUrl("http://www.primefaces.org");
         item.setIcon("ui-icon-home");
 		submenu.addElement(item);
@@ -42,13 +42,13 @@ public class MenuBean {
 		submenu = new DefaultSubMenu("Dynamic Actions");
 		model.addSubmenu(submenu);
 
-		item = new DefaultMenuitem("Save");
+		item = new DefaultMenuItem("Save");
 		item.setIcon("ui-icon-disk");
         item.setActionExpressionString("#{menuBean.save}");
         item.setUpdate("messages");
 		submenu.addElement(item);
         
-        item = new DefaultMenuitem("Delete");
+        item = new DefaultMenuItem("Delete");
         item.setIcon("ui-icon-close");
         item.setActionExpressionString("#{menuBean.delete}");
         item.setAjax(false);
