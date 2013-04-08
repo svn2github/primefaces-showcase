@@ -30,26 +30,29 @@ public class MenuBean {
 		model = new DefaultMenuModel();
 		
 		//First submenu
-        DefaultSubMenu submenu = new DefaultSubMenu("Dynamic Submenu 1");
-		
-        DefaultMenuitem item = new DefaultMenuitem("Dynamic Menuitem 1.1");
-		item.setUrl("#");
-		submenu.addElement(item);
-		
+        DefaultSubMenu submenu = new DefaultSubMenu("Dynamic Submenu");
 		model.addSubmenu(submenu);
+        
+        DefaultMenuitem item = new DefaultMenuitem("External");
+		item.setUrl("http://www.primefaces.org");
+        item.setIcon("ui-icon-home");
+		submenu.addElement(item);
 		
 		//Second submenu
-		submenu = new DefaultSubMenu("Dynamic Submenu 2");
-		
-		item = new DefaultMenuitem("Dynamic Menuitem 2.1");
-		item.setUrl("#");
-		submenu.addElement(item);
-		
-		item = new DefaultMenuitem("Dynamic Menuitem 2.2");
-		item.setUrl("#");
-		submenu.addElement(item);
-		
+		submenu = new DefaultSubMenu("Dynamic Actions");
 		model.addSubmenu(submenu);
+
+		item = new DefaultMenuitem("Save");
+		item.setIcon("ui-icon-disk");
+        item.setActionExpressionString("#{menuBean.save}");
+        item.setUpdate("messages");
+		submenu.addElement(item);
+        
+        item = new DefaultMenuitem("Delete");
+        item.setIcon("ui-icon-close");
+        item.setActionExpressionString("#{menuBean.delete}");
+        item.setAjax(false);
+		submenu.addElement(item);
 	}
 
 	public MenuModel getModel() {
