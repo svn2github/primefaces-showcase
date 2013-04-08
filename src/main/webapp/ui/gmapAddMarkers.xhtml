@@ -84,7 +84,7 @@
 			<p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px"
 				model="#{mapBean.emptyModel}" onPointClick="handlePointClick(event);" widgetVar="map" />
 				
-			<p:dialog widgetVar="dlg" effect="FADE" effectDuration="0.5" close="false" fixedCenter="true">
+			<p:dialog widgetVar="dlg" showEffect="fade">
 				<h:form prependId="false">
 					<h:panelGrid columns="2">
 						<h:outputLabel for="title" value="Title:" />
@@ -113,7 +113,7 @@
 	onPointClick="handlePointClick(event);" 
 	widgetVar="map" /&gt;
 	
-&lt;p:dialog widgetVar="dlg" effect="FADE" effectDuration="0.5" close="false" fixedCenter="true"&gt;
+&lt;p:dialog widgetVar="dlg" showEffect="fade"&gt;
 	&lt;h:form prependId="false"&gt;
 		&lt;h:panelGrid columns="2"&gt;
 			&lt;h:outputLabel for="title" value="Title:" /&gt;

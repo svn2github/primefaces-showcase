@@ -23,26 +23,26 @@
             <p>Chart model is used to create chart series programmatically.</p>
 
             <h3>Pie Chart</h3>
-            <p:pieChart model="#{chartBean.pieModel}" />
+            <p:pieChart value="#{chartBean.pieModel}" />
 
             <h3>Line Chart</h3>
-            <p:lineChart model="#{chartBean.cartesianModel}" />
+            <p:lineChart value="#{chartBean.cartesianModel}" />
 
             <h3>Bar Chart</h3>
-            <p:barChart model="#{chartBean.cartesianModel}" />
+            <p:barChart value="#{chartBean.cartesianModel}" />
 
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="chartModel.xhtml">
                     <pre name="code" class="xml">
 &lt;h3&gt;Pie Chart&lt;/h3&gt;
-&lt;p:pieChart model="\#{chartBean.pieModel}" /&gt;
+&lt;p:pieChart value="\#{chartBean.pieModel}" /&gt;
 
 &lt;h3&gt;Line Chart&lt;/h3&gt;
-&lt;p:lineChart model="\#{chartBean.cartesianModel}" /&gt;
+&lt;p:lineChart value="\#{chartBean.cartesianModel}" /&gt;
 
 &lt;h3&gt;Bar Chart&lt;/h3&gt;
-&lt;p:barChart model="\#{chartBean.cartesianModel}" /&gt;
+&lt;p:barChart value="\#{chartBean.cartesianModel}" /&gt;
                     </pre>
                 </p:tab>
 

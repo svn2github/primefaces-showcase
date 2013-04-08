@@ -35,19 +35,19 @@
 
                 <p:layoutUnit id="top" position="north" size="50">
 
-                    <p:menubar autoSubmenuDisplay="true">
+                    <p:menubar>
                         <p:submenu label="File" icon="ui-icon-document">
                             <p:submenu label="New" icon="ui-icon-contact">
-                                <p:menuitem value="Project" url="#" helpText="CTRL+N" />
-                                <p:menuitem value="Other" url="#" helpText="CTRL+O"/>
+                                <p:menuitem value="Project" url="#" />
+                                <p:menuitem value="Other" url="#" />
                             </p:submenu>
                             <p:menuitem value="Open" url="#" />
                             <p:menuitem value="Quit" url="#" />
                         </p:submenu>
 
                         <p:submenu label="Edit" icon="ui-icon-pencil">
-                            <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" helpText="CTRL+Z"></p:menuitem>
-                            <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" helpText="CTRL+Y"></p:menuitem>
+                            <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w"></p:menuitem>
+                            <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e"></p:menuitem>
                         </p:submenu>
 
                         <p:submenu label="Help" icon="ui-icon-help">
@@ -95,7 +95,7 @@
                 <p:layoutUnit id="right" position="east" size="250" header="Gallery" resizable="true" closable="true" collapsible="true"
                               style="text-align:center">
 
-                    <p:lightBox transition="fade" style="text-align:center;margin-top:20px;">
+                    <p:lightBox style="text-align:center;margin-top:20px;">
                         <h:outputLink value="#{request.contextPath}/images/nature1.jpg" title="Nature 1" style="margin-bottom:5px;">
                             <h:graphicImage value="/images/nature1_small.jpg"/>
                         </h:outputLink>
@@ -122,10 +122,7 @@
 
 
 
-
                     </h:form>
-
-
                 </p:layoutUnit>
 
             </p:layout>

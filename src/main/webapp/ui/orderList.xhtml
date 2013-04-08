@@ -14,12 +14,12 @@
 
                 <h3 style="margin-top:0">Basic OrderList</h3>
                 <p:orderList value="#{orderListBean.cities}" var="city" controlsLocation="none"
-                             itemLabel="#{city}" itemValue="#{city}" iconOnly="true" id="basicList"/>
+                             itemLabel="#{city}" itemValue="#{city}" id="basicList"/>
 
                 <p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px" id="btnCitySubmit"/>
                 
                 <h3>Pojo Support with Clip Effect, Captions, Custom Content and Reorder Controls</h3>
-                <p:orderList value="#{orderListBean.players}" var="player" iconOnly="true" effect="clip"
+                <p:orderList value="#{orderListBean.players}" var="player"
 								itemValue="#{player}" converter="player" controlsLocation="left" id="customList">
                     <f:facet name="caption">Available</f:facet>
                     
@@ -59,12 +59,12 @@
 
     &lt;h3 style="margin-top:0"&gt;Basic OrderList&lt;/h3&gt;
     &lt;p:orderList value="\#{orderListBean.cities}" var="city" controlsLocation="none"
-                 itemLabel="\#{city}" itemValue="\#{city}" iconOnly="true" id="basicList"/&gt;
+                 itemLabel="\#{city}" itemValue="\#{city}" id="basicList"/&gt;
 
     &lt;p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px" id="btnCitySubmit"/&gt;
 
     &lt;h3&gt;Pojo Support with Clip Effect, Captions, Custom Content and Reorder Controls&lt;/h3&gt;
-    &lt;p:orderList value="\#{orderListBean.players}" var="player" iconOnly="true" effect="clip"
+    &lt;p:orderList value="\#{orderListBean.players}" var="player"
                     itemValue="\#{player}" converter="player" controlsLocation="left" id="customList"&gt;
         &lt;f:facet name="caption"&gt;Available&lt;/f:facet&gt;
 
