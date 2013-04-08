@@ -15,7 +15,7 @@
             <h:form id="form">		
 				<p:commandButton id="dynamicDialogButton" value="Dynamic Focus" onclick="dlg.show();" type="button" icon="ui-icon-extlink"/> 
 	
-				<p:dialog id="dialog" header="Dynamic Focus" widgetVar="dlg" focus="surname">
+				<p:dialog id="dialog" header="Dynamic Focus" widgetVar="dlg">
 					
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputLabel for="name" value="Name:" />
@@ -39,7 +39,7 @@
     &lt;p:commandButton id="dynamicDialogButton" value="Dynamic Focus" onclick="dlg.show();" type="button" 
                      icon="ui-icon-extlink"/&gt;
 
-    &lt;p:dialog id="dialog" header="Dynamic Focus" focus="surname" widgetVar="dlg"&gt;
+    &lt;p:dialog id="dialog" header="Dynamic Focus" widgetVar="dlg"&gt;
 
 		&lt;h:panelGrid columns="2" cellpadding="5"&gt;
 
