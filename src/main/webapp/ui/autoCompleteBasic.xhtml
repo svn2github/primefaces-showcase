@@ -33,8 +33,8 @@
                         <h:outputLabel value="DropDown :" for="dd" />
 						<p:autoComplete id="dd" dropdown="true" value="#{autoCompleteBean.txt6}" completeMethod="#{autoCompleteBean.complete}"/>
                         
-                        <h:outputLabel value="Cached :" for="cached" />
-						<p:autoComplete id="cached" cache="true" cacheTimeout="10000" value="#{autoCompleteBean.txt7}" completeMethod="#{autoCompleteBean.complete}"/>
+                        <h:outputLabel value="Cache :" for="cache" class="ui-state-highlight"/>
+						<p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="#{autoCompleteBean.txt7}" completeMethod="#{autoCompleteBean.complete}"/>
 					</h:panelGrid>
 				</p:panel>
 				
@@ -108,8 +108,8 @@
             &lt;p:autoComplete id="dd" dropdown="true" value="\#{autoCompleteBean.txt6}" 
                     completeMethod="\#{autoCompleteBean.complete}" /&gt;
             
-            &lt;h:outputLabel value="Cached :" for="cached" /&gt;
-			&lt;p:autoComplete id="cached" cache="true" cacheTimeout="10000" 
+            &lt;h:outputLabel value="Cache :" for="cache" /&gt;
+			&lt;p:autoComplete id="cache" cache="true" cacheTimeout="30000" 
                     value="\#{autoCompleteBean.txt7}" completeMethod="\#{autoCompleteBean.complete}"/&gt;
 			
 		&lt;/h:panelGrid&gt;
