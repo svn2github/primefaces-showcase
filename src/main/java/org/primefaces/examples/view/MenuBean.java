@@ -30,34 +30,36 @@ public class MenuBean {
 		model = new DefaultMenuModel();
 		
 		//First submenu
-        DefaultSubMenu submenu = new DefaultSubMenu("Dynamic Submenu");
-		model.addSubmenu(submenu);
+        DefaultSubMenu firstSubmenu = new DefaultSubMenu("Dynamic Submenu");
         
         DefaultMenuItem item = new DefaultMenuItem("External");
 		item.setUrl("http://www.primefaces.org");
         item.setIcon("ui-icon-home");
-		submenu.addElement(item);
+		firstSubmenu.addElement(item);
+        
+        model.addElement(firstSubmenu);
 		
 		//Second submenu
-		submenu = new DefaultSubMenu("Dynamic Actions");
-		model.addSubmenu(submenu);
+		DefaultSubMenu secondSubmenu = new DefaultSubMenu("Dynamic Actions");
 
 		item = new DefaultMenuItem("Save");
 		item.setIcon("ui-icon-disk");
         item.setCommand("#{menuBean.save}");
         item.setUpdate("messages");
-		submenu.addElement(item);
+		secondSubmenu.addElement(item);
         
         item = new DefaultMenuItem("Delete");
         item.setIcon("ui-icon-close");
         item.setCommand("#{menuBean.delete}");
         item.setAjax(false);
-        submenu.addElement(item);
+        secondSubmenu.addElement(item);
         
         item = new DefaultMenuItem("Redirect");
         item.setIcon("ui-icon-search");
         item.setCommand("#{menuBean.redirect}");
-		submenu.addElement(item);
+		secondSubmenu.addElement(item);
+
+        model.addElement(secondSubmenu);
 	}
 
 	public MenuModel getModel() {

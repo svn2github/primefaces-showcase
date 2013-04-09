@@ -95,9 +95,80 @@
 &lt;/h:form&gt;
                     </pre>
 				</p:tab>
+                
+                <p:tab title="MenuBean.java (3.x)">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.component.menuitem.MenuItem;
+import org.primefaces.component.submenu.Submenu;
+import org.primefaces.model.DefaultMenuModel;
+import org.primefaces.model.MenuModel;
+
+public class MenuBean {
+
+	private MenuModel model;
+
+	public MenuBean() {
+		model = new DefaultMenuModel();
+		
+		//First submenu
+		Submenu submenu = new Submenu();
+		submenu.setLabel("Dynamic Submenu 1");
+		
+		MenuItem item = new MenuItem();
+		item.setValue("Dynamic Menuitem 1.1");
+		item.setUrl("#");
+		submenu.getChildren().add(item);
+		
+		model.addSubmenu(submenu);
+		
+		//Second submenu
+		submenu = new Submenu();
+		submenu.setLabel("Dynamic Submenu 2");
+		
+		item = new MenuItem();
+		item.setValue("Dynamic Menuitem 2.1");
+		item.setUrl("#");
+		submenu.getChildren().add(item);
+		
+		item = new MenuItem();
+		item.setValue("Dynamic Menuitem 2.2");
+		item.setUrl("#");
+		submenu.getChildren().add(item);
+		
+		model.addSubmenu(submenu);
+	}
+
+	public MenuModel getModel() {
+		return model;
+	}	
+    
+    public void save() {
+		addMessage("Data saved");
+	}
+	
+	public void update() {
+		addMessage("Data updated");
+	}
+	
+	public void delete() {
+		addMessage("Data deleted");
+	}
+	
+	public void addMessage(String summary) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+		
+                    </pre>                   
+                </p:tab>
 				
-				<p:tab title="MenuBean.java">
-<pre name="code" class="java">
+				<p:tab title="MenuBean.java (4.0)">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import javax.faces.application.FacesMessage;
@@ -111,38 +182,40 @@ public class MenuBean {
 
 	private MenuModel model;
 
-	public MenuBean() {
+    public MenuBean() {
 		model = new DefaultMenuModel();
 		
 		//First submenu
-        DefaultSubMenu submenu = new DefaultSubMenu("Dynamic Submenu");
-		model.addSubmenu(submenu);
+        DefaultSubMenu firstSubmenu = new DefaultSubMenu("Dynamic Submenu");
         
-        DefaultMenuitem item = new DefaultMenuItem("External");
+        DefaultMenuItem item = new DefaultMenuItem("External");
 		item.setUrl("http://www.primefaces.org");
         item.setIcon("ui-icon-home");
-		submenu.addElement(item);
+		firstSubmenu.addElement(item);
+        
+        model.addElement(firstSubmenu);
 		
 		//Second submenu
-		submenu = new DefaultSubMenu("Dynamic Actions");
-		model.addSubmenu(submenu);
+		DefaultSubMenu secondSubmenu = new DefaultSubMenu("Dynamic Actions");
 
 		item = new DefaultMenuItem("Save");
 		item.setIcon("ui-icon-disk");
-        item.setActionExpressionString("\#{menuBean.save}");
+        item.setCommand("\#{menuBean.save}");
         item.setUpdate("messages");
-		submenu.addElement(item);
+		secondSubmenu.addElement(item);
         
         item = new DefaultMenuItem("Delete");
         item.setIcon("ui-icon-close");
-        item.setActionExpressionString("\#{menuBean.delete}");
+        item.setCommand("\#{menuBean.delete}");
         item.setAjax(false);
-		submenu.addElement(item);
-
+        secondSubmenu.addElement(item);
+        
         item = new DefaultMenuItem("Redirect");
         item.setIcon("ui-icon-search");
         item.setCommand("\#{menuBean.redirect}");
-		submenu.addElement(item);
+		secondSubmenu.addElement(item);
+
+        model.addElement(secondSubmenu);
 	}
 
 	public MenuModel getModel() {
@@ -170,7 +243,7 @@ public class MenuBean {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 }
-</pre>
+                    </pre>
 				</p:tab>
 			</p:tabView>
       	</div>
