@@ -65,6 +65,7 @@ public class ThemeSwitcherBean {
         advancedThemes.add(new Theme("cruze", "cruze.png"));
         advancedThemes.add(new Theme("cupertino", "cupertino.png"));
         advancedThemes.add(new Theme("dark-hive", "dark-hive.png"));
+        advancedThemes.add(new Theme("delta", "delta.png"));
         advancedThemes.add(new Theme("dot-luv", "dot-luv.png"));
         advancedThemes.add(new Theme("eggplant", "eggplant.png"));
         advancedThemes.add(new Theme("excite-bike", "excite-bike.png"));
@@ -104,6 +105,7 @@ public class ThemeSwitcherBean {
         themes.put("Cupertino", "cupertino");
         themes.put("Cruze", "cruze");
         themes.put("Dark-Hive", "dark-hive");
+        themes.put("Delta", "delta");
         themes.put("Dot-Luv", "dot-luv");
         themes.put("Eggplant", "eggplant");
         themes.put("Excite-Bike", "excite-bike");
