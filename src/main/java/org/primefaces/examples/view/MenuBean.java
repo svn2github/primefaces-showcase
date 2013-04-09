@@ -44,14 +44,19 @@ public class MenuBean {
 
 		item = new DefaultMenuItem("Save");
 		item.setIcon("ui-icon-disk");
-        item.setActionExpressionString("#{menuBean.save}");
+        item.setCommand("#{menuBean.save}");
         item.setUpdate("messages");
 		submenu.addElement(item);
         
         item = new DefaultMenuItem("Delete");
         item.setIcon("ui-icon-close");
-        item.setActionExpressionString("#{menuBean.delete}");
+        item.setCommand("#{menuBean.delete}");
         item.setAjax(false);
+        submenu.addElement(item);
+        
+        item = new DefaultMenuItem("Redirect");
+        item.setIcon("ui-icon-search");
+        item.setCommand("#{menuBean.redirect}");
 		submenu.addElement(item);
 	}
 
@@ -69,6 +74,10 @@ public class MenuBean {
 	
 	public void delete() {
 		addMessage("Data deleted");
+	}
+    
+    public String redirect() {
+		return "home?faces-redirect=true";
 	}
 	
 	public void addMessage(String summary) {

@@ -138,6 +138,11 @@ public class MenuBean {
         item.setActionExpressionString("\#{menuBean.delete}");
         item.setAjax(false);
 		submenu.addElement(item);
+
+        item = new DefaultMenuItem("Redirect");
+        item.setIcon("ui-icon-search");
+        item.setCommand("\#{menuBean.redirect}");
+		submenu.addElement(item);
 	}
 
 	public MenuModel getModel() {
@@ -154,6 +159,10 @@ public class MenuBean {
 	
 	public void delete() {
 		addMessage("Data deleted");
+	}
+
+    public String redirect() {
+		return "home?faces-redirect=true";
 	}
 	
 	public void addMessage(String summary) {
