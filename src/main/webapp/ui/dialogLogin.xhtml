@@ -9,10 +9,11 @@
 		<script type="text/javascript">
 			function handleLoginRequest(xhr, status, args) {
 				if(args.validationFailed || !args.loggedIn) {
-					jQuery('#dialog').effect("shake", { times:5 }, 100);
-				} else {
+					dlg.jq.effect("shake", { times:5 }, 100);
+				} 
+                else {
 					dlg.hide();
-					jQuery('#loginLink').fadeOut();
+					$('#loginLink').fadeOut();
 				}
 			}
 		</script>
@@ -23,42 +24,44 @@
 		<h1 class="title ui-widget-header ui-corner-all">Dialog - Login Demo</h1>
 		<div class="entry">
 			<p>This example demonstrates how to create a login dialog. Correct combination is (admin-admin)</p>
-				<h:form id="form">		
-				<h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login">	
-					<p:graphicImage value="/images/login.png" />
-				</h:outputLink>
 				
-				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-	
-				<p:dialog id="dialog" header="Login" widgetVar="dlg">
-					
-						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputLabel for="username" value="Username:" />
-							<p:inputText id="username" value="#{loginBean.username}" required="true" label="username" />
-							
-							<h:outputLabel for="password" value="Password:" />
-							<p:password id="password" value="#{loginBean.password}" required="true" label="password" feedback="false"/>
-							
-							<f:facet name="footer">
-								<p:commandButton id="loginButton" value="Login" update="growl" 
-									actionListener="#{loginBean.login}" oncomplete="handleLoginRequest(xhr, status, args)"/>
-							</f:facet>
-						</h:panelGrid>						
-					
-				</p:dialog>
+                <h:form id="form">		
+                    <h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login">	
+                        <p:graphicImage value="/images/login.png" />
+                    </h:outputLink>
+
+                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+                    <p:dialog id="dialog" header="Login" widgetVar="dlg" resizable="false">
+
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputLabel for="username" value="Username:" />
+                                <p:inputText id="username" value="#{loginBean.username}" required="true" label="username" />
+
+                                <h:outputLabel for="password" value="Password:" />
+                                <p:password id="password" value="#{loginBean.password}" required="true" label="password" feedback="false"/>
+
+                                <f:facet name="footer">
+                                    <p:commandButton id="loginButton" value="Login" update="growl" 
+                                        actionListener="#{loginBean.login}" oncomplete="handleLoginRequest(xhr, status, args)"/>
+                                </f:facet>
+                            </h:panelGrid>						
+
+                    </p:dialog>
 				</h:form>
+            
 				<h3>Source</h3>
 				<p:tabView>
 					<p:tab title="dialogLogin.xhtml">
 				<pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
     &lt;h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login"&gt;	
         &lt;p:graphicImage value="/images/login.png" /&gt;
     &lt;/h:outputLink&gt;
 
     &lt;p:growl id="growl" showDetail="true" life="3000" /&gt;
 
-    &lt;p:dialog id="dialog" header="Login" widgetVar="dlg"&gt;
+    &lt;p:dialog id="dialog" header="Login" widgetVar="dlg" resizable="false"&gt;
 
 		&lt;h:panelGrid columns="2" cellpadding="5"&gt;
 			&lt;h:outputLabel for="username" value="Username:" /&gt;
@@ -81,13 +84,14 @@
 
 &lt;script type="text/javascript"&gt;
 	function handleLoginRequest(xhr, status, args) {
-		if(args.validationFailed || !args.loggedIn) {
-			jQuery('#dialog').effect("shake", { times:3 }, 100);
-		} else {
-			dlg.hide();
-			jQuery('#loginLink').fadeOut();
-		}
-	}
+        if(args.validationFailed || !args.loggedIn) {
+            dlg.jq.effect("shake", { times:5 }, 100);
+        } 
+        else {
+            dlg.hide();
+            $('\#loginLink').fadeOut();
+        }
+    }
 &lt;/script&gt;
 				</pre>	
 					</p:tab>

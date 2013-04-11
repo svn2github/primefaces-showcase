@@ -52,52 +52,56 @@
             </h:form>
 
             <h3>Source</h3>
-            <pre name="code" class="xml">
-&lt;h:form id="form"&gt;
+            <p:tabView>
+                <p:tab title="commandButton.xhtml">
+                    <pre name="code" class="xml">
+        &lt;h:form id="form"&gt;
 
-	&lt;p:panel id="panel" header="New Person" style="margin-bottom:10px;"&gt;
-		&lt;p:messages id="messages" /&gt;
-		&lt;h:panelGrid columns="3"&gt;
-			&lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
-			&lt;p:inputText id="firstname" 
-				value="\#{pprBean.firstname}" required="true" label="Firstname"&gt;
-				&lt;f:validateLength minimum="2" /&gt;
-			&lt;/p:inputText&gt;
-			&lt;p:message for="firstname" /&gt;
-			
-			&lt;h:outputLabel for="surname" value="Surname: *" /&gt;
-			&lt;p:inputText id="surname" 
-				value="\#{pprBean.surname}" required="true" label="Surname"/&gt;
-			&lt;p:message for="surname" /&gt;
-		&lt;/h:panelGrid&gt;
-	&lt;/p:panel&gt;
+            &lt;p:panel id="panel" header="New Person" style="margin-bottom:10px;"&gt;
+                &lt;p:messages id="messages" /&gt;
+                &lt;h:panelGrid columns="3"&gt;
+                    &lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
+                    &lt;p:inputText id="firstname" 
+                        value="\#{pprBean.firstname}" required="true" label="Firstname"&gt;
+                        &lt;f:validateLength minimum="2" /&gt;
+                    &lt;/p:inputText&gt;
+                    &lt;p:message for="firstname" /&gt;
 
-	&lt;p:commandButton value="Ajax Submit" update="panel,display" id="ajax"
-			 actionListener="\#{pprBean.savePerson}" styleClass="ui-priority-primary"/&gt;
-				
-	&lt;p:commandButton value="Non-Ajax Submit" actionListener="\#{pprBean.savePerson}" 
-			ajax="false" /&gt;
-	
-	&lt;p:commandButton value="With Icon" actionListener="\#{pprBean.savePerson}" id="withIcon" 
-			update="panel,display" icon="ui-icon-disk" /&gt;
-	
-	&lt;p:commandButton actionListener="\#{pprBean.savePerson}" update="panel,display" id="iconOnly"
-			icon="ui-icon-disk" title="Icon Only"/&gt;
-	
-	&lt;p:commandButton value="Disabled" disabled="true" id="disabled" /&gt;
-	
-	&lt;p:panel id="display" header="Information" style="margin-top:10px;"&gt;
-		&lt;h:panelGrid columns="2"&gt;
-			&lt;h:outputText value="Firstname: " /&gt;
-			&lt;h:outputText value="\#{pprBean.firstname}" /&gt;
-			
-			&lt;h:outputText value="Surname: " /&gt;
-			&lt;h:outputText value="\#{pprBean.surname}" /&gt;
-		&lt;/h:panelGrid&gt;
-	&lt;/p:panel&gt;
-	
-&lt;/h:form&gt;
-            </pre>
+                    &lt;h:outputLabel for="surname" value="Surname: *" /&gt;
+                    &lt;p:inputText id="surname" 
+                        value="\#{pprBean.surname}" required="true" label="Surname"/&gt;
+                    &lt;p:message for="surname" /&gt;
+                &lt;/h:panelGrid&gt;
+            &lt;/p:panel&gt;
+
+            &lt;p:commandButton value="Ajax Submit" update="panel,display" id="ajax"
+                     actionListener="\#{pprBean.savePerson}" styleClass="ui-priority-primary"/&gt;
+
+            &lt;p:commandButton value="Non-Ajax Submit" actionListener="\#{pprBean.savePerson}" 
+                    ajax="false" /&gt;
+
+            &lt;p:commandButton value="With Icon" actionListener="\#{pprBean.savePerson}" id="withIcon" 
+                    update="panel,display" icon="ui-icon-disk" /&gt;
+
+            &lt;p:commandButton actionListener="\#{pprBean.savePerson}" update="panel,display" id="iconOnly"
+                    icon="ui-icon-disk" title="Icon Only"/&gt;
+
+            &lt;p:commandButton value="Disabled" disabled="true" id="disabled" /&gt;
+
+            &lt;p:panel id="display" header="Information" style="margin-top:10px;"&gt;
+                &lt;h:panelGrid columns="2"&gt;
+                    &lt;h:outputText value="Firstname: " /&gt;
+                    &lt;h:outputText value="\#{pprBean.firstname}" /&gt;
+
+                    &lt;h:outputText value="Surname: " /&gt;
+                    &lt;h:outputText value="\#{pprBean.surname}" /&gt;
+                &lt;/h:panelGrid&gt;
+            &lt;/p:panel&gt;
+
+        &lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+            </p:tabView>
 
         </div>
 
