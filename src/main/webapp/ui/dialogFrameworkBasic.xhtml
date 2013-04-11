@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">Dialog Framework - Basic</h1>
+        <div class="entry">
+            <p>A page is displayed in a dialog by adding <i>dialog:</i> prefix to the outcome. There is no need to manually add a dialog component on page
+                as one is generated on runtime.</p>
+
+            <h:form id="form">
+
+                <p:commandButton value="View Cars" icon="ui-icon-extlink" action="#{dialogBean.viewCars}" />
+
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="dialogFrameworkBasic.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+
+    &lt;p:commandButton value="View Cars" icon="ui-icon-extlink" action="\#{dialogBean.viewCars}" /&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="DialogBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+public class DialogBean {
+    
+    public String viewCars() {
+        return "dialog:viewCars";
+    }
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="viewCars.xhtml">
+                    <pre name="code" class="xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"&gt;
+    
+    &lt;h:head&gt;
+        
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}"&gt;
+            &lt;p:column headerText="Model"&gt;
+                &lt;h:outputText value="\#{car.model}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column headerText="Year"&gt;
+                &lt;h:outputText value="\#{car.year}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column headerText="Manufacturer"&gt;
+                &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column headerText="Color"&gt;
+                &lt;h:outputText value="\#{car.color}" /&gt;
+            &lt;/p:column&gt;
+        &lt;/p:dataTable&gt;
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                    </pre>
+                </p:tab>
+
+                
+            </p:tabView>
+
+        </div>
+
+    </ui:define>
+</ui:composition>

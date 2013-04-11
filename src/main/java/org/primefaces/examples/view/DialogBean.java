@@ -28,4 +28,8 @@ public class DialogBean {
 		
 		facesContext.addMessage(null, message);
 	}
+    
+    public String viewCars() {
+        return "dialog:viewCars";
+    }
 }
