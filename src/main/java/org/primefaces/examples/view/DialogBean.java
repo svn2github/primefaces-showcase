@@ -32,4 +32,8 @@ public class DialogBean {
     public String viewCars() {
         return "dialog:viewCars";
     }
+    
+    public String viewCarsCustomized() {
+        return "dialog:viewCars?modal=true";
+    }
 }
