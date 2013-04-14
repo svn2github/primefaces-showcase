@@ -45,6 +45,7 @@ import com.lowagie.text.PageSize;
 import java.util.*;
 import javax.faces.component.UIComponent;
 import javax.faces.model.SelectItem;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.ColumnResizeEvent;
 import org.primefaces.event.DragDropEvent;
@@ -581,5 +582,9 @@ public class TableBean implements Serializable {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
+    }
+    
+    public void selectCarFromDialog(Car car) {
+        RequestContext.getCurrentInstance().returnFromDialog(car);
     }
 }

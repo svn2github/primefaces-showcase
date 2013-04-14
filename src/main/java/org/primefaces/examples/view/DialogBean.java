@@ -19,6 +19,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.CloseEvent;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.examples.domain.Car;
 
 public class DialogBean {
 
@@ -35,5 +37,12 @@ public class DialogBean {
     
     public String viewCarsCustomized() {
         return "dialog:viewCars?modal=true";
+    }
+    
+    public void onDialogReturn(SelectEvent event) {
+        Car car = (Car) event.getObject();
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Selected", "Model:" + car.getModel());
+		
+		FacesContext.getCurrentInstance().addMessage(null, message);
     }
 }

@@ -12,7 +12,7 @@
             <p>A page is displayed in a dialog by adding <i>dialog:</i> prefix to the outcome. There is no need to manually add a dialog component on page
                 as one is generated on runtime.</p>
 
-            <h:form id="form">
+            <h:form>
 
                 <p:commandButton value="View" icon="ui-icon-extlink" action="#{dialogBean.viewCars}" />
                 
@@ -24,9 +24,11 @@
             <p:tabView>
                 <p:tab title="dialogFrameworkBasic.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form id="form"&gt;
+&lt;h:form&gt;
 
-    &lt;p:commandButton value="View Cars" icon="ui-icon-extlink" action="\#{dialogBean.viewCars}" /&gt;
+    &lt;p:commandButton value="View" icon="ui-icon-extlink" action="\#{dialogBean.viewCars}" /&gt;
+
+    &lt;p:commandButton value="Options" icon="ui-icon-extlink" action="\#{dialogBean.viewCarsCustomized}" /&gt;
 
 &lt;/h:form&gt;
                     </pre>
@@ -40,6 +42,10 @@ public class DialogBean {
     
     public String viewCars() {
         return "dialog:viewCars";
+    }
+    
+    public String viewCarsCustomized() {
+        return "dialog:viewCars?modal=true";
     }
 }
                     </pre>

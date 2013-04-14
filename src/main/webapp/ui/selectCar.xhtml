@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Cars</title>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/default.css" />
+    </h:head>
+    
+    <h:body>
+        <h:form>
+            <p:dataTable var="car" value="#{tableBean.carsSmall}">
+                <p:column headerText="Model">
+                    <h:outputText value="#{car.model}" />
+                </p:column>
+
+                <p:column headerText="Year">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+
+                <p:column headerText="Manufacturer">
+                    <h:outputText value="#{car.manufacturer}" />
+                </p:column>
+
+                <p:column headerText="Color">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+
+                <p:column headerText="Color">
+                    <p:commandButton icon="ui-icon-search" actionListener="#{tableBean.selectCarFromDialog(car)}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+    
+</html>
