@@ -31,19 +31,19 @@
                         Ajax Sorting
                     </f:facet>
 
-                    <p:column id="modelHeader" sortBy="#{car.model}" headerText="Model">
+                    <p:column id="modelHeader" sortBy="model" headerText="Model">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column sortBy="#{car.year}" headerText="Year">
+                    <p:column sortBy="year" headerText="Year">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column sortBy="#{car.manufacturer}" headerText="Manufacturer">
+                    <p:column sortBy="manufacturer" headerText="Manufacturer">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column sortBy="#{car.color}" headerText="Color">
+                    <p:column sortBy="color" headerText="Color">
                         <h:outputText value="#{car.color}" />
                     </p:column>
                 </p:dataTable>

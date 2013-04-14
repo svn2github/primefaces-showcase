@@ -20,19 +20,19 @@
 
                     <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display" oncomplete="carDialog.show()" />
                     
-                    <p:column headerText="Model" sortBy="#{car.model}" filterBy="#{car.model}">
+                    <p:column headerText="Model" sortBy="model" filterBy="#{car.model}">
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
+                    <p:column headerText="Year" sortBy="year" filterBy="#{car.year}">
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column headerText="Manufacturer" sortBy="#{car.manufacturer}" filterBy="#{car.manufacturer}">
+                    <p:column headerText="Manufacturer" sortBy="manufacturer" filterBy="#{car.manufacturer}">
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
+                    <p:column headerText="Color" sortBy="color" filterBy="#{car.color}">
                         <h:outputText value="#{car.color}" />
                     </p:column>
                 </p:dataTable>

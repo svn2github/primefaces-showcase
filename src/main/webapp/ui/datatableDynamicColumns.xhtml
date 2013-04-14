@@ -24,7 +24,7 @@
 
                 <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" widgetVar="carsTable" filteredValue="#{tableBean.filteredCars}">                    
                     <p:columns value="#{tableBean.columns}" var="column" columnIndexVar="colIndex" 
-                                sortBy="#{car[column.property]}" filterBy="#{car[column.property]}">
+                                sortBy="#{column.property}" filterBy="#{car[column.property]}">
                         <f:facet name="header">
                             #{column.header}
                         </f:facet>

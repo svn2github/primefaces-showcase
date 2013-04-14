@@ -87,15 +87,15 @@
 
                                         <p:dataTable var="mail" value="#{mailbox.mails}">
 
-                                            <p:column headerText="From" sortBy="#{mail.from}">
+                                            <p:column headerText="From" sortBy="from">
                                                 #{mail.from}
                                             </p:column>
 
-                                            <p:column headerText="Subject" sortBy="#{mail.subject}">
+                                            <p:column headerText="Subject" sortBy="subject">
                                                 #{mail.subject}
                                             </p:column>
 
-                                            <p:column headerText="Date" sortBy="#{mail.date}">
+                                            <p:column headerText="Date" sortBy="date">
                                                 #{mail.date}
                                             </p:column>
 
