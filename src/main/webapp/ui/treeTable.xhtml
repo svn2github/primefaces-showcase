@@ -68,43 +68,43 @@
 			<p:tabView>
 				<p:tab title="treeTable.xhtml">
 					<pre name="code" class="xml">
-&lt;h:form&gt;
-	
-    &lt;p:treeTable value="\#{documentsController.root}" var="document"&gt;
+&lt;h:form id="form"&gt;
+
+    &lt;p:treeTable id="treetable" value="\#{documentsController.root}" var="document"&gt;
         &lt;f:facet name="header"&gt;
             Document Viewer
         &lt;/f:facet&gt;
 
-        &lt;p:column style="width:150px"&gt;
+        &lt;p:column style="width:32%"&gt;
             &lt;f:facet name="header"&gt;
                 Name
             &lt;/f:facet&gt;
             &lt;h:outputText value="\#{document.name}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:100px"&gt;
+        &lt;p:column style="width:32%"&gt;
             &lt;f:facet name="header"&gt;
                 Size
             &lt;/f:facet&gt;
             &lt;h:outputText value="\#{document.size}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:100px"&gt;
+        &lt;p:column style="width:32%"&gt;
             &lt;f:facet name="header"&gt;
                 Type
             &lt;/f:facet&gt;
             &lt;h:outputText value="\#{document.type}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:20px"&gt;
-            &lt;p:commandLink update="documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon ui-icon-search"&gt;
+        &lt;p:column style="width:4%"&gt;
+            &lt;p:commandLink update=":form:documentPanel" oncomplete="documentDialog.show()" title="View Detail" styleClass="ui-icon ui-icon-search"&gt;
                 &lt;f:setPropertyActionListener value="\#{document}" 
                     target="\#{documentsController.selectedDocument}" /&gt;
             &lt;/p:commandLink&gt;
         &lt;/p:column&gt;
     &lt;/p:treeTable&gt;
 
-    &lt;p:dialog header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true"&gt;
+    &lt;p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true"&gt;
         &lt;p:outputPanel id="documentPanel"&gt;
             &lt;h:panelGrid  columns="2" cellpadding="5" rendered="\#{not empty documentsController.selectedDocument}"&gt;
                 &lt;h:outputLabel for="name" value="Name: " /&gt;
