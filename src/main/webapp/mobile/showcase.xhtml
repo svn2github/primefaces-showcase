@@ -23,6 +23,7 @@
                     <h:outputLink value="#lists">Lists</h:outputLink>
                     <h:outputLink value="#navbar">NavBar</h:outputLink>
                     <h:outputLink value="#panels">Panels</h:outputLink>
+                    <h:outputLink value="#overlays">Overlays</h:outputLink>
                 </p:dataList>
                 
                 <p:dataList type="inset">
@@ -262,6 +263,34 @@
                     <h:outputText value="Cell 8" />
                 </h:panelGrid>
                 
+            </pm:content>
+        </pm:view>
+        
+        <pm:view id="overlays">
+            <pm:header title="Overlays">
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+
+                <p:commandButton type="button" value="Basic Dialog" onclick="dlgBasic.show()"/>
+                
+                <p:commandButton type="button" value="Modal Dialog" onclick="dlgModal.show()"/>
+                
+                <p:dialog header="Header" widgetVar="dlgBasic">
+                    Dialog Content goes here...
+                </p:dialog>
+                
+                <p:dialog header="Cities" widgetVar="dlgModal" modal="true">
+                    <p:dataList>
+                        <f:attribute name="filter" value="true" />
+                        <h:outputText value="Barcelona" />
+                        <h:outputText value="Istanbul" />
+                        <h:outputText value="New York" />
+                        <h:outputText value="Paris" />
+                    </p:dataList>
+                </p:dialog>
+
             </pm:content>
         </pm:view>
 
