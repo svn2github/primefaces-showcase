@@ -4,6 +4,19 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
+    
+        
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+        
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+        </script>
+    </ui:define>
         
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Overlay Panel</h1>
@@ -19,6 +32,7 @@
                 <p:overlayPanel id="chartPanel" for="chartBtn" hideEffect="fade">
                     <p:pieChart id="chart" value="#{chartBean.pieModel}" legendPosition="w"
                         title="Sample Pie Chart" style="width:300px;height:200px" />
+                    <p:calendar value="#{calendarBean.date2}" id="popupCal" />
                 </p:overlayPanel>
                 
                 <br /><br />
@@ -47,10 +61,10 @@
 
                 <br /><br />
 				
-                <p:graphicImage id="img" value="../images/images.png" style="cursor:pointer"/>
+                <p:graphicImage id="img" value="../images/images.png" style="cursor:pointer" title="Custom Options"/>
                 
                 <p:overlayPanel id="imgPanel" for="img" showEffect="blind" hideEffect="explode" showEvent="mouseover" hideEvent="mousedown"
-                                styleClass="ui-helper-clearfix">
+                                styleClass="ui-helper-clearfix" dismissable="false" showCloseIcon="true">
                     <p:imageSwitch id="imgSwitch" effect="fade">
                         <ui:repeat value="#{imageSwitchBean.images}" var="image">
                             <p:graphicImage value="/images/#{image}" width="300"/>
@@ -98,10 +112,10 @@
 
     &lt;br /&gt;&lt;br /&gt;
 
-    &lt;p:graphicImage id="img" value="../images/images.png" style="cursor:pointer"/&gt;
+    &lt;p:graphicImage id="img" value="../images/images.png" style="cursor:pointer" title="Custom Options"/&gt;
 
     &lt;p:overlayPanel id="imgPanel" for="img" showEffect="blind" hideEffect="explode" showEvent="mouseover" hideEvent="mousedown"
-            styleClass="ui-helper-clearfix"&gt;
+            styleClass="ui-helper-clearfix" dismissable="false" showCloseIcon="true"&gt;
         &lt;p:imageSwitch id="imgSwitch" effect="fade"&gt;
             &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
                 &lt;p:graphicImage value="/images/\#{image}" width="300"/&gt;
