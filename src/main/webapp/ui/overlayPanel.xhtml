@@ -64,7 +64,7 @@
                 
                 <p:overlayPanel id="imgPanel" for="img" showEffect="blind" hideEffect="explode" showEvent="mouseover" hideEvent="mousedown"
                                 styleClass="ui-helper-clearfix" dismissable="false" showCloseIcon="true">
-                    <p:imageSwitch id="imgSwitch" effect="fade">
+                    <p:imageSwitch id="imgSwitch" effect="fade" style="width:300px;height:188px;">
                         <ui:repeat value="#{imageSwitchBean.images}" var="image">
                             <p:graphicImage value="/images/#{image}" width="300"/>
                         </ui:repeat>
@@ -111,7 +111,7 @@
 
     &lt;p:overlayPanel id="imgPanel" for="img" showEffect="blind" hideEffect="explode" showEvent="mouseover" hideEvent="mousedown"
             styleClass="ui-helper-clearfix" dismissable="false" showCloseIcon="true"&gt;
-        &lt;p:imageSwitch id="imgSwitch" effect="fade"&gt;
+        &lt;p:imageSwitch id="imgSwitch" effect="fade" style="width:300px;height:188px;"&gt;
             &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
                 &lt;p:graphicImage value="/images/\#{image}" width="300"/&gt;
             &lt;/ui:repeat&gt;
