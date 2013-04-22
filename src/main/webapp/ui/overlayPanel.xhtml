@@ -29,10 +29,9 @@
                 
                 <p:commandButton id="chartBtn" value="Basic" type="button" />
                 
-                <p:overlayPanel id="chartPanel" for="chartBtn" hideEffect="fade">
+                <p:overlayPanel id="chartPanel" for="chartBtn" hideEffect="fade" dismissable="false">
                     <p:pieChart id="chart" value="#{chartBean.pieModel}" legendPosition="w"
                         title="Sample Pie Chart" style="width:300px;height:200px" />
-                    <p:calendar value="#{calendarBean.date2}" id="popupCal" />
                 </p:overlayPanel>
                 
                 <br /><br />
