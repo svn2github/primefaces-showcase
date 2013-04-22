@@ -29,7 +29,7 @@
                 
                 <p:commandButton id="chartBtn" value="Basic" type="button" />
                 
-                <p:overlayPanel id="chartPanel" for="chartBtn" hideEffect="fade" dismissable="false">
+                <p:overlayPanel id="chartPanel" for="chartBtn" hideEffect="fade">
                     <p:pieChart id="chart" value="#{chartBean.pieModel}" legendPosition="w"
                         title="Sample Pie Chart" style="width:300px;height:200px" />
                 </p:overlayPanel>
@@ -85,8 +85,6 @@
             title="Sample Pie Chart" style="width:300px;height:200px" /&gt;
     &lt;/p:overlayPanel&gt;
 
-    &lt;br /&gt;&lt;br /&gt;
-
     &lt;p:commandButton id="carBtn" value="Dynamic" type="button" /&gt;
 
     &lt;p:overlayPanel id="carPanel" for="carBtn" hideEffect="fade" dynamic="true"&gt;
@@ -108,8 +106,6 @@
             &lt;/p:column&gt;
         &lt;/p:dataTable&gt;
     &lt;/p:overlayPanel&gt;
-
-    &lt;br /&gt;&lt;br /&gt;
 
     &lt;p:graphicImage id="img" value="../images/images.png" style="cursor:pointer" title="Custom Options"/&gt;
 
