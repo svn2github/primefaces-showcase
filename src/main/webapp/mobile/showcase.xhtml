@@ -1,11 +1,11 @@
 <f:view xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:pm="http://primefaces.org/mobile"
-	contentType="text/html"
-    renderKitId="PRIMEFACES_MOBILE">
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pm="http://primefaces.org/mobile"
+        contentType="text/html"
+        renderKitId="PRIMEFACES_MOBILE">
 
     <pm:page title="Components">
 
@@ -24,14 +24,15 @@
                     <h:outputLink value="#navbar">NavBar</h:outputLink>
                     <h:outputLink value="#panels">Panels</h:outputLink>
                     <h:outputLink value="#overlays">Overlays</h:outputLink>
+                    <h:outputLink value="#growl">Growl</h:outputLink>
                 </p:dataList>
-                
+
                 <p:dataList type="inset">
                     <f:facet name="header">Framework</f:facet>
                     <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
                     <h:outputLink value="#ajaxUpdate">Ajax Updates</h:outputLink>
                 </p:dataList>
-                
+
                 <p:dataList type="inset">
                     <f:facet name="header">Navigation</f:facet>
                     <h:outputLink value="#navHandler">Navigation Handler</h:outputLink>
@@ -51,13 +52,13 @@
             <pm:content>
 
                 <p:inputText label="Input:" />
-                
+
                 <p:inputText label="Search:" type="search"/>
-                
+
                 <p:inputText label="Phone:" type="tel"/>
-                
+
                 <p:inputTextarea id="inputTextarea" label="Textarea:"/>
-                
+
                 <pm:field>
                     <h:outputLabel for="selectOneMenu" value="Dropdown: "/>
                     <h:selectOneMenu id="selectOneMenu">
@@ -71,15 +72,15 @@
                 <pm:inputRange id="range" minValue="0" maxValue="100" label="Range:" />
 
                 <pm:switch id="switch" onLabel="yes" offLabel="no" label="Switch:" />
-                
+
                 <p:selectBooleanCheckbox id="booleanCheckbox" value="false" itemLabel="I agree" label="Checkbox"/>
-               
+
                 <p:selectManyCheckbox id="checkbox" label="Checkboxes: ">
                     <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
                     <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
                     <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
                 </p:selectManyCheckbox>
-                
+
                 <p:selectOneRadio id="radio" label="Radios: ">
                     <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
                     <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
@@ -115,7 +116,7 @@
                     <p:commandButton value="Yes" type="button" icon="check"/>
                     <p:commandButton value="No" type="button" icon="delete"/>
                 </pm:buttonGroup>
-                
+
                 <pm:buttonGroup orientation="horizontal">
                     <p:commandButton value="Yes" type="button" icon="check" />
                     <p:commandButton value="No" type="button" icon="delete" />
@@ -161,7 +162,7 @@
                     <h:outputLink value="#main">Item 2</h:outputLink>
                     <h:outputLink value="#main">Item 3</h:outputLink>
                 </p:dataList>
-                
+
                 <h3>Filter</h3>
                 <p:dataList>
                     <f:attribute name="filter" value="true" />
@@ -221,7 +222,7 @@
                 <p:panel header="Collapsed" collapsed="true">
                     Initially collapsed content
                 </p:panel>
-                
+
                 <h3>Accordion Panel</h3>
                 <p:accordionPanel>
                     <p:tab title="Title 1">
@@ -262,10 +263,10 @@
                     <h:outputText value="Cell 7" />
                     <h:outputText value="Cell 8" />
                 </h:panelGrid>
-                
+
             </pm:content>
         </pm:view>
-        
+
         <pm:view id="overlays">
             <pm:header title="Overlays">
                 <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
@@ -274,13 +275,13 @@
             <pm:content>
 
                 <p:commandButton type="button" value="Basic Dialog" onclick="dlgBasic.show()"/>
-                
+
                 <p:commandButton type="button" value="Modal Dialog" onclick="dlgModal.show()"/>
-                
+
                 <p:dialog header="Header" widgetVar="dlgBasic">
                     Dialog Content goes here...
                 </p:dialog>
-                
+
                 <p:dialog header="Cities" widgetVar="dlgModal" modal="true">
                     <p:dataList>
                         <f:attribute name="filter" value="true" />
@@ -294,6 +295,25 @@
             </pm:content>
         </pm:view>
 
+        <pm:view id="growl">
+            <pm:header title="Growl">
+                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+
+                <h:form>  
+                    <p:growl autoUpdate="true"/>  
+
+                    <p:commandButton value="Info" actionListener="#{messagesController.addInfo}"/>  
+                    <p:commandButton value="Warn" actionListener="#{messagesController.addWarn}"/>  
+                    <p:commandButton value="Error" actionListener="#{messagesController.addError}"/>  
+                    <p:commandButton value="Fatal" actionListener="#{messagesController.addFatal}"/>  
+                </h:form>
+
+            </pm:content>
+        </pm:view>        
+
         <pm:view id="target">
             <pm:header title="Target">
                 <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
@@ -305,7 +325,7 @@
 
             </pm:content>
         </pm:view>
-        
+
         <pm:view id="transitionTarget">
             <pm:header title="Transition">
                 <f:facet name="left"><p:button value="Back" icon="back" href="#transitions?reverse=true"/></f:facet>
@@ -328,10 +348,10 @@
                 Core PrimeFaces Ajax implementation is integrated with jQuery Mobile's built-in ajax loading dialog indicator.
 
                 <h:form>
-                    
+
                     <p:commandButton value="Count" actionListener="#{counterBean.increment}" update="txt_count" process="@this"/>
                     <h3><h:outputText id="txt_count" value="Counter: #{counterBean.count}" /></h3>
-                    
+
                 </h:form>
 
             </pm:content>
@@ -364,13 +384,13 @@
 
                     <p:dataList id="txts" var="text" value="#{showcaseView.texts}" type="inset">
                         <f:facet name="header">Values</f:facet>
-                        #{text}
+                            #{text}
                     </p:dataList>
 
                 </h:form>
             </pm:content>
         </pm:view>
-        
+
         <!-- Navigation Handler -->
         <pm:view id="navHandler">
             <pm:header title="Navigation">
@@ -382,14 +402,14 @@
                 mobile view-to-view navigations.
 
                 <h:form>
-                    
+
                     <p:commandButton value="Go to Target" action="#{showcaseView.navigate}" />
-                    
+
                 </h:form>
 
             </pm:content>
         </pm:view>
-        
+
         <!-- Transitions -->
         <pm:view id="transitions">
             <pm:header title="Transitions">
@@ -398,25 +418,25 @@
 
             <pm:content>
                 Various animation types are supported in view navigations.
- 
+
                 <p:button value="Fade" href="#transitionTarget?transition=fade" />
 
                 <p:button value="Pop" href="#transitionTarget?transition=pop" />
-                
+
                 <p:button value="Flip" href="#transitionTarget?transition=flip" />
-                
+
                 <p:button value="Turn" href="#transitionTarget?transition=turn" />
-                
+
                 <p:button value="Flow" href="#transitionTarget?transition=flow" />
-                
+
                 <p:button value="Slide" href="#transitionTarget?transition=slide" />
-                
+
                 <p:button value="SlideUp" href="#transitionTarget?transition=slideup" />
-                
+
                 <p:button value="SlideDown" href="#transitionTarget?transition=slidedown" />
-                
+
                 <p:button value="None" href="#transitionTarget?transition=none" />
-                    
+
             </pm:content>
         </pm:view>
 
