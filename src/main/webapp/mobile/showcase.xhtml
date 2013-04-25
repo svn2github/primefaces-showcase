@@ -370,17 +370,9 @@
 
                 <h:form>
 
-                    <pm:field>
-                        <h:outputLabel for="txt" value="Text:" />
-                        <h:inputText id="txt" value="#{showcaseView.text}" />
-                    </pm:field>
-
-                    <h:panelGrid columns="2">
-                        <p:commandButton value="PrimeFaces" actionListener="#{showcaseView.add}" update="txt txts" process="@form"/>
-                        <h:commandButton value="JSF Impl" actionListener="#{showcaseView.add}">
-                            <f:ajax render="txt txts" execute="@form"/>
-                        </h:commandButton>
-                    </h:panelGrid>
+                    <p:inputText id="txt" label="Text:" value="#{showcaseView.text}" />
+                    
+                    <p:commandButton value="PrimeFaces" actionListener="#{showcaseView.add}" update="txt txts" process="@form"/>                    
 
                     <p:dataList id="txts" var="text" value="#{showcaseView.texts}" type="inset">
                         <f:facet name="header">Values</f:facet>
