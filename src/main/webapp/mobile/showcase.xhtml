@@ -8,9 +8,9 @@
         renderKitId="PRIMEFACES_MOBILE">
 
     <pm:page title="Components">
-
+        
         <!-- Main View -->
-        <pm:view id="main">
+        <pm:view id="main">                                    
             <pm:header title="Mobile" swatch="b">
             </pm:header>
 
@@ -309,12 +309,12 @@
             <pm:content>
 
                 <h:form>  
-                    <p:growl autoUpdate="true"/>  
+                    <p:growl id="growlMsg" />  
 
-                    <p:commandButton value="Info" actionListener="#{messagesController.addInfo}"/>  
-                    <p:commandButton value="Warn" actionListener="#{messagesController.addWarn}"/>  
-                    <p:commandButton value="Error" actionListener="#{messagesController.addError}"/>  
-                    <p:commandButton value="Fatal" actionListener="#{messagesController.addFatal}"/>  
+                    <p:commandButton value="Info" actionListener="#{messagesController.addInfo}" update="growlMsg"/>  
+                    <p:commandButton value="Warn" actionListener="#{messagesController.addWarn}" update="growlMsg"/>  
+                    <p:commandButton value="Error" actionListener="#{messagesController.addError}" update="growlMsg"/>  
+                    <p:commandButton value="Fatal" actionListener="#{messagesController.addFatal}" update="growlMsg"/>  
                 </h:form>
 
             </pm:content>
@@ -375,7 +375,7 @@
                 by providing extensions whereas client side ajax of a JSF implementation causes various problems.
 
                 <h:form>
-
+                    
                     <p:inputText id="txt" label="Text:" value="#{showcaseView.text}" />
                     
                     <p:commandButton value="PrimeFaces" actionListener="#{showcaseView.add}" update="txt txts" process="@form"/>                    
