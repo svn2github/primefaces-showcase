@@ -7,9 +7,10 @@
 	contentType="text/html"
     renderKitId="PRIMEFACES_MOBILE">
 
-    <pm:page title="Chat">
+    <pm:page title="Chat">        
         
         <f:facet name="postinit">
+            <h:outputScript library="primefaces" name="push/push.js" />
             <script type="text/javascript">
                 //<![CDATA[
                     function handleMessage(data) {
@@ -29,8 +30,12 @@
             </pm:header>
 
             <pm:content>
+                
+                <p:socket onMessage="handleMessage" channel="/chat" widgetVar="subscriber"/>                
+                <p:growl  id="growl" />
+                
                 <h:form id="chatForm">
-                    
+                                                            
                     <p:outputPanel id="container">
                         <h:panelGroup rendered="#{chatView.loggedIn}" >
                             <p:outputPanel id="content" layout="block" style="width:100%;height:200px;overflow:auto"/>
@@ -53,9 +58,7 @@
                         </h:panelGroup>
                     </p:outputPanel>
                             
-                </h:form>
-                
-                <p:socket onMessage="handleMessage" channel="/chat" widgetVar="subscriber"/>
+                </h:form>                                
                 
             </pm:content>
 
