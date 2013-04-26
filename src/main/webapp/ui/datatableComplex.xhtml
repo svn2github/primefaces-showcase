@@ -79,7 +79,7 @@
 			
 			<h3>Source</h3>
 			<p:tabView>
-				<p:tab title="datatableComplex.xhtml">
+				<p:tab title="datatableComplex.xhtml (3.x)">
 					<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
 
@@ -136,8 +136,66 @@
 &lt;/h:form&gt;
                     </pre>
 				</p:tab>
+                
+                <p:tab title="datatableComplex.xhtml (4.x)">
+					<pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" rowKey="\#{car.model}" paginator="true" rows="10"
+                selection="\#{tableBean.selectedCar}" selectionMode="single" filteredValue="\#{tableBean.filteredCars}" id="carsTable"&gt;
+
+        &lt;p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" /&gt;
+
+        &lt;f:facet name="header"&gt;
+            List of Cars
+        &lt;/f:facet&gt;
+
+        &lt;p:column headerText="Model" sortBy="model" filterBy="model" id="model"&gt;
+            \#{car.model}
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year" sortBy="year" filterBy="year" id="year"&gt;
+            \#{car.year}
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer" sortBy="manufacturer" filterBy="manufacturer" id="manufacturer"&gt;
+            \#{car.manufacturer}
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" sortBy="color" filterBy="color" id="color"&gt;
+            \#{car.color}"
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+              width="200" showEffect="explode" hideEffect="explode"&gt;
+
+        &lt;h:panelGrid id="display" columns="2" cellpadding="4"&gt;
+
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage value="/images/cars/\#{tableBean.selectedCar.manufacturer}.jpg"/&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Model:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.model}" id="model"/&gt;
+
+            &lt;h:outputText value="Year:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.year}" id="year"/&gt;
+
+            &lt;h:outputText value="Manufacturer:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.manufacturer}" id="manufacturer"/&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{tableBean.selectedCar.color}" id="color"/&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+				</p:tab>
 				
-<p:tab title="TableBean.java">
+                <p:tab title="TableBean.java">
                     <pre name="code" class="java">
 package org.primefaces.examples.view;
 
