@@ -107,9 +107,15 @@
                 <p:commandButton value="Inline" type="button" icon="delete" inline="true" />
 
                 <h3>Themes</h3>
-                <p:commandButton value="Default" type="button" swatch="a"/>
-                <p:commandButton value="With Icon" type="button" icon="check" swatch="b"/>
-                <p:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right" swatch="e"/>
+                <p:commandButton value="Default" type="button">
+                    <f:attribute name="swatch" value="a" />
+                </p:commandButton>
+                <p:commandButton value="With Icon" type="button" icon="check">
+                    <f:attribute name="swatch" value="b" />
+                </p:commandButton>
+                <p:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right">
+                    <f:attribute name="swatch" value="e" />
+                </p:commandButton>
 
                 <h3>Grouping</h3>
                 <pm:buttonGroup>
