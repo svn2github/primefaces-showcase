@@ -26,6 +26,7 @@ import org.primefaces.event.NodeCollapseEvent;
 import org.primefaces.event.NodeExpandEvent;
 import org.primefaces.event.NodeSelectEvent;
 import org.primefaces.event.NodeUnselectEvent;
+import org.primefaces.event.TreeDragDropEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 
@@ -138,5 +139,14 @@ public class TreeBean implements Serializable {
         selectedNode.setParent(null);
         
         selectedNode = null;
+    }
+    
+    public void onDragDrop(TreeDragDropEvent event) {
+        TreeNode dragNode = event.getDragNode();
+        TreeNode dropNode = event.getDropNode();
+        int dropIndex = event.getDropIndex();
+        
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Dragged " + dragNode.getData(), "Dropped on " + dropNode.getData() + " at " + dropIndex);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 }
