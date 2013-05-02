@@ -48,9 +48,9 @@
                         </h:panelGroup>
                     
                         <h:panelGroup rendered="#{not chatView.loggedIn}" >
-                            <p:inputText id="username" value="#{chatView.username}" />
-                            <p:watermark for="username" value="Username" />
-                            
+                            <p:inputText id="username" value="#{chatView.username}">
+                                <f:attribute name="placeholder"  value="Username" />
+                            </p:inputText>                            
                             <p:separator />
 
                             <p:commandButton value="Login" icon="refresh" update="container"
