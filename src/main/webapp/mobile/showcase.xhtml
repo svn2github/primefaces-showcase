@@ -61,8 +61,8 @@
 
                 <pm:field>
                     <h:outputLabel for="selectOneMenu" value="Dropdown: "/>
-                    <h:selectOneMenu id="selectOneMenu">
-                        <f:selectItem itemLabel="Select One" itemValue="" />
+                    <h:selectOneMenu id="selectOneMenu"> 
+                       <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
                         <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
                         <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
@@ -310,7 +310,7 @@
 
                 <h:form>  
                     <p:growl id="growlMsg" />  
-
+                    
                     <p:commandButton value="Info" actionListener="#{messagesController.addInfo}" update="growlMsg"/>  
                     <p:commandButton value="Warn" actionListener="#{messagesController.addWarn}" update="growlMsg"/>  
                     <p:commandButton value="Error" actionListener="#{messagesController.addError}" update="growlMsg"/>  
@@ -376,10 +376,13 @@
 
                 <h:form>
                     
-                    <p:inputText id="txt" label="Text:" value="#{showcaseView.text}" />
+                    <pm:field>
+                        <h:outputLabel for="txt" value="Text:" />
+                        <p:inputText id="txt" value="#{showcaseView.text}" />
+                    </pm:field>                    
                     
                     <p:commandButton value="PrimeFaces" actionListener="#{showcaseView.add}" update="txt txts" process="@form"/>                    
-
+                    
                     <p:dataList id="txts" var="text" value="#{showcaseView.texts}" type="inset">
                         <f:facet name="header">Values</f:facet>
                             #{text}
