@@ -46,7 +46,7 @@
         <!-- Forms -->
         <pm:view id="forms">
             <pm:header title="Forms">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -95,7 +95,7 @@
         <!-- Buttons -->
         <pm:view id="buttons">
             <pm:header title="Buttons">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -135,7 +135,7 @@
         <!-- Lists -->
         <pm:view id="lists">
             <pm:header title="Lists">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -194,7 +194,7 @@
         <!-- NavBar -->
         <pm:view id="navbar">
             <pm:header title="NavBar">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
                 <pm:navBar>
                     <p:button value="Home" icon="home" href="#main?reverse=true" styleClass="ui-btn-active ui-state-persist"/>
                     <p:button value="Info" icon="info" href="#main?reverse=true" />
@@ -216,7 +216,7 @@
         <!-- Panels -->
         <pm:view id="panels">
             <pm:header title="Panels">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -275,7 +275,7 @@
 
         <pm:view id="overlays">
             <pm:header title="Overlays">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -303,7 +303,7 @@
 
         <pm:view id="growl">
             <pm:header title="Growl">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -322,7 +322,7 @@
 
         <pm:view id="target">
             <pm:header title="Target">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()" /></f:facet>
             </pm:header>
 
             <pm:content>
@@ -334,7 +334,7 @@
 
         <pm:view id="transitionTarget">
             <pm:header title="Transition">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#transitions?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -347,7 +347,7 @@
         <!-- Ajax Status -->
         <pm:view id="ajaxStatus">
             <pm:header title="Ajax Status">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -366,7 +366,7 @@
         <!-- Ajax Update -->
         <pm:view id="ajaxUpdate">
             <pm:header title="TODO">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -395,7 +395,7 @@
         <!-- Navigation Handler -->
         <pm:view id="navHandler">
             <pm:header title="Navigation">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
@@ -405,7 +405,8 @@
                 <h:form>
 
                     <p:commandButton value="Go to Target" action="#{showcaseView.navigate}" />
-
+                    <p:commandButton value="Go to Single Page" action="singlePage?faces-redirect=true"/>
+                                       
                 </h:form>
 
             </pm:content>
@@ -414,7 +415,7 @@
         <!-- Transitions -->
         <pm:view id="transitions">
             <pm:header title="Transitions">
-                <f:facet name="left"><p:button value="Back" icon="back" href="#main?reverse=true"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
 
             <pm:content>
