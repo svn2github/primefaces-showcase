@@ -1,0 +1,102 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pm="http://primefaces.org/mobile"
+        xmlns:nx="http://java.sun.com/jsf/composite/nxcomponentes"
+        contentType="text/html"
+        renderKitId="PRIMEFACES_MOBILE">
+
+    <pm:page id="page" title="Showcase">                                                 
+
+        <f:facet name="postinit">            
+            <link rel="stylesheet" href="/javax.faces.resource/calendar/calendar.css.jsf?ln=primefaces-mobile" />
+            <h:outputScript library="primefaces-mobile" name="calendar/calendar.js" />            
+
+            <script type="text/javascript">
+                (function($) {
+                    $.mobiscroll.i18n['pt_BR'] = $.extend($.mobiscroll.i18n['pt_BR'], {
+                        dateFormat: 'dd/mm/yy',
+                        dateOrder: 'ddMMyy',
+                        dayNames: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
+                        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+                        dayText: 'Dia',
+                        hourText: 'Hora',
+                        minuteText: 'Minutos',
+                        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                        monthText: 'Mês',
+                        secText: 'Segundo',
+                        timeFormat: 'HH:ii',
+                        timeWheels: 'HHii',
+                        yearText: 'Ano',
+                        setText: 'Selecionar',
+                        cancelText: 'Cancelar',
+                        nowText: 'Agora'
+                    });
+                })(jQuery);
+            </script>
+        </f:facet>   
+
+        <pm:view id="menu">
+            <pm:header title="Showcase">
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
+            </pm:header>
+            <pm:content>
+
+                <h:form id="form">                       
+
+                    <h3>Basic</h3>                    
+                    <h4>Inline</h4>
+                    <p:calendar value="#{calendarBean.date1}" mode="inline"/>
+                    <h4>Popup</h4>
+                    <p:calendar value="#{calendarBean.date1}"/>
+                    <h4>Button</h4>
+                    <p:calendar value="#{calendarBean.date1}" widgetVar="calbutton">
+                        <f:attribute name="showOnFocus" value="false" />
+                    </p:calendar>
+                    <p:commandButton value="Show" type="button" onclick="calbutton.show()" />
+
+                    <h3>Localization</h3>
+                    <h4>Brazilian Portuguese</h4>
+                    <p:calendar value="#{calendarBean.date1}" locale="pt_BR"/>
+                    <h4>Custom</h4>
+                    <p:calendar value="#{calendarBean.date1}" pattern="EEE, dd MMM, yyyy" disabledWeekends="true" />                    
+
+                    <h3>Date Ranges</h3>
+                    <p:calendar value="#{calendarBean.date1}" mindate="3/30/13" maxdate="5/30/13"/>
+
+                    <h3>Button Panel</h3>
+                    <p:calendar value="#{calendarBean.date1}" showButtonPanel="true" /> 
+
+                    <h3>Navigator</h3>
+                    <p:calendar value="#{calendarBean.date1}" navigator="true"  /> 
+
+                    <h3>Time</h3>
+                    <h4>DateTime</h4>
+                    <p:calendar value="#{calendarBean.date1}" pattern="MM/dd/yyyy HH:mm" /> 
+                    <h4>TimeOnly</h4>
+                    <p:calendar value="#{calendarBean.date1}" pattern="HH:mm" timeOnly="true" />  
+                    <h4>AM/PM</h4>
+                    <p:calendar value="#{calendarBean.date1}" pattern="MM/dd/yyyy hh:mm a"/>
+                    <h4>Seconds</h4>  
+                    <p:calendar value="#{calendarBean.date1}" pattern="MM/dd/yyyy HH:mm:ss"/>   
+                    <h4>Steps</h4>  
+                    <p:calendar value="#{calendarBean.date1}" pattern="MM/dd/yyyy HH:mm:ss" stepHour="2" stepMinute="10" stepSecond="10"/>                                       
+
+                    <h3>Effects</h3>
+                    <h4>Fade</h4> 
+                    <p:calendar value="#{calendarBean.date1}" effect="fade" />   
+                    <h4>Slide Horizontal</h4> 
+                    <p:calendar value="#{calendarBean.date1}" effect="slidehorizontal" />   
+                    <h4>Slide Vertical</h4> 
+                    <p:calendar value="#{calendarBean.date1}" effect="slidevertical" />   
+                    <h4>Pop</h4> 
+                    <p:calendar value="#{calendarBean.date1}" effect="pop" />                     
+                </h:form>
+
+            </pm:content>
+        </pm:view>
+    </pm:page>       
+</f:view>
