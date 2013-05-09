@@ -27,6 +27,7 @@
                         <h:outputLink value="#overlays">Overlays</h:outputLink>
                         <h:outputLink value="#growl">Growl</h:outputLink>
                         <p:commandLink action="calendar?faces-redirect=true" >Calendar</p:commandLink>                        
+                        <h:outputLink value="#autoComplete">AutoComplete</h:outputLink>
                     </p:dataList>
                 </h:form>
 
@@ -318,6 +319,47 @@
                     <p:commandButton value="Warn" actionListener="#{messagesController.addWarn}" update="growlMsg"/>  
                     <p:commandButton value="Error" actionListener="#{messagesController.addError}" update="growlMsg"/>  
                     <p:commandButton value="Fatal" actionListener="#{messagesController.addFatal}" update="growlMsg"/>  
+                </h:form>
+
+            </pm:content>
+        </pm:view> 
+        
+        <pm:view id="autoComplete">
+            <pm:header title="AutoComplete">
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+
+                <h:form>  
+                    <p:growl id="growl" />  
+                    
+                    <h3>Simple</h3>
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}">
+                        <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="growl" />
+                    </p:autoComplete>
+
+                    <h3>Min Length</h3> 
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" minQueryLength="3" >
+                        <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="growl" />
+                    </p:autoComplete>                    
+                    
+                    <h3>Delay(1000)</h3> 
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" queryDelay="1000" >
+                        <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="growl" />
+                    </p:autoComplete>  
+                    
+                    <h3>Max Results(5)</h3> 
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" maxResults="5" >
+                        <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="growl" />
+                    </p:autoComplete>                    
+                    
+                    <h3>Basic Pojo</h3>
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.completePlayer}"  
+                                    var="player" itemLabel="#{player.name}" itemValue="#{player}" converter="player">  
+                        <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="growl" />  
+                    </p:autoComplete>                         
+                    
                 </h:form>
 
             </pm:content>
