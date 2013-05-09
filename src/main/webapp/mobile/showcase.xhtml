@@ -398,7 +398,9 @@
         </pm:view> 
         
         <pm:view id="dataTable"> 
-            <pm:header title="DataTable"/>                       
+            <pm:header title="DataTable">
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
+            </pm:header>                       
             <pm:content>   
                 <h:form prependId="false" >
 
