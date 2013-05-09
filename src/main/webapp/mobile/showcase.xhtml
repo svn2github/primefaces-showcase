@@ -380,7 +380,7 @@
             <pm:content>   
                 <h:form prependId="false" >
 
-                    <h3>Table: Column Toggle</h3>
+                    <h3>Table: Reflow</h3>
                     <p:dataTable var="car" value="#{tableBean.carsSmall}" >  
                         <p:column headerText="Model">  
                             <h:outputText value="#{car.model}" />  
@@ -398,8 +398,8 @@
                             <h:outputText value="#{car.color}" />  
                         </p:column>  
                     </p:dataTable>                                         
-
-                    <h3>Table: Reflow</h3>
+                    
+                    <h3>Table: Column Toggle</h3>
                     <p:dataTable var="car" value="#{tableBean.carsSmall}"> 
                         <f:attribute name="columnToggle" value="true" />
                         <f:attribute name="btnText" value="Colunas..." />
