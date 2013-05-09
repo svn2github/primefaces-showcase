@@ -28,6 +28,7 @@
                         <h:outputLink value="#growl">Growl</h:outputLink>
                         <p:commandLink action="calendar?faces-redirect=true" >Calendar</p:commandLink>                        
                         <h:outputLink value="#autoComplete">AutoComplete</h:outputLink>
+                        <h:outputLink value="#dataTable">DataTable</h:outputLink>
                     </p:dataList>
                 </h:form>
 
@@ -372,7 +373,58 @@
                 </h:form>
 
             </pm:content>
-        </pm:view>        
+        </pm:view> 
+        
+        <pm:view id="dataTable"> 
+            <pm:header title="DataTable"/>                       
+            <pm:content>   
+                <h:form prependId="false" >
+
+                    <h3>Table: Column Toggle</h3>
+                    <p:dataTable var="car" value="#{tableBean.carsSmall}" >  
+                        <p:column headerText="Model">  
+                            <h:outputText value="#{car.model}" />  
+                        </p:column>  
+
+                        <p:column headerText="Year">  
+                            <h:outputText value="#{car.year}" />  
+                        </p:column>  
+
+                        <p:column headerText="Manufacturer">  
+                            <h:outputText value="#{car.manufacturer}" />  
+                        </p:column>  
+
+                        <p:column headerText="Color">  
+                            <h:outputText value="#{car.color}" />  
+                        </p:column>  
+                    </p:dataTable>                                         
+
+                    <h3>Table: Reflow</h3>
+                    <p:dataTable var="car" value="#{tableBean.carsSmall}"> 
+                        <f:attribute name="columnToggle" value="true" />
+                        <f:attribute name="btnText" value="Colunas..." />
+                        <p:column headerText="Model">          
+                            <f:attribute name="priority" value="2" />
+                            <h:outputText value="#{car.model}" />  
+                        </p:column>  
+
+                        <p:column headerText="Year" >                              
+                            <h:outputText value="#{car.year}" />  
+                        </p:column>  
+
+                        <p:column headerText="Manufacturer">  
+                            <f:attribute name="priority" value="1" />
+                            <h:outputText value="#{car.manufacturer}" />  
+                        </p:column>  
+
+                        <p:column headerText="Color">  
+                            <f:attribute name="priority" value="4" />
+                            <h:outputText value="#{car.color}" />  
+                        </p:column>  
+                    </p:dataTable>                                                  
+                </h:form>
+            </pm:content>
+        </pm:view>         
 
         <pm:view id="target">
             <pm:header title="Target">
