@@ -183,9 +183,10 @@
                     <h:outputLink value="#main">Item 3</h:outputLink>
                 </p:dataList>
 
-                <h3>Filter</h3>
+                <h3>Filter+AutoDividers</h3>
                 <p:dataList>
                     <f:attribute name="filter" value="true" />
+                    <f:attribute name="autoDividers" value="true" />
                     <h:outputText value="Barcelona" />
                     <h:outputText value="Istanbul" />
                     <h:outputText value="New York" />
@@ -193,7 +194,7 @@
                 </p:dataList>
 
                 <p:spacer height="10em" />
-
+                                
                 <h3>Custom Content</h3>
                 <p:dataList value="#{ringBean.players}" var="player">
                     <p:graphicImage value="/images/barca/#{player.photo}" />
