@@ -278,6 +278,13 @@
         </pm:view>
 
         <pm:view id="overlays">
+            
+            <p:overlayPanel for="simplePanelBtn" widgetVar="panel" my="right" >                
+                <h3>Overlay Panel</h3>
+                <h4>Flexible by design, Overlay Panel can be used for navigation, forms, inspectors and more.</h4>                                                                       
+                <p:commandButton type="button" value="Close" icon="delete" onclick="panel.hide()"/>                                
+            </p:overlayPanel>                    
+            
             <pm:header title="Overlays">
                 <f:facet name="left"><p:button value="Back" icon="back" onclick="history.back()"/></f:facet>
             </pm:header>
@@ -287,6 +294,8 @@
                 <p:commandButton type="button" value="Basic Dialog" onclick="dlgBasic.show()"/>
 
                 <p:commandButton type="button" value="Modal Dialog" onclick="dlgModal.show()"/>
+                
+                <p:commandButton id="simplePanelBtn" type="button" value="Simple Overlay Panel"/>                                
 
                 <p:dialog header="Header" widgetVar="dlgBasic">
                     Dialog Content goes here...
