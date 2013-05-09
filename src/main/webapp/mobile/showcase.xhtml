@@ -194,6 +194,18 @@
                 </p:dataList>
 
                 <p:spacer height="10em" />
+                
+                <h3>Client-Side AutoComplete</h3>
+                <p:dataList>                    
+                    <f:attribute name="filter" value="true" />
+                    <f:attribute name="autoComplete" value="true" />
+                    <h:outputText value="Barcelona" />
+                    <h:outputText value="Istanbul" />
+                    <h:outputText value="New York" />
+                    <h:outputText value="Paris" />
+                </p:dataList>                
+                
+                <p:spacer height="10em" />
                                 
                 <h3>Custom Content</h3>
                 <p:dataList value="#{ringBean.players}" var="player">
