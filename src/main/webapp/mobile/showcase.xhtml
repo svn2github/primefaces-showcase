@@ -4,10 +4,19 @@
         xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
         xmlns:pm="http://primefaces.org/mobile"
+        xmlns:fn="http://java.sun.com/jsp/jstl/functions"
         contentType="text/html"
         renderKitId="PRIMEFACES_MOBILE">
 
     <pm:page title="Components">
+
+	<style>
+		.th-groups th {
+			text-align: center;
+			background-color: rgba(0,0,0,.1);
+			border-right: 1px solid #fff;
+		}
+        </style>        
         
         <!-- Main View -->
         <pm:view id="main">                                    
@@ -408,9 +417,9 @@
                 <h:form prependId="false" >
 
                     <h3>Table: Reflow</h3>
-                    <p:dataTable var="car" value="#{tableBean.carsSmall}" >  
+                    <p:dataTable var="car" value="#{tableBean.carsSmall}" > 
                         <p:column headerText="Model">  
-                            <h:outputText value="#{car.model}" />  
+                            <h:outputText value="#{car.model}" />
                         </p:column>  
 
                         <p:column headerText="Year">  
@@ -424,12 +433,12 @@
                         <p:column headerText="Color">  
                             <h:outputText value="#{car.color}" />  
                         </p:column>  
-                    </p:dataTable>                                         
-                    
+                    </p:dataTable> 
+                                                            
                     <h3>Table: Column Toggle</h3>
                     <p:dataTable var="car" value="#{tableBean.carsSmall}"> 
                         <f:attribute name="columnToggle" value="true" />
-                        <f:attribute name="btnText" value="Colunas..." />
+                        <f:attribute name="btnText" value="Colunas..." />                                                
                         <p:column headerText="Model">          
                             <f:attribute name="priority" value="2" />
                             <h:outputText value="#{car.model}" />  
@@ -447,8 +456,45 @@
                         <p:column headerText="Color">  
                             <f:attribute name="priority" value="4" />
                             <h:outputText value="#{car.color}" />  
+                        </p:column>                          
+                    </p:dataTable> 
+                    
+                    <h3>Table: Heading groups</h3>
+                    <p:dataTable id="salesTable" var="sale" value="#{tableBean.sales}">
+                        <f:attribute name="columnToggle" value="true" />
+                        <p:columnGroup type="header">  
+                            <p:row>
+                                <p:column colspan="1" headerText="" />  
+                                <p:column colspan="2" headerText="Sales Count" >
+                                    <f:attribute name="priority" value="2" />
+                                </p:column>  
+                                <p:column colspan="2" headerText="Profit">
+                                    <f:attribute name="priority" value="1" />
+                                </p:column>  
+                            </p:row>
+                        </p:columnGroup>  
+
+                        <p:column headerText="Manufacturer">  
+                            #{sale.manufacturer}  
                         </p:column>  
-                    </p:dataTable>                                                  
+
+                        <p:column headerText="Last Year">  
+                            #{sale.lastYearProfit}%  
+                        </p:column>  
+
+                        <p:column headerText="This Year">  
+                             #{sale.thisYearProfit}%  
+                        </p:column>  
+
+                        <p:column headerText="Last Year">  
+                             #{sale.lastYearSale}$  
+                        </p:column>  
+
+                        <p:column headerText="This Year">  
+                            #{sale.thisYearSale}$  
+                        </p:column>                            
+                    </p:dataTable>                    
+                    
                 </h:form>
             </pm:content>
         </pm:view>         
