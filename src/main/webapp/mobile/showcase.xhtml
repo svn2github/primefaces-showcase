@@ -218,9 +218,9 @@
                                 
                 <h3>Custom Content</h3>
                 <p:dataList value="#{ringBean.players}" var="player">  
-                    <f:attribute name="iconSplit" value="true" />
-                    <f:attribute name="iconVar" value="gear" />
+                    <f:attribute name="iconSplit" value="true" />                    
                     <h:outputLink value="#lists">
+                        <f:attribute name="icon" value="gear" />
                         <p:graphicImage value="/images/barca/#{player.photo}" />
                         <h2>#{player.name}</h2>                                                
                         <p>#{player.position}</p>                                                                        
