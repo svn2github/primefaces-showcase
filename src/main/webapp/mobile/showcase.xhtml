@@ -176,11 +176,11 @@
 
                 <h3>Links</h3>
                 <p:dataList>
-                    <h:outputLink value="#main">Item 1</h:outputLink>
-                    <h:outputLink value="#main">Item 2</h:outputLink>
-                    <p:separator>Divider</p:separator>
-                    <h:outputLink value="#main">Item 3</h:outputLink>
-                    <h:outputLink value="#main">Item 4</h:outputLink>                    
+                    <h:outputLink value="#main">Item 1</h:outputLink>                    
+                    <p:separator>Divider</p:separator>                    
+                    <h:outputLink value="#main">Item 2 <f:attribute name="icon" value="false" /> </h:outputLink>                    
+                    <h:outputLink value="#main">Item 3 <f:attribute name="icon" value="delete" /> </h:outputLink>
+                    <h:outputLink value="#main">Item 4 <f:attribute name="icon" value="info" /> </h:outputLink>                    
                 </p:dataList>
 
                 <p:spacer height="10em" />
@@ -217,13 +217,16 @@
                 <p:spacer height="10em" />
                                 
                 <h3>Custom Content</h3>
-                <p:dataList value="#{ringBean.players}" var="player">                    
-                    <h:outputLink value="#main">
+                <p:dataList value="#{ringBean.players}" var="player">  
+                    <f:attribute name="iconSplit" value="true" />
+                    <f:attribute name="iconVar" value="gear" />
+                    <h:outputLink value="#lists">
                         <p:graphicImage value="/images/barca/#{player.photo}" />
                         <h2>#{player.name}</h2>                                                
                         <p>#{player.position}</p>                                                                        
                         <h:outputText styleClass="ui-li-count" value="#{player.number}" />                                                
                     </h:outputLink>
+                    <h:outputLink value="#main"></h:outputLink>
                 </p:dataList>
             </pm:content>
 
