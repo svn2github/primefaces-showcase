@@ -178,11 +178,9 @@
                 <p:dataList>
                     <h:outputLink value="#main">Item 1</h:outputLink>
                     <h:outputLink value="#main">Item 2</h:outputLink>
-                    <h:outputLink value="#main">Item 3</h:outputLink>
                     <p:separator>Divider</p:separator>
-                    <h:outputLink value="#main">Item 4</h:outputLink>
-                    <h:outputLink value="#main">Item 5</h:outputLink>
-                    <h:outputLink value="#main">Item 6</h:outputLink>
+                    <h:outputLink value="#main">Item 3</h:outputLink>
+                    <h:outputLink value="#main">Item 4</h:outputLink>                    
                 </p:dataList>
 
                 <p:spacer height="10em" />
@@ -219,11 +217,13 @@
                 <p:spacer height="10em" />
                                 
                 <h3>Custom Content</h3>
-                <p:dataList value="#{ringBean.players}" var="player">
-                    <p:graphicImage value="/images/barca/#{player.photo}" />
-                    <h3><h:outputLink value="#main">#{player.name}</h:outputLink></h3>
-                    <p>#{player.position}</p>
-                    <h:outputText styleClass="ui-li-count" value="#{player.number}" />
+                <p:dataList value="#{ringBean.players}" var="player">                    
+                    <h:outputLink value="#main">
+                        <p:graphicImage value="/images/barca/#{player.photo}" />
+                        <h2>#{player.name}</h2>                                                
+                        <p>#{player.position}</p>                                                                        
+                        <h:outputText styleClass="ui-li-count" value="#{player.number}" />                                                
+                    </h:outputLink>
                 </p:dataList>
             </pm:content>
 
@@ -313,14 +313,14 @@
 
         <pm:view id="overlays">
             
-            <p:overlayPanel for="simplePanelBtn" widgetVar="panel" my="right" >                
+            <p:overlayPanel for="simplePanelBtn" widgetVar="panel" my="right" >
                 <h3>Overlay Panel</h3>
                 <h4>Flexible by design, Overlay Panel can be used for navigation, forms, inspectors and more.</h4>                                                                       
                 <p:commandButton type="button" value="Close" icon="delete" onclick="panel.hide()"/>                                
             </p:overlayPanel>                    
             
             <pm:header title="Overlays">
-                <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>                
             </pm:header>
 
             <pm:content>
