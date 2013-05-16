@@ -23,8 +23,9 @@
                     <p:commandButton value="Get Tweets" icon="refresh" update="tweetList"
                                       actionListener="#{twitterController.loadTweets}" />
 
-                    <p:dataList id="tweetList" value="#{twitterController.tweets}" var="tweet" style="margin-top:1em">
-                        #{tweet}
+                    <p:dataList id="tweetList" rows="5" paginator="true" value="#{twitterController.tweets}" var="tweet" style="margin-top:1em">
+                        <f:attribute name="paginatorText" value="Load older Tweets" />                        
+                        #{tweet}                        
                     </p:dataList>
                 </h:form>
             </pm:content>

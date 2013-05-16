@@ -259,7 +259,7 @@
     <managed-bean>
         <managed-bean-name>twitterController</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.touch.TwitterController</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>weatherController</managed-bean-name>

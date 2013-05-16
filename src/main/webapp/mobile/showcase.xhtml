@@ -191,6 +191,8 @@
                     <h:outputLink value="#main">Item 2</h:outputLink>
                     <h:outputLink value="#main">Item 3</h:outputLink>
                 </p:dataList>
+                
+                <p:spacer height="10em" />
 
                 <h3>Filter+AutoDividers</h3>
                 <p:dataList>
@@ -228,6 +230,20 @@
                     </h:outputLink>
                     <h:outputLink value="#main"></h:outputLink>
                 </p:dataList>
+                
+                <p:spacer height="10em" />
+                
+                <h3>Lazy Load</h3>
+                <p:dataList paginator="true" rows="5" value="#{tableBean.carsLarge}" var="car"> 
+                    <f:attribute name="paginatorText" value="More Cars.." />
+                    <h:outputLink value="#lists">                                                
+                        <h2>#{car.model}</h2>                                                
+                        <p><strong>#{car.color}</strong></p>   
+                        <p>#{car.manufacturer}</p>                        
+                        <p class="ui-li-aside" >#{car.year}</p>                        
+                    </h:outputLink>                    
+                </p:dataList>                
+                
             </pm:content>
 
         </pm:view>
