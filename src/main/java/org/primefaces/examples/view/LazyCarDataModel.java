@@ -58,22 +58,24 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
         for(Car car : datasource) {
             boolean match = true;
 
-            for(Iterator<String> it = filters.keySet().iterator(); it.hasNext();) {
-                try {
-                    String filterProperty = it.next();
-                    String filterValue = filters.get(filterProperty);
-                    String fieldValue = String.valueOf(car.getClass().getField(filterProperty).get(car));
+            if (filters != null) {
+                for (Iterator<String> it = filters.keySet().iterator(); it.hasNext();) {
+                    try {
+                        String filterProperty = it.next();
+                        String filterValue = filters.get(filterProperty);
+                        String fieldValue = String.valueOf(car.getClass().getField(filterProperty).get(car));
 
-                    if(filterValue == null || fieldValue.startsWith(filterValue)) {
-                        match = true;
+                        if(filterValue == null || fieldValue.startsWith(filterValue)) {
+                            match = true;
                     }
                     else {
+                            match = false;
+                            break;
+                        }
+                    } catch(Exception e) {
                         match = false;
-                        break;
                     }
-                } catch(Exception e) {
-                    match = false;
-                } 
+                }
             }
 
             if(match) {
