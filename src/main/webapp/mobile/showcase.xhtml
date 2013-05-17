@@ -32,15 +32,15 @@
                                 <f:facet name="header">Components</f:facet>
                                 <h:outputLink value="#forms">Forms</h:outputLink>
                                 <h:outputLink value="#buttons">Buttons</h:outputLink>
-                                <p:commandLink action="lists?faces-redirect=true">Lists</p:commandLink>                                
+                                <p:commandLink action="lists?faces-redirect=true" ajax="false">Lists</p:commandLink>                                
                                 <h:outputLink value="#navbar">NavBar</h:outputLink>
                                 <h:outputLink value="#panels">Panels</h:outputLink>
                                 <h:outputLink value="#overlays">Overlays</h:outputLink>
                                 <h:outputLink value="#growl">Growl</h:outputLink>
-                                <p:commandLink action="calendar?faces-redirect=true">Calendar</p:commandLink>                        
+                                <p:commandLink action="calendar?faces-redirect=true" ajax="false">Calendar</p:commandLink>                        
                                 <h:outputLink value="#autoComplete">AutoComplete</h:outputLink>
                                 <h:outputLink value="#dataTable">DataTable</h:outputLink>
-                                <p:commandLink action="fileUpload?faces-redirect=true">File Upload</p:commandLink>                        
+                                <p:commandLink action="fileUpload?faces-redirect=true" ajax="false">File Upload</p:commandLink>                        
                             </p:dataList>
                         </h:form>
                     </p:outputPanel>
@@ -519,7 +519,7 @@
                 <h:form>
 
                     <p:commandButton value="Go to Target" action="#{showcaseView.navigate}" />
-                    <p:commandButton value="Go to Single Page" action="singlePage?faces-redirect=true"/>
+                    <p:commandButton value="Go to Single Page" action="singlePage?faces-redirect=true" ajax="false"/>
                     <p:commandButton value="Go to Single Page with Lazy Load" action="pm:singlePage?lazyLoad=true"/>
                                        
                 </h:form>
