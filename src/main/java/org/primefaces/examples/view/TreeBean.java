@@ -16,7 +16,6 @@
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
-import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -32,9 +31,9 @@ import org.primefaces.model.TreeNode;
 
 public class TreeBean implements Serializable {
 	
-	private static final Logger logger = Logger.getLogger(TreeBean.class.getName());
-	
 	private TreeNode root;
+    
+    private TreeNode root2;
 	
 	private TreeNode selectedNode;
 
@@ -57,11 +56,22 @@ public class TreeBean implements Serializable {
 		TreeNode node010 = new DefaultTreeNode("Node 0.1.0", node01);
 		
 		TreeNode node100 = new DefaultTreeNode("Node 1.0.0", node10);
+        
+        root2 = new DefaultTreeNode("Root2", null);
+		TreeNode item0 = new DefaultTreeNode("Item 0", root2);
+		TreeNode item1 = new DefaultTreeNode("Item 1", root2);
+        TreeNode item2 = new DefaultTreeNode("Item 2", root2);
+		
+		TreeNode item00 = new DefaultTreeNode("Item 0.0", item0);
 	}
 
 	public TreeNode getRoot() {
 		return root;
 	}
+
+    public TreeNode getRoot2() {
+        return root2;
+    }
 	
 	public TreeNode[] getSelectedNodes() {
 		return selectedNodes;
