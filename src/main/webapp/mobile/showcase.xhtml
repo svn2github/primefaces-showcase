@@ -32,7 +32,7 @@
                                 <f:facet name="header">Components</f:facet>
                                 <h:outputLink value="#forms">Forms</h:outputLink>
                                 <h:outputLink value="#buttons">Buttons</h:outputLink>
-                                <h:outputLink value="#lists">Lists</h:outputLink>
+                                <p:commandLink action="lists?faces-redirect=true" ajax="false" >Lists</p:commandLink>                                
                                 <h:outputLink value="#navbar">NavBar</h:outputLink>
                                 <h:outputLink value="#panels">Panels</h:outputLink>
                                 <h:outputLink value="#overlays">Overlays</h:outputLink>
@@ -161,97 +161,6 @@
                     <p:commandButton value="No" type="button" icon="delete" />
                 </pm:buttonGroup>
 
-            </pm:content>
-
-        </pm:view>
-
-        <!-- Lists -->
-        <pm:view id="lists">
-            <pm:header title="Lists">
-                <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>
-            </pm:header>
-
-            <pm:content>
-
-                <h3>Read-Only</h3>
-                <p:dataList>
-                    <h:outputText value="Item 1" />
-                    <h:outputText value="Item 2" />
-                    <h:outputText value="Item 3" />
-                </p:dataList>
-
-                <p:spacer height="10em" />
-
-                <h3>Links</h3>
-                <p:dataList>
-                    <h:outputLink value="#main">Item 1</h:outputLink>                    
-                    <p:separator>Divider</p:separator>                    
-                    <h:outputLink value="#main">Item 2 <f:attribute name="icon" value="false" /> </h:outputLink>                    
-                    <h:outputLink value="#main">Item 3 <f:attribute name="icon" value="delete" /> </h:outputLink>
-                    <h:outputLink value="#main">Item 4 <f:attribute name="icon" value="info" /> </h:outputLink>                    
-                </p:dataList>
-
-                <p:spacer height="10em" />
-
-                <h3>Inset</h3>
-                <p:dataList type="inset">
-                    <h:outputLink value="#main">Item 1</h:outputLink>
-                    <h:outputLink value="#main">Item 2</h:outputLink>
-                    <h:outputLink value="#main">Item 3</h:outputLink>
-                </p:dataList>
-                
-                <p:spacer height="10em" />
-
-                <h3>Filter+AutoDividers</h3>
-                <p:dataList>
-                    <f:attribute name="filter" value="true" />
-                    <f:attribute name="autoDividers" value="true" />
-                    <h:outputText value="Barcelona" />
-                    <h:outputText value="Istanbul" ><f:attribute name="filterText" value="PrimeFaces"/></h:outputText>
-                    <h:outputText value="New York" />
-                    <h:outputText value="Paris" />
-                </p:dataList>
-
-                <p:spacer height="10em" />
-                
-                <h3>Client-Side AutoComplete</h3>
-                <p:dataList>                    
-                    <f:attribute name="filter" value="true" />
-                    <f:attribute name="autoComplete" value="true" />
-                    <h:outputText value="Barcelona" />
-                    <h:outputText value="Istanbul" />
-                    <h:outputText value="New York" />
-                    <h:outputText value="Paris" />
-                </p:dataList>                
-                
-                <p:spacer height="10em" />
-                                
-                <h3>Custom Content</h3>
-                <p:dataList value="#{ringBean.players}" var="player">  
-                    <f:attribute name="iconSplit" value="true" />                    
-                    <h:outputLink value="#lists">
-                        <f:attribute name="icon" value="gear" />
-                        <p:graphicImage value="/images/barca/#{player.photo}" />
-                        <h2>#{player.name}</h2>                                                
-                        <p>#{player.position}</p>                                                                        
-                        <h:outputText styleClass="ui-li-count" value="#{player.number}" />                                                
-                    </h:outputLink>
-                    <h:outputLink value="#main"></h:outputLink>
-                </p:dataList>
-                
-                <p:spacer height="10em" />
-                
-                <h3>Lazy Load</h3>
-                <p:dataList paginator="true" rows="5" lazy="true" value="#{tableBean.lazyModel}" var="car"> 
-                    <f:attribute name="paginatorText" value="More Cars.." />
-                    <h:outputLink value="#lists">                                                
-                        <h2>#{car.model}</h2>                                                
-                        <p><strong>#{car.color}</strong></p>   
-                        <p>#{car.manufacturer}</p>                        
-                        <p class="ui-li-aside" >#{car.year}</p>                        
-                    </h:outputLink>                    
-                </p:dataList>                
-                
             </pm:content>
 
         </pm:view>
