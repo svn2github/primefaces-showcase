@@ -263,7 +263,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <jsfVersion>Mojarra-2.1.20</jsfVersion>
+                <jsfVersion>Mojarra-2.1.22</jsfVersion>
                 <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
@@ -280,7 +280,7 @@
                 <dependency>
                     <groupId>org.glassfish</groupId>
                     <artifactId>javax.faces</artifactId>
-                    <version>2.1.20</version>
+                    <version>2.1.22</version>
                 </dependency>
             </dependencies>
         </profile>
