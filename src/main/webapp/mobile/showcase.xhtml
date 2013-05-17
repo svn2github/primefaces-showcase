@@ -24,34 +24,42 @@
 
             <pm:content>
 
-                <h:form>
-                    <p:dataList type="inset">
-                        <f:facet name="header">Components</f:facet>
-                        <h:outputLink value="#forms">Forms</h:outputLink>
-                        <h:outputLink value="#buttons">Buttons</h:outputLink>
-                        <h:outputLink value="#lists">Lists</h:outputLink>
-                        <h:outputLink value="#navbar">NavBar</h:outputLink>
-                        <h:outputLink value="#panels">Panels</h:outputLink>
-                        <h:outputLink value="#overlays">Overlays</h:outputLink>
-                        <h:outputLink value="#growl">Growl</h:outputLink>
-                        <p:commandLink action="calendar?faces-redirect=true" >Calendar</p:commandLink>                        
-                        <h:outputLink value="#autoComplete">AutoComplete</h:outputLink>
-                        <h:outputLink value="#dataTable">DataTable</h:outputLink>
-                        <p:commandLink action="fileUpload?faces-redirect=true" >File Upload</p:commandLink>                        
-                    </p:dataList>
-                </h:form>
+                <h:panelGrid columns="2" styleClass="ui-responsive"> 
 
-                <p:dataList type="inset">
-                    <f:facet name="header">Framework</f:facet>
-                    <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
-                    <h:outputLink value="#ajaxUpdate">Ajax Updates</h:outputLink>
-                </p:dataList>
+                    <p:outputPanel layout="block" style="padding-right: 15px">
+                        <h:form>
+                            <p:dataList type="inset">
+                                <f:facet name="header">Components</f:facet>
+                                <h:outputLink value="#forms">Forms</h:outputLink>
+                                <h:outputLink value="#buttons">Buttons</h:outputLink>
+                                <h:outputLink value="#lists">Lists</h:outputLink>
+                                <h:outputLink value="#navbar">NavBar</h:outputLink>
+                                <h:outputLink value="#panels">Panels</h:outputLink>
+                                <h:outputLink value="#overlays">Overlays</h:outputLink>
+                                <h:outputLink value="#growl">Growl</h:outputLink>
+                                <p:commandLink action="calendar?faces-redirect=true" >Calendar</p:commandLink>                        
+                                <h:outputLink value="#autoComplete">AutoComplete</h:outputLink>
+                                <h:outputLink value="#dataTable">DataTable</h:outputLink>
+                                <p:commandLink action="fileUpload?faces-redirect=true" >File Upload</p:commandLink>                        
+                            </p:dataList>
+                        </h:form>
+                    </p:outputPanel>
 
-                <p:dataList type="inset">
-                    <f:facet name="header">Navigation</f:facet>
-                    <h:outputLink value="#navHandler">Navigation Handler</h:outputLink>
-                    <h:outputLink value="#transitions">Transitions</h:outputLink>
-                </p:dataList>
+                    <p:outputPanel layout="block" style="padding-right: 15px">
+                        <p:dataList type="inset">
+                            <f:facet name="header">Framework</f:facet>
+                            <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
+                            <h:outputLink value="#ajaxUpdate">Ajax Updates</h:outputLink>
+                        </p:dataList>
+
+                        <p:dataList type="inset">
+                            <f:facet name="header">Navigation</f:facet>
+                            <h:outputLink value="#navHandler">Navigation Handler</h:outputLink>
+                            <h:outputLink value="#transitions">Transitions</h:outputLink>
+                        </p:dataList>
+                    </p:outputPanel>
+
+                </h:panelGrid>     
 
             </pm:content>
 
