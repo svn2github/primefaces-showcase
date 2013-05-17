@@ -19,10 +19,13 @@
         
         <!-- Main View -->
         <pm:view id="main">                                    
-            <pm:header title="Mobile" swatch="b">
-            </pm:header>
+            <pm:header title="Mobile" swatch="b"/>
 
             <pm:content>
+
+                <p:outputPanel layout="block" style="text-align: center">
+                    <p:graphicImage value="/images/logo.png" style="max-width: 100%;"/>				
+                </p:outputPanel>                  
 
                 <h:panelGrid columns="2" styleClass="ui-responsive"> 
 
@@ -45,7 +48,7 @@
                         </h:form>
                     </p:outputPanel>
 
-                    <p:outputPanel layout="block" style="padding-right: 15px">
+                    <p:outputPanel layout="block" style="padding-right: 15px">                                                                      
                         <p:dataList type="inset">
                             <f:facet name="header">Framework</f:facet>
                             <h:outputLink value="#ajaxStatus">Ajax Status</h:outputLink>
@@ -62,6 +65,11 @@
                 </h:panelGrid>     
 
             </pm:content>
+            
+            <pm:footer swatch="b">
+                <h1 style="font-size: x-small" >#{build.primefacesVersion}</h1>		
+                <h1 style="font-size: x-small" >#{build.primefacesMobileVersion}</h1>		
+            </pm:footer>            
 
         </pm:view>
 
@@ -556,7 +564,7 @@
 
             </pm:content>
         </pm:view>
-
+        
     </pm:page>
 
 </f:view>

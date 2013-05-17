@@ -10,7 +10,7 @@
     <url>http://www.primefaces.org</url>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>        
     </properties>
 
     <build>
@@ -265,6 +265,7 @@
             <properties>
                 <jsfVersion>Mojarra-2.1.22</jsfVersion>
                 <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
+                <primefacesMobileVersion>PrimeFacesMobile-0.9.5-SNAPSHOT</primefacesMobileVersion>
             </properties>
             <dependencies>
                 <dependency>
@@ -290,6 +291,7 @@
             <properties>
                 <jsfVersion>MyFaces-2.1.3</jsfVersion>
                 <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
+                <primefacesMobileVersion>PrimeFacesMobile-0.9.5-SNAPSHOT</primefacesMobileVersion>
             </properties>
             <dependencies>
                 <dependency>
@@ -320,6 +322,7 @@
             <properties>
                 <jsfVersion>Mojarra-2.1.20</jsfVersion>
                 <primefacesVersion>PrimeFaces-3.5.4-SNAPSHOT</primefacesVersion>
+                <primefacesMobileVersion>PrimeFacesMobile-0.9.5-SNAPSHOT</primefacesMobileVersion>
             </properties>
             <dependencies>
                 <dependency>
@@ -345,6 +348,7 @@
             <properties>
                 <jsfVersion>Native JSF Implementation</jsfVersion>
                 <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
+                <primefacesMobileVersion>PrimeFacesMobile-0.9.5-SNAPSHOT</primefacesMobileVersion>
             </properties>
             <dependencies>
                 <dependency>
@@ -371,6 +375,7 @@
             <properties>
                 <jsfVersion>Mojarra-2.1.10</jsfVersion>
                 <primefacesVersion>PrimeFaces-3.5</primefacesVersion>
+                <primefacesMobileVersion>PrimeFacesMobile-0.9.4</primefacesMobileVersion>
             </properties>
             <dependencies>
                 <dependency>
@@ -396,6 +401,7 @@
             <properties>
                 <jsfVersion>Mojarra-2.1.10</jsfVersion>
                 <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
+                <primefacesMobileVersion>PrimeFacesMobile-0.9.5-SNAPSHOT</primefacesMobileVersion>
             </properties>
             <dependencies>
                 <dependency>
