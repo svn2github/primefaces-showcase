@@ -19,6 +19,13 @@
                 float: left;
             }
         </style>
+        
+                
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+        </script>
     </ui:define>
 
 	<ui:define name="content">
@@ -33,7 +40,7 @@
                 <p:growl id="msgs" showDetail="true" />
                 
                 <h:panelGrid columns="3">
-                    <p:tree id="tree1" value="#{treeBean.root}" var="node" dragdrop="true" dragdropScope="demo">
+                    <p:tree id="tree1" value="#{treeBean.root}" var="node" draggable="true" droppable="true" dragdropScope="demo">
                         <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:msgs" />
                         <p:treeNode>
                             <h:outputText value="#{node}" />
@@ -42,7 +49,7 @@
                     
                     <p:graphicImage alt="Transfer" url="/images/transfer.png" />
                     
-                    <p:tree id="tree2" value="#{treeBean.root2}" var="node" dragdrop="true" dragdropScope="demo">
+                    <p:tree id="tree2" value="#{treeBean.root2}" var="node" draggable="true" droppable="true" dragdropScope="demo">
                         <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:msgs" />
                         <p:treeNode>
                             <h:outputText value="#{node}" />
@@ -57,7 +64,7 @@
 				<p:tab title="tree.xhtml">
 					<pre name="code" class="xml">
 &lt;h:panelGrid columns="3"&gt;
-    &lt;p:tree id="tree1" value="\#{treeBean.root}" var="node" dragdrop="true" dragdropScope="demo"&gt;
+    &lt;p:tree id="tree1" value="\#{treeBean.root}" var="node" draggable="true" droppable="true" dragdropScope="demo"&gt;
         &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:msgs" /&gt;
         &lt;p:treeNode&gt;
             &lt;h:outputText value="\#{node}" /&gt;
@@ -66,7 +73,7 @@
 
     &lt;p:graphicImage alt="Transfer" url="/images/transfer.png" /&gt;
 
-    &lt;p:tree id="tree2" value="\#{treeBean.root2}" var="node" dragdrop="true" dragdropScope="demo"&gt;
+    &lt;p:tree id="tree2" value="\#{treeBean.root2}" var="node" draggable="true" droppable="true" dragdropScope="demo"&gt;
         &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:msgs" /&gt;
         &lt;p:treeNode&gt;
             &lt;h:outputText value="\#{node}" /&gt;
