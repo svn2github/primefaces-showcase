@@ -62,8 +62,13 @@
                         <p:inputText id="mail" value="#{contactsView.contact.mail}" type="email" label="Email:"/>
 
                         <p:inputTextarea id="address" value="#{contactsView.contact.address}" label="Address:"/>
-                    </p:outputPanel>
-                </pm:content>
+                        
+                        <p:commandButton rendered="#{not empty contactsView.contact.firstname}" value="Delete Contact" actionListener="#{contactsView.deleteContact}" update=":listContactsForm:contactsList" iconPos="none" oncomplete="PrimeFaces.back()" >                        
+                            <f:attribute name="swatch" value="e" />
+                        </p:commandButton>                         
+                        
+                    </p:outputPanel>                                                           
+                </pm:content>                                                
             </h:form>
         </pm:view>
 

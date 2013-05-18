@@ -48,6 +48,12 @@ public class ContactsView implements Serializable{
         }                
     }
     
+    public void deleteContact(){
+        if(contacts.contains(contact)) {
+            contacts.remove(contact);
+        }                
+    }    
+    
     public String prepareNewContact() {
         contact = new Contact();
         
