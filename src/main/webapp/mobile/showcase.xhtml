@@ -19,7 +19,6 @@
         
         <!-- Main View -->
         <pm:view id="main">                                    
-            <pm:header title="Mobile" swatch="b"/>
 
             <pm:content>
 
@@ -322,24 +321,16 @@
                     <p:growl id="growl" />  
                     
                     <h3>Simple</h3>
-                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}">
-                        <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="growl" />
-                    </p:autoComplete>
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}"/>
 
                     <h3>Min Length</h3> 
-                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" minQueryLength="3" >
-                        <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="growl" />
-                    </p:autoComplete>                    
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" minQueryLength="3" />                    
                     
                     <h3>Delay(1000)</h3> 
-                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" queryDelay="1000" >
-                        <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="growl" />
-                    </p:autoComplete>  
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" queryDelay="1000" /> 
                     
                     <h3>Max Results(5)</h3> 
-                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" maxResults="5" >
-                        <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="growl" />
-                    </p:autoComplete>                    
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" maxResults="5" />                   
                     
                     <h3>Basic Pojo</h3>
                     <p:autoComplete  completeMethod="#{autoCompleteBean.completePlayer}"  
@@ -487,7 +478,7 @@
 
         <!-- Ajax Update -->
         <pm:view id="ajaxUpdate">
-            <pm:header title="TODO">
+            <pm:header title="Ajax Update">
                 <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>
             </pm:header>
 
@@ -528,7 +519,7 @@
 
                     <p:commandButton value="Go to Target" action="#{showcaseView.navigate}" />
                     <p:commandButton value="Go to Single Page" action="singlePage?faces-redirect=true" ajax="false"/>
-                    <p:commandButton value="Go to Single Page with Lazy Load" action="pm:singlePage?lazyLoad=true"/>
+                    <p:commandButton value="Go with Lazy Load" action="pm:singlePage?lazyLoad=true"/>
                                        
                 </h:form>
 
