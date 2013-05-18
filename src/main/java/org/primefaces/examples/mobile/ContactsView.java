@@ -42,18 +42,16 @@ public class ContactsView implements Serializable{
         return contacts;
     }
     
-    public String saveContact(){
+    public void saveContact(){
         if(!contacts.contains(contact)) {
             contacts.add(contact);
-        }
-        
-        return "pm:main";
+        }                
     }
     
     public String prepareNewContact() {
         contact = new Contact();
         
-        return "pm:new";
+        return "pm:new?transition=slideup";
     }
 
 }

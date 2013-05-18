@@ -4,60 +4,67 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pm="http://primefaces.org/mobile"
+        xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	contentType="text/html"
     renderKitId="PRIMEFACES_MOBILE">
 
     <pm:page title="Contacts">
 
         <!-- Main View -->
-        <pm:view id="main">
+        <pm:view id="main" swatch="d">
             <h:form id="listContactsForm">
-                <pm:header title="Contacts">
-                    <f:facet name="right">
-                        <p:commandButton value="New" icon="plus" action="#{contactsView.prepareNewContact}" update=":newContactForm"/>
-                    </f:facet>
+                <pm:header title="Contacts" swatch="b">
+                    <f:facet name="left"><p:button value="Groups" iconPos="none"/></f:facet>
+                    <f:facet name="right"><p:commandButton value="New" iconPos="notext" icon="plus" action="#{contactsView.prepareNewContact}" update=":newContactForm:content"/></f:facet>
                 </pm:header>
 
-                <pm:content>
+                <pm:content> 
                     <p:dataList id="contactsList" value="#{contactsView.contacts}" var="contact">
+                        <f:attribute name="filter" value="true" />
+                        <f:attribute name="placeholder" value="Search" />
+                        <f:attribute name="autoDividers" value="true" />
+                        <f:attribute name="icon" value="grid" />
+                        <f:attribute name="iconSplit" value="true" />                        
                         <p:column>
-                            <p:graphicImage value="/images/pf-logo.png" />
-                            <h3>
-                                <p:commandLink value="#{contact.firstname} #{contact.surname}" action="pm:new" update=":newContactForm">
-                                    <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
-                                </p:commandLink>
-                            </h3>
-                            <p><a href="tel:#{contact.phone}">Call</a></p>
+                            <p:commandLink value="#{contact.firstname} #{contact.surname}" action="pm:new?transition=slide" update=":newContactForm:content">
+                                <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
+                                <p:graphicImage value="/images/pf-logo.png" />                                                                                                                    
+                            </p:commandLink>                                                                                                                                                                                                       
+                            <a href="tel:#{contact.phone}">Call</a>
                         </p:column>
+                        
+                    <f:facet name="footer">
+                        <strong>#{fn:length(contactsView.contacts)} Contacts</strong>
+                    </f:facet>                        
                     </p:dataList>
                 </pm:content>
             </h:form>
         </pm:view>
 
         <!-- New Contact -->
-        <pm:view id="new">
-            <pm:header title="New Contact">
-                <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>
-            </pm:header>
+        <pm:view id="new" swatch="d">
+            <h:form id="newContactForm">
+                <pm:header title="New Contact" swatch="b" >
+                    <f:facet name="left"><p:button value="Cancel" iconPos="none" onclick="PrimeFaces.back()"/></f:facet>
+                    <f:facet name="right"><p:commandButton value="Done" actionListener="#{contactsView.saveContact}" update=":listContactsForm:contactsList" iconPos="none" oncomplete="PrimeFaces.back()" /></f:facet>
+                </pm:header>
 
-            <pm:content>
-                <h:form id="newContactForm">
-                    <p:inputText id="name" value="#{contactsView.contact.firstname}" label="Name:"/>
+                <pm:content>  
+                    <p:outputPanel id="content" layout="block">
+                        <p:inputText id="name" value="#{contactsView.contact.firstname}" label="Name:"/>
 
-                    <p:inputText id="surname" value="#{contactsView.contact.surname}" label="Surname:"/>
+                        <p:inputText id="surname" value="#{contactsView.contact.surname}" label="Surname:"/>
 
-                    <p:inputText id="age" value="#{contactsView.contact.age}" type="number" label="Age:"/>
+                        <p:inputText id="age" value="#{contactsView.contact.age}" type="number" label="Age:"/>
 
-                    <p:inputText id="phone" value="#{contactsView.contact.phone}" type="tel" label="Phone:"/>
+                        <p:inputText id="phone" value="#{contactsView.contact.phone}" type="tel" label="Phone:"/>
 
-                    <p:inputText id="mail" value="#{contactsView.contact.mail}" type="email" label="Email:"/>
+                        <p:inputText id="mail" value="#{contactsView.contact.mail}" type="email" label="Email:"/>
 
-                    <p:inputTextarea id="address" value="#{contactsView.contact.address}" label="Address:"/>
-                    
-                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update=":listContactsForm:contactsList" icon="check" />
-                </h:form>
-            </pm:content>
-
+                        <p:inputTextarea id="address" value="#{contactsView.contact.address}" label="Address:"/>
+                    </p:outputPanel>
+                </pm:content>
+            </h:form>
         </pm:view>
 
     </pm:page>
