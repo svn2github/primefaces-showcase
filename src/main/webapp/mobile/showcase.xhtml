@@ -18,13 +18,11 @@
         </style>        
         
         <!-- Main View -->
-        <pm:view id="main">                                    
+        <pm:view id="main">  
+            
+            <pm:header title="Mobile" swatch="b"/>
 
-            <pm:content>
-
-                <p:outputPanel layout="block" style="text-align: center">
-                    <p:graphicImage value="/images/logo.png" style="max-width: 100%;"/>				
-                </p:outputPanel>                  
+            <pm:content>                
 
                 <h:panelGrid columns="2" styleClass="ui-responsive"> 
 
@@ -515,8 +513,7 @@
                 </h:form>  
                 
                 <p:dialog header="Car Detail" widgetVar="carDialog">  
-                    <p:outputPanel id="display" layout="block" style="text-align: center;min-width: 200px" >
-                        <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>  
+                    <p:outputPanel id="display" layout="block" style="text-align: center;min-width: 200px" >                        
 
                         <h:panelGrid columns="2">  
                             <h:outputText value="Model:" />  
