@@ -32,13 +32,30 @@
                             </p:commandLink>                                                                                                                                                                                                       
                             <a href="tel:#{contact.phone}">Call</a>
                         </p:column>
-                        
-                    <f:facet name="footer">
-                        <strong>#{fn:length(contactsView.contacts)} Contacts</strong>
-                    </f:facet>                        
-                    </p:dataList>
+                        <p:outputPanel layout="block">
+                            <p:column>                            
+                                <p:commandLink styleClass="selection">
+                                    <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
+                                </p:commandLink>
+                            </p:column>         
+                        </p:outputPanel>
+
+                        <f:facet name="footer">
+                            <strong>#{fn:length(contactsView.contacts)} Contacts</strong>
+                        </f:facet>                        
+                    </p:dataList>                  
                 </pm:content>
-            </h:form>
+            </h:form>                
+
+            <p:contextMenu event="swiperight" for="listContactsForm:contactsList" style="min-width:210px">                                        
+                <h:form>  
+                    <p:dataList type="inset" >
+                        <f:facet name="header" >Choose an action</f:facet>                                
+                        <p:commandLink value="Delete" actionListener="#{contactsView.deleteContact}" update=":listContactsForm:contactsList"  />                            
+                    </p:dataList>                     
+                </h:form>
+            </p:contextMenu>             
+
         </pm:view>
 
         <!-- New Contact -->
