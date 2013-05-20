@@ -43,6 +43,7 @@
                                 <h:outputLink value="#autoComplete">AutoComplete</h:outputLink>
                                 <h:outputLink value="#dataTable">DataTable</h:outputLink>
                                 <p:commandLink action="fileUpload?faces-redirect=true" ajax="false">File Upload</p:commandLink>                        
+                                <h:outputLink value="#contextMenu">ContextMenu</h:outputLink>
                             </p:dataList>
                         </h:form>
                     </p:outputPanel>
@@ -278,14 +279,14 @@
                     Dialog Content goes here...
                 </p:dialog>
 
-                <p:dialog header="Cities" widgetVar="dlgModal" modal="true">
-                    <p:dataList type="inset">                        
+                <p:dialog header="Cities" widgetVar="dlgModal" modal="true">                    
+                    <p:dataList type="inset">                              
                         <f:attribute name="filter" value="true" />
                         <h:outputText value="Barcelona" />
                         <h:outputText value="Istanbul" />
                         <h:outputText value="New York" />
-                        <h:outputText value="Paris" />
-                    </p:dataList>
+                        <h:outputText value="Paris" />                        
+                    </p:dataList>                        
                 </p:dialog>
 
             </pm:content>
@@ -431,7 +432,112 @@
                     
                 </h:form>
             </pm:content>
-        </pm:view>         
+        </pm:view>   
+        
+        <pm:view id="contextMenu">
+            <pm:header title="Context Menu">
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+
+                ContextMenu is a overlay menu that can be attached to any other JSF component. By default contextMenu attaches itself to the view itself.                
+                
+                <p:dataList type="inset">                    
+                    <f:facet name="header">Context Menu</f:facet>
+                    <h:outputLink value="#contextMenuBasic">Context Menu Basic</h:outputLink>                    
+                    <h:outputLink value="#contextMenuDataList">DataList Integration</h:outputLink>                                                            
+                </p:dataList>                
+
+            </pm:content>
+        </pm:view>     
+        
+        <pm:view id="contextMenuBasic">
+            <pm:header title="Context Menu Basic">
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+
+                <p:growl id="growlmsg" />  
+                ContextMenu can be used well to attache mobile events like swipe,swipeleft,swiperight,taphold(Default).               
+                Swipe anywhere on this page to view the context-menu options.
+                
+                <p:contextMenu event="swipe" style="min-width:210px">
+                    <f:attribute name="header" value="Choose an action" /> 
+                    <h:form>  
+                        <p:dataList type="inset" >
+                            <f:facet name="header" >Choose an action</f:facet>
+                            <p:commandLink value="Save" actionListener="#{buttonBean.save}" update=":growlmsg" />  
+                            <p:commandLink value="Update" actionListener="#{buttonBean.update}" update=":growlmsg" />  
+                            <p:commandLink value="Delete" actionListener="#{buttonBean.delete}" update=":growlmsg" />                           
+                        </p:dataList>                     
+                    </h:form>
+                </p:contextMenu>                                      
+
+            </pm:content>
+        </pm:view>    
+        
+        <pm:view id="contextMenuDataList">
+            <pm:header title="Context Menu DataList">
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>
+            </pm:header>
+
+            <pm:content>    
+                
+                <p:contextMenu for="frm:listTap" style="min-width:210px">                                        
+                    <f:attribute name="header" value="Choose an action" />                    
+                    <h:form>  
+                        <p:dataList type="inset" >
+                            <f:facet name="header" >Choose an action</f:facet>
+                            <p:commandLink value="View"  update=":display" oncomplete="carDialog.show()"/>
+                            <p:commandLink value="Delete" actionListener="#{tableBean.deleteCar}" update=":frm:listTap"  />                            
+                        </p:dataList>                     
+                    </h:form>
+                </p:contextMenu>                                             
+                
+                <h:form id="frm">
+                    Datalist has special integration with context-menu.                                                 
+
+                    <p:dataList id="listTap" style="margin-top:10px" value="#{tableBean.carsSmall}" var="car"> 
+                        <f:facet name="header" >Tap and Hold</f:facet>                                                                                            
+                        <h:outputLink value="#lists">                                         
+                            <h2>#{car.model}</h2>                                                
+                            <p><strong>#{car.manufacturer}</strong></p> 
+                        </h:outputLink>
+
+                        <p:outputPanel layout="block">
+                            <p:column>    
+                                <p:commandLink styleClass="selection">
+                                    <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
+                                </p:commandLink>                                                                            
+                            </p:column>           
+                        </p:outputPanel>    
+                    </p:dataList>                
+                </h:form>  
+                
+                <p:dialog header="Car Detail" widgetVar="carDialog">  
+                    <p:outputPanel id="display" layout="block" style="text-align: center;min-width: 200px" >
+                        <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>  
+
+                        <h:panelGrid columns="2">  
+                            <h:outputText value="Model:" />  
+                            <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold"/>  
+
+                            <h:outputText value="Year:" />  
+                            <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold"/>  
+
+                            <h:outputText value="Manufacturer:" />  
+                            <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold"/>  
+
+                            <h:outputText value="Color:" />  
+                            <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold"/>  
+                        </h:panelGrid> 
+                    </p:outputPanel>
+                </p:dialog>                
+
+            </pm:content>
+        </pm:view>        
 
         <pm:view id="target">
             <pm:header title="Target">
