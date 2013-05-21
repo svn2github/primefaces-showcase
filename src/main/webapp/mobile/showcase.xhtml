@@ -452,6 +452,7 @@
                     <h:outputLink value="#contextMenuBasic">Basic Context Menu </h:outputLink>                    
                     <h:outputLink value="#contextMenuTiered">Tiered Context Menu</h:outputLink>                    
                     <h:outputLink value="#contextMenuDataList">DataList Integration</h:outputLink>                                                            
+                    <h:outputLink value="#contextMenuWithoutCont">Without Content</h:outputLink>                                                           
                 </p:dataList>                
 
             </pm:content>
@@ -580,6 +581,23 @@
                     </p:outputPanel>
                 </p:dialog>                
 
+            </pm:content>
+        </pm:view> 
+        
+        <pm:view id="contextMenuWithoutCont">
+            
+            <p:overlayPanel for="btnPanelContext" widgetVar="panelContext">
+                <h3>Overlay Panel</h3>
+                <h4>Flexible by design, Overlay Panel can be used for navigation, forms, inspectors and more.</h4>                                                                                      
+            </p:overlayPanel>             
+            
+            <pm:header title="Context Menu Without Content">
+                <f:facet name="left"><p:button id="btnPanelContext" value="" iconPos="notext" icon="bars"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                Context Menu without content can be used to trigger any javaScript code.(Swipe Right)
+                <p:contextMenu event="swiperight" beforeShow="panelContext.show()" />                                      
             </pm:content>
         </pm:view>        
 
