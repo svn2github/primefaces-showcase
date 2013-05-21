@@ -449,7 +449,8 @@
                 
                 <p:dataList type="inset">                    
                     <f:facet name="header">Context Menu</f:facet>
-                    <h:outputLink value="#contextMenuBasic">Context Menu Basic</h:outputLink>                    
+                    <h:outputLink value="#contextMenuBasic">Basic Context Menu </h:outputLink>                    
+                    <h:outputLink value="#contextMenuTiered">Tiered Context Menu</h:outputLink>                    
                     <h:outputLink value="#contextMenuDataList">DataList Integration</h:outputLink>                                                            
                 </p:dataList>                
 
@@ -457,7 +458,7 @@
         </pm:view>     
         
         <pm:view id="contextMenuBasic">
-            <pm:header title="Context Menu Basic">
+            <pm:header title="Basic Context Menu">
                 <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>
             </pm:header>
 
@@ -479,7 +480,51 @@
                 </p:contextMenu>                                      
 
             </pm:content>
-        </pm:view>    
+        </pm:view>   
+        
+        <pm:view id="contextMenuTiered">
+            <pm:header title="Tiered Context Menu">
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+                
+                <p:growl id="growlTired" /> 
+                
+                ContextMenu can have nested submenus and menuitems.(Tap and Hold)                                                        
+
+                <p:contextMenu>                    
+                    <h:form>
+                    <p:accordionPanel style="margin:0; width:250px;" activeIndex="">
+                        <f:attribute name="swatch" value="b" />
+                        <f:attribute name="inset" value="false" />
+                        <p:tab title="Ajax Menuitems" >                            
+                            <f:attribute name="inset" value="false" />
+                            <p:dataList styleClass="ui-listview">                                                            
+                                <p:commandLink value="Save" actionListener="#{buttonBean.save}" update=":growlTired" />  
+                                <p:commandLink value="Update" actionListener="#{buttonBean.update}" update=":growlTired" />                                                      
+                                <p:commandLink value="Delete" actionListener="#{buttonBean.delete}" update=":growlTired" />
+                            </p:dataList>                        
+                        </p:tab>
+                        <p:tab title="Non-Ajax Menuitem">   
+                            <f:attribute name="inset" value="false" />
+                            <p:dataList styleClass="ui-listview">                                                                                
+                                <p:commandLink value="Showcase" action="showcase?faces-redirect=true" ajax="false" />   
+                            </p:dataList>                                                     
+                        </p:tab>
+                        <p:tab title="Navigations"> 
+                            <f:attribute name="inset" value="false" />
+                            <p:dataList styleClass="ui-listview">                                                                                
+                                <h:outputLink value="#forms" >Forms</h:outputLink>                           
+                                <h:outputLink value="#buttons" >Buttons</h:outputLink>
+                            </p:dataList>                         
+                        </p:tab>
+                    </p:accordionPanel> 
+                        </h:form>
+                </p:contextMenu>                                      
+
+            </pm:content>
+        </pm:view>        
         
         <pm:view id="contextMenuDataList">
             <pm:header title="Context Menu DataList">
@@ -501,7 +546,7 @@
                 <h:form id="frm">
                     Datalist has special integration with context-menu.                                                 
 
-                    <p:dataList id="listTap" style="margin-top:10px" value="#{tableBean.carsSmall}" var="car"> 
+                    <p:dataList id="listTap" style="margin-top:15px" value="#{tableBean.carsSmall}" var="car"> 
                         <f:facet name="header" >Tap and Hold</f:facet>                                                                                            
                         <h:outputLink value="#lists">                                         
                             <h2>#{car.model}</h2>                                                
