@@ -488,39 +488,37 @@
             </pm:header>
 
             <pm:content>
-                
+
                 <p:growl id="growlTired" /> 
-                
+
                 ContextMenu can have nested submenus and menuitems.(Tap and Hold)                                                        
 
                 <p:contextMenu>                    
                     <h:form>
-                    <p:accordionPanel style="margin:0; width:250px;" activeIndex="">
-                        <f:attribute name="swatch" value="b" />
-                        <f:attribute name="inset" value="false" />
-                        <p:tab title="Ajax Menuitems" >                            
+                        <p:accordionPanel style="margin:0; width:250px;" activeIndex="">
+                            <f:attribute name="swatch" value="b" />
+                            <f:attribute name="contentSwatch" value="c" />
                             <f:attribute name="inset" value="false" />
-                            <p:dataList styleClass="ui-listview">                                                            
-                                <p:commandLink value="Save" actionListener="#{buttonBean.save}" update=":growlTired" />  
-                                <p:commandLink value="Update" actionListener="#{buttonBean.update}" update=":growlTired" />                                                      
-                                <p:commandLink value="Delete" actionListener="#{buttonBean.delete}" update=":growlTired" />
-                            </p:dataList>                        
-                        </p:tab>
-                        <p:tab title="Non-Ajax Menuitem">   
-                            <f:attribute name="inset" value="false" />
-                            <p:dataList styleClass="ui-listview">                                                                                
-                                <p:commandLink value="Showcase" action="showcase?faces-redirect=true" ajax="false" />   
-                            </p:dataList>                                                     
-                        </p:tab>
-                        <p:tab title="Navigations"> 
-                            <f:attribute name="inset" value="false" />
-                            <p:dataList styleClass="ui-listview">                                                                                
-                                <h:outputLink value="#forms" >Forms</h:outputLink>                           
-                                <h:outputLink value="#buttons" >Buttons</h:outputLink>
-                            </p:dataList>                         
-                        </p:tab>
-                    </p:accordionPanel> 
-                        </h:form>
+                            <p:tab title="Ajax Menuitems" >                                                        
+                                <p:dataList styleClass="ui-listview">                                                            
+                                    <p:commandLink value="Save" actionListener="#{buttonBean.save}" update=":growlTired" />  
+                                    <p:commandLink value="Update" actionListener="#{buttonBean.update}" update=":growlTired" />                                                      
+                                    <p:commandLink value="Delete" actionListener="#{buttonBean.delete}" update=":growlTired" />
+                                </p:dataList>                        
+                            </p:tab>
+                            <p:tab title="Non-Ajax Menuitem">                               
+                                <p:dataList styleClass="ui-listview">                                                                                
+                                    <p:commandLink value="Showcase" action="showcase?faces-redirect=true" ajax="false" />   
+                                </p:dataList>                                                     
+                            </p:tab>
+                            <p:tab title="Navigations">                            
+                                <p:dataList styleClass="ui-listview">                                                                                
+                                    <h:outputLink value="#forms" >Forms</h:outputLink>                           
+                                    <h:outputLink value="#buttons" >Buttons</h:outputLink>
+                                </p:dataList>                         
+                            </p:tab>                    
+                        </p:accordionPanel> 
+                    </h:form>
                 </p:contextMenu>                                      
 
             </pm:content>
