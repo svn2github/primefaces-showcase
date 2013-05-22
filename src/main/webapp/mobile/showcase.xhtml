@@ -473,9 +473,9 @@
                     <h:form>  
                         <p:dataList type="inset" >
                             <f:facet name="header" >Choose an action</f:facet>
-                            <p:commandLink value="Save" actionListener="#{buttonBean.save}" update=":growlmsg" />  
-                            <p:commandLink value="Update" actionListener="#{buttonBean.update}" update=":growlmsg" />  
-                            <p:commandLink value="Delete" actionListener="#{buttonBean.delete}" update=":growlmsg" />                           
+                            <p:commandLink value="Save" icon="edit" actionListener="#{buttonBean.save}" update=":growlmsg" />  
+                            <p:commandLink value="Update" icon="refresh" actionListener="#{buttonBean.update}" update=":growlmsg" />  
+                            <p:commandLink value="Delete" icon="delete" actionListener="#{buttonBean.delete}" update=":growlmsg" />                           
                         </p:dataList>                     
                     </h:form>
                 </p:contextMenu>                                      
@@ -502,9 +502,9 @@
                             <f:attribute name="inset" value="false" />
                             <p:tab title="Ajax Menuitems" >                                                        
                                 <p:dataList styleClass="ui-listview">                                                            
-                                    <p:commandLink value="Save" actionListener="#{buttonBean.save}" update=":growlTired" />  
-                                    <p:commandLink value="Update" actionListener="#{buttonBean.update}" update=":growlTired" />                                                      
-                                    <p:commandLink value="Delete" actionListener="#{buttonBean.delete}" update=":growlTired" />
+                                    <p:commandLink value="Save" icon="edit" actionListener="#{buttonBean.save}" update=":growlTired" />  
+                                    <p:commandLink value="Update" icon="refresh" actionListener="#{buttonBean.update}" update=":growlTired" />                                                      
+                                    <p:commandLink value="Delete" icon="delete" actionListener="#{buttonBean.delete}" update=":growlTired" />
                                 </p:dataList>                        
                             </p:tab>
                             <p:tab title="Non-Ajax Menuitem">                               
@@ -536,8 +536,8 @@
                     <h:form>  
                         <p:dataList type="inset" >
                             <f:facet name="header" >Choose an action</f:facet>
-                            <p:commandLink value="View"  update=":display" oncomplete="carDialog.show()"/>
-                            <p:commandLink value="Delete" actionListener="#{tableBean.deleteCar}" update=":frm:listTap"  />                            
+                            <p:commandLink value="View"  icon="search" update=":display" oncomplete="carDialog.show()"/>
+                            <p:commandLink value="Delete" icon="delete" actionListener="#{tableBean.deleteCar}" update=":frm:listTap"  />                            
                         </p:dataList>                     
                     </h:form>
                 </p:contextMenu>                                             
