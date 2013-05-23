@@ -38,7 +38,7 @@
                                 <h:outputLink value="#buttons">Buttons</h:outputLink>
                                 <p:commandLink action="lists?faces-redirect=true" ajax="false">Lists <h:outputText styleClass="ui-li-count" value="New"/></p:commandLink>                                
                                 <h:outputLink value="#navbar">NavBar</h:outputLink>
-                                <h:outputLink value="#panels">Panels</h:outputLink>
+                                <h:outputLink value="#panels">Panels <h:outputText styleClass="ui-li-count" value="New"/></h:outputLink>
                                 <h:outputLink value="#overlays">Overlays <h:outputText styleClass="ui-li-count" value="New"/></h:outputLink>
                                 <h:outputLink value="#growl">Growl</h:outputLink>
                                 <p:commandLink action="calendar?faces-redirect=true" ajax="false">Calendar <h:outputText styleClass="ui-li-count" value="New"/></p:commandLink>                        
@@ -216,6 +216,7 @@
                 </p:panel>
 
                 <h3>Accordion Panel</h3>
+                <h4>Simple</h4>
                 <p:accordionPanel>
                     <p:tab title="Title 1">
                         Content 1
@@ -227,6 +228,34 @@
                         Content 3
                     </p:tab>
                 </p:accordionPanel>
+                <h4>Multiple</h4>
+                <p:accordionPanel multiple="true">
+                    <f:attribute name="inset" value="false"/>
+                    <p:tab title="Title 1">
+                        Content 1
+                    </p:tab>
+                    <p:tab title="Title 2">
+                        Content 2
+                    </p:tab>
+                    <p:tab title="Title 3">
+                        Content 3
+                    </p:tab>
+                </p:accordionPanel>   
+                <h4>Model</h4>
+                <p:accordionPanel value="#{tabBean.players}" var="player">  
+                    <p:tab title="#{player.name}">  
+                        <h:panelGrid columns="2" cellpadding="10">  
+                            <h:outputText value="Name: " />  
+                            <h:outputText value="#{player.name}" style="font-weight: bold"/>  
+
+                            <h:outputText value="Number: " />  
+                            <h:outputText value="#{player.number}" style="font-weight: bold"/>  
+
+                            <h:outputText value="Position: " />  
+                            <h:outputText value="#{player.position}" style="font-weight: bold"/>  
+                        </h:panelGrid>  
+                    </p:tab>  
+                </p:accordionPanel>                
 
                 <h3>Grid Layout</h3>
 
