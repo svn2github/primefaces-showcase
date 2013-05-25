@@ -292,7 +292,8 @@
             
             <p:overlayPanel for="simplePanelBtn" widgetVar="panel" my="right" >
                 <h3>Overlay Panel</h3>
-                <h4>Flexible by design, Overlay Panel can be used for navigation, forms, inspectors and more.</h4>                                                                       
+                <h4>Flexible by design, Overlay Panel can be used for navigation, forms, inspectors and more.</h4>
+                <h4>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</h4>
                 <p:commandButton type="button" value="Close" icon="delete" onclick="panel.hide()"/>                                
             </p:overlayPanel>                    
             
@@ -530,19 +531,19 @@
                             <f:attribute name="contentSwatch" value="c" />
                             <f:attribute name="inset" value="false" />
                             <p:tab title="Ajax Menuitems" >                                                        
-                                <p:dataList styleClass="ui-listview">                                                            
+                                <p:dataList>                                                            
                                     <p:commandLink value="Save" icon="edit" actionListener="#{buttonBean.save}" update=":growlTired" />  
                                     <p:commandLink value="Update" icon="refresh" actionListener="#{buttonBean.update}" update=":growlTired" />                                                      
                                     <p:commandLink value="Delete" icon="delete" actionListener="#{buttonBean.delete}" update=":growlTired" />
                                 </p:dataList>                        
                             </p:tab>
                             <p:tab title="Non-Ajax Menuitem">                               
-                                <p:dataList styleClass="ui-listview">                                                                                
+                                <p:dataList>                                                                                
                                     <p:commandLink value="Showcase" action="showcase?faces-redirect=true" ajax="false" />   
                                 </p:dataList>                                                     
                             </p:tab>
                             <p:tab title="Navigations">                            
-                                <p:dataList styleClass="ui-listview">                                                                                
+                                <p:dataList>                                                                                
                                     <h:outputLink value="#forms" >Forms</h:outputLink>                           
                                     <h:outputLink value="#buttons" >Buttons</h:outputLink>
                                 </p:dataList>                         
@@ -616,8 +617,38 @@
         <pm:view id="contextMenuWithoutCont">
             
             <p:overlayPanel for="btnPanelContext" widgetVar="panelContext">
-                <h3>Overlay Panel</h3>
-                <h4>Flexible by design, Overlay Panel can be used for navigation, forms, inspectors and more.</h4>                                                                                      
+                <p:dataList>
+                    <f:attribute name="filter" value="true" />
+                    <f:attribute name="autoComplete" value="true" />
+                    <f:attribute name="placeholder" value="Search" />
+                </p:dataList>  
+                <p:dataList styleClass="ui-li-custom">
+                    <f:attribute name="icon" value="false" />
+                    <h:outputLink>Primefaces</h:outputLink>
+                    <p:separator>FAVORITES</p:separator>
+                    <h:outputLink>News Feed</h:outputLink>
+                    <h:outputLink>Messages<h:outputText styleClass="ui-li-count" value="6"/></h:outputLink>
+                    <h:outputLink>Nearby</h:outputLink>
+                    <h:outputLink>Events<h:outputText styleClass="ui-li-count" value="1"/></h:outputLink>
+                    <h:outputLink>Friends</h:outputLink>
+                    <p:separator>GROUPS</p:separator>
+                    <h:outputLink>Create Group</h:outputLink>
+                    <h:outputLink>Primefaces<h:outputText styleClass="ui-li-count" value="4"/></h:outputLink>                    
+                    <p:separator>APPS</p:separator>
+                    <h:outputLink>App Center</h:outputLink>
+                    <h:outputLink>Chat</h:outputLink>
+                    <h:outputLink>Like Pages<h:outputText styleClass="ui-li-count" value="+20"/></h:outputLink>
+                    <h:outputLink>Find Friends<h:outputText styleClass="ui-li-count" value="19"/></h:outputLink>
+                    <h:outputLink>Photos</h:outputLink>
+                    <p:separator>&#160;</p:separator>
+                    <h:outputLink>Help Center</h:outputLink>
+                    <h:outputLink>Code Generator</h:outputLink>
+                    <h:outputLink>Account Settings</h:outputLink>
+                    <h:outputLink>Privacy Settings</h:outputLink>
+                    <h:outputLink>Terms &amp; Polices</h:outputLink>
+                    <h:outputLink>Report a Problem</h:outputLink>
+                    <h:outputLink onclick="PrimeFaces.back()">Log Out</h:outputLink>
+                </p:dataList>                                
             </p:overlayPanel>             
             
             <pm:header title="Context Menu Without Content">
