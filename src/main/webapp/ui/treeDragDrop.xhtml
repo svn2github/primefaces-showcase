@@ -33,7 +33,8 @@
                 <p:growl id="msgs" showDetail="true" />
                 
                 <h:panelGrid columns="3">
-                    <p:tree id="tree1" value="#{treeBean.root}" var="node" draggable="true" droppable="true" dragdropScope="demo">
+                    <p:tree id="tree1" value="#{treeBean.root}" var="node"  selectionMode="multiple" selection="#{treeBean.selectedNodes}" 
+                            draggable="true" droppable="true" dragdropScope="demo">
                         <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:msgs" />
                         <p:treeNode>
                             <h:outputText value="#{node}" />
@@ -42,7 +43,8 @@
                     
                     <p:graphicImage alt="Transfer" url="/images/transfer.png" />
                     
-                    <p:tree id="tree2" value="#{treeBean.root2}" var="node" draggable="true" droppable="true" dragdropScope="demo">
+                    <p:tree id="tree2" value="#{treeBean.root2}" var="node" selectionMode="multiple" selection="#{treeBean.selectedNodes2}" 
+                            draggable="true" droppable="true" dragdropScope="demo">
                         <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:msgs" />
                         <p:treeNode>
                             <h:outputText value="#{node}" />
@@ -56,23 +58,31 @@
 			<p:tabView>
 				<p:tab title="tree.xhtml">
 					<pre name="code" class="xml">
-&lt;h:panelGrid columns="3"&gt;
-    &lt;p:tree id="tree1" value="\#{treeBean.root}" var="node" draggable="true" droppable="true" dragdropScope="demo"&gt;
-        &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:msgs" /&gt;
-        &lt;p:treeNode&gt;
-            &lt;h:outputText value="\#{node}" /&gt;
-        &lt;/p:treeNode&gt;
-    &lt;/p:tree&gt;
+&lt;h:form id="form"&gt;
 
-    &lt;p:graphicImage alt="Transfer" url="/images/transfer.png" /&gt;
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
 
-    &lt;p:tree id="tree2" value="\#{treeBean.root2}" var="node" draggable="true" droppable="true" dragdropScope="demo"&gt;
-        &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:msgs" /&gt;
-        &lt;p:treeNode&gt;
-            &lt;h:outputText value="\#{node}" /&gt;
-        &lt;/p:treeNode&gt;
-    &lt;/p:tree&gt;
-&lt;/h:panelGrid&gt;
+    &lt;h:panelGrid columns="3"&gt;
+        &lt;p:tree id="tree1" value="\#{treeBean.root}" var="node"  selectionMode="multiple" selection="\#{treeBean.selectedNodes}" 
+                draggable="true" droppable="true" dragdropScope="demo"&gt;
+            &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:msgs" /&gt;
+            &lt;p:treeNode&gt;
+                &lt;h:outputText value="\#{node}" /&gt;
+            &lt;/p:treeNode&gt;
+        &lt;/p:tree&gt;
+
+        &lt;p:graphicImage alt="Transfer" url="/images/transfer.png" /&gt;
+
+        &lt;p:tree id="tree2" value="\#{treeBean.root2}" var="node" selectionMode="multiple" selection="\#{treeBean.selectedNodes2}" 
+                draggable="true" droppable="true" dragdropScope="demo"&gt;
+            &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:msgs" /&gt;
+            &lt;p:treeNode&gt;
+                &lt;h:outputText value="\#{node}" /&gt;
+            &lt;/p:treeNode&gt;
+        &lt;/p:tree&gt;
+    &lt;/h:panelGrid&gt;
+
+&lt;/h:form&gt;
 					</pre> 
 				</p:tab>
 				
@@ -80,14 +90,26 @@
 					<pre name="code" class="java">
 package org.primefaces.examples.view;
 
-import org.primefaces.model.TreeNode;
-import org.primefaces.model.DefaultTreeNode;
+import java.io.Serializable;
 
-public class TreeBean {
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.TreeDragDropEvent;
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
+
+public class TreeBean implements Serializable {
 	
 	private TreeNode root;
-
+    
     private TreeNode root2;
+	
+	private TreeNode selectedNode;
+
+	private TreeNode[] selectedNodes;
+    
+    private TreeNode[] selectedNodes2;
 
 	public TreeBean() {
 		root = new DefaultTreeNode("Root", null);
@@ -106,7 +128,7 @@ public class TreeBean {
 		TreeNode node010 = new DefaultTreeNode("Node 0.1.0", node01);
 		
 		TreeNode node100 = new DefaultTreeNode("Node 1.0.0", node10);
-
+        
         root2 = new DefaultTreeNode("Root2", null);
 		TreeNode item0 = new DefaultTreeNode("Item 0", root2);
 		TreeNode item1 = new DefaultTreeNode("Item 1", root2);
@@ -122,13 +144,42 @@ public class TreeBean {
     public TreeNode getRoot2() {
         return root2;
     }
+	
+	public TreeNode[] getSelectedNodes() {
+		return selectedNodes;
+	}
+
+	public void setSelectedNodes(TreeNode[] selectedNodes) {
+		this.selectedNodes = selectedNodes;
+	}
+
+    public TreeNode[] getSelectedNodes2() {
+        return selectedNodes2;
+    }
+
+    public void setSelectedNodes2(TreeNode[] selectedNodes2) {
+        this.selectedNodes2 = selectedNodes2;
+    }
+
+	public TreeNode getSelectedNode() {
+		return selectedNode;
+	}
+
+	public void setSelectedNode(TreeNode selectedNode) {
+		this.selectedNode = selectedNode;
+	}
 
     public void onDragDrop(TreeDragDropEvent event) {
-        TreeNode dragNode = event.getDragNode();
+        TreeNode[] dragNodes = event.getDragNodes();
         TreeNode dropNode = event.getDropNode();
         int dropIndex = event.getDropIndex();
+        StringBuilder sb = new StringBuilder();
         
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Dragged " + dragNode.getData(), "Dropped on " + dropNode.getData() + " at " + dropIndex);
+        for(TreeNode dragNode : dragNodes) {
+            sb.append(dragNode.getData()).append(" ");
+        }
+        
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Dragged " + sb.toString(), "Dropped on " + dropNode.getData() + " at " + dropIndex);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 }

@@ -19,12 +19,7 @@ import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.DragDropEvent;
 
-import org.primefaces.event.NodeCollapseEvent;
-import org.primefaces.event.NodeExpandEvent;
-import org.primefaces.event.NodeSelectEvent;
-import org.primefaces.event.NodeUnselectEvent;
 import org.primefaces.event.TreeDragDropEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
@@ -38,6 +33,8 @@ public class TreeBean implements Serializable {
 	private TreeNode selectedNode;
 
 	private TreeNode[] selectedNodes;
+    
+    private TreeNode[] selectedNodes2;
 
 	public TreeBean() {
 		root = new DefaultTreeNode("Root", null);
@@ -80,7 +77,15 @@ public class TreeBean implements Serializable {
 	public void setSelectedNodes(TreeNode[] selectedNodes) {
 		this.selectedNodes = selectedNodes;
 	}
-	
+
+    public TreeNode[] getSelectedNodes2() {
+        return selectedNodes2;
+    }
+
+    public void setSelectedNodes2(TreeNode[] selectedNodes2) {
+        this.selectedNodes2 = selectedNodes2;
+    }
+
 	public TreeNode getSelectedNode() {
 		return selectedNode;
 	}
@@ -88,75 +93,18 @@ public class TreeBean implements Serializable {
 	public void setSelectedNode(TreeNode selectedNode) {
 		this.selectedNode = selectedNode;
 	}
-	
-	public void onNodeExpand(NodeExpandEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Expanded", event.getTreeNode().toString());
 
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
-	
-	public void onNodeCollapse(NodeCollapseEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Collapsed", event.getTreeNode().toString());
-
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
-	
-	public void onNodeSelect(NodeSelectEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
-		
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
-
-    public void onNodeUnselect(NodeUnselectEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unselected", event.getTreeNode().toString());
-
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
-
-    public void onDragDrop(DragDropEvent event) {
-        TreeNode node = (TreeNode) event.getData();
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "DragDrop", node + " moved to " + node.getParent());
-
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
-	
-	public void displaySelectedMultiple() {
-        if(selectedNodes != null && selectedNodes.length > 0) {
-            StringBuilder builder = new StringBuilder();
-
-            for(TreeNode node : selectedNodes) {
-                builder.append(node.getData().toString());
-                builder.append("<br />");
-            }
-
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", builder.toString());
-
-            FacesContext.getCurrentInstance().addMessage(null, message);
-        }
-	}
-	
-	public void displaySelectedSingle() {
-        if(selectedNode != null) {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", selectedNode.getData().toString());
-
-            FacesContext.getCurrentInstance().addMessage(null, message);
-        }
-	}
-    
-    public void deleteNode() {
-        selectedNode.getChildren().clear();
-        selectedNode.getParent().getChildren().remove(selectedNode);
-        selectedNode.setParent(null);
-        
-        selectedNode = null;
-    }
-    
     public void onDragDrop(TreeDragDropEvent event) {
-        TreeNode dragNode = event.getDragNode();
+        TreeNode[] dragNodes = event.getDragNodes();
         TreeNode dropNode = event.getDropNode();
         int dropIndex = event.getDropIndex();
+        StringBuilder sb = new StringBuilder();
         
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Dragged " + dragNode.getData(), "Dropped on " + dropNode.getData() + " at " + dropIndex);
+        for(TreeNode dragNode : dragNodes) {
+            sb.append(dragNode.getData()).append(" ");
+        }
+        
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Dragged " + sb.toString(), "Dropped on " + dropNode.getData() + " at " + dropIndex);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 }
