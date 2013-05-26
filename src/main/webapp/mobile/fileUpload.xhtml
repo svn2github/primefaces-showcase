@@ -24,7 +24,7 @@
 
                     <p:fileUpload value="#{fileUploadController.file}" mode="simple"/> 
 
-                    <h:commandButton value="Submit" actionListener="#{fileUploadController.upload}"/>  
+                    <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload}"/>  
 
                 </h:form>                  
             </pm:content>
