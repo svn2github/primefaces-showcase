@@ -329,13 +329,11 @@
                 
                 <p:confirmDialog id="confirmDialog" message="Are you sure about destroying the world?"  
                                  header="Initiating destroy process" severity="alert" widgetVar="confirmation">  
-                    <h:form>
-                        <h:panelGrid columns="2">
-                            <p:commandButton id="confirm" value="Yes Sure" update=":messageOverlay" oncomplete="confirmation.hide()" actionListener="#{buttonBean.destroyWorld}" >
-                                <f:attribute name="swatch" value="b"/>
+                    <h:form>                        
+                            <p:commandButton id="confirm" value="Yes Sure" inline="true" update=":messageOverlay" oncomplete="confirmation.hide()" actionListener="#{buttonBean.destroyWorld}" >
+                                <f:attribute name="swatch" value="b"/>                                
                             </p:commandButton>  
-                            <p:commandButton id="decline" value="Not Yet" onclick="confirmation.hide()" type="button" />   
-                        </h:panelGrid>
+                            <p:commandButton id="decline" value="Not Yet" inline="true" onclick="confirmation.hide()" type="button"/>                                                            
                     </h:form>
                 </p:confirmDialog>                
 
