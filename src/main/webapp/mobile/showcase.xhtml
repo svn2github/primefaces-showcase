@@ -302,13 +302,17 @@
             </pm:header>
 
             <pm:content>
+                
+                <p:growl id="messageOverlay" />
 
                 <p:commandButton type="button" value="Basic Dialog" onclick="dlgBasic.show()"/>
 
                 <p:commandButton type="button" value="Modal Dialog" onclick="dlgModal.show()"/>
                 
+                <p:commandButton type="button" value="Confirm Dialog" onclick="confirmation.show()"/>                                                                                
+                
                 <p:commandButton id="simplePanelBtn" type="button" value="Simple Overlay Panel"/>                                
-
+                
                 <p:dialog header="Header" widgetVar="dlgBasic">
                     Dialog Content goes here...
                 </p:dialog>
@@ -322,6 +326,18 @@
                         <h:outputText value="Paris" />                        
                     </p:dataList>                        
                 </p:dialog>
+                
+                <p:confirmDialog id="confirmDialog" message="Are you sure about destroying the world?"  
+                                 header="Initiating destroy process" severity="alert" widgetVar="confirmation">  
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <p:commandButton id="confirm" value="Yes Sure" update=":messageOverlay" oncomplete="confirmation.hide()" actionListener="#{buttonBean.destroyWorld}" >
+                                <f:attribute name="swatch" value="b"/>
+                            </p:commandButton>  
+                            <p:commandButton id="decline" value="Not Yet" onclick="confirmation.hide()" type="button" />   
+                        </h:panelGrid>
+                    </h:form>
+                </p:confirmDialog>                
 
             </pm:content>
         </pm:view>
