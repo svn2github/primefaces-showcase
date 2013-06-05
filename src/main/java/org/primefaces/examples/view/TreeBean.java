@@ -95,16 +95,11 @@ public class TreeBean implements Serializable {
 	}
 
     public void onDragDrop(TreeDragDropEvent event) {
-        TreeNode[] dragNodes = event.getDragNodes();
+        TreeNode dragNode = event.getDragNode();
         TreeNode dropNode = event.getDropNode();
         int dropIndex = event.getDropIndex();
-        StringBuilder sb = new StringBuilder();
         
-        for(TreeNode dragNode : dragNodes) {
-            sb.append(dragNode.getData()).append(" ");
-        }
-        
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Dragged " + sb.toString(), "Dropped on " + dropNode.getData() + " at " + dropIndex);
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Dragged " + dragNode.getData(), "Dropped on " + dropNode.getData() + " at " + dropIndex);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 }
