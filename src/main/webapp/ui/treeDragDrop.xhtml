@@ -40,7 +40,7 @@
                 <p:growl id="msgs" showDetail="true" />
                 
                 <h:panelGrid columns="3">
-                    <p:tree id="tree1" value="#{treeBean.root}" var="node" selectionMode="checkbox" selection="#{treeBean.selectedNodes}" 
+                    <p:tree id="tree1" value="#{treeBean.root}" var="node" selectionMode="single" selection="#{treeBean.selectedNodes}" 
                             draggable="true" droppable="true" dragdropScope="demo">
                         <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:msgs" />
                         <p:treeNode>
@@ -50,7 +50,7 @@
         
                     <p:graphicImage alt="Transfer" url="/images/transfer.png" />
                     
-                    <p:tree id="tree2" value="#{treeBean.root2}" var="node" selectionMode="checkbox" selection="#{treeBean.selectedNodes2}" 
+                    <p:tree id="tree2" value="#{treeBean.root2}" var="node" selectionMode="single" selection="#{treeBean.selectedNodes2}" 
                             draggable="true" droppable="true" dragdropScope="demo">
                         <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:msgs" />
                         <p:treeNode>
@@ -71,7 +71,7 @@
     &lt;p:growl id="msgs" showDetail="true" /&gt;
 
     &lt;h:panelGrid columns="3"&gt;
-        &lt;p:tree id="tree1" value="\#{treeBean.root}" var="node"  selectionMode="multiple" selection="\#{treeBean.selectedNodes}" 
+        &lt;p:tree id="tree1" value="\#{treeBean.root}" var="node"  selectionMode="single" selection="\#{treeBean.selectedNodes}" 
                 draggable="true" droppable="true" dragdropScope="demo"&gt;
             &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:msgs" /&gt;
             &lt;p:treeNode&gt;
@@ -81,7 +81,7 @@
 
         &lt;p:graphicImage alt="Transfer" url="/images/transfer.png" /&gt;
 
-        &lt;p:tree id="tree2" value="\#{treeBean.root2}" var="node" selectionMode="multiple" selection="\#{treeBean.selectedNodes2}" 
+        &lt;p:tree id="tree2" value="\#{treeBean.root2}" var="node" selectionMode="single" selection="\#{treeBean.selectedNodes2}" 
                 draggable="true" droppable="true" dragdropScope="demo"&gt;
             &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:msgs" /&gt;
             &lt;p:treeNode&gt;
