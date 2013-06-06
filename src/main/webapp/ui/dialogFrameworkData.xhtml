@@ -4,7 +4,7 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="../templates/ui.xhtml">
-
+    
     <ui:define name="content">
 
         <h1 class="title ui-widget-header ui-corner-all">Dialog Framework - Data</h1>
@@ -15,8 +15,8 @@
 
                 <p:growl id="growl" showDetail="true" />
                 
-                <p:commandButton value="Select Car" icon="ui-icon-extlink" action="dialog:selectCar">
-                    <p:ajax event="dialogReturn" listener="#{dialogBean.onDialogReturn}" update="growl" />
+                <p:commandButton value="Select Car" icon="ui-icon-extlink" actionListener="#{dialogBean.chooseCar}">
+                    <p:ajax event="dialogReturn" listener="#{dialogBean.onCarChosen}" update="growl" />
                 </p:commandButton>
 
             </h:form>
@@ -29,8 +29,8 @@
 
     &lt;p:growl id="growl" showDetail="true" /&gt;
 
-    &lt;p:commandButton value="Select Car" icon="ui-icon-extlink" action="dialog:selectCar"&gt;
-        &lt;p:ajax event="dialogReturn" listener="\#{dialogBean.onDialogReturn}" update="growl" /&gt;
+    &lt;p:commandButton value="Select Car" icon="ui-icon-extlink" actionListener="\#{dialogBean.chooseCar}"&gt;
+        &lt;p:ajax event="dialogReturn" listener="\#{dialogBean.onCarChosen}" update="growl" /&gt;
     &lt;/p:commandButton&gt;
 
 &lt;/h:form&gt;
@@ -41,7 +41,11 @@
                     <pre name="code" class="java">
 public class DialogBean {
     
-        public void onDialogReturn(SelectEvent event) {
+        public void chooseCar() {
+            RequestContext.getCurrentInstance().openDialog("selectCar");
+        }
+
+        public void onCarChosen(SelectEvent event) {
             Car car = (Car) event.getObject();
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Selected", "Model:" + car.getModel());
 
@@ -172,7 +176,7 @@ public class TableBean implements Serializable {
 	}
 
     public void selectCarFromDialog(Car car) {
-        RequestContext.getCurrentInstance().returnFromDialog(car);
+        RequestContext.getCurrentInstance().closeDialog(car);
     }
 }
 				</pre>

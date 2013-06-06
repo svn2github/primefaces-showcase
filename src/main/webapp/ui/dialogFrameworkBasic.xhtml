@@ -9,14 +9,13 @@
 
         <h1 class="title ui-widget-header ui-corner-all">Dialog Framework - Basic</h1>
         <div class="entry">
-            <p>A page is displayed in a dialog by adding <i>dialog:</i> prefix to the outcome. There is no need to manually add a dialog component on page
-                as one is generated on runtime.</p>
+            <p>An external page can be displayed in a dynamically generated dialog on runtime.</p>
 
             <h:form>
 
-                <p:commandButton value="View" icon="ui-icon-extlink" action="#{dialogBean.viewCars}" />
+                <p:commandButton value="View" icon="ui-icon-extlink" actionListener="#{dialogBean.viewCars}" />
                 
-                <p:commandButton value="Options" icon="ui-icon-extlink" action="#{dialogBean.viewCarsCustomized}" />
+                <p:commandButton value="Options" icon="ui-icon-extlink" actionListener="#{dialogBean.viewCarsCustomized}" />
 
             </h:form>
 
@@ -26,9 +25,9 @@
                     <pre name="code" class="xml">
 &lt;h:form&gt;
 
-    &lt;p:commandButton value="View" icon="ui-icon-extlink" action="\#{dialogBean.viewCars}" /&gt;
+    &lt;p:commandButton value="View" icon="ui-icon-extlink" actionListener="\#{dialogBean.viewCars}" /&gt;
 
-    &lt;p:commandButton value="Options" icon="ui-icon-extlink" action="\#{dialogBean.viewCarsCustomized}" /&gt;
+    &lt;p:commandButton value="Options" icon="ui-icon-extlink" actionListener="\#{dialogBean.viewCarsCustomized}" /&gt;
 
 &lt;/h:form&gt;
                     </pre>
@@ -40,12 +39,18 @@ package org.primefaces.examples.view;
 
 public class DialogBean {
     
-    public String viewCars() {
-        return "dialog:viewCars";
+    public void viewCars() {
+        RequestContext.getCurrentInstance().openDialog("viewCars");
     }
     
-    public String viewCarsCustomized() {
-        return "dialog:viewCars?modal=true";
+    public void viewCarsCustomized() {
+        Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
+        options.put("modal", true);
+        options.put("draggable", false);
+        options.put("resizable", false);
+        options.put("contentHeight", 320);
+        
+        RequestContext.getCurrentInstance().openDialog("viewCars", options, null);
     }
 }
                     </pre>

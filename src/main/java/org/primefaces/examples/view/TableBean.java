@@ -585,6 +585,6 @@ public class TableBean implements Serializable {
     }
     
     public void selectCarFromDialog(Car car) {
-        RequestContext.getCurrentInstance().returnFromDialog(car);
+        RequestContext.getCurrentInstance().closeDialog(car);
     }
 }

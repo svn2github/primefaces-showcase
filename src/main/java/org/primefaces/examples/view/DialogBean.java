@@ -15,8 +15,11 @@
  */
 package org.primefaces.examples.view;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 
 import org.primefaces.event.CloseEvent;
 import org.primefaces.event.SelectEvent;
@@ -31,15 +34,25 @@ public class DialogBean {
 		facesContext.addMessage(null, message);
 	}
     
-    public String viewCars() {
-        return "dialog:viewCars";
+    public void viewCars() {
+        RequestContext.getCurrentInstance().openDialog("viewCars");
     }
     
-    public String viewCarsCustomized() {
-        return "dialog:viewCars?modal=true";
+    public void viewCarsCustomized() {
+        Map<String,Object> options = new HashMap<String, Object>();
+        options.put("modal", true);
+        options.put("draggable", false);
+        options.put("resizable", false);
+        options.put("contentHeight", 320);
+        
+        RequestContext.getCurrentInstance().openDialog("viewCars", options, null);
     }
     
-    public void onDialogReturn(SelectEvent event) {
+    public void chooseCar() {
+        RequestContext.getCurrentInstance().openDialog("selectCar");
+    }
+    
+    public void onCarChosen(SelectEvent event) {
         Car car = (Car) event.getObject();
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Selected", "Model:" + car.getModel());
 		
