@@ -34,7 +34,7 @@
                             <p:dataList type="inset" styleClass="ui-li-custom">
                                 <f:facet name="header">Components</f:facet>
                                 <f:attribute name="icon" value="false" />
-                                <h:outputLink value="#forms">Forms</h:outputLink>
+                                <h:outputLink value="#forms">Forms <h:outputText styleClass="ui-li-count" value="New"/></h:outputLink>
                                 <h:outputLink value="#buttons">Buttons</h:outputLink>
                                 <p:commandLink action="lists?faces-redirect=true" ajax="false">Lists <h:outputText styleClass="ui-li-count" value="New"/></p:commandLink>                                
                                 <h:outputLink value="#navbar">NavBar</h:outputLink>
@@ -104,6 +104,13 @@
                         <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
                     </h:selectOneMenu>
                 </pm:field>
+                
+                <p:selectManyMenu id="selectManyMenu" label="ManyMenu: ">                      
+                    <f:selectItem itemLabel="Choose a few options:" itemValue="" />  
+                    <f:selectItem itemLabel="Option 1" itemValue="Option 1" />  
+                    <f:selectItem itemLabel="Option 2" itemValue="Option 2" />  
+                    <f:selectItem itemLabel="Option 3" itemValue="Option 3" />  
+                </p:selectManyMenu>                                                 
 
                 <pm:inputRange id="range" minValue="0" maxValue="100" label="Range:" />
                 
@@ -741,15 +748,15 @@
             <pm:content>
                 jQuery Mobile uses progressive enhancement on page elements to optimize them for mobile environment. This happens
                 on page load and elements lose styles/behaviors attached after an ajax update. PrimeFaces fixes this mismatch
-                by providing extensions whereas client side ajax of a JSF implementation causes various problems.
-
+                by providing extensions whereas client side ajax of a JSF implementation causes various problems.              
+                
                 <h:form>
-                    
+
                     <pm:field>
                         <h:outputLabel for="txt" value="Text:" />
                         <p:inputText id="txt" value="#{showcaseView.text}" />
                     </pm:field>                    
-                    
+
                     <p:commandButton value="PrimeFaces" actionListener="#{showcaseView.add}" update="txt txts" process="@form"/>                    
                     
                     <p:dataList id="txts" var="text" value="#{showcaseView.texts}" type="inset">
