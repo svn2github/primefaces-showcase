@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">PPR - Fragment</h1>
+		<div class="entry">
+			<p>Fragment component is used to define automatically partially processed and updated sections. In following example,
+            only the contents of the fragment are processed-updated automatically.</p>
+
+			<h:form id="form">
+				
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="ign" value="Required:" />
+                    <p:inputText id="ign" required="true" />
+                </h:panelGrid>
+                
+                <p:fragment autoUpdate="true">
+                    <h:panelGrid columns="4" cellpadding="5">
+                        <h:outputLabel for="name" value="Name:" />
+                        <p:inputText id="name" value="#{pprBean.firstname}" />
+                        <p:commandButton value="Submit"/>
+                        <h:outputText value="#{pprBean.firstname}" />
+                    </h:panelGrid>
+                </p:fragment>
+
+			</h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="fragment.xhtml">
+<pre name="code" class="xml">
+&lt;h:form id="form"&gt;
+
+    &lt;h:panelGrid columns="2"&gt;
+        &lt;p:outputLabel for="ign" value="Required:" /&gt;
+        &lt;p:inputText id="ign" required="true" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:fragment autoUpdate="true"&gt;
+        &lt;h:panelGrid columns="4" cellpadding="5"&gt;
+            &lt;h:outputLabel for="name" value="Name:" /&gt;
+            &lt;p:inputText id="name" value="\#{pprBean.firstname}" /&gt;
+            &lt;p:commandButton value="Submit"/&gt;
+            &lt;h:outputText value="\#{pprBean.firstname}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:fragment&gt;
+
+&lt;/h:form&gt;
+						</pre>
+				</p:tab>
+				
+				<p:tab title="PPRBean.java">
+<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+public class PPRBean implements Serializable {
+
+	private String firstname;
+	
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+}
+</pre>
+				</p:tab>
+			</p:tabView>
+			
+		</div>
+				
+	</ui:define>
+</ui:composition>
