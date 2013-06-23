@@ -58,4 +58,10 @@ public class DialogBean {
 		
 		FacesContext.getCurrentInstance().addMessage(null, message);
     }
+    
+    public void showMessage() {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");
+        
+        RequestContext.getCurrentInstance().showMessageInDialog(message);
+    }
 }

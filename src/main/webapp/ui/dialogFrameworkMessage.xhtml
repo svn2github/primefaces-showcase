@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+            
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">Dialog Framework - Message</h1>
+        <div class="entry">
+            <p>A facesmessage can be displayed in a dynamically generated dialog on runtime.</p>
+
+            <h:form>
+
+                <p:commandButton value="Show" icon="ui-icon-script" actionListener="#{dialogBean.showMessage}" />
+
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="dialogFrameworkMessage.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;p:commandButton value="Show" icon="ui-icon-script" actionListener="#{dialogBean.showMessage}" /&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="DialogBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+public class DialogBean {
+    
+    public void showMessage() {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");
+        
+        RequestContext.getCurrentInstance().showMessageInDialog(message);
+    }
+}
+                    </pre>
+                </p:tab>
+                
+            </p:tabView>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
