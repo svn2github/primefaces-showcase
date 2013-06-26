@@ -1,0 +1,145 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">PrimeFaces Search Expression Framework</h1>
+		<div class="entry">
+			<p>
+				The <b>PrimeFaces Search Expression Framework</b> extends the default search expressions by more and more nestable expression.
+				We also introduced some more and new keywords: <b>@composite</b>, <b>@namingcontainer</b>, <b>@child(...)</b> and <b>@widgetVar(...)</b> <br/>
+				With the new <b>PrimeFaces Search Expression Framework</b> expressions like <b>"@this:@parent:@parent"</b>, <b>"@composite:@child(1)"</b> or <b>"@parent:@parent:myChildId"</b> are fully supported.<br/>
+			</p>
+
+			<b>Supported keywords:</b>
+			<table border="1">
+				<tr>
+					<td>@none</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>@this</td>
+					<td>Resolves to the source component</td>
+				</tr>
+				<tr>
+					<td>@parent</td>
+					<td>Resolves the parent component</td>
+				</tr>
+				<tr>
+					<td>@composite</td>
+					<td>Resolves the closest composite component</td>
+				</tr>
+				<tr>
+					<td>@form</td>
+					<td>Resolves the closest UIForm</td>
+				</tr>
+				<tr>
+					<td>@namingcontainer</td>
+					<td>Resolves the closest UINamingContainer</td>
+				</tr>
+				<tr>
+					<td>@all</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>@child(..)</td>
+					<td>Resolves the nth child component</td>
+				</tr>
+				<tr>
+					<td>@widgetVar(...)</td>
+					<td>Resolves the clientId by the widgetVar of the Widget</td>
+				</tr>
+			</table>
+
+			<div style="margin-top: 20px;">
+				<h:form id="form">
+	                
+	                <p:panel id="panel" header="New User" style="margin-bottom:10px;">
+	                    <p:messages id="messages" />
+	                    
+	                    <h:panelGrid columns="4">
+	                        <h:outputLabel for="firstname" value="Firstname: *" />
+	                        <p:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
+	                            <f:validateLength minimum="2" />
+	                        </p:inputText>
+	                        <p:message for="firstname" />
+	                        <h:outputText value="#{pprBean.firstname}" />
+	
+	                        <h:outputLabel for="surname" value="Surname: *" />
+	                        <p:inputText id="surname" value="#{pprBean.surname}" required="true" label="Surname" widgetVar="surnameWidget"/>
+	                        <p:message for="surname" />
+	                        <h:outputText value="#{pprBean.surname}" />
+	                        
+	                        <h:outputLabel for="city" value="City: *" />
+	                        <h:selectOneMenu id="city" value="#{pprBean.city}" required="true">
+	                            <f:selectItem itemLabel="Select One" itemValue="" />
+	                            <f:selectItems value="#{pprBean.cities}" />
+	                        </h:selectOneMenu>
+	                        <p:message for="city" />
+	                        <h:outputText value="#{pprBean.city}" />
+	                        
+	                    </h:panelGrid>
+	                </p:panel>
+	                
+	                <h:panelGrid columns="5">
+	                    <p:commandButton process="@parent:@parent" update="@form" value="Process: @parent:parent (Form)" />
+	                
+	                    <p:commandButton process="@form:@child(1):firstname" update="@form" value="Process: @form:@child(1):firstname (Firstname)" />
+	                    
+	                    <p:commandButton process="@widgetVar(surnameWidget)" update="@form" value="Process: @widgetVar(surnameWidget) (Surname)" />
+	                </h:panelGrid>
+				</h:form>
+				
+	
+				<h3>Source</h3>
+				<p:tabView>
+					<p:tab title="searchExpressions.xhtml">
+<pre name="code" class="xml">
+&lt;h:form id="form">
+    &lt;p:panel id="panel" header="New User" style="margin-bottom:10px;">
+        &lt;p:messages id="messages" /&gt;
+        
+        &lt;h:panelGrid columns="4">
+            &lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
+            &lt;p:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
+                &lt;f:validateLength minimum="2" /&gt;
+            &lt;/p:inputText>
+            &lt;p:message for="firstname" /&gt;
+            &lt;h:outputText value="#{pprBean.firstname}" /&gt;
+
+            &lt;h:outputLabel for="surname" value="Surname: *" /&gt;
+            &lt;p:inputText id="surname" value="#{pprBean.surname}" required="true" label="Surname" widgetVar="surnameWidget"/&gt;
+            &lt;p:message for="surname" /&gt;
+            &lt;h:outputText value="#{pprBean.surname}" /&gt;
+            
+            &lt;h:outputLabel for="city" value="City: *" /&gt;
+            &lt;h:selectOneMenu id="city" value="#{pprBean.city}" required="true">
+                &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
+                &lt;f:selectItems value="#{pprBean.cities}" /&gt;
+            &lt;/h:selectOneMenu>
+            &lt;p:message for="city" /&gt;
+            &lt;h:outputText value="#{pprBean.city}" /&gt;
+            
+        &lt;/h:panelGrid>
+    &lt;/p:panel>
+    
+    &lt;h:panelGrid columns="5">
+        &lt;p:commandButton process="@parent:@parent" update="@form" value="Process: @parent:parent (Form)" /&gt;
+    
+        &lt;p:commandButton process="@form:@child(1):firstname" update="@form" value="Process: @form:@child(1):firstname (Firstname)" /&gt;
+        
+        &lt;p:commandButton process="@widgetVar(surnameWidget)" update="@form" value="Process: @widgetVar(surnameWidget) (Surname)" /&gt;
+    &lt;/h:panelGrid>
+&lt;/h:form>
+</pre>
+					</p:tab>
+				</p:tabView>
+			</div>
+		</div>
+				
+	</ui:define>
+</ui:composition>
