@@ -35,6 +35,8 @@ public class TreeBean implements Serializable {
     private TreeNode root2;
 	
 	private TreeNode selectedNode;
+    
+    private TreeNode selectedNode2;
 
 	private TreeNode[] selectedNodes;
     
@@ -93,12 +95,18 @@ public class TreeBean implements Serializable {
 	public TreeNode getSelectedNode() {
 		return selectedNode;
 	}
-
 	public void setSelectedNode(TreeNode selectedNode) {
 		this.selectedNode = selectedNode;
 	}
-    
-    	public void onNodeExpand(NodeExpandEvent event) {
+
+    public TreeNode getSelectedNode2() {
+        return selectedNode2;
+    }
+    public void setSelectedNode2(TreeNode selectedNode2) {
+        this.selectedNode2 = selectedNode2;
+    }
+
+    public void onNodeExpand(NodeExpandEvent event) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Expanded", event.getTreeNode().toString());
 
 		FacesContext.getCurrentInstance().addMessage(null, message);

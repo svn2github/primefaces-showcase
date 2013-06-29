@@ -18,14 +18,7 @@
             #form\:tree2 {
                 float: left;
             }
-        </style>
-        
-        <script type="text/javascript">
-//<![CDATA[
-
-//]]>
-        </script>
-        
+        </style>       
     </ui:define>
 
 	<ui:define name="content">
@@ -40,7 +33,7 @@
                 <p:growl id="msgs" showDetail="true" />
                 
                 <h:panelGrid columns="3">
-                    <p:tree id="tree1" value="#{treeBean.root}" var="node" selectionMode="single" selection="#{treeBean.selectedNodes}" 
+                    <p:tree id="tree1" value="#{treeBean.root}" var="node" selectionMode="single" selection="#{treeBean.selectedNode}" 
                             draggable="true" droppable="true" dragdropScope="demo">
                         <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:msgs" />
                         <p:treeNode>
@@ -50,7 +43,7 @@
         
                     <p:graphicImage alt="Transfer" url="/images/transfer.png" />
                     
-                    <p:tree id="tree2" value="#{treeBean.root2}" var="node" selectionMode="single" selection="#{treeBean.selectedNodes2}" 
+                    <p:tree id="tree2" value="#{treeBean.root2}" var="node" selectionMode="single" selection="#{treeBean.selectedNode2}" 
                             draggable="true" droppable="true" dragdropScope="demo">
                         <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:msgs" />
                         <p:treeNode>
@@ -59,6 +52,8 @@
                     </p:tree>
 
                 </h:panelGrid>
+                
+                <h:commandButton value="Submit" />
                                 
 			</h:form>
 			
@@ -71,7 +66,7 @@
     &lt;p:growl id="msgs" showDetail="true" /&gt;
 
     &lt;h:panelGrid columns="3"&gt;
-        &lt;p:tree id="tree1" value="\#{treeBean.root}" var="node"  selectionMode="single" selection="\#{treeBean.selectedNodes}" 
+        &lt;p:tree id="tree1" value="\#{treeBean.root}" var="node"  selectionMode="single" selection="\#{treeBean.selectedNode}" 
                 draggable="true" droppable="true" dragdropScope="demo"&gt;
             &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:msgs" /&gt;
             &lt;p:treeNode&gt;
@@ -81,7 +76,7 @@
 
         &lt;p:graphicImage alt="Transfer" url="/images/transfer.png" /&gt;
 
-        &lt;p:tree id="tree2" value="\#{treeBean.root2}" var="node" selectionMode="single" selection="\#{treeBean.selectedNodes2}" 
+        &lt;p:tree id="tree2" value="\#{treeBean.root2}" var="node" selectionMode="single" selection="\#{treeBean.selectedNode2}" 
                 draggable="true" droppable="true" dragdropScope="demo"&gt;
             &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:msgs" /&gt;
             &lt;p:treeNode&gt;
@@ -115,9 +110,7 @@ public class TreeBean implements Serializable {
 	
 	private TreeNode selectedNode;
 
-	private TreeNode[] selectedNodes;
-    
-    private TreeNode[] selectedNodes2;
+    private TreeNode selectedNode2;
 
 	public TreeBean() {
 		root = new DefaultTreeNode("Root", null);
@@ -153,28 +146,18 @@ public class TreeBean implements Serializable {
         return root2;
     }
 	
-	public TreeNode[] getSelectedNodes() {
-		return selectedNodes;
-	}
-
-	public void setSelectedNodes(TreeNode[] selectedNodes) {
-		this.selectedNodes = selectedNodes;
-	}
-
-    public TreeNode[] getSelectedNodes2() {
-        return selectedNodes2;
-    }
-
-    public void setSelectedNodes2(TreeNode[] selectedNodes2) {
-        this.selectedNodes2 = selectedNodes2;
-    }
-
 	public TreeNode getSelectedNode() {
 		return selectedNode;
 	}
-
 	public void setSelectedNode(TreeNode selectedNode) {
 		this.selectedNode = selectedNode;
+	}
+
+	public TreeNode getSelectedNode2() {
+		return selectedNode2;
+	}
+	public void setSelectedNode(TreeNode selectedNode2) {
+		this.selectedNode2 = selectedNode2;
 	}
 
     public void onDragDrop(TreeDragDropEvent event) {
