@@ -49,7 +49,6 @@ public class TreeCheckboxBean implements Serializable {
 		TreeNode goodfellas = new CheckboxTreeNode("mp3", new Document("Goodfellas", "23 GB", "Movie File"), deniro);
 		TreeNode untouchables = new CheckboxTreeNode("mp3", new Document("Untouchables", "17 GB", "Movie File"), deniro);
         
-        expenses.setSelected(true);
         
         root2 = new CheckboxTreeNode("Root", null);
 		TreeNode node0 = new CheckboxTreeNode("Node 0", root2);
@@ -67,7 +66,7 @@ public class TreeCheckboxBean implements Serializable {
 		TreeNode node010 = new CheckboxTreeNode("Node 0.1.0", node01);
 		
 		TreeNode node100 = new CheckboxTreeNode("Node 1.0.0", node10);
-        node000.setSelected(true);
+
 	}
 	
 	public TreeNode getRoot() {
