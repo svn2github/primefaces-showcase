@@ -22,9 +22,9 @@
 
 				<p:growl id="messages" showDetail="true" escape="false"/>
 
-				<p:tree value="#{treeBean.root}" var="node" id="checkboxTree"
+				<p:tree value="#{treeCheckboxBean.root2}" var="node" id="checkboxTree"
 						selectionMode="checkbox"
-						selection="#{treeBean.selectedNodes}">
+						selection="#{treeCheckboxBean.selectedNodes}">
 
 					<p:treeNode>
 						<h:outputText value="#{node}" />
@@ -32,7 +32,7 @@
 				</p:tree>
 
 				<p:commandButton value="Display Selected" update="messages" style="margin:20px 0 20px 0;"
-								actionListener="#{treeBean.displaySelectedMultiple}" id="btnDisplay"/>
+								actionListener="#{treeCheckboxBean.displaySelectedMultiple}" id="btnDisplay"/>
 
 			</h:form>
 
