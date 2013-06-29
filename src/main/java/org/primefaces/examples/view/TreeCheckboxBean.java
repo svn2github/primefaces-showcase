@@ -7,12 +7,15 @@ import org.primefaces.model.CheckboxTreeNode;
 import org.primefaces.model.TreeNode;
 
 import org.primefaces.examples.domain.Document;
+import org.primefaces.model.CheckboxTreeNode;
 
 public class TreeCheckboxBean implements Serializable {
 	
 	private static final Logger logger = Logger.getLogger(TreeCheckboxBean.class.getName());
 
 	private TreeNode root;
+    
+    private TreeNode root2;
     
     private TreeNode[] selectedNodes;
 	
@@ -47,6 +50,24 @@ public class TreeCheckboxBean implements Serializable {
 		TreeNode untouchables = new CheckboxTreeNode("mp3", new Document("Untouchables", "17 GB", "Movie File"), deniro);
         
         expenses.setSelected(true);
+        
+        root2 = new CheckboxTreeNode("Root", null);
+		TreeNode node0 = new CheckboxTreeNode("Node 0", root2);
+		TreeNode node1 = new CheckboxTreeNode("Node 1", root2);
+		TreeNode node2 = new CheckboxTreeNode("Node 2", root2);
+		
+		TreeNode node00 = new CheckboxTreeNode("Node 0.0", node0);
+		TreeNode node01 = new CheckboxTreeNode("Node 0.1", node0);
+		
+		TreeNode node10 = new CheckboxTreeNode("Node 1.0", node1);
+		TreeNode node11 = new CheckboxTreeNode("Node 1.1", node1);
+		
+		TreeNode node000 = new CheckboxTreeNode("Node 0.0.0", node00);
+		TreeNode node001 = new CheckboxTreeNode("Node 0.0.1", node00);
+		TreeNode node010 = new CheckboxTreeNode("Node 0.1.0", node01);
+		
+		TreeNode node100 = new CheckboxTreeNode("Node 1.0.0", node10);
+        node000.setSelected(true);
 	}
 	
 	public TreeNode getRoot() {
@@ -55,6 +76,14 @@ public class TreeCheckboxBean implements Serializable {
 
 	public void setRoot(TreeNode root) {
 		this.root = root;
+	}
+    
+    public TreeNode getRoot2() {
+		return root2;
+	}
+
+	public void setRoot2(TreeNode root2) {
+		this.root2 = root2;
 	}
     
     public TreeNode[] getSelectedNodes() {
