@@ -11,7 +11,7 @@
 		<div class="entry">
 			<p>Ajax Status can also be customized to execute custom javascript.</p>
 
-			<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>
+			<p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="PF('statusDialog').hide();"/>
 			
 			<p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false">
 				<p:graphicImage value="/design/ajaxloadingbar.gif" />

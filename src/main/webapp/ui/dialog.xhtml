@@ -12,11 +12,11 @@
 			<p>Dialog visibility is managed by using show() and hide() methods of the client side api.</p>
 				
 				<h:panelGrid columns="1" cellpadding="5">
-					<p:commandButton id="basic" value="Basic" onclick="dlg1.show();" type="button" />
+					<p:commandButton id="basic" value="Basic" onclick="PF('dlg1').show();" type="button" />
 					
-					<p:commandButton id="modalDialogButton" value="Modal" onclick="dlg2.show();" type="button"/>
+					<p:commandButton id="modalDialogButton" value="Modal" onclick="PF('dlg2').show();" type="button"/>
 
-                    <p:commandButton id="effectsDialogButton" value="Effects" onclick="dlg3.show();" type="button" />
+                    <p:commandButton id="effectsDialogButton" value="Effects" onclick="PF('dlg3').show();" type="button" />
 				</h:panelGrid>
 				
 								
