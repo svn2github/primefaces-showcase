@@ -8,20 +8,20 @@
 	<ui:define name="content">
 	<h1 class="title ui-widget-header ui-corner-all">Confirm Dialog</h1>
 		<div class="entry">
-                <p>ConfirmationDialog is a replacement for the javascript confirm function.
+                <p>ConfirmDialog is a replacement for the javascript confirm utility.
                 Skinning, customization, avoiding popup blockers are the notable features.</p>
 
-				<h:form prependId="false">
+				<h:form>
 					
 					<p:growl id="messages" showDetail="true" />
 				
-					<p:commandButton id="showDialogButton" value="Destroy the World" onclick="confirmation.show()" type="button"/>
+					<p:commandButton value="Destroy the World" actionListener="#{buttonBean.destroyWorld}" update="messages" confirm="true" />
 					
-					<p:confirmDialog id="confirmDialog" message="Are you sure about destroying the world?"
-								header="Initiating destroy process" severity="alert" widgetVar="confirmation">
+					<p:confirmDialog message="Are you sure about destroying the world?" global="true" showEffect="fade" hideEffect="explode"
+								header="Initiating destroy process" severity="alert">
 								
-						<p:commandButton id="confirm" value="Yes Sure" actionListener="#{buttonBean.destroyWorld}" update="messages" oncomplete="confirmation.hide()"/>
-						<p:commandButton id="decline" value="Not Yet" onclick="confirmation.hide()" type="button" /> 
+						<p:commandButton value="Yes Sure" type="button" styleClass="ui-confirmdialog-yes"/>
+						<p:commandButton value="Not Yet" type="button" styleClass="ui-confirmdialog-no"/> 
 								
 					</p:confirmDialog>
 
@@ -31,26 +31,21 @@
 			<p:tabView>
 				<p:tab title="confirmDialog.xhtml">
 <pre name="code" class="xml">
-&lt;h:form prependId="false"&gt;
-					
-	&lt;p:growl id="messages" /&gt;
+&lt;h:form&gt;
 
-	&lt;h:panelGrid columns="1" cellpadding="5"&gt;
-		&lt;h:outputText id="msg" value="\#{buttonBean.text}"/&gt;
-		
-		&lt;p:commandButton id="showDialogButton" value="Destroy the World" onclick="confirmation.show()" type="button"/&gt;
-	&lt;/h:panelGrid&gt;
-	
-	&lt;p:confirmDialog id="confirmDialog" message="Are you sure about destroying the world?"
-				header="Initiating destroy process" severity="alert" widgetVar="confirmation"&gt;
-				
-		&lt;p:commandButton id="confirm" value="Yes Sure" update="messages" oncomplete="confirmation.hide()"
-					actionListener="\#{buttonBean.destroyWorld}" /&gt;
-		&lt;p:commandButton id="decline" value="Not Yet" onclick="confirmation.hide()" type="button" /&gt; 
-				
-	&lt;/p:confirmDialog&gt;
+    &lt;p:growl id="messages" showDetail="true" /&gt;
 
-&lt;/h:form&gt;	
+    &lt;p:commandButton value="Destroy the World" actionListener="\#{buttonBean.destroyWorld}" update="messages" confirm="true" /&gt;
+
+    &lt;p:confirmDialog message="Are you sure about destroying the world?" global="true" showEffect="fade" hideEffect="explode"
+                header="Initiating destroy process" severity="alert"&gt;
+
+        &lt;p:commandButton value="Yes Sure" styleClass="ui-confirmdialog-yes"/&gt;
+        &lt;p:commandButton value="Not Yet" styleClass="ui-confirmdialog-no"/&gt; 
+
+    &lt;/p:confirmDialog&gt;
+
+&lt;/h:form&gt;
 </pre>
 				</p:tab>
 				
