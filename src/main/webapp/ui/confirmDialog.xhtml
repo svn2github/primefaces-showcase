@@ -1,56 +1,53 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	template="../templates/ui.xhtml">
-	
-	<ui:define name="content">
-	<h1 class="title ui-widget-header ui-corner-all">Confirm Dialog</h1>
-		<div class="entry">
-                <p>ConfirmDialog is a replacement for the javascript confirm utility.
-                Skinning, customization, avoiding popup blockers are the notable features.</p>
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
 
-				<h:form>
-					
-					<p:growl id="messages" showDetail="true" />
-				
-					<p:commandButton value="Destroy the World" actionListener="#{buttonBean.destroyWorld}" update="messages" confirm="true" />
-					
-					<p:confirmDialog message="Are you sure about destroying the world?" global="true" showEffect="fade" hideEffect="explode"
-								header="Initiating destroy process" severity="alert">
-								
-						<p:commandButton value="Yes Sure" type="button" styleClass="ui-confirmdialog-yes"/>
-						<p:commandButton value="Not Yet" type="button" styleClass="ui-confirmdialog-no"/> 
-								
-					</p:confirmDialog>
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">Confirm Dialog</h1>
+        <div class="entry">
+            <p>ConfirmDialog is integrated with confirm behavior and used as a replacement for the javascript confirmation utility.</p>
 
-				</h:form>
-				
-			<h3>Source</h3>
-			<p:tabView>
-				<p:tab title="confirmDialog.xhtml">
-<pre name="code" class="xml">
+            <h:form>
+
+                <p:growl id="messages" showDetail="true" />
+
+                <p:commandButton value="Destroy the World" actionListener="#{buttonBean.destroyWorld}" update="messages">
+                    <p:confirm header="Sure?" message="Confirm to proceed" />
+                </p:commandButton>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes"/>
+                    <p:commandButton value="Not" type="button" styleClass="ui-confirmdialog-no"/> 	
+                </p:confirmDialog>
+
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="confirmDialog.xhtml">
+                    <pre name="code" class="xml">
 &lt;h:form&gt;
 
     &lt;p:growl id="messages" showDetail="true" /&gt;
 
-    &lt;p:commandButton value="Destroy the World" actionListener="\#{buttonBean.destroyWorld}" update="messages" confirm="true" /&gt;
+    &lt;p:commandButton value="Destroy the World" actionListener="\#{buttonBean.destroyWorld}" update="messages"&gt;
+        &lt;p:confirm header="Sure?" message="Confirm to proceed" /&gt;
+    &lt;/p:commandButton&gt;
 
-    &lt;p:confirmDialog message="Are you sure about destroying the world?" global="true" showEffect="fade" hideEffect="explode"
-                header="Initiating destroy process" severity="alert"&gt;
-
-        &lt;p:commandButton value="Yes Sure" styleClass="ui-confirmdialog-yes"/&gt;
-        &lt;p:commandButton value="Not Yet" styleClass="ui-confirmdialog-no"/&gt; 
-
+    &lt;p:confirmDialog global="true" showEffect="fade" hideEffect="explode"&gt;
+        &lt;p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes"/&gt;
+        &lt;p:commandButton value="Not" type="button" styleClass="ui-confirmdialog-no"/&gt; 	
     &lt;/p:confirmDialog&gt;
 
 &lt;/h:form&gt;
-</pre>
-				</p:tab>
-				
-				<p:tab title="ButtonBean.java">
-				<pre name="code" class="java">
+                    </pre>
+                </p:tab>
+
+                <p:tab title="ButtonBean.java">
+                    <pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import javax.faces.application.FacesMessage;
@@ -65,13 +62,10 @@ public class ButtonBean {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 }
-				</pre>
-				</p:tab>
-			</p:tabView>
-			
-		
-	
-           </div>
-    
-	</ui:define>
+                    </pre>
+                </p:tab>
+            </p:tabView>
+        </div>
+
+    </ui:define>
 </ui:composition>
