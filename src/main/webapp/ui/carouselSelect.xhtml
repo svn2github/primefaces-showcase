@@ -30,7 +30,7 @@
                         <h:outputText value="Model: " /><h:outputText id="model" value="#{car.model}" />
                     </h:panelGrid>
 
-                    <p:commandLink id="view" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">
+                    <p:commandLink id="view" update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
                         <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
                         <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
                     </p:commandLink>
@@ -70,7 +70,7 @@
             &lt;h:outputText value="Model: " /&gt;&lt;h:outputText id="model" value="\#{car.model}" /&gt;
         &lt;/h:panelGrid&gt;
 
-        &lt;p:commandLink id="view" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
+        &lt;p:commandLink id="view" update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail"&gt;
             &lt;h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" /&gt; 
             &lt;f:setPropertyActionListener value="\#{car}" 
                     target="\#{tableBean.selectedCar}" /&gt;

@@ -36,7 +36,7 @@
         <p:confirmDialog header="Oooops!!!" severity="alert" 
                          visible="#{not empty param['expired']}" 
                          message="View has expired." widgetVar="confirmDlg">
-            <p:commandButton type="button" value="OK" onclick="confirmDlg.hide()" />
+            <p:commandButton type="button" value="OK" onclick="PF('confirmDlg').hide()" />
         </p:confirmDialog>
 
 	</ui:define>

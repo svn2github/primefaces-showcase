@@ -14,9 +14,9 @@
 				</p>
 
 				<h3>Wipe with Manual Controls</h3>
-				<p:commandButton type="button" onclick="switcher.previous();"
+				<p:commandButton type="button" onclick="PF('switcher').previous();"
 					icon="ui-icon-circle-triangle-w" id="prev"/>
-				<p:commandButton type="button" onclick="switcher.next();"
+				<p:commandButton type="button" onclick="PF('switcher').next();"
 					icon="ui-icon-circle-triangle-e" id="next"/>
 
 				<p:imageSwitch effect="wipe" widgetVar="switcher" id="manuelSwitcher"
@@ -73,9 +73,9 @@
 					<pre name="code" class="xml">
 					
 &lt;h3&gt;Wipe with Manual Controls&lt;/h3&gt;
-&lt;p:commandButton type="button" onclick="switcher.previous();"
+&lt;p:commandButton type="button" onclick="PF('switcher').previous();"
                 icon="ui-icon-circle-triangle-w"/&gt;
-&lt;p:commandButton type="button" onclick="switcher.next();"
+&lt;p:commandButton type="button" onclick="PF('switcher').next();"
                 icon="ui-icon-circle-triangle-e"/&gt;
 
 &lt;p:imageSwitch effect="wipe" widgetVar="switcher" slideshowAuto="false"&gt;

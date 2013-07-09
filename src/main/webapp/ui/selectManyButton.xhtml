@@ -21,7 +21,7 @@
                 
                 <p:separator style="margin-bottom:20px"/>
 
-                <p:commandButton id="submit" value="Submit" oncomplete="dlg.show()" update="display" />
+                <p:commandButton id="submit" value="Submit" oncomplete="PF('dlg').show()" update="display" />
 
                 <p:dialog id="dialog" header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
                     <p:dataList id="display" value="#{formBean.selectedOptions}" var="option">
@@ -45,7 +45,7 @@
 
     &lt;p:separator style="margin-bottom:20px"/&gt;
 
-    &lt;p:commandButton value="Submit" oncomplete="dlg.show()" update="display" /&gt;
+    &lt;p:commandButton value="Submit" oncomplete="PF('dlg').show()" update="display" /&gt;
 
     &lt;p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg"&gt;
         &lt;p:dataList id="display" value="\#{formBean.selectedOptions}" var="option"&gt;

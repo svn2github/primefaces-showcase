@@ -47,7 +47,7 @@
 				
                 <p:separator style="margin-top:20px"/>
                 
-                <p:commandButton value="Submit" id="submit" update="display" style="margin:10px 0" oncomplete="textDialog.show()" />
+                <p:commandButton value="Submit" id="submit" update="display" style="margin:10px 0" oncomplete="PF('textDialog').show()" />
                 
                 <p:dialog modal="true" widgetVar="textDialog" showEffect="fade" width="200" resizable="false" header="Selected Values">
                     <p:outputPanel id="display">
@@ -99,7 +99,7 @@
 
     &lt;p:separator style="margin-top:20px"/&gt;
 
-    &lt;p:commandButton value="Submit" id="submit" update="display" style="margin:10px 0" oncomplete="textDialog.show()" /&gt;
+    &lt;p:commandButton value="Submit" id="submit" update="display" style="margin:10px 0" oncomplete="PF('textDialog').show()" /&gt;
 
     &lt;p:dialog modal="true" widgetVar="textDialog" showEffect="fade" width="200" resizable="false" header="Selected Values"&gt;
         &lt;p:outputPanel id="display"&gt;

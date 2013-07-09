@@ -22,8 +22,8 @@
 			</p:imageSwitch>
 		
 			<p:contextMenu id="contextMenuId" for="images" style="z-index:50">
-				<p:menuitem value="Previous" url="javascript:void(0)" onclick="gallery.previous()" icon="ui-icon-triangle-1-w" />
-				<p:menuitem value="Next" url="javascript:void(0)" onclick="gallery.next()" icon="ui-icon-triangle-1-e" />
+				<p:menuitem value="Previous" url="javascript:void(0)" onclick="PF('gallery').previous()" icon="ui-icon-triangle-1-w" />
+				<p:menuitem value="Next" url="javascript:void(0)" onclick="PF('gallery').next()" icon="ui-icon-triangle-1-e" />
 				<p:menuitem value="Remove All" url="javascript:void(0)" onclick="$('#images').fadeOut()" icon="ui-icon-close"/>
 			</p:contextMenu>
 						
@@ -40,8 +40,8 @@
 &lt;/p:imageSwitch&gt;
 
 &lt;p:contextMenu for="images" style="z-index:50"&gt;
-    &lt;p:menuitem value="Previous" url="javascript:void(0)" onclick="gallery.previous()" icon="ui-icon-triangle-1-w" /&gt;
-    &lt;p:menuitem value="Next" url="javascript:void(0)" onclick="gallery.next()" icon="ui-icon-triangle-1-e" /&gt;
+    &lt;p:menuitem value="Previous" url="javascript:void(0)" onclick="PF('gallery').previous()" icon="ui-icon-triangle-1-w" /&gt;
+    &lt;p:menuitem value="Next" url="javascript:void(0)" onclick="PF('gallery').next()" icon="ui-icon-triangle-1-e" /&gt;
     &lt;p:menuitem value="Remove All" url="javascript:void(0)" onclick="$('\#images').fadeOut()" icon="ui-icon-close"/&gt;
 &lt;/p:contextMenu&gt;
 </pre>

@@ -52,8 +52,8 @@
 			</p:imageSwitch>
 
             <h3>Wipe with Manual Controls</h3>
-            <span onclick="switcher.previous();">Previous</span>
-			<span onclick="switcher.next();">Next</span>
+            <span onclick="PF('switcher').previous();">Previous</span>
+			<span onclick="PF('switcher').next();">Next</span>
             
             <p:imageSwitch effect="wipe" widgetVar="switcher" slideshowAuto="false">
                 <ui:repeat value="#{imageSwitchBean.images}" var="image">
@@ -65,7 +65,43 @@
 			<p:tabView>
 				<p:tab title="imageSwitchEffect.xhtml">
                     <pre name="code" class="xml">
+&lt;h3&gt;Fade&lt;/h3&gt;
+&lt;p:imageSwitch effect="fade"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
 
+&lt;h3&gt;Zoom&lt;/h3&gt;
+&lt;p:imageSwitch effect="zoom"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
+
+&lt;h3&gt;TurnDown&lt;/h3&gt;
+&lt;p:imageSwitch effect="turnDown"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
+
+&lt;h3&gt;Shuffle&lt;/h3&gt;
+&lt;p:imageSwitch effect="shuffle"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
+
+&lt;h3&gt;Wipe with Manual Controls&lt;/h3&gt;
+&lt;span onclick="PF('switcher').previous();"&gt;Previous&lt;/span&gt;
+&lt;span onclick="PF('switcher').next();"&gt;Next&lt;/span&gt;
+
+&lt;p:imageSwitch effect="wipe" widgetVar="switcher" slideshowAuto="false"&gt;
+    &lt;ui:repeat value="\#{imageSwitchBean.images}" var="image"&gt;
+        &lt;p:graphicImage value="/images/\#{image}" /&gt;
+    &lt;/ui:repeat&gt;
+&lt;/p:imageSwitch&gt;
                     </pre>
 				</p:tab>
 

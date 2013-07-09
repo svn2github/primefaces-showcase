@@ -20,7 +20,7 @@
 
                 <p:separator style="margin-bottom:10px"/>
                 
-                <p:commandButton id="submit" value="Submit" update="display" oncomplete="dlg.show()" />
+                <p:commandButton id="submit" value="Submit" update="display" oncomplete="PF('dlg').show()" />
 
                 <p:dialog id="dialog" header="Selected Movies" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg" resizable="false">
                     <p:dataList id="display" value="#{formBean.selectedMovies}" var="movie">
@@ -42,7 +42,7 @@
 
     &lt;p:separator style="margin-bottom:10px"/&gt;
 
-    &lt;p:commandButton value="Submit" update="display" oncomplete="dlg.show()" /&gt;
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" /&gt;
 
     &lt;p:dialog header="Selected Movies" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg" resizable="false"&gt;
         &lt;p:dataList id="display" value="\#{formBean.selectedMovies}" var="movie"&gt;

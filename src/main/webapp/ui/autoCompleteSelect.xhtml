@@ -29,7 +29,7 @@
 					
 					</h:panelGrid>
 					
-					<p:commandButton value="Submit" id="submit" update="display" oncomplete="dialog.show()" />
+					<p:commandButton value="Submit" id="submit" update="display" oncomplete="PF('dialog').show()" />
 				</p:panel>
 
 				<p:dialog header="Values" widgetVar="dialog"
@@ -70,7 +70,7 @@
 
         &lt;/h:panelGrid&gt;
 
-        &lt;p:commandButton value="Submit" id="submit" update="display" oncomplete="dialog.show()" /&gt;
+        &lt;p:commandButton value="Submit" id="submit" update="display" oncomplete="PF('dialog').show()" /&gt;
     &lt;/p:panel&gt;
 
     &lt;p:dialog header="Values" widgetVar="dialog"

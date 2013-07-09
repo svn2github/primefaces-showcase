@@ -47,7 +47,7 @@
 
 	<p:menubar>
 		<p:submenu icon="appleIcon">
-			<p:menuitem value="About This Mac" url="#" onclick="info.show();" icon="ui-icon ui-icon-info"></p:menuitem>
+			<p:menuitem value="About This Mac" url="#" onclick="PF('info').show();" icon="ui-icon ui-icon-info"></p:menuitem>
 		</p:submenu>
 				
 		<p:submenu label="Finder">
@@ -94,7 +94,7 @@
 	<p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade"
               styleClass="terminalDialog">
         <h:form>
-            <p:terminal widgetVar="term" commandHandler="#{terminalController.handleCommand}" width="590px"
+            <p:terminal commandHandler="#{terminalController.handleCommand}" style="width:590px"
                     welcomeMessage="Welcome to PrimeFaces Terminal, how are you today? Try date and greet  commands."/>
         </h:form>
     </p:dialog>
@@ -107,7 +107,7 @@
 
 &lt;p:menubar&gt;
 	&lt;p:submenu icon="appleIcon" label="&nbsp;"&gt;
-		&lt;p:menuitem value="About This Mac" url="\#" onclick="info.show();"&gt;&lt;/p:menuitem&gt;
+		&lt;p:menuitem value="About This Mac" url="\#" onclick="PF('info').show();"&gt;&lt;/p:menuitem&gt;
 	&lt;/p:submenu&gt;
 			
 	&lt;p:submenu label="Finder"&gt;
@@ -149,7 +149,7 @@
 
 &lt;p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade"&gt;
     &lt;h:form&gt;
-        &lt;p:terminal widgetVar="term" commandHandler="\#{terminalController.handleCommand}" width="590px"
+        &lt;p:terminal widgetVar="term" commandHandler="\#{terminalController.handleCommand}" style="width:590px"
                 welcomeMessage="Welcome to PrimeFaces Terminal, how are you today? Try date and greet  commands."/&gt;
     &lt;/h:form&gt;
 &lt;/p:dialog&gt;
@@ -164,7 +164,7 @@
 
 &lt;p:dock&gt;
 	&lt;p:menuitem label="Finder" icon="/images/macosx/finder.png" url="\#" /&gt;
-	&lt;p:menuitem label="Terminal" icon="/images/macosx/terminal.png" url="\#" onclick="terminal.show();term.focus();"/&gt;
+	&lt;p:menuitem label="Terminal" icon="/images/macosx/terminal.png" url="\#" onclick="PF('terminal').show();"/&gt;
 	&lt;p:menuitem label="Safari" icon="/images/macosx/safari.png" url="\#" /&gt;
 	&lt;p:menuitem label="iTunes" icon="/images/macosx/itunes.png" url="\#"/&gt;
 	&lt;p:menuitem label="iChat" icon="/images/macosx/ichat.png" url="\#"/&gt;
@@ -184,7 +184,7 @@
 	
 	<p:dock>
 		<p:menuitem value="Finder" icon="/images/macosx/finder.png" url="#" />
-		<p:menuitem value="Terminal" icon="/images/macosx/terminal.png" url="#" onclick="terminal.show();term.focus();"/>
+		<p:menuitem value="Terminal" icon="/images/macosx/terminal.png" url="#" onclick="PF('terminal').show();"/>
 		<p:menuitem value="Safari" icon="/images/macosx/safari.png" url="#" />
 		<p:menuitem value="iTunes" icon="/images/macosx/itunes.png" url="#"/>
 		<p:menuitem value="iChat" icon="/images/macosx/ichat.png" url="#"/>

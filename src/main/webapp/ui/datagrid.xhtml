@@ -30,7 +30,7 @@
 
                             <h:outputText value="#{car.year}" />
 
-                            <p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail" >
+                            <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail" >
                                 <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
                                 <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
                             </p:commandLink>
@@ -76,7 +76,7 @@
 
                 &lt;h:outputText value="\#{car.year}" /&gt;
 
-                &lt;p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
+                &lt;p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail"&gt;
                     &lt;h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" /&gt; 
                     &lt;f:setPropertyActionListener value="\#{car}" 
                             target="\#{tableBean.selectedCar}" /&gt;

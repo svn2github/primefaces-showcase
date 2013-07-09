@@ -25,7 +25,7 @@
                 <p:dataTable id="cars" var="car" value="#{tableBean.mediumCarsModel}" paginator="true" rows="10"
                              selection="#{tableBean.selectedCar}" selectionMode="single">
                     
-                    <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="carDialog.show()" />
+                    <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display :form:growl" oncomplete="PF('carDialog').show()" />
                     <p:ajax event="rowUnselect" listener="#{tableBean.onRowUnselect}" update=":form:growl"/>
                     
                     <f:facet name="header">
@@ -86,7 +86,7 @@
                  selection="\#{tableBean.selectedCar}" selectionMode="single"&gt;
 
         &lt;p:ajax event="rowSelect" listener="\#{tableBean.onRowSelect}" 
-                    update=":form:display :form:growl" oncomplete="carDialog.show()" /&gt;
+                    update=":form:display :form:growl" oncomplete="PF('carDialog').show()" /&gt;
         &lt;p:ajax event="rowUnselect" listener="\#{tableBean.onRowUnselect}" update=":form:growl"/&gt;
 
         &lt;f:facet name="header"&gt;

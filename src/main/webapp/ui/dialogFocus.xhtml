@@ -13,7 +13,7 @@
 			<p>By default, the first input field receives focus automatically. It can be changed by using focus attribute.</p>
 
             <h:form id="form">		
-				<p:commandButton id="dynamicDialogButton" value="Dynamic Focus" onclick="dlg.show();" type="button" icon="ui-icon-extlink"/> 
+				<p:commandButton id="dynamicDialogButton" value="Dynamic Focus" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink"/> 
 	
 				<p:dialog id="dialog" header="Dynamic Focus" widgetVar="dlg" focus="surname">
 					
@@ -36,7 +36,7 @@
 					<p:tab title="dialogFocus.xhtml">
 				<pre name="code" class="xml">
 &lt;h:form&gt;
-    &lt;p:commandButton id="dynamicDialogButton" value="Dynamic Focus" onclick="dlg.show();" type="button" 
+    &lt;p:commandButton id="dynamicDialogButton" value="Dynamic Focus" onclick="PF('dlg').show();" type="button" 
                      icon="ui-icon-extlink"/&gt;
 
     &lt;p:dialog id="dialog" header="Dynamic Focus" widgetVar="dlg" focus="surname"&gt;

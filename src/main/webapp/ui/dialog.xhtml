@@ -37,11 +37,11 @@
 					<p:tab title="dialog.xhtml">
 				<pre name="code" class="xml">	
 &lt;h:panelGrid columns="1" cellpadding="5"&gt;
-    &lt;p:commandButton id="basic" value="Basic" onclick="dlg1.show();" type="button" /&gt;
+    &lt;p:commandButton id="basic" value="Basic" onclick="PF('dlg1').show();" type="button" /&gt;
 
-    &lt;p:commandButton id="modalDialogButton" value="Modal" onclick="dlg2.show();" type="button"/&gt;
+    &lt;p:commandButton id="modalDialogButton" value="Modal" onclick="PF('dlg2').show();" type="button"/&gt;
 
-    &lt;p:commandButton id="effectsDialogButton" value="Effects" onclick="dlg3.show();" type="button" /&gt;
+    &lt;p:commandButton id="effectsDialogButton" value="Effects" onclick="PF('dlg3').show();" type="button" /&gt;
 &lt;/h:panelGrid&gt;
 
 &lt;p:dialog id="basicDialog" header="Basic Dialog" widgetVar="dlg1"&gt;

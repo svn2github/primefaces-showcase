@@ -48,7 +48,7 @@
 
                     <f:facet name="footer">
                         <p:commandButton id="viewButton" value="View" icon="ui-icon-search"
-                                         update=":form:displaySingle" oncomplete="singleCarDialog.show()"/>
+                                         update=":form:displaySingle" oncomplete="PF('singleCarDialog').show()"/>
                     </f:facet>
                 </p:dataTable>
 
@@ -81,7 +81,7 @@
 
                     <f:facet name="footer">
                         <p:commandButton id="multiViewButton" value="View" icon="ui-icon-search"
-                                         update=":form:displayMulti" oncomplete="multiCarDialog.show()"/>
+                                         update=":form:displayMulti" oncomplete="PF('multiCarDialog').show()"/>
                     </f:facet>
                 </p:dataTable>
 
@@ -152,7 +152,7 @@
 
         &lt;f:facet name="footer"&gt;
             &lt;p:commandButton id="viewButton" value="View" icon="ui-icon-search"
-                             update=":form:displaySingle" oncomplete="singleCarDialog.show()"/&gt;
+                             update=":form:displaySingle" oncomplete="PF('singleCarDialog').show()"/&gt;
         &lt;/f:facet&gt;
     &lt;/p:dataTable&gt;
 
@@ -185,7 +185,7 @@
 
         &lt;f:facet name="footer"&gt;
             &lt;p:commandButton id="multiViewButton" value="View" icon="ui-icon-search"
-                             update=":form:displayMulti" oncomplete="multiCarDialog.show()"/&gt;
+                             update=":form:displayMulti" oncomplete="PF('multiCarDialog').show()"/&gt;
         &lt;/f:facet&gt;
     &lt;/p:dataTable&gt;
 

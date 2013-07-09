@@ -23,8 +23,8 @@
             <p>Polling can be started and stopped manually on demand.</p>
 
             <h:form id="form">
-                <p:commandButton type="button" value="Start" icon="ui-icon-play" onclick="poll.start()" id="btnStart" />
-                <p:commandButton type="button" value="Stop" icon="ui-icon-pause" onclick="poll.stop()" id="btnStop" />
+                <p:commandButton type="button" value="Start" icon="ui-icon-play" onclick="PF('poll').start()" id="btnStart" />
+                <p:commandButton type="button" value="Stop" icon="ui-icon-pause" onclick="PF('poll').stop()" id="btnStop" />
 
                 <br /><br />
 
@@ -41,9 +41,9 @@
 &lt;h:form id="form"&gt;
 
     &lt;p:commandButton type="button" value="Start"
-            icon="ui-icon-play" onclick="poll.start()" id="btnStart" /&gt;
+            icon="ui-icon-play" onclick="PF('poll').start()" id="btnStart" /&gt;
     &lt;p:commandButton type="button" value="Stop"
-            icon="ui-icon-pause" onclick="poll.stop()" id="btnStop" /&gt;
+            icon="ui-icon-pause" onclick="PF('poll').stop()" id="btnStop" /&gt;
 
     &lt;h:outputText id="txt_count" value="\#{counterBean.count}" /&gt;
 

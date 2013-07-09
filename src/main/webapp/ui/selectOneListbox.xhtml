@@ -48,7 +48,7 @@
 
                 <p:separator />
 
-                <p:commandButton id="submitButton" value="Submit" update="display" oncomplete="dlg.show()" />
+                <p:commandButton id="submitButton" value="Submit" update="display" oncomplete="PF('dlg').show()" />
 
                 <p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
                     <h:panelGrid columns="2" id="display">
@@ -93,7 +93,7 @@
 
     &lt;p:separator />
 
-    &lt;p:commandButton id="submitButton" value="Submit" update="display" oncomplete="dlg.show()" />
+    &lt;p:commandButton id="submitButton" value="Submit" update="display" oncomplete="PF('dlg').show()" />
 
     &lt;p:dialog header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
         &lt;h:panelGrid columns="2" id="display">

@@ -34,12 +34,12 @@
                         <p:inputMask id="key" value="#{maskController.productKey}" mask="a*-999-a999"/>
 
                         <p:commandButton value="Reset" type="reset" />
-                        <p:commandButton value="Submit" id="submit" update="display" oncomplete="dialog.show()"/>
+                        <p:commandButton value="Submit" id="submit" update="display" oncomplete="PF('dlg').show()"/>
 
                     </h:panelGrid>
                 </p:panel>
 
-                <p:dialog widgetVar="dialog" id="modalDialog" modal="true">
+                <p:dialog widgetVar="dlg" modal="true">
                     <h:panelGrid id="display" columns="2" cellpadding="5">
 
                         <h:outputText value="Date: " />
@@ -94,12 +94,12 @@
 			&lt;p:inputMask value="\#{maskController.productKey}" mask="a*-999-a999"/&gt;
 		
 			&lt;p:commandButton value="Reset" type="reset" /&gt;
-			&lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()"/&gt;
+			&lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()"/&gt;
 
 		&lt;/h:panelGrid&gt;
 	&lt;/p:panel&gt;
 	
-	&lt;p:dialog widgetVar="dialog" modal="true"&gt;
+	&lt;p:dialog widgetVar="dlg" modal="true"&gt;
 		&lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
 	
 			&lt;h:outputText value="Date: " /&gt;

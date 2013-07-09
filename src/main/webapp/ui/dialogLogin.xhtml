@@ -26,7 +26,7 @@
 			<p>This example demonstrates how to create a login dialog. Correct combination is (admin-admin)</p>
 				
                 <h:form id="form">		
-                    <h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login">	
+                    <h:outputLink id="loginLink" value="javascript:void(0)" onclick="PF('dlg').show()" title="login">	
                         <p:graphicImage value="/images/login.png" />
                     </h:outputLink>
 
@@ -55,7 +55,7 @@
 					<p:tab title="dialogLogin.xhtml">
 				<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
-    &lt;h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login"&gt;	
+    &lt;h:outputLink id="loginLink" value="javascript:void(0)" onclick="PF('dlg').show()" title="login"&gt;	
         &lt;p:graphicImage value="/images/login.png" /&gt;
     &lt;/h:outputLink&gt;
 

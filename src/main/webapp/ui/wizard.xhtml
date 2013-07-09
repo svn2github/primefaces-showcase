@@ -48,7 +48,7 @@
                 
                 <p:growl id="growl" sticky="true" showDetail="true"/>
 
-                <p:wizard widgetVar="wiz" flowListener="#{userWizard.onFlowProcess}">
+                <p:wizard flowListener="#{userWizard.onFlowProcess}">
 
                     <p:tab id="personal" title="Personal">
 
@@ -172,8 +172,7 @@
 
     &lt;p:growl id="growl" sticky="true" showDetail="true"/&gt;
 
-	&lt;p:wizard widgetVar="wiz"
-			flowListener="\#{userWizard.onFlowProcess}"&gt;
+	&lt;p:wizard flowListener="\#{userWizard.onFlowProcess}"&gt;
 	
 		&lt;p:tab id="personal" title="Personal"&gt;
 

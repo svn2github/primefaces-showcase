@@ -49,7 +49,7 @@
             
             	<br />
             	
-            	<p:commandButton value="Dialog" onclick="dlg.show()" type="button"/>
+            	<p:commandButton value="Dialog" onclick="PF('dlg').show()" type="button"/>
             	
             	<br /><br />
             	
@@ -129,9 +129,13 @@
 
     &lt;p:separator /&gt;
 
+    &lt;p:dialog header="Dialog" widgetVar="dlg" minHeight="40" modal="true"&gt;
+        &lt;h:outputText value="Resistance to PrimeFaces is futile!" /&gt;
+    &lt;/p:dialog&gt;	
+
     &lt;br /&gt;
 
-    &lt;p:commandButton value="Button" /&gt;
+    &lt;p:commandButton value="Dialog" onclick="PF('dlg').show()" type="button"/&gt;
 
     &lt;br /&gt;&lt;br /&gt;
 

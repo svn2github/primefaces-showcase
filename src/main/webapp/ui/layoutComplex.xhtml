@@ -113,7 +113,7 @@
                         </h:outputLink>
                     </p:lightBox>
 
-                    <p:commandButton id="basic" value="Show Dialog" onclick="dlg1.show();" type="button" style="margin-top:10px"/>
+                    <p:commandButton id="basic" value="Show Dialog" onclick="PF('dlg').show();" type="button" style="margin-top:10px"/>
 
                 </p:layoutUnit>
 
@@ -127,7 +127,7 @@
 
             </p:layout>
 
-            <p:dialog header="Basic Dialog" widgetVar="dlg1" modal="true">
+            <p:dialog header="Basic Dialog" widgetVar="dlg" modal="true">
                 <h:outputText value="Resistance to PrimeFaces is futile!" />
             </p:dialog>
 

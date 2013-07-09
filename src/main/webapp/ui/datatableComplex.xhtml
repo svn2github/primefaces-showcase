@@ -28,7 +28,7 @@
 				<p:dataTable var="car" value="#{tableBean.cars}" rowKey="#{car.model}" paginator="true" rows="10"
                             selection="#{tableBean.selectedCar}" selectionMode="single"  filteredValue="#{tableBean.filteredCars}" id="carsTable">
                     
-                    <p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" />
+                    <p:ajax event="rowSelect" update=":form:display" oncomplete="PF('carDialog').show()" />
 
                     <f:facet name="header">
                         List of Cars
@@ -62,20 +62,20 @@
                         </f:facet>
 
                         <h:outputText value="Model:" />
-                        <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold" id="model"/>
+                        <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold" />
 
                         <h:outputText value="Year:" />
-                        <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold" id="year"/>
+                        <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold" />
 
                         <h:outputText value="Manufacturer:" />
-                        <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold" id="manufacturer"/>
+                        <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold" />
 
                         <h:outputText value="Color:" />
-                        <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold" id="color"/>
+                        <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold" />
                     </h:panelGrid>
                 </p:dialog>
 			
-		</h:form>
+            </h:form>
 			
 			<h3>Source</h3>
 			<p:tabView>
@@ -86,25 +86,25 @@
     &lt;p:dataTable var="car" value="\#{tableBean.cars}" rowKey="\#{car.model}" paginator="true" rows="10"
                 selection="\#{tableBean.selectedCar}" selectionMode="single" filteredValue="\#{tableBean.filteredCars}" id="carsTable"&gt;
 
-        &lt;p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" /&gt;
+        &lt;p:ajax event="rowSelect" update=":form:display" oncomplete="PF('carDialog').show()" /&gt;
 
         &lt;f:facet name="header"&gt;
             List of Cars
         &lt;/f:facet&gt;
 
-        &lt;p:column headerText="Model" sortBy="\#{car.model}" filterBy="\#{car.model}" id="model"&gt;
+        &lt;p:column headerText="Model" sortBy="\#{car.model}" filterBy="\#{car.model}" &gt;
             \#{car.model}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" sortBy="\#{car.year}" filterBy="\#{car.year}" id="year"&gt;
+        &lt;p:column headerText="Year" sortBy="\#{car.year}" filterBy="\#{car.year}" &gt;
             \#{car.year}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" sortBy="\#{car.manufacturer}" filterBy="\#{car.manufacturer}" id="manufacturer"&gt;
+        &lt;p:column headerText="Manufacturer" sortBy="\#{car.manufacturer}" filterBy="\#{car.manufacturer}" &gt;
             \#{car.manufacturer}
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" sortBy="\#{car.color}" filterBy="\#{car.color}" id="color"&gt;
+        &lt;p:column headerText="Color" sortBy="\#{car.color}" filterBy="\#{car.color}" &gt;
             \#{car.color}"
         &lt;/p:column&gt;
 

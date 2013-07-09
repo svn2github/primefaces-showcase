@@ -15,14 +15,16 @@
         <script type="text/javascript">
             //<![CDATA[
 function start() {
-    startButton1.disable();
+    PF('startButton1').disable();
+    
     window['progress'] = setInterval(function() {
-        var oldValue = pbClient.getValue(),
+        var pbClient = PF('pbClient'),
+        oldValue = pbClient.getValue(),
         newValue = oldValue + 10;
                 
         pbClient.setValue(pbClient.getValue() + 10);
     
-        if(newValue == 100) {
+        if(newValue === 100) {
             clearInterval(window['progress']);
         }
         
@@ -32,8 +34,8 @@ function start() {
 
 function cancel() {
     clearInterval(window['progress']);
-    pbClient.setValue(0);
-    startButton1.enable();
+    PF('pbClient').setValue(0);
+    PF('startButton1').enable();
 }
             //]]>
         </script>
@@ -57,7 +59,7 @@ function cancel() {
 				<p:progressBar id="progressBarClient" widgetVar="pbClient" style="width:300px"/>
 	 
 				<h3>Advanced Ajax ProgressBar</h3>
-				<p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2" />
+				<p:commandButton value="Start" type="button" onclick="PF('pbAjax').start();PF('startButton2').disable();" widgetVar="startButton2" />
 				<p:commandButton value="Cancel" actionListener="#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" />
 				<br /><br />
 				<p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBean.progress}" labelTemplate="{value}%" styleClass="animated">
@@ -84,7 +86,7 @@ function cancel() {
     &lt;p:progressBar id="progressBarClient" widgetVar="pbClient" style="width:300px"/&gt;
 
     &lt;h3&gt;Ajax ProgressBar with Growl Integration&lt;/h3&gt;
-    &lt;p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2" /&gt;
+    &lt;p:commandButton value="Start" type="button" onclick="PF('pbAjax').start();PF('startButton2').disable();" widgetVar="startButton2" /&gt;
     &lt;p:commandButton value="Cancel" actionListener="\#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" /&gt;
 
     &lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}" labelTemplate="{value}%" styleClass="animated"&gt;
@@ -100,14 +102,16 @@ function cancel() {
 				<pre name="code" class="javascript">
 &lt;script type="text/javascript"&gt;
 	function start() {
-        startButton1.disable();
+        PF('startButton1').disable();
+
         window['progress'] = setInterval(function() {
-            var oldValue = pbClient.getValue(),
+            var pbClient = PF('pbClient'),
+            oldValue = pbClient.getValue(),
             newValue = oldValue + 10;
 
             pbClient.setValue(pbClient.getValue() + 10);
 
-            if(newValue == 100) {
+            if(newValue === 100) {
                 clearInterval(window['progress']);
             }
 
@@ -117,8 +121,8 @@ function cancel() {
 
     function cancel() {
         clearInterval(window['progress']);
-        pbClient.setValue(0);
-        startButton1.enable();
+        PF('pbClient').setValue(0);
+        PF('startButton1').enable();
     }
 &lt;/script&gt;
 				</pre>

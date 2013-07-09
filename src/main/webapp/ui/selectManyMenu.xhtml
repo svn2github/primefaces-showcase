@@ -46,7 +46,7 @@
 
                 </h:panelGrid>
 
-                <p:commandButton id="btn" value="Submit" update="display" oncomplete="dlg.show()" />
+                <p:commandButton id="btn" value="Submit" update="display" oncomplete="PF('dlg').show()" />
 
                 <p:dialog id="dialog" header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg">
                     <p:outputPanel id="display">
@@ -93,7 +93,7 @@
 
     &lt;/h:panelGrid&gt;
 
-    &lt;p:commandButton id="btn" value="Submit" update="display" oncomplete="dlg.show()" /&gt;
+    &lt;p:commandButton id="btn" value="Submit" update="display" oncomplete="PF('dlg').show()" /&gt;
 
     &lt;p:dialog id="dialog" header="Selected Values" modal="true" showEffect="fade" hideEffect="fade" widgetVar="dlg"&gt;
         &lt;p:outputPanel id="display"&gt;

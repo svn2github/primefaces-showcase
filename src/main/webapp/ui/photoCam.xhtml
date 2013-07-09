@@ -17,7 +17,7 @@
                 <h:panelGrid columns="3">
                     <p:photoCam widgetVar="pc" listener="#{photoCamBean.oncapture}" update="photos"/>
                     
-                    <p:commandButton type="button" value="Capture" onclick="pc.capture()"/>
+                    <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/>
                     
                     <p:imageSwitch effect="zoom" id="photos">
                         <ui:repeat value="#{photoCamBean.photos}" var="photo">
@@ -37,7 +37,7 @@
     &lt;h:panelGrid columns="3"&gt;
         &lt;p:photoCam widgetVar="pc" listener="\#{photoCamBean.oncapture}" update="photos"/&gt;
 
-        &lt;p:commandButton type="button" value="Capture" onclick="pc.capture()"/&gt;
+        &lt;p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/&gt;
 
         &lt;p:imageSwitch effect="zoom" id="photos"&gt;
             &lt;ui:repeat value="\#{photoCamBean.photos}" var="photo"&gt;

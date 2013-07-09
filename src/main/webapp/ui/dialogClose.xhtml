@@ -15,7 +15,7 @@
 
                 <p:growl id="growl" sticky="true" showDetail="true"/>
 
-                <h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="dlg.show()">Show the Picture of the Day</h:outputLink>
+                <h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="PF('dlg').show()">Show the Picture of the Day</h:outputLink>
 
                 <p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" width="425"
                     resizable="false" showEffect="clip" hideEffect="clip">
@@ -36,7 +36,7 @@
 
     &lt;p:growl id="growl" sticky="true" showDetail="true"/&gt;
 
-    &lt;h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="dlg.show()"&gt;Show the Picture of the Day&lt;/h:outputLink&gt;
+    &lt;h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="PF('dlg').show()"&gt;Show the Picture of the Day&lt;/h:outputLink&gt;
 
     &lt;p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" width="425"
         resizable="false" showEffect="clip" hideEffect="clip"&gt;

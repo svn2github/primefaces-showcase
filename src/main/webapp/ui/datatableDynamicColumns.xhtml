@@ -13,13 +13,13 @@
             on-the-fly it is easy to add/remove columns programmatically. Column template below is a white-space separated values that can be a combination
             of "model", "manufacturer", "color" and "year".</p>
 
-            <h:form id="form">
+            <h:form>
                 
-                <h:panelGrid id="grid" columns="3" style="margin-bottom:10px">
+                <h:panelGrid columns="3" style="margin-bottom:10px">
                     <h:outputLabel for="template" value="Template:" style="font-weight:bold"/>
                     <p:inputText id="template" value="#{tableBean.columnTemplate}" size="50"/>
-                    <p:commandButton id="btn" update="cars" actionListener="#{tableBean.updateColumns}" value="Update" process="@parent"
-                                     onclick="carsTable.clearFilters()"/>
+                    <p:commandButton update="cars" actionListener="#{tableBean.updateColumns}" value="Update" process="@parent"
+                                     onclick="PF('carsTable').clearFilters()"/>
                 </h:panelGrid>
 
                 <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" widgetVar="carsTable" filteredValue="#{tableBean.filteredCars}">                    
@@ -40,17 +40,18 @@
 		<p:tabView>
 			<p:tab title="datatableDynamicColumns.xhtml (3.x)">
                 <pre name="code" class="xml">
-&lt;h:form id="form"&gt;
-                
-    &lt;h:panelGrid id="grid" columns="3" style="margin-bottom:10px"&gt;
+&lt;h:form&gt;
+
+    &lt;h:panelGrid columns="3" style="margin-bottom:10px"&gt;
         &lt;h:outputLabel for="template" value="Template:" style="font-weight:bold"/&gt;
         &lt;p:inputText id="template" value="\#{tableBean.columnTemplate}" size="50"/&gt;
-        &lt;p:commandButton id="btn" update="cars" actionListener="\#{tableBean.updateColumns}" value="Update" process="@parent"/&gt;
+        &lt;p:commandButton update="cars" actionListener="\#{tableBean.updateColumns}" value="Update" process="@parent"
+                         onclick="PF('carsTable').clearFilters()"/&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" filteredValue="\#{tableBean.filteredCars}"&gt;                    
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" widgetVar="carsTable" filteredValue="\#{tableBean.filteredCars}"&gt;                    
         &lt;p:columns value="\#{tableBean.columns}" var="column" columnIndexVar="colIndex" 
-                    sortBy="\#{car[column.property]}" filterBy="\#{car[column.property]}"&gt;
+                    sortBy="\#{column.property}" filterBy="\#{column.property}"&gt;
             &lt;f:facet name="header"&gt;
                 \#{column.header}
             &lt;/f:facet&gt;

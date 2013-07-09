@@ -46,9 +46,9 @@
 
                 <br />
 
-                <p:commandButton value="Submit" update="display" oncomplete="dialog.show()"/>
+                <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()"/>
 				
-                <p:dialog widgetVar="dialog" showEffect="fade" hideEffect="fade" header="Values">
+                <p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Values">
                     <h:panelGrid columns="2" id="display" cellpadding="5">
 						<h:outputText value="Value1: " />
 						<h:outputText value="#{keyboardBean.value1}" />
@@ -130,9 +130,9 @@
         &lt;/h:panelGrid&gt;
     &lt;/p:panel&gt;
 
-    &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()"/&gt;
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()"/&gt;
 
-    &lt;p:dialog widgetVar="dialog" showEffect="fade" hideEffect="fade" header="Values"&gt;
+    &lt;p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Values"&gt;
         &lt;h:panelGrid columns="2" id="display" cellpadding="5"&gt;
             &lt;h:outputText value="Value1: " /&gt;
             &lt;h:outputText value="\#{keyboardBean.value1}" /&gt;

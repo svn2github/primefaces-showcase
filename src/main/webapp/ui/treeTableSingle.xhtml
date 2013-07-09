@@ -43,7 +43,7 @@
                     
                     <f:facet name="footer">
                         <p:commandButton id="singleBtn" value="View" icon="ui-icon-search"
-                                update=":form:documentPanel" oncomplete="documentDialog.show()"/>
+                                update=":form:documentPanel" oncomplete="PF('documentDialog').show()"/>
                     </f:facet>
 				</p:treeTable>
 				
@@ -100,7 +100,7 @@
 
         &lt;f:facet name="footer"&gt;
             &lt;p:commandButton id="singleBtn" value="View" icon="ui-icon-search"
-                    update=":form:documentPanel" oncomplete="documentDialog.show()"/&gt;
+                    update=":form:documentPanel" oncomplete="PF('documentDialog').show()"/&gt;
         &lt;/f:facet&gt;
     &lt;/p:treeTable&gt;
 

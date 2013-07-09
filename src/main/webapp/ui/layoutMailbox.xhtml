@@ -44,7 +44,7 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="40">
-                    <p:commandButton value="Compose" onclick="composeDlg.show()" type="button" icon="ui-icon-document"/>
+                    <p:commandButton value="Compose" onclick="PF('composeDlg').show()" type="button" icon="ui-icon-document"/>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="200" resizable="true" collapsible="true" header="MAILBOXES">
@@ -160,8 +160,8 @@
 
                     <p:separator />
 
-                    <p:commandButton value="Send" onclick="composeDlg.hide()" actionListener="#{mailbox.send}" update=":msg" process="@this"/>
-                    <p:commandButton value="Cancel" onclick="composeDlg.hide()" type="button"/>
+                    <p:commandButton value="Send" onclick="PF('composeDlg').hide()" actionListener="#{mailbox.send}" update=":msg" process="@this"/>
+                    <p:commandButton value="Cancel" onclick="PF('composeDlg').hide()" type="button"/>
 
                 </h:form>
 

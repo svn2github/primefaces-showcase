@@ -86,7 +86,7 @@
                 
                 <br />
                 
-                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" widgetVar="carsTable">                    
+                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}">                    
                     <p:columns value="#{tableBean.columns}" var="column">
                         <f:facet name="header">
                                 <h:outputText style="float:left;display:block;height:20px;width:10px;border:0 none;" styleClass="droppoint dropleft" />                           
@@ -118,7 +118,7 @@
         &lt;/p:treeNode&gt;
     &lt;/p:tree&gt;
 
-    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" widgetVar="carsTable"&gt;                    
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}"&gt;                    
         &lt;p:columns value="\#{tableBean.columns}" var="column"&gt;
             &lt;f:facet name="header"&gt;
                     &lt;h:outputText style="float:left;display:block;height:12px;width:10px;border:0 none;" styleClass="droppoint dropleft" /&gt;                           

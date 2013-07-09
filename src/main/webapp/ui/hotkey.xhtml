@@ -20,8 +20,8 @@
 				<p:graphicImage id="img4" value="/images/nature4.jpg" />
 			</p:imageSwitch>
 			
-			<p:hotkey bind="left" handler="switcher.previous();" />
-			<p:hotkey bind="right" handler="switcher.next();" />
+			<p:hotkey bind="left" handler="PF('switcher').previous();" />
+			<p:hotkey bind="right" handler="PF('switcher').next();" />
 			
 			<h3>Ajax Hotkey</h3>
 			<h:form>
@@ -51,8 +51,8 @@
     &lt;p:graphicImage value="/images/nature4.jpg" /&gt;
 &lt;/p:imageSwitch&gt;
 
-&lt;p:hotkey bind="left" handler="switcher.previous();" /&gt;
-&lt;p:hotkey bind="right" handler="switcher.next();" /&gt;
+&lt;p:hotkey bind="left" handler="PF('switcher').previous();" /&gt;
+&lt;p:hotkey bind="right" handler="PF('switcher').next();" /&gt;
 
 &lt;h3&gt;Ajax Hotkey&lt;/h3&gt;
 &lt;h:form&gt;

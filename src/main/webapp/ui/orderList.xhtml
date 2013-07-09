@@ -16,7 +16,7 @@
                 <p:orderList value="#{orderListBean.cities}" var="city" controlsLocation="none"
                              itemLabel="#{city}" itemValue="#{city}" id="basicList"/>
 
-                <p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px" id="btnCitySubmit"/>
+                <p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" id="btnCitySubmit"/>
                 
                 <h3>Pojo Support with Clip Effect, Captions, Custom Content and Reorder Controls</h3>
                 <p:orderList value="#{orderListBean.players}" var="player"
@@ -32,7 +32,7 @@
                     </p:column>
                 </p:orderList>
 
-                <p:commandButton value="Submit" update="displayPlayers" oncomplete="playerDialog.show()" style="margin-top:5px" id="btnPlayerSubmit"/>
+                <p:commandButton value="Submit" update="displayPlayers" oncomplete="PF('playerDialog').show()" style="margin-top:5px" id="btnPlayerSubmit"/>
 
                 <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" header="Cities" width="200" id="dlgCities">
                     <p:dataList id="displayCities" value="#{orderListBean.cities}" var="city">
@@ -61,7 +61,7 @@
     &lt;p:orderList value="\#{orderListBean.cities}" var="city" controlsLocation="none"
                  itemLabel="\#{city}" itemValue="\#{city}" id="basicList"/&gt;
 
-    &lt;p:commandButton value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px" id="btnCitySubmit"/&gt;
+    &lt;p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" id="btnCitySubmit"/&gt;
 
     &lt;h3&gt;Pojo Support with Clip Effect, Captions, Custom Content and Reorder Controls&lt;/h3&gt;
     &lt;p:orderList value="\#{orderListBean.players}" var="player"
@@ -77,7 +77,7 @@
         &lt;/p:column&gt;
     &lt;/p:orderList&gt;
 
-    &lt;p:commandButton value="Submit" update="displayPlayers" oncomplete="playerDialog.show()" style="margin-top:5px" id="btnPlayerSubmit"/&gt;
+    &lt;p:commandButton value="Submit" update="displayPlayers" oncomplete="PF('playerDialog').show()" style="margin-top:5px" id="btnPlayerSubmit"/&gt;
 
     &lt;p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" header="Cities" width="200" id="dlgCities"&gt;
         &lt;p:dataList id="displayCities" value="\#{orderListBean.cities}" var="city"&gt;

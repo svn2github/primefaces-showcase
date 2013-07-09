@@ -34,7 +34,7 @@
                             Cars
                         </f:facet>
 
-                        <p:commandButton icon="ui-icon-search" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">
+                        <p:commandButton icon="ui-icon-search" update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
                             <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />
                         </p:commandButton>
 
@@ -77,7 +77,7 @@
                 Cars
             &lt;/f:facet&gt;
 
-            &lt;p:commandButton icon="ui-icon-search" update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail"&gt;
+            &lt;p:commandButton icon="ui-icon-search" update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail"&gt;
                 &lt;f:setPropertyActionListener value="\#{car}" target="\#{tableBean.selectedCar}" /&gt;
             &lt;/p:commandButton&gt;
 

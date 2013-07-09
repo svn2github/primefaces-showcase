@@ -19,12 +19,12 @@
 						<p:colorPicker id="inlineCP" value="#{colorBean.color1}" mode="inline" />
 
                         <h:outputText value="Popup: " />
-						<p:colorPicker id="popupCP" value="#{colorBean.color2}" widgetVar="picker"/>
+						<p:colorPicker id="popupCP" value="#{colorBean.color2}" />
 					</h:panelGrid>
 
                     <p:separator />
 
-                    <p:commandButton id="btn" value="Submit" oncomplete="dlg.show()" update="grid" />
+                    <p:commandButton id="btn" value="Submit" oncomplete="PF('dlg').show()" update="grid" />
 				</p:panel>
 
                 <p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false">
@@ -51,12 +51,12 @@
             &lt;p:colorPicker id="inlineCP" value="\#{colorBean.color1}" mode="inline" /&gt;
 
             &lt;h:outputText value="Popup: " /&gt;
-            &lt;p:colorPicker id="popupCP" value="\#{colorBean.color2}" widgetVar="picker"/&gt;
+            &lt;p:colorPicker id="popupCP" value="\#{colorBean.color2}" /&gt;
         &lt;/h:panelGrid&gt;
 
         &lt;p:separator /&gt;
 
-        &lt;p:commandButton value="Submit" oncomplete="dlg.show()" update="grid @parent" /&gt;
+        &lt;p:commandButton value="Submit" oncomplete="PF('dlg').show()" update="grid @parent" /&gt;
     &lt;/p:panel&gt;
 
     &lt;p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false"&gt;

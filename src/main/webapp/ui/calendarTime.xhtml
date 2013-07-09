@@ -32,10 +32,9 @@
 
                 <br />
 
-                <p:commandButton value="Submit" update="display" oncomplete="dialog.show()" style="margin-top:10px"/>
+                <p:commandButton value="Submit" update="display" oncomplete="PF('dialog').show()" style="margin-top:10px"/>
 
-				<p:dialog header="Selected Dates" widgetVar="dialog"
-							showEffect="fold" hideEffect="fold">
+				<p:dialog header="Selected Dates" widgetVar="dialog" showEffect="fold" hideEffect="fold">
 
                 	<h:panelGrid id="display" columns="2" cellpadding="5">
 
@@ -100,7 +99,7 @@
     &lt;p:calendar value="\#{calendarBean.date6}" pattern="MM/dd/yyyy HH:mm"
                 minHour="9" maxHour="18"/&gt;
 
-    &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dialog').show()" /&gt;
 
     &lt;p:dialog header="Selected Dates" widgetVar="dialog"
                 showEffect="fold" hideEffect="fold"&gt;

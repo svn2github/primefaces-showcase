@@ -32,8 +32,8 @@
                 <h:outputText value="What PrimeFaces has so far is just the beginning!" style="font-size:36px;" />
             </p:notificationBar>
             
-            <p:commandButton id="showbtn" value="Show" onclick="bar.show()" type="button" />
-            <p:commandButton id="hidebtn" value="Hide" onclick="bar.hide()" type="button" />
+            <p:commandButton id="showbtn" value="Show" onclick="PF('bar').show()" type="button" />
+            <p:commandButton id="hidebtn" value="Hide" onclick="PF('bar').hide()" type="button" />
 
 			<h3>Source</h3>
             <p:tabView>
@@ -43,8 +43,8 @@
     &lt;h:outputText value="What PrimeFaces has so far is just the beginning!" style="color:#FFCC00;font-size:36px;" /&gt;
 &lt;/p:notificationBar&gt;
 
-&lt;p:commandButton value="Show" onclick="bar.show()" type="button" /&gt;
-&lt;p:commandButton value="Hide" onclick="bar.hide()" type="button" /&gt;
+&lt;p:commandButton value="Show" onclick="PF('bar').show()" type="button" /&gt;
+&lt;p:commandButton value="Hide" onclick="PF('bar').hide()" type="button" /&gt;
             </pre>
                 </p:tab>
             </p:tabView>

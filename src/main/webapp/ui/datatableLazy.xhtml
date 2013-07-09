@@ -18,7 +18,7 @@
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                              rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{tableBean.selectedCar}" id="carTable" lazy="true">
 
-                    <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display" oncomplete="carDialog.show()" />
+                    <p:ajax event="rowSelect" listener="#{tableBean.onRowSelect}" update=":form:display" oncomplete="PF('carDialog').show()" />
                     
                     <p:column headerText="Model" sortBy="model" filterBy="#{car.model}">
                         <h:outputText value="#{car.model}" />
@@ -72,7 +72,7 @@
                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  rowsPerPageTemplate="5,10,15" selectionMode="single" selection="\#{tableBean.selectedCar}" id="carTable" lazy="true"&gt;
 
-        &lt;p:ajax event="rowSelect" listener="\#{tableBean.onRowSelect}" update=":form:display" oncomplete="carDialog.show()" /&gt;
+        &lt;p:ajax event="rowSelect" listener="\#{tableBean.onRowSelect}" update=":form:display" oncomplete="PF('carDialog').show()" /&gt;
 
         &lt;p:column headerText="Model" sortBy="\#{car.model}" filterBy="\#{car.model}"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;

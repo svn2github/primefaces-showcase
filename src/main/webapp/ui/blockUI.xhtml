@@ -85,8 +85,8 @@
 
                 <br /> 
                 
-                <p:commandButton id="pnlBtn" value="Block Panel" type="button" onclick="bui.show()"/>
-                <p:commandButton id="pnlBtn2" value="Unblock Panel" type="button" onclick="bui.hide()"/>
+                <p:commandButton id="pnlBtn" value="Block Panel" type="button" onclick="PF('bui').show()"/>
+                <p:commandButton id="pnlBtn2" value="Unblock Panel" type="button" onclick="PF('bui').hide()"/>
                 
                 <p:blockUI block="tree" widgetVar="bui"/>
                 
@@ -169,8 +169,8 @@
         &lt;/p:treeNode&gt;
     &lt;/p:tree&gt;
 
-    &lt;p:commandButton id="pnlBtn" value="Block Panel" type="button" onclick="bui.show()"/&gt;
-    &lt;p:commandButton id="pnlBtn2" value="Unblock Panel" type="button" onclick="bui.hide()"/&gt;
+    &lt;p:commandButton id="pnlBtn" value="Block Panel" type="button" onclick="PF('bui').show()"/&gt;
+    &lt;p:commandButton id="pnlBtn2" value="Unblock Panel" type="button" onclick="PF('bui').hide()"/&gt;
 
     &lt;p:blockUI block="tree" widgetVar="bui"/&gt;
 

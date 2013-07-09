@@ -42,7 +42,7 @@
 					</p:column>
                     
                     <f:facet name="footer">
-                        <p:commandButton value="View" icon="ui-icon-search" update=":form:documentPanel" oncomplete="documentDialog.show()"/>
+                        <p:commandButton value="View" icon="ui-icon-search" update=":form:documentPanel" oncomplete="PF('documentDialog').show()"/>
                     </f:facet>
 				</p:treeTable>
 				
@@ -62,45 +62,7 @@
 					<pre name="code" class="xml">
 &lt;h:form id="form"&gt;
                 
-    &lt;p:growl id="messages" showDetail="true" /&gt;
-
-    &lt;p:treeTable value="\#{documentsController.root}" var="document"
-                 selection="\#{documentsController.selectedNode}" selectionMode="single"&gt;
-
-        &lt;f:facet name="header"&gt;
-            Single Selection
-        &lt;/f:facet&gt;
-
-        &lt;p:column style="width:150px"&gt;
-            &lt;f:facet name="header"&gt;
-                Name
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{document.name}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column style="width:100px"&gt;
-            &lt;f:facet name="header"&gt;
-                Size
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{document.size}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column style="width:100px"&gt;
-            &lt;f:facet name="header"&gt;
-                Type
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="\#{document.type}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;f:facet name="footer"&gt;
-            &lt;p:commandButton value="View" icon="ui-icon-search"
-                    update=":form:documentPanel" oncomplete="documentDialog.show()"/&gt;
-        &lt;/f:facet&gt;
-    &lt;/p:treeTable&gt;
-
-
-
-    &lt;p:treeTable value="\#{documentsController.root}" var="document"
+    &lt;p:treeTable value="\#{documentsController.root}" var="document" id="multiSelect"
                  selection="\#{documentsController.selectedNodes}" selectionMode="multiple"&gt;
 
         &lt;f:facet name="header"&gt;
@@ -129,35 +91,20 @@
         &lt;/p:column&gt;
 
         &lt;f:facet name="footer"&gt;
-            &lt;p:commandButton value="View" icon="ui-icon-search"
-                    update=":form:documentPanel" oncomplete="documentDialog.show()"/&gt;
+            &lt;p:commandButton value="View" icon="ui-icon-search" update=":form:documentPanel" oncomplete="PF('documentDialog').show()"/&gt;
         &lt;/f:facet&gt;
     &lt;/p:treeTable&gt;
 
-
-
-    &lt;p:dialog header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true"&gt;
+    &lt;p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true"&gt;
         &lt;p:outputPanel id="documentPanel"&gt;
-            &lt;h:panelGrid  columns="2" cellpadding="5" rendered="\#{not empty documentsController.selectedNode}"&gt;
-                &lt;h:outputLabel for="name" value="Name: " /&gt;
-                &lt;h:outputText id="name" value="\#{documentsController.selectedNode.data.name}" style="font-weight:bold" /&gt;
-
-                &lt;h:outputLabel for="size" value="Size: " /&gt;
-                &lt;h:outputText id="size" value="\#{documentsController.selectedNode.data.size}" style="font-weight:bold" /&gt;
-
-                &lt;h:outputLabel for="type" value="Type " /&gt;
-                &lt;h:outputText id="type" value="\#{documentsController.selectedNode.data.type}" style="font-weight:bold" /&gt;
-            &lt;/h:panelGrid&gt;
-
-            &lt;p:dataList value="\#{documentsController.selectedNodes}" 
-                        var="selectedNode" rendered="\#{not empty documentsController.selectedNodes}"&gt;
+            &lt;p:dataList value="\#{documentsController.selectedNodes}" var="selectedNode" rendered="\#{not empty documentsController.selectedNodes}"&gt;
                 \#{selectedNode.data.name}
             &lt;/p:dataList&gt;
         &lt;/p:outputPanel&gt;
     &lt;/p:dialog&gt;
 
 &lt;/h:form&gt;
-					</pre> 
+                	</pre> 
 				</p:tab>
 				
 				<p:tab title="DocumentsController.java">

@@ -11,10 +11,10 @@
             //<![CDATA[
 function exportChart() {
     //export image
-    $('#output').empty().append(chart.exportAsImage());
+    $('#output').empty().append(PF('chart').exportAsImage());
 
     //show the dialog
-    dlg.show();
+    PF('dlg').show();
 }
             //]]>
         </script>
@@ -51,10 +51,10 @@ function exportChart() {
 
 function exportChart() {
     //export image
-    $('#output').empty().append(chart.exportAsImage());
+    $('#output').empty().append(PF('chart').exportAsImage());
 
     //show the dialog
-    dlg.show();
+    PF('dlg').show();
 }
                     </pre>
                 </p:tab>

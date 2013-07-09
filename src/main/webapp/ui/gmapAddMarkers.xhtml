@@ -11,7 +11,7 @@
 			var currentMarker = null;
 			
 			function handlePointClick(event) {
-				if(currentMarker == null) {
+				if(currentMarker === null) {
 					document.getElementById('lat').value = event.latLng.lat();
 					document.getElementById('lng').value = event.latLng.lng();
 
@@ -19,9 +19,9 @@
 						position:new google.maps.LatLng(event.latLng.lat(), event.latLng.lng())
 					});
 									
-					map.addOverlay(currentMarker);
+					PF('map').addOverlay(currentMarker);
 
-					dlg.show();
+					PF('dlg').show();
 				}	
 			}
 
@@ -31,45 +31,17 @@
 				title.value = "";
 
 				currentMarker = null;
-				dlg.hide();
+				PF('dlg').hide();
 			}
 
 			function cancel() {
-				dlg.hide();
+				PF('dlg').hide();
 				currentMarker.setMap(null);
 				currentMarker = null;
 
 				return false;
 			}
 		</script>
-		
-		<style type="text/css">
-			.yui-skin-sam .yui-panel .bd{
-				background: #333333;
-				border-color: #000000;
-				color:#CCCCCC;
-			}
-			
-			.yui-skin-sam .yui-panel .hd {  
-			    background: url(../images/dialoghd.gif);
-			    border-color : #000000;
-			    color: #FFFFFF;
-			} 
-			
-			.yui-skin-sam .yui-panel-container.shadow .underlay {
-				background-color: #333333;
-				bottom:-7px;
-				left: 7px;
-				opacity:0.5;
-				position:absolute;
-				right:-7px;
-				top:7px;
-			}
-			
-			.yui-skin-sam .container-close {
-				background: url(../images/dialogclose.png) no-repeat;
-			}
-		</style>
 	</ui:define>
 
 	<ui:define name="content">
@@ -134,39 +106,39 @@
 &lt;/p:dialog&gt;
 
 &lt;script type="text/javascript"&gt;
-	var currentMarker = null;
-	
-	function handlePointClick(event) {
-		if(currentMarker == null) {
-			document.getElementById('lat').value = event.latLng.lat();
-			document.getElementById('lng').value = event.latLng.lng();
+    var currentMarker = null;
 
-			currentMarker = new google.maps.Marker({
-				position:new google.maps.LatLng(event.latLng.lat(), event.latLng.lng())
-			});
-							
-			map.addOverlay(currentMarker);
+    function handlePointClick(event) {
+        if(currentMarker === null) {
+            document.getElementById('lat').value = event.latLng.lat();
+            document.getElementById('lng').value = event.latLng.lng();
 
-			dlg.show();
-		}	
-	}
+            currentMarker = new google.maps.Marker({
+                position:new google.maps.LatLng(event.latLng.lat(), event.latLng.lng())
+            });
 
-	function markerAddComplete() {
-		var title = document.getElementById('title');
-		currentMarker.setTitle(title.value);
-		title.value = "";
+            PF('map').addOverlay(currentMarker);
 
-		currentMarker = null;
-		dlg.hide();
-	}
+            PF('dlg').show();
+        }	
+    }
 
-	function cancel() {
-		dlg.hide();
-		currentMarker.setMap(null);
-		currentMarker = null;
+    function markerAddComplete() {
+        var title = document.getElementById('title');
+        currentMarker.setTitle(title.value);
+        title.value = "";
 
-		return false;
-	}
+        currentMarker = null;
+        PF('dlg').hide();
+    }
+
+    function cancel() {
+        PF('dlg').hide();
+        currentMarker.setMap(null);
+        currentMarker = null;
+
+        return false;
+    }
 &lt;/script&gt;
 					</pre>
 				</p:tab>

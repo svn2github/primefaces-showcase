@@ -17,8 +17,8 @@
                 <p:growl id="messages" showDetail="true"/>
 
                 <p:contextMenu for="cars" widgetVar="cMenu">   
-                    <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="carsTable.showCellEditor();return false;"/>  
-                    <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="cMenu.hide()"/>  
+                    <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('carsTable').showCellEditor();return false;"/>  
+                    <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
                 </p:contextMenu> 
 
                 <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" editable="true" editMode="cell" widgetVar="carsTable">
@@ -121,8 +121,8 @@
     &lt;p:growl id="messages" showDetail="true"/&gt;
 
     &lt;p:contextMenu for="cars" widgetVar="cMenu"&gt;   
-        &lt;p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="carsTable.showCellEditor();return false;"/&gt;  
-        &lt;p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="cMenu.hide()"/&gt;  
+        &lt;p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('carsTable').showCellEditor();return false;"/&gt;  
+        &lt;p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/&gt;  
     &lt;/p:contextMenu&gt; 
 
     &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" editable="true" editMode="cell" widgetVar="carsTable"&gt;

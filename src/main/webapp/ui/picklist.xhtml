@@ -20,7 +20,7 @@
                 <p:pickList id="pickList" value="#{pickListBean.cities}" var="city" 
                             itemLabel="#{city}" itemValue="#{city}" />
 
-                <p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px"/>
+                <p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px"/>
 
                 <h3>PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes and Ajax Transfer</h3>
                 <p:pickList id="pojoPickList" value="#{pickListBean.players}" var="player" effect="bounce"
@@ -44,7 +44,7 @@
                 </p:pickList>
                 
 
-                <p:commandButton id="pojoSubmit" value="Submit" update="displayPlayers" oncomplete="playerDialog.show()" style="margin-top:5px"/>
+                <p:commandButton id="pojoSubmit" value="Submit" update="displayPlayers" oncomplete="PF('playerDialog').show()" style="margin-top:5px"/>
 
                 <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog">
                     <h:panelGrid id="displayCities" columns="2">
@@ -89,7 +89,7 @@
     &lt;p:pickList id="pickList" value="\#{pickListBean.cities}" var="city" 
                 itemLabel="\#{city}" itemValue="\#{city}" /&gt;
 
-    &lt;p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="cityDialog.show()" style="margin-top:5px"/&gt;
+    &lt;p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px"/&gt;
 
     &lt;h3&gt;PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes and Ajax Transfer&lt;/h3&gt;
     &lt;p:pickList id="pojoPickList" value="\#{pickListBean.players}" var="player" effect="bounce"
@@ -112,7 +112,7 @@
 
     &lt;/p:pickList&gt;
 
-    &lt;p:commandButton id="pojoSubmit" value="Submit" update="displayPlayers" oncomplete="playerDialog.show()" style="margin-top:5px"/&gt;
+    &lt;p:commandButton id="pojoSubmit" value="Submit" update="displayPlayers" oncomplete="PF('playerDialog').show()" style="margin-top:5px"/&gt;
 
     &lt;p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog"&gt;
         &lt;h:panelGrid id="displayCities" columns="2"&gt;

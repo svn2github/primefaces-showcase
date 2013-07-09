@@ -56,9 +56,9 @@
                 <h:inputHidden id="txt6" value="#{sliderBean.number6}" />
                 <h:inputHidden id="txt7" value="#{sliderBean.number7}" />
 
-                <p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />
+                <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" />
 				
-				<p:dialog header="Slider Values" widgetVar="dialog" 
+				<p:dialog header="Slider Values" widgetVar="dlg" 
                           showEffect="bounce" hideEffect="fade" width="200">
 					
 					<h:panelGrid id="display" columns="1" cellpadding="5">
@@ -129,9 +129,9 @@
     &lt;h:inputHidden id="txt6" value="\#{sliderBean.number6}" /&gt;
     &lt;h:inputHidden id="txt7" value="\#{sliderBean.number7}" /&gt;
 
-    &lt;p:commandButton value="Submit" update="display" oncomplete="dialog.show()" /&gt;
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" /&gt;
 
-    &lt;p:dialog header="Slider Values" widgetVar="dialog" 
+    &lt;p:dialog header="Slider Values" widgetVar="dlg" 
               showEffect="bounce" hideEffect="fade" width="200"&gt;
 
         &lt;h:panelGrid id="display" columns="1" cellpadding="5"&gt;
