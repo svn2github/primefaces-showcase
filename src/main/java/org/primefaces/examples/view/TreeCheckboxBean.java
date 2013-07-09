@@ -2,8 +2,9 @@ package org.primefaces.examples.view;
 
 import java.io.Serializable;
 import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
-import org.primefaces.model.CheckboxTreeNode;
 import org.primefaces.model.TreeNode;
 
 import org.primefaces.examples.domain.Document;
@@ -92,4 +93,19 @@ public class TreeCheckboxBean implements Serializable {
     public void setSelectedNodes(TreeNode[] selectedNodes) {
         this.selectedNodes = selectedNodes;
     }
+    
+    public void displaySelectedMultiple() {
+        if(selectedNodes != null && selectedNodes.length > 0) {
+            StringBuilder builder = new StringBuilder();
+
+            for(TreeNode node : selectedNodes) {
+                builder.append(node.getData().toString());
+                builder.append("<br />");
+            }
+
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", builder.toString());
+
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+	}
 }
