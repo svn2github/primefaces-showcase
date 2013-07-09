@@ -12,7 +12,7 @@
 	</title>
 	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
 	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/aristo/skin.css" />
-	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/syntaxhighlighter/styles/syntaxhighlighter.css"></link>
+	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css"></link>
 	<style type="text/css">
 		body {
 			background: url(../images/macosx/macback.png);
@@ -60,7 +60,7 @@
 		</p:submenu>
 		
 		<p:submenu label="View">
-			<p:menuitem value="Source" url="#" onclick="source.show();" icon="ui-icon ui-icon-search"></p:menuitem>
+			<p:menuitem value="Source" url="#" onclick="PF('source').show();" icon="ui-icon ui-icon-search"></p:menuitem>
 		</p:submenu>
 	</p:menubar>
 		
@@ -198,17 +198,18 @@
 		<p:menuitem value="Safari" icon="/images/stack/safari.png" url="#" />
 		<p:menuitem value="Finder" icon="/images/stack/finder.png" url="#" />
 	</p:stack>
+    
+    <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
+    <script language="javascript">
+        dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
+        dp.SyntaxHighlighter.HighlightAll('code');
+    </script>
 	
 </h:body>
 
 
 </f:view>
 
-    <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
-    <script language="javascript">
-        dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
-        dp.SyntaxHighlighter.HighlightAll('code');
-    </script>
 </html>
 
 	
