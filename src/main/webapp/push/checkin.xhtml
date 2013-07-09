@@ -14,9 +14,9 @@
         <script type="text/javascript">
             //<![CDATA[
                 function handleMessage(data) {
-                    var coords = new google.maps.LatLng(data.lat, data.lng);
-                    
-                    var marker = new google.maps.Marker({
+                    var coords = new google.maps.LatLng(data.lat, data.lng),
+                    map = PF('map'),
+                    marker = new google.maps.Marker({
 						position: coords
                         ,title: data.title
 					});
@@ -109,9 +109,9 @@
 &lt;p:socket onMessage="handleMessage" channel="/check-in" /&gt;
 
 function handleMessage(data) {
-    var coords = new google.maps.LatLng(data.lat, data.lng);
-
-    var marker = new google.maps.Marker({
+    var coords = new google.maps.LatLng(data.lat, data.lng),
+    map = PF('map'),
+    marker = new google.maps.Marker({
         position: coords
         ,title: data.title
     });
@@ -119,7 +119,7 @@ function handleMessage(data) {
     map.addOverlay(marker);
 
     map.infowindow = new google.maps.InfoWindow({
-        content: '&lt;h3&gt;' + data.title + " just checked in!&lt;/h3&gt;"
+        content: '<h3>' + data.title + " just checked in!</h3>"
     });
 
     map.getMap().setCenter(coords);
@@ -136,7 +136,7 @@ $(function() {
             alert(error.message);
         },
         {
-            enableHighAccuracy: true
+           enableHighAccuracy: true
         });
 });
                     </pre>

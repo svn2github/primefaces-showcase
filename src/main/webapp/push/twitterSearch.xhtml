@@ -45,7 +45,7 @@ function handleMessage(data) {
         markup += '<strong>' + tweet.from_user + '</strong><br />' + tweet.text;
         markup += '</li>';
         
-        tweetList.list.append(markup);
+        PF('tweetList').list.append(markup);
     }
 }
 
@@ -107,7 +107,7 @@ function handleMessage(data) {
         markup += '&lt;strong&gt;' + tweet.from_user + '&lt;/strong&gt;&lt;br /&gt;' + tweet.text;
         markup += '&lt;/li&gt;';
         
-        tweetList.list.append(markup);
+        PF('tweetList').list.append(markup);
     }
 }
                     </pre>

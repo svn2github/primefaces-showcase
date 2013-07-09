@@ -83,7 +83,7 @@
                                     Users
                                 </f:facet>
 
-                                <p:commandButton title="Chat" icon="ui-icon-comment" oncomplete="pChat.show()" update=":form:privateChatContainer">
+                                <p:commandButton title="Chat" icon="ui-icon-comment" oncomplete="PF('pChat').show()" update=":form:privateChatContainer">
                                     <f:setPropertyActionListener value="#{user}" target="#{chatView.privateUser}" />
                                 </p:commandButton>
                                 #{user}
@@ -115,7 +115,7 @@
                         <p:inputTextarea id="pChatInput" value="#{chatView.privateMessage}" rows="5" cols="30" />
                         
                         <p:spacer />
-                        <p:commandButton value="Send" actionListener="#{chatView.sendPrivate}" oncomplete="pChat.hide()" />
+                        <p:commandButton value="Send" actionListener="#{chatView.sendPrivate}" oncomplete="PF('pChat').hide()" />
                     </h:panelGrid>
                 </p:dialog>
                              
@@ -145,7 +145,7 @@
                         Users
                     &lt;/f:facet&gt;
 
-                    &lt;p:commandButton title="Chat" icon="ui-icon-comment" oncomplete="pChat.show()" update=":form:privateChatContainer"&gt;
+                    &lt;p:commandButton title="Chat" icon="ui-icon-comment" oncomplete="PF('pChat').show()" update=":form:privateChatContainer"&gt;
                         &lt;f:setPropertyActionListener value="\#{user}" target="\#{chatView.privateUser}" /&gt;
                     &lt;/p:commandButton&gt;
                     \#{user}
@@ -177,7 +177,7 @@
             &lt;p:inputTextarea id="pChatInput" value="\#{chatView.privateMessage}" rows="5" cols="30" /&gt;
 
             &lt;p:spacer /&gt;
-            &lt;p:commandButton value="Send" actionListener="\#{chatView.sendPrivate}" oncomplete="pChat.hide()" /&gt;
+            &lt;p:commandButton value="Send" actionListener="\#{chatView.sendPrivate}" oncomplete="PF('pChat').hide()" /&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
 

@@ -25,7 +25,7 @@
                 
                 <p:photoCam widgetVar="pc" listener="#{photoShare.share}" />
                     
-                <p:commandButton type="button" value="Share" onclick="pc.capture()" style="margin:20px 0px;"/>
+                <p:commandButton type="button" value="Share" onclick="PF('pc').capture()" style="margin:20px 0px;"/>
                 
             </h:form>
             
@@ -41,7 +41,7 @@
                 
     &lt;p:photoCam widgetVar="pc" listener="\#{photoShare.share}" /&gt;
 
-    &lt;p:commandButton type="button" value="Share" onclick="pc.capture()" style="margin:20px 0px;"/&gt;
+    &lt;p:commandButton type="button" value="Share" onclick="PF('pc').capture()" style="margin:20px 0px;"/&gt;
 
 &lt;/h:form&gt;
 
