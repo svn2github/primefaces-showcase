@@ -45,65 +45,72 @@
         &lt;/p:treeNode&gt;
     &lt;/p:tree&gt;
 
-    &lt;p:commandButton value="Display Selected" update="messages"
-                    actionListener="\#{treeBean.displaySelectedMultiple}" id="btnDisplay"/&gt;
+    &lt;p:commandButton value="Display Selected" update="messages" style="margin-top:20px"
+                    actionListener="\#{treeBean.displaySelectedMultiple}" /&gt;
 
 &lt;/h:form&gt;
 					</pre>
 				</p:tab>
 
-				<p:tab title="TreeBean.java">
+				<p:tab title="TreeCheckboxBean.java">
 					<pre name="code" class="java">
 package org.primefaces.examples.view;
 
 import java.io.Serializable;
-
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
-import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 
-public class TreeBean implements Serializable {
+import org.primefaces.examples.domain.Document;
+import org.primefaces.model.CheckboxTreeNode;
 
-	private TreeNode root;
+public class TreeCheckboxBean implements Serializable {
+	
+	private static final Logger logger = Logger.getLogger(TreeCheckboxBean.class.getName());
 
-	private TreeNode[] selectedNodes;
-
-	public TreeBean() {
-		root = new DefaultTreeNode("Root", null);
-		TreeNode node0 = new DefaultTreeNode("Node 0", root);
-		TreeNode node1 = new DefaultTreeNode("Node 1", root);
-		TreeNode node2 = new DefaultTreeNode("Node 2", root);
-
-		TreeNode node00 = new DefaultTreeNode("Node 0.0", node0);
-		TreeNode node01 = new DefaultTreeNode("Node 0.1", node0);
-
-		TreeNode node10 = new DefaultTreeNode("Node 1.0", node1);
-		TreeNode node11 = new DefaultTreeNode("Node 1.1", node1);
-
-		TreeNode node000 = new DefaultTreeNode("Node 0.0.0", node00);
-		TreeNode node001 = new DefaultTreeNode("Node 0.0.1", node00);
-		TreeNode node010 = new DefaultTreeNode("Node 0.1.0", node01);
-
-		TreeNode node100 = new DefaultTreeNode("Node 1.0.0", node10);
+    private TreeNode root2;
+    
+    private TreeNode[] selectedNodes;
+	
+	public TreeCheckboxBean() {
+        root2 = new CheckboxTreeNode("Root", null);
+		TreeNode node0 = new CheckboxTreeNode("Node 0", root2);
+		TreeNode node1 = new CheckboxTreeNode("Node 1", root2);
+		TreeNode node2 = new CheckboxTreeNode("Node 2", root2);
+		
+		TreeNode node00 = new CheckboxTreeNode("Node 0.0", node0);
+		TreeNode node01 = new CheckboxTreeNode("Node 0.1", node0);
+		
+		TreeNode node10 = new CheckboxTreeNode("Node 1.0", node1);
+		TreeNode node11 = new CheckboxTreeNode("Node 1.1", node1);
+		
+		TreeNode node000 = new CheckboxTreeNode("Node 0.0.0", node00);
+		TreeNode node001 = new CheckboxTreeNode("Node 0.0.1", node00);
+		TreeNode node010 = new CheckboxTreeNode("Node 0.1.0", node01);
+		
+		TreeNode node100 = new CheckboxTreeNode("Node 1.0.0", node10);
+	}
+	    
+    public TreeNode getRoot2() {
+		return root2;
 	}
 
-	public TreeNode getRoot() {
-		return root;
+	public void setRoot2(TreeNode root2) {
+		this.root2 = root2;
 	}
+    
+    public TreeNode[] getSelectedNodes() {
+        return selectedNodes;
+    }
 
-	public TreeNode[] getSelectedNodes() {
-		return selectedNodes;
-	}
-
-	public void setSelectedNodes(TreeNode[] selectedNodes) {
-		this.selectedNodes = selectedNodes;
-	}
-
-	public void displaySelectedMultiple(ActionEvent event) {
-        if(selectedNodes != null &amp;&amp; selectedNodes.length > 0) {
+    public void setSelectedNodes(TreeNode[] selectedNodes) {
+        this.selectedNodes = selectedNodes;
+    }
+    
+    public void displaySelectedMultiple() {
+        if(selectedNodes != null &amp;&amp; selectedNodes.length &gt; 0) {
             StringBuilder builder = new StringBuilder();
 
             for(TreeNode node : selectedNodes) {
