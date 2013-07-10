@@ -15,10 +15,10 @@
                 <p:growl id="messages" showDetail="true" />
 
                 <p:commandButton value="Destroy the World" actionListener="#{buttonBean.destroyWorld}" update="messages">
-                    <p:confirm header="Confirmation" message="Are you sure?" />
+                    <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert"/>
                 </p:commandButton>
 
-                <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                <p:confirmDialog showEffect="fade" hideEffect="explode">
                     <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
                     <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 	
                 </p:confirmDialog>
@@ -34,7 +34,7 @@
     &lt;p:growl id="messages" showDetail="true" /&gt;
 
     &lt;p:commandButton value="Destroy the World" actionListener="\#{buttonBean.destroyWorld}" update="messages"&gt;
-        &lt;p:confirm header="Confirmation?" message="Are you sure?" /&gt;
+        &lt;p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" /&gt;
     &lt;/p:commandButton&gt;
 
     &lt;p:confirmDialog global="true" showEffect="fade" hideEffect="explode"&gt;
