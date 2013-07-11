@@ -14,7 +14,7 @@
             <h:form enctype="multipart/form-data">
 
 				<p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced"
-						update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+						update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" widgetVar="ff"/>
                 
                 <p:growl id="messages" showDetail="true"/>
 

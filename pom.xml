@@ -288,9 +288,6 @@
         
         <profile>
             <id>mojarra-2.2</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <jsfVersion>Mojarra-2.2</jsfVersion>
                 <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
