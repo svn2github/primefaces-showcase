@@ -5,15 +5,28 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="../templates/ui.xhtml">
 
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+        </script>
+    </ui:define>
+
     <ui:define name="content">
 
-        <h1 class="title ui-widget-header ui-corner-all">FileUpload - Single</h1>
+        <h1 class="title ui-widget-header ui-corner-all">FileUpload - Merge</h1>
         <div class="entry">
-            <p>Single mode allows only file to be selected from the native file dialog.</p>
+            <p>By default, each file is uploaded with a separate requests. Merge option sends all files in one request.</p>
 
             <h:form>
 
-                <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUploads}" mode="advanced" dragDropSupport="false" merge="true"
                               update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 
                 <p:growl id="messages" showDetail="true"/>
@@ -22,16 +35,16 @@
 
             <h3>Source</h3>
             <p:tabView>
-                <p:tab title="fileUploadSingle.xhtml">
+                <p:tab title="fileUploadMerge.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
+&lt;h:form>
 
-    &lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}" mode="advanced" dragDropSupport="false"
-                  update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" /&gt;
+    &lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUploads}" mode="advanced" dragDropSupport="false" merge="true"
+                  update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 
-    &lt;p:growl id="messages" showDetail="true"/&gt;
+    &lt;p:growl id="messages" showDetail="true"/>
 
-&lt;/h:form&gt;
+&lt;/h:form>
                     </pre>
                 </p:tab>
 
@@ -47,9 +60,12 @@ import org.primefaces.model.UploadedFile;
 
 public class FileUploadController {
 
-    public void handleFileUpload(FileUploadEvent event) {
-		FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
+    public void handleFileUploads(FileUploadEvent event) {
+        List&lt;UploadedFile&gt; files = event.getFiles();
+        for(UploadedFile file : files) {
+            FacesMessage msg = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
 	}
 }
                     </pre>

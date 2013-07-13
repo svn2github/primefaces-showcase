@@ -9,29 +9,25 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">FileUpload - Multiple</h1>
 		<div class="entry">
-            <p>Multiple fileUpload is available on supported browsers.</p>
+            <p>Multiple mode allows multiple files to be selected from the native file dialog. Note that legacy browsers do not support multiple selection.</p>
 
-            <h:form enctype="multipart/form-data">
+            <h:form>
 
-				<p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced"
-						update="messages" multiple="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                              multiple="true" update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 
                 <p:growl id="messages" showDetail="true"/>
-                
-			</h:form>
+
+            </h:form>
 
 			<h3>Source</h3>
             <p:tabView>
                 <p:tab title="fileUploadMultiple.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form enctype="multipart/form-data"&gt;
+&lt;h:form&gt;
 
-    &lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}"
-            mode="advanced"
-            update="messages" 
-            multiple="true"
-            sizeLimit="100000" 
-            allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/&gt;
+    &lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                  multiple="true" update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" /&gt;
 
     &lt;p:growl id="messages" showDetail="true"/&gt;
 

@@ -9,9 +9,9 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">FileUpload - Auto</h1>
 		<div class="entry">
-            <p>When auto upload is enabled, upload process begins once the file is selected.</p>
+            <p>Upload process begins once the file is selected in auto mode.</p>
 
-            <h:form enctype="multipart/form-data">
+            <h:form>
 
 				<p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced"
 						update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
@@ -24,14 +24,10 @@
             <p:tabView>
                 <p:tab title="fileUploadAuto.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form enctype="multipart/form-data"&gt;
+&lt;h:form&gt;
 
-    &lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}"
-            mode="advanced"
-            update="messages"
-            auto="true"
-            sizeLimit="100000" 
-            allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/&gt;
+    &lt;p:fileUpload fileUploadListener="\#{fileUploadController.handleFileUpload}" mode="advanced"
+            update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/&gt;
 
     &lt;p:growl id="messages" showDetail="true"/&gt;
 

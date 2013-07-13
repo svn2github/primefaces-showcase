@@ -1,5 +1,6 @@
 package org.primefaces.examples.view;
 
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -28,5 +29,13 @@ public class FileUploadController {
     public void handleFileUpload(FileUploadEvent event) {
 		FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+    
+    public void handleFileUploads(FileUploadEvent event) {
+        List<UploadedFile> files = event.getFiles();
+        for(UploadedFile file : files) {
+            FacesMessage msg = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
 	}
 }
