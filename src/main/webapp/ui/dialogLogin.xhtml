@@ -9,10 +9,10 @@
 		<script type="text/javascript">
 			function handleLoginRequest(xhr, status, args) {
 				if(args.validationFailed || !args.loggedIn) {
-					dlg.jq.effect("shake", { times:5 }, 100);
+					PF('dlg').jq.effect("shake", { times:5 }, 100);
 				} 
                 else {
-					dlg.hide();
+					PF('dlg').hide();
 					$('#loginLink').fadeOut();
 				}
 			}
@@ -85,11 +85,11 @@
 &lt;script type="text/javascript"&gt;
 	function handleLoginRequest(xhr, status, args) {
         if(args.validationFailed || !args.loggedIn) {
-            dlg.jq.effect("shake", { times:5 }, 100);
+            PF('dlg').jq.effect("shake", { times:5 }, 100);
         } 
         else {
-            dlg.hide();
-            $('\#loginLink').fadeOut();
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
         }
     }
 &lt;/script&gt;
