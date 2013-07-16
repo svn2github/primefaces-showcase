@@ -433,5 +433,11 @@
     <managed-bean>
         <managed-bean-name>twitterSearchView</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.view.TwitterSearchView</managed-bean-class>
-        <managed-bean-scope>application</managed-bean-scope></managed-bean>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>multiSelectListboxBean</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.MultiSelectListboxBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
