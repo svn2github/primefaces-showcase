@@ -36,12 +36,16 @@
                 <p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" >
                     <p:resetInput target="panel" />
                 </p:commandButton>
-                
+                                
                 <p:commandButton value="Reset Code" update="panel" process="@this" actionListener="#{pprBean.reset}"  style="margin-right:20px;" />
                 
                 <p:commandButton value="Reset Non-Ajax" actionListener="#{pprBean.reset}" immediate="true" ajax="false">
                     <p:resetInput target="panel" />
                 </p:commandButton>
+                
+                <h:commandButton value="Reset p:ajax" style="margin-right:20px;" >
+                    <p:ajax update="panel" resetValues="true" />
+                </h:commandButton>
 
             </h:form>
 
@@ -79,6 +83,10 @@
     &lt;p:commandButton value="Reset Non-Ajax" actionListener="\#{pprBean.reset}" immediate="true" ajax="false"&gt;
         &lt;p:resetInput target="panel" /&gt;
     &lt;/p:commandButton&gt;
+
+    &lt;h:commandButton value="Reset p:ajax" style="margin-right:20px;" &gt;
+        &lt;p:ajax update="panel" resetValues="true" /&gt;
+    &lt;/h:commandButton&gt;
 
 &lt;/h:form&gt;
 						</pre>
