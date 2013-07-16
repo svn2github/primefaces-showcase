@@ -1,46 +1,44 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	template="../templates/ui.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
 
-	<ui:define name="content">
-		<h1 class="title ui-widget-header ui-corner-all">Output Panel</h1>
-		<div class="entry">
-			<p>Output panel is a container element with several use cases, this example uses an autoUpdate outputPanel to update a component page 
-                which doesn't exist on page initially and rendered based on a condition.</p>
+    <ui:define name="content">
+        <h1 class="title ui-widget-header ui-corner-all">OutputPanel</h1>
+        <div class="entry">
+            <p>Output panel is a container element with several use cases such as autoUpdate and lazy loading. tThis example demonstrates the lazy loading feature
+                where the content of the panel is loaded after the page itself is loaded to speed up initial page load time.</p>
 
-			<h:form id="form">
-				<p:commandButton id="showButton" value="Show">
-					<f:setPropertyActionListener value="true" target="#{requestScope.renderCampNou}" />
-				</p:commandButton>
-				
-				<br /><br />
-				
-                <p:outputPanel id="panel" autoUpdate="true">
-					<p:graphicImage value="/images/barca/camp_nou.jpg" rendered="#{requestScope.renderCampNou}"/>
-				</p:outputPanel>
-			</h:form>
-	
-		<h3>Source</h3>
-        <p:tabView>
-            <p:tab title="outputPanel.xhtml">
-                <pre name="code" class="xml">
+            <h:form>
+                <p:outputPanel lazy="true">
+                    <p>This part of the page is loaded lazily after initial page load.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </p:outputPanel>
+            </h:form>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="outputPanel.xhtml">
+                    <pre name="code" class="xml">
 &lt;h:form&gt;
-	&lt;p:commandButton id="showButton" value="Show"&gt;
-		&lt;f:setPropertyActionListener value="\#{true}" target="\#{requestScope.renderCampNou}" /&gt;
-	&lt;/p:commandButton&gt;
-	
-	&lt;p:outputPanel id="panel" autoUpdate="true"&gt;
-		&lt;p:graphicImage value="/images/barca/camp_nou.jpg" rendered="\#{requestScope.renderCampNou}"/&gt;
-	&lt;/p:outputPanel&gt;
+    &lt;p:outputPanel lazy="true"&gt;
+        &lt;p&gt;This part of the page is loaded lazily after initial page load.&lt;/p&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+    &lt;/p:outputPanel&gt;
 &lt;/h:form&gt;
-                </pre>
-            </p:tab>
-        </p:tabView>
+                    </pre>
+                </p:tab>
+            </p:tabView>
 
-		</div>
+        </div>
 
-	</ui:define>
+    </ui:define>
 </ui:composition>
