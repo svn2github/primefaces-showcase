@@ -9,8 +9,8 @@
 
     <pm:page id="page" title="Calendar">                                                 
 
-        <f:facet name="postinit">            
-            <link rel="stylesheet" href="#{request.contextPath}/javax.faces.resource/calendar/calendar.css.jsf?ln=primefaces-mobile" />
+        <f:facet name="postinit">                        
+            <h:outputStylesheet library="primefaces-mobile" name="calendar/calendar.css"  />
             <h:outputScript library="primefaces-mobile" name="calendar/calendar.js" />            
 
             <script type="text/javascript">
