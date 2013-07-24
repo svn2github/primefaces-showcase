@@ -5,7 +5,7 @@
             <goals>
                 <goal>clean</goal>
                 <goal>jetty:run</goal>
-                <goal>-o</goal>
+                
             </goals>
             <properties>
                 <skipTests>true</skipTests>
