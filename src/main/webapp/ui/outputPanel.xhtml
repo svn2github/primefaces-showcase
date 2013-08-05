@@ -8,15 +8,25 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">OutputPanel</h1>
         <div class="entry">
-            <p>Output panel is a container element with several use cases such as autoUpdate and deferred loading. This example demonstrates the deferred loading feature
-                where the content of the panel is loaded after the page itself is loaded to speed up initial page load time. A progress indicator is displayed
-                while loading the content.</p>
+            <p>Output panel is a container element with several use cases such as autoUpdate and deferred loading. This example demonstrates the deferred loading feature with two modes
+                where the content of the panel is loaded after the page itself is loaded to speed up initial page load time. There are two deferred modes, "load" (after page load) and "visible"
+                (after page load and visible after page scroll). A progress indicator is also provided while loading the content.</p>
 
             <p:separator />
             
             <h:form>
                 <p:outputPanel deferred="true">
-                    <p>This part of the page is loaded lazily after initial page load.</p>
+                    <h3>Loaded after page load.</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </p:outputPanel>
+                
+                <div style="height:600px"></div>
+                
+                <p:outputPanel deferred="true" deferredMode="visible">
+                    <h3>Loaded after the panel becomes visible on page scroll.</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -28,15 +38,23 @@
             <p:tabView>
                 <p:tab title="outputPanel.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
-    &lt;p:outputPanel deferred="true"&gt;
-        &lt;p&gt;This part of the page is loaded lazily after initial page load.&lt;/p&gt;
-        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
-    &lt;/p:outputPanel&gt;
-&lt;/h:form&gt;
+&lt;p:outputPanel deferred="true"&gt;
+    &lt;h3&gt;Loaded after page load.&lt;/h3&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+&lt;/p:outputPanel&gt;
+                
+&lt;div style="height:600px"&gt;&lt;/div&gt;
+
+&lt;p:outputPanel deferred="true" deferredMode="visible"&gt;
+    &lt;h3&gt;Loaded after the panel becomes visible on page scroll.&lt;/h3&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+&lt;/p:outputPanel&gt;
                     </pre>
                 </p:tab>
             </p:tabView>
