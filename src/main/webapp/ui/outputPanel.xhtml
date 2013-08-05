@@ -8,14 +8,14 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">OutputPanel</h1>
         <div class="entry">
-            <p>Output panel is a container element with several use cases such as autoUpdate and dynamic loading. This example demonstrates the dynamic loading feature
+            <p>Output panel is a container element with several use cases such as autoUpdate and deferred loading. This example demonstrates the deferred loading feature
                 where the content of the panel is loaded after the page itself is loaded to speed up initial page load time. A progress indicator is displayed
                 while loading the content.</p>
 
             <p:separator />
             
             <h:form>
-                <p:outputPanel dynamic="true">
+                <p:outputPanel deferred="true">
                     <p>This part of the page is loaded lazily after initial page load.</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -29,7 +29,7 @@
                 <p:tab title="outputPanel.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
-    &lt;p:outputPanel dynamic="true"&gt;
+    &lt;p:outputPanel deferred="true"&gt;
         &lt;p&gt;This part of the page is loaded lazily after initial page load.&lt;/p&gt;
         &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
