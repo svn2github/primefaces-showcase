@@ -313,7 +313,7 @@
                 <h3>Overlay Panel</h3>
                 <h4>Flexible by design, Overlay Panel can be used for navigation, forms, inspectors and more.</h4>
                 <h4>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</h4>
-                <p:commandButton type="button" value="Close" icon="delete" onclick="panel.hide()"/>                                
+                <p:commandButton type="button" value="Close" icon="delete" onclick="PF('panel').hide()"/>                                
             </p:overlayPanel>                    
             
             <pm:header title="Overlays">
@@ -324,11 +324,11 @@
                 
                 <p:growl id="messageOverlay" />
 
-                <p:commandButton type="button" value="Basic Dialog" onclick="dlgBasic.show()"/>
+                <p:commandButton type="button" value="Basic Dialog" onclick="PF('dlgBasic').show()"/>
 
-                <p:commandButton type="button" value="Modal Dialog" onclick="dlgModal.show()"/>
+                <p:commandButton type="button" value="Modal Dialog" onclick="PF('dlgModal').show()"/>
                 
-                <p:commandButton type="button" value="Confirm Dialog" onclick="confirmation.show()"/>                                                                                
+                <p:commandButton type="button" value="Confirm Dialog" onclick="PF('confirmation').show()"/>                                                                                
                 
                 <p:commandButton id="simplePanelBtn" type="button" value="Simple Overlay Panel"/>                                
                 
@@ -349,10 +349,10 @@
                 <p:confirmDialog id="confirmDialog" message="Are you sure about destroying the world?"  
                                  header="Initiating destroy process" severity="alert" widgetVar="confirmation">  
                     <h:form>                        
-                            <p:commandButton id="confirm" value="Yes Sure" inline="true" update=":messageOverlay" oncomplete="confirmation.hide()" actionListener="#{buttonBean.destroyWorld}" >
+                            <p:commandButton id="confirm" value="Yes Sure" inline="true" update=":messageOverlay" oncomplete="PF('confirmation').hide()" actionListener="#{buttonBean.destroyWorld}" >
                                 <f:attribute name="swatch" value="b"/>                                
                             </p:commandButton>  
-                            <p:commandButton id="decline" value="Not Yet" inline="true" onclick="confirmation.hide()" type="button"/>                                                            
+                            <p:commandButton id="decline" value="Not Yet" inline="true" onclick="PF('confirmation').hide()" type="button"/>                                                            
                     </h:form>
                 </p:confirmDialog>                
 
@@ -599,7 +599,7 @@
                     <h:form>  
                         <p:dataList type="inset" >
                             <f:facet name="header" >Choose an action</f:facet>
-                            <p:commandLink value="View"  icon="search" update=":display" oncomplete="carDialog.show()"/>
+                            <p:commandLink value="View"  icon="search" update=":display" oncomplete="PF('carDialog').show()"/>
                             <p:commandLink value="Delete" icon="delete" actionListener="#{tableBean.deleteCar}" update=":frm:listTap"  />                            
                         </p:dataList>                     
                     </h:form>
