@@ -15,11 +15,11 @@
 
                 <p:messages showDetail="true"/>
 
-				<p:fileUpload value="#{fileUploadController.file}" mode="simple"/>
+				<p:fileUpload value="#{fileUploadController.file}" mode="simple" disabled="true"/>
 
                 <br /><br />
 
-                <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload}"/>
+                <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload}" disabled="true"/>
 
 			</h:form>
 
