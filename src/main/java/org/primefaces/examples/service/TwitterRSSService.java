@@ -15,36 +15,33 @@
  */
 package org.primefaces.examples.service;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.XmlReader;
+import org.primefaces.json.JSONArray;
+import org.primefaces.json.JSONObject;
 
 public class TwitterRSSService implements TwitterService {
 
-	private static final Logger logger = Logger.getLogger(TwitterRSSService.class.getName());
-	
-	public List<String> getTweets(String username) {
-		List<String> tweets = new ArrayList<String>();
-		
-		try {
-			URL feedSource = new URL("http://www.rssitfor.me/getrss?name=" + username);
-            
-			SyndFeedInput input = new SyndFeedInput();
-			SyndFeed feed = input.build(new XmlReader(feedSource));
-			for(Object f : feed.getEntries()) {
-				SyndEntry entry = (SyndEntry) f;
-				tweets.add(entry.getTitle().substring(username.length() + 2));
-			}
-		}catch(Exception e) {
-			logger.severe(e.getMessage());
-		}
-		
-		return tweets;
-	}
+    private static final Logger logger = Logger.getLogger(TwitterRSSService.class.getName());
+
+    public List<String> getTweets(String username) {
+        List<String> tweets = new ArrayList<String>();
+
+        try {
+            if (username != null && !username.equals("")) {
+                TwitterAPI twitterAPI = new TwitterAPI();
+                JSONArray feed = twitterAPI.getUserTimeLine(username, "298190640-9gLIJv0lUD8WasidrgeeyOxfwN6EpAahumkgggDI", "f6rOnnrHoSUEXlgUj7nOhanBZHgp8qhF0lAYbGFS7I");
+
+                for (int x = 0; x < feed.length(); x++) {
+                    tweets.add(((JSONObject) feed.get(x)).getString("text"));
+                }
+            }
+
+        } catch (Exception e) {
+            logger.severe(e.getMessage());
+        }
+
+        return tweets;
+    }
 }

@@ -160,6 +160,19 @@
             <artifactId>rome</artifactId>
             <version>1.0</version>
         </dependency>
+        
+                <!-- Twitter API -->
+        <dependency>
+            <groupId>apache-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.2.4</version>
+        </dependency>       
 
 		<!-- Dynamic Image Examples -->
         <dependency>
@@ -219,7 +232,7 @@
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
-
+        
     </dependencies>
 
     <repositories>
