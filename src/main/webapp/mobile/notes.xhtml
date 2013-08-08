@@ -48,7 +48,7 @@
 
                     <p:separator />
 
-                    <p:commandButton value="Save" action="#{notesView.save}" update="noteText :listNotesForm:notesList" icon="check" />
+                    <p:commandButton value="Save" actionListener="#{notesView.save}" update="noteText :listNotesForm:notesList" icon="check" oncomplete="PrimeFaces.back()" />
 
                 </h:form>
             </pm:content>

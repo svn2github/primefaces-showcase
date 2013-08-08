@@ -43,13 +43,11 @@ public class NotesView implements Serializable {
         return "pm:new";
     }
 
-	public String save() {
-        if(!notes.contains(note)) {
+    public void save() {
+        if (!notes.contains(note)) {
             notes.add(note);
         }
 
-		note = new Note();
-        
-        return "pm:main?reverse=true";
-	}
+        note = new Note();
+    }
 }
