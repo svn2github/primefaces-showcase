@@ -51,8 +51,7 @@
 
                     <p:separator />
 
-                    <p:commandButton value="Save" actionListener="#{weatherController.saveSettings}" update=":mainForm:display"
-                                      action="pm:main"/>
+                    <p:commandButton value="Save" actionListener="#{weatherController.saveSettings}" update=":mainForm:display" oncomplete="PrimeFaces.back()"/>
                     
                 </h:form>
             </pm:content>

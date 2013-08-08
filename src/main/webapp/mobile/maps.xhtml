@@ -16,7 +16,7 @@
                 function findMe() {
                     navigator.geolocation.getCurrentPosition(
                         function(position) {
-                            var map = gmap.getMap(),
+                            var map = PF('gmap').getMap(),
                             latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
                             map.setCenter(latlng);
