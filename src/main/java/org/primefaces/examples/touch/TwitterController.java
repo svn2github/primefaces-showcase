@@ -19,12 +19,12 @@ import java.util.List;
 
 import javax.faces.event.ActionEvent;
 
-import org.primefaces.examples.service.TwitterRSSService;
+import org.primefaces.examples.service.TwitterAPIService;
 import org.primefaces.examples.service.TwitterService;
 
 public class TwitterController {
 
-	private TwitterService twitterService = new TwitterRSSService();
+	private TwitterService twitterService = new TwitterAPIService();
 	
 	private String username;
 	

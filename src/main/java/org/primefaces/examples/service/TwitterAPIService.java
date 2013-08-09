@@ -18,26 +18,33 @@ package org.primefaces.examples.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import org.primefaces.json.JSONArray;
-import org.primefaces.json.JSONObject;
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
 
-public class TwitterRSSService implements TwitterService {
+public class TwitterAPIService implements TwitterService {
 
-    private static final Logger logger = Logger.getLogger(TwitterRSSService.class.getName());
+    private static final Logger logger = Logger.getLogger(TwitterAPIService.class.getName());
 
     public List<String> getTweets(String username) {
         List<String> tweets = new ArrayList<String>();
 
+        String twitter_consumer_key = "9oplpu80IwpZQWkF4FusrA";
+        String twitter_consumer_secret = "s0ldhYYtIugvm0eUajrupXZ9py1MmVysL1jAmtYHg";        
+        String access_token = "298190640-9gLIJv0lUD8WasidrgeeyOxfwN6EpAahumkgggDI";
+        String access_token_secret = "f6rOnnrHoSUEXlgUj7nOhanBZHgp8qhF0lAYbGFS7I";
+
         try {
             if (username != null && !username.equals("")) {
-                TwitterAPI twitterAPI = new TwitterAPI();
-                JSONArray feed = twitterAPI.getUserTimeLine(username, "298190640-9gLIJv0lUD8WasidrgeeyOxfwN6EpAahumkgggDI", "f6rOnnrHoSUEXlgUj7nOhanBZHgp8qhF0lAYbGFS7I");
-
-                for (int x = 0; x < feed.length(); x++) {
-                    tweets.add(((JSONObject) feed.get(x)).getString("text"));
+                Twitter twitter = new TwitterFactory().getInstance();                
+                twitter.setOAuthConsumer(twitter_consumer_key, twitter_consumer_secret);
+                twitter.setOAuthAccessToken(new AccessToken(access_token, access_token_secret));
+                List<Status> statuses = twitter.getUserTimeline(username);
+                for (Status status : statuses) {
+                    tweets.add(status.getText());
                 }
             }
-
         } catch (Exception e) {
             logger.severe(e.getMessage());
         }
