@@ -59,8 +59,10 @@
                             <p:graphicImage value="#{tweet.retweetedStatus.user.profileImageURL}" styleClass="ui-corner-all" style="margin-top: 15px" rendered="#{tweet.retweetedStatus != null}"/>
                             <p:graphicImage value="#{tweet.user.profileImageURL}" styleClass="ui-corner-all" style="margin-top: 15px" rendered="#{tweet.retweetedStatus == null}"/>
                             <h2>
+                                <small>
                                 <h:outputText value="#{tweet.retweetedStatus.user.name} @#{tweet.retweetedStatus.user.screenName}" rendered="#{tweet.retweetedStatus != null}"/>
                                 <h:outputText value="#{tweet.user.name} @#{tweet.user.screenName}" rendered="#{tweet.retweetedStatus == null}"/>
+                                </small>
                             </h2>                                                
                             <p style="white-space: normal" ><h:outputText value="#{tweet.text}" escape="false" /></p>        
                             <p class="ui-li-aside">
