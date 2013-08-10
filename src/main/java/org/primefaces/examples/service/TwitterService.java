@@ -16,8 +16,9 @@
 package org.primefaces.examples.service;
 
 import java.util.List;
+import twitter4j.Status;
 
 public interface TwitterService {
 
-	public List<String> getTweets(String username);
+	public List<Status> getTweets(String username);
 }

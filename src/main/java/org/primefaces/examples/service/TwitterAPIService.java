@@ -15,9 +15,9 @@
  */
 package org.primefaces.examples.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
@@ -27,8 +27,8 @@ public class TwitterAPIService implements TwitterService {
 
     private static final Logger logger = Logger.getLogger(TwitterAPIService.class.getName());
 
-    public List<String> getTweets(String username) {
-        List<String> tweets = new ArrayList<String>();
+    public List<Status> getTweets(String username) {
+        List<Status> tweets = null;
 
         String twitter_consumer_key = "9oplpu80IwpZQWkF4FusrA";
         String twitter_consumer_secret = "s0ldhYYtIugvm0eUajrupXZ9py1MmVysL1jAmtYHg";        
@@ -40,10 +40,8 @@ public class TwitterAPIService implements TwitterService {
                 Twitter twitter = new TwitterFactory().getInstance();                
                 twitter.setOAuthConsumer(twitter_consumer_key, twitter_consumer_secret);
                 twitter.setOAuthAccessToken(new AccessToken(access_token, access_token_secret));
-                List<Status> statuses = twitter.getUserTimeline(username);
-                for (Status status : statuses) {
-                    tweets.add(status.getText());
-                }
+                Paging p = new Paging(1, 200);
+                tweets = twitter.getUserTimeline(username,p);                                
             }
         } catch (Exception e) {
             logger.severe(e.getMessage());

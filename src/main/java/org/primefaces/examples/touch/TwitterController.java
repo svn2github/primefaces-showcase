@@ -21,6 +21,7 @@ import javax.faces.event.ActionEvent;
 
 import org.primefaces.examples.service.TwitterAPIService;
 import org.primefaces.examples.service.TwitterService;
+import twitter4j.Status;
 
 public class TwitterController {
 
@@ -28,7 +29,7 @@ public class TwitterController {
 	
 	private String username;
 	
-	private List<String> tweets;
+	private List<Status> tweets;
 	
 	public void loadTweets(ActionEvent actionEvent) {
 		tweets = twitterService.getTweets(username);
@@ -41,10 +42,10 @@ public class TwitterController {
 		this.username = username;
 	}
 	
-	public List<String> getTweets() {
+	public List<Status> getTweets() {
 		return tweets;
 	}
-	public void setTweets(List<String> tweets) {
+	public void setTweets(List<Status> tweets) {
 		this.tweets = tweets;
 	}
 }
