@@ -29,7 +29,7 @@
 
                 <h:panelGrid columns="2" styleClass="ui-responsive"> 
 
-                    <p:outputPanel layout="block" style="padding-right: 15px">
+                    <p:outputPanel style="padding-right: 15px">
                         <h:form>
                             <p:dataList type="inset" styleClass="ui-li-custom">
                                 <f:facet name="header">Components</f:facet>
@@ -615,7 +615,7 @@
                             <p><strong>#{car.manufacturer}</strong></p> 
                         </h:outputLink>
 
-                        <p:outputPanel layout="block">
+                        <p:outputPanel>
                             <p:column>    
                                 <p:commandLink styleClass="selection">
                                     <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />

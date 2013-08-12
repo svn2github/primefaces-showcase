@@ -27,7 +27,7 @@
 
                     <p:commandButton value="Get Forecast" update="display" actionListener="#{weatherController.retrieveConditions}"/>
 
-                    <p:outputPanel layout="block" style="text-align:center">
+                    <p:outputPanel style="text-align:center">
                         <h:outputText id="display" value="#{weatherController.conditions}" escape="false" />
                     </p:outputPanel>
                 </h:form>
