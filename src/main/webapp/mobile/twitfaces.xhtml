@@ -30,8 +30,8 @@
                     <p:commandButton value="Get Tweets" icon="refresh" update="tweetList profileHeader"
                                       actionListener="#{twitterController.loadTweets}" />
 
-                    <p:outputPanel id="profileHeader" layout="block">          
-                        <p:outputPanel layout="block" style="text-align: center" rendered="#{twitterController.tweets != null}">
+                    <p:outputPanel id="profileHeader">          
+                        <p:outputPanel style="text-align: center" rendered="#{twitterController.tweets != null}">
                             <p:graphicImage value="#{twitterController.tweets[0].user.profileImageURL}" styleClass="ui-corner-all"/><br/>
                             <strong><h:outputText value="#{twitterController.tweets[0].user.name}"/></strong><br/>
                             <h:outputText value="@#{twitterController.tweets[0].user.screenName}"/><br/>                            

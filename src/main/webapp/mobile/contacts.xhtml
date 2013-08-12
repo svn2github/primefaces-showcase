@@ -32,7 +32,7 @@
                             </p:commandLink>                                                                                                                                                                                                       
                             <a href="tel:#{contact.phone}">Call</a>
                         </p:column>
-                        <p:outputPanel layout="block">
+                        <p:outputPanel>
                             <p:column>                            
                                 <p:commandLink styleClass="selection">
                                     <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
@@ -67,7 +67,7 @@
                 </pm:header>
 
                 <pm:content>  
-                    <p:outputPanel id="content" layout="block">
+                    <p:outputPanel id="content">
                         <p:inputText id="name" value="#{contactsView.contact.firstname}" label="Name:"/>
 
                         <p:inputText id="surname" value="#{contactsView.contact.surname}" label="Surname:"/>
