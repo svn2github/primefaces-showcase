@@ -308,54 +308,53 @@
         </pm:view>
 
         <pm:view id="overlays">
-            
-            <p:overlayPanel for="simplePanelBtn" widgetVar="panel" my="right" >
+
+            <p:overlayPanel for="frmOverlay:simplePanelBtn" widgetVar="panel" my="right" >
                 <h3>Overlay Panel</h3>
                 <h4>Flexible by design, Overlay Panel can be used for navigation, forms, inspectors and more.</h4>
                 <h4>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</h4>
                 <p:commandButton type="button" value="Close" icon="delete" onclick="PF('panel').hide()"/>                                
             </p:overlayPanel>                    
-            
+
             <pm:header title="Overlays">
                 <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>                
             </pm:header>
 
             <pm:content>
-                
-                <p:growl id="messageOverlay" />
+                <h:form id="frmOverlay">
+                    <p:growl id="messageOverlay" />
 
-                <p:commandButton type="button" value="Basic Dialog" onclick="PF('dlgBasic').show()"/>
+                    <p:commandButton type="button" value="Basic Dialog" onclick="PF('dlgBasic').show()"/>
 
-                <p:commandButton type="button" value="Modal Dialog" onclick="PF('dlgModal').show()"/>
-                
-                <p:commandButton type="button" value="Confirm Dialog" onclick="PF('confirmation').show()"/>                                                                                
-                
-                <p:commandButton id="simplePanelBtn" type="button" value="Simple Overlay Panel"/>                                
-                
-                <p:dialog header="Header" widgetVar="dlgBasic">
-                    Dialog Content goes here...
-                </p:dialog>
+                    <p:commandButton type="button" value="Modal Dialog" onclick="PF('dlgModal').show()"/>
 
-                <p:dialog header="Cities" widgetVar="dlgModal" modal="true">                    
-                    <p:dataList type="inset">                              
-                        <f:attribute name="filter" value="true" />
-                        <h:outputText value="Barcelona" />
-                        <h:outputText value="Istanbul" />
-                        <h:outputText value="New York" />
-                        <h:outputText value="Paris" />                        
-                    </p:dataList>                        
-                </p:dialog>
-                
-                <p:confirmDialog id="confirmDialog" message="Are you sure about destroying the world?"  
-                                 header="Initiating destroy process" severity="alert" widgetVar="confirmation">  
-                    <h:form>                        
-                            <p:commandButton id="confirm" value="Yes Sure" inline="true" update=":messageOverlay" oncomplete="PF('confirmation').hide()" actionListener="#{buttonBean.destroyWorld}" >
-                                <f:attribute name="swatch" value="b"/>                                
-                            </p:commandButton>  
-                            <p:commandButton id="decline" value="Not Yet" inline="true" onclick="PF('confirmation').hide()" type="button"/>                                                            
-                    </h:form>
-                </p:confirmDialog>                
+                    <p:commandButton value="Confirm Dialog" actionListener="#{buttonBean.destroyWorld}" update="frmOverlay:messageOverlay">  
+                        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert"/>  
+                    </p:commandButton>                
 
+                    <p:commandButton id="simplePanelBtn" type="button" value="Simple Overlay Panel"/>                                
+
+                    <p:dialog header="Header" widgetVar="dlgBasic">
+                        Dialog Content goes here...
+                    </p:dialog>
+
+                    <p:dialog header="Cities" widgetVar="dlgModal" modal="true">                    
+                        <p:dataList type="inset">                              
+                            <f:attribute name="filter" value="true" />
+                            <h:outputText value="Barcelona" />
+                            <h:outputText value="Istanbul" />
+                            <h:outputText value="New York" />
+                            <h:outputText value="Paris" />                        
+                        </p:dataList>                        
+                    </p:dialog>
+
+                    <p:confirmDialog global="true">                      
+                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" inline="true" icon="check">
+                            <f:attribute name="swatch" value="b"/>                                
+                        </p:commandButton>  
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" inline="true" icon="delete"/>                                                            
+                    </p:confirmDialog>                
+                </h:form>
             </pm:content>
         </pm:view>
 
