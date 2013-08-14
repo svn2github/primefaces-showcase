@@ -440,4 +440,9 @@
         <managed-bean-class>org.primefaces.examples.view.MultiSelectListboxBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>validationBean</managed-bean-name>
+        <managed-bean-class>org.primefaces.examples.view.ValidationBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
