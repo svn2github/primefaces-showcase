@@ -18,8 +18,7 @@
 
         <!-- Main View -->
         <pm:view id="main" swatch="b">
-            <pm:header title="TwitFaces">
-            </pm:header>
+            <pm:header title="TwitFaces"/>
 
             <pm:content>
                 <h:form id="twitForm">
@@ -40,16 +39,14 @@
                             
                             <p:separator />                            
                             
-                            <h:panelGrid columns="3">
+                            <h:panelGrid columns="3" >
                                 <h:outputText value="#{twitterController.tweets[0].user.statusesCount}"/>                            
                                 <h:outputText value="#{twitterController.tweets[0].user.friendsCount}"/> 
-                                <h:outputText value="#{twitterController.tweets[0].user.followersCount}"/>                                    
-                            </h:panelGrid>                                                                                    
-                            <h:panelGrid columns="3" style="font-size: x-small">
-                                <h:outputText value="TWEETS"/>                           
+                                <h:outputText value="#{twitterController.tweets[0].user.followersCount}"/>  
+                                <h:outputText value="TWEETS"/> 
                                 <h:outputText value="FOLLOWING"/> 
-                                <h:outputText value="FOLLOWERS"/>
-                            </h:panelGrid>
+                                <h:outputText value="FOLLOWERS"/>                                
+                            </h:panelGrid>                                                                                    
                         </p:outputPanel>
                     </p:outputPanel>                  
                     
