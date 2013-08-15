@@ -1,0 +1,169 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            
+        </style>
+
+        <script type="text/javascript">
+            //<![CDATA[
+PrimeFaces.validator['custom.emailValidator'] = {
+    
+    pattern: /\S+@\S+/,
+    
+    validate: function(element, value) {
+        //use element.data() to access validation metadata, in this case there is none.
+        if(!this.pattern.test(value)) {
+            throw {
+                summary: 'Validation Error',
+                detail: value + ' is not a valid email.'
+            }
+        }
+    }
+};
+            //]]>
+        </script>
+    </ui:define>
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Client Side Validation - Custom</h1>
+		<div class="entry">
+			<p>A custom converter or a validator can be implemented using Client Side Validation API.</p>
+
+			<h:form>
+                <p:panel header="Validate">
+                    <h:panelGrid columns="4" cellpadding="5">
+                        <h:outputLabel for="email" value="Email:" />
+                        <p:inputText id="email" value="#{validationBean.text}" required="true">
+                            <f:validator validatorId="custom.emailValidator" />
+                        </p:inputText>
+                        <p:message for="email" display="icon" />
+                        <h:outputText value="#{validationBean.text}" />
+                    </h:panelGrid>
+
+                    <p:commandButton value="Save" ajax="false" icon="ui-icon-check" style="margin-right:10px"/>
+                </p:panel>
+			</h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="csvCustom.xhtml">
+                    <pre name="code" class="xml">
+&lt;h:form&gt;
+    &lt;p:panel header="Validate"&gt;
+        &lt;h:panelGrid columns="4" cellpadding="5"&gt;
+            &lt;h:outputLabel for="email" value="Email:" /&gt;
+            &lt;p:inputText id="email" value="\#{validationBean.text}" required="true"&gt;
+                &lt;f:validator validatorId="custom.emailValidator" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="email" display="icon" /&gt;
+            &lt;h:outputText value="\#{validationBean.text}" /&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton value="Save" ajax="false" icon="ui-icon-check" style="margin-right:10px"/&gt;
+    &lt;/p:panel&gt;
+&lt;/h:form&gt;
+
+&lt;script type="text/javascript"&gt;
+PrimeFaces.validator['custom.emailValidator'] = {
+    
+    pattern: /\S+@\S+/,
+    
+    validate: function(element, value) {
+        //use element.data() to access validation metadata, in this case there is none.
+        if(!this.pattern.test(value)) {
+            //throw the exception providing the message, this message can be localized using PrimeFaces.util.MessageContext API
+            throw {
+                summary: 'Validation Error',
+                detail: value + ' is not a valid email.'
+            }
+        }
+    }
+};
+&lt;/script&gt;
+                    </pre>
+				</p:tab>
+				
+				<p:tab title="ValidationBean.java">
+<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.Date;
+
+public class ValidationBean {
+    
+    private String text;
+    
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+}
+</pre>
+				</p:tab>
+                
+                <p:tab title="EmailValidator.java">
+<pre name="code" class="java">
+package org.primefaces.examples.validate;
+
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.FacesValidator;
+import javax.faces.validator.Validator;
+import javax.faces.validator.ValidatorException;
+import org.primefaces.validate.ClientValidator;
+
+@FacesValidator("custom.emailValidator")
+public class EmailValidator implements Validator, ClientValidator {
+
+    private Pattern pattern;
+	private Matcher matcher;
+ 
+	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                                                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+ 
+	public EmailValidator() {
+		pattern = Pattern.compile(EMAIL_PATTERN);
+	}
+
+    public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+        if(value == null) {
+            return;
+        }
+        
+        if(!pattern.matcher(value.toString()).matches()) {
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Validation Error", 
+                        value + " is not a valid email;"));
+        }
+    }
+    
+    public Map&lt;String, Object&gt; getMetadata() {
+        return null;
+    }
+
+    public String getValidatorId() {
+        return "custom.emailValidator";
+    }
+    
+}
+</pre>
+				</p:tab>
+			</p:tabView>
+			
+		</div>
+				
+	</ui:define>
+</ui:composition>
