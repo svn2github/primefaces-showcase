@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            
+        </style>
+
+        <script type="text/javascript">
+            //<![CDATA[
+
+            //]]>
+        </script>
+    </ui:define>
+
+	<ui:define name="content">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Client Side Validation - Bean Validation</h1>
+		<div class="entry">
+			<p>Client Side Validation Framework is integrated with Bean Validation Specification.</p>
+
+			<h:form>
+                <p:panel header="Validate">
+                    <p:messages />
+                    
+                    <h:panelGrid columns="4" cellpadding="5">
+                        <h:outputLabel for="name" value="Name: (@NotNull,@Size(max=5))" />
+                        <p:inputText id="name" value="#{validationBean.name}" label="Name"/>
+                        <p:message for="name" />
+                        <h:outputText value="#{validationBean.name}" />
+                        
+                        <h:outputLabel for="age" value="Age: (@Min(10))" />
+                        <p:inputText id="age" value="#{validationBean.age}" label="Age"/>
+                        <p:message for="age" />
+                        <h:outputText value="#{validationBean.age}" />
+                        
+                        <h:outputLabel for="amount" value="Amount: (@DecimalMax('99.9'))" />
+                        <p:inputText id="amount" value="#{validationBean.amount}" label="Amount"/>
+                        <p:message for="amount" />
+                        <h:outputText value="#{validationBean.amount}" />
+                    </h:panelGrid>
+
+                    <p:commandButton value="Save" ajax="false" icon="ui-icon-check" style="margin-right:10px" />
+                </p:panel>
+			</h:form>
+			
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="csvBean.xhtml">
+                    <pre name="code" class="xml">
+
+                    </pre>
+				</p:tab>
+				
+				<p:tab title="ValidationBean.java">
+<pre name="code" class="java">
+
+</pre>
+				</p:tab>
+			</p:tabView>
+			
+		</div>
+				
+	</ui:define>
+</ui:composition>

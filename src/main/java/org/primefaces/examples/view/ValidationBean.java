@@ -16,6 +16,10 @@
 package org.primefaces.examples.view;
 
 import java.util.Date;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class ValidationBean {
     
@@ -30,6 +34,16 @@ public class ValidationBean {
     private String regexText;
         
     private Date date;
+    
+    @NotNull
+    @Size(max=5)
+    private String name;
+    
+    @Min(10)
+    private Integer age;
+    
+    @DecimalMax("99.9")
+    private Double amount;
 
     public String getText() {
         return text;
@@ -77,5 +91,29 @@ public class ValidationBean {
 
     public void setDate(Date date) {
         this.date = date;
-    }    
+    }   
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
 }
