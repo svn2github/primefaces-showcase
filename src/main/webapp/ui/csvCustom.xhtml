@@ -12,6 +12,9 @@
 
         <script type="text/javascript">
             //<![CDATA[
+/**
+ * JSF Validator
+ */
 PrimeFaces.validator['custom.emailValidator'] = {
     
     pattern: /\S+@\S+/,
@@ -23,6 +26,27 @@ PrimeFaces.validator['custom.emailValidator'] = {
                 summary: 'Validation Error',
                 detail: value + ' is not a valid email.'
             }
+        }
+    }
+};
+
+/**
+ * Bean validator for @Email
+ */
+PrimeFaces.validator['Email'] = {
+    
+    pattern: /\S+@\S+/,
+            
+    MESSAGE_ID: 'org.primefaces.examples.validate.email.message',
+    
+    validate: function(element, value) {
+        var mc = PrimeFaces.util.MessageContext;
+
+        if(!this.pattern.test(value)) {
+            var msgStr = element.data('p-email-msg'),
+            msg = msgStr ? {summary:msgStr, detail: msgStr} : mc.getMessage(this.MESSAGE_ID);
+    
+            throw msg;
         }
     }
 };
@@ -39,12 +63,17 @@ PrimeFaces.validator['custom.emailValidator'] = {
 			<h:form>
                 <p:panel header="Validate">
                     <h:panelGrid columns="4" cellpadding="5">
-                        <h:outputLabel for="email" value="Email:" />
-                        <p:inputText id="email" value="#{validationBean.text}" required="true">
+                        <h:outputLabel for="email1" value="Email 1: (JSF Validation)" />
+                        <p:inputText id="email1" value="#{validationBean.text}">
                             <f:validator validatorId="custom.emailValidator" />
                         </p:inputText>
-                        <p:message for="email" display="icon" />
+                        <p:message for="email1" />
                         <h:outputText value="#{validationBean.text}" />
+                        
+                        <h:outputLabel for="email2" value="Email 2: (Bean Validation)" />
+                        <p:inputText id="email2" value="#{validationBean.email}" />
+                        <p:message for="email2" />
+                        <h:outputText value="#{validationBean.email}" />
                     </h:panelGrid>
 
                     <p:commandButton value="Save" ajax="false" icon="ui-icon-check" style="margin-right:10px"/>
@@ -58,12 +87,17 @@ PrimeFaces.validator['custom.emailValidator'] = {
 &lt;h:form&gt;
     &lt;p:panel header="Validate"&gt;
         &lt;h:panelGrid columns="4" cellpadding="5"&gt;
-            &lt;h:outputLabel for="email" value="Email:" /&gt;
-            &lt;p:inputText id="email" value="\#{validationBean.text}" required="true"&gt;
+            &lt;h:outputLabel for="email1" value="Email 1: (JSF Validation)" /&gt;
+            &lt;p:inputText id="email1" value="\#{validationBean.text}"&gt;
                 &lt;f:validator validatorId="custom.emailValidator" /&gt;
             &lt;/p:inputText&gt;
-            &lt;p:message for="email" display="icon" /&gt;
+            &lt;p:message for="email1" /&gt;
             &lt;h:outputText value="\#{validationBean.text}" /&gt;
+
+            &lt;h:outputLabel for="email2" value="Email 2: (Bean Validation)" /&gt;
+            &lt;p:inputText id="email2" value="\#{validationBean.email}" /&gt;
+            &lt;p:message for="email2" /&gt;
+            &lt;h:outputText value="\#{validationBean.email}" /&gt;
         &lt;/h:panelGrid&gt;
 
         &lt;p:commandButton value="Save" ajax="false" icon="ui-icon-check" style="margin-right:10px"/&gt;
@@ -71,6 +105,9 @@ PrimeFaces.validator['custom.emailValidator'] = {
 &lt;/h:form&gt;
 
 &lt;script type="text/javascript"&gt;
+/**
+ * JSF Validator
+ */
 PrimeFaces.validator['custom.emailValidator'] = {
     
     pattern: /\S+@\S+/,
@@ -78,11 +115,31 @@ PrimeFaces.validator['custom.emailValidator'] = {
     validate: function(element, value) {
         //use element.data() to access validation metadata, in this case there is none.
         if(!this.pattern.test(value)) {
-            //throw the exception providing the message, this message can be localized using PrimeFaces.util.MessageContext API
             throw {
                 summary: 'Validation Error',
                 detail: value + ' is not a valid email.'
             }
+        }
+    }
+};
+
+/**
+ * Bean validator for @Email
+ */
+PrimeFaces.validator['Email'] = {
+    
+    pattern: /\S+@\S+/,
+            
+    MESSAGE_ID: 'org.primefaces.examples.validate.email.message',
+    
+    validate: function(element, value) {
+        var mc = PrimeFaces.util.MessageContext;
+
+        if(!this.pattern.test(value)) {
+            var msgStr = element.data('p-email-msg'),
+            msg = msgStr ? {summary:msgStr, detail: msgStr} : mc.getMessage(this.MESSAGE_ID);
+    
+            throw msg;
         }
     }
 };
@@ -94,18 +151,27 @@ PrimeFaces.validator['custom.emailValidator'] = {
 <pre name="code" class="java">
 package org.primefaces.examples.view;
 
-import java.util.Date;
+import org.primefaces.examples.validate.Email;
 
 public class ValidationBean {
     
     private String text;
+
+    @Email(message = "must be a valid email")
+    private String email;
     
     public String getText() {
         return text;
     }
-
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
 </pre>
@@ -126,6 +192,9 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 import org.primefaces.validate.ClientValidator;
 
+/**
+ * Custom JSF Validator for Email input
+ */
 @FacesValidator("custom.emailValidator")
 public class EmailValidator implements Validator, ClientValidator {
 
@@ -156,6 +225,104 @@ public class EmailValidator implements Validator, ClientValidator {
 
     public String getValidatorId() {
         return "custom.emailValidator";
+    }
+    
+}
+</pre>
+        </p:tab>
+                    
+        <p:tab title="Email.java">
+<pre name="code" class="java">
+package org.primefaces.examples.validate;
+
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.*;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import org.primefaces.validate.bean.ClientConstraint;
+
+@Target({METHOD,FIELD,ANNOTATION_TYPE})
+@Retention(RUNTIME)
+@Constraint(validatedBy=EmailConstraintValidator.class)
+@ClientConstraint(resolvedBy=EmailClientValidationConstraint.class)
+@Documented
+public @interface Email {
+    
+    String message() default "{org.primefaces.examples.primefaces}";
+    
+    Class&lt;?&gt;[] groups() default {};
+
+    Class&lt;? extends Payload&gt;[] payload() default {};
+}
+</pre>
+				</p:tab>
+                    
+                <p:tab title="EmailConstraintValidator.java">
+<pre name="code" class="java">
+package org.primefaces.examples.validate;
+
+import java.util.regex.Pattern;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+/**
+ * ConstraintValidator for Email Input
+ */
+public class EmailConstraintValidator implements ConstraintValidator&lt;Email, String&gt;{
+
+    private Pattern pattern;
+ 
+	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                                                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    
+    public void initialize(Email a) {
+        pattern = Pattern.compile(EMAIL_PATTERN);
+    }
+
+    public boolean isValid(String value, ConstraintValidatorContext cvc) {
+        if(value == null)
+            return true;
+        else
+            return pattern.matcher(value.toString()).matches();
+    }
+    
+}
+</pre>
+				</p:tab>
+                    
+                <p:tab title="EmailClientValidationConstraint.java">
+<pre name="code" class="java">
+package org.primefaces.examples.validate;
+
+import java.util.HashMap;
+import java.util.Map;
+import javax.validation.metadata.ConstraintDescriptor;
+import org.primefaces.validate.bean.ClientValidationConstraint;
+
+/**
+ * ClientValidationConstraint for @Email annotation
+ */
+public class EmailClientValidationConstraint implements ClientValidationConstraint {
+
+    public static final String MESSAGE_METADATA = "data-p-email-msg";
+    
+    public Map&lt;String, Object&gt; getMetadata(ConstraintDescriptor constraintDescriptor) {
+        Map&lt;String,Object&gt; metadata = new HashMap&lt;String, Object&gt;();
+        Map attrs = constraintDescriptor.getAttributes();
+        Object message = attrs.get("message");    
+        if(message != null) {
+            metadata.put(MESSAGE_METADATA, message);
+        }
+        
+        return metadata;
+    }
+
+    public String getValidatorId() {
+        return Email.class.getSimpleName();
     }
     
 }

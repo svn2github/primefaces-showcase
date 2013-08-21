@@ -17,9 +17,11 @@ package org.primefaces.examples.view;
 
 import java.util.Date;
 import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.primefaces.examples.validate.Email;
 
 public class ValidationBean {
     
@@ -35,15 +37,17 @@ public class ValidationBean {
         
     private Date date;
     
-    @NotNull
     @Size(max=5)
     private String name;
     
-    @Min(10)
+    @Min(10) @Max(20)
     private Integer age;
     
     @DecimalMax("99.9")
     private Double amount;
+    
+    @Email(message = "must be a valid email")
+    private String email;
 
     public String getText() {
         return text;
@@ -116,4 +120,13 @@ public class ValidationBean {
     public void setAmount(Double amount) {
         this.amount = amount;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+ 
 }
