@@ -15,7 +15,6 @@
  */
 package org.primefaces.examples.view;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.DecimalMax;
@@ -23,7 +22,6 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -39,6 +37,8 @@ public class ValidationBean {
     private Double doubleNumber;
     
     private Float floatNumber;
+    
+    private Double money;
     
     private String regexText;
        
@@ -75,54 +75,6 @@ public class ValidationBean {
     @Pattern(regexp = "/^[-+]?\\d+$/") // integer
     private String pattern;
 
-    public String getPattern() {
-        return pattern;
-    }
-
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
-
-    public Date getDateControlPopup() {
-        return dateControlPopup;
-    }
-
-    public void setDateControlPopup(Date dateControlPopup) {
-        this.dateControlPopup = dateControlPopup;
-    }
-    
-    public Date getDateControlPast() {
-        return dateControlPast;
-    }
-
-    public void setDateControlPast(Date dateControlPast) {
-        this.dateControlPast = dateControlPast;
-    }
-
-    public Date getDateControlFuture() {
-        return dateControlFuture;
-    }
-
-    public void setDateControlFuture(Date dateControlFuture) {
-        this.dateControlFuture = dateControlFuture;
-    }
-
-    public String getDigitsControl() {
-        return digitsControl;
-    }
-
-    public void setDigitsControl(String digitsControl) {
-        this.digitsControl = digitsControl;
-    }
-    
-    public boolean isAssertControl() {
-        return assertControl;
-    }
-
-    public void setAssertControl(boolean assertControl) {
-        this.assertControl = assertControl;
-    }
-        
     public String getText() {
         return text;
     }
@@ -155,6 +107,14 @@ public class ValidationBean {
         this.floatNumber = floatNumber;
     }
 
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
+
     public String getRegexText() {
         return regexText;
     }
@@ -169,7 +129,7 @@ public class ValidationBean {
 
     public void setDate(Date date) {
         this.date = date;
-    }   
+    }
 
     public String getName() {
         return name;
@@ -202,5 +162,52 @@ public class ValidationBean {
     public void setEmail(String email) {
         this.email = email;
     }
- 
+
+    public boolean isAssertControl() {
+        return assertControl;
+    }
+
+    public void setAssertControl(boolean assertControl) {
+        this.assertControl = assertControl;
+    }
+
+    public String getDigitsControl() {
+        return digitsControl;
+    }
+
+    public void setDigitsControl(String digitsControl) {
+        this.digitsControl = digitsControl;
+    }
+
+    public Date getDateControlPast() {
+        return dateControlPast;
+    }
+
+    public void setDateControlPast(Date dateControlPast) {
+        this.dateControlPast = dateControlPast;
+    }
+
+    public Date getDateControlFuture() {
+        return dateControlFuture;
+    }
+
+    public void setDateControlFuture(Date dateControlFuture) {
+        this.dateControlFuture = dateControlFuture;
+    }
+
+    public Date getDateControlPopup() {
+        return dateControlPopup;
+    }
+
+    public void setDateControlPopup(Date dateControlPopup) {
+        this.dateControlPopup = dateControlPopup;
+    }
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
 }

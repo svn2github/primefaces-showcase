@@ -32,6 +32,7 @@
                 <li>Easy to write custom client converters and validators.</li>
                 <li>Global or Component based enable/disable.</li>
                 <li>Little footprint using HTML5.</li>
+                <li>Advanced Bean Validation Integration.</li>
             </ul>
 
 			<h:form>
@@ -60,8 +61,17 @@
                         </p:inputText>
                         <p:message for="dd" display="icon" />
                         <h:outputText value="#{validationBean.doubleNumber}" />
+                        
+                        <h:outputLabel for="money" value="Currency ($):" style="font-weight:bold"/>					
+                        <p:inputText id="money" value="#{validationBean.money}">
+                            <f:convertNumber type="currency" currencySymbol="$"/>
+                        </p:inputText>
+                        <p:message for="money" display="icon" />
+                        <h:outputText value="#{validationBean.money}">
+                            <f:convertNumber  type="currency" currencySymbol="$" />
+                        </h:outputText>
 
-                        <h:outputLabel for="regex" value="Regex:" style="font-weight:bold"/>					
+                        <h:outputLabel for="regex" value="Regex (^[a-zA-Z]+$):" style="font-weight:bold"/>					
                         <p:inputText id="regex" value="#{validationBean.regexText}" validatorMessage="Value does not match pattern.">
                             <f:validateRegex pattern="^[a-zA-Z]+$" />
                         </p:inputText>
@@ -70,7 +80,7 @@
 
                         <h:outputLabel for="date" value="Date" style="font-weight:bold"/>					
                         <p:inputText id="date" value="#{validationBean.date}" required="true" requiredMessage="Date cannot be blank.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                            <f:convertDateTime pattern="MM/dd/yyyy" type="currenc"/>
                         </p:inputText>
                         <p:message for="date" display="icon" />
                         <h:outputText value="#{validationBean.date}">
@@ -84,7 +94,7 @@
                     <p:commandButton value="Disabled" ajax="false" icon="ui-icon-check" validateClient="false"/>
                 </p:panel>
 			</h:form>
-			
+
 			<h3>Source</h3>
 			<p:tabView>
 				<p:tab title="csvBasic.xhtml">
@@ -116,7 +126,16 @@
             &lt;p:message for="dd" display="icon" /&gt;
             &lt;h:outputText value="\#{validationBean.doubleNumber}" /&gt;
 
-            &lt;h:outputLabel for="regex" value="Regex:" style="font-weight:bold"/&gt;					
+            &lt;h:outputLabel for="money" value="Currency ($):" style="font-weight:bold"/&gt;				
+            &lt;p:inputText id="money" value="\#{validationBean.money}"&gt;
+                &lt;f:convertNumber type="currency" currencySymbol="$"/&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="money" display="icon" /&gt;
+            &lt;h:outputText value="\#{validationBean.money}"&gt;
+                &lt;f:convertNumber  type="currency" currencySymbol="$" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputLabel for="regex" value="Regex (^[a-zA-Z]+$):" style="font-weight:bold"/&gt;					
             &lt;p:inputText id="regex" value="\#{validationBean.regexText}" validatorMessage="Value does not match pattern."&gt;
                 &lt;f:validateRegex pattern="^[a-zA-Z]+$" /&gt;
             &lt;/p:inputText&gt;
@@ -155,8 +174,8 @@ public class ValidationBean {
     private Integer integer;
     
     private Double doubleNumber;
-    
-    private Float floatNumber;
+
+    private Double money;
     
     private String regexText;
         
@@ -186,12 +205,12 @@ public class ValidationBean {
         this.doubleNumber = doubleNumber;
     }
 
-    public Float getFloatNumber() {
-        return floatNumber;
+    public Double getMoney() {
+        return money;
     }
 
-    public void setFloatNumber(Float floatNumber) {
-        this.floatNumber = floatNumber;
+    public void setMoney(Double money) {
+        this.money = money;
     }
 
     public String getRegexText() {
