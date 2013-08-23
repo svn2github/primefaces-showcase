@@ -105,7 +105,7 @@ public class ChatView {
         else {
             users.addUser(username);
             pushContext.push(CHANNEL + "*", username + " joined the channel.");
-            requestContext.execute("subscriber.connect('/" + username + "')");
+            requestContext.execute("PF('subscriber').connect('/" + username + "')");
             loggedIn = true;
         }
 	}
