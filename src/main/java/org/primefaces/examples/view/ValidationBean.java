@@ -15,11 +15,18 @@
  */
 package org.primefaces.examples.view;
 
+import java.math.BigDecimal;
 import java.util.Date;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.primefaces.examples.validate.Email;
 
@@ -34,9 +41,10 @@ public class ValidationBean {
     private Float floatNumber;
     
     private String regexText;
-        
+       
     private Date date;
     
+    @Null
     @Size(max=5)
     private String name;
     
@@ -49,6 +57,72 @@ public class ValidationBean {
     @Email(message = "must be a valid email")
     private String email;
 
+    @AssertTrue
+    private boolean assertControl;
+    
+    @Digits(integer = 2, fraction = 1)
+    private String digitsControl;
+
+    @Past
+    private Date dateControlPast;
+    
+    @Future
+    private Date dateControlFuture;
+    
+    @Past
+    private Date dateControlPopup;
+    
+    @Pattern(regexp = "/^[-+]?\\d+$/") // integer
+    private String pattern;
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public Date getDateControlPopup() {
+        return dateControlPopup;
+    }
+
+    public void setDateControlPopup(Date dateControlPopup) {
+        this.dateControlPopup = dateControlPopup;
+    }
+    
+    public Date getDateControlPast() {
+        return dateControlPast;
+    }
+
+    public void setDateControlPast(Date dateControlPast) {
+        this.dateControlPast = dateControlPast;
+    }
+
+    public Date getDateControlFuture() {
+        return dateControlFuture;
+    }
+
+    public void setDateControlFuture(Date dateControlFuture) {
+        this.dateControlFuture = dateControlFuture;
+    }
+
+    public String getDigitsControl() {
+        return digitsControl;
+    }
+
+    public void setDigitsControl(String digitsControl) {
+        this.digitsControl = digitsControl;
+    }
+    
+    public boolean isAssertControl() {
+        return assertControl;
+    }
+
+    public void setAssertControl(boolean assertControl) {
+        this.assertControl = assertControl;
+    }
+        
     public String getText() {
         return text;
     }

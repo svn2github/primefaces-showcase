@@ -28,7 +28,7 @@
                     <p:messages />
                     
                     <h:panelGrid columns="4" cellpadding="5">
-                        <h:outputLabel for="name" value="Name: (@NotNull,@Size(max=5))" />
+                        <h:outputLabel for="name" value="Name: (@Null,@Size(max=5))" />
                         <p:inputText id="name" value="#{validationBean.name}" label="Name"/>
                         <p:message for="name" />
                         <h:outputText value="#{validationBean.name}" />
@@ -42,6 +42,41 @@
                         <p:inputText id="amount" value="#{validationBean.amount}" label="Amount"/>
                         <p:message for="amount" />
                         <h:outputText value="#{validationBean.amount}" />
+                        
+                        <h:outputLabel for="pattern" value="Pattern: (@Pattern(regexp = integer))" />
+                        <p:inputText id="pattern" value="#{validationBean.pattern}" label="pattern"/>
+                        <p:message for="pattern" />
+                        <h:outputText value="#{validationBean.pattern}" />
+                        
+                        <h:outputLabel for="assertControl" value="Assert: (@AssertTrue)" />
+                        <p:selectBooleanCheckbox id="assertControl" value="#{validationBean.assertControl}" />
+                        <p:message for="assertControl" />
+                        <h:outputText/>
+                        
+                        <h:outputLabel for="digits" value="Digits: (@Digits(integer = 2,fraction = 1))" />
+                        <p:inputText id="digits" value="#{validationBean.digitsControl}" label="digits"/>
+                        <p:message for="digits" />
+                        <h:outputText value="#{validationBean.digitsControl}" />
+                        
+                        <h:outputLabel for="date" value="Date (@Past)"/>                                
+                        <p:inputText id="dateControl" value="#{validationBean.dateControlPast}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </p:inputText> 
+                        <p:message for="dateControl" />
+                        <h:outputText/>
+                        
+                        <h:outputLabel for="dateFuture" value="Date (@Future)"/>                                
+                        <p:inputText id="dateFuture" value="#{validationBean.dateControlFuture}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </p:inputText> 
+                        <p:message for="dateFuture" />
+                        <h:outputText/>
+                        
+                        <h:outputLabel value="Popup Date (@Past):" />
+                        <p:calendar value="#{validationBean.dateControlPopup}" id="popupDate" />
+                        <p:message for="popupDate" />
+                        <h:outputText/>
+                        
                     </h:panelGrid>
 
                     <p:commandButton value="Save" ajax="false" icon="ui-icon-check" style="margin-right:10px" />
