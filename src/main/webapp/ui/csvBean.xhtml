@@ -87,12 +87,187 @@
 			<p:tabView>
 				<p:tab title="csvBean.xhtml">
                     <pre name="code" class="xml">
+&lt;h:form&gt;
+    &lt;p:panel header="Validate"&gt;
+        &lt;p:messages /&gt;
 
+        &lt;h:panelGrid columns="4" cellpadding="5"&gt;
+            &lt;h:outputLabel for="name" value="Name: (@Null,@Size(max=5))" /&gt;
+            &lt;p:inputText id="name" value="\#{validationBean.name}" label="Name"/&gt;
+            &lt;p:message for="name" /&gt;
+            &lt;h:outputText value="\#{validationBean.name}" /&gt;
+
+            &lt;h:outputLabel for="age" value="Age: (@Min(10))" /&gt;
+            &lt;p:inputText id="age" value="\#{validationBean.age}" label="Age"/&gt;
+            &lt;p:message for="age" /&gt;
+            &lt;h:outputText value="\#{validationBean.age}" /&gt;
+
+            &lt;h:outputLabel for="amount" value="Amount: (@DecimalMax('99.9'))" /&gt;
+            &lt;p:inputText id="amount" value="\#{validationBean.amount}" label="Amount"/&gt;
+            &lt;p:message for="amount" /&gt;
+            &lt;h:outputText value="\#{validationBean.amount}" /&gt;
+
+            &lt;h:outputLabel for="pattern" value="Pattern: (@Pattern(regexp = integer))" /&gt;
+            &lt;p:inputText id="pattern" value="\#{validationBean.pattern}" label="pattern"/&gt;
+            &lt;p:message for="pattern" /&gt;
+            &lt;h:outputText value="\#{validationBean.pattern}" /&gt;
+
+            &lt;h:outputLabel for="assertControl" value="Assert: (@AssertTrue)" /&gt;
+            &lt;p:selectBooleanCheckbox id="assertControl" value="\#{validationBean.assertControl}" /&gt;
+            &lt;p:message for="assertControl" /&gt;
+            &lt;h:outputText/&gt;
+
+            &lt;h:outputLabel for="digits" value="Digits: (@Digits(integer = 2,fraction = 1))" /&gt;
+            &lt;p:inputText id="digits" value="\#{validationBean.digitsControl}" label="digits"/&gt;
+            &lt;p:message for="digits" /&gt;
+            &lt;h:outputText value="\#{validationBean.digitsControl}" /&gt;
+
+            &lt;h:outputLabel for="date" value="Date (@Past)"/&gt;                                
+            &lt;p:inputText id="dateControl" value="\#{validationBean.dateControlPast}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/p:inputText&gt; 
+            &lt;p:message for="dateControl" /&gt;
+            &lt;h:outputText/&gt;
+
+            &lt;h:outputLabel for="dateFuture" value="Date (@Future)"/&gt;                                
+            &lt;p:inputText id="dateFuture" value="\#{validationBean.dateControlFuture}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/p:inputText&gt; 
+            &lt;p:message for="dateFuture" /&gt;
+            &lt;h:outputText/&gt;
+
+            &lt;h:outputLabel value="Popup Date (@Past):" /&gt;
+            &lt;p:calendar value="\#{validationBean.dateControlPopup}" id="popupDate" /&gt;
+            &lt;p:message for="popupDate" /&gt;
+            &lt;h:outputText/&gt;
+
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton value="Save" ajax="false" icon="ui-icon-check" style="margin-right:10px" /&gt;
+    &lt;/p:panel&gt;
+&lt;/h:form&gt;
                     </pre>
 				</p:tab>
 				
 				<p:tab title="ValidationBean.java">
 <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.Date;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import org.primefaces.examples.validate.Email;
+
+public class ValidationBean {
+       
+    @Null
+    @Size(max=5)
+    private String name;
+    
+    @Min(10) @Max(20)
+    private Integer age;
+    
+    @DecimalMax("99.9")
+    private Double amount;
+    
+    @Email(message = "must be a valid email")
+    private String email;
+
+    @AssertTrue
+    private boolean assertControl;
+    
+    @Digits(integer = 2, fraction = 1)
+    private String digitsControl;
+
+    @Past
+    private Date dateControlPast;
+    
+    @Future
+    private Date dateControlFuture;
+        
+    @Pattern(regexp = "/^[-+]?\\d+$/") // integer
+    private String pattern;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isAssertControl() {
+        return assertControl;
+    }
+
+    public void setAssertControl(boolean assertControl) {
+        this.assertControl = assertControl;
+    }
+
+    public String getDigitsControl() {
+        return digitsControl;
+    }
+
+    public void setDigitsControl(String digitsControl) {
+        this.digitsControl = digitsControl;
+    }
+
+    public Date getDateControlPast() {
+        return dateControlPast;
+    }
+
+    public void setDateControlPast(Date dateControlPast) {
+        this.dateControlPast = dateControlPast;
+    }
+
+    public Date getDateControlFuture() {
+        return dateControlFuture;
+    }
+
+    public void setDateControlFuture(Date dateControlFuture) {
+        this.dateControlFuture = dateControlFuture;
+    }
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+}
 
 </pre>
 				</p:tab>
