@@ -40,11 +40,11 @@ PrimeFaces.validator['Email'] = {
     MESSAGE_ID: 'org.primefaces.examples.validate.email.message',
     
     validate: function(element, value) {
-        var mc = PrimeFaces.util.MessageContext;
+        var vc = PrimeFaces.util.ValidationContext;
 
         if(!this.pattern.test(value)) {
             var msgStr = element.data('p-email-msg'),
-            msg = msgStr ? {summary:msgStr, detail: msgStr} : mc.getMessage(this.MESSAGE_ID);
+            msg = msgStr ? {summary:msgStr, detail: msgStr} : vc.getMessage(this.MESSAGE_ID);
     
             throw msg;
         }
@@ -133,11 +133,11 @@ PrimeFaces.validator['Email'] = {
     MESSAGE_ID: 'org.primefaces.examples.validate.email.message',
     
     validate: function(element, value) {
-        var mc = PrimeFaces.util.MessageContext;
+        var vc = PrimeFaces.util.ValidationContext;
 
         if(!this.pattern.test(value)) {
             var msgStr = element.data('p-email-msg'),
-            msg = msgStr ? {summary:msgStr, detail: msgStr} : mc.getMessage(this.MESSAGE_ID);
+            msg = msgStr ? {summary:msgStr, detail: msgStr} : vc.getMessage(this.MESSAGE_ID);
     
             throw msg;
         }
