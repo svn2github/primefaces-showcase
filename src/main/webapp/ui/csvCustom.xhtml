@@ -61,18 +61,18 @@ PrimeFaces.validator['Email'] = {
 			<p>A custom converter or a validator can be implemented easily. Both JSF and Bean Validation APIs are supported.</p>
 
 			<h:form>
+                <p:growl showDetail="true"/>
+                
                 <p:panel header="Validate">
-                    <h:panelGrid columns="4" cellpadding="5">
+                    <h:panelGrid columns="3" cellpadding="5">
                         <h:outputLabel for="email1" value="Email 1: (JSF Validation)" />
                         <p:inputText id="email1" value="#{validationBean.text}">
                             <f:validator validatorId="custom.emailValidator" />
                         </p:inputText>
-                        <p:message for="email1" />
                         <h:outputText value="#{validationBean.text}" />
                         
                         <h:outputLabel for="email2" value="Email 2: (Bean Validation)" />
                         <p:inputText id="email2" value="#{validationBean.email}" />
-                        <p:message for="email2" />
                         <h:outputText value="#{validationBean.email}" />
                     </h:panelGrid>
 
@@ -85,18 +85,18 @@ PrimeFaces.validator['Email'] = {
 				<p:tab title="csvCustom.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
+    &lt;p:growl showDetail="true"/&gt;
+
     &lt;p:panel header="Validate"&gt;
-        &lt;h:panelGrid columns="4" cellpadding="5"&gt;
+        &lt;h:panelGrid columns="3" cellpadding="5"&gt;
             &lt;h:outputLabel for="email1" value="Email 1: (JSF Validation)" /&gt;
             &lt;p:inputText id="email1" value="\#{validationBean.text}"&gt;
                 &lt;f:validator validatorId="custom.emailValidator" /&gt;
             &lt;/p:inputText&gt;
-            &lt;p:message for="email1" /&gt;
             &lt;h:outputText value="\#{validationBean.text}" /&gt;
 
             &lt;h:outputLabel for="email2" value="Email 2: (Bean Validation)" /&gt;
             &lt;p:inputText id="email2" value="\#{validationBean.email}" /&gt;
-            &lt;p:message for="email2" /&gt;
             &lt;h:outputText value="\#{validationBean.email}" /&gt;
         &lt;/h:panelGrid&gt;
 
