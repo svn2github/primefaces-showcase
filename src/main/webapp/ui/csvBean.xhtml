@@ -48,7 +48,7 @@
                         <p:message for="amount2" />
                         <h:outputText value="#{validationBean.amount2}" />
                         
-                        <h:outputLabel for="pattern" value="Pattern: (@Pattern(regexp = /^[-+]?\\d+$/))" />
+                        <h:outputLabel for="pattern" value="Pattern: (@Pattern(regexp='^[-+]?\\d+$'))" />
                         <p:inputText id="pattern" value="#{validationBean.pattern}" label="pattern"/>
                         <p:message for="pattern" />
                         <h:outputText value="#{validationBean.pattern}" />
@@ -107,7 +107,7 @@
             &lt;p:message for="amount2" /&gt;
             &lt;h:outputText value="\#{validationBean.amount2}" /&gt;
 
-            &lt;h:outputLabel for="pattern" value="Pattern: (@Pattern(regexp = /^[-+]?\\d+$/))" /&gt;
+            &lt;h:outputLabel for="pattern" value="Pattern: (@Pattern(regexp="^[-+]?\\d+$")))" /&gt;
             &lt;p:inputText id="pattern" value="\#{validationBean.pattern}" label="pattern"/&gt;
             &lt;p:message for="pattern" /&gt;
             &lt;h:outputText value="\#{validationBean.pattern}" /&gt;

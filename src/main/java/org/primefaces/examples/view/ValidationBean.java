@@ -69,7 +69,7 @@ public class ValidationBean {
     @Future
     private Date futureDate;
     
-    @Pattern(regexp = "/^[-+]?\\d+$/") // integer
+    @Pattern(regexp="^[-+]?\\d+$")
     private String pattern;
 
     public String getText() {
