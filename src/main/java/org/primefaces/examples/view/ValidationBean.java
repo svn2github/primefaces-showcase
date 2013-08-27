@@ -32,6 +32,8 @@ public class ValidationBean {
     
     private String text;
     
+    private String description;
+    
     private Integer integer;
     
     private Double doubleNumber;
@@ -81,6 +83,14 @@ public class ValidationBean {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getInteger() {
