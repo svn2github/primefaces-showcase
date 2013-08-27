@@ -22,7 +22,6 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -46,33 +45,29 @@ public class ValidationBean {
        
     private Date date;
     
-    @Null
-    @Size(max=5)
+    @Size(min=2,max=5)
     private String name;
     
     @Min(10) @Max(20)
     private Integer age;
     
-    @DecimalMax("99.9")
+    @DecimalMax(value= "99.9", message = "Shold not exceed 99.9")
     private Double amount;
+    
+    @Digits(integer=3,fraction=2)
+    private Double amount2;
     
     @Email(message = "must be a valid email")
     private String email;
 
     @AssertTrue
-    private boolean assertControl;
-    
-    @Digits(integer = 2, fraction = 1)
-    private String digitsControl;
+    private boolean checked;
 
     @Past
-    private Date dateControlPast;
+    private Date pastDate;
     
     @Future
-    private Date dateControlFuture;
-    
-    @Past
-    private Date dateControlPopup;
+    private Date futureDate;
     
     @Pattern(regexp = "/^[-+]?\\d+$/") // integer
     private String pattern;
@@ -173,46 +168,38 @@ public class ValidationBean {
         this.email = email;
     }
 
-    public boolean isAssertControl() {
-        return assertControl;
+    public Double getAmount2() {
+        return amount2;
     }
 
-    public void setAssertControl(boolean assertControl) {
-        this.assertControl = assertControl;
+    public void setAmount2(Double amount2) {
+        this.amount2 = amount2;
     }
 
-    public String getDigitsControl() {
-        return digitsControl;
+    public boolean isChecked() {
+        return checked;
     }
 
-    public void setDigitsControl(String digitsControl) {
-        this.digitsControl = digitsControl;
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 
-    public Date getDateControlPast() {
-        return dateControlPast;
+    public Date getPastDate() {
+        return pastDate;
     }
 
-    public void setDateControlPast(Date dateControlPast) {
-        this.dateControlPast = dateControlPast;
+    public void setPastDate(Date pastDate) {
+        this.pastDate = pastDate;
     }
 
-    public Date getDateControlFuture() {
-        return dateControlFuture;
+    public Date getFutureDate() {
+        return futureDate;
     }
 
-    public void setDateControlFuture(Date dateControlFuture) {
-        this.dateControlFuture = dateControlFuture;
+    public void setFutureDate(Date futureDate) {
+        this.futureDate = futureDate;
     }
-
-    public Date getDateControlPopup() {
-        return dateControlPopup;
-    }
-
-    public void setDateControlPopup(Date dateControlPopup) {
-        this.dateControlPopup = dateControlPopup;
-    }
-
+    
     public String getPattern() {
         return pattern;
     }
