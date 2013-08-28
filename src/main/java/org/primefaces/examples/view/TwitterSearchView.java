@@ -15,20 +15,22 @@
  */
 package org.primefaces.examples.view;
 
-import com.ning.http.client.AsyncCompletionHandler;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
+import org.primefaces.examples.service.TwitterAPIService;
+import org.primefaces.examples.service.TwitterService;
+import org.primefaces.json.JSONArray;
+import org.primefaces.json.JSONObject;
 import org.primefaces.push.PushContext;
 import org.primefaces.push.PushContextFactory;
+import twitter4j.Status;
 
 public class TwitterSearchView {
-        
+
     private boolean active;
-    
-    private final AsyncHttpClient asyncClient = new AsyncHttpClient();
-        
+    private TwitterService twitterService = new TwitterAPIService();
+
     public boolean isActive() {
         return active;
     }
@@ -36,47 +38,41 @@ public class TwitterSearchView {
     public void setActive(boolean active) {
         this.active = active;
     }
-    
+
     public void start() {
         if(!active) {
-            
+
             PushContext context = PushContextFactory.getDefault().getPushContext();
             
             context.schedule("/twitter", new Callable<String>() {
-
-                private String results;
                 
+                private String results;
+
                 public String call() throws Exception {
+                    List<Status> tweets = twitterService.asyncSearch("I");
+                    if (tweets != null) {
+                        JSONObject jSONObject = new JSONObject();
+                        JSONArray jSONArray = new JSONArray();
+                        for (Status t : tweets) {
+                            JSONObject j = new JSONObject();
+                            j.put("from_user", t.getUser().getScreenName());
+                            j.put("text", t.getText());
+                            j.put("image", t.getUser().getMiniProfileImageURL());
+                            jSONArray.put(j);
+                        }
+                        jSONObject.put("results", jSONArray);
+                        String s = jSONObject.toString();
 
-                    asyncClient.prepareGet("http://search.twitter.com/search.json?q=I").execute(
-                            
-                            new AsyncCompletionHandler<Object>() {
+                        StringBuilder jsonBuilder = new StringBuilder();
+                        jsonBuilder.append("{\"data\":").append(s).append("}");
 
-                                @Override
-                                public Object onCompleted(Response response) throws Exception {
-                                    String s = response.getResponseBody();
-             
-                                    if(response.getStatusCode() != 200) {                                        
-                                        return null;
-                                    }
-                                    
-                                    StringBuilder jsonBuilder = new StringBuilder();
-                                    jsonBuilder.append("{\"data\":").append(s).append("}");
-                                    
-                                    results = jsonBuilder.toString();
-                                                                        
-                                    return results;
-                                }
-
-                                
-                            }).get();
-                    
+                        results = jsonBuilder.toString();
+                    }
                     return results;
                 }
-
             }, 10, TimeUnit.SECONDS);
-            
+
             active = true;
-        } 
+        }
     }
 }

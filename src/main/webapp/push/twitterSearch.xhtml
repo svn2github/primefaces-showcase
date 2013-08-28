@@ -5,48 +5,24 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
     
-    <ui:define name="head">
-        <style type="text/css">
-            .ui-tweet-list {
-                width:400px;
-                margin-bottom: 10px;
-            }
-            .ui-tweet-list .ui-datalist-content {
-                height:300px;
-                overflow:auto;
-            }
-            
-            .ui-tweet-list .ui-datalist-data {
-                list-style-type: none;
-                padding:0px;
-            }
-            
-            .ui-tweet-list .ui-datalist-item {
-                padding:5px;
-            }
-            
-            .ui-tweet-list .ui-datalist-item img {
-                float:left;
-                margin-right:5px;
-            }
-        </style>
-        
+    <ui:define name="head">                       
         <script type="text/javascript">
             //<![CDATA[
 function handleMessage(data) {
     var tweets = data.results;
+    var tweetsContent = $(PrimeFaces.escapeClientId('tweetForm:content'));
     
-    tweetList.list.html('');
+    tweetsContent.html('');
     
     for(var i = 0; i < tweets.length; i++) {
         var tweet = tweets[i],
-        markup = '<li class="ui-datalist-item ui-helper-clearfix">';
-        markup += '<img src="https://api.twitter.com/1/users/profile_image/' + tweet.from_user + '" alt=""></img>';
+        markup = '<li>';
+        markup += '<img src="' + tweet.image + '"></img>';
         markup += '<strong>' + tweet.from_user + '</strong><br />' + tweet.text;
         markup += '</li>';
-        
-        PF('tweetList').list.append(markup);
+        tweetsContent.append(markup);        
     }
+    tweetsContent.scrollTop(0);
 }
 
 setTimeout(function() {
@@ -63,13 +39,11 @@ setTimeout(function() {
 			<p>Broadcasts can be delayed using <i>delay</i> feature and configured to run at periodic intervals using <i>schedule</i> feature. 
             This samples demonstrates a scheduled push to every connected client in every 10 seconds.</p>
   
-            <h:form>
+            <h:form id="tweetForm">                
                 
-                <p:dataList widgetVar="tweetList" styleClass="ui-tweet-list">
-                    <f:facet name="header">
-                        Twitter Search for "I"
-                    </f:facet>
-                </p:dataList>
+                <p:panel header= "Twitter Search for 'I'">
+                <p:outputPanel id="content" style="width:100%;height:200px;overflow:auto"/>                
+                </p:panel>
                 
                 <p:remoteCommand name="init" actionListener="#{twitterSearchView.start}" global="false"/>
             </h:form>
@@ -80,14 +54,11 @@ setTimeout(function() {
             <p:tabView>
                 <p:tab title="twitterSearch.xhtml">
                     <pre name="code" class="xml">
-&lt;h:form&gt;
-                
-    &lt;img url="http://a0.twimg.com/profile_images/2337148726/vPLz00IG_normal.jpeg" alt="" /&gt;
-    &lt;p:dataList widgetVar="tweetList" styleClass="ui-tweet-list"&gt;
-        &lt;f:facet name="header"&gt;
-            Twitter Search for "I"
-        &lt;/f:facet&gt;
-    &lt;/p:dataList&gt;
+&lt;h:form id="tweetForm"&gt;                
+
+    &lt;p:panel header= "Twitter Search for 'I'"&gt;
+    &lt;p:outputPanel id="content" style="width:100%;height:200px;overflow:auto"/&gt;                
+    &lt;/p:panel&gt;
 
     &lt;p:remoteCommand name="init" actionListener="\#{twitterSearchView.start}" global="false"/&gt;
 
@@ -97,18 +68,19 @@ setTimeout(function() {
 
 function handleMessage(data) {
     var tweets = data.results;
+    var tweetsContent = $(PrimeFaces.escapeClientId('tweetForm:content'));
     
-    tweetList.list.html('');
+    tweetsContent.html('');
     
     for(var i = 0; i &lt; tweets.length; i++) {
         var tweet = tweets[i],
-        markup = '&lt;li class="ui-datalist-item ui-helper-clearfix"&gt;';
-        markup += '&lt;img src="https://api.twitter.com/1/users/profile_image/' + tweet.from_user + '" alt=""&gt;&lt;/img&gt;';
+        markup = '&lt;li&gt;';
+        markup += '&lt;img src="' + tweet.image + '" &gt;&lt;/img&gt;';
         markup += '&lt;strong&gt;' + tweet.from_user + '&lt;/strong&gt;&lt;br /&gt;' + tweet.text;
         markup += '&lt;/li&gt;';
-        
-        PF('tweetList').list.append(markup);
+        tweetsContent.append(markup);        
     }
+    tweetsContent.scrollTop(0);
 }
                     </pre>
                 </p:tab>
@@ -117,20 +89,22 @@ function handleMessage(data) {
                     <pre name="code" class="java">
 package org.primefaces.examples.view;
 
-import com.ning.http.client.AsyncCompletionHandler;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
+import org.primefaces.examples.service.TwitterAPIService;
+import org.primefaces.examples.service.TwitterService;
+import org.primefaces.json.JSONArray;
+import org.primefaces.json.JSONObject;
 import org.primefaces.push.PushContext;
 import org.primefaces.push.PushContextFactory;
+import twitter4j.Status;
 
 public class TwitterSearchView {
-        
+
     private boolean active;
-    
-    private final AsyncHttpClient asyncClient = new AsyncHttpClient();
-        
+    private TwitterService twitterService = new TwitterAPIService();
+
     public boolean isActive() {
         return active;
     }
@@ -138,49 +112,45 @@ public class TwitterSearchView {
     public void setActive(boolean active) {
         this.active = active;
     }
-    
+
     public void start() {
         if(!active) {
+
             PushContext context = PushContextFactory.getDefault().getPushContext();
-            
+
             context.schedule("/twitter", new Callable&lt;String&gt;() {
-
-                private String results;
                 
+                private String results;
+
                 public String call() throws Exception {
+                    
+                    List&lt;Status&gt; tweets = twitterService.asyncSearch("I");
+                    if (tweets != null) {
+                        JSONObject jSONObject = new JSONObject();
+                        JSONArray jSONArray = new JSONArray();
+                        for (Status t : tweets) {
+                            JSONObject j = new JSONObject();
+                            j.put("from_user", t.getUser().getName());
+                            j.put("text", t.getText());
+                            j.put("image", t.getUser().getMiniProfileImageURL());
+                            jSONArray.put(j);
+                        }
+                        jSONObject.put("results", jSONArray);
+                        String s = jSONObject.toString();
 
-                    asyncClient.prepareGet("http://search.twitter.com/search.json?q=I").execute(
-                            
-                            new AsyncCompletionHandler&lt;Object>() {
+                        StringBuilder jsonBuilder = new StringBuilder();
+                        jsonBuilder.append("{\"data\":").append(s).append("}");
 
-                                @Override
-                                public Object onCompleted(Response response) throws Exception {
-                                    String s = response.getResponseBody();
-             
-                                    if(response.getStatusCode() != 200) {                                        
-                                        return null;
-                                    }
-                                    
-                                    StringBuilder jsonBuilder = new StringBuilder();
-                                    jsonBuilder.append("{\"data\":").append(s).append("}");
-                                    
-                                    results = jsonBuilder.toString();
-                                    
-                                    System.out.println(results);
-                                    
-                                    return results;
-                                }
-
-                                
-                            }).get();
+                        results = jsonBuilder.toString();
+                    }                    
                     
                     return results;
                 }
 
             }, 10, TimeUnit.SECONDS);
-            
+
             active = true;
-        } 
+        }
     }
 }
                     </pre>

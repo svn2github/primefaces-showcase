@@ -21,4 +21,5 @@ import twitter4j.Status;
 public interface TwitterService {
 
 	public List<Status> getTweets(String username);
+        public List<Status> asyncSearch(String query);
 }
