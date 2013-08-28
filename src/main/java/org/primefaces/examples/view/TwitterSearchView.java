@@ -61,12 +61,9 @@ public class TwitterSearchView {
                             jSONArray.put(j);
                         }
                         jSONObject.put("results", jSONArray);
-                        String s = jSONObject.toString();
-
-                        StringBuilder jsonBuilder = new StringBuilder();
-                        jsonBuilder.append("{\"data\":").append(s).append("}");
-
-                        results = jsonBuilder.toString();
+                        
+                        results = "{\"data\":"+jSONObject.toString()+"}";
+                        
                     }
                     return results;
                 }
