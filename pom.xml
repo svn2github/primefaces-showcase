@@ -270,6 +270,32 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <jsfVersion>Mojarra-2.2.1</jsfVersion>
+                <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
+                <primefacesMobileVersion>PrimeFacesMobile-1.0-SNAPSHOT</primefacesMobileVersion>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.primefaces</groupId>
+                    <artifactId>primefaces</artifactId>
+                    <version>4.0-SNAPSHOT</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.primefaces</groupId>
+                    <artifactId>primefaces-mobile</artifactId>
+                    <version>1.0-SNAPSHOT</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish</groupId>
+                    <artifactId>javax.faces</artifactId>
+                    <version>2.2.1</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        
+        <profile>
+            <id>mojarra-2.1</id>
+            <properties>
                 <jsfVersion>Mojarra-2.1.24</jsfVersion>
                 <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
                 <primefacesMobileVersion>PrimeFacesMobile-1.0-SNAPSHOT</primefacesMobileVersion>
@@ -293,32 +319,6 @@
             </dependencies>
         </profile>
         
-        <profile>
-            <id>mojarra-2.2</id>
-            <properties>
-                <jsfVersion>Mojarra-2.2.1</jsfVersion>
-                <primefacesVersion>PrimeFaces-4.0-SNAPSHOT</primefacesVersion>
-                <primefacesMobileVersion>PrimeFacesMobile-1.0-SNAPSHOT</primefacesMobileVersion>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>org.primefaces</groupId>
-                    <artifactId>primefaces</artifactId>
-                    <version>4.0-SNAPSHOT</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.primefaces</groupId>
-                    <artifactId>primefaces-mobile</artifactId>
-                    <version>1.0-SNAPSHOT</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.glassfish</groupId>
-                    <artifactId>javax.faces</artifactId>
-                    <version>2.2.1</version>
-                </dependency>
-            </dependencies>
-        </profile>
-
         <profile>
             <id>myfaces</id>
             <properties>
