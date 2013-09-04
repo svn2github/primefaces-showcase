@@ -42,28 +42,28 @@
                     <h:panelGrid id="grid" columns="4" cellpadding="5">
                         <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>					
                         <p:inputText id="name" value="#{validationBean.text}" required="true" label="Name"/>
-                        <p:message for="name" display="text" />
+                        <p:message for="name" />
                         <h:outputText value="#{validationBean.text}" />
                         
                         <h:outputLabel for="number" value="Number:" style="font-weight:bold"/>					
                         <p:inputText id="number" value="#{validationBean.integer}" label="Number">
                             <f:validateDoubleRange minimum="5" maximum="8" />
                         </p:inputText>
-                        <p:message for="number" display="both" />
+                        <p:message for="number" />
                         <h:outputText value="#{validationBean.integer}" />
 
                         <h:outputLabel for="dd" value="Double:" style="font-weight:bold"/>					
                         <p:inputText id="dd" value="#{validationBean.doubleNumber}" converterMessage="Cannot convert to double.">
                             <f:validateDoubleRange minimum="5.5" maximum="8.5" />
                         </p:inputText>
-                        <p:message for="dd" display="icon" />
+                        <p:message for="dd" />
                         <h:outputText value="#{validationBean.doubleNumber}" />
                         
                         <h:outputLabel for="money" value="Currency ($):" style="font-weight:bold"/>					
                         <p:inputText id="money" value="#{validationBean.money}" label="Currency">
                             <f:convertNumber type="currency" currencySymbol="$"/>
                         </p:inputText>
-                        <p:message for="money" display="icon" />
+                        <p:message for="money" />
                         <h:outputText value="#{validationBean.money}">
                             <f:convertNumber  type="currency" currencySymbol="$" />
                         </h:outputText>
@@ -72,14 +72,14 @@
                         <p:inputText id="regex" value="#{validationBean.regexText}" validatorMessage="Value does not match pattern.">
                             <f:validateRegex pattern="^[a-zA-Z]+$" />
                         </p:inputText>
-                        <p:message for="regex" display="both" />
+                        <p:message for="regex" />
                         <h:outputText value="#{validationBean.regexText}" />
 
                         <h:outputLabel for="date" value="Date" style="font-weight:bold"/>					
                         <p:inputText id="date" value="#{validationBean.date}" label="Date">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </p:inputText>
-                        <p:message for="date" display="icon" />
+                        <p:message for="date" />
                         <h:outputText value="#{validationBean.date}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
@@ -88,7 +88,7 @@
                         <p:inputTextarea id="desc" value="#{validationBean.description}" required="true" label="Description">
                             <f:validateLength minimum="3" maximum="10" /> 
                         </p:inputTextarea>
-                        <p:message for="desc" display="text" />
+                        <p:message for="desc" />
                         <h:outputText value="#{validationBean.description}" />
                     </h:panelGrid>
                     
@@ -111,28 +111,28 @@
         &lt;h:panelGrid id="grid" columns="4" cellpadding="5"&gt;
             &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;					
             &lt;p:inputText id="name" value="#{validationBean.text}" required="true" label="Name"/&gt;
-            &lt;p:message for="name" display="text" /&gt;
+            &lt;p:message for="name" /&gt;
             &lt;h:outputText value="#{validationBean.text}" /&gt;
 
             &lt;h:outputLabel for="number" value="Number:" style="font-weight:bold"/&gt;					
             &lt;p:inputText id="number" value="#{validationBean.integer}" label="Number"&gt;
                 &lt;f:validateDoubleRange minimum="5" maximum="8" /&gt;
             &lt;/p:inputText&gt;
-            &lt;p:message for="number" display="both" /&gt;
+            &lt;p:message for="number" /&gt;
             &lt;h:outputText value="#{validationBean.integer}" /&gt;
 
             &lt;h:outputLabel for="dd" value="Double:" style="font-weight:bold"/&gt;					
             &lt;p:inputText id="dd" value="#{validationBean.doubleNumber}" converterMessage="Cannot convert to double."&gt;
                 &lt;f:validateDoubleRange minimum="5.5" maximum="8.5" /&gt;
             &lt;/p:inputText&gt;
-            &lt;p:message for="dd" display="icon" /&gt;
+            &lt;p:message for="dd" /&gt;
             &lt;h:outputText value="#{validationBean.doubleNumber}" /&gt;
 
             &lt;h:outputLabel for="money" value="Currency ($):" style="font-weight:bold"/&gt;					
             &lt;p:inputText id="money" value="#{validationBean.money}" label="Currency"&gt;
                 &lt;f:convertNumber type="currency" currencySymbol="$"/&gt;
             &lt;/p:inputText&gt;
-            &lt;p:message for="money" display="icon" /&gt;
+            &lt;p:message for="money" /&gt;
             &lt;h:outputText value="#{validationBean.money}"&gt;
                 &lt;f:convertNumber  type="currency" currencySymbol="$" /&gt;
             &lt;/h:outputText&gt;
@@ -141,14 +141,14 @@
             &lt;p:inputText id="regex" value="#{validationBean.regexText}" validatorMessage="Value does not match pattern."&gt;
                 &lt;f:validateRegex pattern="^[a-zA-Z]+$" /&gt;
             &lt;/p:inputText&gt;
-            &lt;p:message for="regex" display="both" /&gt;
+            &lt;p:message for="regex" /&gt;
             &lt;h:outputText value="#{validationBean.regexText}" /&gt;
 
             &lt;h:outputLabel for="date" value="Date" style="font-weight:bold"/&gt;					
             &lt;p:inputText id="date" value="#{validationBean.date}" label="Date"&gt;
                 &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
             &lt;/p:inputText&gt;
-            &lt;p:message for="date" display="icon" /&gt;
+            &lt;p:message for="date" /&gt;
             &lt;h:outputText value="#{validationBean.date}"&gt;
                 &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
             &lt;/h:outputText&gt;
@@ -157,7 +157,7 @@
             &lt;p:inputTextarea id="desc" value="#{validationBean.description}" required="true" label="Description"&gt;
                 &lt;f:validateLength minimum="3" maximum="10" /&gt; 
             &lt;/p:inputTextarea&gt;
-            &lt;p:message for="desc" display="text" /&gt;
+            &lt;p:message for="desc" /&gt;
             &lt;h:outputText value="#{validationBean.description}" /&gt;
         &lt;/h:panelGrid&gt;
 
