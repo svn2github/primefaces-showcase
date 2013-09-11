@@ -161,4 +161,9 @@ public class TreeBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
 	}
+    
+    public void deleteNode() { 
+        selectedNode.getParent().getChildren().remove(selectedNode);            
+        selectedNode = null;  
+    }  
 }
