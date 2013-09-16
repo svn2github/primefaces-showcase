@@ -51,7 +51,7 @@
 
     &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}" widgetVar="carsTable" filteredValue="\#{tableBean.filteredCars}"&gt;                    
         &lt;p:columns value="\#{tableBean.columns}" var="column" columnIndexVar="colIndex" 
-                    sortBy="\#{column.property}" filterBy="\#{column.property}"&gt;
+                    sortBy="\#{car[column.property]}" filterBy="\#{car[column.property]}"&gt;
             &lt;f:facet name="header"&gt;
                 \#{column.header}
             &lt;/f:facet&gt;
