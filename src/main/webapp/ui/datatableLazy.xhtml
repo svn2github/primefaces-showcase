@@ -74,19 +74,19 @@
 
         &lt;p:ajax event="rowSelect" listener="\#{tableBean.onRowSelect}" update=":form:display" oncomplete="PF('carDialog').show()" /&gt;
 
-        &lt;p:column headerText="Model" sortBy="\#{car.model}" filterBy="\#{car.model}"&gt;
+        &lt;p:column headerText="Model" sortBy="model" filterBy="\#{car.model}"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year" sortBy="\#{car.year}" filterBy="\#{car.year}"&gt;
+        &lt;p:column headerText="Year" sortBy="year" filterBy="\#{car.year}"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Manufacturer" sortBy="\#{car.manufacturer}" filterBy="\#{car.manufacturer}"&gt;
+        &lt;p:column headerText="Manufacturer" sortBy="manufacturer" filterBy="\#{car.manufacturer}"&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color" sortBy="\#{car.color}" filterBy="\#{car.color}"&gt;
+        &lt;p:column headerText="Color" sortBy="color" filterBy="\#{car.color}"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
