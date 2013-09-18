@@ -2,9 +2,10 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
-    
+   
 	<ui:define name="content">
 		<h1 class="title ui-widget-header ui-corner-all">Tooltip - Global</h1>
 		<div class="entry">
@@ -18,15 +19,15 @@
                 <h:panelGrid id="grid" columns="2" cellpadding="5">
 
                     <h:outputText value="Input: " />
-                    <p:inputText id="focus" title="Tooltip for an input"/>
+                    <p:inputText id="focus" pt:data-tooltip="Tooltip for an input"/>
 
                     <h:outputText value="Link: " />
-                    <h:outputLink id="fade" value="#" title="Tooltip for a link">
+                    <h:outputLink id="fade" value="#" pt:data-tooltip="Tooltip for a link">
                         <h:outputText value="Fade Effect" />
                     </h:outputLink>
 
                     <h:outputText value="Button: " />
-                    <p:commandButton value="Update" title="Update components" update="@parent"/>
+                    <p:commandButton value="Update" pt:data-tooltip="Update components" update="@parent"/>
 
                 </h:panelGrid>
                 
