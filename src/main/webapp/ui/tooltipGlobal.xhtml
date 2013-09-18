@@ -44,15 +44,15 @@
     &lt;h:panelGrid id="grid" columns="2" cellpadding="5"&gt;
 
         &lt;h:outputText value="Input: " /&gt;
-        &lt;p:inputText id="focus" title="Tooltip for an input"/&gt;
+        &lt;p:inputText id="focus" pt:data-tooltip="Tooltip for an input"/&gt;
 
         &lt;h:outputText value="Link: " /&gt;
-        &lt;h:outputLink id="fade" value="\#" title="Tooltip for a link"&gt;
+        &lt;h:outputLink id="fade" value="\#" pt:data-tooltip="Tooltip for a link"&gt;
             &lt;h:outputText value="Fade Effect" /&gt;
         &lt;/h:outputLink&gt;
 
         &lt;h:outputText value="Button: " /&gt;
-        &lt;p:commandButton value="Update" title="Update components" update="@parent"/&gt;
+        &lt;p:commandButton value="Update" pt:data-tooltip="Update components" update="@parent"/&gt;
 
     &lt;/h:panelGrid&gt;
 
