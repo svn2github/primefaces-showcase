@@ -354,14 +354,14 @@
             <id>elite</id>
             <properties>
                 <jsfVersion>Mojarra-2.1.24</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.5.14-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.5.16-SNAPSHOT</primefacesVersion>
                 <primefacesMobileVersion>PrimeFacesMobile-1.0-SNAPSHOT</primefacesMobileVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.5.14-SNAPSHOT</version>
+                    <version>3.5.16-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
