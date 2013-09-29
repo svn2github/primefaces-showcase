@@ -53,6 +53,14 @@
 					<td>@widgetVar(...)</td>
 					<td>Resolves the clientId by the widgetVar of the Widget</td>
 				</tr>
+				<tr>
+					<td>@next</td>
+					<td>Resolves to the next component</td>
+				</tr>
+				<tr>
+					<td>@previous</td>
+					<td>Resolves to the previous component</td>
+				</tr>
 			</table>
 
 			<div style="margin-top: 20px;">
@@ -74,12 +82,12 @@
 	                        <p:message for="surname" />
 	                        <h:outputText value="#{pprBean.surname}" />
 	                        
-	                        <h:outputLabel for="city" value="City: *" />
+	                        <p:outputLabel for="@next" value="City:" />
 	                        <h:selectOneMenu id="city" value="#{pprBean.city}" required="true">
 	                            <f:selectItem itemLabel="Select One" itemValue="" />
 	                            <f:selectItems value="#{pprBean.cities}" />
 	                        </h:selectOneMenu>
-	                        <p:message for="city" />
+	                        <p:message for="@previous" />
 	                        <h:outputText value="#{pprBean.city}" />
 	                        
 	                    </h:panelGrid>
@@ -116,12 +124,12 @@
             &lt;p:message for="surname" /&gt;
             &lt;h:outputText value="#{pprBean.surname}" /&gt;
             
-            &lt;h:outputLabel for="city" value="City: *" /&gt;
+            &lt;h:outputLabel for="@next" value="City: *" /&gt;
             &lt;h:selectOneMenu id="city" value="#{pprBean.city}" required="true">
                 &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
                 &lt;f:selectItems value="#{pprBean.cities}" /&gt;
             &lt;/h:selectOneMenu>
-            &lt;p:message for="city" /&gt;
+            &lt;p:message for="@previous" /&gt;
             &lt;h:outputText value="#{pprBean.city}" /&gt;
             
         &lt;/h:panelGrid>
