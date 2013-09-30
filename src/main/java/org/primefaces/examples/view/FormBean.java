@@ -35,6 +35,8 @@ public class FormBean implements Serializable {
 
 	private List<String> selectedOptions;
     
+    private List<String> selectedOptions2;
+
     private String car;
     
     private List<SelectItem> cars;
@@ -43,7 +45,10 @@ public class FormBean implements Serializable {
 
 	private Integer option;
 
-	private Integer number;
+	private String movie;
+
+    private Integer number;
+    
 
 	public FormBean() {
 		movies = new HashMap<String, String>();
@@ -51,6 +56,8 @@ public class FormBean implements Serializable {
 		movies.put("Goodfellas", "Goodfellas");
 		movies.put("Godfather", "Godfather");
 		movies.put("Carlito's Way", "Carlito's Way");
+        movies.put("The Lord of the Rings", "The Lord of the Rings");
+        movies.put("The Avengers", "The Avengers");
         
         SelectItemGroup g1 = new SelectItemGroup("German Cars");
         g1.setSelectItems(new SelectItem[] {new SelectItem("BMW", "BMW"), new SelectItem("Mercedes", "Mercedes"), new SelectItem("Volkswagen", "Volkswagen")});
@@ -94,6 +101,14 @@ public class FormBean implements Serializable {
 	public void setSelectedOptions(List<String> selectedOptions) {
 		this.selectedOptions = selectedOptions;
 	}
+    
+    public List<String> getSelectedOptions2() {
+        return selectedOptions2;
+    }
+
+    public void setSelectedOptions2(List<String> selectedOptions2) {
+        this.selectedOptions2 = selectedOptions2;
+    }
 
 	public Map<String, String> getMovies() {
 		return movies;
@@ -114,7 +129,15 @@ public class FormBean implements Serializable {
 	public void setNumber(Integer number) {
 		this.number = number;
 	}
+    
+    public String getMovie() {
+        return movie;
+    }
 
+    public void setMovie(String movie) {
+        this.movie = movie;
+    }
+    
     public String getCar() {
         return car;
     }

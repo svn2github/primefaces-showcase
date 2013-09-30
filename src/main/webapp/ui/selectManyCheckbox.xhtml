@@ -15,17 +15,25 @@
 
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
-                    <h:outputText value="Horizontal: " />
-                    <p:selectManyCheckbox id="horizontal" value="#{formBean.selectedOptions}">
+                    <h:outputText value="Line Direction" />
+                    <p:selectManyCheckbox id="lineDirection" value="#{formBean.selectedOptions}">
                         <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
                         <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
                         <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
                     </p:selectManyCheckbox>
-
-                    <h:outputText value="Vertical: " />
-                    <p:selectManyCheckbox id="vertical" value="#{formBean.selectedMovies}" layout="pageDirection">
+                    
+                    <h:outputText value="Page Direction: " />
+                    <p:selectManyCheckbox id="pageDirection" value="#{formBean.selectedOptions2}" layout="pageDirection">
+                        <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+                        <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+                        <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+                    </p:selectManyCheckbox>
+                    
+                    <h:outputText value="Grid: " />
+                    <p:selectManyCheckbox id="grid" value="#{formBean.selectedMovies}" layout="grid" columns="3">
                         <f:selectItems value="#{formBean.movies}" />
                     </p:selectManyCheckbox>
+
 
                 </h:panelGrid>
 
@@ -38,7 +46,9 @@
                         <p:dataList id="selectedOptions" value="#{formBean.selectedOptions}" var="option">
                             #{option}
                         </p:dataList>
-
+                        <p:dataList id="selectedOptions2" value="#{formBean.selectedOptions2}" var="option2">
+                            #{option2}
+                        </p:dataList>
                         <p:dataList id="selectedMovies" value="#{formBean.selectedMovies}" var="movie">
                             #{movie}
                         </p:dataList>
@@ -55,18 +65,25 @@
 
     &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
 
-        &lt;h:outputText value="Horizontal: " /&gt;
-        &lt;p:selectManyCheckbox value="\#{formBean.selectedOptions}"&gt;
+        &lt;h:outputText value="Line Direction: " /&gt;
+        &lt;p:selectManyCheckbox id="lineDirection" value="\#{formBean.selectedOptions}"&gt;
             &lt;f:selectItem itemLabel="Option 1" itemValue="Option 1" /&gt;
             &lt;f:selectItem itemLabel="Option 2" itemValue="Option 2" /&gt;
             &lt;f:selectItem itemLabel="Option 3" itemValue="Option 3" /&gt;
         &lt;/p:selectManyCheckbox&gt;
 
-        &lt;h:outputText value="Vertical: " /&gt;
-        &lt;p:selectManyCheckbox value="\#{formBean.selectedMovies}"
+        &lt;h:outputText value="Page Direction: " /&gt;
+        &lt;p:selectManyCheckbox id="pageDirection" value="\#{formBean.selectedOptions2}"
             layout="pageDirection"&gt;
-            &lt;f:selectItems value="\#{formBean.movies}" /&gt;
+            &lt;f:selectItem itemLabel="Option 1" itemValue="Option 1" /&gt;
+            &lt;f:selectItem itemLabel="Option 2" itemValue="Option 2" /&gt;
+            &lt;f:selectItem itemLabel="Option 3" itemValue="Option 3" /&gt;
         &lt;/p:selectManyCheckbox&gt;
+
+        &lt;h:outputText value="Grid: " /&gt;
+        &lt;p:selectOneRadio id="grid" value="\#{formBean.selectedMovies}" layout="grid" columns="3"&gt;
+            &lt;f:selectItems value="\#{formBean.movies}"/&gt;
+        &lt;/p:selectOneRadio&gt;
 
     &lt;/h:panelGrid&gt;
 
@@ -78,6 +95,10 @@
         &lt;p:outputPanel id="display"&gt;
             &lt;p:dataList value="\#{formBean.selectedOptions}" var="option"&gt;
                 \#{option}
+            &lt;/p:dataList&gt;
+
+            &lt;p:dataList value="\#{formBean.selectedOptions2}" var="option2"&gt;
+                \#{option2}
             &lt;/p:dataList&gt;
 
             &lt;p:dataList value="\#{formBean.selectedMovies}" var="movie"&gt;
@@ -105,6 +126,8 @@ public class FormBean implements Serializable {
     private List&lt;String&gt; selectedMovies;
 
     private List&lt;String&gt; selectedOptions;
+    
+    private List&lt;String&gt; selectedOptions2;
 
     private Map&lt;String,String&gt; movies;
 
@@ -114,6 +137,8 @@ public class FormBean implements Serializable {
         movies.put("Goodfellas", "Goodfellas");
         movies.put("Godfather", "Godfather");
         movies.put("Carlito's Way", "Carlito's Way");
+        movies.put("The Lord of the Rings", "The Lord of the Rings");
+        movies.put("The Avengers", "The Avengers");
     }
 
     public List&lt;String&gt; getSelectedMovies() {
@@ -128,6 +153,13 @@ public class FormBean implements Serializable {
     }
     public void setSelectedOptions(List&lt;String&gt; selectedOptions) {
         this.selectedOptions = selectedOptions;
+    }
+
+    public List&lt;String&gt; getSelectedOptions2() {
+        return selectedOptions2;
+    }
+    public void setSelectedOptions2(List&lt;String&gt; selectedOptions2) {
+        this.selectedOptions2 = selectedOptions2;
     }
 
     public Map&lt;String, String&gt; getMovies() {
