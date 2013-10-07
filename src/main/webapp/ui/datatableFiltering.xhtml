@@ -56,50 +56,8 @@
             </h:form>
 
             <h3>Source</h3>
-            <p:tabView>
-                <p:tab title="datatableFiltering.xhtml (3.x)">
-                    <pre name="code" class="xml">
-&lt;h:form&gt;
-
-    &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.carsSmall}" widgetVar="carsTable" 
-            emptyMessage="No cars found with given criteria" filteredValue="\#{tableBean.filteredCars}"&gt;
-
-         &lt;f:facet name="header"&gt;
-            &lt;p:outputPanel&gt;
-                &lt;h:outputText value="Search all fields:" /&gt;
-                &lt;p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" /&gt;
-            &lt;/p:outputPanel&gt;
-        &lt;/f:facet&gt;
-
-        &lt;p:column id="modelColumn" filterBy="\#{car.model}" 
-                headerText="Model" footerText="contains"
-                filterMatchMode="contains"&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column id="yearColumn" filterBy="\#{car.year}"
-                headerText="Year" footerText="startsWith"&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column id="manufacturerColumn" filterBy="\#{car.manufacturer}" 
-                headerText="Manufacturer" footerText="exact"
-                filterOptions="\#{tableBean.manufacturerOptions}"
-                filterMatchMode="exact"&gt;
-            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column id="colorColumn" filterBy="\#{car.color}"
-                headerText="Color" footerText="endsWith" filterMatchMode="endsWith"&gt;
-            &lt;h:outputText value="\#{car.color}" /&gt;
-        &lt;/p:column&gt;
-    &lt;/p:dataTable&gt;
-    
-&lt;/h:form&gt;
-                    </pre>
-                </p:tab>
-                
-                <p:tab title="datatableFiltering.xhtml (4.x)">
+            <p:tabView>                
+                <p:tab title="datatableFiltering.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
 

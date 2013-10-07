@@ -51,38 +51,8 @@
             </h:form>
 
             <h3>Source</h3>
-            <p:tabView>
-                <p:tab title="datatableSortingMultiple.xhtml (3.x)">
-                    <pre name="code" class="xml">
-&lt;h:form&gt;
-
-    &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.carsSmall}" sortMode="multiple" rows="25" paginator="true"&gt;
-        &lt;f:facet name="header"&gt;
-            Ajax Sorting
-        &lt;/f:facet&gt;
-
-        &lt;p:column sortBy="\#{car.model}" headerText="Model"&gt;
-            &lt;h:outputText value="\#{car.model}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column sortBy="\#{car.year}" headerText="Year"&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column sortBy="\#{car.manufacturer}" headerText="Manufacturer"&gt;
-            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
-        &lt;/p:column&gt;
-
-        &lt;p:column sortBy="\#{car.color}" headerText="Color"&gt;
-            &lt;h:outputText value="\#{car.color}" /&gt;
-        &lt;/p:column&gt;
-    &lt;/p:dataTable&gt;
-
-&lt;/h:form&gt;
-                    </pre>
-                </p:tab>
-                
-                <p:tab title="datatableSortingMultiple.xhtml (4.x)">
+            <p:tabView>                
+                <p:tab title="datatableSortingMultiple.xhtml">
                     <pre name="code" class="xml">
 &lt;h:form&gt;
 
