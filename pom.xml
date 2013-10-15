@@ -354,14 +354,14 @@
             <id>elite</id>
             <properties>
                 <jsfVersion>Mojarra-2.1.26</jsfVersion>
-                <primefacesVersion>PrimeFaces-3.5.17-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-3.5.18-SNAPSHOT</primefacesVersion>
                 <primefacesMobileVersion>PrimeFacesMobile-1.0-SNAPSHOT</primefacesMobileVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>3.5.17-SNAPSHOT</version>
+                    <version>3.5.18-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
