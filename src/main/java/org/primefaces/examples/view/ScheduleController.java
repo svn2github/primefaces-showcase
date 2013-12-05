@@ -51,8 +51,6 @@ public class ScheduleController implements Serializable {
 			
 			@Override
 			public void loadEvents(Date start, Date end) {
-				clear();
-				
 				Date random = getRandomDate(start);
 				addEvent(new DefaultScheduleEvent("Lazy Event 1", random, random));
 				
