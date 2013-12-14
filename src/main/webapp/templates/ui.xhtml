@@ -179,23 +179,24 @@
                                     <li><a href="#{request.contextPath}/ui/exporterHome.jsf">DataExporter</a></li>
                                     <li><a href="#{request.contextPath}/ui/dataListHome.jsf">DataList</a></li>
                                     <li><a href="#{request.contextPath}/ui/datagrid.jsf">DataGrid</a></li>
+                                    <li><a href="#{request.contextPath}/ui/dataScrollerHome.jsf" class="ui-state-highlight">DataScroller</a></li>
                                     <li><a href="#{request.contextPath}/ui/datatableHome.jsf">DataTable</a></li>
-                                    <li><a href="#{request.contextPath}/ui/gmapHome.jsf">GMap</a></li>
                                 </ul>
                             </td>
                             <td style="width:33%">
                                 <ul>
-                                    
+                                    <li><a href="#{request.contextPath}/ui/gmapHome.jsf">GMap</a></li>
                                     <li><a href="#{request.contextPath}/ui/mindmap.jsf">Mindmap</a></li>
                                     <li><a href="#{request.contextPath}/ui/picklist.jsf">PickList</a></li>
                                     <li><a href="#{request.contextPath}/ui/orderList.jsf">OrderList</a></li>
                                     <li><a href="#{request.contextPath}/ui/ring.jsf">Ring</a></li>
                                     <li><a href="#{request.contextPath}/ui/scheduleHome.jsf">Schedule</a></li>
-                                    <li><a href="#{request.contextPath}/ui/tagCloud.jsf">TagCloud</a></li>
+                                    
                                 </ul>
                             </td>
                             <td style="width:33%">
-                                <ul>                                    
+                                <ul>    
+                                    <li><a href="#{request.contextPath}/ui/tagCloud.jsf">TagCloud</a></li>
                                     <li><a href="#{request.contextPath}/ui/treeHome.jsf">Tree</a></li>
                                     <li><a href="#{request.contextPath}/ui/treeHorizontalHome.jsf">Tree Horizontal</a></li>
                                     <li><a href="#{request.contextPath}/ui/treeTableHome.jsf">TreeTable</a></li>
@@ -489,10 +490,13 @@
 
             <div style="clear: both;"></div>
         </div>
-
-		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
-			<p class="copyright">Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
-		</div>
+        
+        
+        <ui:insert name="footer">
+            <div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+                <p class="copyright">Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
+            </div>
+        </ui:insert>
 
         <ui:insert name="status">
             <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
