@@ -13,6 +13,7 @@
             
             .detail {
                 width: 95%;
+                padding-left: 25px;
             }
             
             .detail td {
@@ -42,15 +43,117 @@
 			<p:tabView style="margin-bottom:50px">
 				<p:tab title="dataScrollerLoader.xhtml">
 					<pre name="code" class="xml">
+&lt;h:form id="form"&gt;
 
+    &lt;p:dataScroller value="\#{tableBean.carsLarge}" var="car" chunkSize="10"&gt;
+
+        &lt;f:facet name="header"&gt;
+            Scroll Down to Load More Cars
+        &lt;/f:facet&gt;
+
+        &lt;f:facet name="loader"&gt;
+            &lt;p:commandButton type="button" value="More" /&gt;
+        &lt;/f:facet&gt;
+
+        &lt;h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail"&gt;
+            &lt;p:graphicImage name="images/cars/\#{car.manufacturer}-big.gif" /&gt; 
+
+            &lt;p:outputPanel&gt;
+                &lt;h:panelGrid columns="2"&gt;
+                    &lt;h:outputText value="Model:" /&gt;
+                    &lt;h:outputText value="\#{car.model}" style="font-weight: bold"/&gt;
+
+                    &lt;h:outputText value="Year:" /&gt;
+                    &lt;h:outputText value="\#{car.year}" style="font-weight: bold"/&gt;
+
+                    &lt;h:outputText value="Color:" /&gt;
+                    &lt;h:outputText value="\#{car.color}" style="font-weight: bold"/&gt;
+                &lt;/h:panelGrid&gt;
+            &lt;/p:outputPanel&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dataScroller&gt;
+
+&lt;/h:form&gt;
 					</pre>
 				</p:tab>
 				
 				<p:tab title="TableBean.java">
 					<pre name="code" class="java">
+package org.primefaces.examples.view;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+	
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+		
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Honda";
+		manufacturers[8] = "Jaguar";
+		manufacturers[9] = "Ford";
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+	
+	private List&lt;Car&gt; carsLarge;
+	
+	public TableBean() {
+		carsSmall = new ArrayList&lt;Car&gt;();
+		
+		populateRandomCars(carsSmall, 200);
+	}
+	
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+	
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+	
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+}
 					</pre>
-				</p:tab>
 			</p:tabView>
 		
 			<h:form id="form">
@@ -66,7 +169,7 @@
                     </f:facet>
                     
                     <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                        <p:graphicImage value="/images/cars/#{car.manufacturer}.jpg"/> 
+                        <p:graphicImage name="images/cars/#{car.manufacturer}-big.gif" /> 
 
                         <p:outputPanel>
                             <h:panelGrid columns="2">
@@ -84,9 +187,7 @@
                 </p:dataScroller>
                 
 			</h:form>
-			
 
-		
 		</div>
 				
 	</ui:define>

@@ -94,8 +94,8 @@ public class TableBean implements Serializable {
 		manufacturers[4] = "Renault";
 		manufacturers[5] = "Opel";
 		manufacturers[6] = "Volkswagen";
-		manufacturers[7] = "Chrysler";
-		manufacturers[8] = "Ferrari";
+		manufacturers[7] = "Honda";
+		manufacturers[8] = "Jaguar";
 		manufacturers[9] = "Ford";
 	}
 
