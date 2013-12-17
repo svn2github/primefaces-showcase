@@ -60,6 +60,11 @@
         <param-value>commons</param-value>
     </context-param>
     
+    <context-param>
+        <param-name>primefaces.CACHE_PROVIDER</param-name>
+        <param-value>org.primefaces.cache.EHCacheProvider</param-value>
+    </context-param>
+    
     <listener>
         <listener-class>${jsf-listener}</listener-class>
     </listener>
