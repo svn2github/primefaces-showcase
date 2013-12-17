@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+        
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+		</script>
+		
+	</ui:define>
+
+    
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">Spotlight</h1>
+        <div class="entry">
+            <p>Spotlight highlights a certain component on page.</p>
+
+            <h:form>
+                
+                <p:growl id="growl" />
+                
+                <p:panel id="pnl" header="New User" style="margin-bottom:10px;width:400px">
+                    <p:messages id="messages" />
+                    <h:panelGrid columns="3">
+                        <h:outputLabel for="firstname" value="Firstname: *" />
+                        <p:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
+                            <f:validateLength minimum="2" />
+                        </p:inputText>
+                        <p:message for="firstname" />
+
+                        <h:outputLabel for="surname" value="Surname: *" />
+                        <p:inputText id="surname" value="#{pprBean.surname}" required="true" label="Surname"/>
+                        <p:message for="surname" />
+                    </h:panelGrid>
+                    
+                    <p:commandButton value="Save" icon="ui-icon-check" actionListener="#{pprBean.savePerson}" update="growl" oncomplete="PF('spot').show()"/>
+                </p:panel>
+                                
+                <p:spotlight target="pnl" widgetVar="spot"/>
+                
+                <p:commandButton type="button" value="Show" onclick="PF('spot').show()"/>
+                
+            </h:form>
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="spotlight.xhtml">
+                    <pre name="code" class="xml">
+
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
