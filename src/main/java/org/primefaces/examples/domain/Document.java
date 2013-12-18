@@ -17,7 +17,7 @@ package org.primefaces.examples.domain;
 
 import java.io.Serializable;
 
-public class Document implements Serializable {
+public class Document implements Serializable, Comparable<Document> {
 
 	private String name;
 	
@@ -97,4 +97,8 @@ public class Document implements Serializable {
 	public String toString() {
 		return name;
 	}
+
+    public int compareTo(Document document) {
+        return this.getName().compareTo(document.getName());
+    }
 }
