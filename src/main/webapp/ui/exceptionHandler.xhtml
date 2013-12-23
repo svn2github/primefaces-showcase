@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">AjaxExceptionHandler</h1>
+		<div class="entry">
+            <p></p>
+
+            <h:form>
+                <p:ajaxExceptionHandler type="javax.faces.application.ViewExpiredException"
+                                        update="exceptionDialog" onexception="PF('exceptionDialog').show();" />
+                <p:ajaxExceptionHandler type="java.lang.NullPointerException"
+                                        update="exceptionDialog" onexception="PF('exceptionDialog').show();" />
+                
+                <p:dialog id="exceptionDialog" header="Exception '#{pfExceptionHandler.type}' occured!" widgetVar="exceptionDialog">
+                    Message: #{pfExceptionHandler.message} <br/>
+                    StackTrace: <h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" /> <br />
+
+                    <p:button onclick="document.location.href = document.location.href;"
+                              value="Reload!"
+                              rendered="#{pfExceptionHandler.type == 'javax.faces.application.ViewExpiredException'}" />
+                </p:dialog>
+                
+                <p:commandButton actionListener="#{exceptionHandlerController.throwViewExpiredException()}" value="Throw ViewExpiredException!" />
+                <p:commandButton actionListener="#{exceptionHandlerController.throwNullPointerException()}" value="Throw NullPointerException!" />
+                <p:commandButton actionListener="#{exceptionHandlerController.throwWrappedIllegalStateException()}" value="Throw IllegalStateException!" />
+            </h:form>
+
+			<h3>Source</h3>
+
+      </div>
+
+	</ui:define>
+</ui:composition>
