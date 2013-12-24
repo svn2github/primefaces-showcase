@@ -113,7 +113,11 @@
     
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
-        <location>/ui/error/common.xhtml</location>
+        <location>/ui/error/error.jsf</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/ui/error/viewExpired.jsf</location>
     </error-page>
     
 </web-app>

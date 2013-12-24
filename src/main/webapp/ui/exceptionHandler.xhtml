@@ -25,8 +25,10 @@
                               rendered="#{pfExceptionHandler.type == 'javax.faces.application.ViewExpiredException'}" />
                 </p:dialog>
                 
-                <p:commandButton actionListener="#{exceptionHandlerController.throwViewExpiredException()}" value="Throw ViewExpiredException!" />
-                <p:commandButton actionListener="#{exceptionHandlerController.throwNullPointerException()}" value="Throw NullPointerException!" />
+                <p:commandButton actionListener="#{exceptionHandlerController.throwViewExpiredException()}" ajax="true" value="AJAX - Throw ViewExpiredException!" />
+                <p:commandButton actionListener="#{exceptionHandlerController.throwViewExpiredException()}" ajax="false" value="non-AJAX - Throw ViewExpiredException!" />
+                <p:commandButton actionListener="#{exceptionHandlerController.throwNullPointerException()}" ajax="true" value="AJAX - Throw NullPointerException!" />
+                <p:commandButton actionListener="#{exceptionHandlerController.throwNullPointerException()}" ajax="false" value="non-AJAX - Throw NullPointerException!" />
                 <p:commandButton actionListener="#{exceptionHandlerController.throwWrappedIllegalStateException()}" value="Throw IllegalStateException!" />
             </h:form>
 
