@@ -8,7 +8,7 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">ExceptionHandler</h1>
         <div class="entry">
-            <p>
+            <p style="line-height: 135%">
                 The JSF implementations doesn't handle exceptions in a AJAX request. <br />
                 Therefore the user won't get any feedback from the application
                 and likely, if a ViewExpiredException occurred, all other AJAX actions will fail. <br />
@@ -20,7 +20,10 @@
                 to show e.g. the exception in a p:dialog. <br />
                 <br />
                 In both AJAX and non-AJAX, you can get access to the exception informations via <b>\#{pfExceptionHandler}</b>.
-                Available properties: exception, type, message, stackTrace, formattedStackTrace, timestamp, formattedTimestamp
+                Available properties: exception, type, message, stackTrace, formattedStackTrace, timestamp, formattedTimestamp <br/>
+                <br/>
+                <b>NOTE</b>: To support exception handling in the RENDER_RESPONSE phase, it's required to set the "javax.faces.FACELETS_BUFFER_SIZE"
+                parameter. Otherwise you will probably see a ServletException with "Response already committed."
             </p>
             <p:separator />
 
