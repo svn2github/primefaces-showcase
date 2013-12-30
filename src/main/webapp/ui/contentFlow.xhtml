@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+        
+  <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+        
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+		</script>
+		
+	</ui:define>
+
+    <ui:define name="content">
+
+        <h1 class="title ui-widget-header ui-corner-all">ContentFlow</h1>
+        <div class="entry">
+            <p>ContentFlow is a content gallery component featuring various customization options.</p>
+
+            <h3>Images</h3>
+            <p:contentFlow value="#{galleriaBean.images}" var="image">
+                <p:graphicImage value="/images/galleria/#{image}" styleClass="content" />
+                <div class="caption">#{image}</div>
+            </p:contentFlow>
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="contentFlow.xhtml">
+                    <pre name="code" class="xml">
+&lt;p:contentFlow value="\#{galleriaBean.images}" var="image"&gt;
+    &lt;p:graphicImage value="/images/galleria/\#{image}" styleClass="content" /&gt;
+    &lt;div class="caption"&gt;\#{image}&lt;/div&gt;
+&lt;/p:contentFlow&gt;
+                    </pre>
+                </p:tab>
+
+                <p:tab title="GalleriaBean.java">
+                    <pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import org.primefaces.examples.domain.Player;
+
+public class GalleriaBean {
+
+    private List&lt;String&gt; images;
+
+    @PostConstruct
+    public void init() {
+        images = new ArrayList&lt;String&gt;();
+
+        for(int i=1;i&lt;=12;i++) {
+            images.add("galleria" + i + ".jpg");
+        }
+    }
+
+    public List&lt;String&gt; getImages() {
+        return images;
+    }
+}
+
+                    </pre>
+                </p:tab>
+            </p:tabView>
+
+        </div>
+    </ui:define>
+</ui:composition>
