@@ -24,7 +24,7 @@
 		
 			<h:form id="form">
 				<p:carousel id="carousel" value="#{tableBean.carsSmall}" var="car" itemStyleClass="carItem" headerText="Cars">
-                    <p:graphicImage id="image" value="/images/cars/#{car.manufacturer}.jpg"/> 
+                    <p:graphicImage id="image" value="/resources/images/cars/#{car.manufacturer}.gif"/> 
 
                     <h:panelGrid columns="1" style="width:100%" cellpadding="5">
                         <h:outputText value="Model: " /><h:outputText id="model" value="#{car.model}" />
