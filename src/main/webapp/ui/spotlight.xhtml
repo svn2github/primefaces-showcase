@@ -29,9 +29,9 @@
                 
                 <p:growl id="growl" />
                 
-                <p:panel id="pnl" header="New User" style="margin-bottom:10px;width:400px">
+                <p:panel id="pnl" header="New User" style="margin-bottom:10px">
                     <p:messages id="messages" />
-                    <h:panelGrid columns="3">
+                    <h:panelGrid columns="3" id="grid">
                         <h:outputLabel for="firstname" value="Firstname: *" />
                         <p:inputText id="firstname" value="#{pprBean.firstname}" required="true" label="Firstname">
                             <f:validateLength minimum="2" />
@@ -43,7 +43,7 @@
                         <p:message for="surname" />
                     </h:panelGrid>
                     
-                    <p:commandButton value="Save" icon="ui-icon-check" actionListener="#{pprBean.savePerson}" update="growl" oncomplete="PF('spot').show()"/>
+                    <p:commandButton value="Save" icon="ui-icon-check" actionListener="#{pprBean.savePerson}" update="growl grid" oncomplete="PF('spot').show()"/>
                 </p:panel>
                                 
                 <p:spotlight target="pnl" widgetVar="spot"/>
@@ -58,9 +58,9 @@
 
     &lt;p:growl id="growl" /&gt;
 
-    &lt;p:panel id="pnl" header="New User" style="margin-bottom:10px;width:400px"&gt;
+    &lt;p:panel id="pnl" header="New User" style="margin-bottom:10px"&gt;
         &lt;p:messages id="messages" /&gt;
-        &lt;h:panelGrid columns="3"&gt;
+        &lt;h:panelGrid columns="3" id="grid"&gt;
             &lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
             &lt;p:inputText id="firstname" value="\#{pprBean.firstname}" required="true" label="Firstname"&gt;
                 &lt;f:validateLength minimum="2" /&gt;
@@ -72,7 +72,7 @@
             &lt;p:message for="surname" /&gt;
         &lt;/h:panelGrid&gt;
 
-        &lt;p:commandButton value="Save" icon="ui-icon-check" actionListener="\#{pprBean.savePerson}" update="growl" oncomplete="PF('spot').show()"/&gt;
+        &lt;p:commandButton value="Save" icon="ui-icon-check" actionListener="\#{pprBean.savePerson}" update="growl grid" oncomplete="PF('spot').show()"/&gt;
     &lt;/p:panel&gt;
 
     &lt;p:spotlight target="pnl" widgetVar="spot"/&gt;
