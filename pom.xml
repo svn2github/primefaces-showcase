@@ -62,9 +62,15 @@
                 <configuration>
                     <webResources>
                         <resource>
-                            <directory>src/main/java</directory>
+                            <filtering>true</filtering>
+                            <directory>src/main/webapp</directory>
+                            <includes>
+                                <include>**/web.xml</include>
+                            </includes>
                         </resource>
                     </webResources>
+                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
                 </configuration>
             </plugin>
 
@@ -330,7 +336,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>4.1-SNAPSHOT</version>
+                    <version>5.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -357,7 +363,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>4.1-SNAPSHOT</version>
+                    <version>5.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
@@ -389,7 +395,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>4.1-SNAPSHOT</version>
+                    <version>5.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.primefaces</groupId>
