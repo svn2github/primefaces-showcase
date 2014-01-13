@@ -61,10 +61,23 @@
                 </pm:field>
                 
                 <pm:field>
-                    <p:outputLabel for="uiswitch" value="Switch" />
-                    <pm:switch id="uiswitch" />
+                    <p:outputLabel for="selectOneRadio" value="SelectOneRadio" />
+                    <p:selectOneRadio id="selectOneRadio">
+                        <f:selectItem itemLabel="Option 1" itemValue="1" />
+                        <f:selectItem itemLabel="Option 2" itemValue="2" />
+                        <f:selectItem itemLabel="Option 3" itemValue="3" />
+                    </p:selectOneRadio>
                 </pm:field>
                 
+                <pm:field>
+                    <p:outputLabel for="selectOneButton" value="SelectOneButton" />
+                    <p:selectOneButton id="selectOneButton">
+                        <f:selectItem itemLabel="Option 1" itemValue="1" />
+                        <f:selectItem itemLabel="Option 2" itemValue="2" />
+                        <f:selectItem itemLabel="Option 3" itemValue="3" />
+                    </p:selectOneButton>
+                </pm:field>
+
             </pm:content>
         </pm:page>
         
