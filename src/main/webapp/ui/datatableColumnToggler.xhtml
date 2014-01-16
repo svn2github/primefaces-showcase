@@ -46,7 +46,36 @@
             <p:tabView>
                 <p:tab title="datatableColumnToggler.xhtml">
                     <pre name="code" class="xml">
+&lt;h:form&gt;
 
+    &lt;p:dataTable id="cars" var="car" value="\#{tableBean.carsSmall}"&gt;
+
+        &lt;f:facet name="header"&gt;
+            List of Cars
+
+            &lt;p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" /&gt;
+            &lt;p:columnToggler datasource="cars" trigger="toggler" /&gt;
+            &lt;div style="clear:both" /&gt;
+        &lt;/f:facet&gt;
+
+        &lt;p:column headerText="Model"&gt;                        
+            &lt;h:outputText value="\#{car.model}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Manufacturer"&gt;
+            &lt;h:outputText value="\#{car.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;                    
+    &lt;/p:dataTable&gt;
+
+&lt;/h:form&gt;
                     </pre>
                 </p:tab>
 
