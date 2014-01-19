@@ -60,9 +60,9 @@ function cancel() {
 	 
 				<h3>Advanced Ajax ProgressBar</h3>
 				<p:commandButton value="Start" type="button" onclick="PF('pbAjax').start();PF('startButton2').disable();" widgetVar="startButton2" />
-				<p:commandButton value="Cancel" actionListener="#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" />
+				<p:commandButton value="Cancel" actionListener="#{progressBean.cancel}" oncomplete="PF('pbAjax').cancel();PF('startButton2').enable();" />
 				<br /><br />
-				<p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBean.progress}" labelTemplate="{value}%" styleClass="animated">
+				<p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBean.progress}" labelTemplate="{value}%" styleClass="animated" global="false">
                     <p:ajax event="complete" listener="#{progressBean.onComplete}" update="growl" oncomplete="startButton2.enable()"/>
                 </p:progressBar>
                 
@@ -87,9 +87,9 @@ function cancel() {
 
     &lt;h3&gt;Ajax ProgressBar with Growl Integration&lt;/h3&gt;
     &lt;p:commandButton value="Start" type="button" onclick="PF('pbAjax').start();PF('startButton2').disable();" widgetVar="startButton2" /&gt;
-    &lt;p:commandButton value="Cancel" actionListener="\#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" /&gt;
+    &lt;p:commandButton value="Cancel" actionListener="\#{progressBean.cancel}" oncomplete="PF('pbAjax').cancel();PF('startButton2').enable();" /&gt;
 
-    &lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}" labelTemplate="{value}%" styleClass="animated"&gt;
+    &lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBean.progress}" labelTemplate="{value}%" styleClass="animated" global="false"&gt;
         &lt;p:ajax event="complete" listener="\#{progressBean.onComplete}" update="growl" oncomplete="startButton2.enable()"/&gt;
     &lt;/p:progressBar&gt;
 
