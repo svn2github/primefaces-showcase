@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <link rel="stylesheet"  href="#{request.contextPath}/css/mobile/demo.css"></link>
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page styleClass="jqm-demos">
+            <pm:header title="Showcase" styleClass="jqm-header"></pm:header>
+            <pm:content styleClass="jqm-content">
+                <ui:insert name="content" />
+            </pm:content>
+            
+            <div data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+                <p:menu>
+                    <p:submenu label="Components">
+                        <p:menuitem value="Forms" outcome="forms" />
+                        <p:menuitem value="Buttons" outcome="buttons" />
+                    </p:submenu>
+                    <p:submenu label="Samples">
+                        <p:menuitem value="Weather" outcome="weathernew" />
+                    </p:submenu>
+                </p:menu>
+            </div>
+        </pm:page>
+    </h:body>
+    
+</html>
