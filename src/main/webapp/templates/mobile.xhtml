@@ -16,12 +16,14 @@
     <h:body>
         
         <pm:page styleClass="jqm-demos">
-            <pm:header title="Showcase" styleClass="jqm-header"></pm:header>
+            <pm:header title="Showcase" styleClass="jqm-header">
+                <a class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" href="#menu" data-role="button" role="button">Menu</a>
+            </pm:header>
             <pm:content styleClass="jqm-content">
                 <ui:insert name="content" />
             </pm:content>
             
-            <div data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+            <div id="menu" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
                 <p:menu>
                     <p:submenu label="Components">
                         <p:menuitem value="Forms" outcome="forms" />
