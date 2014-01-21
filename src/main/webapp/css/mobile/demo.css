@@ -324,13 +324,12 @@
 	}
 	.jqm-demos .jqm-header h2 img {
 		width: 275px;
-		height: 78px;
 	}
 	.jqm-demos .jqm-header p {
 		bottom: auto;
 		left: auto;
 		top: 50%;
-		right: 15%;
+		right: 3%;
 		font-size: 1.2em;
 		margin-top: -.625em;
 	}
