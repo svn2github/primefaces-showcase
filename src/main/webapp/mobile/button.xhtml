@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/templates/mobile.xhtml">
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <p:commandButton value="Default" type="button"/>
+            <p:commandButton value="With Icon" type="button" icon="check"/>
+            <p:commandButton value="Icon Position" type="button" icon="refresh" iconPos="right"/>                
+            <p:commandButton value="Inline" type="button" icon="delete" pt:data-inline="true" />
+            <p:commandButton value="Theme" type="button" icon="delete" pt:data-theme="b" />
+            <p:commandButton type="button" icon="info" />
+            <p:commandButton value="Mini" type="button" pt:data-mini="true"/>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

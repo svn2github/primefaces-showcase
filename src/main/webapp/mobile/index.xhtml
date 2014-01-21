@@ -8,14 +8,15 @@
                 template="/templates/mobile.xhtml">
 
     <ui:define name="content">
-        <h1>PrimeFaces Mobile</h1>
-        <p class="jqm-home">
-            <strong>jQuery Mobile is a touch-optimized HTML5 UI framework designed to make responsive web sites and apps that are accessible 
-                on all smartphone, tablet and desktop devices.</strong>
-        </p>
-        
-        <p:graphicImage styleClass="devices" value="/images/mobile/devices.png" />
-        
+        <pm:content styleClass="jqm-content">
+            <h1>PrimeFaces Mobile</h1>
+            <p class="jqm-home">
+                <strong>jQuery Mobile is a touch-optimized HTML5 UI framework designed to make responsive web sites and apps that are accessible 
+                    on all smartphone, tablet and desktop devices.</strong>
+            </p>
+
+            <p:graphicImage styleClass="devices" value="/images/mobile/devices.png" />
+        </pm:content>
     </ui:define>
 
 </ui:composition>

@@ -19,17 +19,16 @@
             <pm:header title="Showcase" styleClass="jqm-header">
                 <a class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" href="#menu" data-role="button" role="button">Menu</a>
             </pm:header>
-            <pm:content styleClass="jqm-content">
-                <ui:insert name="content" />
-            </pm:content>
+            
+            <ui:insert name="content" />
             
             <div id="menu" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
                 <p:menu>
-                    <p:submenu label="Components">
-                        <p:menuitem value="Forms" outcome="forms" />
-                        <p:menuitem value="Buttons" outcome="buttons" />
+                    <p:submenu label="Form">
+                        <p:menuitem value="Input" outcome="input" />
+                        <p:menuitem value="Button" outcome="button" />
                     </p:submenu>
-                    <p:submenu label="Samples">
+                    <p:submenu label="App">
                         <p:menuitem value="Weather" outcome="weathernew" />
                     </p:submenu>
                 </p:menu>
