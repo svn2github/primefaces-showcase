@@ -31,12 +31,18 @@
                         <p:menuitem value="Forms" outcome="forms" />
                         <p:menuitem value="Button" outcome="button" />
                         <p:menuitem value="Menu" outcome="menu" />
+                        <p:menuitem value="Panel" outcome="panel" />
                     </p:submenu>
                     <p:submenu label="App">
                         <p:menuitem value="Weather" outcome="weathernew" />
                     </p:submenu>
                 </p:menu>
             </div>
+            
+            <pm:footer styleClass="jqm-footer" fixed="true">
+                <p>Running PrimeFaces Mobile #{build.primefacesVersion} on #{build.jsfVersion}</p>
+            </pm:footer>
+
         </pm:page>
     </h:body>
     
