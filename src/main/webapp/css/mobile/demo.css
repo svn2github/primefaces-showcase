@@ -132,7 +132,7 @@
 }
 
 /* Homepage */
-.jqm-home > .jqm-content > img {
+.jqm-content > .devices {
 	width: 400px;
 	max-width: 100%;
 	display: block;
