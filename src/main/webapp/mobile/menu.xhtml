@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/templates/mobile.xhtml">
+    
+    <ui:define name="resources">
+        <style type="text/css">
+            .ui-content .ui-listview-inset, .ui-panel-inner > .ui-listview-inset {
+                margin-top: 0;
+            }
+        </style>
+    </ui:define>
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            
+            <h2 class="first">Basic</h2>
+            <p></p>
+            <p:menu>
+                <p:menuitem value="Link 1" url="#" />
+                <p:menuitem value="Link 2" url="#" />
+                <p:menuitem value="Link 3" url="#" />
+            </p:menu>
+                                    
+            <h2>Grouping</h2>
+            <p></p>
+            <p:menu>
+                <p:submenu label="Sports">
+                    <p:menuitem value="ESPN" url="http://www.espn.com" />
+                    <p:menuitem value="NBA" url="http://www.nba.com" />
+                </p:submenu>
+                <p:submenu label="Search">
+                    <p:menuitem value="Google" url="http://www.google.com" />
+                    <p:menuitem value="Bing" url="http://www.bing.com" />
+                </p:submenu>
+            </p:menu>
+            
+            <h2>Customized</h2>
+            <p>Inset layout, icons and theming.</p>
+            <p:menu pt:data-inset="true"  pt:data-theme="d" pt:data-divider-theme="b">
+                <p:submenu label="Sports">
+                    <p:menuitem value="ESPN" url="http://www.espn.com" icon="gear"/>
+                    <p:menuitem value="NBA" url="http://www.nba.com" icon="delete"/>
+                </p:submenu>
+                <p:submenu label="Search">
+                    <p:menuitem value="Google" url="http://www.google.com" icon="info"/>
+                    <p:menuitem value="Bing" url="http://www.bing.com" icon="action"/>
+                </p:submenu>
+            </p:menu>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>
