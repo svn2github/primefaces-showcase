@@ -25,14 +25,20 @@
 			</p:dataList>
             
             <h2>Advanced</h2>
-            <p>Images, Links, Inset layout and formatting.</p>
+            <p>Images, Links, Inset layout, formatting, header and footer.</p>
             <p:dataList value="#{ringBean.players}" var="player" pt:data-inset="true">
+                <f:facet name="header">
+                    List of Players
+                </f:facet>
                 <h:outputLink value="#">
                     <p:graphicImage value="/images/barca/#{player.photo}" />
                     <h2>#{player.name}</h2>
                     <p>#{player.position}</p>
                     <p class="ui-li-aside"><strong>#{player.number}</strong></p>
                 </h:outputLink>
+                <f:facet name="footer">
+                    F.C. Barcelona
+                </f:facet>
 			</p:dataList>
         </pm:content>
     </ui:define>
