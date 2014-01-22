@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/templates/mobile.xhtml">
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>DataList</h1>
+            <p>DataList presents a collection of data in list layout.</p>
+            
+            <h2 class="first">Basic</h2>
+            <p></p>
+            <p:dataList value="#{tableBean.carsSmall}" var="car">
+				<h:outputText value="#{car.manufacturer}, #{car.year}, #{car.color}" />
+			</p:dataList>
+            
+            <h2>Ordered</h2>
+            <p></p>
+            <p:dataList value="#{tableBean.carsSmall}" var="car" type="ordered">
+				<h:outputText value="#{car.manufacturer}, #{car.year}, #{car.color}" />
+			</p:dataList>
+            
+            <h2>Advanced</h2>
+            <p>Images, Links, Inset layout and formatting.</p>
+            <p:dataList value="#{ringBean.players}" var="player" pt:data-inset="true">
+                <h:outputLink value="#">
+                    <p:graphicImage value="/images/barca/#{player.photo}" />
+                    <h2>#{player.name}</h2>
+                    <p>#{player.position}</p>
+                    <p class="ui-li-aside"><strong>#{player.number}</strong></p>
+                </h:outputLink>
+			</p:dataList>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>
