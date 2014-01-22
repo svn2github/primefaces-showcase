@@ -182,11 +182,11 @@
             <version>1.0</version>
         </dependency>
         
-                <!-- Twitter API -->
+        <!-- Twitter API -->
         <dependency>
             <groupId>org.twitter4j</groupId>
-            <artifactId>twitter4j-async</artifactId>
-            <version>3.0.3</version>
+            <artifactId>twitter4j-core</artifactId>
+            <version>3.0.5</version>
         </dependency>      
 
 		<!-- Dynamic Image Examples -->

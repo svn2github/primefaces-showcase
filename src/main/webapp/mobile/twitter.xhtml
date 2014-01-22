@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page id="first">
+            <pm:header title="Twitter" theme="b"></pm:header>
+            
+            <pm:content>
+                <h:form id="main">
+                    <h2>See what’s happening right now.</h2>
+                    <p:inputText id="search" value="#{twitterView.keyword}" type="search" placeholder="Search"/> 
+                    
+                    <p:commandButton value="Search" icon="search" actionListener="#{twitterView.search}" update="tweets"/>
+                    
+                    <p:dataList id="tweets" value="#{twitterView.tweets}" var="tweet">
+                        <p:graphicImage value="#{tweet.user.miniProfileImageURL}" />
+                        <h2>#{tweet.user.screenName}</h2>
+                        <p>#{tweet.text}</p>
+                        <p class="ui-li-aside">Retweets: <strong>#{tweet.retweetCount}</strong></p>
+                    </p:dataList>
+                </h:form>
+                
+            </pm:content>
+        </pm:page>
+    </h:body>
+    
+</html>
