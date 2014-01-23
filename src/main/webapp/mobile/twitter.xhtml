@@ -24,7 +24,7 @@
                     <p:commandButton value="Search" icon="search" actionListener="#{twitterView.search}" update="tweets"/>
                     
                     <p:dataList id="tweets" value="#{twitterView.tweets}" var="tweet">
-                        <p:graphicImage value="#{tweet.user.miniProfileImageURL}" />
+                        <p:graphicImage value="#{tweet.user.biggerProfileImageURL}" />
                         <h2>#{tweet.user.screenName}</h2>
                         <p>#{tweet.text}</p>
                         <p class="ui-li-aside">Retweets: <strong>#{tweet.retweetCount}</strong></p>
