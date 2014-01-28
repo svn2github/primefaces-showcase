@@ -15,16 +15,19 @@
  */
 package org.primefaces.examples.view;
 
+import org.primefaces.push.EventBus;
+import org.primefaces.push.EventBusFactory;
+import org.primefaces.context.RequestContext;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
-import org.primefaces.push.PushContext;
-import org.primefaces.push.PushContextFactory;
 
 public class ChatView {
     
-    private final PushContext pushContext = PushContextFactory.getDefault().getPushContext();
-    
+    //private final PushContext pushContext = PushContextFactory.getDefault().getPushContext();
+
+    private final EventBus eventBus = EventBusFactory.getDefault().eventBus();
+
     private ChatUsers users;
 
 	private String privateMessage;
@@ -82,13 +85,13 @@ public class ChatView {
 	}
 
 	public void sendGlobal() {
-        pushContext.push(CHANNEL + "*", username + ": " + globalMessage);
+        eventBus.fire(CHANNEL + "*", username + ": " + globalMessage);
 		
 		globalMessage = null;
 	}
     
     public void sendPrivate() {
-        pushContext.push(CHANNEL + privateUser, "[PM] " + username + ": " + privateMessage);
+        eventBus.fire(CHANNEL + privateUser, "[PM] " + username + ": " + privateMessage);
         
         privateMessage = null;
     }
@@ -104,8 +107,8 @@ public class ChatView {
         }
         else {
             users.addUser(username);
-            pushContext.push(CHANNEL + "*", username + " joined the channel.");
             requestContext.execute("PF('subscriber').connect('/" + username + "')");
+            eventBus.fire(CHANNEL + "*", username + " joined the channel.");
             loggedIn = true;
         }
 	}
@@ -116,7 +119,7 @@ public class ChatView {
         RequestContext.getCurrentInstance().update("form:users");
         
         //push leave information
-        pushContext.push(CHANNEL + "*", username + " left the channel.");
+        eventBus.fire(CHANNEL + "*", username + " left the channel.");
         
         //reset state
         loggedIn = false;
