@@ -5,29 +5,16 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
 
-  <ui:define name="head">
-        <style type="text/css">
-            .ui-datatable tr.ui-widget-content.ui-sortable-helper {
-                
-            }
-        </style>
-        
-        <script type="text/javascript">
-//<![CDATA[
-
-//]]>
-		</script>
-		
-	</ui:define>
-
-
 	<ui:define name="content">
 	<h1 class="title ui-widget-header ui-corner-all">DataTable - Draggable Rows</h1>
 		<div class="entry">
-            <p>Rows can be reorder using dragdrop. An optional <i>rowReorder</i> ajax behavior event is provided as a callback.</p>
+            <p>Rows can be reordered using dragdrop. The optional <i>rowReorder</i> ajax behavior event is provided as a callback.</p>
 
-            <h:form>
+            <h:form id="form">
+                <p:growl id="messages" showDetail="true" />
+                
                 <p:dataTable var="car" value="#{tableBean.carsSmall}" widgetVar="cars" draggableRows="true">
+                    <p:ajax event="rowReorder" listener="#{tableBean.onRowReorder}" update=":form:messages" />
                     <p:column headerText="Model">
                         <h:outputText value="#{car.model}" />
                     </p:column>
@@ -44,6 +31,8 @@
                         <h:outputText value="#{car.color}" />
                     </p:column>
                 </p:dataTable>
+                
+                <h:commandButton value="Update" />
 
             </h:form>
 
@@ -51,8 +40,11 @@
 		<p:tabView>
 			<p:tab title="datatableBasic.xhtml">
 <pre name="code" class="xml">
-&lt;h:form&gt;
-    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" draggableRows="true"&gt;
+&lt;h:form id="form"&gt;
+    &lt;p:growl id="messages" showDetail="true" /&gt;
+
+    &lt;p:dataTable var="car" value="\#{tableBean.carsSmall}" widgetVar="cars" draggableRows="true"&gt;
+        &lt;p:ajax event="rowReorder" listener="\#{tableBean.onRowReorder}" update=":form:messages" /&gt;
         &lt;p:column headerText="Model"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
@@ -69,6 +61,9 @@
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
+
+    &lt;h:commandButton value="Update" /&gt;
+
 &lt;/h:form&gt;
 				</pre>
 			</p:tab>
@@ -148,6 +143,11 @@ public class TableBean implements Serializable {
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
 	}
+
+    public void onRowReorder(ReorderEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Row Moved", "From: " + event.getFromIndex() + ", To:" + event.getToIndex());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
 				</pre>
 			</p:tab>

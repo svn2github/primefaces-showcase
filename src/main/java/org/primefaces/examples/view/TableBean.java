@@ -49,6 +49,7 @@ import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.ColumnResizeEvent;
 import org.primefaces.event.DragDropEvent;
+import org.primefaces.event.ReorderEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.ToggleEvent;
@@ -586,5 +587,10 @@ public class TableBean implements Serializable {
     
     public void selectCarFromDialog(Car car) {
         RequestContext.getCurrentInstance().closeDialog(car);
+    }
+    
+    public void onRowReorder(ReorderEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Row Moved", "From: " + event.getFromIndex() + ", To:" + event.getToIndex());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
