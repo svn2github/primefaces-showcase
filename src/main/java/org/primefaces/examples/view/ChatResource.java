@@ -29,21 +29,22 @@ import org.primefaces.push.annotation.PushEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@PushEndpoint("/chat/{user}")
+@PushEndpoint("/chat/{room}")
 @Singleton
 public class ChatResource {
 
     private final Logger logger = LoggerFactory.getLogger(ChatResource.class);
 
     @OnOpen
-    public void onOpen(RemoteEndpoint r) {
+    public void onOpen(RemoteEndpoint r, EventBus eventBus) {
         logger.info("OnOpen {}", r);
+        eventBus.encodeToJsonAndFire(String.format("%s connected", r.path()));
     }
 
     @OnClose
     public void onClose(RemoteEndpoint r, EventBus eventBus) {
         logger.info("OnClose {}", r);
-        eventBus.encodeToJsonAndFire(String.format("%s has left the room", r.path()));
+        eventBus.encodeToJsonAndFire(String.format("%s disconnected", r.path()));
     }
 
     @OnMessage(decoders = {JSONDecoder.class}, encoders = {JSONEncoder.class})
