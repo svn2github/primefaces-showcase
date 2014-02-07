@@ -11,6 +11,7 @@
     
     <h:head>
         <link rel="stylesheet"  href="#{request.contextPath}/css/mobile/demo.css"></link>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
         <ui:insert name="head" />
     </h:head>
     
@@ -47,6 +48,11 @@
             </pm:footer>
 
         </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
     </h:body>
     
 </html>

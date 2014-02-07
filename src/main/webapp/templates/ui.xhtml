@@ -518,8 +518,7 @@
         <ui:insert name="highlight">
             <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
             <script language="javascript">
-                dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/syntaxhighlighter/scripts/clipboard.swf';
-                dp.SyntaxHighlighter.HighlightAll('code');
+                SyntaxHighlighter.all();
             </script>
         </ui:insert>
 
