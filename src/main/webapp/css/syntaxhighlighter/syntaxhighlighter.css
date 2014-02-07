@@ -342,3 +342,7 @@
 .syntaxhighlighter .keyword {
   font-weight: bold !important;
 }
+
+.syntaxhighlighter .toolbar {
+    display: none;
+}

@@ -85,7 +85,7 @@ PrimeFaces.validator['Email'] = {
 			<h3>Source</h3>
 			<p:tabView>
 				<p:tab title="csvCustom.xhtml">
-                    <pre name="code" class="xml">
+                    <pre name="code" class="brush:xml">
 &lt;h:form&gt;
     &lt;p:growl showDetail="true"/&gt;
 
@@ -152,7 +152,7 @@ PrimeFaces.validator['Email'] = {
 				</p:tab>
 				
 				<p:tab title="ValidationBean.java">
-<pre name="code" class="java">
+<pre name="code" class="brush:java">
 package org.primefaces.examples.view;
 
 import org.primefaces.examples.validate.Email;
@@ -182,7 +182,7 @@ public class ValidationBean {
 				</p:tab>
                 
                 <p:tab title="EmailValidator.java">
-<pre name="code" class="java">
+<pre name="code" class="brush:java">
 package org.primefaces.examples.validate;
 
 import java.util.Map;
@@ -236,7 +236,7 @@ public class EmailValidator implements Validator, ClientValidator {
         </p:tab>
                     
         <p:tab title="Email.java">
-<pre name="code" class="java">
+<pre name="code" class="brush:java">
 package org.primefaces.examples.validate;
 
 import static java.lang.annotation.ElementType.*;
@@ -266,7 +266,7 @@ public @interface Email {
 				</p:tab>
                     
                 <p:tab title="EmailConstraintValidator.java">
-<pre name="code" class="java">
+<pre name="code" class="brush:java">
 package org.primefaces.examples.validate;
 
 import java.util.regex.Pattern;
@@ -299,7 +299,7 @@ public class EmailConstraintValidator implements ConstraintValidator&lt;Email, S
 				</p:tab>
                     
                 <p:tab title="EmailClientValidationConstraint.java">
-<pre name="code" class="java">
+<pre name="code" class="brush:java">
 package org.primefaces.examples.validate;
 
 import java.util.HashMap;

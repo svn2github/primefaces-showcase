@@ -56,7 +56,7 @@
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="exporterProcessor.xhtml">
-                    <pre name="code" class="xml">
+                    <pre name="code" class="brush:xml">
 &lt;p:dataTable id="tbl" var="car" value="\#{tableBean.cars}" paginator="true" rows="10"&gt;
 	&lt;p:column&gt;
 		&lt;f:facet name="header"&gt;
@@ -100,7 +100,7 @@
                 </p:tab>
 
                 <p:tab title="TableBean.java">
-                    <pre name="code" class="java">
+                    <pre name="code" class="brush:java">
 public void postProcessXLS(Object document) {
 	HSSFWorkbook wb = (HSSFWorkbook) document;
 	HSSFSheet sheet = wb.getSheetAt(0);
