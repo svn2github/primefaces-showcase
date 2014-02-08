@@ -13,7 +13,7 @@ public class GrowlBean {
     private String summary;
     
     private String detail;
-    
+        
 	public String getText() {
 		return text;
 	}
