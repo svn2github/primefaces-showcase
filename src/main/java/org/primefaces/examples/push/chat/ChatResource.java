@@ -13,13 +13,9 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.primefaces.examples.view;
+package org.primefaces.examples.push.chat;
 
 import org.atmosphere.config.service.Singleton;
-import org.primefaces.examples.view.chat.JSONDecoder;
-import org.primefaces.examples.view.chat.JSONEncoder;
-import org.primefaces.examples.view.chat.Message;
-import org.primefaces.examples.view.chat.Response;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.RemoteEndpoint;
 import org.primefaces.push.annotation.OnClose;
