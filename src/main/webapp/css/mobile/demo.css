@@ -522,3 +522,39 @@
 	color: #fff;
 	text-shadow: 0 1px 0 #cc0099;
 }
+
+/** Ext **/
+.jqm-demos .jqm-content > form > h1,
+.jqm-demos .jqm-content > form > h2,
+.jqm-demos .jqm-content > form > h3,
+.jqm-demos .jqm-content > form > p,
+.jqm-demos .jqm-content > form > ul li,
+.jqm-demos .jqm-content > form > a {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+.jqm-demos .jqm-content > form > h1 {
+	font-size: 2.4em;
+	margin: 0 0 .625em;
+}
+.jqm-demos .jqm-content > form >h2 {
+	color: #424548;
+	background-color: transparent;
+	border-bottom: 1px solid #ddd;
+	font-size: 1.6em;
+	padding-bottom: .2em;
+	margin: 2em 0 .7375em;
+}
+.jqm-demos .jqm-content > form > h2.first {
+    margin: 0 0 .7375em;
+}
+.jqm-demos .jqm-content > form >h3 {
+	color: #424548;
+	background-color: transparent;
+	font-size: 1.4em;
+	margin: 0 0 1em;
+}
+.jqm-demos .jqm-content > form > p {
+	font-size: 1.2em;
+	line-height: 1.5;
+}
