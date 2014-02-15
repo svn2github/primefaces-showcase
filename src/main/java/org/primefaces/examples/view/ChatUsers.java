@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.primefaces.examples.push.chat;
+package org.primefaces.examples.view;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 
 public class ChatUsers {
     

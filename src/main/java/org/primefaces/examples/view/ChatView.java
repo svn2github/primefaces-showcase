@@ -16,7 +16,6 @@
 package org.primefaces.examples.view;
 
 import org.primefaces.context.RequestContext;
-import org.primefaces.examples.push.chat.ChatUsers;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.EventBusFactory;
 
