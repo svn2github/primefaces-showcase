@@ -15,14 +15,14 @@
  */
 package org.primefaces.examples.view;
 
-import java.io.Serializable;
+import org.primefaces.push.EventBus;
+import org.primefaces.push.EventBusFactory;
 
-import org.primefaces.push.PushContext;
-import org.primefaces.push.PushContextFactory;
+import java.io.Serializable;
 
 public class GlobalCounterBean implements Serializable{
 
-	private int count;
+	private volatile int count;
 
 	public int getCount() {
 		return count;
@@ -32,10 +32,10 @@ public class GlobalCounterBean implements Serializable{
 		this.count = count;
 	}
 	
-	public synchronized void increment() {
+	public void increment() {
 		count++;
         
-        PushContext pushContext = PushContextFactory.getDefault().getPushContext();
-        pushContext.push("/counter", String.valueOf(count));
+        EventBus eventBus = EventBusFactory.getDefault().eventBus();
+        eventBus.publish("/counter", String.valueOf(count));
 	}
 }
