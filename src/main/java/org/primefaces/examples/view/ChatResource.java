@@ -25,10 +25,12 @@ import org.primefaces.push.annotation.OnClose;
 import org.primefaces.push.annotation.OnMessage;
 import org.primefaces.push.annotation.OnOpen;
 import org.primefaces.push.annotation.PushEndpoint;
+import org.primefaces.push.annotation.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @PushEndpoint("/{room}/{user}")
+@Singleton
 public class ChatResource {
 
     private final Logger logger = LoggerFactory.getLogger(ChatResource.class);
@@ -42,12 +44,14 @@ public class ChatResource {
         logger.info("OnOpen {}", r);
 
         // Publish the message to all connected user.
-        eventBus.publish(new Message().setUser(r.pathSegments(USER_PATH_SEGMENT)).setMessage("is entering room " + r.pathSegments(ROOM_PATH_SEGMENT)));
+        eventBus.publish(new Message().setUser(r.pathSegments(USER_PATH_SEGMENT))
+                .setMessage("is entering room " + r.pathSegments(ROOM_PATH_SEGMENT)));
     }
 
     @OnClose
     public void onClose(RemoteEndpoint r, EventBus eventBus) {
-        eventBus.publish(r.pathSegments(ROOM_PATH_SEGMENT) + "/*", String.format("%s: disconnected", r.pathSegments(USER_PATH_SEGMENT)));
+        eventBus.publish(r.pathSegments(ROOM_PATH_SEGMENT) + "/*",
+                String.format("%s: disconnected", r.pathSegments(USER_PATH_SEGMENT)));
     }
 
     @OnMessage(decoders = {JSONDecoder.class}, encoders = {JSONEncoder.class})
