@@ -33,17 +33,21 @@ public class ChatResource {
 
     private final Logger logger = LoggerFactory.getLogger(ChatResource.class);
 
+    // The Path takes the form of /{room}/{user}
+    public final static int USER_PATH_SEGMENT = 2;
+    public final static int ROOM_PATH_SEGMENT = 1;
+
     @OnOpen
     public void onOpen(RemoteEndpoint r, EventBus eventBus) {
         logger.info("OnOpen {}", r);
 
         // Publish the message to all connected user.
-        eventBus.publish(new Message().setUser(user(r.path())).setMessage("is entering room " + room(r.path())));
+        eventBus.publish(new Message().setUser(r.pathSegments(USER_PATH_SEGMENT)).setMessage("is entering room " + r.pathSegments(ROOM_PATH_SEGMENT)));
     }
 
     @OnClose
     public void onClose(RemoteEndpoint r, EventBus eventBus) {
-        eventBus.publish(room(r.path()) + "/*", String.format("%s: disconnected", user(r.path())));
+        eventBus.publish(r.pathSegments(ROOM_PATH_SEGMENT) + "/*", String.format("%s: disconnected", r.pathSegments(USER_PATH_SEGMENT)));
     }
 
     @OnMessage(decoders = {JSONDecoder.class}, encoders = {JSONEncoder.class})
@@ -51,22 +55,5 @@ public class ChatResource {
         return new Response().message(message);
     }
 
-    public final static String room(String path) {
-        String room = "/";
-        String[] pathSegments = path.split("/");
-        if (pathSegments.length == 3) {
-            room += pathSegments[1];
-        }
-        return room;
-    }
-
-    public final static String user(String path) {
-        String user = "";
-        String[] pathSegments = path.split("/");
-        if (pathSegments.length == 3) {
-            user += pathSegments[2];
-        }
-        return user;
-    }
 }
 
