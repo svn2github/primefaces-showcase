@@ -15,14 +15,14 @@
  */
 package org.primefaces.examples.view;
 
-import org.primefaces.examples.view.counter.StringEncoder;
+import org.primefaces.examples.view.counter.StringToJSONEncoder;
 import org.primefaces.push.annotation.OnMessage;
 import org.primefaces.push.annotation.PushEndpoint;
 
 @PushEndpoint("/counter")
 public class CounterResource {
 
-    @OnMessage(encoders = {StringEncoder.class})
+    @OnMessage(encoders = {StringToJSONEncoder.class})
     public String onMessage(String count) {
         return count;
     }

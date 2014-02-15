@@ -22,7 +22,7 @@ import org.primefaces.push.Encoder;
 /**
  * A Simple {@link org.primefaces.push.Encoder} that decode a {@link org.primefaces.examples.view.chat.Message} into a simple JSON object.
  */
-public final class StringEncoder implements Encoder<String, String> {
+public final class StringToJSONEncoder implements Encoder<String, String> {
 
     //@Override
     public String encode(String s) {
