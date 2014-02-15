@@ -83,10 +83,11 @@ public class AutoCompleteBean {
 	}
 	
 	public List<Player> completePlayer(String query) {
+        String q = query.toLowerCase();
 		List<Player> suggestions = new ArrayList<Player>();
 		
 		for(Player p : players) {
-			if(p.getName().toLowerCase().startsWith(query))
+			if(p.getName().toLowerCase().startsWith(q))
 				suggestions.add(p);
 		}
 		
