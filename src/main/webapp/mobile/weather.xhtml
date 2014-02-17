@@ -21,15 +21,15 @@
                 <h:form id="mainForm">
                     <pm:field>
                         <p:outputLabel for="city" value="Select City:" />
-                        <p:selectOneMenu id="city" value="#{weatherController.city}">
-                            <f:selectItems value="#{weatherController.cities}" />
+                        <p:selectOneMenu id="city" value="#{weatherView.city}">
+                            <f:selectItems value="#{weatherView.cities}" />
                         </p:selectOneMenu>
                     </pm:field>
 
-                    <p:commandButton value="Get Forecast" update="display" actionListener="#{weatherController.retrieveConditions}"/>
+                    <p:commandButton value="Get Forecast" update="display" actionListener="#{weatherView.retrieveConditions}"/>
 
                     <p:outputPanel style="text-align:center">
-                        <h:outputText id="display" value="#{weatherController.conditions}" escape="false" />
+                        <h:outputText id="display" value="#{weatherView.conditions}" escape="false" />
                     </p:outputPanel>
                 </h:form>
                 

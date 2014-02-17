@@ -17,12 +17,18 @@
             <pm:header title="Page 1"></pm:header>
             
             <pm:content>
-                <p>Multiple pages can be placed in a single xhtml page, see source for the structure and <h:link outcome="navigation">navigation example</h:link> for the navigation model
-                    using a custom mobile navigation handler.</p>
+                <p>Navigations in same xhtml between multiple pages are handled by a specialized navigation handler. Prepending the id of the page
+                with "pm:" marks the outcome as a multi page navigation.</p>
+                
+                <h:form>
+                    <p:commandButton value="Ajax Action" action="#{navigationView.gotoSecond}"/> 
+                    <h:link outcome="#pm:second">Direct Link</h:link>
+                    
+                </h:form>
                 
                 <h2>Source</h2>
                 <p:accordionPanel activeIndex="-1">
-                    <p:tab title="multiPage.xhtml">
+                    <p:tab title="navigation.xhtml">
                         <pre class="brush:xml">
 &lt;!DOCTYPE html&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"
