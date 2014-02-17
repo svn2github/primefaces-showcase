@@ -22,8 +22,8 @@
                 
                 <h:form>
                     <p:commandButton value="Ajax Action" action="#{navigationView.gotoSecond}"/> 
-                    <h:link outcome="#pm:second">Direct Link</h:link>
-                    
+                    <p:button outcome="pm:second" value="Go Button" />
+                    <p:button href="http://www.primefaces.org" value="External" />
                 </h:form>
                 
                 <h2>Source</h2>
@@ -49,7 +49,11 @@
             &lt;pm:header title="Page 1"&gt;&lt;/pm:header&gt;
             
             &lt;pm:content&gt;
-                &lt;p&gt;Multiple pages can be placed in a single xhtml page.&lt;/p&gt;
+                &lt;h:form&gt;
+                    &lt;p:commandButton value="Ajax Action" action="\#{navigationView.gotoSecond}"/&gt; 
+                    &lt;p:button outcome="pm:second" value="Go Button" /&gt;
+                    &lt;p:button href="http://www.primefaces.org" value="External" /&gt;
+                &lt;/h:form&gt;
             &lt;/pm:content&gt;
         &lt;/pm:page&gt;
 
@@ -58,6 +62,7 @@
             
             &lt;pm:content&gt;
                 &lt;p&gt;Page 2 content.&lt;/p&gt;
+                &lt;p:button outcome="pm:first" value="Go Back" /&gt;
             &lt;/pm:content&gt;
         &lt;/pm:page&gt;
 
@@ -66,6 +71,18 @@
     &lt;/h:body&gt;
     
 &lt;/html&gt;
+                        </pre>
+                    </p:tab>
+                    <p:tab title="NavigationView.java">
+                        <pre class="brush:xml">
+package org.primefaces.examples.mobile;
+
+public class NavigationView {
+
+    public String gotoSecond() {
+        return "pm:second";
+    }
+}
                         </pre>
                     </p:tab>
                 </p:accordionPanel>
@@ -78,7 +95,7 @@
             
             <pm:content>
                 <p>Page 2 content.</p>
-                <h:outputLink value="#main">Go to Page 1</h:outputLink>
+                <p:button outcome="pm:first" value="Go Back" />
             </pm:content>
         </pm:page>
         
