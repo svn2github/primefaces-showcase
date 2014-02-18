@@ -15,22 +15,25 @@
  */
 package org.primefaces.examples.mobile;
 
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.XmlReader;
 import java.io.Serializable;
+import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-
-import org.primefaces.examples.service.WeatherService;
-import org.primefaces.examples.service.YAHOOWeatherService;
 
 public class WeatherView implements Serializable {
 
 	private String conditions;
 	private String city;
-	private String unit = "c";		//default
+	private String unit = "c";
     private Map<String,String> cities;
-
-	private WeatherService weatherService = new YAHOOWeatherService();
+    
+    private static final Logger logger = Logger.getLogger(WeatherView.class.getName());
 
     @PostConstruct
     public void init() {
@@ -69,10 +72,21 @@ public class WeatherView implements Serializable {
     }
 
     public void retrieveConditions() {
-		conditions = weatherService.getConditions(city, unit);
+        try {
+			URL feedSource = new URL("http://weather.yahooapis.com/forecastrss?p=" + city + "&u=" + unit);
+			SyndFeedInput input = new SyndFeedInput();
+			SyndFeed feed = input.build(new XmlReader(feedSource));
+			String value = ((SyndEntry) feed.getEntries().get(0)).getDescription().getValue();
+			
+			conditions = value.split("<a href")[0];
+		} catch (Exception e) {
+			logger.severe(e.getMessage());
+            conditions = "Unable to retrieve weather forecast at the moment.";
+		}
 	}
 
-    public void saveSettings() {
+    public String saveSettings() {
         conditions = null;
+        return "pm:main";
     }
 }

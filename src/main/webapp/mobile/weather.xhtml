@@ -13,8 +13,10 @@
     
     <h:body>
         
-        <pm:page id="first">
-            <pm:header title="Weather" theme="b"></pm:header>
+        <pm:page id="main">
+            <pm:header title="Weather" theme="b">
+                <p:button styleClass="ui-btn-right ui-btn-inline" value="Settings" icon="ui-icon-gear" outcome="pm:settings" />
+            </pm:header>
             
             <pm:content>
                 
@@ -28,9 +30,31 @@
 
                     <p:commandButton value="Get Forecast" update="display" actionListener="#{weatherView.retrieveConditions}"/>
 
-                    <p:outputPanel style="text-align:center">
-                        <h:outputText id="display" value="#{weatherView.conditions}" escape="false" />
+                    <p:outputPanel id="display" style="text-align:center">
+                        <h:outputText value="#{weatherView.conditions}" escape="false" />
                     </p:outputPanel>
+                </h:form>
+                
+            </pm:content>
+        </pm:page>
+        
+        <pm:page id="settings">
+            <pm:header title="Settings" theme="b">
+                <p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:main" />
+            </pm:header>
+            
+            <pm:content>
+                
+                <h:form id="settingsForm">
+                    <pm:field>
+                        <p:outputLabel for="unit" value="Unit:" />
+                        <p:selectOneMenu id="unit" value="#{weatherView.unit}">
+                            <f:selectItem itemLabel="Celcius" itemValue="c" />
+                            <f:selectItem itemLabel="Fahrenheit" itemValue="f" />
+                        </p:selectOneMenu>
+                    </pm:field>
+
+                    <p:commandButton value="Save" action="#{weatherView.saveSettings}"/>
                 </h:form>
                 
             </pm:content>
