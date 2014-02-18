@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/ui.xhtml">
+
+    <ui:define name="content">
+
+
+        <h1 class="title ui-widget-header ui-corner-all">Link</h1>
+        <div class="entry">
+            <p>Link is an extension to the standard h:link component featuring theming support. Just like
+            h:link, link does GET requests targeting bookmarkable URLs.</p>
+
+            <p:link outcome="productDetail" value="Bookmark">
+                <f:param name="productId" value="10" />
+            </p:link>
+
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="link.xhtml">
+                    <pre name="code" class="brush:xml">
+&lt;p:link outcome="productDetail" value="Bookmark"&gt;
+    &lt;f:param name="productId" value="10" /&gt;
+&lt;/p:link&gt;
+                    </pre>
+                </p:tab>
+
+            </p:tabView>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
