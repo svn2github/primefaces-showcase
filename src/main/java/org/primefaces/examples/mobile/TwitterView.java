@@ -16,6 +16,9 @@
 package org.primefaces.examples.mobile;
 
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 import twitter4j.Query;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -48,7 +51,9 @@ public class TwitterView {
             Query query = new Query(keyword);
             tweets = twitter.search(query).getTweets();
         } catch(TwitterException exception) {
-            //TODO: add facesmessage
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Please try again");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            RequestContext.getCurrentInstance().update("main:messages");
         }
     }
 }
