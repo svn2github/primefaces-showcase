@@ -251,11 +251,6 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>newsController</managed-bean-name>
-        <managed-bean-class>org.primefaces.examples.touch.NewsController</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>notesView</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.mobile.NotesView</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
