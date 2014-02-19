@@ -54,7 +54,7 @@ public class TranslateView {
         translateURL = (String) app.get(TRANSLATE_URL_KEY);
         
         if(translateURL == null) {
-            translateURL = ResourceBundle.getBundle("translate").getString(TRANSLATE_URL_KEY);
+            translateURL = ResourceBundle.getBundle(BUNDLE_NAME).getString(TRANSLATE_URL_KEY);
             app.put(TRANSLATE_URL_KEY, translateURL);
         }
     }
