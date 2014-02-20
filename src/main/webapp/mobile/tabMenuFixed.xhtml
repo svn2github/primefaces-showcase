@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page id="first">
+            <pm:header title="TabMenu"></pm:header>
+            
+            <pm:content>
+                <p>TabMenu can be placed inside header and footer as well with optional fixed positioning.</p>
+                
+                <h2>Source</h2>
+                <p:accordionPanel activeIndex="-1">
+                    <p:tab title="tabMenuFixed.xhtml">
+                        <pre class="brush:xml">
+
+                        </pre>
+                    </p:tab>
+                </p:accordionPanel>
+            </pm:content>
+            
+            <pm:footer title="Options" fixed="true">
+                <p:tabMenu activeIndex="0">
+                    <p:menuitem value="Home" icon="ui-icon-home" outcome="pm:first" iconPos="top"/>
+                    <p:menuitem value="Settings" icon="ui-icon-gear" outcome="pm:second" iconPos="top"/>
+                    <p:menuitem value="Search" icon="ui-icon-search" outcome="pm:third" iconPos="top"/>
+                </p:tabMenu>
+            </pm:footer>
+        </pm:page>
+        
+        <pm:page id="second">
+            <pm:header title="Settings"></pm:header>
+            
+            <pm:content>
+                <h1>Settings Page</h1>
+            </pm:content>
+        </pm:page>
+        
+        <pm:page id="search">
+            <pm:header title="Search"></pm:header>
+            
+            <pm:content>
+                <h1>Search Page</h1>
+            </pm:content>
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+        
+    </h:body>
+    
+</html>
