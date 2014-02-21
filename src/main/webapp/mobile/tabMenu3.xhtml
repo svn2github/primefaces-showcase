@@ -12,8 +12,7 @@
             <h1>TabMenu</h1>
             <p>TabMenu is a navigation component mainly used at header and footer sections.</p>
             
-            <h1>Search Page</h1>
-            
+            <h2 class="first">Search Page</h2>
             <p:tabMenu activeIndex="2">
                 <p:menuitem value="Home" icon="ui-icon-home" outcome="tabMenu" iconPos="top"/>
                 <p:menuitem value="Settings" icon="ui-icon-gear" outcome="tabMenu2" iconPos="top"/>
@@ -22,9 +21,13 @@
             
             <h2>Source</h2>
             <p:accordionPanel activeIndex="-1">
-                <p:tab title="tabMenu3.xhtml">
+                <p:tab title="tabMenu2.xhtml">
                     <pre class="brush:xml">
-
+&lt;p:tabMenu activeIndex="2"&gt;
+    &lt;p:menuitem value="Home" icon="ui-icon-home" outcome="tabMenu" iconPos="top"/&gt;
+    &lt;p:menuitem value="Settings" icon="ui-icon-gear" outcome="tabMenu2" iconPos="top"/&gt;
+    &lt;p:menuitem value="Search" icon="ui-icon-search" outcome="tabMenu3" iconPos="top"/&gt;
+&lt;/p:tabMenu&gt;
                     </pre>
                 </p:tab>
             </p:accordionPanel>
