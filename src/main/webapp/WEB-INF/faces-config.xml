@@ -256,11 +256,6 @@
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>contactsView</managed-bean-name>
-        <managed-bean-class>org.primefaces.examples.mobile.ContactsView</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>twitterView</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.mobile.TwitterView</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>

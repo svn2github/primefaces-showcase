@@ -23,7 +23,7 @@ public class Contact implements Serializable{
     private String surname;
     private String phone;
     private String address;
-    private String mail;
+    private String email;
     private Integer age;
     private String gender;
 
@@ -59,12 +59,12 @@ public class Contact implements Serializable{
         this.age = age;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhone() {

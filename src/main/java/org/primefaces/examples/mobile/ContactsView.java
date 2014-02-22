@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2011 Prime Technology.
+ * Copyright 2009-2014 PrimeTek.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,22 +18,28 @@ package org.primefaces.examples.mobile;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import org.primefaces.examples.domain.Contact;
 
+@ManagedBean
+@ViewScoped
 public class ContactsView implements Serializable{
     
-    private Contact contact = new Contact();
+    private Contact contact;
     
     private List<Contact> contacts;
-
-    public ContactsView() {
+    
+    @PostConstruct
+    public void init() {
+        contact = new Contact();
         contacts = new ArrayList<Contact>();
     }
-    
+        
     public Contact getContact() {
         return contact;
     }
-
     public void setContact(Contact contact) {
         this.contact = contact;
     }
@@ -42,10 +48,12 @@ public class ContactsView implements Serializable{
         return contacts;
     }
     
-    public void saveContact(){
+    public String saveContact(){
         if(!contacts.contains(contact)) {
             contacts.add(contact);
-        }                
+        }
+        
+        return "pm:list?transition=flip";
     }
     
     public void deleteContact(){
@@ -57,7 +65,7 @@ public class ContactsView implements Serializable{
     public String prepareNewContact() {
         contact = new Contact();
         
-        return "pm:new?transition=slideup";
+        return "pm:edit?transition=flip";
     }
 
 }
