@@ -57,20 +57,6 @@
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>chatView</managed-bean-name>
-        <managed-bean-class>org.primefaces.examples.view.ChatView</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-        <managed-property>
-            <property-name>users</property-name>
-            <value>#{chatUsers}</value>
-        </managed-property>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>chatUsers</managed-bean-name>
-        <managed-bean-class>org.primefaces.examples.view.ChatUsers</managed-bean-class>
-        <managed-bean-scope>application</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>colorBean</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.view.ColorBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -79,11 +65,6 @@
         <managed-bean-name>counterBean</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.view.CounterBean</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
-    </managed-bean>
-        <managed-bean>
-        <managed-bean-name>globalCounter</managed-bean-name>
-        <managed-bean-class>org.primefaces.examples.view.GlobalCounterBean</managed-bean-class>
-        <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>createBookBean</managed-bean-name>

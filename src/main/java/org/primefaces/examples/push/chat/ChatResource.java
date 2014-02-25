@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Prime Technology.
+ * Copyright 2009-2014 PrimeTek.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.primefaces.examples.view;
+package org.primefaces.examples.push.chat;
 
-import org.primefaces.examples.view.chat.JSONDecoder;
-import org.primefaces.examples.view.chat.JSONEncoder;
-import org.primefaces.examples.view.chat.Message;
-import org.primefaces.examples.view.chat.Response;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.RemoteEndpoint;
 import org.primefaces.push.annotation.OnClose;
@@ -60,4 +56,5 @@ public class ChatResource {
     }
 
 }
+
 

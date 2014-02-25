@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2012 Prime Teknoloji.
+ * Copyright 2009-2014 PrimeTek.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,22 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.primefaces.examples.view;
+package org.primefaces.examples.push.chat;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import org.primefaces.context.RequestContext;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.EventBusFactory;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-public class ChatView {
+@ManagedBean
+@ViewScoped
+public class ChatView implements Serializable {
     
     //private final PushContext pushContext = PushContextFactory.getDefault().getPushContext();
 
     private final EventBus eventBus = EventBusFactory.getDefault().eventBus();
 
-    private ChatUsers users;
+    private List<String> users;
 
 	private String privateMessage;
     
@@ -41,8 +49,17 @@ public class ChatView {
     private String privateUser;
     
     private final static String CHANNEL = "/{room}/";
+    
+    @PostConstruct
+    public void init() {
+        users = new ArrayList<String>();
+    }
 
-    public void setUsers(ChatUsers users) {
+    public List<String> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<String> users) {
         this.users = users;
     }
 
@@ -106,7 +123,7 @@ public class ChatView {
             requestContext.update("growl");
         }
         else {
-            users.addUser(username);
+            users.add(username);
             requestContext.execute("PF('subscriber').connect('/" + username + "')");
             eventBus.publish(CHANNEL + "*", username + ": joined the channel.");
             loggedIn = true;
@@ -115,7 +132,7 @@ public class ChatView {
     
     public void disconnect() {
         //remove user and update ui
-        users.removeUser(username);
+        users.remove(username);
         RequestContext.getCurrentInstance().update("form:users");
         
         //push leave information
