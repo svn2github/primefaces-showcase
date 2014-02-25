@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.primefaces.examples.domain;
+package org.primefaces.examples.push.checkin;
 
-public class CheckIn {
+public class Checkin {
     
     private String title;
     private double lat;
     private double lng;
     
-    public CheckIn() {
+    public Checkin() {
         
     }
 
-    public CheckIn(String title, double lat, double lng) {
+    public Checkin(String title, double lat, double lng) {
         this.title = title;
         this.lat = lat;
         this.lng = lng;
