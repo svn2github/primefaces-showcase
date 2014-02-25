@@ -1,13 +1,19 @@
 package org.primefaces.examples.view;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import org.primefaces.push.PushContext;
-import org.primefaces.push.PushContextFactory;
+import org.primefaces.push.EventBus;
+import org.primefaces.push.EventBusFactory;
 
+@ManagedBean
+@RequestScoped
 public class GrowlBean {
 
+    private final static String CHANNEL = "/notify";
+    
 	private String text;
     
     private String summary;
@@ -44,8 +50,7 @@ public class GrowlBean {
 	}
     
     public void send() {
-        PushContext pushContext = PushContextFactory.getDefault().getPushContext();
-        
-        pushContext.push("/notifications", new FacesMessage(summary, detail));
+        EventBus eventBus = EventBusFactory.getDefault().eventBus();
+        eventBus.publish(CHANNEL, new FacesMessage(summary, detail));
     }
 }

@@ -112,11 +112,6 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>growlBean</managed-bean-name>
-        <managed-bean-class>org.primefaces.examples.view.GrowlBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>hotkeyController</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.view.HotkeyController</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
