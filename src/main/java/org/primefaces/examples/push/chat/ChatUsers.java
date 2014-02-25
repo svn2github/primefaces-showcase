@@ -32,6 +32,10 @@ public class ChatUsers implements Serializable {
     public void init() {
         users = new ArrayList<String>();
     }
+
+    public List<String> getUsers() {
+        return users;
+    }
     
     public void remove(String user) {
         this.users.remove(user);
