@@ -16,15 +16,14 @@
 package org.primefaces.examples.push.chat;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import org.primefaces.context.RequestContext;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.EventBusFactory;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -36,7 +35,8 @@ public class ChatView implements Serializable {
 
     private final EventBus eventBus = EventBusFactory.getDefault().eventBus();
 
-    private List<String> users;
+    @ManagedProperty("#{chatUsers}")
+    private ChatUsers users;
 
 	private String privateMessage;
     
@@ -49,20 +49,15 @@ public class ChatView implements Serializable {
     private String privateUser;
     
     private final static String CHANNEL = "/{room}/";
-    
-    @PostConstruct
-    public void init() {
-        users = new ArrayList<String>();
-    }
 
-    public List<String> getUsers() {
+    public ChatUsers getUsers() {
         return users;
     }
 
-    public void setUsers(List<String> users) {
+    public void setUsers(ChatUsers users) {
         this.users = users;
     }
-
+    
     public String getPrivateUser() {
         return privateUser;
     }
