@@ -16,7 +16,6 @@
 package org.primefaces.examples.push.chat;
 
 import java.io.Serializable;
-import java.util.List;
 import org.primefaces.context.RequestContext;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.EventBusFactory;
@@ -114,13 +113,11 @@ public class ChatView implements Serializable {
 		if(users.contains(username)) {
             loggedIn = false;
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username taken", "Try with another username."));
-            
             requestContext.update("growl");
         }
         else {
             users.add(username);
             requestContext.execute("PF('subscriber').connect('/" + username + "')");
-            eventBus.publish(CHANNEL + "*", username + ": joined the channel.");
             loggedIn = true;
         }
 	}
