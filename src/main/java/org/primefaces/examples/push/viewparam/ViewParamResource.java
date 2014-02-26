@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2011 Prime Technology.
+ * Copyright 2009-2014 PrimeTek.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,28 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.primefaces.examples.view;
+package org.primefaces.examples.push.viewparam;
 
-import java.io.Serializable;
+import org.primefaces.examples.push.counter.StringToJSONEncoder;
+import org.primefaces.push.annotation.OnMessage;
+import org.primefaces.push.annotation.PushEndpoint;
 
-import org.primefaces.push.PushContext;
-import org.primefaces.push.PushContextFactory;
-
-public class ViewparamPushBean implements Serializable{
-
-	private String data;
-
-    public String getData() {
+@PushEndpoint("/viewparam")
+public class ViewParamResource {
+    
+    @OnMessage(encoders = {StringToJSONEncoder.class})
+    public String onMessage(String data) {
         return data;
     }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-	public void prerender() {
-		PushContext pushContext = PushContextFactory.getDefault().getPushContext();
-        
-        pushContext.push("/viewparam", data);
-	}
 }

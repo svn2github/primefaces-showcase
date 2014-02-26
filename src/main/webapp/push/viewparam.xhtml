@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+    
+    <ui:define name="head">        
+        <script type="text/javascript">
+            //<![CDATA[
+                function handleMessage(data) {
+                    $('#out').html(data);
+                }
+            //]]> 
+        </script>
+    </ui:define>
+
+	<ui:define name="content">
+        
+        <f:metadata>
+            <f:viewParam name="data" value="#{viewParamPush.data}" />
+            <f:event type="preRenderView" listener="#{viewParamPush.prerender}" />
+        </f:metadata>
+
+        <h1 class="title ui-widget-header ui-corner-all">PrimePush - ViewParam</h1>
+        <div class="entry">
+			<p>This sample demonstrates how to push data using GET instead of POST via view parameters. The value of "data"
+            request parameter in uri is consumed by a view param and pushed using a preRenderView event.</p>
+            
+            <h:outputText id="out" value="#{viewparamPush.data}" style="font-size:16px" />
+            
+            <p:socket onMessage="handleMessage" channel="/viewparam" />
+            
+            <h3>Source</h3>
+            <p:tabView>
+                <p:tab title="viewparamPush.xhtml">
+                    <pre name="code" class="brush:xml">
+&lt;f:metadata&gt;
+    &lt;f:viewParam name="data" value="\#{viewParamPush.data}" /&gt;
+    &lt;f:event type="preRenderView" listener="\#{viewParamPush.push}" /&gt;
+&lt;/f:metadata&gt;
+
+&lt;h:outputText id="out" value="\#{viewParamPush.data}" style="font-size:16px" /&gt;
+            
+&lt;p:socket onMessage="handleMessage" channel="/viewparam" /&gt;
+
+&lt;script type="text/javascript"&gt;
+    function handleMessage(data) {
+        $('\#out').html(data);
+    }
+&lt;/script&gt;
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="ViewParamPush.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.examples.push.viewparam;
+
+import java.io.Serializable;
+import org.primefaces.push.EventBus;
+import org.primefaces.push.EventBusFactory;
+
+public class ViewParamPush implements Serializable{
+
+	private String data;
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+	public void prerender() {
+		EventBus eventBus = EventBusFactory.getDefault().eventBus();
+        eventBus.publish("/viewparam", data);
+	}
+}
+                    </pre>
+                </p:tab>
+            </p:tabView>
+		
+		</div>
+	</ui:define>
+</ui:composition>
