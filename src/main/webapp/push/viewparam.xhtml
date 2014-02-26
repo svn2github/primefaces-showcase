@@ -27,7 +27,7 @@
 			<p>This sample demonstrates how to push data using GET instead of POST via view parameters. The value of "data"
             request parameter in uri is consumed by a view param and pushed using a preRenderView event.</p>
             
-            <h:outputText id="out" value="#{viewparamPush.data}" style="font-size:16px" />
+            <h:outputText id="out" value="#{viewParamPush.data}" style="font-size:16px" />
             
             <p:socket onMessage="handleMessage" channel="/viewparam" />
             
@@ -57,9 +57,13 @@
 package org.primefaces.examples.push.viewparam;
 
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.EventBusFactory;
 
+@ManagedBean
+@RequestScoped
 public class ViewParamPush implements Serializable{
 
 	private String data;
@@ -76,6 +80,26 @@ public class ViewParamPush implements Serializable{
 		EventBus eventBus = EventBusFactory.getDefault().eventBus();
         eventBus.publish("/viewparam", data);
 	}
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="ViewParamResource.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.examples.push.viewparam;
+
+import org.primefaces.push.annotation.OnMessage;
+import org.primefaces.push.annotation.PushEndpoint;
+import org.primefaces.push.impl.JSONEncoder;
+
+@PushEndpoint("/viewparam")
+public class ViewParamResource {
+    
+    @OnMessage(encoders = {JSONEncoder.class})
+    public String onMessage(String data) {
+        return data;
+    }
+
 }
                     </pre>
                 </p:tab>
