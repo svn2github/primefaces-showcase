@@ -22,11 +22,11 @@ import org.primefaces.push.Encoder;
 /**
  * A Simple {@link org.primefaces.push.Encoder} that decode a {@link Message} into a simple JSON object.
  */
-public final class JSONEncoder implements Encoder<Response, String> {
+public final class JSONEncoder implements Encoder<Message, String> {
 
     //@Override
-    public String encode(Response s) {
-        return toJSON(s.toString());
+    public String encode(Message message) {
+        return toJSON(message);
     }
 
     private String toJSON(Object data) {
@@ -43,7 +43,7 @@ public final class JSONEncoder implements Encoder<Response, String> {
             }
 
             jsonBuilder.append("}");
-
+            
             return jsonBuilder.toString();
         } catch (JSONException e) {
             System.out.println(e.getMessage());

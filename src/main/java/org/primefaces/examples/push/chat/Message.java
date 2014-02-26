@@ -16,22 +16,35 @@
 package org.primefaces.examples.push.chat;
 
 public class Message {
-    private String message;
+    
+    private String text;
     private String user;
+    private boolean updateList;
 
     public Message() {
     }
 
-    public Message(String message) {
-        this.message = message;
+    public Message(String text) {
+        this.text = text;
+    }
+    
+    public Message(String text, boolean updateList) {
+        this.text = text;
+        this.updateList = updateList;
     }
 
-    public String getMessage() {
-        return message;
+    public Message(String user, String text, boolean updateList) {
+        this.text = text;
+        this.user = user;
+        this.updateList = updateList;
+    }
+    
+    public String getText() {
+        return text;
     }
 
-    public Message setMessage(String message) {
-        this.message = message;
+    public Message setText(String text) {
+        this.text = text;
         return this;
     }
 
@@ -44,9 +57,12 @@ public class Message {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s: %s", user, message);
+    public boolean isUpdateList() {
+        return updateList;
+    }
+    public Message setUpdateList(boolean updateList) {
+        this.updateList = updateList;
+        return this;
     }
 }
 

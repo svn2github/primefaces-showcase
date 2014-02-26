@@ -15,6 +15,7 @@
  */
 package org.primefaces.examples.push.chat;
 
+import java.util.List;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.RemoteEndpoint;
 import org.primefaces.push.annotation.OnClose;
@@ -38,21 +39,27 @@ public class ChatResource {
     @OnOpen
     public void onOpen(RemoteEndpoint r, EventBus eventBus) {
         logger.info("OnOpen {}", r);
+        
+        String username = r.pathSegments(USER_PATH_SEGMENT);
+        String room = r.pathSegments(ROOM_PATH_SEGMENT);
 
-        // Publish the message to all connected user.
-        eventBus.publish(new Message().setUser(r.pathSegments(USER_PATH_SEGMENT))
-                .setMessage("is entering room " + r.pathSegments(ROOM_PATH_SEGMENT)));
+        eventBus.publish(room + "/*", new Message(String.format("%s has entered the room '%s'",  username, room), true));
     }
 
     @OnClose
     public void onClose(RemoteEndpoint r, EventBus eventBus) {
-        eventBus.publish(r.pathSegments(ROOM_PATH_SEGMENT) + "/*",
-                String.format("%s: disconnected", r.pathSegments(USER_PATH_SEGMENT)));
+        String username = r.pathSegments(USER_PATH_SEGMENT);
+        String room = r.pathSegments(ROOM_PATH_SEGMENT);
+        
+        List<String> users = ((List) r.getApplicationAttribute("chatUsers"));         
+        users.remove(username);
+        
+        eventBus.publish(room + "/*", new Message(String.format("%s has left the room", username), true));
     }
 
     @OnMessage(decoders = {JSONDecoder.class}, encoders = {JSONEncoder.class})
-    public Response onMessage(Message message) {
-        return new Response().message(message);
+    public Message onMessage(Message message) {
+        return message;
     }
 
 }

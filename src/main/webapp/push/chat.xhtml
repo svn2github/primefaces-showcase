@@ -50,12 +50,19 @@
         
         <script type="text/javascript">
             //<![CDATA[
-            function handleMessage(data) {
-                var chatContent = $(PrimeFaces.escapeClientId('form:public'));
-                chatContent.append(data + '<br />');
+            function handleMessage(message) {
+                console.log(message);
+                var chatContent = $(PrimeFaces.escapeClientId('form:public')),
+                text = (message.user) ? message.user + ':' + message.text: message.text;
+        
+                chatContent.append(text + '<br />');
                 
                 //keep scroll
                 chatContent.scrollTop(chatContent.height());
+                
+                if(message.updateList) {
+                    updateList();
+                }
             }
             //]]>
         </script>
@@ -71,10 +78,11 @@
             
             <h:form id="form">
                 
+                <p:remoteCommand name="updateList" update="users" process="@this" />
+                
                 <p:fieldset id="container" legend="PrimeChat" toggleable="true">
                     
                     <h:panelGroup rendered="#{chatView.loggedIn}">
-                        
                         <h:panelGrid columns="2" columnClasses="publicColumn,usersColumn" style="width:100%">
                             <p:outputPanel id="public" layout="block" styleClass="ui-corner-all ui-widget-content chatlogs"/>
                             
