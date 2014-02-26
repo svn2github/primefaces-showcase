@@ -17,13 +17,13 @@ package org.primefaces.examples.push.checkin;
 
 import org.primefaces.push.annotation.OnMessage;
 import org.primefaces.push.annotation.PushEndpoint;
+import org.primefaces.push.impl.JSONEncoder;
 
 @PushEndpoint("/checkin")
 public class CheckinResource {
     
-    @OnMessage(encoders = {CheckinEncoder.class})
+    @OnMessage(encoders = {JSONEncoder.class})
     public Checkin onMessage(Checkin checkin) {
-        System.out.println(checkin.getTitle());
         return checkin;
     }
 }

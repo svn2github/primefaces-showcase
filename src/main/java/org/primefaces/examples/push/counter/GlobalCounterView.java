@@ -15,16 +15,15 @@
  */
 package org.primefaces.examples.push.counter;
 
-import org.primefaces.push.EventBus;
-import org.primefaces.push.EventBusFactory;
-
 import java.io.Serializable;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import org.primefaces.push.EventBus;
+import org.primefaces.push.EventBusFactory;
 
 @ManagedBean
 @ApplicationScoped
-public class GlobalCounterBean implements Serializable{
+public class GlobalCounterView implements Serializable{
 
 	private volatile int count;
 
