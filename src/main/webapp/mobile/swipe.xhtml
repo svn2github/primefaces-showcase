@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/templates/mobile.xhtml">
+    
+      <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+		</script>
+
+	</ui:define>
+
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>Events</h1>
+            <p>Mobile events are integrated with components as behaviors.</p>
+            
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="true" />
+                
+                <h2 class="first">Swipe</h2>
+                <p>Swipe an item left or right to remove it.</p>
+                <p:dataList value="#{tableBean.carsSmall}" var="car" pt:data-inset="true">
+                    <p:ajax event="swipeleft" listener="#{tableBean.swipeCar}" update=":form:msgs @this"/>
+                    <p:ajax event="swiperight" listener="#{tableBean.swipeCar}" update=":form:msgs @this"/>
+                    <h:outputText value="#{car.model} - #{car.manufacturer}" />
+                </p:dataList>
+            </h:form>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

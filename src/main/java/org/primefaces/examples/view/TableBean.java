@@ -57,6 +57,7 @@ import org.primefaces.event.UnselectEvent;
 import org.primefaces.examples.domain.ManufacturerSale;
 import org.primefaces.examples.domain.Player;
 import org.primefaces.examples.domain.Stats;
+import org.primefaces.mobile.event.SwipeEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 
@@ -591,6 +592,12 @@ public class TableBean implements Serializable {
     
     public void onRowReorder(ReorderEvent event) {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Row Moved", "From: " + event.getFromIndex() + ", To:" + event.getToIndex());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void swipeCar(SwipeEvent event) {
+        Car car = (Car) event.getData();
+        carsSmall.remove(car);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Swiped", "Removed: " + car.getModel()));
     }
 }
