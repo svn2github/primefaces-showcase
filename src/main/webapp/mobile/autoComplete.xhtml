@@ -66,7 +66,7 @@
                 <p:autoComplete id="basic" value="#{autoCompleteBean.txt1}" completeMethod="#{autoCompleteBean.complete}" />
                 
                 <h2>Advanced</h2>
-                <p>Pojo support, query delay, custom content and ajax itemSelect event callback.</p>
+                <p>Pojo support, query delay, custom content and ajax itemSelect event callback. Hint: Press "a".</p>
                 <p:autoComplete id="advanced" queryDelay="1000" value="#{autoCompleteBean.selectedPlayer1}" completeMethod="#{autoCompleteBean.completePlayer}"
                                 var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player" panelStyleClass="ui-players">
                     <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="msg" />
@@ -80,7 +80,7 @@
             </h:form>
                 
             <h2>Source</h2>
-            <p:accordionPanel activeIndex="-1">
+            <p:accordionPanel activeIndex="-1" multiple="true">
                 <p:tab title="autocomplete.xhtml">
                     <pre class="brush:xml">
 &lt;h:form&gt;
@@ -91,7 +91,7 @@
     &lt;p:autoComplete id="basic" value="\#{autoCompleteBean.txt1}" completeMethod="\#{autoCompleteBean.complete}" /&gt;
 
     &lt;h2&gt;Advanced&lt;/h2&gt;
-    &lt;p&gt;Pojo support, minimum 3 character query length, 1 second query delay and ajax itemSelect event callback.&lt;/p&gt;
+    &lt;p&gt;Pojo support, minimum 3 character query length, 1 second query delay and ajax itemSelect event callback. Hint: Press "a".&lt;/p&gt;
     &lt;p:autoComplete id="advanced" minQueryLength="3" queryDelay="1000" value="\#{autoCompleteBean.selectedPlayer1}" completeMethod="\#{autoCompleteBean.completePlayer}"
                     var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player" panelStyleClass="ui-players"&gt;
         &lt;p:ajax event="itemSelect" listener="\#{autoCompleteBean.handleSelect}" update="msg" /&gt;

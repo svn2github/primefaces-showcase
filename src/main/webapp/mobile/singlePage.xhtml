@@ -18,10 +18,11 @@
             
             <pm:content>
                 <p>A mobile page consists of 3 sections, header, content and footer. Either PrimeFaces mobile components
-                or native jQuery Mobile approach can be used to define a page.</p>
+                or native jQuery Mobile approach can be used to define a page. Please note lazy loading feature is only supported
+                by component approach.</p>
                 
                 <h2>Source</h2>
-                <p:accordionPanel activeIndex="-1">
+                <p:accordionPanel activeIndex="-1" multiple="true">
                     <p:tab title="singlePage.xhtml">
                         <pre class="brush:xml">
 &lt;!DOCTYPE html&gt;

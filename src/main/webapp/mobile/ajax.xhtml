@@ -19,6 +19,8 @@
     <ui:define name="content">
         <pm:content styleClass="jqm-content">
             <h1>Ajax Support</h1>
+            
+            <h2 class="first">Ajax Updates</h2>
             <p>jQuery Mobile initializes mobile widgets at page load time automatically for once and widgets have to be refreshed manually if their state changes with ajax e.g. adding 
                 new items to datalist otherwise UI doesn't get enhanced for mobile. This makes jQuery Mobile almost impossible to use in ajax enabled JSF applications.</p>
             
@@ -55,8 +57,12 @@
                     </p:outputPanel>
                 </p:panelGrid>
                 
+                <h2>Ajax Status</h2>
+                <p>PrimeFaces Mobile provides an ajax status out of the box. For all ajax requests a loader icon is displayed at the center of the page. PFM button above
+                demonstrates the ajax status loader. Look and feel can be customized globaly as well.</p>
+
             </h:form>
-            
+
             <h2>Source</h2>
             <p:accordionPanel activeIndex="-1">
                 <p:tab title="ajax.xhtml">

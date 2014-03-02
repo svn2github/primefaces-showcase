@@ -32,72 +32,6 @@
                 <p:accordionPanel activeIndex="-1">
                     <p:tab title="contacts.xhtml">
                         <pre class="brush:xml">
-
-                        </pre>
-                    </p:tab>
-                    <p:tab title="ContactsView.java">
-                        <pre class="brush:java">
-
-                        </pre>
-                    </p:tab>
-                    <p:tab title="Contact.java">
-                        <pre class="brush:java">
-
-                        </pre>
-                    </p:tab>
-                </p:accordionPanel>
-            </pm:content>
-        </pm:page>
-        
-        <pm:page id="edit">
-            <pm:header title="Contacts" theme="b">
-                <p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:list?transition=flip"/>
-            </pm:header>
-            
-            <pm:content>
-                <h:form id="editForm">
-                    <p:outputPanel id="editFormPanel">
-                        <pm:field>
-                            <p:outputLabel for="firstname" value="Firstname" />
-                            <p:inputText id="firstname" value="#{contactsView.contact.firstname}" />
-                        </pm:field>
-
-                        <pm:field>
-                            <p:outputLabel for="surname" value="Surname" />
-                            <p:inputText id="surname" value="#{contactsView.contact.surname}" />
-                        </pm:field>
-
-                        <pm:field>
-                            <p:outputLabel for="phone" value="Phone" />
-                            <p:inputText id="phone" value="#{contactsView.contact.phone}" type="tel"/>
-                        </pm:field>
-
-                        <pm:field>
-                            <p:outputLabel for="email" value="Email" />
-                            <p:inputText id="email" value="#{contactsView.contact.email}" type="email"/>
-                        </pm:field>
-
-                        <pm:field>
-                            <p:outputLabel for="address" value="Address" />
-                            <p:inputTextarea id="address" value="#{contactsView.contact.address}" />
-                        </pm:field>
-
-                        <pm:field>
-                            <p:outputLabel for="gender" value="Gender" />
-                            <p:selectOneButton id="gender" value="#{contactsView.contact.gender}">
-                                <f:selectItem itemLabel="Male" itemValue="Male" />
-                                <f:selectItem itemLabel="Female" itemValue="Female" />
-                            </p:selectOneButton>
-                        </pm:field>
-                    </p:outputPanel>
-                    
-                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update=":listForm:contactsList" icon="ui-icon-check"/>
-                </h:form>
-                
-                <h2>Source</h2>
-                <p:accordionPanel activeIndex="-1">
-                    <p:tab title="contacts.xhtml">
-                        <pre class="brush:xml">
 &lt;!DOCTYPE html&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -109,7 +43,7 @@
     &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
     
     &lt;h:head&gt;
-
+        &lt;link type="text/css" rel="stylesheet" href="\#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" /&gt;
     &lt;/h:head&gt;
     
     &lt;h:body&gt;
@@ -177,10 +111,15 @@
                 
             &lt;/pm:content&gt;
         &lt;/pm:page&gt;
+        
+        &lt;script language="javascript" src="\#{request.contextPath}/syntaxhighlighter/scripts/sh.js"&gt;&lt;/script&gt;
+        &lt;script language="javascript"&gt;
+            SyntaxHighlighter.all();
+        &lt;/script&gt;
     &lt;/h:body&gt;
     
 &lt;/html&gt;
-                        </pre>   
+                        </pre>
                     </p:tab>
                     <p:tab title="ContactsView.java">
                         <pre class="brush:java">
@@ -193,6 +132,54 @@
                         </pre>
                     </p:tab>
                 </p:accordionPanel>
+            </pm:content>
+        </pm:page>
+        
+        <pm:page id="edit">
+            <pm:header title="Contacts" theme="b">
+                <p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:list?transition=flip"/>
+            </pm:header>
+            
+            <pm:content>
+                <h:form id="editForm">
+                    <p:outputPanel id="editFormPanel">
+                        <pm:field>
+                            <p:outputLabel for="firstname" value="Firstname" />
+                            <p:inputText id="firstname" value="#{contactsView.contact.firstname}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel for="surname" value="Surname" />
+                            <p:inputText id="surname" value="#{contactsView.contact.surname}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel for="phone" value="Phone" />
+                            <p:inputText id="phone" value="#{contactsView.contact.phone}" type="tel"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel for="email" value="Email" />
+                            <p:inputText id="email" value="#{contactsView.contact.email}" type="email"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel for="address" value="Address" />
+                            <p:inputTextarea id="address" value="#{contactsView.contact.address}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel for="gender" value="Gender" />
+                            <p:selectOneButton id="gender" value="#{contactsView.contact.gender}">
+                                <f:selectItem itemLabel="Male" itemValue="Male" />
+                                <f:selectItem itemLabel="Female" itemValue="Female" />
+                            </p:selectOneButton>
+                        </pm:field>
+                    </p:outputPanel>
+                    
+                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update=":listForm:contactsList" icon="ui-icon-check"/>
+                </h:form>
+                
             </pm:content>
         </pm:page>
         
