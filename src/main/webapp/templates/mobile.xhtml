@@ -27,8 +27,8 @@
             <ui:insert name="content" />
             
             <div id="menu" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
-                <p:menu>
-                    <p:submenu label="Components">
+                <p:menu> 
+                   <p:submenu label="Components">
                         <p:menuitem value="Accordion" outcome="accordion" />
                         <p:menuitem value="AutoComplete" outcome="autoComplete" />
                         <p:menuitem value="Button" outcome="button" />
@@ -68,7 +68,7 @@
                 </p:menu>
             </div>
             
-            <pm:footer styleClass="jqm-footer" fixed="true">
+            <pm:footer styleClass="jqm-footer" fixed="true" tapToggle="false">
                 <p>Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
             </pm:footer>
 
