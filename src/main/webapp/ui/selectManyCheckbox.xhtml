@@ -81,9 +81,9 @@
         &lt;/p:selectManyCheckbox&gt;
 
         &lt;h:outputText value="Grid: " /&gt;
-        &lt;p:selectOneRadio id="grid" value="\#{formBean.selectedMovies}" layout="grid" columns="3"&gt;
+        &lt;p:selectManyCheckbox id="grid" value="\#{formBean.selectedMovies}" layout="grid" columns="3"&gt;
             &lt;f:selectItems value="\#{formBean.movies}"/&gt;
-        &lt;/p:selectOneRadio&gt;
+        &lt;/p:selectManyCheckbox&gt;
 
     &lt;/h:panelGrid&gt;
 
