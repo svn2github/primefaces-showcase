@@ -56,13 +56,5 @@ public class Message {
         this.user = user;
         return this;
     }
-
-    public boolean isUpdateList() {
-        return updateList;
-    }
-    public Message setUpdateList(boolean updateList) {
-        this.updateList = updateList;
-        return this;
-    }
 }
 

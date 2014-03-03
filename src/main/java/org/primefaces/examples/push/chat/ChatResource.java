@@ -18,6 +18,7 @@ package org.primefaces.examples.push.chat;
 import java.util.List;
 
 import com.sun.xml.internal.ws.server.DefaultResourceInjector;
+import org.primefaces.json.JSONObject;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.RemoteEndpoint;
 import org.primefaces.push.annotation.OnClose;
@@ -67,7 +68,7 @@ public class ChatResource {
         eventBus.publish(room + "/*", new Message(String.format("%s has left the room", username), true));
     }
 
-    @OnMessage(decoders = {JSONDecoder.class}, encoders = {JSONEncoder.class})
+    @OnMessage(decoders = {MessageDecoder.class}, encoders = {MessageEncoder.class})
     public Message onMessage(Message message) {
         return message;
     }
