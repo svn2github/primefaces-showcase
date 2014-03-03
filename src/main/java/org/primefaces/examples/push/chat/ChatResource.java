@@ -15,10 +15,6 @@
  */
 package org.primefaces.examples.push.chat;
 
-import java.util.List;
-
-import com.sun.xml.internal.ws.server.DefaultResourceInjector;
-import org.primefaces.json.JSONObject;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.RemoteEndpoint;
 import org.primefaces.push.annotation.OnClose;
@@ -26,8 +22,6 @@ import org.primefaces.push.annotation.OnMessage;
 import org.primefaces.push.annotation.OnOpen;
 import org.primefaces.push.annotation.PushEndpoint;
 import org.primefaces.push.annotation.Singleton;
-import org.primefaces.push.impl.JSONDecoder;
-import org.primefaces.push.impl.JSONEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
