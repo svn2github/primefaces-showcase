@@ -16,6 +16,8 @@
 package org.primefaces.examples.push.chat;
 
 import java.util.List;
+
+import com.sun.xml.internal.ws.server.DefaultResourceInjector;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.RemoteEndpoint;
 import org.primefaces.push.annotation.OnClose;
@@ -28,6 +30,9 @@ import org.primefaces.push.impl.JSONEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
+import javax.servlet.ServletContext;
+
 @PushEndpoint("/{room}/{user}")
 @Singleton
 public class ChatResource {
@@ -37,6 +42,9 @@ public class ChatResource {
     // The Path takes the form of /{room}/{user}
     public final static int USER_PATH_SEGMENT = 2;
     public final static int ROOM_PATH_SEGMENT = 1;
+
+    @Inject
+    private ServletContext ctx;
 
     @OnOpen
     public void onOpen(RemoteEndpoint r, EventBus eventBus) {
@@ -53,7 +61,7 @@ public class ChatResource {
         String username = r.pathSegments(USER_PATH_SEGMENT);
         String room = r.pathSegments(ROOM_PATH_SEGMENT);
         
-        List<String> users = ((List) r.getApplicationAttribute("chatUsers"));         
+        ChatUsers users= (ChatUsers) ctx.getAttribute("chatUsers");
         users.remove(username);
         
         eventBus.publish(room + "/*", new Message(String.format("%s has left the room", username), true));
