@@ -28,5 +28,4 @@ public final class MessageEncoder implements Encoder<Message, String> {
         return new JSONObject(message).toString();
     }
 
-
 }

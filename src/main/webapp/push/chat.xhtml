@@ -72,7 +72,7 @@
 
 			<h1 class="title ui-widget-header ui-corner-all">PrimePush - Chat</h1>
 			<div class="entry">
-			<p>Chat is a simple push based application created with PrimePush.</p>
+			<p>Chat sample utilizes advanced features such as custom decoder-encoder, P2P messaging and dependency injection.</p>
             
             <p:growl id="growl" showDetail="true" />
             
@@ -129,9 +129,7 @@
                              
             </h:form>
             
-            <p:socket onMessage="handleMessage" channel="/{room}" autoConnect="false" widgetVar="subscriber">
-                
-            </p:socket>
+            <p:socket onMessage="handleMessage" channel="/{room}" autoConnect="false" widgetVar="subscriber" />
 
             <h3>Source</h3>
             <p:tabView>
@@ -141,10 +139,11 @@
 
 &lt;h:form id="form"&gt;
 
+    &lt;p:remoteCommand name="updateList" update="users" process="@this" /&gt;
+
     &lt;p:fieldset id="container" legend="PrimeChat" toggleable="true"&gt;
 
         &lt;h:panelGroup rendered="\#{chatView.loggedIn}"&gt;
-
             &lt;h:panelGrid columns="2" columnClasses="publicColumn,usersColumn" style="width:100%"&gt;
                 &lt;p:outputPanel id="public" layout="block" styleClass="ui-corner-all ui-widget-content chatlogs"/&gt;
 
@@ -174,7 +173,7 @@
 
             &lt;p:spacer width="5" /&gt;
             &lt;p:commandButton value="Login" actionListener="\#{chatView.login}" update="container" 
-                                icon="ui-icon-person" /&gt;
+                             icon="ui-icon-person" /&gt;
         &lt;/h:panelGroup&gt;
 
     &lt;/p:fieldset&gt;
@@ -191,15 +190,22 @@
 
 &lt;/h:form&gt;
 
-&lt;p:socket onMessage="handleMessage" channel="/chat" autoConnect="false" widgetVar="subscriber"/&gt;
+&lt;p:socket onMessage="handleMessage" channel="/{room}" autoConnect="false" widgetVar="subscriber" /&gt;
 
 &lt;script type="text/javascript"&gt;
-    function handleMessage(data) {
-        var chatContent = $(PrimeFaces.escapeClientId('form:public'));
-        chatContent.append(data + '&lt;br /&gt;');
+    function handleMessage(message) {
+        console.log(message);
+        var chatContent = $(PrimeFaces.escapeClientId('form:public')),
+        text = (message.user) ? message.user + ':' + message.text: message.text;
+
+        chatContent.append(text + '&lt;br /&gt;');
 
         //keep scroll
         chatContent.scrollTop(chatContent.height());
+
+        if(message.updateList) {
+            updateList();
+        }
     }
 &lt;/script&gt;
                     </pre>
@@ -207,18 +213,28 @@
                 
                 <p:tab title="ChatView.java">
                     <pre name="code" class="brush:java">
-package org.primefaces.examples.view;
+package org.primefaces.examples.push.chat;
+
+import java.io.Serializable;
+import org.primefaces.context.RequestContext;
+import org.primefaces.push.EventBus;
+import org.primefaces.push.EventBusFactory;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
-import org.primefaces.push.PushContext;
-import org.primefaces.push.PushContextFactory;
 
-public class ChatView {
+@ManagedBean
+@ViewScoped
+public class ChatView implements Serializable {
     
-    private final PushContext pushContext = PushContextFactory.getDefault().getPushContext();
-    
+    //private final PushContext pushContext = PushContextFactory.getDefault().getPushContext();
+
+    private final EventBus eventBus = EventBusFactory.getDefault().eventBus();
+
+    @ManagedProperty("#{chatUsers}")
     private ChatUsers users;
 
 	private String privateMessage;
@@ -231,12 +247,16 @@ public class ChatView {
     
     private String privateUser;
     
-    private final static String CHANNEL = "/chat/";
+    private final static String CHANNEL = "/{room}/";
+
+    public ChatUsers getUsers() {
+        return users;
+    }
 
     public void setUsers(ChatUsers users) {
         this.users = users;
     }
-
+    
     public String getPrivateUser() {
         return privateUser;
     }
@@ -276,13 +296,13 @@ public class ChatView {
 	}
 
 	public void sendGlobal() {
-        pushContext.push(CHANNEL + "*", username + ": " + globalMessage);
+        eventBus.publish(CHANNEL + "*", username + ": " + globalMessage);
 		
 		globalMessage = null;
 	}
     
     public void sendPrivate() {
-        pushContext.push(CHANNEL + privateUser, "[PM] " + username + ": " + privateMessage);
+        eventBus.publish(CHANNEL + privateUser, "[PM] " + username + ": " + privateMessage);
         
         privateMessage = null;
     }
@@ -293,28 +313,231 @@ public class ChatView {
 		if(users.contains(username)) {
             loggedIn = false;
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username taken", "Try with another username."));
-            
             requestContext.update("growl");
         }
         else {
-            users.addUser(username);
-            pushContext.push(CHANNEL, username + " joined the channel.");
-            requestContext.execute("subscriber.connect('/" + username + "')");
+            users.add(username);
+            requestContext.execute("PF('subscriber').connect('/" + username + "')");
             loggedIn = true;
         }
 	}
     
     public void disconnect() {
         //remove user and update ui
-        users.removeUser(username);
+        users.remove(username);
         RequestContext.getCurrentInstance().update("form:users");
         
         //push leave information
-        pushContext.push(CHANNEL, username + " left the channel.");
+        eventBus.publish(CHANNEL + "*", username + " left the channel.");
         
         //reset state
         loggedIn = false;
         username = null;
+    }
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="ChatUsers.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.examples.push.chat;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+@ApplicationScoped
+public class ChatUsers implements Serializable {
+    
+    private List&lt;String&gt; users;
+    
+    @PostConstruct
+    public void init() {
+        users = new ArrayList&lt;String&gt;();
+    }
+
+    public List&lt;String&gt; getUsers() {
+        return users;
+    }
+    
+    public void remove(String user) {
+        this.users.remove(user);
+    }
+    
+    public void add(String user) {
+        this.users.add(user);
+    }
+        
+    public boolean contains(String user) {
+        return this.users.contains(user);
+    }
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="ChatResource.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.examples.push.chat;
+
+import org.primefaces.push.EventBus;
+import org.primefaces.push.RemoteEndpoint;
+import org.primefaces.push.annotation.OnClose;
+import org.primefaces.push.annotation.OnMessage;
+import org.primefaces.push.annotation.OnOpen;
+import org.primefaces.push.annotation.PushEndpoint;
+import org.primefaces.push.annotation.Singleton;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import javax.servlet.ServletContext;
+
+@PushEndpoint("/{room}/{user}")
+@Singleton
+public class ChatResource {
+
+    private final Logger logger = LoggerFactory.getLogger(ChatResource.class);
+
+    // The Path takes the form of /{room}/{user}
+    public final static int USER_PATH_SEGMENT = 2;
+    public final static int ROOM_PATH_SEGMENT = 1;
+
+    @Inject
+    private ServletContext ctx;
+
+    @OnOpen
+    public void onOpen(RemoteEndpoint r, EventBus eventBus) {
+        logger.info("OnOpen {}", r);
+        
+        String username = r.pathSegments(USER_PATH_SEGMENT);
+        String room = r.pathSegments(ROOM_PATH_SEGMENT);
+
+        eventBus.publish(room + "/*", new Message(String.format("%s has entered the room '%s'",  username, room), true));
+    }
+
+    @OnClose
+    public void onClose(RemoteEndpoint r, EventBus eventBus) {
+        String username = r.pathSegments(USER_PATH_SEGMENT);
+        String room = r.pathSegments(ROOM_PATH_SEGMENT);
+        
+        ChatUsers users= (ChatUsers) ctx.getAttribute("chatUsers");
+        users.remove(username);
+        
+        eventBus.publish(room + "/*", new Message(String.format("%s has left the room", username), true));
+    }
+
+    @OnMessage(decoders = {MessageDecoder.class}, encoders = {MessageEncoder.class})
+    public Message onMessage(Message message) {
+        return message;
+    }
+
+}
+
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="Message.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.examples.push.chat;
+
+public class Message {
+    
+    private String text;
+    private String user;
+    private boolean updateList;
+
+    public Message() {
+    }
+
+    public Message(String text) {
+        this.text = text;
+    }
+    
+    public Message(String text, boolean updateList) {
+        this.text = text;
+        this.updateList = updateList;
+    }
+
+    public Message(String user, String text, boolean updateList) {
+        this.text = text;
+        this.user = user;
+        this.updateList = updateList;
+    }
+    
+    public String getText() {
+        return text;
+    }
+
+    public Message setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public Message setUser(String user) {
+        this.user = user;
+        return this;
+    }
+
+    public boolean isUpdateList() {
+        return updateList;
+    }
+
+    public void setUpdateList(boolean updateList) {
+        this.updateList = updateList;
+    }
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="MessageEncoder.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.examples.push.chat;
+
+import org.primefaces.json.JSONObject;
+import org.primefaces.push.Encoder;
+
+/**
+ * A Simple {@link org.primefaces.push.Encoder} that decode a {@link Message} into a simple JSON object.
+ */
+public final class MessageEncoder implements Encoder&lt;Message, String&gt; {
+
+    //@Override
+    public String encode(Message message) {
+        return new JSONObject(message).toString();
+    }
+
+}
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="MessageDecoder.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.examples.push.chat;
+
+import org.primefaces.push.Decoder;
+
+/**
+ * A Simple {@link org.primefaces.push.Decoder} that decode a String into a {@link Message} object.
+ */
+public class MessageDecoder implements Decoder&lt;String,Message&gt; {
+
+    //@Override
+    public Message decode(String s) {
+        String[] userAndMessage = s.split(":");
+        if (userAndMessage.length >= 2) {
+            return new Message().setUser(userAndMessage[0]).setText(userAndMessage[1]);
+        } 
+        else {
+            return new Message(s);
+        }
     }
 }
                     </pre>
