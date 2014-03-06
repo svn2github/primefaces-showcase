@@ -9,8 +9,8 @@
 
 		<h1 class="title ui-widget-header ui-corner-all">Messages</h1>
 		<div class="entry">
-			<p>Messages and Message components are highly customizable and pre-skinned versions of standard message components.</p>
-					
+			<p>Messages and Message components extends standard message components with theming, auto updates, closing and different display modes.</p>
+            
             <p:tooltip />
             
 			<h3>Messages</h3>	
@@ -46,9 +46,18 @@
 				<p:commandButton id="submitButton" value="Submit" update="grid"/>
 			</h:form>
 
-			<h3>Static Message</h3>
-			<p:message staticMode="true" severity="info" message="Static info message!" />
-			<p:message staticMode="true" severity="warn" message="Static warn message!" />
+			<h3>Prerendered Markup</h3>
+            <div class="ui-messages ui-widget">
+                <div class="ui-messages-info ui-corner-all">
+                    <span class="ui-messages-info-icon"></span>
+                    <ul>
+                        <li>
+                            <span class="ui-messages-info-summary">What we do in life</span>
+                            <span class="ui-messages-info-detail">echoes in eternity!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
 			<h3>Source</h3>
             <p:tabView>
@@ -89,9 +98,18 @@
     &lt;p:commandButton id="submitButton" value="Submit" update="grid"/&gt;
 &lt;/h:form&gt;
 
-&lt;h3&gt;Static Message&lt;/h3&gt;
-&lt;p:message staticMode="true" severity="info" message="Static info message!" /&gt;
-&lt;p:message staticMode="true" severity="warn" message="Static warn message!" /&gt;
+&lt;h3&gt;Prerendered Markup&lt;/h3&gt;
+&lt;div class="ui-messages ui-widget"&gt;
+    &lt;div class="ui-messages-info ui-corner-all"&gt;
+        &lt;span class="ui-messages-info-icon"&gt;&lt;/span&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;span class="ui-messages-info-summary"&gt;What we do in life&lt;/span&gt;
+                &lt;span class="ui-messages-info-detail"&gt;echoes in eternity!&lt;/span&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 			</pre>
                 </p:tab>
 
