@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/ui.xhtml">
+
+	<ui:define name="content">
+		<h1 class="title ui-widget-header ui-corner-all">Calendar - Mask</h1>
+		<div class="entry">
+            <p>Calendar has built-in support for masks. Default value of mask attribute is "false" and valid values to enable are "true" that uses the pattern as the mask or a custom template. Refer to
+            inputMask component for more information about custom templates.</p>
+			
+			<h:form id="form">
+			
+                <h:panelGrid columns="3">
+                    <p:outputLabel for="date" value="Date:" />
+                    <p:calendar id="date" value="#{calendarBean.date1}" pattern="dd-MM-yyyy" mask="true" />	
+                    <h:outputText value="#{calendarBean.date1}" id="display">
+                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+				
+                <p:commandButton value="Submit" update="display" oncomplete="PF('dialog').show()" style="margin-top:10px"/>
+                
+			</h:form>
+	
+			<h3>Source</h3>
+			<p:tabView>
+				<p:tab title="calendarMask.xhtml">
+					<pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt;
+
+    &lt;h:panelGrid columns="3"&gt;
+        &lt;p:outputLabel for="date" value="Date:" /&gt;
+        &lt;p:calendar id="date" value="\#{calendarBean.date1}" pattern="dd-MM-yyyy" mask="true" /&gt;	
+        &lt;h:outputText value="\#{calendarBean.date1}" id="display"&gt;
+            &lt;f:convertDateTime pattern="dd-MM-yyyy" /&gt;
+        &lt;/h:outputText&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dialog').show()" style="margin-top:10px"/&gt;
+
+&lt;/h:form&gt;
+					</pre>
+				</p:tab>
+				
+				<p:tab title="CalendarBean.java">
+					<pre name="code" class="brush:java">
+package org.primefaces.examples.view;
+
+import java.util.Date;
+
+public class CalendarBean {
+
+	private Date date1;
+		
+	public Date getDate1() {
+		return date1;
+	}
+
+	public void setDate1(Date date1) {
+		this.date1 = date1;
+	}
+}
+					</pre>
+				</p:tab>
+			</p:tabView>
+			
+         </div>
+        
+	</ui:define>
+</ui:composition>
