@@ -7,17 +7,18 @@
         
     <ui:define name="head">
         <style type="text/css">
-            .label, column {
-                vertical-align: top;
-            }
+.label, column {
+    vertical-align: top;
+}
         </style>
-    </ui:define>
+	</ui:define>
+
 
 	<ui:define name="content">
 
 		<h1 class="title ui-widget-header ui-corner-all">SelectOneListbox</h1>
 		<div class="entry">
-			<p>SelectOneListbox extends standard SelectOneListbox with advanced styling and custom content support.</p>
+			<p>SelectOneListbox extends standard SelectOneListbox with advanced styling, filtering and custom content support.</p>
 
 			<h:form id="form">
 
@@ -32,7 +33,7 @@
                     </p:selectOneListbox>
 
                     <h:outputText value="Advanced" />
-                    <p:selectOneListbox id="scroll" value="#{autoCompleteBean.selectedPlayer1}" converter="player" var="p" style="height:200px">
+                    <p:selectOneListbox id="scroll" value="#{autoCompleteBean.selectedPlayer1}" converter="player" var="p" filter="true" filterMatchMode="contains">
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}" />
                     
                         <p:column>
@@ -77,7 +78,7 @@
         &lt;/p:selectOneListbox>
 
         &lt;h:outputText value="Advanced" />
-        &lt;p:selectOneListbox id="scroll" value="\#{autoCompleteBean.selectedPlayer1}" converter="player" var="p" style="height:200px">
+        &lt;p:selectOneListbox id="scroll" value="#{autoCompleteBean.selectedPlayer1}" converter="player" var="p" filter="true" filterMatchMode="contains">
             &lt;f:selectItems value="\#{autoCompleteBean.players}" var="player" itemLabel="\#{player.name}" itemValue="\#{player}" />
 
             &lt;p:column>
