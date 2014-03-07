@@ -32,7 +32,7 @@
                     </p:selectManyMenu>
 
                     <h:outputText value="Advanced" />
-                    <p:selectManyMenu id="scroll" value="#{autoCompleteBean.selectedPlayers}" converter="player" style="width:150px;height:200px" var="p" showCheckbox="true">
+                    <p:selectManyMenu id="scroll" value="#{autoCompleteBean.selectedPlayers}" converter="player" var="p" showCheckbox="true" filter="true" filterMatchMode="contains">
                         <f:selectItems value="#{autoCompleteBean.players}" var="player" itemLabel="#{player.name}" itemValue="#{player}" />
                     
                         <p:column>
@@ -79,7 +79,7 @@
         &lt;/p:selectManyMenu&gt;
 
         &lt;h:outputText value="Advanced" /&gt;
-        &lt;p:selectManyMenu id="scroll" value="\#{autoCompleteBean.selectedPlayers}" converter="player" style="width:150px;height:200px" var="p" showCheckbox="true"&gt;
+        &lt;p:selectManyMenu id="scroll" value="\#{autoCompleteBean.selectedPlayers}" converter="player" var="p" showCheckbox="true" filter="true" filterMatchMode="contains"&gt;
             &lt;f:selectItems value="\#{autoCompleteBean.players}" var="player" itemLabel="\#{player.name}" itemValue="\#{player}" /&gt;
 
             &lt;p:column&gt;
