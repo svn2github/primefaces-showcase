@@ -16,6 +16,10 @@
         <navigation-handler>org.primefaces.mobile.application.MobileNavigationHandler</navigation-handler>
         
         <el-resolver>org.primefaces.application.exceptionhandler.PrimeExceptionHandlerELResolver</el-resolver>
+        
+        <locale-config>
+            <default-locale>en</default-locale>
+        </locale-config>
     </application>
 
     <factory>
