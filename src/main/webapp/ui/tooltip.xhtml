@@ -10,7 +10,7 @@
 		<div class="entry">
 			<p>Tooltip has various customization options such as effects, events and custom content support.</p>
 
-            <h:panelGrid columns="3" cellpadding="5">
+            <h:panelGrid columns="3" cellpadding="10">
 
                 <h:outputText value="Focus/Blur: " />
                 <p:inputText id="focus" title="This tooltip is displayed when input gets the focus"/>
@@ -23,12 +23,12 @@
                 <p:tooltip id="toolTipFade" for="fade" value="Fade effect is used by default" 
                            showEffect="fade" hideEffect="fade" />
 
-                <h:outputText value="Slide: " />
-                <h:outputLink id="slide" value="#">
-                    <h:outputText value="Slide Effect" />
+                <h:outputText value="Track Mouse: " />
+                <h:outputLink id="track" value="#">
+                    <h:outputText value="Mouse Tracking" />
                 </h:outputLink>
-                <p:tooltip id="toolTipSlide" for="slide" value="This tooltip uses slide effect for the animation"
-                                    showEffect="slide" hideEffect="slide" />
+                <p:tooltip id="toolTipTrack" for="track" value="This tooltip tracks mouse position"
+                           showEffect="slide" hideEffect="slide" trackMouse="true"/>
 
                 <h:outputText value="Clip/Explode: " />
                 <h:outputLink id="grow" value="#">
@@ -51,7 +51,7 @@
             <p:tabView>
                 <p:tab title="tooltip.xhtml">
                     <pre name="code" class="brush:xml">
-&lt;h:panelGrid columns="3" cellpadding="5"&gt;
+&lt;h:panelGrid columns="3" cellpadding="10"&gt;
 
     &lt;h:outputText value="Focus/Blur: " /&gt;
     &lt;p:inputText id="focus" title="This tooltip is displayed when input gets the focus"/&gt;
@@ -63,11 +63,11 @@
     &lt;/h:outputLink&gt;
     &lt;p:tooltip for="fade" value="Fade effect is used by default" showEffect="fade" hideEffect="fade" /&gt;
 
-    &lt;h:outputText value="Slide: " /&gt;
-    &lt;h:outputLink id="slide" value="\#"&gt;
-        &lt;h:outputText value="Slide Effect" /&gt;
+    &lt;h:outputText value="Track Mouse: " /&gt;
+    &lt;h:outputLink id="track" value="#"&gt;
+        &lt;h:outputText value="Mouse Tracking" /&gt;
     &lt;/h:outputLink&gt;
-    &lt;p:tooltip for="slide" value="This tooltip uses slide effect for the animation" showEffect="slide" hideEffect="slide" /&gt;
+    &lt;p:tooltip id="toolTipTrack" for="track" value="This tooltip tracks mouse position" showEffect="slide" hideEffect="slide" trackMouse="true"/&gt;
 
     &lt;h:outputText value="Clip/Explode: " /&gt;
     &lt;h:outputLink id="grow" value="\#"&gt;
