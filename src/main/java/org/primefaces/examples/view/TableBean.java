@@ -138,6 +138,8 @@ public class TableBean implements Serializable {
     private CarDataModel mediumCarsModel;
     
     private TreeNode availableColumns;
+    
+    private Integer yearFilter;
 
 	public TableBean() {
 		cars = new ArrayList<Car>();
@@ -599,5 +601,13 @@ public class TableBean implements Serializable {
         Car car = (Car) event.getData();
         carsSmall.remove(car);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Swiped", "Removed: " + car.getModel()));
+    }
+    
+    public Integer getYearFilter() {
+        return yearFilter;
+    }
+
+    public void setYearFilter(Integer yearFilter) {
+        this.yearFilter = yearFilter;
     }
 }

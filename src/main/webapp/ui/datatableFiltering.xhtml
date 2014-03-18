@@ -20,8 +20,8 @@
     <ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Filtering</h1>
         <div class="entry">
-            <p>Datatable provides column based and global data filtering feature. There are four different match modes, "startsWith"(default), "endsWith",
-            "contains" and "exact". In addition using filterOptions, predefined filter values can be displayed.</p>
+            <p>Datatable provides column based and global data filtering feature. There are various different match modes, "startsWith"(default), "endsWith",
+            "contains", "exact", "lte", "lt", "gte" and "gt". In addition to built-in filter elements, custom components can be used as filter facets.</p>
 
             <h:form id="form">
                 
@@ -39,11 +39,19 @@
                         <h:outputText value="#{car.model}" />
                     </p:column>
 
-                    <p:column id="yearColumn" filterBy="year" headerText="Year" footerText="startsWith">
+                    <p:column id="yearColumn" filterBy="year" headerText="Year" footerText="lte" filterMatchMode="lte">
+                        <f:facet name="filter">
+                            <p:spinner onchange="PF('carsTable').filter()" value="#{tableBean.yearFilter}"/>
+                        </f:facet>
                         <h:outputText value="#{car.year}" />
                     </p:column>
 
-                    <p:column id="manufacturerColumn" filterBy="manufacturer" headerText="Manufacturer" footerText="exact" filterOptions="#{tableBean.manufacturerOptions}" filterMatchMode="exact">
+                    <p:column id="manufacturerColumn" filterBy="manufacturer" headerText="Manufacturer" footerText="exact" filterMatchMode="exact">
+                        <f:facet name="filter">
+                            <p:selectOneMenu onchange="PF('carsTable').filter()">
+                                <f:selectItems value="#{tableBean.manufacturerOptions}" />
+                            </p:selectOneMenu>
+                        </f:facet>
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
