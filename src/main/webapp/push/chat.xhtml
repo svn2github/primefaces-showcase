@@ -73,6 +73,8 @@
 			<div class="entry">
 			<p>Chat sample utilizes advanced features such as custom decoder-encoder, P2P messaging and dependency injection.</p>
             
+            <p><strong>Chat sample is disabled in online demo.</strong></p>
+            
             <p:growl id="growl" showDetail="true" />
             
             <h:form id="form">
@@ -107,11 +109,11 @@
                     </h:panelGroup>
                     
                     <h:panelGroup rendered="#{not chatView.loggedIn}" >
-                        Username: <p:inputText value="#{chatView.username}" />
+                        Username: <p:inputText value="#{chatView.username}" disabled="true"/>
                 
                         <p:spacer width="5" />
                         <p:commandButton value="Login" actionListener="#{chatView.login}" update="container" 
-                                         icon="ui-icon-person" />
+                                         icon="ui-icon-person" disabled="true"/>
                     </h:panelGroup>
                     
                 </p:fieldset>
@@ -128,8 +130,6 @@
                              
             </h:form>
             
-            <p:socket onMessage="handleMessage" channel="/{room}" autoConnect="false" widgetVar="subscriber" />
-
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="chat.xhtml">
