@@ -79,42 +79,56 @@
             <p:tabView>                
                 <p:tab title="datatableFiltering.xhtml">
                     <pre name="code" class="brush:xml">
-&lt;h:form&gt;
+&lt;h:form id="form"&gt;
+                
+    &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.carsSmall}" widgetVar="carsTable"
+                 emptyMessage="No cars found with given criteria" filteredValue="\#{tableBean.filteredCars}"&gt;
 
-    &lt;p:dataTable id="dataTable" var="car" value="\#{tableBean.carsSmall}" widgetVar="carsTable" 
-            emptyMessage="No cars found with given criteria" filteredValue="\#{tableBean.filteredCars}"&gt;
-
-         &lt;f:facet name="header"&gt;
+        &lt;f:facet name="header"&gt;
             &lt;p:outputPanel&gt;
                 &lt;h:outputText value="Search all fields:" /&gt;
-                &lt;p:inputText id="globalFilter" onkeyup="carsTable.filter()" style="width:150px" /&gt;
+                &lt;p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" /&gt;
             &lt;/p:outputPanel&gt;
         &lt;/f:facet&gt;
 
-        &lt;p:column id="modelColumn" filterBy="model" 
-                headerText="Model" footerText="contains"
-                filterMatchMode="contains"&gt;
+        &lt;p:column id="modelColumn" filterBy="model" headerText="Model" footerText="contains" filterMatchMode="contains"&gt;
             &lt;h:outputText value="\#{car.model}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column id="yearColumn" filterBy="year"
-                headerText="Year" footerText="startsWith"&gt;
+        &lt;p:column id="yearColumn" filterBy="year" headerText="Year" footerText="lte" filterMatchMode="lte"&gt;
+            &lt;f:facet name="filter"&gt;
+                &lt;p:spinner onchange="PF('carsTable').filter()" value="\#{tableBean.yearFilter}"/&gt;
+            &lt;/f:facet&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column id="manufacturerColumn" filterBy="manufacturer" 
-                headerText="Manufacturer" footerText="exact"
-                filterOptions="\#{tableBean.manufacturerOptions}"
-                filterMatchMode="exact"&gt;
+        &lt;p:column id="manufacturerColumn" filterBy="manufacturer" headerText="Manufacturer" footerText="exact" filterMatchMode="exact"&gt;
+            &lt;f:facet name="filter"&gt;
+                &lt;p:selectOneMenu onchange="PF('carsTable').filter()"&gt;
+                    &lt;f:selectItems value="\#{tableBean.manufacturerOptions}" /&gt;
+                &lt;/p:selectOneMenu&gt;
+            &lt;/f:facet&gt;
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column id="colorColumn" filterBy="color"
-                headerText="Color" footerText="endsWith" filterMatchMode="endsWith"&gt;
+        &lt;p:column id="colorColumn" filterBy="color" headerText="Color" footerText="endsWith" filterMatchMode="endsWith"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
+
+        &lt;p:column id="soldColumn" filterBy="sold" headerText="Status" footerText="equals" filterMatchMode="equals"&gt;
+            &lt;f:facet name="filter"&gt;
+                &lt;p:selectOneButton onchange="PF('carsTable').filter()"&gt;
+                    &lt;f:converter converterId="javax.faces.Boolean" /&gt;
+                    &lt;f:selectItem itemLabel="All" itemValue="" /&gt;
+                    &lt;f:selectItem itemLabel="Sold" itemValue="true" /&gt;
+                    &lt;f:selectItem itemLabel="Sale" itemValue="false" /&gt;
+                &lt;/p:selectOneButton&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.sold ? 'Sold': 'Sale'}" /&gt;
+        &lt;/p:column&gt;
+
     &lt;/p:dataTable&gt;
-    
+
 &lt;/h:form&gt;
                     </pre>
                 </p:tab>
@@ -177,7 +191,7 @@ public class TableBean implements Serializable {
 
 	private void populateRandomCars(List&lt;Car&gt; list, int size) {
 		for(int i = 0 ; i &lt; size ; i++)
-			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor(), getRandomPrice(), getRandomSoldState()));
 	}
 
     public List&lt;Car&gt; getFilteredCars() {
@@ -206,6 +220,14 @@ public class TableBean implements Serializable {
 
 	private String getRandomModel() {
 		return UUID.randomUUID().toString().substring(0, 8);
+	}
+
+    public int getRandomPrice() {
+		return (int) (Math.random() * 100000);
+	}
+    
+    public boolean getRandomSoldState() {
+		return (Math.random() > 0.5d) ? true: false;
 	}
 
     private SelectItem[] createFilterOptions(String[] data)  {
