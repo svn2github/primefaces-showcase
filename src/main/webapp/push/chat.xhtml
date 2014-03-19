@@ -50,18 +50,11 @@
         
         <script type="text/javascript">
             //<![CDATA[
-            function escapeHTML(s) { 
-                return s.replace(/&/g, '&amp;')
-                        .replace(/"/g, '&quot;')
-                        .replace(/</g, '&lt;')
-                        .replace(/>/g, '&gt;');
-            }
-
             function handleMessage(message) {
                 var chatContent = $(PrimeFaces.escapeClientId('form:public')),
                 text = (message.user) ? message.user + ':' + message.text: message.text;
         
-                chatContent.append(escapeHTML(text) + '<br />');
+                chatContent.append(text + '<br />');
                 
                 //keep scroll
                 chatContent.scrollTop(chatContent.height());

@@ -15,6 +15,7 @@
  */
 package org.primefaces.examples.push.viewparam;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.primefaces.push.annotation.OnMessage;
 import org.primefaces.push.annotation.PushEndpoint;
 import org.primefaces.push.impl.JSONEncoder;
@@ -24,6 +25,6 @@ public class ViewParamResource {
     
     @OnMessage(encoders = {JSONEncoder.class})
     public String onMessage(String data) {
-        return data;
+        return StringEscapeUtils.escapeHtml(data);
     }
 }
