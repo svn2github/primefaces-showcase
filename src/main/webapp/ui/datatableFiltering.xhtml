@@ -41,7 +41,9 @@
 
                     <p:column id="yearColumn" filterBy="year" headerText="Year" footerText="lte" filterMatchMode="lte">
                         <f:facet name="filter">
-                            <p:spinner onchange="PF('carsTable').filter()" value="#{tableBean.yearFilter}"/>
+                            <p:spinner onchange="PF('carsTable').filter()" value="2010">
+                                <f:converter converterId="javax.faces.Integer" />
+                            </p:spinner>
                         </f:facet>
                         <h:outputText value="#{car.year}" />
                     </p:column>
@@ -97,7 +99,9 @@
 
         &lt;p:column id="yearColumn" filterBy="year" headerText="Year" footerText="lte" filterMatchMode="lte"&gt;
             &lt;f:facet name="filter"&gt;
-                &lt;p:spinner onchange="PF('carsTable').filter()" value="\#{tableBean.yearFilter}"/&gt;
+                &lt;p:spinner onchange="PF('carsTable').filter()" value="2010"&gt;
+                    &lt;f:converter converterId="javax.faces.Integer" /&gt;
+                &lt;/p:spinner&gt;
             &lt;/f:facet&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
