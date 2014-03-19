@@ -195,13 +195,14 @@ public class TableBean implements Serializable {
 	}
 
 	private void populateRandomCars(List<Car> list, int size) {
-		for(int i = 0 ; i < size ; i++)
-			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+		for(int i = 0 ; i < size ; i++) {
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor(), getRandomPrice(), getRandomSoldState()));
+        }
 	}
 	
 	private void populateLazyRandomCars(List<Car> list, int size) {
 		for(int i = 0 ; i < size ; i++) {
-			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor(), getRandomPrice(), getRandomSoldState()));
 		}
 	}
 
@@ -243,6 +244,10 @@ public class TableBean implements Serializable {
     
     public int getRandomPrice() {
 		return (int) (Math.random() * 100000);
+	}
+    
+    public boolean getRandomSoldState() {
+		return (Math.random() > 0.5d) ? true: false;
 	}
 
     private int getRandomSale() {

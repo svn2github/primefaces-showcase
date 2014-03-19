@@ -21,7 +21,7 @@
         <h1 class="title ui-widget-header ui-corner-all">DataTable - Filtering</h1>
         <div class="entry">
             <p>Datatable provides column based and global data filtering feature. There are various different match modes, "startsWith"(default), "endsWith",
-            "contains", "exact", "lte", "lt", "gte" and "gt". In addition to built-in filter elements, custom components can be used as filter facets.</p>
+            "contains", "exact", "lte", "lt", "gte", "gt" and "equals". In addition to built-in generated filter elements, custom components can be used as filter facets.</p>
 
             <h:form id="form">
                 
@@ -57,6 +57,18 @@
 
                     <p:column id="colorColumn" filterBy="color" headerText="Color" footerText="endsWith" filterMatchMode="endsWith">
                         <h:outputText value="#{car.color}" />
+                    </p:column>
+                    
+                    <p:column id="soldColumn" filterBy="sold" headerText="Status" footerText="equals" filterMatchMode="equals">
+                        <f:facet name="filter">
+                            <p:selectOneButton onchange="PF('carsTable').filter()">
+                                <f:converter converterId="javax.faces.Boolean" />
+                                <f:selectItem itemLabel="All" itemValue="" />
+                                <f:selectItem itemLabel="Sold" itemValue="true" />
+                                <f:selectItem itemLabel="Sale" itemValue="false" />
+                            </p:selectOneButton>
+                        </f:facet>
+                        <h:outputText value="#{car.sold ? 'Sold': 'Sale'}" />
                     </p:column>
 
                 </p:dataTable>
