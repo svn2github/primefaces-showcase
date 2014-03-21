@@ -50,14 +50,19 @@
 
                     <p:column id="manufacturerColumn" filterBy="manufacturer" headerText="Manufacturer" footerText="exact" filterMatchMode="exact">
                         <f:facet name="filter">
-                            <p:selectOneMenu onchange="PF('carsTable').filter()">
+                            <p:selectOneMenu onchange="PF('carsTable').filter()" >
                                 <f:selectItems value="#{tableBean.manufacturerOptions}" />
                             </p:selectOneMenu>
                         </f:facet>
                         <h:outputText value="#{car.manufacturer}" />
                     </p:column>
 
-                    <p:column id="colorColumn" filterBy="color" headerText="Color" footerText="endsWith" filterMatchMode="endsWith">
+                    <p:column id="colorColumn" filterBy="color" headerText="Color" footerText="in" filterMatchMode="in">
+                        <f:facet name="filter">
+                            <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()" panelStyle="width:125px" scrollHeight="150">
+                                <f:selectItems value="#{tableBean.colors}" />
+                            </p:selectCheckboxMenu>
+                        </f:facet>
                         <h:outputText value="#{car.color}" />
                     </p:column>
                     
@@ -115,7 +120,12 @@
             &lt;h:outputText value="\#{car.manufacturer}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column id="colorColumn" filterBy="color" headerText="Color" footerText="endsWith" filterMatchMode="endsWith"&gt;
+        &lt;p:column id="colorColumn" filterBy="color" headerText="Color" footerText="in" filterMatchMode="in"&gt;
+            &lt;f:facet name="filter"&gt;
+                &lt;p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()" panelStyle="width:125px" scrollHeight="150"&gt;
+                    &lt;f:selectItems value="\#{tableBean.colors}" /&gt;
+                &lt;/p:selectCheckboxMenu&gt;
+            &lt;/f:facet&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
 
