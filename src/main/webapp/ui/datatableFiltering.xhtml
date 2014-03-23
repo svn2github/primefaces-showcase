@@ -14,6 +14,14 @@
             .ui-datatable .ui-datatable-header {
                 text-align: right !important;
             }
+            
+            .year-spinner input {
+                width: 100px
+            }
+            
+            .ui-button-text-only .ui-button-text {
+                padding: 0.3em 0.4em;
+            }
         </style>
     </ui:define>
 
@@ -31,7 +39,7 @@
                     <f:facet name="header">
                         <p:outputPanel>
                             <h:outputText value="Search all fields:" />
-                            <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" />
+                            <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
                         </p:outputPanel>
                     </f:facet>
 
@@ -41,7 +49,7 @@
 
                     <p:column id="yearColumn" filterBy="year" headerText="Year" footerText="lte" filterMatchMode="lte">
                         <f:facet name="filter">
-                            <p:spinner onchange="PF('carsTable').filter()" value="2010">
+                            <p:spinner onchange="PF('carsTable').filter()" min="1960" max="2010" styleClass="year-spinner">
                                 <f:converter converterId="javax.faces.Integer" />
                             </p:spinner>
                         </f:facet>
@@ -77,6 +85,12 @@
                         </f:facet>
                         <h:outputText value="#{car.sold ? 'Sold': 'Sale'}" />
                     </p:column>
+                    
+                    <p:column id="priceColumn" filterBy="price" headerText="Price" footerText="custom (min)" filterFunction="#{tableBean.filterByPrice}">
+                        <h:outputText value="#{car.price}">
+                            <f:convertNumber currencySymbol="$" type="currency"/>
+                        </h:outputText>
+                    </p:column>
 
                 </p:dataTable>
 
@@ -94,7 +108,7 @@
         &lt;f:facet name="header"&gt;
             &lt;p:outputPanel&gt;
                 &lt;h:outputText value="Search all fields:" /&gt;
-                &lt;p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" /&gt;
+                &lt;p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/&gt;
             &lt;/p:outputPanel&gt;
         &lt;/f:facet&gt;
 
@@ -104,7 +118,7 @@
 
         &lt;p:column id="yearColumn" filterBy="year" headerText="Year" footerText="lte" filterMatchMode="lte"&gt;
             &lt;f:facet name="filter"&gt;
-                &lt;p:spinner onchange="PF('carsTable').filter()" value="2010"&gt;
+                &lt;p:spinner onchange="PF('carsTable').filter()" min="1960" max="2010" styleClass="year-spinner"&gt;
                     &lt;f:converter converterId="javax.faces.Integer" /&gt;
                 &lt;/p:spinner&gt;
             &lt;/f:facet&gt;
@@ -113,7 +127,7 @@
 
         &lt;p:column id="manufacturerColumn" filterBy="manufacturer" headerText="Manufacturer" footerText="exact" filterMatchMode="exact"&gt;
             &lt;f:facet name="filter"&gt;
-                &lt;p:selectOneMenu onchange="PF('carsTable').filter()"&gt;
+                &lt;p:selectOneMenu onchange="PF('carsTable').filter()" &gt;
                     &lt;f:selectItems value="\#{tableBean.manufacturerOptions}" /&gt;
                 &lt;/p:selectOneMenu&gt;
             &lt;/f:facet&gt;
@@ -139,6 +153,12 @@
                 &lt;/p:selectOneButton&gt;
             &lt;/f:facet&gt;
             &lt;h:outputText value="\#{car.sold ? 'Sold': 'Sale'}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column id="priceColumn" filterBy="price" headerText="Price" footerText="custom (min)" filterFunction="\#{tableBean.filterByPrice}"&gt;
+            &lt;h:outputText value="\#{car.price}"&gt;
+                &lt;f:convertNumber currencySymbol="$" type="currency"/&gt;
+            &lt;/h:outputText&gt;
         &lt;/p:column&gt;
 
     &lt;/p:dataTable&gt;
@@ -244,19 +264,21 @@ public class TableBean implements Serializable {
 		return (Math.random() > 0.5d) ? true: false;
 	}
 
-    private SelectItem[] createFilterOptions(String[] data)  {
-        SelectItem[] options = new SelectItem[data.length + 1];
-
-        options[0] = new SelectItem("", "Select");
-        for(int i = 0; i &lt; data.length; i++) {
-            options[i + 1] = new SelectItem(data[i], data[i]);
-        }
-
-        return options;
-    }
-
     public SelectItem[] getManufacturerOptions() {
         return manufacturerOptions;
+    }
+
+    public boolean filterByPrice(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim();
+        if(filterText == null||filterText.equals("")) {
+            return true;
+        }
+        
+        if(value == null) {
+            return false;
+        }
+        
+        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
     }
 }
                     </pre>

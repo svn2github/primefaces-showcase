@@ -60,6 +60,7 @@ import org.primefaces.examples.domain.Stats;
 import org.primefaces.mobile.event.SwipeEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
+import org.primefaces.util.Constants;
 
 public class TableBean implements Serializable {
     
@@ -604,5 +605,18 @@ public class TableBean implements Serializable {
         Car car = (Car) event.getData();
         carsSmall.remove(car);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Swiped", "Removed: " + car.getModel()));
+    }
+    
+    public boolean filterByPrice(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim();
+        if(filterText == null||filterText.equals("")) {
+            return true;
+        }
+        
+        if(value == null) {
+            return false;
+        }
+        
+        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
     }
 }
