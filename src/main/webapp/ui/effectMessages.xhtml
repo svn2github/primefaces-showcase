@@ -9,14 +9,12 @@
 
         <h1 class="title ui-widget-header ui-corner-all">Effects on Load</h1>
         <div class="entry">
-            <p>Effects can also be applied to a JSF component when page is loaded for the first time or after an ajax request is completed.</p>
+            <p>Effects can also be applied to a JSF component when page is loaded initially or after an ajax request is completed.</p>
 
             <h:form prependId="false">
 
                 <p:messages id="messages">
-                    <p:effect type="pulsate" event="load" delay="1000">
-                        <f:param name="mode" value="'show'" />
-                    </p:effect>
+                    <p:effect type="pulsate" event="load" delay="500" />
                 </p:messages>
 
                 <p:panel id="panel" header="Message Effects" toggleable="true">
@@ -37,9 +35,7 @@
 &lt;h:form&gt;
 
 	&lt;p:messages id="messages"&gt;
-		&lt;p:effect type="pulsate" event="load" delay="1000"&gt;
-			&lt;f:param name="mode" value="'show'" /&gt;
-		&lt;/p:effect&gt;
+		&lt;p:effect type="pulsate" event="load" delay="500" /&gt;
 	&lt;/p:messages&gt;
 
 	&lt;p:panel header="Message Effects" toggleable="true"&gt;
