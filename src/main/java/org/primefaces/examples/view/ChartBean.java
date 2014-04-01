@@ -28,6 +28,7 @@ import org.primefaces.model.chart.BarChartSeries;
 import org.primefaces.model.chart.BubbleChartModel;
 import org.primefaces.model.chart.BubbleChartSeries;
 import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.ChartAxis;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.DonutChartModel;
 import org.primefaces.model.chart.LineChartSeries;
@@ -47,8 +48,10 @@ public class ChartBean implements Serializable {
     private CartesianChartModel combinedModel2;
     
     private CartesianChartModel fillToZero;
-
+    
     private PieChartModel pieModel;
+    
+    private PieChartModel pieModel2;
     
     private DonutChartModel donutModel;
     
@@ -68,6 +71,7 @@ public class ChartBean implements Serializable {
         createCombinedModel();
         createCombinedModel2();
         createPieModel();
+        createPieModel2();
         createLivePieModel();
         createDonutModel();
         createBubbleModel();
@@ -99,7 +103,11 @@ public class ChartBean implements Serializable {
     public PieChartModel getPieModel() {
         return pieModel;
     }
-    
+
+    public PieChartModel getPieModel2() {
+        return pieModel2;
+    }
+     
     public MeterGaugeChartModel getMeterGaugeModel() {
         return meterGaugeModel;
     }
@@ -127,7 +135,7 @@ public class ChartBean implements Serializable {
     public CartesianChartModel getLinearModel() {
         return linearModel;
     }
-    
+
     public PieChartModel getLivePieModel() {
         int random1 = (int)(Math.random() * 1000);
 		int random2 = (int)(Math.random() * 1000);
@@ -187,6 +195,7 @@ public class ChartBean implements Serializable {
         combinedModel.addSeries(boys);
         combinedModel.addSeries(girls);
     }
+    
     private void createCombinedModel2() {
         combinedModel2 = new CartesianChartModel();
 
@@ -210,9 +219,7 @@ public class ChartBean implements Serializable {
         girls.setFill(true);
         combinedModel2.addSeries(girls);
         combinedModel2.addSeries(boys);
-        
-    } 
-     
+    }
     
     private void createOhlcModel(){
         ohlcModel = new OhlcChartModel();
@@ -277,6 +284,24 @@ public class ChartBean implements Serializable {
         pieModel.set("Brand 2", 325);
         pieModel.set("Brand 3", 702);
         pieModel.set("Brand 4", 421);
+        
+        pieModel.setTitle("Simple Pie");
+        pieModel.setLegendPosition("w");
+    }
+    
+    private void createPieModel2() {
+        pieModel2 = new PieChartModel();
+        
+        pieModel2.set("Brand 1", 540);
+        pieModel2.set("Brand 2", 325);
+        pieModel2.set("Brand 3", 702);
+        pieModel2.set("Brand 4", 421);
+        
+        pieModel2.setTitle("Custom Pie");
+        pieModel2.setLegendPosition("e");
+        pieModel2.setFill(false);
+        pieModel2.setShowDataLabels(true);
+        pieModel2.setDiameter(150);
     }
     
     private void createDonutModel() {
