@@ -64,6 +64,7 @@ public class ChartBean implements Serializable {
     private PieChartModel livePieModel;
     private CartesianChartModel animatedModel1;
     private BarChartModel animatedModel2;
+    private CartesianChartModel multiAxisModel;
 
 	public ChartBean() {
         createLineModels();
@@ -77,6 +78,7 @@ public class ChartBean implements Serializable {
         createBarModels();
         createAnimatedModels();
         createCombinedModel();
+        createMultiAxisModel();
 	}
 
 	public void itemSelect(ItemSelectEvent event) {
@@ -166,7 +168,10 @@ public class ChartBean implements Serializable {
         return animatedModel2;
     }
 
-    
+    public CartesianChartModel getMultiAxisModel() {
+        return multiAxisModel;
+    }
+
     public PieChartModel getLivePieModel() {
         int random1 = (int)(Math.random() * 1000);
 		int random2 = (int)(Math.random() * 1000);
@@ -354,6 +359,49 @@ public class ChartBean implements Serializable {
         Axis yAxis = combinedModel.getAxis(AxisType.Y);
         yAxis.setMin(0);
         yAxis.setMax(200);
+    }
+    
+    private void createMultiAxisModel() {
+        multiAxisModel = new CartesianChartModel();
+
+        BarChartSeries boys = new BarChartSeries();
+        boys.setLabel("Boys");
+
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        LineChartSeries girls = new LineChartSeries();
+        girls.setLabel("Girls");
+        girls.setXaxis(AxisType.X2);
+        girls.setYaxis(AxisType.Y2);
+        
+        girls.set("2009", 52);
+        girls.set("2010", 60);
+        girls.set("2011", 110);
+        girls.set("2012", 135);
+        girls.set("2013", 120);
+
+        multiAxisModel.addSeries(boys);
+        multiAxisModel.addSeries(girls);
+        
+        multiAxisModel.setTitle("Multi Axis Chart");
+        
+        multiAxisModel.getAxes().put(AxisType.X, new CategoryAxis("Years"));
+        multiAxisModel.getAxes().put(AxisType.X2, new CategoryAxis("Period"));
+        
+        Axis yAxis = multiAxisModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Birth");
+        yAxis.setMin(0);
+        yAxis.setMax(200);
+                
+        Axis y2Axis = new Axis("Number");
+        y2Axis.setMin(0);
+        y2Axis.setMax(200);
+        
+        multiAxisModel.getAxes().put(AxisType.Y2, y2Axis);
     }
         
     private void createOhlcModels() {
