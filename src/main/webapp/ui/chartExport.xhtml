@@ -25,8 +25,7 @@ function exportChart() {
 		<div class="entry">
             <p>Charts are canvas based and can be exported as static images with client side api.</p>
 
-            <p:lineChart value="#{chartBean.linearModel}" legendPosition="e" zoom="true"
-                         title="Linear Chart" minY="0" maxY="10" style="width:500px;height:300px" widgetVar="chart"/>
+            <p:chart type="line" model="#{chartBean.lineModel1}" style="width:500px;height:300px" widgetVar="chart"/>
 
             <br />
             
@@ -40,8 +39,7 @@ function exportChart() {
             <p:tabView>
                 <p:tab title="lineChart.xhtml">
                     <pre name="code" class="brush:xml">
-&lt;p:lineChart value="\#{chartBean.linearModel}" legendPosition="e" zoom="true"
-                         title="Linear Chart" minY="0" maxY="10" style="width:500px;height:300px" widgetVar="chart"/&gt;
+&lt;p:chart type="line" value="\#{chartBean.lineModel1}" style="width:500px;height:300px" widgetVar="chart"/&gt;
             
 &lt;p:commandButton type="button" value="Export" icon="ui-icon-extlink" onclick="exportChart()"/&gt;
 

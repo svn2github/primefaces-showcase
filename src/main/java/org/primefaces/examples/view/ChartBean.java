@@ -43,15 +43,14 @@ import org.primefaces.model.chart.PieChartModel;
 
 public class ChartBean implements Serializable {
 
-    private CartesianChartModel categoryModel;
-    private CartesianChartModel linearModel;
+    private CartesianChartModel lineModel1;
+    private CartesianChartModel lineModel2;
     private CartesianChartModel combinedModel;
-    private CartesianChartModel combinedModel2;
     private CartesianChartModel fillToZero;
     private CartesianChartModel areaModel;
     private BarChartModel barModel;
     private HorizontalBarChartModel horizontalBarModel;
-    private PieChartModel pieModel;
+    private PieChartModel pieModel1;
     private PieChartModel pieModel2;
     private DonutChartModel donutModel1;
     private DonutChartModel donutModel2;
@@ -62,24 +61,22 @@ public class ChartBean implements Serializable {
     private OhlcChartModel ohlcModel;
     private OhlcChartModel ohlcModel2;
     private PieChartModel livePieModel;
+    private CartesianChartModel animatedModel1;
+    private BarChartModel animatedModel2;
 
 	public ChartBean() {
-        createCategoryModel();
-        createLinearModel();
-        createCombinedModel();
-        createCombinedModel2();
+        createLineModels();
         createAreaModel();
-        createPieModel();
-        createPieModel2();
+        createPieModels();
         createLivePieModel();
         createDonutModels();
         createBubbleModels();
-        createOhlcModel();
-        createOhlcModel2();
+        createOhlcModels();
         createFillToZero();
         createMeterGaugeModels();
-        createBarModel();
-        createHorizontalBarModel();
+        createBarModels();
+        createAnimatedModels();
+        createCombinedModel();
 	}
 
 	public void itemSelect(ItemSelectEvent event) {
@@ -89,16 +86,16 @@ public class ChartBean implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-    public CartesianChartModel getCategoryModel() {
-        return categoryModel;
+    public CartesianChartModel getLineModel1() {
+        return lineModel1;
+    }
+
+    public CartesianChartModel getLineModel2() {
+        return lineModel2;
     }
 
     public CartesianChartModel getCombinedModel() {
         return combinedModel;
-    }
-    
-    public CartesianChartModel getCombinedModel2() {
-        return combinedModel2;
     }
     
     public CartesianChartModel getAreaModel() {
@@ -106,7 +103,7 @@ public class ChartBean implements Serializable {
     }
     
     public PieChartModel getPieModel() {
-        return pieModel;
+        return pieModel1;
     }
 
     public PieChartModel getPieModel2() {
@@ -149,10 +146,6 @@ public class ChartBean implements Serializable {
         return ohlcModel2;
     }
 
-    public CartesianChartModel getLinearModel() {
-        return linearModel;
-    }
-
     public BarChartModel getBarModel() {
         return barModel;
     }
@@ -160,6 +153,15 @@ public class ChartBean implements Serializable {
     public HorizontalBarChartModel getHorizontalBarModel() {
         return horizontalBarModel;
     }
+
+    public CartesianChartModel getAnimatedModel1() {
+        return animatedModel1;
+    }
+
+    public CartesianChartModel getAnimatedModel2() {
+        return animatedModel2;
+    }
+
     
     public PieChartModel getLivePieModel() {
         int random1 = (int)(Math.random() * 1000);
@@ -171,8 +173,8 @@ public class ChartBean implements Serializable {
         return livePieModel;
     }
     
-    private void createCategoryModel() {
-        categoryModel = new CartesianChartModel();
+    private CartesianChartModel initCategoryModel() {
+        CartesianChartModel model = new CartesianChartModel();
 
         ChartSeries boys = new ChartSeries();
         boys.setLabel("Boys");
@@ -190,40 +192,32 @@ public class ChartBean implements Serializable {
         girls.set("2007", 135);
         girls.set("2008", 120);
 
-        categoryModel.addSeries(boys);
-        categoryModel.addSeries(girls);
+        model.addSeries(boys);
+        model.addSeries(girls);
         
-        categoryModel.setTitle("Category Chart");
-        categoryModel.setLegendPosition("e");
+        return model;
+    }
+    
+    private void createLineModels() {
+        lineModel1 = initLinearModel();
+        lineModel1.setTitle("Linear Chart");
+        lineModel1.setLegendPosition("e");
+        Axis yAxis = lineModel1.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(10);
         
-        categoryModel.getAxes().put(AxisType.X, new CategoryAxis("Years"));
-        Axis yAxis = categoryModel.getAxis(AxisType.Y);
+        lineModel2 = initCategoryModel();
+        lineModel2.setTitle("Category Chart");
+        lineModel2.setLegendPosition("e");
+        lineModel2.getAxes().put(AxisType.X, new CategoryAxis("Years"));
+        yAxis = lineModel2.getAxis(AxisType.Y);
         yAxis.setLabel("Births");
         yAxis.setMin(0);
         yAxis.setMax(200);
     }
     
     private void createAreaModel() {
-        areaModel = new CartesianChartModel();
-
-        ChartSeries boys = new ChartSeries();
-        boys.setLabel("Boys");
-        boys.set("2004", 120);
-        boys.set("2005", 100);
-        boys.set("2006", 44);
-        boys.set("2007", 150);
-        boys.set("2008", 25);
-
-        ChartSeries girls = new ChartSeries();
-        girls.setLabel("Girls");
-        girls.set("2004", 52);
-        girls.set("2005", 60);
-        girls.set("2006", 110);
-        girls.set("2007", 135);
-        girls.set("2008", 120);
-
-        areaModel.addSeries(boys);
-        areaModel.addSeries(girls);
+        areaModel = initCategoryModel();
         
         areaModel.setTitle("Area Chart");
         areaModel.setLegendPosition("ne");
@@ -236,8 +230,8 @@ public class ChartBean implements Serializable {
         yAxis.setMax(200);
     }
     
-    private void createBarModel() {
-        barModel = new BarChartModel();
+    private BarChartModel initBarModel() {
+        BarChartModel model = new BarChartModel();
 
         ChartSeries boys = new ChartSeries();
         boys.setLabel("Boys");
@@ -255,8 +249,19 @@ public class ChartBean implements Serializable {
         girls.set("2007", 135);
         girls.set("2008", 120);
 
-        barModel.addSeries(boys);
-        barModel.addSeries(girls);
+        model.addSeries(boys);
+        model.addSeries(girls);
+        
+        return model;
+    }
+    
+    private void createBarModels() {
+        createBarModel();
+        createHorizontalBarModel();
+    }
+    
+    private void createBarModel() {
+        barModel = initBarModel();
         
         barModel.setTitle("Bar Chart");
         barModel.setLegendPosition("ne");
@@ -304,9 +309,9 @@ public class ChartBean implements Serializable {
         Axis yAxis = horizontalBarModel.getAxis(AxisType.Y);
         yAxis.setLabel("Gender");        
     }
-    
+        
     private void createCombinedModel() {
-        combinedModel = new CartesianChartModel();
+        combinedModel = new BarChartModel();
 
         BarChartSeries boys = new BarChartSeries();
         boys.setLabel("Boys");
@@ -328,34 +333,20 @@ public class ChartBean implements Serializable {
 
         combinedModel.addSeries(boys);
         combinedModel.addSeries(girls);
+        
+        combinedModel.setTitle("Bar and Line");
+        combinedModel.setLegendPosition("ne");
+        Axis yAxis = combinedModel.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(200);
+    }
+        
+    private void createOhlcModels() {
+        createOhlcModel1();
+        createOhlcModel2();
     }
     
-    private void createCombinedModel2() {
-        combinedModel2 = new CartesianChartModel();
-
-        BarChartSeries boys = new BarChartSeries();
-        boys.setLabel("Boys");
-
-        boys.set("2004", 120);
-        boys.set("2005", 100);
-        boys.set("2006", 44);
-        boys.set("2007", 150);
-        boys.set("2008", 25);
-
-        LineChartSeries girls = new LineChartSeries();
-        girls.setLabel("Girls");
-
-        girls.set("2004", 52);
-        girls.set("2005", 60);
-        girls.set("2006", 110);
-        girls.set("2007", 135);
-        girls.set("2008", 120);
-        girls.setFill(true);
-        combinedModel2.addSeries(girls);
-        combinedModel2.addSeries(boys);
-    }
-    
-    private void createOhlcModel(){
+    private void createOhlcModel1(){
         ohlcModel = new OhlcChartModel();
 
         ohlcModel.add(new OhlcChartSeries(2007, 143.82, 144.56, 136.04, 136.97));
@@ -413,8 +404,8 @@ public class ChartBean implements Serializable {
         return model;
     }
 
-    private void createLinearModel() {
-        linearModel = new CartesianChartModel();
+    private CartesianChartModel initLinearModel() {
+        CartesianChartModel model = new CartesianChartModel();
 
         LineChartSeries series1 = new LineChartSeries();
         series1.setLabel("Series 1");
@@ -427,7 +418,6 @@ public class ChartBean implements Serializable {
 
         LineChartSeries series2 = new LineChartSeries();
         series2.setLabel("Series 2");
-        series2.setMarkerStyle("diamond");
 
         series2.set(1, 6);
         series2.set(2, 3);
@@ -435,26 +425,27 @@ public class ChartBean implements Serializable {
         series2.set(4, 7);
         series2.set(5, 9);
 
-        linearModel.addSeries(series1);
-        linearModel.addSeries(series2);
+        model.addSeries(series1);
+        model.addSeries(series2);
         
-        linearModel.setTitle("Linear Chart");
-        linearModel.setLegendPosition("e");
-        Axis yAxis = linearModel.getAxis(AxisType.Y);
-        yAxis.setMin(0);
-        yAxis.setMax(10);
+        return model;
+    }
+    
+    private void createPieModels() {
+        createPieModel1();
+        createPieModel2();
     }
 
-    private void createPieModel() {
-        pieModel = new PieChartModel();
+    private void createPieModel1() {
+        pieModel1 = new PieChartModel();
         
-        pieModel.set("Brand 1", 540);
-        pieModel.set("Brand 2", 325);
-        pieModel.set("Brand 3", 702);
-        pieModel.set("Brand 4", 421);
+        pieModel1.set("Brand 1", 540);
+        pieModel1.set("Brand 2", 325);
+        pieModel1.set("Brand 3", 702);
+        pieModel1.set("Brand 4", 421);
         
-        pieModel.setTitle("Simple Pie");
-        pieModel.setLegendPosition("w");
+        pieModel1.setTitle("Simple Pie");
+        pieModel1.setLegendPosition("w");
     }
     
     private void createPieModel2() {
@@ -555,5 +546,23 @@ public class ChartBean implements Serializable {
         meterGaugeModel2.setShowTickLabels(false);
         meterGaugeModel2.setLabelHeightAdjust(110);
         meterGaugeModel2.setIntervalOuterRadius(130);
+    }
+
+    private void createAnimatedModels() {
+        animatedModel1 = initLinearModel();
+        animatedModel1.setTitle("Line Chart");
+        animatedModel1.setAnimate(true);
+        animatedModel1.setLegendPosition("se");
+        Axis yAxis = animatedModel1.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(10);
+        
+        animatedModel2 = initBarModel();
+        animatedModel2.setTitle("Bar Charts");
+        animatedModel2.setAnimate(true);
+        animatedModel2.setLegendPosition("ne");
+        yAxis = animatedModel2.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(200);
     }
 }
