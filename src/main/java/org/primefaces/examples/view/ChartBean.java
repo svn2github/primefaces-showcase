@@ -55,7 +55,8 @@ public class ChartBean implements Serializable {
     private PieChartModel pieModel2;
     private DonutChartModel donutModel1;
     private DonutChartModel donutModel2;
-    private MeterGaugeChartModel meterGaugeModel;
+    private MeterGaugeChartModel meterGaugeModel1;
+    private MeterGaugeChartModel meterGaugeModel2;
     private BubbleChartModel bubbleModel1;
     private BubbleChartModel bubbleModel2;
     private OhlcChartModel ohlcModel;
@@ -76,7 +77,7 @@ public class ChartBean implements Serializable {
         createOhlcModel();
         createOhlcModel2();
         createFillToZero();
-        createMeterGaugeModel();
+        createMeterGaugeModels();
         createBarModel();
         createHorizontalBarModel();
 	}
@@ -112,8 +113,12 @@ public class ChartBean implements Serializable {
         return pieModel2;
     }
      
-    public MeterGaugeChartModel getMeterGaugeModel() {
-        return meterGaugeModel;
+    public MeterGaugeChartModel getMeterGaugeModel1() {
+        return meterGaugeModel1;
+    }
+    
+    public MeterGaugeChartModel getMeterGaugeModel2() {
+        return meterGaugeModel2;
     }
     
     public DonutChartModel getDonutModel1() {
@@ -526,7 +531,7 @@ public class ChartBean implements Serializable {
         fillToZero.addSeries(series1);
     }
 
-    private void createMeterGaugeModel() {
+    private MeterGaugeChartModel initMeterGaugeModel() {
         List<Number> intervals = new ArrayList<Number>(){{
             add(20);
             add(50);
@@ -534,6 +539,21 @@ public class ChartBean implements Serializable {
             add(220);
         }};
         
-        meterGaugeModel = new MeterGaugeChartModel(140, intervals);
+        return new MeterGaugeChartModel(140, intervals);
+    }
+
+    private void createMeterGaugeModels() {
+        meterGaugeModel1 = initMeterGaugeModel();
+        meterGaugeModel1.setTitle("MeterGauge Chart");
+        meterGaugeModel1.setGaugeLabel("km/h");
+        
+        meterGaugeModel2 = initMeterGaugeModel();
+        meterGaugeModel2.setTitle("Custom Options");
+        meterGaugeModel2.setSeriesColors("66cc66,93b75f,E7E658,cc6666");
+        meterGaugeModel2.setGaugeLabel("km/h");
+        meterGaugeModel2.setGaugeLabelPosition("bottom");
+        meterGaugeModel2.setShowTickLabels(false);
+        meterGaugeModel2.setLabelHeightAdjust(110);
+        meterGaugeModel2.setIntervalOuterRadius(130);
     }
 }
