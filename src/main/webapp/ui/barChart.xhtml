@@ -4,6 +4,20 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="../templates/ui.xhtml">
+    
+      <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+		</script>
+
+	</ui:define>
+
 
     <ui:define name="content">
 
@@ -11,76 +25,23 @@
         <div class="entry">
             <p>BarChart displays a CartesianChartModel.</p>
 
-            <p:barChart id="basic" value="#{chartBean.categoryModel}" legendPosition="ne"
-                        title="Basic Bar Chart" min="0" max="200" style="height:300px"/>
-
-            <p:barChart id="horizontal" value="#{chartBean.categoryModel}" legendPosition="se" style="height:300px;margin-top:20px"
-                        title="Horizontal Bar Chart" orientation="horizontal" min="0" max="200"/>
-
-            <p:barChart id="stacked" value="#{chartBean.categoryModel}" legendPosition="ne" style="height:300px;margin-top:20px"
-                        title="Stacked Bar Chart" stacked="true" barMargin="50" min="0" max="300"/>
+            <p:chart type="bar" model="#{chartBean.barModel}" style="height:300px"/>
+            <br /><br />
+            <p:chart type="bar" model="#{chartBean.horizontalBarModel}" style="height:300px"/>
 
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="barChart.xhtml">
                     <pre name="code" class="brush:xml">
-&lt;p:barChart id="basic" value="\#{chartBean.categoryModel}" legendPosition="ne"
-            title="Basic Bar Chart" min="0" max="200" style="height:300px"/&gt;
-
-&lt;p:barChart id="horizontal" value="\#{chartBean.categoryModel}" legendPosition="se" style="height:300px"
-            title="Horizontal Bar Chart" orientation="horizontal" min="0" max="200"/&gt;
-
-&lt;p:barChart id="stacked" value="\#{chartBean.categoryModel}" legendPosition="ne" style="height:300px"
-            title="Stacked Bar Chart" stacked="true" barMargin="50" min="0" max="300"/&gt;
+&lt;p:chart type="bar" model="\#{chartBean.barModel}" style="height:300px"/&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;p:chart type="bar" model="\#{chartBean.horizontalBarModel}" style="height:300px"/&gt;
                     </pre>
                 </p:tab>
 
                 <p:tab title="ChartBean.java">
                     <pre name="code" class="brush:java">
-package org.primefaces.examples.view;
 
-import java.io.Serializable;
-
-import org.primefaces.model.chart.CartesianChartModel;
-import org.primefaces.model.chart.ChartSeries;
-
-public class ChartBean implements Serializable {
-
-    private CartesianChartModel categoryModel;
-
-	public ChartBean() {
-        createCategoryModel();
-	}
-
-    public CartesianChartModel getCategoryModel() {
-        return categoryModel;
-    }
-
-    private void createCategoryModel() {
-        categoryModel = new CartesianChartModel();
-
-        ChartSeries boys = new ChartSeries();
-        boys.setLabel("Boys");
-
-        boys.set("2004", 120);
-        boys.set("2005", 100);
-        boys.set("2006", 44);
-        boys.set("2007", 150);
-        boys.set("2008", 25);
-
-        ChartSeries girls = new ChartSeries();
-        girls.setLabel("Girls");
-
-        girls.set("2004", 52);
-        girls.set("2005", 60);
-        girls.set("2006", 110);
-        girls.set("2007", 135);
-        girls.set("2008", 120);
-
-        categoryModel.addSeries(boys);
-        categoryModel.addSeries(girls);
-    }
-}
                     </pre>
                 </p:tab>
             </p:tabView>
