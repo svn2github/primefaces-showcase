@@ -24,11 +24,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.ItemSelectEvent;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartSeries;
 import org.primefaces.model.chart.BubbleChartModel;
 import org.primefaces.model.chart.BubbleChartSeries;
 import org.primefaces.model.chart.CartesianChartModel;
-import org.primefaces.model.chart.ChartAxis;
+import org.primefaces.model.chart.CategoryAxis;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.DonutChartModel;
 import org.primefaces.model.chart.LineChartSeries;
@@ -151,7 +153,6 @@ public class ChartBean implements Serializable {
 
         ChartSeries boys = new ChartSeries();
         boys.setLabel("Boys");
-
         boys.set("2004", 120);
         boys.set("2005", 100);
         boys.set("2006", 44);
@@ -160,7 +161,6 @@ public class ChartBean implements Serializable {
 
         ChartSeries girls = new ChartSeries();
         girls.setLabel("Girls");
-
         girls.set("2004", 52);
         girls.set("2005", 60);
         girls.set("2006", 110);
@@ -169,6 +169,15 @@ public class ChartBean implements Serializable {
 
         categoryModel.addSeries(boys);
         categoryModel.addSeries(girls);
+        
+        categoryModel.setTitle("Category Chart");
+        categoryModel.setLegendPosition("e");
+        
+        categoryModel.getAxes().put(AxisType.X, new CategoryAxis("Years"));
+        Axis yAxis = categoryModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Births");
+        yAxis.setMin(0);
+        yAxis.setMax(200);
     }
     
      private void createCombinedModel() {
@@ -275,6 +284,12 @@ public class ChartBean implements Serializable {
 
         linearModel.addSeries(series1);
         linearModel.addSeries(series2);
+        
+        linearModel.setTitle("Linear Chart");
+        linearModel.setLegendPosition("e");
+        Axis yAxis = linearModel.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(10);
     }
 
     private void createPieModel() {
