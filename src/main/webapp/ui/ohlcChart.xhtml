@@ -4,75 +4,32 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="../templates/ui.xhtml">
-    
+        
     <ui:define name="content">
 
         <h1 class="title ui-widget-header ui-corner-all">OhlcChart</h1>
         <div class="entry">
             <p>OhlcChart is created with a OhlcChartModel.</p>
 
-            <p:ohlcChart id="sample" value="#{chartBean.ohlcModel}"
-                        title="Sample Ohlc Chart" style="width:400px;height:300px" yaxisLabel="Price Change   $K / Unit" xaxisLabel="Year" />
+            <p:chart type="ohlc" model="#{chartBean.ohlcModel}" style="width:400px;height:300px"/>
             
-            <br/><br/><br/>
+            <br /><br />
             
-            <p:ohlcChart id="candleStick" value="#{chartBean.ohlcModel2}" candleStick="true" yaxisLabel="Index Value" xaxisLabel="Sector"
-                        title="Ohlc Chart with Candle Stick" style="width:400px;height:300px" />
+            <p:chart type="ohlc" model="#{chartBean.ohlcModel2}" style="width:400px;height:300px"/>
 
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="ohlcChart.xhtml">
                     <pre name="code" class="brush:xml">
-&lt;p:ohlcChart id="sample" value="\#{chartBean.ohlcModel}"
-            title="Sample Ohlc Chart" style="width:400px;height:300px" yaxisLabel="Price Change   $K / Unit" xaxisLabel="Year" /&gt;
-
-&lt;p:ohlcChart id="candleStick" value="\#{chartBean.ohlcModel2}" candleStick="true" yaxisLabel="Index Value" xaxisLabel="Sector"
-            title="Ohlc Chart with Candle Stick" style="width:400px;height:300px" /&gt;
+&lt;p:chart type="ohlc" model="\#{chartBean.ohlcModel}" style="width:400px;height:300px"/&gt;
+  
+&lt;p:chart type="ohlc" model="\#{chartBean.ohlcModel2}" style="width:400px;height:300px"/&gt;
                     </pre>
                 </p:tab>
 
                 <p:tab title="ChartBean.java">
             <pre name="code" class="brush:java">
-package org.primefaces.examples.view;
 
-import java.io.Serializable;
-
-import org.primefaces.model.chart.OhlcChartModel;
-import org.primefaces.model.chart.OhlcCharSeries;
-
-public class ChartBean implements Serializable {
-
-    private OhlcChartModel ohlcModel;
-    
-    private OhlcChartModel ohlcModel2;
-
-    public ChartBean() {
-        createOhlcModel();
-        createOhlcModel2();
-    }
- 
-    private void createOhlcModel(){
-        ohlcModel = new OhlcChartModel();
-
-        ohlcModel.add(new OhlcChartSeries(2007, 143.82, 144.56, 136.04, 136.97));
-        ohlcModel.add(new OhlcChartSeries(2008, 138.7, 139.68, 135.18, 135.4));
-        ohlcModel.add(new OhlcChartSeries(2009, 143.46, 144.66, 139.79, 140.02));
-        ohlcModel.add(new OhlcChartSeries(2010, 140.67, 143.56, 132.88, 142.44));
-        ohlcModel.add(new OhlcChartSeries(2011, 136.01, 139.5, 134.53, 139.48));
-        ohlcModel.add(new OhlcChartSeries(2012, 124.76, 135.9, 124.55, 135.81));
-        ohlcModel.add(new OhlcChartSeries(2012, 123.73, 129.31, 121.57, 122.5));
-    }
-
-    private void createOhlcModel2() {
-        ohlcModel2 = new OhlcChartModel();
-        for( int i=1 ; i &lt; 41 ; i++)
-            ohlcModel2.add(new OhlcChartSeries(i, 
-                                    Math.random() * 80 + 80, 
-                                    Math.random() * 50 + 110, 
-                                    Math.random() * 20 + 80, 
-                                    Math.random() * 80 + 80));
-    }
-}
             </pre>
                 </p:tab>
             </p:tabView>
