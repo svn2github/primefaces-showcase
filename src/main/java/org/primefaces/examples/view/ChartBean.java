@@ -378,11 +378,11 @@ public class ChartBean implements Serializable {
         girls.setXaxis(AxisType.X2);
         girls.setYaxis(AxisType.Y2);
         
-        girls.set("2009", 52);
-        girls.set("2010", 60);
-        girls.set("2011", 110);
-        girls.set("2012", 135);
-        girls.set("2013", 120);
+        girls.set("A", 52);
+        girls.set("B", 60);
+        girls.set("C", 110);
+        girls.set("D", 135);
+        girls.set("E", 120);
 
         multiAxisModel.addSeries(boys);
         multiAxisModel.addSeries(girls);
