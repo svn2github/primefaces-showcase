@@ -11,22 +11,19 @@
         <div class="entry">
             <p>BubbleChart is created with a BubbleChartModel.</p>
 
-            <p:bubbleChart id="sample" value="#{chartBean.bubbleModel}" xaxisLabel="Price" yaxisLabel="Sales"
-                        title="Sample Bubble Chart" style="width:400px;height:300px" />
-            <br/>
-            <br/>
-            <p:bubbleChart id="custom" value="#{chartBean.bubbleModel}" shadow="false" bubbleGradients="true" bubbleAlpha="0.8"
-                        title="Custom Bubble Chart" style="width:400px;height:300px" xaxisAngle="-50" yaxisAngle="50" />
+            <p:chart type="bubble" model="#{chartBean.bubbleModel1}" />
             
+            <br /><br />
+            
+            <p:chart type="bubble" model="#{chartBean.bubbleModel2}" />
+      
             <h3>Source</h3>
             <p:tabView>
                 <p:tab title="bubbleChart.xhtml">
                     <pre name="code" class="brush:xml">
-&lt;p:bubbleChart id="sample" value="\#{chartBean.bubbleModel}" xaxisLabel="Price" yaxisLabel="Labels"
-                title="Sample Bubble Chart" style="width:400px;height:300px" /&gt;
+&lt;p:chart type="bubble" model="\#{chartBean.bubbleModel1}" /&gt;
 
-&lt;p:bubbleChart id="custom" value="#{chartBean.bubbleModel}" shadow="false" bubbleGradients="true" bubbleAlpha="0.8"
-                title="Custom Bubble Chart" style="width:400px;height:300px" xaxisAngle="-50" yaxisAngle="50"/&gt;
+&lt;p:chart type="bubble" model="\#{chartBean.bubbleModel2}" /&gt;
                     </pre>
                 </p:tab>
 
