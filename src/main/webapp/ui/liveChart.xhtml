@@ -11,12 +11,11 @@
         <div class="entry">
             <p>This example displays an ongoing election between two candidates. Votes are updated live and displayed on a pie chart.</p>
 
-            <h:form id="form">
+            <h:form>
 
                 <p:poll interval="3" update="votes" />
                 
-                <p:pieChart id="votes" value="#{chartBean.livePieModel}" title="Live Chart"
-                            legendPosition="nw" style="width:400px;height:300px"/>
+                <p:chart id="votes" type="pie" model="#{chartBean.livePieModel}" style="width:400px;height:300px"/>
 
             </h:form>
 
@@ -24,12 +23,11 @@
             <p:tabView>
                 <p:tab title="liveChart.xhtml">
                     <pre name="code" class="brush:xml">
-&lt;h:form id="form"&gt;
+&lt;h:form&gt;
 
     &lt;p:poll interval="3" update="votes" /&gt;
 
-    &lt;p:pieChart id="votes" value="\#{chartBean.livePieModel}" title="Live Chart"
-                legendPosition="nw" style="width:400px;height:300px"/&gt;
+    &lt;p:chart id="votes" type="pie" model="\#{chartBean.livePieModel}" style="width:400px;height:300px"/&gt;
 
 &lt;/h:form&gt;
                     </pre>

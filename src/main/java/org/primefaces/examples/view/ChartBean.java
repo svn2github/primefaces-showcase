@@ -68,7 +68,6 @@ public class ChartBean implements Serializable {
         createLineModels();
         createAreaModel();
         createPieModels();
-        createLivePieModel();
         createDonutModels();
         createBubbleModels();
         createOhlcModels();
@@ -169,6 +168,9 @@ public class ChartBean implements Serializable {
 
 		livePieModel.getData().put("Candidate 1", random1);
         livePieModel.getData().put("Candidate 2", random2);
+        
+        livePieModel.setTitle("Votes");
+        livePieModel.setLegendPosition("ne");
         
         return livePieModel;
     }
@@ -434,6 +436,7 @@ public class ChartBean implements Serializable {
     private void createPieModels() {
         createPieModel1();
         createPieModel2();
+        createLivePieModel();
     }
 
     private void createPieModel1() {
