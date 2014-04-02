@@ -45,6 +45,7 @@ public class ChartBean implements Serializable {
 
     private CartesianChartModel lineModel1;
     private CartesianChartModel lineModel2;
+    private CartesianChartModel zoomModel;
     private CartesianChartModel combinedModel;
     private CartesianChartModel fillToZero;
     private CartesianChartModel areaModel;
@@ -93,6 +94,10 @@ public class ChartBean implements Serializable {
         return lineModel2;
     }
 
+    public CartesianChartModel getZoomModel() {
+        return zoomModel;
+    }
+
     public CartesianChartModel getCombinedModel() {
         return combinedModel;
     }
@@ -101,10 +106,10 @@ public class ChartBean implements Serializable {
         return areaModel;
     }
     
-    public PieChartModel getPieModel() {
+    public PieChartModel getPieModel1() {
         return pieModel1;
     }
-
+    
     public PieChartModel getPieModel2() {
         return pieModel2;
     }
@@ -157,7 +162,7 @@ public class ChartBean implements Serializable {
         return animatedModel1;
     }
 
-    public CartesianChartModel getAnimatedModel2() {
+    public BarChartModel getAnimatedModel2() {
         return animatedModel2;
     }
 
@@ -216,6 +221,14 @@ public class ChartBean implements Serializable {
         yAxis.setLabel("Births");
         yAxis.setMin(0);
         yAxis.setMax(200);
+        
+        zoomModel = initLinearModel();
+        zoomModel.setTitle("Zoom");
+        zoomModel.setZoom(true);
+        zoomModel.setLegendPosition("e");
+        yAxis = zoomModel.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(10);
     }
     
     private void createAreaModel() {
