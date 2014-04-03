@@ -37,6 +37,7 @@ import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.DonutChartModel;
 import org.primefaces.model.chart.HorizontalBarChartModel;
 import org.primefaces.model.chart.LineChartSeries;
+import org.primefaces.model.chart.LinearAxis;
 import org.primefaces.model.chart.MeterGaugeChartModel;
 import org.primefaces.model.chart.OhlcChartModel;
 import org.primefaces.model.chart.OhlcChartSeries;
@@ -208,7 +209,7 @@ public class ChartBean implements Serializable {
         girls.set("2004", 52);
         girls.set("2005", 60);
         girls.set("2006", 110);
-        girls.set("2007", 135);
+        girls.set("2007", 90);
         girls.set("2008", 120);
 
         model.addSeries(boys);
@@ -228,6 +229,7 @@ public class ChartBean implements Serializable {
         lineModel2 = initCategoryModel();
         lineModel2.setTitle("Category Chart");
         lineModel2.setLegendPosition("e");
+        lineModel2.setShowPointLabels(true);
         lineModel2.getAxes().put(AxisType.X, new CategoryAxis("Years"));
         yAxis = lineModel2.getAxis(AxisType.Y);
         yAxis.setLabel("Births");
@@ -404,7 +406,7 @@ public class ChartBean implements Serializable {
         yAxis.setMin(0);
         yAxis.setMax(200);
                 
-        Axis y2Axis = new Axis("Number");
+        Axis y2Axis = new LinearAxis("Number");
         y2Axis.setMin(0);
         y2Axis.setMax(200);
         
