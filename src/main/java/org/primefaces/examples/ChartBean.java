@@ -1,32 +1,3 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui"
-                template="../templates/ui.xhtml">
-   
-    <ui:define name="content">
-
-        <h1 class="title ui-widget-header ui-corner-all">Pie Chart</h1>
-        <div class="entry">
-            <p>PieChart is created with a PieChartModel.</p>
-
-            <p:chart type="pie" model="#{chartBean.pieModel1}" style="width:400px;height:300px" />
-            
-            <p:chart type="pie" model="#{chartBean.pieModel2}" style="width:400px;height:300px" />
-
-            <h3>Source</h3>
-            <p:tabView>
-                <p:tab title="pieChart.xhtml">
-                    <pre name="code" class="brush:xml">
-&lt;p:chart type="pie" model="\#{chartBean.pieModel1}" style="width:400px;height:300px" /&gt;
-            
-&lt;p:chart type="pie" model="\#{chartBean.pieModel2}" style="width:400px;height:300px" /&gt;
-                    </pre>
-                </p:tab>
-
-                <p:tab title="ChartBean.java">
-            <pre name="code" class="brush:java">
 package org.primefaces.examples;
 
 import java.io.Serializable;
@@ -84,12 +55,3 @@ public class ChartBean implements Serializable {
     }
     
 }
-            </pre>
-                </p:tab>
-            </p:tabView>
-           
-
-        </div>
-
-    </ui:define>
-</ui:composition>
