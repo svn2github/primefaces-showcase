@@ -246,11 +246,31 @@ public class ChartBean implements Serializable {
     }
     
     private void createAreaModel() {
-        areaModel = initCategoryModel();
+        areaModel = new CartesianChartModel();
+
+        LineChartSeries boys = new LineChartSeries();
+        boys.setFill(true);
+        boys.setLabel("Boys");
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        LineChartSeries girls = new LineChartSeries();
+        girls.setFill(true);
+        girls.setLabel("Girls");
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 90);
+        girls.set("2008", 120);
+
+        areaModel.addSeries(boys);
+        areaModel.addSeries(girls);
         
         areaModel.setTitle("Area Chart");
         areaModel.setLegendPosition("ne");
-        areaModel.setFill(true);
         
         areaModel.getAxes().put(AxisType.X, new CategoryAxis("Year"));
         Axis yAxis = areaModel.getAxis(AxisType.Y);

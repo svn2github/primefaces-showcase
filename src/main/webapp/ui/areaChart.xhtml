@@ -16,11 +16,7 @@
             <p:tabView>
                 <p:tab title="areaChart.xhtml">
                     <pre name="code" class="brush:xml">
-&lt;p:lineChart id="filled" value="\#{chartBean.categoryModel}" legendPosition="ne" fill="true"
-             title="Filled" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Births" /&gt;
-
-&lt;p:lineChart id="stacked" value="\#{chartBean.categoryModel}" legendPosition="ne" stacked="true" fill="true""
-             title="Stacked and Filled" style="height:300px;margin-top:20px" xaxisLabel="Year" yaxisLabel="Births" /&gt;
+&lt;p:chart type="line" model="\#{chartBean.areaModel}" style="height:300px" /&gt;
                     </pre>
                 </p:tab>
 
