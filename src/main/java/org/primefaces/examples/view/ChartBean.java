@@ -32,6 +32,7 @@ import org.primefaces.model.chart.BubbleChartModel;
 import org.primefaces.model.chart.BubbleChartSeries;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.CategoryAxis;
+import org.primefaces.model.chart.CategoryChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.DonutChartModel;
@@ -193,8 +194,8 @@ public class ChartBean implements Serializable {
         return livePieModel;
     }
     
-    private CartesianChartModel initCategoryModel() {
-        CartesianChartModel model = new CartesianChartModel();
+    private CategoryChartModel initCategoryModel() {
+        CategoryChartModel model = new CategoryChartModel();
 
         ChartSeries boys = new ChartSeries();
         boys.setLabel("Boys");
@@ -230,7 +231,7 @@ public class ChartBean implements Serializable {
         lineModel2.setTitle("Category Chart");
         lineModel2.setLegendPosition("e");
         lineModel2.setShowPointLabels(true);
-        lineModel2.getAxes().put(AxisType.X, new CategoryAxis("Years"));
+        lineModel2.getAxis(AxisType.X).setLabel("Years");
         yAxis = lineModel2.getAxis(AxisType.Y);
         yAxis.setLabel("Births");
         yAxis.setMin(0);
@@ -272,7 +273,7 @@ public class ChartBean implements Serializable {
         areaModel.setTitle("Area Chart");
         areaModel.setLegendPosition("ne");
         
-        areaModel.getAxes().put(AxisType.X, new CategoryAxis("Year"));
+        areaModel.getAxis(AxisType.X).setLabel("Years");
         Axis yAxis = areaModel.getAxis(AxisType.Y);
         yAxis.setLabel("Births");
         yAxis.setMin(0);
