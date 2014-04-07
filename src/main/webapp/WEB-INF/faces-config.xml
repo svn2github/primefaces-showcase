@@ -56,11 +56,6 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>chartBean</managed-bean-name>
-        <managed-bean-class>org.primefaces.examples.view.ChartBean</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>colorBean</managed-bean-name>
         <managed-bean-class>org.primefaces.examples.view.ColorBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
