@@ -12,7 +12,7 @@
 
             <h:form>
 
-                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" scrollHeight="150" frozenRows="#{tableBean.frozenCars}">
+                <p:dataTable var="car" value="#{tableBean.cars}" scrollable="true" scrollHeight="150" frozenRows="2">
 
                     <f:facet name="header">
                         Frozen Rows
@@ -44,7 +44,7 @@
                     <pre name="code" class="brush:xml">
 &lt;h:form&gt;
 
-    &lt;p:dataTable var="car" value="\#{tableBean.cars}" scrollable="true" scrollHeight="150" frozenRows="\#{tableBean.frozenCars}"&gt;
+    &lt;p:dataTable var="car" value="\#{tableBean.cars}" scrollable="true" scrollHeight="150" frozenRows="2"&gt;
 
         &lt;f:facet name="header"&gt;
             Frozen Rows
@@ -117,14 +117,10 @@ public class TableBean implements Serializable {
 
     private List&lt;Car&gt; cars;
 
-	private List&lt;Car&gt; frozenCars;
-
 	public TableBean() {
         cars = new ArrayList&lt;Car&gt;();
-        frozenCars = new ArrayList&lt;Car&gt;();
 
 		populateRandomCars(cars, 50);
-        populateRandomCars(frozenCars, 2);
 	}
 
 	private void populateRandomCars(List&lt;Car&gt; list, int size) {
@@ -134,10 +130,6 @@ public class TableBean implements Serializable {
 
 	public List&lt;Car&gt; getCars() {
 		return cars;
-	}
-
-    public List&lt;Car&gt; getFrozenCars() {
-   		return frozenCars;
 	}
 
 	private int getRandomYear() {
