@@ -249,7 +249,7 @@ public class ChartBean implements Serializable {
     }
     
     private void createAreaModel() {
-        areaModel = new CartesianChartModel();
+        areaModel = new CategoryChartModel();
 
         LineChartSeries boys = new LineChartSeries();
         boys.setFill(true);
