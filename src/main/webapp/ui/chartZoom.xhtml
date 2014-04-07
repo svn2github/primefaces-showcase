@@ -28,28 +28,40 @@
 
                 <p:tab title="ChartBean.java">
                     <pre name="code" class="brush:java">
-package org.primefaces.examples.view;
+package org.primefaces.examples;
 
 import java.io.Serializable;
-
+import javax.faces.bean.ManagedBean;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.CartesianChartModel;
-import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.LineChartSeries;
 
+@ManagedBean
 public class ChartBean implements Serializable {
 
-    private CartesianChartModel linearModel;
+    private CartesianChartModel zoomModel;
 
 	public ChartBean() {
-        createLinearModel();
+        createZoomModel();
 	}
 
-    public CartesianChartModel getLinearModel() {
-        return linearModel;
+    public CartesianChartModel getZoomModel() {
+        return zoomModel;
     }
-
-    private void createLinearModel() {
-        linearModel = new CartesianChartModel();
+    
+    private void createZoomModel() {
+        zoomModel = initLinearModel();
+        zoomModel.setTitle("Zoom");
+        zoomModel.setZoom(true);
+        zoomModel.setLegendPosition("e");
+        Axis yAxis = zoomModel.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(10);
+    }
+    
+    private CartesianChartModel initLinearModel() {
+        CartesianChartModel model = new CartesianChartModel();
 
         LineChartSeries series1 = new LineChartSeries();
         series1.setLabel("Series 1");
@@ -62,7 +74,6 @@ public class ChartBean implements Serializable {
 
         LineChartSeries series2 = new LineChartSeries();
         series2.setLabel("Series 2");
-        series2.setMarkerStyle("diamond");
 
         series2.set(1, 6);
         series2.set(2, 3);
@@ -70,8 +81,10 @@ public class ChartBean implements Serializable {
         series2.set(4, 7);
         series2.set(5, 9);
 
-        linearModel.addSeries(series1);
-        linearModel.addSeries(series2);
+        model.addSeries(series1);
+        model.addSeries(series2);
+        
+        return model;
     }
 }
                     </pre>
