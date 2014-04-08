@@ -390,6 +390,9 @@ public class ChartBean implements Serializable {
         
         combinedModel.setTitle("Bar and Line");
         combinedModel.setLegendPosition("ne");
+        combinedModel.setMouseoverHighlight(false);
+        combinedModel.setShowDatatip(false);
+        combinedModel.setShowPointLabels(true);
         Axis yAxis = combinedModel.getAxis(AxisType.Y);
         yAxis.setMin(0);
         yAxis.setMax(200);
@@ -422,6 +425,7 @@ public class ChartBean implements Serializable {
         multiAxisModel.addSeries(girls);
         
         multiAxisModel.setTitle("Multi Axis Chart");
+        multiAxisModel.setMouseoverHighlight(false);
         
         multiAxisModel.getAxes().put(AxisType.X, new CategoryAxis("Years"));
         multiAxisModel.getAxes().put(AxisType.X2, new CategoryAxis("Period"));

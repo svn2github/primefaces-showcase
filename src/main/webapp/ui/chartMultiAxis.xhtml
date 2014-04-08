@@ -74,6 +74,7 @@ public class ChartBean implements Serializable {
         multiAxisModel.addSeries(girls);
         
         multiAxisModel.setTitle("Multi Axis Chart");
+        multiAxisModel.setMouseoverHighlight(false);
         
         multiAxisModel.getAxes().put(AxisType.X, new CategoryAxis("Years"));
         multiAxisModel.getAxes().put(AxisType.X2, new CategoryAxis("Period"));

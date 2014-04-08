@@ -73,6 +73,9 @@ public class ChartBean implements Serializable {
         
         combinedModel.setTitle("Bar and Line");
         combinedModel.setLegendPosition("ne");
+        combinedModel.setMouseoverHighlight(false);
+        combinedModel.setShowDatatip(false);
+        combinedModel.setShowPointLabels(true);
         Axis yAxis = combinedModel.getAxis(AxisType.Y);
         yAxis.setMin(0);
         yAxis.setMax(200);
