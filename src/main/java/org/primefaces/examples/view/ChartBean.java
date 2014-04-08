@@ -274,12 +274,14 @@ public class ChartBean implements Serializable {
         
         areaModel.setTitle("Area Chart");
         areaModel.setLegendPosition("ne");
+        areaModel.setStacked(true);
+        areaModel.setShowPointLabels(true);
         
         areaModel.getAxis(AxisType.X).setLabel("Years");
         Axis yAxis = areaModel.getAxis(AxisType.Y);
         yAxis.setLabel("Births");
         yAxis.setMin(0);
-        yAxis.setMax(200);
+        yAxis.setMax(300);
     }
     
     private BarChartModel initBarModel() {

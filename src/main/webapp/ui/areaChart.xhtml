@@ -4,6 +4,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/ui.xhtml">
+    
+      <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+		</script>
+
+	</ui:define>
+
 	
 	<ui:define name="content">
         <h1 class="title ui-widget-header ui-corner-all">Charts - Area</h1>
@@ -72,12 +86,14 @@ public class ChartBean implements Serializable {
         
         areaModel.setTitle("Area Chart");
         areaModel.setLegendPosition("ne");
+        areaModel.setStacked(true);
+        areaModel.setShowPointLabels(true);
         
         areaModel.getAxis(AxisType.X).setLabel("Years");
         Axis yAxis = areaModel.getAxis(AxisType.Y);
         yAxis.setLabel("Births");
         yAxis.setMin(0);
-        yAxis.setMax(200);
+        yAxis.setMax(300);
     }
     
 }
