@@ -245,7 +245,7 @@ public class LazyCarDataModel extends LazyDataModel&lt;Car&gt; {
     }
 
     @Override
-    public List&lt;Car&gt; load(int first, int pageSize, String sortField, SortOrder sortOrder, Map&lt;String,String&gt; filters) {
+    public List&lt;Car&gt; load(int first, int pageSize, String sortField, SortOrder sortOrder, Map&lt;String,Object&gt; filters) {
         List&lt;Car&gt; data = new ArrayList&lt;Car&gt;();
 
         //filter
@@ -256,9 +256,9 @@ public class LazyCarDataModel extends LazyDataModel&lt;Car&gt; {
                 try {
                     String filterProperty = it.next();
                     String filterValue = filters.get(filterProperty);
-                    String fieldValue = String.valueOf(car.getClass().getField(filterProperty).get(car));
+                    Object fieldValue = String.valueOf(car.getClass().getField(filterProperty).get(car));
 
-                    if(filterValue == null || fieldValue.startsWith(filterValue)) {
+                    if(filterValue == null || fieldValue.startsWith(filterValue.toString())) {
                         match = true;
                     }
                     else {
