@@ -15,26 +15,28 @@
                 <p:growl id="messages" />
                 
                 <p:toolbar>
-                    <p:toolbarGroup align="left">
+                    <f:facet name="left">
                         <p:commandButton type="button" value="New" icon="ui-icon-document" />
 
                         <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>
 
-                        <p:separator />
+                        <span class="ui-separator">
+                            <span class="ui-icon ui-icon-grip-dotted-vertical" />
+                        </span>
 
                         <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>
                         <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
                         <p:commandButton type="button" title="Print" icon="ui-icon-print"/>
-                    </p:toolbarGroup>
+                    </f:facet>
 
-                    <p:toolbarGroup align="right">
+                    <f:facet name="right">
                         <p:menuButton value="Options">
                             <p:menuitem value="Save" actionListener="#{buttonBean.save}" update="messages" icon="ui-icon-disk"/>
                             <p:menuitem value="Update" actionListener="#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
                             <p:menuitem value="Delete" actionListener="#{buttonBean.delete}" ajax="false" icon="ui-icon-close"/>
                             <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink"/>
                         </p:menuButton>
-                    </p:toolbarGroup>
+                    </f:facet>
 
                 </p:toolbar>
             </h:form>
@@ -44,33 +46,33 @@
 				<p:tab title="toolbar.xhtml">
                     <pre name="code" class="brush:xml">
 &lt;h:form&gt;
+    &lt;p:growl id="messages" /&gt;
 
-  &lt;p:growl id="messages" &gt;
+    &lt;p:toolbar&gt;
+        &lt;f:facet name="left"&gt;
+            &lt;p:commandButton type="button" value="New" icon="ui-icon-document" /&gt;
 
-  &lt;p:toolbar&gt;
-    &lt;p:toolbarGroup align="left"&gt;
-        &lt;p:commandButton type="button" value="New" icon="ui-icon-document" /&gt;
+            &lt;p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/&gt;
 
-        &lt;p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/&gt;
+            &lt;span class="ui-separator"&gt;
+                &lt;span class="ui-icon ui-icon-grip-dotted-vertical" /&gt;
+            &lt;/span&gt;
 
-        &lt;p:separator /&gt;
+            &lt;p:commandButton type="button" title="Save" icon="ui-icon-disk"/&gt;
+            &lt;p:commandButton type="button" title="Delete" icon="ui-icon-trash"/&gt;
+            &lt;p:commandButton type="button" title="Print" icon="ui-icon-print"/&gt;
+        &lt;/f:facet&gt;
 
-        &lt;p:commandButton type="button" title="Save" icon="ui-icon-disk"/&gt;
-        &lt;p:commandButton type="button" title="Delete" icon="ui-icon-trash"/&gt;
-        &lt;p:commandButton type="button" title="Print" icon="ui-icon-print"/&gt;
-    &lt;/p:toolbarGroup&gt;
+        &lt;f:facet name="right"&gt;
+            &lt;p:menuButton value="Options"&gt;
+                &lt;p:menuitem value="Save" actionListener="\#{buttonBean.save}" update="messages" icon="ui-icon-disk"/&gt;
+                &lt;p:menuitem value="Update" actionListener="\#{buttonBean.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
+                &lt;p:menuitem value="Delete" actionListener="\#{buttonBean.delete}" ajax="false" icon="ui-icon-close"/&gt;
+                &lt;p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink"/&gt;
+            &lt;/p:menuButton&gt;
+        &lt;/f:facet&gt;
 
-    &lt;p:toolbarGroup align="right"&gt;
-        &lt;p:menuButton value="Options"&gt;
-            &lt;p:menuitem value="Home" url="http://www.primefaces.org" /&gt;
-            &lt;p:menuitem value="ShowCase"
-                        url="http://www.primefaces.org/showcase" /&gt;
-            &lt;p:menuitem value="TouchFaces"
-                        url="http://www.primefaces.org/showcase/touch" /&gt;
-        &lt;/p:menuButton&gt;
-    &lt;/p:toolbarGroup&gt;
-
-  &lt;/p:toolbar&gt;
+    &lt;/p:toolbar&gt;
 &lt;/h:form&gt;
                     </pre>
 				</p:tab>
