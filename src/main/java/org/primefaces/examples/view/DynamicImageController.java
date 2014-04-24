@@ -53,7 +53,7 @@ public class DynamicImageController {
             graphicText = new DefaultStreamedContent(new ByteArrayInputStream(os.toByteArray()), "image/png"); 
 
             //Chart
-            JFreeChart jfreechart = ChartFactory.createPieChart("Turkish Cities", createDataset(), true, true, false);
+            JFreeChart jfreechart = ChartFactory.createPieChart("Cities", createDataset(), true, true, false);
             File chartFile = new File("dynamichart");
             ChartUtilities.saveChartAsPNG(chartFile, jfreechart, 375, 300);
             chart = new DefaultStreamedContent(new FileInputStream(chartFile), "image/png");
@@ -81,10 +81,10 @@ public class DynamicImageController {
 	
 	private PieDataset createDataset() {
 		DefaultPieDataset dataset = new DefaultPieDataset();
-		dataset.setValue("Istanbul", new Double(45.0));
-		dataset.setValue("Ankara", new Double(15.0));
-		dataset.setValue("Izmir", new Double(25.2));
-		dataset.setValue("Antalya", new Double(14.8));
+		dataset.setValue("New York", new Double(45.0));
+		dataset.setValue("London", new Double(15.0));
+		dataset.setValue("Paris", new Double(25.2));
+		dataset.setValue("Berlin", new Double(14.8));
 
 		return dataset;
 	}
