@@ -480,7 +480,10 @@ public class ChartBean implements Serializable {
         bubbleModel1 = initBubbleModel();
         bubbleModel1.setTitle("Bubble Chart");
         bubbleModel1.getAxis(AxisType.X).setLabel("Price");
-        bubbleModel1.getAxis(AxisType.Y).setLabel("Labels");
+        Axis yAxis = bubbleModel1.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(250);
+        yAxis.setLabel("Labels");
         
         bubbleModel2 = initBubbleModel();
         bubbleModel2.setTitle("Custom Options");
@@ -488,7 +491,10 @@ public class ChartBean implements Serializable {
         bubbleModel2.setBubbleGradients(true);
         bubbleModel2.setBubbleAlpha(0.8);
         bubbleModel2.getAxis(AxisType.X).setTickAngle(-50);
-        bubbleModel2.getAxis(AxisType.Y).setTickAngle(50);
+        yAxis = bubbleModel2.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(250);
+        yAxis.setTickAngle(50);
     }
     
     private BubbleChartModel initBubbleModel(){
