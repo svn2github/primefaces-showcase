@@ -38,6 +38,7 @@ import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.DonutChartModel;
 import org.primefaces.model.chart.HorizontalBarChartModel;
+import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 import org.primefaces.model.chart.LinearAxis;
 import org.primefaces.model.chart.MeterGaugeChartModel;
@@ -53,7 +54,7 @@ public class ChartBean implements Serializable {
     private CartesianChartModel zoomModel;
     private CartesianChartModel combinedModel;
     private CartesianChartModel fillToZero;
-    private CartesianChartModel areaModel;
+    private LineChartModel areaModel;
     private BarChartModel barModel;
     private HorizontalBarChartModel horizontalBarModel;
     private PieChartModel pieModel1;
@@ -249,7 +250,7 @@ public class ChartBean implements Serializable {
     }
     
     private void createAreaModel() {
-        areaModel = new CategoryChartModel();
+        areaModel = new LineChartModel();
 
         LineChartSeries boys = new LineChartSeries();
         boys.setFill(true);
@@ -277,7 +278,8 @@ public class ChartBean implements Serializable {
         areaModel.setStacked(true);
         areaModel.setShowPointLabels(true);
         
-        areaModel.getAxis(AxisType.X).setLabel("Years");
+        Axis xAxis = new CategoryAxis("Years");
+        areaModel.getAxes().put(AxisType.X, xAxis);
         Axis yAxis = areaModel.getAxis(AxisType.Y);
         yAxis.setLabel("Births");
         yAxis.setMin(0);

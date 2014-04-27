@@ -44,24 +44,24 @@ import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.CartesianChartModel;
-import org.primefaces.model.chart.CategoryChartModel;
+import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
 @ManagedBean
 public class ChartBean implements Serializable {
 
-    private CartesianChartModel areaModel;
+    private LineChartModel areaModel;
 
 	public ChartBean() {
         createAreaModel();
 	}
 
-    public CartesianChartModel getAreaModel() {
+    public LineChartModel getAreaModel() {
         return areaModel;
     }
     
     private void createAreaModel() {
-        areaModel = new CategoryChartModel();
+        areaModel = new LineChartModel();
 
         LineChartSeries boys = new LineChartSeries();
         boys.setFill(true);
@@ -89,7 +89,8 @@ public class ChartBean implements Serializable {
         areaModel.setStacked(true);
         areaModel.setShowPointLabels(true);
         
-        areaModel.getAxis(AxisType.X).setLabel("Years");
+        Axis xAxis = new CategoryAxis("Years");
+        areaModel.getAxes().put(AxisType.X, xAxis);
         Axis yAxis = areaModel.getAxis(AxisType.Y);
         yAxis.setLabel("Births");
         yAxis.setMin(0);
