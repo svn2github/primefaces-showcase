@@ -15,14 +15,14 @@
     <h:body>
         
         <pm:page id="list">
-            <pm:header title="Contacts" theme="b">
-                <p:commandButton styleClass="ui-btn-right ui-btn-inline" value="New" icon="ui-icon-plus" update=":editForm:editFormPanel" action="#{contactsView.prepareNewContact}"/>
+            <pm:header title="Contacts" swatch="b">
+                <p:commandButton styleClass="ui-btn-right ui-btn-inline" value="New" icon="ui-icon-plus" update=":edit:editForm:editFormPanel" action="#{contactsView.prepareNewContact}"/>
             </pm:header>
             
             <pm:content>
                 <h:form id="listForm">
                     <p:dataList id="contactsList" value="#{contactsView.contacts}" var="contact" pt:data-inset="true">
-                        <p:commandLink value="#{contact.firstname} #{contact.surname}" update=":editForm:editFormPanel" action="pm:edit?transition=flip">
+                        <p:commandLink value="#{contact.firstname} #{contact.surname}" update=":edit:editForm:editFormPanel" action="pm:edit?transition=flip">
                             <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
                         </p:commandLink> 
                     </p:dataList>
@@ -49,7 +49,7 @@
     &lt;h:body&gt;
         
         &lt;pm:page id="list"&gt;
-            &lt;pm:header title="Contacts" theme="b"&gt;
+            &lt;pm:header title="Contacts" swatch="b"&gt;
                 &lt;p:commandButton styleClass="ui-btn-right ui-btn-inline" value="New" icon="ui-icon-plus" update=":editForm:editFormPanel" action="\#{contactsView.prepareNewContact}"/&gt;
             &lt;/pm:header&gt;
             
@@ -65,7 +65,7 @@
         &lt;/pm:page&gt;
         
         &lt;pm:page id="edit"&gt;
-            &lt;pm:header title="Contacts" theme="b"&gt;
+            &lt;pm:header title="Contacts" swatch="b"&gt;
                 &lt;p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:list?transition=flip"/&gt;
             &lt;/pm:header&gt;
             
@@ -136,7 +136,7 @@
         </pm:page>
         
         <pm:page id="edit">
-            <pm:header title="Contacts" theme="b">
+            <pm:header title="Contacts" swatch="b">
                 <p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:list?transition=flip"/>
             </pm:header>
             
@@ -177,7 +177,7 @@
                         </pm:field>
                     </p:outputPanel>
                     
-                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update=":listForm:contactsList" icon="ui-icon-check"/>
+                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update=":list:listForm:contactsList" icon="ui-icon-check"/>
                 </h:form>
                 
             </pm:content>

@@ -14,14 +14,14 @@
     <h:body>
         
         <pm:page id="main">
-            <pm:header title="News" theme="b"></pm:header>
+            <pm:header title="News" swatch="b"></pm:header>
             
             <pm:content>
                 <h:form id="mainForm">
                     <p:growl id="messages" showDetail="true" />
                     
                     <p:dataList var="group" value="#{newsView.groups}">
-                        <p:commandLink value="#{group.title}" action="pm:group?transition=slide" update=":groupTitle :groupForm:entries">
+                        <p:commandLink value="#{group.title}" action="pm:group?transition=slide" update=":group:groupTitle :group:groupForm:entries">
                             <f:setPropertyActionListener value="#{group}" target="#{newsView.selectedGroup}" />
                         </p:commandLink>
                     </p:dataList>
@@ -48,14 +48,14 @@
     &lt;h:body&gt;
         
         &lt;pm:page id="main"&gt;
-            &lt;pm:header title="News" theme="b"&gt;&lt;/pm:header&gt;
+            &lt;pm:header title="News" swatch="b"&gt;&lt;/pm:header&gt;
             
             &lt;pm:content&gt;
                 &lt;h:form id="mainForm"&gt;
                     &lt;p:growl id="messages" showDetail="true" /&gt;
                     
                     &lt;p:dataList var="group" value="\#{newsView.groups}"&gt;
-                        &lt;p:commandLink value="\#{group.title}" action="pm:group?transition=slide" update=":groupTitle :groupForm:entries"&gt;
+                        &lt;p:commandLink value="\#{group.title}" action="pm:group?transition=slide" update=":group:groupTitle :group:groupForm:entries"&gt;
                             &lt;f:setPropertyActionListener value="\#{group}" target="\#{newsView.selectedGroup}" /&gt;
                         &lt;/p:commandLink&gt;
                     &lt;/p:dataList&gt;
@@ -66,7 +66,7 @@
         &lt;/pm:page&gt;
         
         &lt;pm:page id="group"&gt;
-            &lt;pm:header theme="b"&gt;
+            &lt;pm:header swatch="b"&gt;
                 &lt;p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:main?transition=slide&amp;reverse=true" /&gt;
                 &lt;h1&gt;&lt;h:outputText id="groupTitle" value="\#{newsView.selectedGroup.title}" /&gt;&lt;/h1&gt;
             &lt;/pm:header&gt;
@@ -74,7 +74,7 @@
             &lt;pm:content&gt;
                 &lt;h:form id="groupForm"&gt;
                     &lt;p:dataList id="entries" var="newsEntry" value="\#{newsView.selectedGroup.entries}"&gt;
-                        &lt;p:commandLink value="\#{newsEntry.title}" action="pm:entry?transition=slide" update=":entryDetail"&gt;
+                        &lt;p:commandLink value="\#{newsEntry.title}" action="pm:entry?transition=slide" update=":entry:entryDetail"&gt;
                             &lt;f:setPropertyActionListener value="\#{newsEntry}" target="\#{newsView.selectedEntry}" /&gt;
                         &lt;/p:commandLink&gt;
                     &lt;/p:dataList&gt;
@@ -83,7 +83,7 @@
         &lt;/pm:page&gt;
         
         &lt;pm:page id="entry"&gt;
-            &lt;pm:header title="Detail" theme="b"&gt;
+            &lt;pm:header title="Detail" swatch="b"&gt;
                 &lt;p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:group?transition=slide&amp;reverse=true" /&gt;
             &lt;/pm:header&gt;
             
@@ -290,7 +290,7 @@ public class NewsEntry implements Serializable {
         </pm:page>
         
         <pm:page id="group">
-            <pm:header theme="b">
+            <pm:header swatch="b">
                 <p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:main?transition=slide&amp;reverse=true" />
                 <h1><h:outputText id="groupTitle" value="#{newsView.selectedGroup.title}" /></h1>
             </pm:header>
@@ -298,7 +298,7 @@ public class NewsEntry implements Serializable {
             <pm:content>
                 <h:form id="groupForm">
                     <p:dataList id="entries" var="newsEntry" value="#{newsView.selectedGroup.entries}">
-                        <p:commandLink value="#{newsEntry.title}" action="pm:entry?transition=slide" update=":entryDetail">
+                        <p:commandLink value="#{newsEntry.title}" action="pm:entry?transition=slide" update=":entry:entryDetail">
                             <f:setPropertyActionListener value="#{newsEntry}" target="#{newsView.selectedEntry}" />
                         </p:commandLink>
                     </p:dataList>
@@ -307,7 +307,7 @@ public class NewsEntry implements Serializable {
         </pm:page>
         
         <pm:page id="entry">
-            <pm:header title="Detail" theme="b">
+            <pm:header title="Detail" swatch="b">
                 <p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:group?transition=slide&amp;reverse=true" />
             </pm:header>
             
