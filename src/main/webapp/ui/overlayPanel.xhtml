@@ -8,7 +8,7 @@
         
     <ui:define name="head">
         <style type="text/css">
-
+            .ui-overlaypanel 
         </style>
         
         <script type="text/javascript">
@@ -30,15 +30,14 @@
                 <p:commandButton id="chartBtn" value="Basic" type="button" />
                 
                 <p:overlayPanel id="chartPanel" for="chartBtn" hideEffect="fade">
-                    <p:pieChart id="chart" value="#{chartBean.pieModel}" legendPosition="w"
-                        title="Sample Pie Chart" style="width:300px;height:200px" />
+                    <p:chart id="chart"  type="pie" model="#{chartBean.pieModel1}" style="width:300px;height:200px" />
                 </p:overlayPanel>
                 
                 <br /><br />
                 
                 <p:commandButton id="carBtn" value="Dynamic" type="button" />
 
-                <p:overlayPanel id="carPanel" for="carBtn" hideEffect="fade" dynamic="true">
+                <p:overlayPanel id="carPanel" for="carBtn" hideEffect="fade" dynamic="true" style="width:400px">
                     <p:dataTable id="table" var="car" value="#{tableBean.cars}" rows="10" paginator="true">
                         <p:column headerText="Model">
                             <h:outputText value="#{car.model}" />
@@ -81,13 +80,12 @@
     &lt;p:commandButton id="chartBtn" value="Basic" type="button" /&gt;
 
     &lt;p:overlayPanel id="chartPanel" for="chartBtn" hideEffect="fade"&gt;
-        &lt;p:pieChart id="chart" value="\#{chartBean.pieModel}" legendPosition="w"
-            title="Sample Pie Chart" style="width:300px;height:200px" /&gt;
+        &lt;p:chart id="chart"  type="pie" model="#{chartBean.pieModel1}" style="width:300px;height:200px" /&gt;
     &lt;/p:overlayPanel&gt;
 
     &lt;p:commandButton id="carBtn" value="Dynamic" type="button" /&gt;
 
-    &lt;p:overlayPanel id="carPanel" for="carBtn" hideEffect="fade" dynamic="true"&gt;
+    &lt;p:overlayPanel id="carPanel" for="carBtn" hideEffect="fade" dynamic="true" style="width:400px"&gt;
         &lt;p:dataTable id="table" var="car" value="\#{tableBean.cars}" rows="10" paginator="true"&gt;
             &lt;p:column headerText="Model"&gt;
                 &lt;h:outputText value="\#{car.model}" /&gt;
