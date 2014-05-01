@@ -65,19 +65,19 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
-import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
 @ManagedBean
 public class ChartBean implements Serializable {
 
-    private CartesianChartModel lineModel1;
+    private LineChartModel lineModel1;
     
 	public ChartBean() {
         createLineModels();
 	}
 
-    public CartesianChartModel getLineModel1() {
+    public LineChartModel getLineModel1() {
         return lineModel1;
     }
     
@@ -90,8 +90,8 @@ public class ChartBean implements Serializable {
         yAxis.setMax(10);
     }
     
-    private CartesianChartModel initLinearModel() {
-        CartesianChartModel model = new CartesianChartModel();
+    private LineChartModel initLinearModel() {
+        LineChartModel model = new LineChartModel();
 
         LineChartSeries series1 = new LineChartSeries();
         series1.setLabel("Series 1");

@@ -47,21 +47,21 @@ import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
-import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.LineChartSeries;
 
 @ManagedBean
 public class ChartBean implements Serializable {
 
-    private CartesianChartModel animatedModel1;
+    private LineChartModel animatedModel1;
     private BarChartModel animatedModel2;
 
 	public ChartBean() {
         createAnimatedModels();
 	}
 
-    public CartesianChartModel getAnimatedModel1() {
+    public LineChartModel getAnimatedModel1() {
         return animatedModel1;
     }
 
@@ -112,8 +112,8 @@ public class ChartBean implements Serializable {
         return model;
     }
     
-    private CartesianChartModel initLinearModel() {
-        CartesianChartModel model = new CartesianChartModel();
+    private LineChartModel initLinearModel() {
+        LineChartModel model = new LineChartModel();
 
         LineChartSeries series1 = new LineChartSeries();
         series1.setLabel("Series 1");

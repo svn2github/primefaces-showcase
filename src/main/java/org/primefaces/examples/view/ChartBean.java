@@ -51,7 +51,7 @@ public class ChartBean implements Serializable {
 
     private CartesianChartModel lineModel1;
     private CartesianChartModel lineModel2;
-    private CartesianChartModel zoomModel;
+    private LineChartModel zoomModel;
     private CartesianChartModel combinedModel;
     private CartesianChartModel fillToZero;
     private LineChartModel areaModel;
@@ -68,10 +68,10 @@ public class ChartBean implements Serializable {
     private OhlcChartModel ohlcModel;
     private OhlcChartModel ohlcModel2;
     private PieChartModel livePieModel;
-    private CartesianChartModel animatedModel1;
+    private LineChartModel animatedModel1;
     private BarChartModel animatedModel2;
-    private CartesianChartModel multiAxisModel;
-    private CartesianChartModel dateModel;
+    private LineChartModel multiAxisModel;
+    private LineChartModel dateModel;
 
 	public ChartBean() {
         createLineModels();
@@ -104,7 +104,7 @@ public class ChartBean implements Serializable {
         return lineModel2;
     }
 
-    public CartesianChartModel getZoomModel() {
+    public LineChartModel getZoomModel() {
         return zoomModel;
     }
 
@@ -168,7 +168,7 @@ public class ChartBean implements Serializable {
         return horizontalBarModel;
     }
 
-    public CartesianChartModel getAnimatedModel1() {
+    public LineChartModel getAnimatedModel1() {
         return animatedModel1;
     }
 
@@ -176,11 +176,11 @@ public class ChartBean implements Serializable {
         return animatedModel2;
     }
 
-    public CartesianChartModel getMultiAxisModel() {
+    public LineChartModel getMultiAxisModel() {
         return multiAxisModel;
     }
 
-    public CartesianChartModel getDateModel() {
+    public LineChartModel getDateModel() {
         return dateModel;
     }
     
@@ -401,7 +401,7 @@ public class ChartBean implements Serializable {
     }
     
     private void createMultiAxisModel() {
-        multiAxisModel = new CartesianChartModel();
+        multiAxisModel = new LineChartModel();
 
         BarChartSeries boys = new BarChartSeries();
         boys.setLabel("Boys");
@@ -513,8 +513,8 @@ public class ChartBean implements Serializable {
         return model;
     }
 
-    private CartesianChartModel initLinearModel() {
-        CartesianChartModel model = new CartesianChartModel();
+    private LineChartModel initLinearModel() {
+        LineChartModel model = new LineChartModel();
 
         LineChartSeries series1 = new LineChartSeries();
         series1.setLabel("Series 1");
@@ -677,7 +677,7 @@ public class ChartBean implements Serializable {
     }
     
     private void createDateModel() {
-        dateModel = new CartesianChartModel();
+        dateModel = new LineChartModel();
         LineChartSeries series1 = new LineChartSeries();
         series1.setLabel("Series 1");
 

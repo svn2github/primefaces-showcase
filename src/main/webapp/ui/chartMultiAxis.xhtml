@@ -29,7 +29,7 @@ import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartSeries;
-import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.CategoryAxis;
 import org.primefaces.model.chart.LineChartSeries;
 import org.primefaces.model.chart.LinearAxis;
@@ -37,18 +37,18 @@ import org.primefaces.model.chart.LinearAxis;
 @ManagedBean
 public class ChartBean implements Serializable {
 
-    private CartesianChartModel multiAxisModel;
+    private LineChartModel multiAxisModel;
 
 	public ChartBean() {
         createMultiAxisModel();
 	}
 
-    public CartesianChartModel getMultiAxisModel() {
+    public LineChartModel getMultiAxisModel() {
         return multiAxisModel;
     }
     
     private void createMultiAxisModel() {
-        multiAxisModel = new CartesianChartModel();
+        multiAxisModel = new LineChartModel();
 
         BarChartSeries boys = new BarChartSeries();
         boys.setLabel("Boys");
