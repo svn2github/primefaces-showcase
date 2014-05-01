@@ -34,7 +34,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
-import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.CategoryChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.LineChartSeries;
@@ -42,18 +42,18 @@ import org.primefaces.model.chart.LineChartSeries;
 @ManagedBean
 public class ChartBean implements Serializable {
 
-    private CartesianChartModel lineModel1;
-    private CartesianChartModel lineModel2;
+    private LineChartModel lineModel1;
+    private LineChartModel lineModel2;
     
 	public ChartBean() {
         createLineModels();
 	}
 
-    public CartesianChartModel getLineModel1() {
+    public LineChartModel getLineModel1() {
         return lineModel1;
     }
 
-    public CartesianChartModel getLineModel2() {
+    public LineChartModel getLineModel2() {
         return lineModel2;
     }
     
@@ -69,7 +69,7 @@ public class ChartBean implements Serializable {
         lineModel2.setTitle("Category Chart");
         lineModel2.setLegendPosition("e");
         lineModel2.setShowPointLabels(true);
-        lineModel2.getAxis(AxisType.X).setLabel("Years");
+        lineModel2.getAxes().put(AxisType.X, new CategoryAxis("Years"));
         yAxis = lineModel2.getAxis(AxisType.Y);
         yAxis.setLabel("Births");
         yAxis.setMin(0);
@@ -103,8 +103,8 @@ public class ChartBean implements Serializable {
         return model;
     }
     
-    private CategoryChartModel initCategoryModel() {
-        CategoryChartModel model = new CategoryChartModel();
+    private LineChartModel initCategoryModel() {
+        LineChartModel model = new LineChartModel();
 
         ChartSeries boys = new ChartSeries();
         boys.setLabel("Boys");

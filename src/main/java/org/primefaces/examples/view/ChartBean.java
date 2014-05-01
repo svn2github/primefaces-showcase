@@ -33,7 +33,6 @@ import org.primefaces.model.chart.BubbleChartModel;
 import org.primefaces.model.chart.BubbleChartSeries;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.CategoryAxis;
-import org.primefaces.model.chart.CategoryChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.DonutChartModel;
@@ -49,8 +48,8 @@ import org.primefaces.model.chart.PieChartModel;
 @ManagedBean
 public class ChartBean implements Serializable {
 
-    private CartesianChartModel lineModel1;
-    private CartesianChartModel lineModel2;
+    private LineChartModel lineModel1;
+    private LineChartModel lineModel2;
     private LineChartModel zoomModel;
     private CartesianChartModel combinedModel;
     private CartesianChartModel fillToZero;
@@ -96,11 +95,11 @@ public class ChartBean implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-    public CartesianChartModel getLineModel1() {
+    public LineChartModel getLineModel1() {
         return lineModel1;
     }
 
-    public CartesianChartModel getLineModel2() {
+    public LineChartModel getLineModel2() {
         return lineModel2;
     }
 
@@ -197,8 +196,8 @@ public class ChartBean implements Serializable {
         return livePieModel;
     }
     
-    private CategoryChartModel initCategoryModel() {
-        CategoryChartModel model = new CategoryChartModel();
+    private LineChartModel initCategoryModel() {
+        LineChartModel model = new LineChartModel();
 
         ChartSeries boys = new ChartSeries();
         boys.setLabel("Boys");
@@ -234,7 +233,7 @@ public class ChartBean implements Serializable {
         lineModel2.setTitle("Category Chart");
         lineModel2.setLegendPosition("e");
         lineModel2.setShowPointLabels(true);
-        lineModel2.getAxis(AxisType.X).setLabel("Years");
+        lineModel2.getAxes().put(AxisType.X, new CategoryAxis("Years"));
         yAxis = lineModel2.getAxis(AxisType.Y);
         yAxis.setLabel("Births");
         yAxis.setMin(0);
